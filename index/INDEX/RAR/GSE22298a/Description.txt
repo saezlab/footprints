@@ -1,0 +1,5 @@
+cell line	primary epidermal karatinocytes
+modification	treated with 1µM all-trans retinoid acid
+effect	activating
+time	1 h
+comment	1 replicate each, part of timeseries, timeresolved controls

@@ -1,0 +1,5 @@
+cell line	A549 cells
+modification	treated with IFNb
+effect	activating
+time	6 h
+comment	3 replicates

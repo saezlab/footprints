@@ -1,0 +1,4 @@
+cell line	human arthritic synoviocytes
+modification	treated with TNFa
+effect	activating
+time	4 h

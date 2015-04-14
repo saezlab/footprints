@@ -1,0 +1,4 @@
+cell line	primary human microglial cells W
+modification	treated with IFN-gamma (respective timecontrol)
+effect	activating
+time	1 h

@@ -1,0 +1,5 @@
+cell line	Beas-B2 (Human Bronchial Epithelial Cells)
+modification	treated with TNFa 20 ng/ml
+effect	activating
+time	4 h
+comment	2 replicates each

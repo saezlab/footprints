@@ -1,0 +1,4 @@
+cell line	Epidermis Keratinocytes
+modification	treated with TNFa
+effect	activating
+time	1 h

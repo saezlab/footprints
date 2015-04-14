@@ -1,0 +1,4 @@
+cell line	HUVEC (human umbilical vein endothelial cells)
+modification	treated with TNFa 1ng/ml cultured in M199 medium
+effect	activating
+time	3 h

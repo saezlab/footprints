@@ -1,0 +1,5 @@
+cell line	primary hepatocytes
+modification	treated with 50µM Wy14643, a PPARa agonist
+effect	activating
+time	6 h
+comment	1 replicate each, 6 donors

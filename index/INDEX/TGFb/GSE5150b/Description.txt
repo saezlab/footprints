@@ -1,0 +1,5 @@
+cell line	CD34+ hematopoietic stem/progenitor cells
+modification	treated with TGF-beta
+effect	activating
+time	4 h
+comment	1 replicate each, part of timeseries

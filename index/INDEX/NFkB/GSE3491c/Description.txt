@@ -1,0 +1,5 @@
+cell line	GENDER: FEMALE TISSUE: WHOLE BLOOD LPS RESPONSE: HIGH
+modification	treated with LPS 10 NG/ML
+effect	activating
+time	4 h
+comment	three patients with high LPS response rate

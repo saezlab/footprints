@@ -1,0 +1,640 @@
+id	pathway	cells	BTO	treatment	effect	time	comment	GSE	norm	GPL
+GSE1045a	Estrogen	breast	BTO:0000815	treated with estradiol	activating	1 h	2 replicates each, part of timeseries	GSE1045	none	GPL96
+GSE1045b	Estrogen	breast	BTO:0000815	treated with estradiol	activating	2 h	2 replicates each, part of timeseries	GSE1045	none	GPL96
+GSE11467	Estrogen	breast	BTO:0000093	treated with 10 nM estradiol	activating	2 h	3 replicates each	GSE11467	none	GPL96
+GSE11567a	Estrogen	breast	BTO:0002419	treated with 1µM estradiol	activating	1 h	3 replicates each, control transfection	GSE11567	normalized	GPL6102
+GSE11567b	Estrogen	breast	BTO:0002419	treated with 1o µM hydoxytamoxifen	unknown	1 h	3 replicates each, control transfection	GSE11567	normalized	GPL6102
+GSE11791	Estrogen	breast	BTO:0000093	treated with 100 nM estradiol	activating	6 h	3 replicates each	GSE11791	none	GPL570
+GSE12261	Estrogen	muscle	BTO:0001260	treated with 3 µM 2-methoxyestradiol	activating	4 h	3 replicates each	GSE12261	none	GPL570
+GSE13458	Estrogen	breast	BTO:0000093	treated with estradiol	activating	3 h	3 replicates each, contain luciferase knockdown	GSE13458	log	GPL571
+GSE13458a	Estrogen	breast	BTO:0000093	treated with estradiol	activating	3 h	3 replicates each, contain luciferase knockdown	GSE13458	log	GPL570
+GSE15717	Estrogen	breast	BTO:0000093	treated with estradiol	activating	4 h	3 replicates each	GSE15717	none	GPL96
+GSE18592	Estrogen	breast	BTO:0000093	treated with estrogen	activating	1 h	3 replicates each	GSE18592	none	GPL6244
+GSE20081	Estrogen	breast	BTO:0000093	treated with estradiol	activating	6 h	3 replicates each, contain control siRNA	GSE20081	none	GPL570
+GSE21618a	Estrogen	breast	BTO:0000093	treated with estradiol	activating	1 h	3 replicates each, different treatments, part of timeseries	GSE21618	none	GPL10371
+GSE21618b	Estrogen	breast	BTO:0000093	treated with estradiol	activating	2 h	3 replicates each, different treatments, part of timeseries	GSE21618	none	GPL10371
+GSE21618c	Estrogen	breast	BTO:0000093	treated with estradiol	activating	3 h	3 replicates each, different treatments, part of timeseries	GSE21618	none	GPL10371
+GSE21618d	Estrogen	breast	BTO:0000093	treated with estradiol	activating	6 h	3 replicates each, different treatments, part of timeseries	GSE21618	none	GPL10371
+GSE21618e	Estrogen	breast	BTO:0000093	treated with tamoxifen	unknown	1 h	1 replicate each, different treatments, part of timeseries	GSE21618	none	GPL10371
+GSE21618f	Estrogen	breast	BTO:0000093	treated with tamoxifen	unknown	2 h	1 replicate each, different treatments, part of timeseries	GSE21618	none	GPL10371
+GSE21618g	Estrogen	breast	BTO:0000093	treated with tamoxifen	unknown	3 h	1 replicate each, different treatments, part of timeseries	GSE21618	none	GPL10371
+GSE21618h	Estrogen	breast	BTO:0000093	treated with tamoxifen	unknown	6 h	1 replicate each, different treatments, part of timeseries	GSE21618	none	GPL10371
+GSE22012	Estrogen	breast	BTO:0000093	treated with estradiol	activating	1 h	4 replicates each	GSE22012	log	GPL6480
+GSE22593a	Estrogen	breast	BTO:0000815	treated with estradiol	activating	1 h	2 replicates each, part of timeseries	GSE22593	log	GPL96
+GSE22593b	Estrogen	breast	BTO:0000815	treated with estradiol	activating	2 h	2 replicates each, part of timeseries	GSE22593	log	GPL96
+GSE22593c	Estrogen	breast	BTO:0000815	treated with estradiol	activating	4 h	2 replicates each, part of timeseries	GSE22593	log	GPL96
+GSE23445	Estrogen	breast	BTO:0000093	treated with estradiol	activating	4 h	3 replicates each	GSE23445	log	GPL6244
+GSE23500	Estrogen	breast	BTO:0000149	treated with estradiol	activating	6 h	3 replicates each	GSE23500	normalized	GPL6947
+GSE23610	Estrogen	breast	BTO:0000093	treated with 0.1µM estradiol	activating	6 h	3 replicates each	GSE23610	none	GPL570
+GSE24592	Estrogen	breast	BTO:0000093	treated with 10nM estradiol	activating	4 h	2-3 replicates each, contain control siRNA	GSE24592	none	GPL571
+GSE25314a	Estrogen	breast	BTO:0000093	treated with 100nM estrogen	activating	6 h	4 replicates each, different treatments	GSE25314	log	GPL6947
+GSE25314b	Estrogen	breast	BTO:0000093	treated with 1 µM tamoxifen	unknown	6 h	4 replicates each, different treatments	GSE25314	log	GPL6947
+GSE25315	Estrogen	breast	BTO:0000093	treated with 100nM estrogen	activating	6 h	3 replicates each, contain control siRNA	GSE25315	log	GPL10558
+GSE26459a	Estrogen	breast	BTO:0000093	treated with estrogen	activating	4 h	3 replicates each	GSE26459	none	GPL570
+GSE26459b	Estrogen	breast	BTO:0000093	treated with estrogen	activating	4 h	3 replicates each	GSE26459	none	GPL570
+GSE26834Est	Estrogen	breast	BTO:0000093	treated with estradiol	activating	3 h	2-3 replicates each	GSE26834	log	GPL571
+GSE28006	Estrogen	breast	BTO:0000093	treated with estradiol	activating	3 h	2 replicates each, contain siControl RNA	GSE28006	normalized	GPL10558
+GSE28645	Estrogen	breast	BTO:0000356	treated with tamoxifen	inhibiting	2 h	4 replicates each, contain control siRNA, tamoxifen acts as antagonist in breast cell lines	GSE28645	log	GPL570
+GSE3013a	Estrogen	skin	BTO:0001422	treated with estradiol	activating	3 h	2 replicates each on different platforms, different treatments, different tumor stages	GSE3013	none	GPL91
+GSE3013b	Estrogen	skin	BTO:0001422	treated with estradiol	activating	3 h	2 replicates each on different platforms, different treatments, different tumor stages	GSE3013	none	GPL8300
+GSE3013c	Estrogen	skin	BTO:0001422	treated with tamoxifen	unknown	3 h	2 replicates each on different platforms, different treatments, different tumor stages	GSE3013	none	GPL8300
+GSE3013d	Estrogen	skin	BTO:0001422	treated with tamoxifen	unknown	3 h	2 replicates each on different platforms, different treatments, different tumor stages	GSE3013	none	GPL91
+GSE3013f	Estrogen	skin	BTO:0001422	treated with estradiol	activating	3 h	2 replicates each on different platforms, different treatments, different tumor stages	GSE3013	none	GPL8300
+GSE3013h	Estrogen	skin	BTO:0001422	treated with tamoxifen	unknown	3 h	2 replicates each on different platforms, different treatments, different tumor stages	GSE3013	none	GPL91
+GSE3013i	Estrogen	skin	BTO:0001422	treated with estradiol	activating	3 h	2 replicates each on different platforms, different treatments, different tumor stages	GSE3013	none	GPL8300
+GSE3013j	Estrogen	skin	BTO:0001422	treated with estradiol	activating	3 h	2 replicates each on different platforms, different treatments, different tumor stages	GSE3013	none	GPL8300
+GSE3013k	Estrogen	skin	BTO:0001422	treated with tamoxifen	unknown	3 h	2 replicates each on different platforms, different treatments, different tumor stages	GSE3013	none	GPL8300
+GSE3013l	Estrogen	skin	BTO:0001422	treated with tamoxifen	unknown	3 h	2 replicates each on different platforms, different treatments, different tumor stages	GSE3013	none	GPL8300
+GSE30931	Estrogen	breast	BTO:0000093	treated with estrogen	activating	6 h	3 replicates each	GSE30931	log	GPL10558
+GSE35287a	Estrogen	skin	BTO:0001422	treated with E2	activating	6 h	1 replicate each, 4 donors	GSE35287	normalized	GPL6244
+GSE35287b	Estrogen	skin	BTO:0001422	treated with E2	activating	6 h	1 replicate each, 4 donors	GSE35287	normalized	GPL6244
+GSE35287c	Estrogen	skin	BTO:0001422	treated with E2	activating	6 h	1 replicate each, 4 donors	GSE35287	normalized	GPL6244
+GSE35287d	Estrogen	skin	BTO:0001422	treated with E2	activating	6 h	1 replicate each, 4 donors	GSE35287	normalized	GPL6244
+GSE3834a	Estrogen	breast	BTO:0000093	treated with 10 nM estradiol	activating	1 h	2 replicates each, different cell lines, part of timeseries	GSE3834	log	GPL96
+GSE3834b	Estrogen	breast	BTO:0000093	treated with 10 nM estradiol	activating	2 h	2 replicates each, different cell lines, part of timeseries	GSE3834	log	GPL96
+GSE3834c	Estrogen	breast	BTO:0000093	treated with 10 nM estradiol	activating	4 h	2 replicates each, different cell lines, part of timeseries	GSE3834	log	GPL96
+GSE3834d	Estrogen	breast	BTO:0001248	treated with 10 nM estradiol	activating	1 h	2 replicates each, different cell lines, part of timeseries	GSE3834	log	GPL570
+GSE3834e	Estrogen	breast	BTO:0001248	treated with 10 nM estradiol	activating	2 h	2 replicates each, different cell lines, part of timeseries	GSE3834	log	GPL570
+GSE3834f	Estrogen	breast	BTO:0001248	treated with 10 nM estradiol	activating	4 h	2 replicates each, different cell lines, part of timeseries	GSE3834	log	GPL570
+GSE3834g	Estrogen	breast	BTO:0001932	treated with 10 nM estradiol	activating	2 h	2 replicates each, different cell lines, part of timeseries	GSE3834	log	GPL570
+GSE3834h	Estrogen	breast	BTO:0001932	treated with 10 nM estradiol	activating	4 h	2 replicates each, different cell lines, part of timeseries	GSE3834	log	GPL570
+GSE5258Est	Estrogen	breast	BTO:0000093	treated with 10 nM estradiol	activating	6 h	1-2 replicates each	GSE5258	none	GPL96
+GSE9936a	Estrogen	breast	BTO:0000093	treated with 6 nM estradiol	activating	4 h	3 replicates each, different treatments, contain control vectors	GSE9936	log	GPL96
+GSE9936b	Estrogen	breast	BTO:0000093	treated with 6 nM genistein	activating	4 h	3 replicates each, different treatments, contain control vector	GSE9936	log	GPL96
+GSE9936c	Estrogen	breast	BTO:0000093	treated with 300 nM genistein	activating	4 h	3 replicates each, different treatments, contain control vector	GSE9936	log	GPL96
+GSE21800a	H2O2	lymphoid	BTO:0001586	treated with 9 µM H2O2	activating	4 h	1 replicate each, timerespective control	GSE21800	none	GPL6244
+GSE21800b	H2O2	lymphoid	BTO:0001586	treated with 90 µM H2O2	activating	4 h	1 replicate each, timerespective control	GSE21800	none	GPL6244
+GSE21800c	H2O2	lymphoid	BTO:0001586	treated with 900 µM H2O2	activating	4 h	1 replicate each, timerespective control	GSE21800	none	GPL6244
+GSE22463a	H2O2	blood	BTO:0001025	treated with H2O2	activating	3 h	1 replicate each, timeseries, 8 older individuals	GSE22463	none	GPL6244
+GSE22463b	H2O2	blood	BTO:0001025	treated with H2O2	activating	3 h	1 replicate each, timeseries, 8 older individuals	GSE22463	none	GPL6244
+GSE22463c	H2O2	blood	BTO:0001025	treated with H2O2	activating	3 h	1 replicate each, timeseries, 8 older individuals	GSE22463	none	GPL6244
+GSE22463d	H2O2	blood	BTO:0001025	treated with H2O2	activating	3 h	1 replicate each, timeseries, 8 older individuals	GSE22463	none	GPL6244
+GSE22463e	H2O2	blood	BTO:0001025	treated with H2O2	activating	3 h	1 replicate each, timeseries, 8 older individuals	GSE22463	none	GPL6244
+GSE22463f	H2O2	blood	BTO:0001025	treated with H2O2	activating	3 h	1 replicate each, timeseries, 8 older individuals	GSE22463	none	GPL6244
+GSE22463g	H2O2	blood	BTO:0001025	treated with H2O2	activating	3 h	1 replicate each, timeseries, 8 older individuals	GSE22463	none	GPL6244
+GSE22463h	H2O2	blood	BTO:0001025	treated with H2O2	activating	3 h	1 replicate each, timeseries, 8 older individuals	GSE22463	none	GPL6244
+GSE22463i	H2O2	blood	BTO:0001025	treated with H2O2	activating	6 h	1 replicate each, timeseries, 8 older individuals	GSE22463	none	GPL6244
+GSE22463j	H2O2	blood	BTO:0001025	treated with H2O2	activating	6 h	1 replicate each, timeseries, 8 older individuals	GSE22463	none	GPL6244
+GSE22463k	H2O2	blood	BTO:0001025	treated with H2O2	activating	6 h	1 replicate each, timeseries, 8 older individuals	GSE22463	none	GPL6244
+GSE22463l	H2O2	blood	BTO:0001025	treated with H2O2	activating	6 h	1 replicate each, timeseries, 8 older individuals	GSE22463	none	GPL6244
+GSE22463m	H2O2	blood	BTO:0001025	treated with H2O2	activating	6 h	1 replicate each, timeseries, 8 older individuals	GSE22463	none	GPL6244
+GSE22463n	H2O2	blood	BTO:0001025	treated with H2O2	activating	6 h	1 replicate each, timeseries, 8 older individuals	GSE22463	none	GPL6244
+GSE22463o	H2O2	blood	BTO:0001025	treated with H2O2	activating	6 h	1 replicate each, timeseries, 8 older individuals	GSE22463	none	GPL6244
+GSE22463p	H2O2	blood	BTO:0001025	treated with H2O2	activating	6 h	1 replicate each, timeseries, 8 older individuals	GSE22463	none	GPL6244
+GSE5339a	H2O2	lung	BTO:0000764	H2O2 treatment	activating	1 h	timeseries 1, 4, 12, 24 h	GSE5339	nolog	GPL571
+GSE5339b	H2O2	lung	BTO:0000764	H2O2 treatment	activating	4 h	timeseries 1, 4, 12, 24 h	GSE5339	nolog	GPL571
+GSE1056	Hypoxia	liver	BTO:0000972	treated with 1% oxygen hypoxia	activating	2 h	2 replicates each	GSE1056	none	GPL91
+GSE17188a	Hypoxia	breast	BTO:0000815	treated with 1% oxygen hypoxia	activating	6 h	2 replicates each, different cell lines	GSE17188	log	GPL6480
+GSE17188b	Hypoxia	breast	BTO:0000815	treated with 1% oxygen hypoxia	activating	6 h	2 replicates each, different cell lines	GSE17188	log	GPL6480
+GSE18494a	Hypoxia	liver	BTO:0000599	treated with 0.5% oxygen hypoxia	activating	4 h	3 replicates each, different cell lines	GSE18494	normalized	GPL9419
+GSE18494b	Hypoxia	brain	BTO:0002036	treated with 0.5% oxygen hypoxia	activating	4 h	3 replicates each, different cell lines	GSE18494	normalized	GPL9419
+GSE18494c	Hypoxia	breast	BTO:0000815	treated with 0.5% oxygen hypoxia	activating	4 h	3 replicates each, different cell lines	GSE18494	normalized	GPL9419
+GSE19123	Hypoxia	breast	BTO:0000093	treated with 1% oxygen hypoxia	activating	4 h	5 replicates each	GSE19123	normalized	GPL570
+GSE25452	Hypoxia	kidney	BTO:0000007	treated with 1% oxygen hypoxia	activating	2 h	2 replicates each, contain control vector	GSE25452	normalized	GPL5188
+GSE27813	Hypoxia	breast	BTO:0000093	treated with 1% oxygen hypoxia	activating	6 h	2 replicates each, contain control shRNA	GSE27813	normalized	GPL10558
+GSE28603a	Hypoxia	connective tissue	BTO:0000443	treated with 1% oxygen hypoxia	activating	3 h	3 replicates each, part of timeseries	GSE28603	none	GPL570
+GSE28603b	Hypoxia	connective tissue	BTO:0000443	treated with 1% oxygen hypoxia	activating	6 h	3 replicates each, part of timeseries	GSE28603	none	GPL570
+GSE33521	Hypoxia	skin	BTO:0000567	treated with 1% oxygen hypoxia	activating	6 h	2 replicates each	GSE33521	normalized	GPL6480
+GSE5258	Hypoxia	breast	BTO:0000093	treated with 0.1mM cobalt chloride	activating	6 h	3 replicates each, cobald cloride induces HIF1	GSE5258	none	GPL96
+GSE22325	IL1	cardiovascular system	BTO:0001949	treated with 100U IL-1b	activating	4 h	1 replicate each	GSE22325	log	GPL570
+GSE32390a	IL1	skin	BTO:0001255	treated with 20 ng/ml IL-1b	activating	4 h	1 replicate each, 3 donors	GSE32390	normalized	GPL10558
+GSE32390b	IL1	skin	BTO:0001255	treated with 20 ng/ml IL-1b	activating	4 h	1 replicate each, 3 donors	GSE32390	normalized	GPL10558
+GSE32390c	IL1	skin	BTO:0001255	treated with 20 ng/ml IL-1b	activating	4 h	1 replicate each, 3 donors	GSE32390	normalized	GPL10558
+GSE8515IL1	IL1	leukocyte	BTO:0000801	with IL-1 (15 ng/ml)	activating	4 h	5 replicates each	GSE8515	log	GPL96
+GSE9120a	IL1	skin	BTO:0000667	treated with 25 ng/ml human recombinant IL-1	activating	1 h		GSE9120	log	GPL571
+GSE9120b	IL1	skin	BTO:0000667	treated with 25 ng/ml human recombinant IL-1	activating	4 h		GSE9120	log	GPL571
+GSE973a	IL1	cardiovascular system	BTO:0001949	treated with 100 U/ml human IL-1	activating	0.5 h	timeseries 3 timepoints	GSE973	log	GPL96
+GSE973b	IL1	cardiovascular system	BTO:0001949	treated with 100 U/ml human IL-1	activating	1 h	timeseries 3 timepoints	GSE973	log	GPL96
+GSE973c	IL1	cardiovascular system	BTO:0001949	treated with 100 U/ml human IL-1	activating	2.5 h	timeseries 3 timepoints	GSE973	log	GPL96
+GSE21727	Insulin	bone	BTO:0001700	treated with IGF-1	activating	2 h	3 replicates each	GSE21727	normalized	GPL6104
+GSE21989a	Insulin	cardiovascular system	BTO:0001949	treated with Insulin	activating	0.66 h	1 replicate each, part of timeseries	GSE21989	normalized	GPL570
+GSE21989b	Insulin	cardiovascular system	BTO:0001949	treated with Insulin	activating	1.66 h	1 replicate each, part of timeseries	GSE21989	normalized	GPL570
+GSE21989c	Insulin	cardiovascular system	BTO:0001949	treated with Insulin	activating	3.33 h	1 replicate each, part of timeseries	GSE21989	normalized	GPL570
+GSE21989d	Insulin	cardiovascular system	BTO:0001949	treated with Insulin	activating	5.66 h	1 replicate each, part of timeseries	GSE21989	normalized	GPL570
+GSE24422a	Insulin	whole body	BTO:0003298	treated with 20 nM Insulin	activating	5 h	2 replicates each, different fractions of cells	GSE24422	log	GPL570
+GSE24422b	Insulin	whole body	BTO:0003298	treated with 20 nM Insulin	activating	5 h	2 replicates each, different fractions of cells	GSE24422	log	GPL570
+GSE24422c	Insulin	whole body	BTO:0003298	treated with 20 nM Insulin	activating	5 h	2 replicates each, different fractions of cells	GSE24422	log	GPL570
+GSE26834	Insulin	breast	BTO:0000093	treated with IGF-1	activating	3 h	2 replicates for control, 3 replicates for treatment	GSE26834	log	GPL571
+GSE30524	Insulin	skin	BTO:0000726	treated with 0.375µM picropodophyllin, IGF1R inhibitor	inhibiting	6 h	1 replicate each	GSE30524	log	GPL570
+GSE9105a	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	0.5 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105b	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	4 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105c	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	0.5 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105d	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	4 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105e	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	0.5 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105f	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	4 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105g	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	4 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105h	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	0.5 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105i	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	0.5 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105j	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	4 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105k	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	0.5 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105l	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	4 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105m	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	4 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105n	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	0.5 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105o	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	0.5 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105p	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	4 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105q	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	4 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105r	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	0.5 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105s	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	0.5 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105t	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	4 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105u	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	4 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105v	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	0.5 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105w	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	0.5 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE9105x	Insulin	muscle	BTO:0001563	treated with euglycemic hyperinsulinemic clamp	activating	4 h	1 replicate each, part of timeseries, 12 donors	GSE9105	normalized	GPL96
+GSE10685	JAK-STAT	muscle	BTO:0001103	patients treated with IL-6 infusion	activating	3 h	3 donors	GSE10685	nolog	GPL570
+GSE12664	JAK-STAT	lung	BTO:0000018	treated with IFNb	activating	6 h	3 replicates	GSE12664	log	GPL6480
+GSE1432a	JAK-STAT	brain	BTO:0000078	treated with IFN-gamma (respective timecontrol)	activating	1 h		GSE1432	log	GPL96
+GSE1432b	JAK-STAT	brain	BTO:0000078	treated with IFN-gamma (respective timecontrol)	activating	1 h		GSE1432	log	GPL96
+GSE1432c	JAK-STAT	brain	BTO:0000078	treated with IFN-gamma (respective timecontrol)	activating	1 h		GSE1432	log	GPL96
+GSE1432d	JAK-STAT	brain	BTO:0000078	treated with IFN-gamma (respective timecontrol)	activating	1 h		GSE1432	log	GPL96
+GSE14632a	JAK-STAT	liver	BTO:0000599	treated with 20ng/ml IL-6	activating	1 h	2 replicates, part of timeseries, 4h serum starvation before treatment	GSE14632	log	GPL6104
+GSE14632b	JAK-STAT	liver	BTO:0000599	treated with 20ng/ml IL-6	activating	2 h	2 replicates, part of timeseries, 4h serum starvation before treatment	GSE14632	log	GPL6104
+GSE14632c	JAK-STAT	liver	BTO:0000599	treated with 20ng/ml IL-6	activating	4 h	2 replicates, part of timeseries, 4h serum starvation before treatment	GSE14632	log	GPL6104
+GSE15743a	JAK-STAT	leukocyte	BTO:0000914	treated with 1 ng/ml IFNa-2b	activating	6 h	1 replicate, 2 concentrations	GSE15743	none	GPL570
+GSE15743b	JAK-STAT	leukocyte	BTO:0000914	treated with 100 ng/ml IFNa-2b	activating	6 h	1 replicate, 2 concentrations	GSE15743	none	GPL570
+GSE16251a	JAK-STAT	blood	BTO:0001025	treated with IFNa	activating	4 h	1 replicate, timerespective control, part of time	GSE16251	log	GPL8601
+GSE16251b	JAK-STAT	blood	BTO:0001025	treated with IFNa	activating	0.5 h	1 replicate, timerespective control, part of time	GSE16251	log	GPL8601
+GSE16251c	JAK-STAT	blood	BTO:0001025	treated with IIL12	activating	0.5 h	1 replicate, timerespective control, part of time	GSE16251	log	GPL8601
+GSE16251d	JAK-STAT	blood	BTO:0001025	treated with IIL12	activating	1 h	1 replicate, timerespective control, part of time	GSE16251	log	GPL8601
+GSE16251e	JAK-STAT	blood	BTO:0001025	treated with IIL12	activating	4 h	1 replicate, timerespective control, part of time	GSE16251	log	GPL8601
+GSE16252a	JAK-STAT	blood	BTO:0001025	treated with 0.6 pM IFNg	activating	0.5 h	1 replicate, timerespective control, part of timeand concentration series	GSE16252	log	GPL8601
+GSE16252b	JAK-STAT	blood	BTO:0001025	treated with 0.6 pM IFNg	activating	1 h	1 replicate, timerespective control, part of timeand concentration series	GSE16252	log	GPL8601
+GSE16252c	JAK-STAT	blood	BTO:0001025	treated with 0.6 pM IFNg	activating	2 h	1 replicate, timerespective control, part of timeand concentration series	GSE16252	log	GPL8601
+GSE16252d	JAK-STAT	blood	BTO:0001025	treated with 0.6 pM IFNg	activating	4 h	1 replicate, timerespective control, part of timeand concentration series	GSE16252	log	GPL8601
+GSE16252e	JAK-STAT	blood	BTO:0001025	treated with 60 pM IFNg	activating	0.5 h	1 replicate, timerespective control, part of timeand concentration series	GSE16252	log	GPL8601
+GSE16252f	JAK-STAT	blood	BTO:0001025	treated with 60 pM IFNg	activating	1 h	1 replicate, timerespective control, part of timeand concentration series	GSE16252	log	GPL8601
+GSE16252g	JAK-STAT	blood	BTO:0001025	treated with 60 pM IFNg	activating	2 h	1 replicate, timerespective control, part of timeand concentration series	GSE16252	log	GPL8601
+GSE16252h	JAK-STAT	blood	BTO:0001025	treated with 60 pM IFNg	activating	4 h	1 replicate, timerespective control, part of timeand concentration series	GSE16252	log	GPL8601
+GSE16252i	JAK-STAT	blood	BTO:0001025	treated with 0.006 pM IFNg	activating	0.5 h	1 replicate, timerespective control, part of timeand concentration series	GSE16252	log	GPL8601
+GSE16252j	JAK-STAT	blood	BTO:0001025	treated with 0.006 pM IFNg	activating	1 h	1 replicate, timerespective control, part of timeand concentration series	GSE16252	log	GPL8601
+GSE16252k	JAK-STAT	blood	BTO:0001025	treated with 0.006 pM IFNg	activating	2 h	1 replicate, timerespective control, part of timeand concentration series	GSE16252	log	GPL8601
+GSE16252l	JAK-STAT	blood	BTO:0001025	treated with 0.006 pM IFNg	activating	4 h	1 replicate, timerespective control, part of timeand concentration series	GSE16252	log	GPL8601
+GSE16253a	JAK-STAT	leukocyte	BTO:0000876	treated with 0.6 pM IFNg	activating	0.5 h	1 replicate, timerespective control, part of timeseries, different cell lines	GSE16253	log	GPL8601
+GSE16253b	JAK-STAT	leukocyte	BTO:0000876	treated with 0.6 pM IFNg	activating	4 h	1 replicate, timerespective control, part of timeseries, different cell lines	GSE16253	log	GPL8601
+GSE16253c	JAK-STAT	leukocyte	BTO:0000876	treated with 0.6 pM IFNg	activating	1 h	1 replicate, timerespective control, part of timeseries, different cell lines	GSE16253	log	GPL8601
+GSE16253d	JAK-STAT	leukocyte	BTO:0000776	treated with 0.6 pM IFNg	activating	0.5 h	1 replicate, timerespective control, part of timeseries, different cell lines	GSE16253	log	GPL8601
+GSE16253e	JAK-STAT	leukocyte	BTO:0000776	treated with 0.6 pM IFNg	activating	1 h	1 replicate, timerespective control, part of timeseries, different cell lines	GSE16253	log	GPL8601
+GSE16253f	JAK-STAT	leukocyte	BTO:0000776	treated with 0.6 pM IFNg	activating	4 h	1 replicate, timerespective control, part of timeseries, different cell lines	GSE16253	log	GPL8601
+GSE16253g	JAK-STAT	leukocyte	BTO:0002417	treated with 0.6 pM IFNg	activating	0.5 h	1 replicate, timerespective control, part of timeseries, different cell lines	GSE16253	log	GPL8601
+GSE16253h	JAK-STAT	leukocyte	BTO:0002417	treated with 0.6 pM IFNg	activating	1 h	1 replicate, timerespective control, part of timeseries, different cell lines	GSE16253	log	GPL8601
+GSE16253j	JAK-STAT	leukocyte	BTO:0000914	treated with 0.6 pM IFNg	activating	4 h	1 replicate, timerespective control, part of timeseries, different cell lines	GSE16253	log	GPL8601
+GSE16253k	JAK-STAT	leukocyte	BTO:0000914	treated with 0.6 pM IFNg	activating	1 h	1 replicate, timerespective control, part of timeseries, different cell lines	GSE16253	log	GPL8601
+GSE16253l	JAK-STAT	leukocyte	BTO:0000914	treated with 0.6 pM IFNg	activating	0.5 h	1 replicate, timerespective control, part of timeseries, different cell lines	GSE16253	log	GPL8601
+GSE16253m	JAK-STAT	leukocyte	BTO:0000782	treated with 0.6 pM IFNg	activating	0.5 h	1 replicate, timerespective control, part of timeseries, different cell lines	GSE16253	log	GPL8601
+GSE16253n	JAK-STAT	leukocyte	BTO:0000782	treated with 0.6 pM IFNg	activating	1 h	1 replicate, timerespective control, part of timeseries, different cell lines	GSE16253	log	GPL8601
+GSE16253o	JAK-STAT	leukocyte	BTO:0000782	treated with 0.6 pM IFNg	activating	4 h	1 replicate, timerespective control, part of timeseries, different cell lines	GSE16253	log	GPL8601
+GSE16385	JAK-STAT	leukocyte	BTO:0000801	treated with IL-4	activating	4 h	1 replicate, respective timecontrol	GSE16385	normalized	GPL570
+GSE16450a	JAK-STAT	nervous system	BTO:0000932	treated with IFNa-A/D	activating	6 h	3 replicates	GSE16450	none	GPL570
+GSE16450b	JAK-STAT	nervous system	BTO:0000932	treated with IFNa-A/D	activating	6 h	3 replicates	GSE16450	none	GPL570
+GSE16755	JAK-STAT	leukocyte	BTO:0000801	treated with IFNa	activating	unknown	3 replicates	GSE16755	none	GPL570
+GSE19082a	JAK-STAT	breast	BTO:0002178	treated with IFN-gamma 1 ng/ml (respective timecontrol)	activating	3 h	4 replicates each two different treatments	GSE19082	nolog	GPL6104
+GSE19082b	JAK-STAT	breast	BTO:0002178	treated with IL-6 50 U/ml  (respective timecontrol)	activating	1 h	4 replicates each, two different treatments	GSE19082	nolog	GPL6104
+GSE1925a	JAK-STAT	leukocyte	BTO:0000801	treated with IFN-gamma	activating	3 h		GSE1925	log	GPL8300
+GSE1925b	JAK-STAT	leukocyte	BTO:0000801	treated with IFN-gamma	activating	3 h		GSE1925	log	GPL8300
+GSE1925c	JAK-STAT	leukocyte	BTO:0000801	treated with IFN-gamma	activating	3 h		GSE1925	log	GPL8300
+GSE20198a	JAK-STAT	blood	BTO:0004053	treated with IFNa	activating	2 h	1 replicate, part of timeseries	GSE20198	none	GPL96
+GSE20198b	JAK-STAT	blood	BTO:0004053	treated with IFNa	activating	6 h	1 replicate, part of timeseries	GSE20198	none	GPL96
+GSE20272a	JAK-STAT	skin	BTO:0000948	treated with IL-6	activating	1 h	1 replicate, 2 different cell lines	GSE20272	none	GPL570
+GSE20272b	JAK-STAT	skin	BTO:0000814	treated with IL-6	activating	1 h	1 replicate, 2 different cell lines	GSE20272	none	GPL570
+GSE21760a	JAK-STAT	skin	BTO:0000567	treated with IFNg	activating	2 h	1 replicate, part of timeseries	GSE21760	normalized	GPL570
+GSE21760b	JAK-STAT	skin	BTO:0000567	treated with IFNg	activating	4 h	1 replicate, part of timeseries	GSE21760	normalized	GPL570
+GSE21760c	JAK-STAT	skin	BTO:0000567	treated with IFNg	activating	6 h	1 replicate, part of timeseries	GSE21760	normalized	GPL570
+GSE22325a	JAK-STAT	cardiovascular system	BTO:0001949	treated with 100 U/ml IL-3	activating	4 h	1 replicate each, timeresolved control	GSE22325	log	GPL570
+GSE22325b	JAK-STAT	cardiovascular system	BTO:0001949	treated with 100 U/ml IL-6	activating	4 h	1 replicate each, timeresolved control	GSE22325	log	GPL570
+GSE23307a	JAK-STAT	leukocyte	BTO:0000776	treated with IFN-b	activating	3 h	1 replicate each, respective timecontrol, 2 individuals	GSE23307	normalized	GPL6104
+GSE23307b	JAK-STAT	leukocyte	BTO:0000776	treated with IFN-b	activating	3 h	1 replicate each, respective timecontrol, 2 individuals	GSE23307	normalized	GPL6104
+GSE23307c	JAK-STAT	leukocyte	BTO:0000876	treated with IFN-b	activating	3 h	1 replicate each, respective timecontrol, 2 individuals	GSE23307	normalized	GPL6104
+GSE23591a	JAK-STAT	lymphoid	BTO:0000104	treated with 40 ng/ml IL-13	activating	0.5 h	1 replicate, timeresolved controls, part of timeseries	GSE23591	log	GPL6244
+GSE23591b	JAK-STAT	lymphoid	BTO:0000104	treated with 40 ng/ml IL-13	activating	1 h	1 replicate, timeresolved controls, part of timeseries	GSE23591	log	GPL6244
+GSE23591c	JAK-STAT	lymphoid	BTO:0000104	treated with 40 ng/ml IL-13	activating	1.5 h	1 replicate, timeresolved controls, part of timeseries	GSE23591	log	GPL6244
+GSE23591d	JAK-STAT	lymphoid	BTO:0000104	treated with 40 ng/ml IL-13	activating	2 h	1 replicate, timeresolved controls, part of timeseries	GSE23591	log	GPL6244
+GSE23591e	JAK-STAT	lymphoid	BTO:0000104	treated with 40 ng/ml IL-13	activating	3 h	1 replicate, timeresolved controls, part of timeseries	GSE23591	log	GPL6244
+GSE23591f	JAK-STAT	lymphoid	BTO:0000104	treated with 40 ng/ml IL-13	activating	4 h	1 replicate, timeresolved controls, part of timeseries	GSE23591	log	GPL6244
+GSE23591g	JAK-STAT	lymphoid	BTO:0000104	treated with 40 ng/ml IL-13	activating	6 h	1 replicate, timeresolved controls, part of timeseries	GSE23591	log	GPL6244
+GSE23591h	JAK-STAT	lymphoid	BTO:0000104	treated with 20 ng/ml IL-13	activating	0.5 h	1 replicate, timeresolved controls, part of timeseries	GSE23591	log	GPL6244
+GSE23591i	JAK-STAT	lymphoid	BTO:0000104	treated with 20 ng/ml IL-13	activating	1 h	1 replicate, timeresolved controls, part of timeseries	GSE23591	log	GPL6244
+GSE23591j	JAK-STAT	lymphoid	BTO:0000104	treated with 20 ng/ml IL-13	activating	1.5 h	1 replicate, timeresolved controls, part of timeseries	GSE23591	log	GPL6244
+GSE23591k	JAK-STAT	lymphoid	BTO:0000104	treated with 20 ng/ml IL-13	activating	2 h	1 replicate, timeresolved controls, part of timeseries	GSE23591	log	GPL6244
+GSE23591l	JAK-STAT	lymphoid	BTO:0000104	treated with 20 ng/ml IL-13	activating	3 h	1 replicate, timeresolved controls, part of timeseries	GSE23591	log	GPL6244
+GSE23591m	JAK-STAT	lymphoid	BTO:0000104	treated with 20 ng/ml IL-13	activating	4 h	1 replicate, timeresolved controls, part of timeseries	GSE23591	log	GPL6244
+GSE23591n	JAK-STAT	lymphoid	BTO:0000104	treated with 20 ng/ml IL-13	activating	6 h	1 replicate, timeresolved controls, part of timeseries	GSE23591	log	GPL6244
+GSE24403a	JAK-STAT	skin	BTO:0001255	treated with 50 nM IL-13	activating	2 h	3 replicates control, 1 replicate treatment, part of timeseries	GSE24403	log	GPL6480
+GSE24403b	JAK-STAT	skin	BTO:0001255	treated with 50 nM IL-13	activating	4 h	3 replicates control, 1 replicate treatment, part of timeseries	GSE24403	log	GPL6480
+GSE24409a	JAK-STAT	skin	BTO:0001255	treated with 50 nM IL-4	activating	2 h	3 replicates control, 1 replicate treatment, part of timeseries	GSE24409	log	GPL6480
+GSE24409b	JAK-STAT	skin	BTO:0001255	treated with 50 nM IL-4	activating	4 h	3 replicates control, 1 replicate treatment, part of timeseries	GSE24409	log	GPL6480
+GSE26949	JAK-STAT	blood	BTO:0003494	treated with IFNa	activating	6 h	6 replicates each	GSE26949	log	GPL11670
+GSE26951	JAK-STAT	bone	BTO:0004850	treated with IFNa	activating	6 h	5 replicates each	GSE26951	log	GPL11670
+GSE31193	JAK-STAT	liver	BTO:0000575	treated with 10 U/ml IFN-a	activating	6 h	3 replicates	GSE31193	none	GPL570
+GSE31264	JAK-STAT	liver	BTO:0000575	treated with 10 U/ml IFN-a	activating	6 h	1 replicate	GSE31264	none	GPL570
+GSE3183	JAK-STAT	lung	BTO:0000018	treated with IL-13	activating	4 h	3 replicates each	GSE3183	log	GPL96
+GSE33264a	JAK-STAT	lung	BTO:0002750	treated with 1000 U/ml IFNa	activating	3 h	3 replicates each, part of timeseries with 2 treatment conditions	GSE33264	normalized	GPL4133
+GSE33264b	JAK-STAT	lung	BTO:0002750	treated with 1000 U/ml IFNa	activating	6 h	3 replicates each, part of timeseries with 2 treatment conditions	GSE33264	normalized	GPL4133
+GSE33264c	JAK-STAT	lung	BTO:0002750	treated with 500 U/ml IFNg	activating	3 h	3 replicates each, part of timeseries with 2 treatment conditions	GSE33264	normalized	GPL4133
+GSE33264d	JAK-STAT	lung	BTO:0002750	treated with 500 U/ml IFNg	activating	6 h	3 replicates each, part of timeseries with 2 treatment conditions	GSE33264	normalized	GPL4133
+GSE3920a	JAK-STAT	cardiovascular system	BTO:0001949	treated with IFNa	activating	5 h	5 replicates	GSE3920	none	GPL96
+GSE3920b	JAK-STAT	cardiovascular system	BTO:0001949	treated with IFNb	activating	5 h	2 replicates	GSE3920	none	GPL96
+GSE3920c	JAK-STAT	cardiovascular system	BTO:0001949	treated with IFNg	activating	5 h	3 replicates	GSE3920	none	GPL96
+GSE3920d	JAK-STAT	connective tissue	BTO:0000452	treated with IFNa	activating	5 h	3 replicates	GSE3920	none	GPL96
+GSE3920e	JAK-STAT	connective tissue	BTO:0000452	treated with IFNg	activating	5 h	2 replicates	GSE3920	none	GPL96
+GSE440	JAK-STAT	whole body	BTO:0001113	treated with IFN-gamma (respective timecontrol)	activating	1 h	2 Controls existent on the web page only 1 in the whole  download script just taken that one	GSE440	log	GPL8300
+GSE4885a	JAK-STAT	liver	BTO:0000599	treated with IL-6	activating	1 h	2 replicates, part of timeseries	GSE4885	none	GPL96
+GSE4885b	JAK-STAT	liver	BTO:0000599	treated with IL-6	activating	4 h	2 replicates, part of timeseries	GSE4885	none	GPL96
+GSE5542a	JAK-STAT	lung	BTO:0000018	treated with 500U Infergen (Interferon type 1)	activating	6 h	4 replicates	GSE5542	none	GPL96
+GSE5542b	JAK-STAT	lung	BTO:0000018	treated with 500U IFN-g1b	activating	6 h	4 replicates	GSE5542	none	GPL96
+GSE8059	JAK-STAT	leukocyte	BTO:0000914	treated with IL-2	activating	2 h		GSE8059	log	GPL570
+GSE8515	JAK-STAT	leukocyte	BTO:0000801	treated with IL-6	activating	4 h	5 replicates each	GSE8515	log	GPL96
+GSE8685a	JAK-STAT	lymphoid	BTO:0001586	treated with 200U IL-2	activating	4 h	3 replicates, different IL treatments, after 16h IL2 starvation	GSE8685	none	GPL570
+GSE8685b	JAK-STAT	lymphoid	BTO:0001586	treated with 20ng/ml IL-15	activating	4 h	3 replicates, different IL treatments, after 16h IL2 starvation	GSE8685	none	GPL570
+GSE8685c	JAK-STAT	lymphoid	BTO:0001586	treated with 100ng/ml IL-21	activating	4 h	3 replicates, different IL treatments, after 16h IL2 starvation	GSE8685	none	GPL570
+GSE8687	JAK-STAT	lymphoid	BTO:0001586	starved of IL-2 and activated with IL-2	activating	4 h after stimulation (16 h IL-2 pre-starvation)		GSE8687	log	GPL570
+GSE9481	JAK-STAT	whole body	BTO:0001023	treated with 1000 U/ml IFNa	activating	5 h	2 replicates	GSE9481	none	GPL570
+GSE10088a	MAPK	skin	BTO:0002130	treated with PD0325901, MEK inhibitor	inhibiting	2 h	1 replicate each, mainly influencing MAPKs	GSE10088	none	GPL571
+GSE10088b	MAPK	skin	BTO:0002130	treated with PD0325901, MEK inhibitor	inhibiting	8 h	1 replicate each, mainly influencing MAPKs	GSE10088	none	GPL571
+GSE12764	MAPK	breast	BTO:0001939	transfected with MEK1	activating	24 h	6 replicates each, mostly activates MAPKs	GSE12764	none	GPL570
+GSE14934b	MAPK	kidney	BTO:0000007	Ras (G12V,T35S) activation mutants	activating	not specified	mutants said to be mostly activating Raf	GSE14934	log	GPL571
+GSE17939	MAPK	cardiovascular system	BTO:0001949	transfected with constitutive active MEK5D	activating	40 h	3 replicates each, mainly activating MAPKs	GSE17939	none	GPL570
+GSE3542b	MAPK	breast	BTO:0000093	co-transfected with constituitively active MEK	activating	not specified	two controls empty vector control taken	GSE3542	nolog	GPL96
+GSE3542c	MAPK	breast	BTO:0000093	co-transfected with constituitively active Raf	activating	not specified	two controls empty vector control taken	GSE3542	nolog	GPL96
+GSE6521a	MAPK	breast	BTO:0000093	Treatment with U0126 (MEK inhibitor)	inhibiting	1.5 h	no stimulation	GSE6521	log	GPL570
+GSE10316	NFkB	blood	BTO:0002900	treated with LPS 1 �g/ml	activating	4 h	immature cells	GSE10316	log	GPL570
+GSE10316a	NFkB	blood	BTO:0002900	treated with 1 µg/ml LPS	activating	4 h	1 replicate each	GSE10316	none	GPL570
+GSE10316b	NFkB	blood	BTO:0002900	treated with 50 µg/ml polyI:C	activating	4 h	1 replicate each	GSE10316	none	GPL570
+GSE14000a	NFkB	blood	BTO:0000089	treated with LPS	activating	4 h	1 replicate each, 4 donors	GSE14000	none	GPL570
+GSE14000b	NFkB	blood	BTO:0000089	treated with LPS	activating	4 h	1 replicate each, 4 donors	GSE14000	none	GPL570
+GSE14000c	NFkB	blood	BTO:0000089	treated with LPS	activating	4 h	1 replicate each, 4 donors	GSE14000	none	GPL570
+GSE14000d	NFkB	blood	BTO:0000089	treated with LPS	activating	4 h	1 replicate each, 4 donors	GSE14000	none	GPL570
+GSE14419a	NFkB	leukocyte	BTO:0000801	treated with zymosan A	activating	3 h	1 replicate each, 4 donors	GSE14419	none	GPL571
+GSE14419b	NFkB	leukocyte	BTO:0000801	treated with zymosan A	activating	3 h	1 replicate each, 4 donors	GSE14419	none	GPL571
+GSE14419c	NFkB	leukocyte	BTO:0000801	treated with zymosan A	activating	3 h	1 replicate each, 4 donors	GSE14419	none	GPL571
+GSE14419d	NFkB	leukocyte	BTO:0000801	treated with zymosan A	activating	3 h	1 replicate each, 4 donors	GSE14419	none	GPL571
+GSE1541aNFkB	NFkB	lung	BTO:0000018	treated with LPS	activating	1 h		GSE1541	log	GPL201
+GSE1541bNFkB	NFkB	lung	BTO:0000018	treated with LPS	activating	4 h		GSE1541	log	GPL201
+GSE16193	NFkB	leukocyte	BTO:0001370	treated with  1 µg/ml LPS	activating	1 h	5 replicates each	GSE16193	non	GPL570
+GSE18047a	NFkB	bone	BTO:0002416	transfected with NIK	activating	undefined	overexpression directly above NFkB	GSE18047	nolog	GPL570
+GSE18047b	NFkB	bone	BTO:0002416	transfected with IKKB	activating	undefined	overexpression directly above NFkB	GSE18047	nolog	GPL570
+GSE18047c	NFkB	leukocyte	BTO:0002062	transfected with NIK	activating	undefined	overexpression directly above NFkB	GSE18047	nolog	GPL570
+GSE18047d	NFkB	leukocyte	BTO:0002062	transfected with IKKB	activating	undefined	overexpression directly above NFkB	GSE18047	nolog	GPL570
+GSE19315	NFkB	leukocyte	BTO:0001370	treated with LPS	activating	6 h	3 replicates each	GSE19315	non	GPL570
+GSE19627	NFkB	leukocyte	BTO:0001370	treated with  LPS	activating	4 h	3 replicates each	GSE19627	log	GPL570
+GSE19738a	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738a2	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738a3	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738a4	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738a6	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738a7	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738a8	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738a9	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738b	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738c	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738d	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738e	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738f	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738g	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738h	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738i	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738j	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738k	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738l	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738m	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738n	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738o	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738p	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738q	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738r	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738s	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738t	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738v	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738w	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738x	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738y	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE19738z	NFkB	blood	BTO:0000089	treated with LPS	activating	5-6 h	1 replicate each, 34 individuals	GSE19738	log	GPL6848
+GSE20114a	NFkB	blood	BTO:0000089	treated with LPS	activating	4 h	1 replicate each, 4 donors	GSE20114	log	GPL570
+GSE20114b	NFkB	blood	BTO:0000089	treated with LPS	activating	4 h	1 replicate each, 4 donors	GSE20114	log	GPL570
+GSE20114c	NFkB	blood	BTO:0000089	treated with LPS	activating	4 h	1 replicate each, 4 donors	GSE20114	log	GPL570
+GSE20114d	NFkB	blood	BTO:0000089	treated with LPS	activating	4 h	1 replicate each, 4 donors	GSE20114	log	GPL570
+GSE22248a	NFkB	blood	BTO:0001025	treated with LPS	activating	4 h	1 replicates each, 4 individuals	GSE22248	normalized	GPL6883
+GSE22248b	NFkB	blood	BTO:0001025	treated with LPS	activating	4 h	1 replicates each, 4 individuals	GSE22248	normalized	GPL6883
+GSE22248c	NFkB	blood	BTO:0001025	treated with LPS	activating	4 h	1 replicates each, 4 individuals	GSE22248	normalized	GPL6883
+GSE22248d	NFkB	blood	BTO:0001025	treated with LPS	activating	4 h	1 replicates each, 4 individuals	GSE22248	normalized	GPL6883
+GSE23371	NFkB	blood	BTO:0002042	treated with LPS	activating	6 h	3 technical replicates each	GSE23371	log	GPL570
+GSE2396	NFkB	leukocyte	BTO:0000782	treated with LPS	activating	4 h	4 cell cultures pooled	GSE2396	none	GPL571
+GSE24897	NFkB	leukocyte	BTO:0000801	treated with  PG-LPS	activating	2 h	3 replicates each	GSE24897	normalized	GPL570
+GSE25155a	NFkB	kidney	BTO:0000007	treated with 10µg/ml H. pylori LPS	activating	2 h	2 replicates each, part of timeseries	GSE25155	log	GPL570
+GSE2706	NFkB	blood	BTO:0002900	treated with LPS	activating	2 h	3 replicates	GSE2706	log	GPL570
+GSE29700	NFkB	lymphoid	BTO:0002748	treated with LPS	activating	6 h	3 replicates each	GSE29700	normalized	GPL570
+GSE3037a	NFkB	leukocyte	BTO:0000130	treated with LPS	activating	1 h	1 replicate each, 8 individuals	GSE3037	none	GPL96
+GSE3037b	NFkB	leukocyte	BTO:0000130	treated with LPS	activating	1 h	1 replicate each, 8 individuals	GSE3037	none	GPL96
+GSE3037c	NFkB	leukocyte	BTO:0000130	treated with LPS	activating	1 h	1 replicate each, 8 individuals	GSE3037	none	GPL96
+GSE3037d	NFkB	leukocyte	BTO:0000130	treated with LPS	activating	1 h	1 replicate each, 8 individuals	GSE3037	none	GPL96
+GSE3037e	NFkB	leukocyte	BTO:0000130	treated with LPS	activating	1 h	1 replicate each, 8 individuals	GSE3037	none	GPL96
+GSE3037f	NFkB	leukocyte	BTO:0000130	treated with LPS	activating	1 h	1 replicate each, 8 individuals	GSE3037	none	GPL96
+GSE3037g	NFkB	leukocyte	BTO:0000130	treated with LPS	activating	1 h	1 replicate each, 8 individuals	GSE3037	none	GPL96
+GSE3037h	NFkB	leukocyte	BTO:0000130	treated with LPS	activating	1 h	1 replicate each, 8 individuals	GSE3037	none	GPL96
+GSE3140a	NFkB	blood	BTO:0001025	treated with 5 µg/ml LPS	activating	4 h	3 replicates each, timemight not be exact but probably 4h or 2h	GSE3140	none	GPL201
+GSE3140b	NFkB	blood	BTO:0004053	treated with 5 µg/ml LPS	activating	4 h	3 replicates each, timemight not be exact but probably 4h or 2h	GSE3140	none	GPL201
+GSE32390aNFkB	NFkB	connective tissue	BTO:0000452	treated with poly I:C	activating	4 h	1 replicate each, 3 individuals	GSE32390	normalized	GPL10558
+GSE32390bNFkB	NFkB	connective tissue	BTO:0000452	treated with poly I:C	activating	4 h	1 replicate each, 3 individuals	GSE32390	normalized	GPL10558
+GSE32390cNFkB	NFkB	connective tissue	BTO:0000452	treated with poly I:C	activating	4 h	1 replicate each, 3 individuals	GSE32390	normalized	GPL10558
+GSE32390dNFkB	NFkB	blood	BTO:0001025	treated with 10 ng/ml LPS	activating	2 h	1 replicate each	GSE32390	normalized	GPL10558
+GSE32390e	NFkB	blood	BTO:0001025	treated with 3 µg/ml R848	activating	2 h	1 replicate each, R848 is a relative specific TLR7/8 agonist	GSE32390	normalized	GPL10558
+GSE3491a	NFkB	blood	BTO:0000089	treated with LPS 10 NG/ML	activating	4 h	three patients with high LPS response rate	GSE3491	nolog	GPL8300
+GSE3491b	NFkB	blood	BTO:0000089	treated with LPS 10 NG/ML	activating	4 h	three patients with high LPS response rate	GSE3491	nolog	GPL8300
+GSE3491c	NFkB	blood	BTO:0000089	treated with LPS 10 NG/ML	activating	4 h	three patients with high LPS response rate	GSE3491	nolog	GPL8300
+GSE3720a	NFkB	leukocyte	BTO:0004729	treated with LPS 10 mg/mL	activating	4 h	3 week culture with Vd1 mab 0.1mg/mL, pan gd mAb 0.1 mg/mL, and IL-15 10ng/mL	GSE3720	log	GPL571
+GSE3720b	NFkB	leukocyte	BTO:0004729	treated with LPS 10 mg/mL	activating	4 h	3 week culture with Vd1 mab 0.1mg/mL, pan gd mAb 0.1 mg/mL, and IL-15 10ng/mL	GSE3720	log	GPL571
+GSE3982	NFkB	leukocyte	BTO:0000801	treated with LPS	activating	4 h	2 replicates each	GSE3982	none	GPL96
+GSE3982a	NFkB	leukocyte	BTO:0000130	treated with LPS 100 ng/ml	activating	1 h		GSE3982	log	GPL96
+GSE3982b	NFkB	leukocyte	BTO:0000801	treated with LPS 100 ng/ml	activating	4 h		GSE3982	log	GPL96
+GSE4748	NFkB	blood	BTO:0002900	treated with LPS 0.5 �g/ml	activating	3 h		GSE4748	nolog	GPL570
+GSE5504a	NFkB	leukocyte	BTO:0000876	treated with LPS	activating	2 h		GSE5504	nolog	GPL570
+GSE5504b	NFkB	leukocyte	BTO:0000876	treated with LPS	activating	4 h		GSE5504	nolog	GPL570
+GSE5883	NFkB	cardiovascular system	BTO:0002828	treated with LPS 10 ng	activating	4 h	4 replicates each	GSE5883	log	GPL570
+GSE7850a	NFkB	whole body	BTO:0001175	treated with LPS 10 100 ng/mL	activating	4 h	three different patients 2 different tissues	GSE7850	nolog	GPL201
+GSE7850b	NFkB	whole body	BTO:0000439	treated with LPS 10 100 ng/mL	activating	4 h	three different patients 2 different tissues	GSE7850	nolog	GPL201
+GSE7850c	NFkB	whole body	BTO:0001175	treated with LPS 10 100 ng/mL	activating	4 h	three different patients 2 different tissues	GSE7850	nolog	GPL201
+GSE7850d	NFkB	whole body	BTO:0000439	treated with LPS 10 100 ng/mL	activating	4 h	three different patients 2 different tissues	GSE7850	nolog	GPL201
+GSE7850e	NFkB	whole body	BTO:0001175	treated with LPS 10 100 ng/mL	activating	4 h	three different patients 2 different tissues	GSE7850	nolog	GPL201
+GSE7850f	NFkB	whole body	BTO:0000439	treated with LPS 10 100 ng/mL	activating	4 h	three different patients 2 different tissues	GSE7850	nolog	GPL201
+GSE8190a	NFkB	lung	BTO:0000419	treated with LPS	activating	4 h	2 replicates each, 14 individuals	GSE8190	log	GPL1708
+GSE8190c	NFkB	lung	BTO:0000419	treated with LPS	activating	4 h	2 replicates each, 14 individuals	GSE8190	log	GPL1708
+GSE8190d	NFkB	lung	BTO:0000419	treated with LPS	activating	4 h	2 replicates each, 14 individuals	GSE8190	log	GPL1708
+GSE8190e	NFkB	lung	BTO:0000419	treated with LPS	activating	4 h	2 replicates each, 14 individuals	GSE8190	log	GPL1708
+GSE8190f	NFkB	lung	BTO:0000419	treated with LPS	activating	4 h	2 replicates each, 14 individuals	GSE8190	log	GPL1708
+GSE8190g	NFkB	lung	BTO:0000419	treated with LPS	activating	4 h	2 replicates each, 14 individuals	GSE8190	log	GPL1708
+GSE8190h	NFkB	lung	BTO:0000419	treated with LPS	activating	4 h	2 replicates each, 14 individuals	GSE8190	log	GPL1708
+GSE8190i	NFkB	lung	BTO:0000419	treated with LPS	activating	4 h	2 replicates each, 14 individuals	GSE8190	log	GPL1708
+GSE8190k	NFkB	lung	BTO:0000419	treated with LPS	activating	4 h	2 replicates each, 14 individuals	GSE8190	log	GPL1708
+GSE8190l	NFkB	lung	BTO:0000419	treated with LPS	activating	4 h	2 replicates each, 14 individuals	GSE8190	log	GPL1708
+GSE8608	NFkB	leukocyte	BTO:0000801	treated with LPS 10ng/ml	activating	4 h		GSE8608	nolog	GPL570
+GSE9916	NFkB	leukocyte	BTO:0001370	treated with 1 µg/ml LPS	activating	4 h	3 replicates each	GSE9916	normalized	GPL570
+GSE9988a	NFkB	leukocyte	BTO:0000876	treated with LPS	activating	2 h	10 anonymous donors in this set	GSE9988	log	GPL570
+GSE9988b	NFkB	leukocyte	BTO:0000876	treated with LPS	activating	2 h	10 anonymous donors in this set	GSE9988	log	GPL570
+GSE9988c	NFkB	leukocyte	BTO:0000876	treated with LPS	activating	2 h	10 anonymous donors in this set	GSE9988	log	GPL570
+GSE9988d	NFkB	leukocyte	BTO:0000876	treated with LPS	activating	2 h	10 anonymous donors in this set	GSE9988	log	GPL570
+GSE9988e	NFkB	leukocyte	BTO:0000876	treated with LPS	activating	2 h	10 anonymous donors in this set	GSE9988	log	GPL570
+GSE9988f	NFkB	leukocyte	BTO:0000876	treated with LPS	activating	2 h	10 anonymous donors in this set	GSE9988	log	GPL570
+GSE9988g	NFkB	leukocyte	BTO:0000876	treated with LPS	activating	2 h	10 anonymous donors in this set	GSE9988	log	GPL570
+GSE9988h	NFkB	leukocyte	BTO:0000876	treated with LPS	activating	2 h	10 anonymous donors in this set	GSE9988	log	GPL570
+GSE9988i	NFkB	leukocyte	BTO:0000876	treated with LPS	activating	2 h	10 anonymous donors in this set	GSE9988	log	GPL570
+GSE9988j	NFkB	leukocyte	BTO:0000876	treated with LPS	activating	2 h	10 anonymous donors in this set	GSE9988	log	GPL570
+GSE14934c	PI3K	kidney	BTO:0000007	Ras (G12V,Y40C) activation mutants	activating	not specified	mutants said to be mostly activating PI3K	GSE14934	log	GPL571
+GSE17785a	PI3K	breast	BTO:0001939	PI3K activated mutants	activating	not indicated	3 replicates each	GSE17785	normalized	GPL570
+GSE17785b	PI3K	breast	BTO:0001939	treated with GDC-0941. a PI3K inhibitor	inhibiting	4 h	3 replicates each	GSE17785	normalized	GPL570
+GSE26599	PI3K	breast	BTO:0003893	treated with rapamycin	inhibiting	not indicated	5 replicates each, rapamycin inhibits mTOR --> inhibition of PI3K pathway	GSE26599	none	GPL570
+GSE3737	PI3K	whole body	BTO:0001061	treatment with arachidonic acid (AA) should activate PI3K	activating	2 h	sveral microarrays! the ones taken from the same timeand microarray batch	GSE3737	log	GPL96
+GSE7403b	PI3K	nervous system	BTO:0000793	PDGF treatment with 60 min prior U0126 treatment	activating	0.5 h	timeseries with 30, 60, 120, 240 min	GSE7403	log	GPL96
+GSE7403d	PI3K	nervous system	BTO:0000793	PDGF treatment with 60 min prior U0126 treatment	activating	1 h	timeseries with 30, 60, 120, 240 min	GSE7403	log	GPL96
+GSE7403f	PI3K	nervous system	BTO:0000793	PDGF treatment with 60 min prior U0126 treatment	activating	2 h	timeseries with 30, 60, 120, 240 min	GSE7403	log	GPL96
+GSE7403h	PI3K	nervous system	BTO:0000793	PDGF treatment with 60 min prior U0126 treatment	activating	4 h	timeseries with 30, 60, 120, 240 min	GSE7403	log	GPL96
+GSE7562a	PI3K	skin	BTO:0000017	PTEN hcRNA knockdown	activating	not specified (until log Phase)		GSE7562	log	GPL570
+GSE7562b	PI3K	lung	BTO:0004082	PTEN hcRNA knockdown	activating	not specified (until log Phase)		GSE7562	log	GPL570
+GSE7562c	PI3K	breast	BTO:0002419	PTEN hcRNA knockdown	activating	not specified (until log Phase)		GSE7562	log	GPL570
+GSE15483a	PPAR	cardiovascular system	BTO:0001949	treated with 25 µmol fenofibrate, a PPARa ligand	activating	2 h	3 replicates each, timeseries	GSE15483	normalized	GPL4044
+GSE15483b	PPAR	cardiovascular system	BTO:0001949	treated with 25 µmol fenofibrate, a PPARa ligand	activating	4 h	3 replicates each, timeseries	GSE15483	normalized	GPL4044
+GSE15483c	PPAR	cardiovascular system	BTO:0001949	treated with 25 µmol fenofibrate, a PPARa ligand	activating	6 h	3 replicates each, timeseries	GSE15483	normalized	GPL4044
+GSE16385a	PPAR	leukocyte	BTO:0000876	treated with 1mM rosiglitazone, a PPARg agonist	activating	4 h	1 replicate each, differently activated macrophages	GSE16385	normalized	GPL570
+GSE16385b	PPAR	leukocyte	BTO:0000876	treated with 1mM rosiglitazone, a PPARg agonist	activating	4 h	1 replicate each, differently activated macrophages	GSE16385	normalized	GPL570
+GSE16385c	PPAR	leukocyte	BTO:0000876	treated with 1mM rosiglitazone, a PPARg agonist	activating	4 h	1 replicate each, differently activated macrophages	GSE16385	normalized	GPL570
+GSE16386a	PPAR	leukocyte	BTO:0000876	treated with 100 ng/ml rosiglitazone, a PPARg agonist	activating	6 h	2 replicates each, 2 donors	GSE16386	normalized	GPL570
+GSE16386b	PPAR	leukocyte	BTO:0000876	treated with 100 ng/ml rosiglitazone, a PPARg agonist	activating	6 h	2 replicates each, 2 donors	GSE16386	normalized	GPL570
+GSE17251a	PPAR	liver	BTO:0000575	treated with 50µM Wy14643, a PPARa agonist	activating	6 h	1 replicate each, 6 donors	GSE17251	log	GPL570
+GSE17251b	PPAR	liver	BTO:0000575	treated with 50µM Wy14643, a PPARa agonist	activating	6 h	1 replicate each, 6 donors	GSE17251	log	GPL570
+GSE17251c	PPAR	liver	BTO:0000575	treated with 50µM Wy14643, a PPARa agonist	activating	6 h	1 replicate each, 6 donors	GSE17251	log	GPL570
+GSE17251d	PPAR	liver	BTO:0000575	treated with 50µM Wy14643, a PPARa agonist	activating	6 h	1 replicate each, 6 donors	GSE17251	log	GPL570
+GSE17251e	PPAR	liver	BTO:0000575	treated with 50µM Wy14643, a PPARa agonist	activating	6 h	1 replicate each, 6 donors	GSE17251	log	GPL570
+GSE17251f	PPAR	liver	BTO:0000575	treated with 50µM Wy14643, a PPARa agonist	activating	6 h	1 replicate each, 6 donors	GSE17251	log	GPL570
+GSE25547	PPAR	liver	BTO:0000599	treated with 100nM GW7647, a PPARa agonist	activating	6 h	3 replicates each	GSE25547	log	GPL570
+GSE5258PPAR	PPAR	breast	BTO:0000093	treated with 10µM rosiglitazone, a PPARg agonist	activating	6 h	2 replicates each	GSE5258	none	GPL3921
+GSE8658a	PPAR	blood	BTO:0002900	treated with 1µM rosiglitazone, a PPARg agonist	activating	6 h	1 replicate each, 6 donors	GSE8658	none	GPL570
+GSE8658b	PPAR	blood	BTO:0002900	treated with 1µM rosiglitazone, a PPARg agonist	activating	6 h	1 replicate each, 6 donors	GSE8658	none	GPL570
+GSE8658c	PPAR	blood	BTO:0002900	treated with 1µM rosiglitazone, a PPARg agonist	activating	6 h	1 replicate each, 6 donors	GSE8658	none	GPL570
+GSE8658d	PPAR	blood	BTO:0002900	treated with 1µM rosiglitazone, a PPARg agonist	activating	6 h	1 replicate each, 6 donors	GSE8658	none	GPL570
+GSE8658e	PPAR	blood	BTO:0002900	treated with 1µM rosiglitazone, a PPARg agonist	activating	6 h	1 replicate each, 6 donors	GSE8658	none	GPL570
+GSE8658f	PPAR	blood	BTO:0002900	treated with 1µM rosiglitazone, a PPARg agonist	activating	6 h	1 replicate each, 6 donors	GSE8658	none	GPL570
+GSE14426a	RAR	whole body	BTO:0000183	treated with 1µM all-trans retinoid acid	activating	0.5 h	3 replicates each, part of timeseries, timeresolved controls	GSE14426	normalized	GPL6102
+GSE14426b	RAR	whole body	BTO:0000183	treated with 1µM all-trans retinoid acid	activating	4 h	3 replicates each, part of timeseries, timeresolved controls	GSE14426	normalized	GPL6102
+GSE14500a	RAR	leukocyte	BTO:0000738	treated with 1µM all-trans retinoid acid	activating	2 h	1 replicate each, part of timeseries, timerespective control	GSE14500	log	GPL8300
+GSE14500b	RAR	leukocyte	BTO:0000738	treated with 1µM all-trans retinoid acid	activating	4 h	1 replicate each, part of timeseries, timerespective control	GSE14500	log	GPL8300
+GSE19201	RAR	leukocyte	BTO:0002136	treated with all-trans retinoid acid	activating	4 h	1 replicate each	GSE19201	normalized	GPL570
+GSE22298a	RAR	skin	BTO:0000667	treated with 1µM all-trans retinoid acid	activating	1 h	1 replicate each, part of timeseries, timeresolved controls	GSE22298	none	GPL571
+GSE22298b	RAR	skin	BTO:0000667	treated with 1µM all-trans retinoid acid	activating	4 h	1 replicate each, part of timeseries, timeresolved controls	GSE22298	none	GPL571
+GSE24731	RAR	leukocyte	BTO:0000738	treated with 100nM retinoid acid	activating	4 h	4 replicates each, contain control vector	GSE24731	log	GPL4133
+GSE29213	RAR	leukocyte	BTO:0002136	treated with 10nM retinoid acid	activating	4 h	4 replicates each, contain control vector	GSE29213	log	GPL10332
+GSE13837a1	TGFb	connective tissue	BTO:0001336	treated with 10ng/ml TGF-beta	activating	1 h	1 replicate each, part of timeseries, several patients	GSE13837	none	GPL570
+GSE13837a2	TGFb	connective tissue	BTO:0001336	treated with 10ng/ml TGF-beta	activating	2 h	1 replicate each, part of timeseries, several patients	GSE13837	none	GPL570
+GSE13837a3	TGFb	connective tissue	BTO:0001336	treated with 10ng/ml TGF-beta	activating	4 h	1 replicate each, part of timeseries, several patients	GSE13837	none	GPL570
+GSE13837b1	TGFb	connective tissue	BTO:0001336	treated with 10ng/ml TGF-beta	activating	1 h	1 replicate each, part of timeseries, several patients	GSE13837	none	GPL570
+GSE13837b2	TGFb	connective tissue	BTO:0001336	treated with 10ng/ml TGF-beta	activating	2 h	1 replicate each, part of timeseries, several patients	GSE13837	none	GPL570
+GSE13837b3	TGFb	connective tissue	BTO:0001336	treated with 10ng/ml TGF-beta	activating	4 h	1 replicate each, part of timeseries, several patients	GSE13837	none	GPL570
+GSE13837c1	TGFb	connective tissue	BTO:0001336	treated with 10ng/ml TGF-beta	activating	1 h	1 replicate each, part of timeseries, several patients	GSE13837	none	GPL570
+GSE13837c2	TGFb	connective tissue	BTO:0001336	treated with 10ng/ml TGF-beta	activating	2 h	1 replicate each, part of timeseries, several patients	GSE13837	none	GPL570
+GSE13837c3	TGFb	connective tissue	BTO:0001336	treated with 10ng/ml TGF-beta	activating	4 h	1 replicate each, part of timeseries, several patients	GSE13837	none	GPL570
+GSE13837d1	TGFb	connective tissue	BTO:0001336	treated with 10ng/ml TGF-beta	activating	1 h	1 replicate each, part of timeseries, several patients	GSE13837	none	GPL570
+GSE13837d2	TGFb	connective tissue	BTO:0001336	treated with 10ng/ml TGF-beta	activating	2 h	1 replicate each, part of timeseries, several patients	GSE13837	none	GPL570
+GSE13837d3	TGFb	connective tissue	BTO:0001336	treated with 10ng/ml TGF-beta	activating	4 h	1 replicate each, part of timeseries, several patients	GSE13837	none	GPL570
+GSE13837e1	TGFb	connective tissue	BTO:0001336	treated with 10ng/ml TGF-beta	activating	1 h	1 replicate each, part of timeseries, several patients	GSE13837	none	GPL570
+GSE13837e2	TGFb	connective tissue	BTO:0001336	treated with 10ng/ml TGF-beta	activating	2 h	1 replicate each, part of timeseries, several patients	GSE13837	none	GPL570
+GSE13837e3	TGFb	connective tissue	BTO:0001336	treated with 10ng/ml TGF-beta	activating	4 h	1 replicate each, part of timeseries, several patients	GSE13837	none	GPL570
+GSE14491	TGFb	breast	BTO:0000815	treated with 5µg/ml TGF-beta	activating	3 h	4 replicate each, transfected with shGFP	GSE14491	log	GPL570
+GSE1724	TGFb	lung	BTO:0000764	treated with 4 ng/ml TGF-beta	activating	4 h	3 replicates each	GSE1724	none	GPL8300
+GSE17708a	TGFb	lung	BTO:0000018	treated with 5ng/ml TGF-beta	activating	0.5 h	3 replicates each, part of timeseries	GSE17708	log	GPL570
+GSE17708b	TGFb	lung	BTO:0000018	treated with 5ng/ml TGF-beta	activating	1 h	3 replicates each, part of timeseries	GSE17708	log	GPL570
+GSE17708c	TGFb	lung	BTO:0000018	treated with 5ng/ml TGF-beta	activating	2 h	3 replicates each, part of timeseries	GSE17708	log	GPL570
+GSE17708d	TGFb	lung	BTO:0000018	treated with 5ng/ml TGF-beta	activating	4 h	3 replicates each, part of timeseries	GSE17708	log	GPL570
+GSE17860	TGFb	bone	BTO:0004324	treated with 10ng/ml TGF-beta	activating	6 h	3 replicates each	GSE17860	log	GPL4133
+GSE1802a	TGFb	blood	BTO:0004053	treated with TGF-beta	activating	2 h	3 replicates each, part of timeseries	GSE1802	none	GPL96
+GSE1802b	TGFb	blood	BTO:0004053	treated with TGF-beta	activating	4 h	4 replicates each, part of timeseries	GSE1802	none	GPL96
+GSE1805a	TGFb	leukocyte	BTO:0005491	treated with 10 ng/ml TGF-beta	activating	2 h	3 replicates each, part of timeseries	GSE1805	none	GPL8300
+GSE1805b	TGFb	leukocyte	BTO:0005491	treated with TGF-beta	activating	4 h	2 replicates each, part of timeseries	GSE1805	none	GPL8300
+GSE23935a	TGFb	brain	BTO:0000527	treated with LY2109761, TGF-beta receptor inhibitor	inhibiting	3 h	1 replicate each	GSE23935	none	GPL570
+GSE23935b	TGFb	brain	BTO:0000527	treated with LY2109761, TGF-beta receptor inhibitor	inhibiting	3 h	1 replicate each	GSE23935	none	GPL570
+GSE23935c	TGFb	brain	BTO:0000527	treated with LY2109761, TGF-beta receptor inhibitor	inhibiting	3 h	1 replicate each	GSE23935	none	GPL570
+GSE23935d	TGFb	brain	BTO:0000527	treated with LY2109761, TGF-beta receptor inhibitor	inhibiting	3 h	1 replicate each	GSE23935	none	GPL570
+GSE23935e	TGFb	brain	BTO:0000527	treated with LY2109761, TGF-beta receptor inhibitor	inhibiting	3 h	1 replicate each	GSE23935	none	GPL570
+GSE23935f	TGFb	brain	BTO:0000527	treated with LY2109761, TGF-beta receptor inhibitor	inhibiting	3 h	1 replicate each	GSE23935	none	GPL570
+GSE23935g	TGFb	brain	BTO:0000527	treated with LY2109761, TGF-beta receptor inhibitor	inhibiting	3 h	1 replicate each	GSE23935	none	GPL570
+GSE23935h	TGFb	brain	BTO:0000527	treated with LY2109761, TGF-beta receptor inhibitor	inhibiting	3 h	1 replicate each	GSE23935	none	GPL570
+GSE23935i	TGFb	brain	BTO:0000527	treated with LY2109761, TGF-beta receptor inhibitor	inhibiting	3 h	1 replicate each	GSE23935	none	GPL570
+GSE23935j	TGFb	brain	BTO:0000527	treated with LY2109761, TGF-beta receptor inhibitor	inhibiting	3 h	1 replicate each	GSE23935	none	GPL570
+GSE23935k	TGFb	brain	BTO:0000527	treated with LY2109761, TGF-beta receptor inhibitor	inhibiting	3 h	1 replicate each	GSE23935	none	GPL570
+GSE27526	TGFb	whole body	BTO:0002549	treated with 10ng/ml TGF-beta1	activating	3 h	3 replicates each	GSE27526	log	GPL570
+GSE28590	TGFb	liver	BTO:0000599	treated with 3ng/ml TGF-beta	activating	1.5 h	1 replicate each	GSE28590	none	GPL570
+GSE30004a	TGFb	cardiovascular system	BTO:0001431	treated with 1ng/ml TGF-beta	activating	6 h	3 replicates each	GSE30004	none	GPL6244
+GSE30004b	TGFb	cardiovascular system	BTO:0001431	treated with 1ng/ml TGF-beta	activating	6 h	3 replicates each	GSE30004	none	GPL6244
+GSE30004c	TGFb	cardiovascular system	BTO:0001431	treated with 1ng/ml TGF-beta	activating	6 h	3 replicates each	GSE30004	none	GPL6244
+GSE5150a	TGFb	blood	BTO:0000725	treated with TGF-beta	activating	2 h	1 replicate each, part of timeseries	GSE5150	none	GPL8300
+GSE5150b	TGFb	blood	BTO:0000725	treated with TGF-beta	activating	4 h	1 replicate each, part of timeseries	GSE5150	none	GPL8300
+GSE5151	TGFb	blood	BTO:0002042	treated with 10 ng/ml TGF-beta1	activating	4 h	1 replicate	GSE5151	none	GPL8300
+GSE6653a	TGFb	skin	BTO:0004130	treated with TGF-beta1	activating	3 h	2 replicates each, part of timeseries	GSE6653	none	GPL570
+GSE6653b	TGFb	skin	BTO:0004130	treated with TGF-beta1	activating	6 h	2 replicates each, part of timeseries	GSE6653	none	GPL570
+GSE8730a	TGFb	whole body	BTO:0001769	treated with TGF-beta1	activating	1 h	1 replicate	GSE8730	none	GPL570
+GSE8730b	TGFb	whole body	BTO:0000339	treated with TGF-beta1	activating	1 h	1 replicate, part of timeseries	GSE8730	none	GPL96
+GSE8730c	TGFb	whole body	BTO:0000339	treated with TGF-beta1	activating	5 h	1 replicate, part of timeseries	GSE8730	none	GPL96
+GSE11115	TNFa	bone	BTO:0001938	treated with TNFa	activating	1h h	3-4 replicates each, doxycyline induction of ER expression	GSE11115	none	GPL96
+GSE13206a	TNFa	skin	BTO:0000567	treated with 5 ng/ml TNFa	activating	1.5 h	1 replicate each, part of timeseries, shControl transfected	GSE13206	log	GPL7490
+GSE13206b	TNFa	skin	BTO:0000567	treated with 5 ng/ml TNFa	activating	6 h	1 replicate each, part of timeseries, shControl transfected	GSE13206	log	GPL7490
+GSE13837a	TNFa	connective tissue	BTO:0001336	treated with TNFa 10 ng/ml	activating	1 h	always compared to the 0 h timepoint	GSE13837	log	GPL570
+GSE13837b	TNFa	connective tissue	BTO:0001336	treated with TNFa 10 ng/ml	activating	2 h	always compared to the 0 h timepoint	GSE13837	log	GPL570
+GSE13837c	TNFa	connective tissue	BTO:0001336	treated with TNFa 10 ng/ml	activating	4 h	always compared to the 0 h timepoint	GSE13837	log	GPL570
+GSE13837d	TNFa	connective tissue	BTO:0001336	treated with TNFa 10 ng/ml	activating	1 h	always compared to the 0 h timepoint	GSE13837	log	GPL570
+GSE13837e	TNFa	connective tissue	BTO:0001336	treated with TNFa 10 ng/ml	activating	2 h	always compared to the 0 h timepoint	GSE13837	log	GPL570
+GSE13837f	TNFa	connective tissue	BTO:0001336	treated with TNFa 10 ng/ml	activating	4 h	always compared to the 0 h timepoint	GSE13837	log	GPL570
+GSE13837g	TNFa	connective tissue	BTO:0001336	treated with TNFa 10 ng/ml	activating	1 h	always compared to the 0 h timepoint	GSE13837	log	GPL570
+GSE13837h	TNFa	connective tissue	BTO:0001336	treated with TNFa 10 ng/ml	activating	2 h	always compared to the 0 h timepoint	GSE13837	log	GPL570
+GSE13837i	TNFa	connective tissue	BTO:0001336	treated with TNFa 10 ng/ml	activating	4 h	always compared to the 0 h timepoint	GSE13837	log	GPL570
+GSE13837j	TNFa	connective tissue	BTO:0001336	treated with TNFa 10 ng/ml	activating	1 h	always compared to the 0 h timepoint	GSE13837	log	GPL570
+GSE13837k	TNFa	connective tissue	BTO:0001336	treated with TNFa 10 ng/ml	activating	2 h	always compared to the 0 h timepoint	GSE13837	log	GPL570
+GSE13837l	TNFa	connective tissue	BTO:0001336	treated with TNFa 10 ng/ml	activating	4 h	always compared to the 0 h timepoint	GSE13837	log	GPL570
+GSE13837m	TNFa	connective tissue	BTO:0001336	treated with TNFa 10 ng/ml	activating	1 h	always compared to the 0 h timepoint	GSE13837	log	GPL570
+GSE13837n	TNFa	connective tissue	BTO:0001336	treated with TNFa 10 ng/ml	activating	2 h	always compared to the 0 h timepoint	GSE13837	log	GPL570
+GSE13837o	TNFa	connective tissue	BTO:0001336	treated with TNFa 10 ng/ml	activating	4 h	always compared to the 0 h timepoint	GSE13837	log	GPL570
+GSE13837p	TNFa	connective tissue	BTO:0001336	treated with TNFa 10 ng/ml	activating	1 h	always compared to the 0 h timepoint	GSE13837	log	GPL570
+GSE13837q	TNFa	connective tissue	BTO:0001336	treated with TNFa 10 ng/ml	activating	2 h	always compared to the 0 h timepoint	GSE13837	log	GPL570
+GSE13837r	TNFa	connective tissue	BTO:0001336	treated with TNFa 10 ng/ml	activating	4 h	always compared to the 0 h timepoint	GSE13837	log	GPL570
+GSE1474a	TNFa	whole body	BTO:0000195	treated with TNFa	activating	4 h	3 replicates each	GSE1474	nolog	GPL96
+GSE1474b	TNFa	whole body	BTO:0002032	treated with TNFa	activating	4 h	3 replicates each	GSE1474	nolog	GPL96
+GSE1541a	TNFa	lung	BTO:0000018	treated with TNFa 20 ng/ml	activating	1 h		GSE1541	log	GPL201
+GSE1541b	TNFa	lung	BTO:0000018	treated with TNFa 20 ng/ml	activating	4 h		GSE1541	log	GPL201
+GSE16251aTNFa	TNFa	blood	BTO:0001025	treated with TNFa	activating	0.5 h	1 replicate each, part of timeseries, timerespective control	GSE16251	log	GPL8601
+GSE16251bTNFa	TNFa	blood	BTO:0001025	treated with TNFa	activating	1 h	1 replicate each, part of timeseries, timerespective control	GSE16251	log	GPL8601
+GSE16251cTNFa	TNFa	blood	BTO:0001025	treated with TNFa	activating	4 h	1 replicate each, part of timeseries, timerespective control	GSE16251	log	GPL8601
+GSE16650	TNFa	lung	BTO:0002923	treated with TNFa 20 ng/ml	activating	4 h	2 replicates each	GSE16650	nolog	GPL570
+GSE21727TNFa	TNFa	bone	BTO:0001700	treated with TNFa	activating	2 h	3 replicates each, timerespective control	GSE21727	normalized	GPL6104
+GSE22807	TNFa	whole body	BTO:0001332	treated with 10 ng/ml TNFa	activating	1.5 h	2 replicates each	GSE22807	none	GPL6244
+GSE2489a	TNFa	skin	BTO:0000667	treated with TNFa	activating	1 h		GSE2489	log	GPL8300
+GSE2489b	TNFa	skin	BTO:0000667	treated with TNFa	activating	4 h		GSE2489	log	GPL8300
+GSE2624a	TNFa	skin	BTO:0000567	treated with TNFa 25ng/ml and Doxycyline (2 mg/ml) to take IKB-inhibition away	activating	1 h	mutant cell line	GSE2624	log	GPL8300
+GSE2624b	TNFa	skin	BTO:0000567	treated with TNFa 25ng/ml and Doxycyline (2 mg/ml) to take IKB-inhibition away	activating	3 h	mutant cell line	GSE2624	log	GPL8300
+GSE2638	TNFa	breast	BTO:0002178	treated with 2ng/ml TNFa	activating	5 h	3 replicates each	GSE2638	none	GPL96
+GSE2639	TNFa	cardiovascular system	BTO:0001949	treated with 2ng/ml TNFa	activating	5 h	4 replicates each	GSE2639	none	GPL96
+GSE26868a	TNFa	skin	BTO:0000567	treated with 10 ng/ml TNFa	activating	2 h	2 replicates each, comparison 2 cell lines	GSE26868	log	GPL570
+GSE26868b	TNFa	leukocyte	BTO:0001370	treated with 10 ng/ml TNFa	activating	2 h	3 replicates each, comparison 2 cell lines	GSE26868	log	GPL570
+GSE27870a	TNFa	cardiovascular system	BTO:0001949	treatment with 10ng/ml TNFa	activating	1 h	3 replicates each, part of timeseries (1, 1.5, 2, 3, 4, 5, 6 h)	GSE27870	medianscaled	GPL4044
+GSE27870b	TNFa	cardiovascular system	BTO:0001949	treatment with 10ng/ml TNFa	activating	1.5 h	3 replicates each, part of timeseries (1, 1.5, 2, 3, 4, 5, 6 h)	GSE27870	medianscaled	GPL4044
+GSE27870c	TNFa	cardiovascular system	BTO:0001949	treatment with 10ng/ml TNFa	activating	2 h	3 replicates each, part of timeseries (1, 1.5, 2, 3, 4, 5, 6 h)	GSE27870	medianscaled	GPL4044
+GSE27870d	TNFa	cardiovascular system	BTO:0001949	treatment with 10ng/ml TNFa	activating	3 h	3 replicates each, part of timeseries (1, 1.5, 2, 3, 4, 5, 6 h)	GSE27870	medianscaled	GPL4044
+GSE27870e	TNFa	cardiovascular system	BTO:0001949	treatment with 10ng/ml TNFa	activating	4 h	3 replicates each, part of timeseries (1, 1.5, 2, 3, 4, 5, 6 h)	GSE27870	medianscaled	GPL4044
+GSE27870f	TNFa	cardiovascular system	BTO:0001949	treatment with 10ng/ml TNFa	activating	5 h	3 replicates each, part of timeseries (1, 1.5, 2, 3, 4, 5, 6 h)	GSE27870	medianscaled	GPL4044
+GSE27870g	TNFa	cardiovascular system	BTO:0001949	treatment with 10ng/ml TNFa	activating	6 h	3 replicates each, part of timeseries (1, 1.5, 2, 3, 4, 5, 6 h)	GSE27870	medianscaled	GPL4044
+GSE28548	TNFa	kidney	BTO:0000007	treated with TNFa	activating	1 h	3 replicates each	GSE28548	normalized	GPL570
+GSE516	TNFa	connective tissue	BTO:0004060	treated with TNFa	activating	4 h		GSE516	log	GPL8300
+GSE8166	TNFa	cardiovascular system	BTO:0001949	treated with TNFa 1ng/ml cultured in M199 medium	activating	3 h		GSE8166	log	GPL570
+GSE9055a	TNFa	cardiovascular system	BTO:0001949	treated with TNFa 10 ng/ml after 18 h serum starvation	activating	0.5 h	timeseries every 15 min until 8 h	GSE9055	log	GPL570
+GSE9055b	TNFa	cardiovascular system	BTO:0001949	treated with TNFa 10 ng/ml after 18 h serum starvation	activating	1 h	timeseries every 15 min until 8 h	GSE9055	log	GPL570
+GSE9055c	TNFa	cardiovascular system	BTO:0001949	treated with TNFa 10 ng/ml after 18 h serum starvation	activating	2 h	timeseries every 15 min until 8 h	GSE9055	log	GPL570
+GSE9055d	TNFa	cardiovascular system	BTO:0001949	treated with TNFa 10 ng/ml after 18 h serum starvation	activating	4 h	timeseries every 15 min until 8 h	GSE9055	log	GPL570
+GSE32441a	Trail	connective tissue	BTO:0001282	treated with 50 ng/ml TRAIL	activating	6 h	1 replicate each, control and treated cells were additionally treated with 0.25 µg/ml doxorubicin	GSE32441	none	GPL4133
+GSE32441b	Trail	connective tissue	BTO:0001282	treated with 50 ng/ml TRAIL	activating	6 h	1 replicate each, control and treated cells were additionally treated with 4 µg/ml trabectedin	GSE32441	none	GPL4133
+GSE32441c	Trail	connective tissue	BTO:0001282	treated with 50 ng/ml TRAIL	activating	6 h	1 replicate each, control and treated cells were additionally treated with 1.5 µg/ml mafosfamide	GSE32441	none	GPL4133
+GSE8346	Trail	breast	BTO:0001211	treated with 1 µg/ml TRAIL	activating	4 h	4 replicates each, contain control vector, 3D culture	GSE8346	none	GPL571
+GSE10778aVEGF	VEGF	cardiovascular system	BTO:0001949	treatment with 100ng VEGF	activating	30 min	timeseries (0.5, 1, 2.5, 6 h), 2 Chips HG-U133A and B	GSE10778	log	GPL96
+GSE10778bVEGF	VEGF	cardiovascular system	BTO:0001949	treatment with 100ng VEGF	activating	1 h	timeseries (0.5, 1, 2.5, 6 h), 2 Chips HG-U133A and B	GSE10778	log	GPL96
+GSE10778cVEGF	VEGF	cardiovascular system	BTO:0001949	treatment with 100ng VEGF	activating	2.5 h	timeseries (0.5, 1, 2.5, 6 h), 2 Chips HG-U133A and B	GSE10778	log	GPL96
+GSE10778d	VEGF	cardiovascular system	BTO:0001949	treatment with 100ng VEGF	activating	30 min	timeseries (0.5, 1, 2.5, 6 h), 2 Chips HG-U133A and B	GSE10778	log	GPL97
+GSE10778e	VEGF	cardiovascular system	BTO:0001949	treatment with 100ng VEGF	activating	1 h	timeseries (0.5, 1, 2.5, 6 h), 2 Chips HG-U133A and B	GSE10778	log	GPL97
+GSE10778f	VEGF	cardiovascular system	BTO:0001949	treatment with 100ng VEGF	activating	2.5 h	timeseries (0.5, 1, 2.5, 6 h), 2 Chips HG-U133A and B	GSE10778	log	GPL97
+GSE11228a	VEGF	lymphoid	BTO:0004167	treatment with VEGF-A165 (20ng/ml)	activating	1 h	timeseries (1, 4, 8, 24 h)	GSE11228	nolog	GPL2986
+GSE11228b	VEGF	lymphoid	BTO:0004167	treatment with VEGF-A165 (20 ng/ml)	activating	4 h	timeseries (1, 4, 8, 24 h)	GSE11228	nolog	GPL2986
+GSE11228c	VEGF	lymphoid	BTO:0004167	treatment with VEGF-C (500 ng/ml)	activating	1 h	timeseries (1, 4, 8, 24 h)	GSE11228	nolog	GPL2986
+GSE11228d	VEGF	lymphoid	BTO:0004167	treatment with VEGF-C (500 ng/ml)	activating	4 h	timeseries (1, 4, 8, 24 h)	GSE11228	nolog	GPL2986
+GSE15464a	VEGF	cardiovascular system	BTO:0001949	treated with 100ng/ml VEGF-A165	activating	30 min	1 replicate, part of timeseries	GSE15464	normalized	GPL570
+GSE15464b	VEGF	cardiovascular system	BTO:0001949	treated with 100ng/ml VEGF-A165	activating	60 min	1 replicate, part of timeseries	GSE15464	normalized	GPL570
+GSE15464c	VEGF	cardiovascular system	BTO:0001949	treated with 100ng/ml VEGF-A165	activating	150 min	1 replicate, part of timeseries	GSE15464	normalized	GPL570
+GSE17777	VEGF	cardiovascular system	BTO:0002828	treated with 100pg/ml VEGF	activating	4 h	1 replicate	GSE17777	none	GPL570
+GSE18913a	VEGF	cardiovascular system	BTO:0001949	treated with VEGF	activating	1 h	3 replicates, part of timeseries	GSE18913	none	GPL570
+GSE18913b	VEGF	cardiovascular system	BTO:0001949	treated with VEGF	activating	4 h	3 replicates, part of timeseries	GSE18913	none	GPL570
+GSE19335	VEGF	cardiovascular system	BTO:0001949	treated with 50ng/ml VEGF	activating	30 min	2 replicates	GSE19335	log	GPL6947
+GSE3891a	VEGF	cardiovascular system	BTO:0002828	VEGF treatment	activating	30 min	timeseries 30 min, 1, 2, 4 h (same Experiments for 2 Chips HG-U133 A and B)	GSE3891	log	GPL96
+GSE3891b	VEGF	cardiovascular system	BTO:0002828	VEGF treatment	activating	1 h	timeseries 30 min, 1, 2, 4 h (same Experiments for 2 Chips HG-U133 A and B)	GSE3891	log	GPL96
+GSE3891c	VEGF	cardiovascular system	BTO:0002828	VEGF treatment	activating	2 h	timeseries 30 min, 1, 2, 4 h (same Experiments for 2 Chips HG-U133 A and B)	GSE3891	log	GPL96
+GSE3891d	VEGF	cardiovascular system	BTO:0002828	VEGF treatment	activating	4 h	timeseries 30 min, 1, 2, 4 h (same Experiments for 2 Chips HG-U133 A and B)	GSE3891	log	GPL96
+GSE3891e	VEGF	cardiovascular system	BTO:0002828	VEGF treatment	activating	30 min	timeseries 30 min, 1, 2, 4 h (same Experiments for 2 Chips HG-U133 A and B)	GSE3891	log	GPL97
+GSE3891f	VEGF	cardiovascular system	BTO:0002828	VEGF treatment	activating	1 h	timeseries 30 min, 1, 2, 4 h (same Experiments for 2 Chips HG-U133 A and B)	GSE3891	log	GPL97
+GSE3891g	VEGF	cardiovascular system	BTO:0002828	VEGF treatment	activating	2 h	timeseries 30 min, 1, 2, 4 h (same Experiments for 2 Chips HG-U133 A and B)	GSE3891	log	GPL97
+GSE3891h	VEGF	cardiovascular system	BTO:0002828	VEGF treatment	activating	4 h	timeseries 30 min, 1, 2, 4 h (same Experiments for 2 Chips HG-U133 A and B)	GSE3891	log	GPL97
+GSE837a	VEGF	cardiovascular system	BTO:0001949	treated with VEGF	activating	4 h	1 replicate, part of 3 different isolates	GSE837	none	GPL91
+GSE837b	VEGF	cardiovascular system	BTO:0001949	treated with VEGF	activating	4 h	1 replicate, part of 3 different isolates	GSE837	none	GPL91
+GSE837c	VEGF	cardiovascular system	BTO:0001949	treated with VEGF	activating	4 h	1 replicate, part of 3 different isolates	GSE837	none	GPL91
+GSE11916	Wnt	liver	BTO:0001950	High TCF activity Huh7 cell line was compared to control Huh7 cell line (TCF the crucial transcription factor for Wnt)	activating	not specified	constitutive activation	GSE11916	log	GPL570
+GSE14107a	Wnt	lung	BTO:0005518	Wnt3a stimulation after serum starvation (0.2 %)	activating	3 h		GSE14107	log	GPL571
+GSE14107b	Wnt	lung	BTO:0001911	Wnt3a stimulation after serum starvation (0.2 %)	activating	3 h		GSE14107	log	GPL571
+GSE1473	Wnt	kidney	BTO:0000007	infected with RCAS-beta-cateninS37A or RCAS-GFP	activating	not specified	late and early response expected	GSE1473	log	GPL96
+GSE17385	Wnt	bone	BTO:0003933	cells lentivirally infected with control shRNA or beta-catenin shRNA vectors	inhibiting	not specified	inhibition	GSE17385	nolog	GPL570
+GSE24708	Wnt	kidney	BTO:0000007	treated with Wnt3a	activating	7 h	2 replicates each	GSE24708	none	GPL10191
+GSE26351	Wnt	blood	BTO:0003494	0.5 µM BIO (GSK3 inhibitor)	activating	2 h	3 replicates, BIO activates WNT pathway	GSE26351	none	GPL570
+GSE27313	Wnt	whole body	BTO:0003298	treated with Wnt3a	activating	6 h	1 replicate each	GSE27313	none	GPL570
+GSE10778a	both	cardiovascular system	BTO:0001949	Treatment with EGF	activating	0.5 h	timeseries 30 min, 1 h, 2.5 h 6 h / same with VEGF	GSE10778	log	GPL96
+GSE10778b	both	cardiovascular system	BTO:0001949	Treatment with EGF	activating	1 h	timeseries 30 min, 1 h, 2.5 h 6 h / same with VEGF	GSE10778	log	GPL96
+GSE10778c	both	cardiovascular system	BTO:0001949	Treatment with EGF	activating	2.5 h	timeseries 30 min, 1 h, 2.5 h 6 h / same with VEGF	GSE10778	log	GPL96
+GSE11729a	both	lung	BTO:0002552	Treatment with EGF	activating	0.5 h	timeseries: 30 min, 1, 2, 4, 6 and 10 h	GSE11729	nolog	GPL570
+GSE11729b	both	lung	BTO:0002552	Treatment with EGF	activating	1 h	timeseries: 30 min, 1, 2, 4, 6 and 10 h	GSE11729	nolog	GPL570
+GSE11729c	both	lung	BTO:0002552	Treatment with EGF	activating	2 h	timeseries: 30 min, 1, 2, 4, 6 and 10 h	GSE11729	nolog	GPL570
+GSE11729d	both	lung	BTO:0002552	Treatment with EGF	activating	4 h	timeseries: 30 min, 1, 2, 4, 6 and 10 h	GSE11729	nolog	GPL570
+GSE11729e	both	lung	BTO:0002552	Treatment with EGF	activating	6 h	timeseries: 30 min, 1, 2, 4, 6 and 10 h	GSE11729	nolog	GPL570
+GSE12764b	both	breast	BTO:0001939	transfected with HRAS(G12V)	activating	24 h	3 replicates each, probably activating PI3K and MAPKs	GSE12764	none	GPL570
+GSE13009a	both	breast	BTO:0000093	Treatment with EGF	activating	0.5 h	timeseries: 10,15,20,30,45,60,90 min, 2, 3, 4, 6...72 h	GSE13009	log	GPL571
+GSE13009b	both	breast	BTO:0000093	Treatment with EGF	activating	1 h	timeseries: 10,15,20,30,45,60,90 min, 2, 3, 4, 6...72 h	GSE13009	log	GPL571
+GSE13009c	both	breast	BTO:0000093	Treatment with EGF	activating	2 h	timeseries: 10,15,20,30,45,60,90 min, 2, 3, 4, 6...72 h	GSE13009	log	GPL571
+GSE13009d	both	breast	BTO:0000093	Treatment with EGF	activating	4 h	timeseries: 10,15,20,30,45,60,90 min, 2, 3, 4, 6...72 h	GSE13009	log	GPL571
+GSE13009e	both	breast	BTO:0000093	Treatment with HRG	activating	0.5 h	timeseries: 10,15,20,30,45,60,90 min, 2, 3, 4, 6...72 h	GSE13009	log	GPL571
+GSE13009f	both	breast	BTO:0000093	Treatment with HRG	activating	1 h	timeseries: 10,15,20,30,45,60,90 min, 2, 3, 4, 6...72 h	GSE13009	log	GPL571
+GSE13009g	both	breast	BTO:0000093	Treatment with HRG	activating	2 h	timeseries: 10,15,20,30,45,60,90 min, 2, 3, 4, 6...72 h	GSE13009	log	GPL571
+GSE13009h	both	breast	BTO:0000093	Treatment with HRG	activating	4 h	timeseries: 10,15,20,30,45,60,90 min, 2, 3, 4, 6...72 h	GSE13009	log	GPL571
+GSE13009i	both	breast	BTO:0000093	Treatment with EGF	activating	6 h	timeseries: 10,15,20,30,45,60,90 min, 2, 3, 4, 6...72 h	GSE13009	log	GPL571
+GSE13009j	both	breast	BTO:0000093	Treatment with HRG	activating	6 h	timeseries: 10,15,20,30,45,60,90 min, 2, 3, 4, 6...72 h	GSE13009	log	GPL571
+GSE13168a	both	muscle	BTO:0001660	treated with EGF	activating	8 h	1 replicate each, contain control vector, 4 donors	GSE13168	normalized	GPL96
+GSE13168b	both	muscle	BTO:0001660	treated with EGF	activating	8 h	1 replicate each, contain control vector, 4 donors	GSE13168	normalized	GPL96
+GSE13168c	both	muscle	BTO:0001660	treated with EGF	activating	8 h	1 replicate each, contain control vector, 4 donors	GSE13168	normalized	GPL96
+GSE13168d	both	muscle	BTO:0001660	treated with EGF	activating	8 h	1 replicate each, contain control vector, 4 donors	GSE13168	normalized	GPL96
+GSE14256a	both	whole body	BTO:0001113	Treatment with platelet-derived growth factor-BB (PDGF-BB)	activating	1 h		GSE14256	log	GPL571
+GSE14256b	both	whole body	BTO:0001113	Treatment with bFGF (basic fibroblast growth factor)	activating	1 h		GSE14256	log	GPL571
+GSE14934a	both	kidney	BTO:0000007	Ras (G12V) activation mutants	activating	not specified		GSE14934	log	GPL571
+GSE20277	both	skin	BTO:0000567	treated with EGF	activating	0.66 h	3 replicates each	GSE20277	log	GPL6480
+GSE33710	both	lung	BTO:0003066	RASv12 overexpression	activating	not indicated	3 replicates each	GSE33710	none	GPL96
+GSE3542a	both	breast	BTO:0000093	co-transfected with constituitively active erbB-2	activating	not specified	two controls empty vector control taken	GSE3542	nolog	GPL96
+GSE3542d	both	breast	BTO:0000093	co-transfected with ligand-inducible EGFR	activating	not specified	two controls empty vector control taken	GSE3542	nolog	GPL96
+GSE6462a	both	breast	BTO:0000093	treatment with EGF (10nm)	activating	0.75 h	timeseries	GSE6462	log	GPL571
+GSE6462b	both	breast	BTO:0000093	treatment with EGF (10nm)	activating	1.5 h	timeseries	GSE6462	log	GPL571
+GSE6462c	both	breast	BTO:0000093	treatment with 10 nm HRG= heregulin Erb3/4 Ligand	activating	0.75 h	timeseries	GSE6462	log	GPL571
+GSE6462d	both	breast	BTO:0000093	treatment with 10 nm HRG= heregulin Erb3/4 Ligand	activating	1.5 h	timeseries	GSE6462	log	GPL571
+GSE6521d	both	breast	BTO:0000093	Treatment with HRG (heregulin ErbB3 Ligand)	activating	0.75 h		GSE6521	log	GPL570
+GSE6521e	both	breast	BTO:0000093	Treatment with HRG (heregulin ErbB3 Ligand)	activating	1.5 h		GSE6521	log	GPL570
+GSE6783a	both	skin	BTO:0000567	EGF treatment after 24 h serum starvation (Control 0 h)	activating	0.33 h	timeseries with 20, 40, 60, 120, 240, 480 min	GSE6783	log	GPL96
+GSE6783b	both	skin	BTO:0000567	EGF treatment after 24 h serum starvation (Control 0 h)	activating	1 h	timeseries with 20, 40, 60, 120, 240, 480 min	GSE6783	log	GPL96
+GSE6783c	both	skin	BTO:0000567	EGF treatment after 24 h serum starvation (Control 0 h)	activating	2 h	timeseries with 20, 40, 60, 120, 240, 480 min	GSE6783	log	GPL96
+GSE6783d	both	skin	BTO:0000567	EGF treatment after 24 h serum starvation (Control 0 h)	activating	4 h	timeseries with 20, 40, 60, 120, 240, 480 min	GSE6783	log	GPL96
+GSE6784a	both	breast	BTO:0001939	EGF treatment after 24 h serum starvation (Control 0 h)	activating	0.33 h	timeseries with 20, 40, 60, 120, 240, 480 min	GSE6784	log	GPL571
+GSE6784b	both	breast	BTO:0001939	EGF treatment after 24 h serum starvation (Control 0 h)	activating	1 h	timeseries with 20, 40, 60, 120, 240, 480 min	GSE6784	log	GPL571
+GSE6784c	both	breast	BTO:0001939	EGF treatment after 24 h serum starvation (Control 0 h)	activating	2 h	timeseries with 20, 40, 60, 120, 240, 480 min	GSE6784	log	GPL571
+GSE6784d	both	breast	BTO:0001939	EGF treatment after 24 h serum starvation (Control 0 h)	activating	4 h	timeseries with 20, 40, 60, 120, 240, 480 min	GSE6784	log	GPL571
+GSE7403a	both	nervous system	BTO:0000793	PDGF treatment with 60 min prior DMSO treatment	activating	0.5 h	timeseries with 30, 60, 120, 240 min	GSE7403	log	GPL96
+GSE7403c	both	nervous system	BTO:0000793	PDGF treatment with 60 min prior DMSO treatment	activating	1 h	timeseries with 30, 60, 120, 240 min	GSE7403	log	GPL96
+GSE7403e	both	nervous system	BTO:0000793	PDGF treatment with 60 min prior DMSO treatment	activating	2 h	timeseries with 30, 60, 120, 240 min	GSE7403	log	GPL96
+GSE7403g	both	nervous system	BTO:0000793	PDGF treatment with 60 min prior DMSO treatment	activating	4 h	timeseries with 30, 60, 120, 240 min	GSE7403	log	GPL96
+GSE8471	both	breast	BTO:0000093	HRG stimulated (ErbB Ligand)	activating	2 h after stimulation		GSE8471	log	GPL570
+GSE12355	notch	leukocyte	BTO:0000739	transfected with Notch1 intracellular domain	activating	8 h	3 replicates each	GSE12355	none	GPL570
+GSE29544a	notch	leukocyte	BTO:0002144	treated with washout of GSI inhibitor	activating	2 h	3 replicates each, treatment after 3 days treatment with GSI, GSI= gamma secretase inhibitor	GSE29544	none	GPL570
+GSE29544b	notch	leukocyte	BTO:0002144	treated with washout of GSI inhibitor	activating	4 h	3 replicates each, treatment after 3 days treatment with GSI, GSI= gamma secretase inhibitor	GSE29544	none	GPL570
+GSE36176a	notch	lung	BTO:0000018	treated with 2µM GSI RO4929097	inhibiting	6 h	4 replicates each, different cell lines, GSI= gamma secretase inhibitor	GSE36176	none	GPL570
+GSE36176b	notch	lung	BTO:0002207	treated with 2µM GSI RO4929097	inhibiting	6 h	4 replicates each, different cell lines, GSI= gamma secretase inhibitor	GSE36176	none	GPL570
+GSE12666a	p53	breast	BTO:0000093	treated with 10 µM BMH-7, p53 activator	activating	6 h	4 replicates each, lead compounds - mechanism of action unknown	GSE12666	normalized	GPL571
+GSE12666b	p53	breast	BTO:0000093	treated with 10 µM BMH-9, p53 activator	activating	6 h	4 replicates each, lead compounds - mechanism of action unknown	GSE12666	normalized	GPL571
+GSE12666c	p53	breast	BTO:0000093	treated with 10 µM BMH-15, p53 activator	activating	6 h	4 replicates each, lead compounds - mechanism of action unknown	GSE12666	normalized	GPL571
+GSE12666d	p53	breast	BTO:0000093	treated with 10 µM BMH-21, p53 activator	activating	6 h	4 replicates each, lead compounds - mechanism of action unknown	GSE12666	normalized	GPL571
+GSE12666e	p53	breast	BTO:0000093	treated with 10 µM BMH-22, p53 activator	activating	6 h	4 replicates each, lead compounds - mechanism of action unknown	GSE12666	normalized	GPL571
+GSE12666f	p53	breast	BTO:0000093	treated with 10 µM BMH-23, p53 activator	activating	6 h	4 replicates each, lead compounds - mechanism of action unknown	GSE12666	normalized	GPL571
+GSE13291	p53	breast	BTO:0000093	treated with 1 µM RITA, p53 activator	activating	2 h	1 replicate each, RITA inhibits HDM2-p53 interaction	GSE13291	none	GPL571
+GSE2238	p53	connective tissue	BTO:0001282	treated with doxorubicin	activating	6 h	1 replicate each	GSE2238	none	GPL96
+GSE23010	p53	bone	BTO:0001938	treated with 5 GY X-Ray irradiation	activating	4 h	3 replicates each, cells transfected with control sh RNA	GSE23010	normalized	GPL6884
+GSE30240a	p53	skin	BTO:0001584	treated with 5 GY X-Ray irradiation	activating	3 h	3 replicates each, part of timeseries, timerespective control, 5 different tissues	GSE30240	none	GPL570
+GSE30240b	p53	skin	BTO:0001584	treated with 5 GY X-Ray irradiation	activating	6 h	3 replicates each, part of timeseries, timerespective control, 5 different tissues	GSE30240	none	GPL570
+GSE30240c	p53	liver	BTO:0000599	treated with 5 GY X-Ray irradiation	activating	3 h	3 replicates each, part of timeseries, timerespective control, 5 different tissues	GSE30240	none	GPL570
+GSE30240d	p53	liver	BTO:0000599	treated with 5 GY X-Ray irradiation	activating	6 h	3 replicates each, part of timeseries, timerespective control, 5 different tissues	GSE30240	none	GPL570
+GSE30240e	p53	leukocyte	BTO:0003707	treated with 5 GY X-Ray irradiation	activating	3 h	3 replicates each, part of timeseries, timerespective control, 5 different tissues	GSE30240	none	GPL570
+GSE30240f	p53	leukocyte	BTO:0003707	treated with 5 GY X-Ray irradiation	activating	6 h	3 replicates each, part of timeseries, timerespective control, 5 different tissues	GSE30240	none	GPL570
+GSE30240g	p53	bone	BTO:0001938	treated with 5 GY X-Ray irradiation	activating	3 h	3 replicates each, part of timeseries, timerespective control, 5 different tissues	GSE30240	none	GPL570
+GSE30240h	p53	bone	BTO:0001938	treated with 5 GY X-Ray irradiation	activating	6 h	3 replicates each, part of timeseries, timerespective control, 5 different tissues	GSE30240	none	GPL570
+GSE30240i	p53	skin	BTO:0003807	treated with 5 GY X-Ray irradiation	activating	3 h	3 replicates each, part of timeseries, timerespective control, 5 different tissues	GSE30240	none	GPL570
+GSE30240j	p53	skin	BTO:0003807	treated with 5 GY X-Ray irradiation	activating	6 h	3 replicates each, part of timeseries, timerespective control, 5 different tissues	GSE30240	none	GPL570
+GSE32441	p53	connective tissue	BTO:0001282	treated with 0.25 µg/ml doxorubicin	activating	6 h	1 replicate each	GSE32441	none	GPL4133
+GSE8939a	p53	whole body	BTO:0001489	treated with 10 J/m2 UVC irradiation	activating	2 h	3 replicates each, 2 arrays per sample	GSE8939	none	GPL96
+GSE8939b	p53	whole body	BTO:0001489	treated with 10 J/m2 UVC irradiation	activating	2 h	3 replicates each, 2 arrays per sample	GSE8939	none	GPL97

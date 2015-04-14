@@ -1,0 +1,4 @@
+cell line	Macrophages differentiated from isolated CD14+ monocytes in the presence of GM-CSF
+modification	treated with LPS 100 ng/ml
+time	4 h
+effect	activating

@@ -1,0 +1,5 @@
+cell line	MCF-7 estrogen resistant breast cancer cells
+modification	treated with estrogen
+effect	activating
+time	4 h
+comment	3 replicates each

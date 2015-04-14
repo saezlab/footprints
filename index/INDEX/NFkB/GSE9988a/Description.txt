@@ -1,0 +1,5 @@
+cell line	Human monocytes (donor 1)
+modification	treated with LPS
+effect	activating
+time	2 h
+comment	10 anonymous donors in this set

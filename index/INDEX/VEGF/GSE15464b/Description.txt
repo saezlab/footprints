@@ -1,0 +1,5 @@
+cell line	HUVECs
+modification	treated with 100ng/ml VEGF-A165
+effect	activating
+time	60 min
+comment	1 replicate, part of timeseries

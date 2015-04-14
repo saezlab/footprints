@@ -1,0 +1,5 @@
+cell line	HeLa cells
+modification	treated with 10 ng/ml TNFa
+effect	activating
+time	2 h
+comment	2 replicates each, comparison 2 cell lines

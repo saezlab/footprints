@@ -1,0 +1,5 @@
+cell line	SACHI (Multiple Myeloma Cell Line)
+modification	transfected with IKKB
+time	undefined
+effect	activating
+comment	overexpression directly above NFkB

@@ -1,0 +1,5 @@
+cell line	HUVECs
+modification	treated with IFNa
+effect	activating
+time	5 h
+comment	5 replicates

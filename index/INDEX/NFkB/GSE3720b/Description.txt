@@ -1,0 +1,5 @@
+cell line	expanded peripheral blood Vd2 gd T lymphocytes
+modification	treated with LPS 10 mg/mL
+effect	activating
+time	4 h
+comment	3 week culture with Vd1 mab 0.1mg/mL, pan gd mAb 0.1 mg/mL, and IL-15 10ng/mL

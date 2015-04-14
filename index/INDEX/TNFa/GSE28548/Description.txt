@@ -1,0 +1,5 @@
+cell line	HEK293 cells
+modification	treated with TNFa
+effect	activating
+time	1 h
+comment	3 replicates each

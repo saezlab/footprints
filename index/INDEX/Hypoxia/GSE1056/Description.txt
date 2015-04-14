@@ -1,0 +1,5 @@
+cell line	Hep3B cells
+modification	treated with 1% oxygen hypoxia
+effect	activating
+time	2 h
+comment	2 replicates each

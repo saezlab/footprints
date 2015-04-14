@@ -1,0 +1,5 @@
+cell line	HUVECs
+modification	treated with Insulin
+effect	activating
+time	0.66 h
+comment	1 replicate each, part of timeseries

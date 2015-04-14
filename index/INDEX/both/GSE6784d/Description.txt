@@ -1,0 +1,5 @@
+cell line	MCF-10A (mammary epithelial cell line)
+modification	EGF treatment after 24 h serum starvation (Control 0 h)
+effect	activating
+time	4 h
+comment	timeseries with 20, 40, 60, 120, 240, 480 min

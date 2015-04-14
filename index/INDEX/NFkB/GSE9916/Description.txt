@@ -1,0 +1,5 @@
+cell line	THP-1 cell line
+modification	treated with 1 µg/ml LPS
+effect	activating
+time	4 h
+comment	3 replicates each

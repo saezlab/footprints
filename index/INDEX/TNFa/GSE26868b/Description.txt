@@ -1,0 +1,5 @@
+cell line	THP1 cells
+modification	treated with 10 ng/ml TNFa
+effect	activating
+time	2 h
+comment	3 replicates each, comparison 2 cell lines

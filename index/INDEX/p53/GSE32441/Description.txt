@@ -1,0 +1,5 @@
+cell line	HT1080 fibrosarcoma cells
+modification	treated with 0.25 µg/ml doxorubicin
+effect	activating
+time	6 h
+comment	1 replicate each

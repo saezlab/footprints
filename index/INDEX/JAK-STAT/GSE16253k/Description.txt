@@ -1,0 +1,5 @@
+cell line	primary NK cells
+modification	treated with 0.6 pM IFNg
+effect	activating
+time	1 h
+comment	1 replicate, timerespective control, part of timeseries, different cell lines

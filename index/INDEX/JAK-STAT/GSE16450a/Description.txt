@@ -1,0 +1,5 @@
+cell line	immature BE(2)-C neuroblastoma cell line
+modification	treated with IFNa-A/D
+effect	activating
+time	6 h
+comment	3 replicates

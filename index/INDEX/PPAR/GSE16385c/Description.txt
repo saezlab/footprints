@@ -1,0 +1,5 @@
+cell line	primary IFNg/TNFa activated monocytes
+modification	treated with 1mM rosiglitazone, a PPARg agonist
+effect	activating
+time	4 h
+comment	1 replicate each, differently activated macrophages

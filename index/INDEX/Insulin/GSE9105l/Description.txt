@@ -1,0 +1,5 @@
+cell line	primary muscle cells
+modification	treated with euglycemic hyperinsulinemic clamp
+effect	activating
+time	4 h
+comment	1 replicate each, part of timeseries, 12 donors

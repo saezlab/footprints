@@ -1,0 +1,4 @@
+cell line	Cultured epidermal keratinocytes
+modification	treated with 25 ng/ml human recombinant IL-1
+effect	activating
+time	4 h

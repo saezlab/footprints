@@ -1,0 +1,5 @@
+cell line	HEK TLR2 transfected
+modification	treated with 10µg/ml H. pylori LPS
+effect	activating
+time	2 h
+comment	2 replicates each, part of timeseries

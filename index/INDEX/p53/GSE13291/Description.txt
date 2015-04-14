@@ -1,0 +1,5 @@
+cell line	MCF7 cells
+modification	treated with 1 µM RITA, p53 activator
+effect	activating
+time	2 h
+comment	1 replicate each, RITA inhibits HDM2-p53 interaction

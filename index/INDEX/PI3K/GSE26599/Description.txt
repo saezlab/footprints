@@ -1,0 +1,5 @@
+cell line	HB4a cells
+modification	treated with rapamycin
+effect	inhibiting
+time	not indicated
+comment	5 replicates each, rapamycin inhibits mTOR --> inhibition of PI3K pathway

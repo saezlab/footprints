@@ -1,0 +1,5 @@
+cell line	Choroidal endothelial cell
+modification	treated with LPS 10 100 ng/mL
+effect	activating
+time	4 h
+comment	three different patients 2 different tissues

@@ -1,0 +1,4 @@
+cell line	HEK-HT (kidney)
+modification	Ras (G12V) activation mutants
+effect	activating
+time	not specified

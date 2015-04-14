@@ -1,0 +1,5 @@
+cell line	MCF-7 cells
+modification	treated with 6 nM estradiol
+effect	activating
+time	4 h
+comment	3 replicates each, different treatments, contain control vectors

@@ -1,0 +1,5 @@
+cell line	HEK-HT (kidney)
+modification	Ras (G12V,T35S) activation mutants
+effect	activating
+time	not specified
+comment	mutants said to be mostly activating Raf

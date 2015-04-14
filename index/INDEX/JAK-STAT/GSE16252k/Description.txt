@@ -1,0 +1,5 @@
+cell line	primary PBMCs
+modification	treated with 0.006 pM IFNg
+effect	activating
+time	2 h
+comment	1 replicate, timerespective control, part of timeand concentration series

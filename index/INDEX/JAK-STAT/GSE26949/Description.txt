@@ -1,0 +1,5 @@
+cell line	peripheral blood EPCs/CACs
+modification	treated with IFNa
+effect	activating
+time	6 h
+comment	6 replicates each

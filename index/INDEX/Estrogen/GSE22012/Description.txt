@@ -1,0 +1,5 @@
+cell line	MCF-7 breast cancer cells
+modification	treated with estradiol
+effect	activating
+time	1 h
+comment	4 replicates each

@@ -1,0 +1,5 @@
+cell line	PBMCs
+modification	treated with 3 µg/ml R848
+effect	activating
+time	2 h
+comment	1 replicate each, R848 is a relative specific TLR7/8 agonist

@@ -1,0 +1,4 @@
+cell line	human peripheral blood derived monocytes
+modification	treated with LPS
+effect	activating
+time	4 h

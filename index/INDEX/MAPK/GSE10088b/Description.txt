@@ -1,0 +1,5 @@
+cell line	SkMel-28 cells
+modification	treated with PD0325901, MEK inhibitor
+effect	inhibiting
+time	8 h
+comment	1 replicate each, mainly influencing MAPKs

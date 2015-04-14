@@ -1,0 +1,5 @@
+cell line	COLO205 cells
+modification	treated with PD0325901, MEK inhibitor
+effect	activating
+time	8 h
+comment	1 replicate each, mainly activating PI3K pathway, 12 different cell lines

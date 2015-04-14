@@ -1,0 +1,5 @@
+cell line	MCF-7 breast cancer cells
+modification	treated with 100nM estrogen
+effect	activating
+time	6 h
+comment	4 replicates each, different treatments

@@ -1,0 +1,5 @@
+cell line	MB231 cells
+modification	treated with 0.5% oxygen hypoxia
+effect	activating
+time	4 h
+comment	3 replicates each, different cell lines

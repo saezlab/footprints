@@ -1,0 +1,5 @@
+cell line	MCF10A cells
+modification	treated with GDC-0941. a PI3K inhibitor
+effect	inhibiting
+time	4 h
+comment	3 replicates each

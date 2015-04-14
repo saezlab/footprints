@@ -1,0 +1,5 @@
+cell line	WI-38 cells
+modification	RASv12 overexpression
+effect	activating
+time	not indicated
+comment	3 replicates each

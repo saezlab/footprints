@@ -1,0 +1,5 @@
+cell line	HEK293 (kidney cell)
+modification	infected with RCAS-beta-cateninS37A or RCAS-GFP
+effect	activating
+time	not specified
+comment	late and early response expected

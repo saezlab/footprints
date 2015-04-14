@@ -1,0 +1,5 @@
+cell line	MCF-7 (breast cancer cells)
+modification	co-transfected with constituitively active MEK
+effect	activating
+time	not specified
+comment	two controls empty vector control taken

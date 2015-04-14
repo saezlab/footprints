@@ -1,0 +1,5 @@
+cell line	primary macrophages
+modification	treated with zymosan A
+effect	activating
+time	3 h
+comment	1 replicate each, 4 donors

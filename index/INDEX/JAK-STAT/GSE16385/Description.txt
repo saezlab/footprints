@@ -1,0 +1,5 @@
+cell line	primary macrophage
+modification	treated with IL-4
+effect	activating
+time	4 h
+comment	1 replicate, respective timecontrol

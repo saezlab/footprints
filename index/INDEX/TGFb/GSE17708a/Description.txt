@@ -1,0 +1,5 @@
+cell line	A549 lung carcinoma cell line
+modification	treated with 5ng/ml TGF-beta
+effect	activating
+time	0.5 h
+comment	3 replicates each, part of timeseries

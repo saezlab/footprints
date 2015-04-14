@@ -1,0 +1,4 @@
+cell line	NK (Primary Natural Killer cells)
+modification	treated with IL-2
+effect	activating
+time	2 h

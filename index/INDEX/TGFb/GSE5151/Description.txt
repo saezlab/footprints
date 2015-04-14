@@ -1,0 +1,5 @@
+cell line	dendritic cells
+modification	treated with 10 ng/ml TGF-beta1
+effect	activating
+time	4 h
+comment	1 replicate

@@ -1,0 +1,5 @@
+cell line	mobilized periphal blood CD34+ cells
+modification	0.5 µM BIO (GSK3 inhibitor)
+effect	activating
+time	2 h
+comment	3 replicates, BIO activates WNT pathway

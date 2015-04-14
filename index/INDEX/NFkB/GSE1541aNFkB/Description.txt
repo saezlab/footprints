@@ -1,0 +1,4 @@
+cell line	A549 (Alveolar Epithelial Cells line)
+modification	treated with LPS
+effect	activating
+time	1 h

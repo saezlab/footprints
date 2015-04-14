@@ -1,0 +1,5 @@
+cell line	MDA-MB-231 LM2 cells
+modification	treated with 1% oxygen hypoxia
+effect	activating
+time	6 h
+comment	2 replicates each, different cell lines

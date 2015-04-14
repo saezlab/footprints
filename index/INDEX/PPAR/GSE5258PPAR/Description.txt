@@ -1,0 +1,5 @@
+cell line	MCF7 cells
+modification	treated with 10µM rosiglitazone, a PPARg agonist
+effect	activating
+time	6 h
+comment	2 replicates each

@@ -1,0 +1,5 @@
+cell line	fibroblasts
+modification	treated with IFNa
+effect	activating
+time	5 h
+comment	3 replicates

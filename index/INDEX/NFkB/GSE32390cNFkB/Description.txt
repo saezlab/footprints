@@ -1,0 +1,5 @@
+cell line	fibroblasts
+modification	treated with poly I:C
+effect	activating
+time	4 h
+comment	1 replicate each, 3 individuals

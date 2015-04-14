@@ -1,0 +1,5 @@
+cell line	H1299 human non-small cell lung cancer cells
+modification	Treatment with EGF
+effect	activating
+time	1 h
+comment	timeseries: 30 min, 1, 2, 4, 6 and 10 h

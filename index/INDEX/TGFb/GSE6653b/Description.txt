@@ -1,0 +1,5 @@
+cell line	IOSE - immortalized ovarian surface epithelial cells
+modification	treated with TGF-beta1
+effect	activating
+time	6 h
+comment	2 replicates each, part of timeseries
