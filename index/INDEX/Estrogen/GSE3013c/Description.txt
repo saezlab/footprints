@@ -1,0 +1,5 @@
+cell line	endometrial epithelial cells
+modification	treated with tamoxifen
+effect	unknown
+time	3 h
+comment	2 replicates each on different platforms, different treatments, different tumor stages

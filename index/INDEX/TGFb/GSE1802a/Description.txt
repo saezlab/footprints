@@ -1,0 +1,5 @@
+cell line	human umbilical cord blood CD34+ cells
+modification	treated with TGF-beta
+effect	activating
+time	2 h
+comment	3 replicates each, part of timeseries

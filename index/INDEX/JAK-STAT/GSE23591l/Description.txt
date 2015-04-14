@@ -1,0 +1,5 @@
+cell line	MedB1 lymphoma derived cell line
+modification	treated with 20 ng/ml IL-13
+effect	activating
+time	3 h
+comment	1 replicate, timeresolved controls, part of timeseries

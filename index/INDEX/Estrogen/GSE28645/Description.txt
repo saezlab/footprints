@@ -1,0 +1,5 @@
+cell line	LY2 breast cancer cell line
+modification	treated with tamoxifen
+effect	inhibiting
+time	2 h
+comment	4 replicates each, contain control siRNA, tamoxifen acts as antagonist in breast cell lines

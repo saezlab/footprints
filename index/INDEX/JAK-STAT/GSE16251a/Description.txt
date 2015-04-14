@@ -1,0 +1,5 @@
+cell line	primary PBMCs
+modification	treated with IFNa
+effect	activating
+time	4 h
+comment	1 replicate, timerespective control, part of time

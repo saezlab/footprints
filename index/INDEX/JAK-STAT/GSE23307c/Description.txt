@@ -1,0 +1,5 @@
+cell line	primary monocytes
+modification	treated with IFN-b
+effect	activating
+time	3 h
+comment	1 replicate each, respective timecontrol, 2 individuals

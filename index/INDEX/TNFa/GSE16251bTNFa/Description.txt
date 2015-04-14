@@ -1,0 +1,5 @@
+cell line	primary PBMCs
+modification	treated with TNFa
+effect	activating
+time	1 h
+comment	1 replicate each, part of timeseries, timerespective control

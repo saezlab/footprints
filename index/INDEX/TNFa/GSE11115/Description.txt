@@ -1,0 +1,5 @@
+cell line	U3OS cells expressing additional estrogen receptor
+modification	treated with TNFa
+effect	activating
+time	1h h
+comment	3-4 replicates each, doxycyline induction of ER expression

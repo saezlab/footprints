@@ -1,0 +1,4 @@
+cell line	MCF7
+modification	HRG stimulated (ErbB Ligand)
+effect	activating
+time	2 h after stimulation

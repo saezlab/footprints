@@ -1,0 +1,4 @@
+cell line	Monocyte derived dendritic cells
+modification	treated with LPS 0.5 µg/ml
+effect	activating
+time	3 h

@@ -1,0 +1,5 @@
+cell line	DU145 prostate cancer cells
+modification	treated with 10 ng/ml TNFa
+effect	activating
+time	1.5 h
+comment	2 replicates each

@@ -1,0 +1,5 @@
+cell line	U2OS cells
+modification	treated with 5 GY X-Ray irradiation
+effect	activating
+time	3 h
+comment	3 replicates each, part of timeseries, timerespective control, 5 different tissues

@@ -1,0 +1,5 @@
+cell line	HUVECs
+modification	treated with 50ng/ml VEGF
+effect	activating
+time	30 min
+comment	2 replicates

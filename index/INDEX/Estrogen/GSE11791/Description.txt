@@ -1,0 +1,5 @@
+cell line	MCF-7 cells
+modification	treated with 100 nM estradiol
+effect	activating
+time	6 h
+comment	3 replicates each

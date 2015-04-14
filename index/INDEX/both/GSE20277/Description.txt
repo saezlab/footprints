@@ -1,0 +1,5 @@
+cell line	HeLa cells
+modification	treated with EGF
+effect	activating
+time	0.66 h
+comment	3 replicates each

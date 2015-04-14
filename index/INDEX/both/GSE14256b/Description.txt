@@ -1,0 +1,4 @@
+cell line	Human foreskin fibroblasts (AG01518)
+modification	Treatment with bFGF (basic fibroblast growth factor)
+effect	activating
+time	1 h

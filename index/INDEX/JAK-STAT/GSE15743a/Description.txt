@@ -1,0 +1,5 @@
+cell line	primary NK cells
+modification	treated with 1 ng/ml IFNa-2b
+effect	activating
+time	6 h
+comment	1 replicate, 2 concentrations

@@ -1,0 +1,5 @@
+cell line	CUTLL1 cells
+modification	treated with washout of GSI inhibitor
+effect	activating
+time	4 h
+comment	3 replicates each, treatment after 3 days treatment with GSI, GSI= gamma secretase inhibitor

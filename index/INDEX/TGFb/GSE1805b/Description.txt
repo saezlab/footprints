@@ -1,0 +1,5 @@
+cell line	M091
+modification	treated with TGF-beta
+effect	activating
+time	4 h
+comment	2 replicates each, part of timeseries

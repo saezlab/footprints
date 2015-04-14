@@ -1,0 +1,5 @@
+cell line	PBMCs
+modification	treated with LPS
+effect	activating
+time	4 h
+comment	1 replicates each, 4 individuals

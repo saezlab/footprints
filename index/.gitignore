@@ -1,0 +1,12 @@
+*.txt
+*.pdf
+!set.dat
+!gsm_accession.dat
+!Description.txt
+zvalues.dat
+*.out
+[1234567890]+
+*.Rdata
+NA_completelist.txt
+speed.patch
+*.pickle

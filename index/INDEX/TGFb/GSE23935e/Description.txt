@@ -1,0 +1,5 @@
+cell line	primary glioblastoma
+modification	treated with LY2109761, TGF-beta receptor inhibitor
+effect	inhibiting
+time	3 h
+comment	1 replicate each

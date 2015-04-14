@@ -1,0 +1,5 @@
+cell line	BT-474 cells
+modification	treated with 10 nM estradiol
+effect	activating
+time	4 h
+comment	2 replicates each, different cell lines, part of timeseries

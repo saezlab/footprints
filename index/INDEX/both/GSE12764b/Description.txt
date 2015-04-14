@@ -1,0 +1,5 @@
+cell line	MCF10A cells
+modification	transfected with HRAS(G12V)
+effect	activating
+time	24 h
+comment	3 replicates each, probably activating PI3K and MAPKs

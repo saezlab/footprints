@@ -1,0 +1,5 @@
+cell line	HUVEC (human umbilical vein endothelial cells)
+modification	treatment with 100ng VEGF
+effect	activating
+time	2.5 h
+comment	timeseries (0.5, 1, 2.5, 6 h), 2 Chips HG-U133A and B

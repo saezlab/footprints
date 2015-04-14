@@ -1,0 +1,5 @@
+cell line	A549 cell line
+modification	treated with 500U Infergen (Interferon type 1)
+effect	activating
+time	6 h
+comment	4 replicates

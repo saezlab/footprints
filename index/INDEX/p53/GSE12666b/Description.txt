@@ -1,0 +1,5 @@
+cell line	MCF7 cells
+modification	treated with 10 µM BMH-9, p53 activator
+effect	activating
+time	6 h
+comment	4 replicates each, lead compounds - mechanism of action unknown

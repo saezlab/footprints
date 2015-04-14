@@ -1,0 +1,5 @@
+cell line	monocyte-derived dendritic cells
+modification	treated with LPS 1 µg/ml
+time	4 h
+effect	activating
+comment	immature cells

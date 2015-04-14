@@ -1,0 +1,5 @@
+cell line	skeletal muscle biopsies
+modification	patients treated with IL-6 infusion
+effect	activating
+time	3 h
+comment	3 donors

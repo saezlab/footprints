@@ -1,0 +1,5 @@
+cell line	HUVECs
+modification	treated with 25 µmol fenofibrate, a PPARa ligand
+effect	activating
+time	4 h
+comment	3 replicates each, timeseries

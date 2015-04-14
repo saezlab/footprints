@@ -1,0 +1,5 @@
+cell line	MDA-MB-231 metastatic breast cell line
+modification	treated with 5µg/ml TGF-beta
+effect	activating
+time	3 h
+comment	4 replicate each, transfected with shGFP

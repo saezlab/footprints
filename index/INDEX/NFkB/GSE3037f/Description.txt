@@ -1,0 +1,5 @@
+cell line	primary periphal blood neutrophils
+modification	treated with LPS
+effect	activating
+time	1 h
+comment	1 replicate each, 8 individuals

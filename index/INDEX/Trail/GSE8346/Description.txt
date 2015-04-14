@@ -1,0 +1,5 @@
+cell line	T4-2 breat epithelial cells
+modification	treated with 1 µg/ml TRAIL
+effect	activating
+time	4 h
+comment	4 replicates each, contain control vector, 3D culture

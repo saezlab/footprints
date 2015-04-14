@@ -1,0 +1,5 @@
+cell line	HELA (Human cervical carcinoma cell line)
+modification	EGF treatment after 24 h serum starvation (Control 0 h)
+effect	activating
+time	1 h
+comment	timeseries with 20, 40, 60, 120, 240, 480 min

@@ -1,0 +1,4 @@
+cell line	A431
+modification	PTEN hcRNA knockdown
+effect	activating
+time	not specified (until log Phase)

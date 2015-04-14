@@ -1,0 +1,5 @@
+cell line	HUVEC
+modification	treated with 100 U/ml human IL-1
+effect	activating
+time	2.5 h
+comment	timeseries 3 timepoints

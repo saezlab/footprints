@@ -1,0 +1,5 @@
+cell line	monocyte derived dendritic cells
+modification	treated with 50 µg/ml polyI:C
+effect	activating
+time	4 h
+comment	1 replicate each

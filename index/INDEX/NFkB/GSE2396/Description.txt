@@ -1,0 +1,5 @@
+cell line	human gammadelta T cells
+modification	treated with LPS
+effect	activating
+time	4 h
+comment	4 cell cultures pooled

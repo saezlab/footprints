@@ -1,0 +1,5 @@
+cell line	SGBS adipocytes
+modification	treated with 1% oxygen hypoxia
+effect	activating
+time	6 h
+comment	3 replicates each, part of timeseries

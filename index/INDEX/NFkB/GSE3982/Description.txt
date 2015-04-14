@@ -1,0 +1,5 @@
+cell line	macrophages derived from monocytes
+modification	treated with LPS
+effect	activating
+time	4 h
+comment	2 replicates each

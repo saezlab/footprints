@@ -1,0 +1,5 @@
+cell line	SKBR3 cells
+modification	treated with 1µM estradiol
+effect	activating
+time	1 h
+comment	3 replicates each, control transfection

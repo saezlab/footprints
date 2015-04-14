@@ -1,0 +1,5 @@
+cell line	HT1080 fibrosarcoma cells
+modification	treated with 50 ng/ml TRAIL
+effect	activating
+time	6 h
+comment	1 replicate each, control and treated cells were additionally treated with 1.5 µg/ml mafosfamide

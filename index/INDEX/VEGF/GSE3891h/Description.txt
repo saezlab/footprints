@@ -1,0 +1,5 @@
+cell line	HMVEC (Human microvascular endothelial cells)
+modification	VEGF treatment
+effect	activating
+time	4 h
+comment	timeseries 30 min, 1, 2, 4 h (same Experiments for 2 Chips HG-U133 A and B)

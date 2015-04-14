@@ -1,0 +1,4 @@
+cell line	A549 (Alveolar Epithelial Cells line)
+modification	treated with TNFa 20 ng/ml
+effect	activating
+time	4 h

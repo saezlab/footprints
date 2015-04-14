@@ -1,0 +1,5 @@
+cell line	activated cord blood CD4+ T cells
+modification	treated with IFNa
+effect	activating
+time	6 h
+comment	1 replicate, part of timeseries

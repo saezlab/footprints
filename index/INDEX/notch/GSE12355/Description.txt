@@ -1,0 +1,5 @@
+cell line	EREB2-5 B cell line
+modification	transfected with Notch1 intracellular domain
+effect	activating
+time	8 h
+comment	3 replicates each

@@ -1,0 +1,5 @@
+cell line	HUVECs
+modification	treated with 2ng/ml TNFa
+effect	activating
+time	5 h
+comment	4 replicates each

@@ -1,0 +1,5 @@
+cell line	SH-SY5Y (Neuroblastoma cells)
+modification	PDGF treatment with 60 min prior DMSO treatment
+effect	activating
+time	2 h
+comment	timeseries with 30, 60, 120, 240 min

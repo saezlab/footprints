@@ -1,0 +1,5 @@
+cell line	MCF-7 breast cancer cell line
+modification	treated with estradiol
+effect	activating
+time	3 h
+comment	2 replicates each, contain siControl RNA

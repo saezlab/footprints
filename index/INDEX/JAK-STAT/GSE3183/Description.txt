@@ -1,0 +1,5 @@
+cell line	A549 (Human bronchial cell line)
+modification	treated with IL-13
+effect	activating
+time	4 h
+comment	3 replicates each

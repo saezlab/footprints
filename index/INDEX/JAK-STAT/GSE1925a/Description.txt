@@ -1,0 +1,4 @@
+cell line	primary human CD14+ macrophages Pool1
+modification	treated with IFN-gamma
+effect	activating
+time	3 h

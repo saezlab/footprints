@@ -1,0 +1,5 @@
+cell line	HL60 leukemia cells
+modification	treated with 100nM retinoid acid
+effect	activating
+time	4 h
+comment	4 replicates each, contain control vector

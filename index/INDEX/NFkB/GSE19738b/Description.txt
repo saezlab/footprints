@@ -1,0 +1,5 @@
+cell line	whole blood cells
+modification	treated with LPS
+effect	activating
+time	5-6 h
+comment	1 replicate each, 34 individuals

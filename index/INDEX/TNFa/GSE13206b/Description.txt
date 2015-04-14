@@ -1,0 +1,5 @@
+cell line	HeLa cells
+modification	treated with 5 ng/ml TNFa
+effect	activating
+time	6 h
+comment	1 replicate each, part of timeseries, shControl transfected

@@ -1,0 +1,5 @@
+cell line	HUVECs
+modification	treated with 100 U/ml IL-3
+effect	activating
+time	4 h
+comment	1 replicate each, timeresolved control

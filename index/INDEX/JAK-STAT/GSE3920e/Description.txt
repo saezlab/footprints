@@ -1,0 +1,5 @@
+cell line	fibroblasts
+modification	treated with IFNg
+effect	activating
+time	5 h
+comment	2 replicates
