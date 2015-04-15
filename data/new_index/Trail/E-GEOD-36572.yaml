@@ -1,0 +1,12 @@
+---
+accession : E-GEOD-36572
+platform  : A-AFFY-44
+pathway   : Trail
+cells     : rhabdomyosacrcoma A-204, leiomyosarcoma SK-LMS-1, epithelioid sarcoma VA-ES-BJ
+treatment : 50 ng/ml TRAIL
+effect    : activating
+hours     : 6
+
+control   : [GSM897007 1, GSM897011 1, GSM897015 1]
+treatment : [GSM897010 1, GSM897014 1, GSM897018 1]
+...

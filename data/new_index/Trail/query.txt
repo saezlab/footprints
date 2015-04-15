@@ -1,0 +1,2 @@
+(rtrail OR trail* OR fas OR fasl) organism:sapiens samplecount:[4 TO 10000]
+raw:true exptype:"Transcription profiling" array:(A-AFFY-33 OR A-AFFY-44 OR A-AFFY-37 OR A-AFFY-141)

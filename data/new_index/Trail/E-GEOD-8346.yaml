@@ -1,0 +1,24 @@
+---
+accession : E-GEOD-8346
+platform  : A-AFFY-37
+pathway   : Trail
+cells     : T4-2 breast epithelial cells
+treatment : 1 ug/ml TRAIL
+effect    : activating
+hours     : 4
+
+control   : [GSE8346GSM206809, GSE8346GSM206827, GSE8346GSM206828, GSE8346GSM206829]
+treatment : [GSE8346GSM206834, GSE8346GSM206835, GSE8346GSM206836, GSE8346GSM206837]
+
+---
+accession : E-GEOD-8346
+platform  : A-AFFY-37
+pathway   : Trail
+cells     : T4-2 breast epithelial cells expressing N-CoR2
+treatment : 1 ug/ml TRAIL
+effect    : activating
+hours     : 4
+
+control   : [GSE8346GSM206830, GSE8346GSM206831, GSE8346GSM206832, GSE8346GSM206833]
+treatment : [GSE8346GSM206838, GSE8346GSM206839, GSE8346GSM206840, GSE8346GSM206841]
+...
