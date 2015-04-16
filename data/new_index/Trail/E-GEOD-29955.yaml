@@ -7,6 +7,15 @@ treatment : 10 ng/ml TRAIL
 effect    : activating
 hours     : 6
 
-control   : [GSM741281 1, GSM741282 1, GSM741283 1, GSM741287 1, GSM741288 1, GSM741289 1]
-treatment : [GSM741290 1, GSM741291 1, GSM741292 1]
+control   :
+    - GSM741281 1
+    - GSM741282 1
+    - GSM741283 1
+    - GSM741287 1
+    - GSM741288 1
+    - GSM741289 1
+treatment :
+    - GSM741290 1
+    - GSM741291 1
+    - GSM741292 1
 ...

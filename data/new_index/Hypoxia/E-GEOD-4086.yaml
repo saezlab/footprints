@@ -7,6 +7,10 @@ treatment : 0.1% oxygen
 effect    : activating
 hours     : 29
 
-control   : [GSE4086GSM93568, GSE4086GSM93568]
-treatment : [GSE4086GSM93566, GSE4086GSM93567]
+control   :
+    - GSE4086GSM93568
+    - GSE4086GSM93568
+treatment :
+    - GSE4086GSM93566
+    - GSE4086GSM93567
 ...

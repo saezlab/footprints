@@ -7,6 +7,10 @@ treatment : 1% oxygen
 effect    : activating
 hours     : 24
 
-control   : [IGR_HeuN_normoxia_noRNAi, IGR_HeuN_normoxia_noRNAi]
-treatment : [IGR_HeuN_hypoxia_noRNAi, IGR_HeuN_hypoxia_noRNAi]
+control   :
+    - IGR_HeuN_normoxia_noRNAi
+    - IGR_HeuN_normoxia_noRNAi
+treatment :
+    - IGR_HeuN_hypoxia_noRNAi
+    - IGR_HeuN_hypoxia_noRNAi
 ...
