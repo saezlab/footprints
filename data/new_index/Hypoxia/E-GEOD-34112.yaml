@@ -1,0 +1,20 @@
+---
+accession : E-GEOD-34112
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : PC-3 prostate cancer cells
+treatment : 0.2% Oxygen
+effect    : activating
+hours     : 48
+
+control   :
+    - GSM842048 1 # no treatment
+    - GSM842049 1
+    - GSM842050 1 # DMSO
+    - GSM842051 1
+treatment :
+    - GSM842056 1 # no treatment
+    - GSM842057 1
+    - GSM842042 1 # DMSO
+    - GSM842043 1
+...

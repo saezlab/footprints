@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-58049
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : HCCT116 cell line
+treatment : no Oxygen
+effect    : activating
+hours     : 48
+
+control   :
+    - GSM1400088 1
+    - GSM1400092 1
+    - GSM1400096 1
+treatment :
+    - GSM1400089 1
+    - GSM1400093 1
+    - GSM1400094 1
+...

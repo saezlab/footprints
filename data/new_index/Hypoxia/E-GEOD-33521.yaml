@@ -1,0 +1,16 @@
+---
+accession : E-GEOD-33521
+platform  : A-AGIL-28
+pathway   : Hypoxia
+cells     : HeLa cells
+treatment : 1% Oxygen
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM829385 1
+    - GSM829386 1
+treatment :
+    - GSM829387 1
+    - GSM829388 1
+...

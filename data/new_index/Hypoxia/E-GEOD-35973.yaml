@@ -1,0 +1,32 @@
+---
+accession : E-GEOD-35973
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : Kras mutant colon cancer cells
+treatment : 1% Oxygen
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM878208 1
+    - GSM878209 1
+treatment :
+    - GSM878207 1
+    - GSM878206 1
+
+---
+accession : E-GEOD-35973
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : Kras WT colon cancer cells
+treatment : 1% Oxygen
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM878212 1
+    - GSM878213 1
+treatment :
+    - GSM878210 1
+    - GSM878211 1
+...

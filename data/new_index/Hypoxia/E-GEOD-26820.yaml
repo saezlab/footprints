@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-26820
+platform  : A-AFFY-33
+pathway   : Hypoxia
+cells     : GFAP-negative LC cells
+treatment : 1% Oxygen
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM659595 1
+    - GSM659596 1
+    - GSM659597 1
+treatment :
+    - GSM659592 1
+    - GSM659593 1
+    - GSM659594 1
+...

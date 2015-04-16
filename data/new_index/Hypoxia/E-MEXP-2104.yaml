@@ -1,0 +1,25 @@
+---
+accession : E-MEXP-2104
+platform  : A-AGIL-28
+pathway   : Hypoxia
+cells     : human monocytes and monocyte-derived macrophages (with CSF-1)
+treatment : 1% oxygen
+effect    : activating
+hours     : 24
+
+control   :
+    - D10N_720
+    - D1N_A
+    - D10N_B
+    - D10N_810
+    - D10N_A
+treatment :
+    - D1H_810
+    - D1H_A
+    - D10H_A
+    - D10H_720
+    - D10H_B
+    - D1H_B
+    - D10H_810
+    - d1H_720
+...

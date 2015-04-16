@@ -1,0 +1,12 @@
+---
+accession : E-GEOD-9510
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : human embryonic stem cells
+treatment : 4% oxygen
+effect    : actiating
+hours     : 168
+
+control   : [GSE9510GSM241164, GSE9510GSM241166, GSE9510GSM241168]
+treatment : [GSE9510GSM241163, GSE9510GSM241165, GSE9510GSM241167]
+...

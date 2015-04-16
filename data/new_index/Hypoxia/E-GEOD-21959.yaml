@@ -1,0 +1,60 @@
+---
+accession : E-GEOD-21959
+platform  : A-AGIL-28
+pathway   : Hypoxia
+cells     : HSF (healthy synovial fibroblasts)
+treatment : 0.5% Oxygen
+effect    : activating
+hours     : 22
+
+control   :
+    - GSM546087 1
+    - GSM546089 1
+    - GSM546091 1
+    - GSM546098 1
+    - GSM546100 1
+    - GSM546103 1
+    - GSM546105 1
+    - GSM546118 1
+    - GSM546121 1
+treatment :
+    - GSM546086 1
+    - GSM546088 1
+    - GSM546090 1
+    - GSM546099 1
+    - GSM546101 1
+    - GSM546102 1
+    - GSM546104 1
+    - GSM546119 1
+    - GSM546120 1
+
+---
+accession : E-GEOD-21959
+platform  : A-AGIL-28
+pathway   : Hypoxia
+cells     : RASF (rheumatoid arthritis synovial fibroblasts)
+treatment : 0.5% Oxygen
+effect    : activating
+hours     : 22
+
+control   :
+    - GSM546093 1
+    - GSM546095 1
+    - GSM546097 1
+    - GSM546107 1
+    - GSM546109 1
+    - GSM546110 1
+    - GSM546112 1
+    - GSM546114 1
+    - GSM546116 1
+treatment :
+    - GSM546092 1
+    - GSM546094 1
+    - GSM546096 1
+    - GSM546106 1
+    - GSM546108 1
+    - GSM546111 1
+    - GSM546113 1
+    - GSM546115 1
+    - GSM546117 1
+...

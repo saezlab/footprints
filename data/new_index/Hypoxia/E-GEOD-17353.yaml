@@ -1,0 +1,36 @@
+---
+accession : E-GEOD-17353
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : normal human esophageal epithelial cells
+treatment : 1% Oxygen
+effect    : activating
+hours     : 24
+
+control   :
+    - GSE17353GSM433796
+    - GSE17353GSM433797
+    - GSE17353GSM433800
+    - GSE17353GSM433801
+treatment :
+    - GSE17353GSM433798
+    - GSE17353GSM433799
+
+---
+accession : E-GEOD-17353
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : normal human esophageal epithelial cells
+treatment : 0.2% Oxygen
+effect    : activating
+hours     : 24
+
+control   :
+    - GSE17353GSM433796
+    - GSE17353GSM433797
+    - GSE17353GSM433800
+    - GSE17353GSM433801
+treatment :
+    - GSE17353GSM433802
+    - GSE17353GSM433803
+...

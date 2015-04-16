@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-55875
+platform  : A-GEOD-14552
+pathway   : Hypoxia
+cells     : Human bone marrow mesenchymal stem cells
+treatment : 0.5% Oxygen
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1347857 1
+    - GSM1347858 1
+    - GSM1347859 1
+treatment :
+    - GSM1347854 1
+    - GSM1347855 1
+    - GSM1347856 1
+...

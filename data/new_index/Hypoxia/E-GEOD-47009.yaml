@@ -1,0 +1,30 @@
+---
+accession : E-GEOD-47009
+platform  : A-GEOD-16686
+pathway   : Hypoxia
+cells     : MCF-7
+treatment : hypoxia
+effect    : activating
+hours     : 90
+
+control   :
+    - GSM1142893 1
+    - GSM1142895 1
+treatment :
+    - GSM1142894 1
+
+---
+accession : E-GEOD-47009
+platform  : A-GEOD-16686
+pathway   : Hypoxia
+cells     : MCF-7
+treatment : anoxia
+effect    : activating
+hours     : 90
+
+control   :
+    - GSM1142893 1
+    - GSM1142895 1
+treatment :
+    - GSM1142892 1
+...

@@ -1,0 +1,36 @@
+---
+accession : E-GEOD-41999
+platform  : A-GEOD-16239
+pathway   : Hypoxia
+cells     : CD4+CD25- T cells
+treatment : 2% Oxygen
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM1030358 1
+    - GSM1030359 1
+    - GSM1030360 1
+treatment :
+    - GSM1030364 1
+    - GSM1030365 1
+    - GSM1030366 1
+
+---
+accession : E-GEOD-41999
+platform  : A-GEOD-16239
+pathway   : Hypoxia
+cells     : CD4+CD25high T cells
+treatment : 2% Oxygen
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM1030361 1
+    - GSM1030362 1
+    - GSM1030363 1
+treatment :
+    - GSM1030367 1
+    - GSM1030368 1
+    - GSM1030369 1
+...

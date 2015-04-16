@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-48134
+platform  : A-AFFY-141
+pathway   : Hypoxia
+cells     : A549
+treatment : GasPak EZ pouch
+effect    : activating
+hours     : 42
+
+control   :
+    - GSM1169207 1
+    - GSM1169208 1
+    - GSM1169209 1
+treatment :
+    - GSM1169210 1
+    - GSM1169211 1
+    - GSM1169212 1
+...

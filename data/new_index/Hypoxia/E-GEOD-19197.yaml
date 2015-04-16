@@ -1,0 +1,48 @@
+---
+accession : E-GEOD-19197
+platform  : A-AFFY-37
+pathway   : Hypoxia
+cells     : adherent SKNMC Ewing's sarcoma cell lines
+treatment : 1-1.5% Oxygen
+effect    : activating
+hours     : 24
+
+control   :
+    - GSE19197GSM475944
+    - GSE19197GSM475948
+treatment :
+    - GSE19197GSM475946
+    - GSE19197GSM475950
+
+---
+accession : E-GEOD-19197
+platform  : A-AFFY-37
+pathway   : Hypoxia
+cells     : adherent TC252 Ewing's sarcoma cell lines
+treatment : 1-1.5% Oxygen
+effect    : activating
+hours     : 24
+
+control   :
+    - GSE19197GSM475945
+    - GSE19197GSM475949
+treatment :
+    - GSE19197GSM475947
+    - GSE19197GSM475951
+
+---
+accession : E-GEOD-19197
+platform  : A-AFFY-37
+pathway   : Hypoxia
+cells     : spheroid SKNMC and TC252 Ewing's sarcoma cell lines
+treatment : 1-1.5% Oxygen
+effect    : activating
+hours     : 24
+
+control   :
+    - GSE19197GSM475952
+    - GSE19197GSM475954
+treatment :
+    - GSE19197GSM475953
+    - GSE19197GSM475955
+...

@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-22282
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : mature dentritic cells
+treatment : 1% Oxygen
+effect    : activating
+hours     : 96
+
+control   :
+    - GSM554397 1
+    - GSM554398 1
+    - GSM554399 1
+treatment :
+    - GSM554394 1
+    - GSM554395 1
+    - GSM554396 1
+...

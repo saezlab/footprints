@@ -1,0 +1,32 @@
+---
+accession : E-GEOD-65168
+platform  : A-AFFY-141
+pathway   : Hypoxia
+cells     : renal cell carcinoma 786-O cell line
+treatment : hypoxia
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1588481 1
+    - GSM1588485 1
+treatment :
+    - GSM1588482 1
+    - GSM1588486 1
+
+---
+accession : E-GEOD-65168
+platform  : A-AFFY-141
+pathway   : Hypoxia
+cells     : renal cell carcinoma 786-O cell line with VHL overexpression
+treatment : hypoxia
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1588483 1
+    - GSM1588487 1
+treatment :
+    - GSM1588484 1
+    - GSM1588488 1
+...

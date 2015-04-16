@@ -1,0 +1,24 @@
+---
+accession : E-GEOD-9649
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : Human Mammalian Epithelial Cells (HMEC)
+treatment : 2% oxygen
+effect    : activating
+hours     : 24
+
+control   :
+    - GSE9649GSM243730
+    - GSE9649GSM243731
+    - GSE9649GSM243732
+treatment :
+    - GSE9649GSM243736
+    - GSE9649GSM243737
+    - GSE9649GSM243738
+    - GSE9649GSM243742
+    - GSE9649GSM243743
+    - GSE9649GSM243744
+    - GSE9649GSM243745
+    - GSE9649GSM243746
+    - GSE9649GSM243747
+...

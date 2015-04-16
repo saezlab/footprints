@@ -1,0 +1,54 @@
+---
+accession : E-GEOD-35819
+platform  : A-GEOD-10200
+pathway   : Hypoxia
+cells     : hESC
+treatment : 4% Oxygen
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM875714 1
+    - GSM875720 1
+    - GSM875726 1
+treatment :
+    - GSM875713 1
+    - GSM875719 1
+    - GSM875725 1
+
+---
+accession : E-GEOD-35819
+platform  : A-GEOD-10200
+pathway   : Hypoxia
+cells     : hESC
+treatment : 4% Oxygen
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM875710 1
+    - GSM875716 1
+    - GSM875722 1
+treatment :
+    - GSM875715 1
+    - GSM875721 1
+    - GSM875727 1
+
+---
+accession : E-GEOD-35819
+platform  : A-GEOD-10200
+pathway   : Hypoxia
+cells     : hESC
+treatment : 4% Oxygen
+effect    : activating
+hours     : 168
+
+control   :
+    - GSM875712 1
+    - GSM875718 1
+    - GSM875724 1
+treatment :
+    - GSM875711 1
+    - GSM875717 1
+    - GSM875723 1
+...

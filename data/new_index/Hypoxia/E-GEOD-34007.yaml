@@ -1,0 +1,20 @@
+---
+accession : E-GEOD-34007
+platform  : A-AGIL-28
+pathway   : Hypoxia
+cells     : human adipocytes
+treatment : 1% Oxygen
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM840338 1
+    - GSM840339 1
+    - GSM840340 1
+    - GSM840341 1
+treatment :
+    - GSM840342 1
+    - GSM840343 1
+    - GSM840344 1
+    - GSM840345 1
+...

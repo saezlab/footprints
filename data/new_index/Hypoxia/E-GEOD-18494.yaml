@@ -1,0 +1,108 @@
+---
+accession : E-GEOD-18494
+platform  : A-GEOD-9419
+pathway   : Hypoxia
+cells     : HepG2 hepatoma cell line
+treatment : 0.5% Oxygen
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM460669 1
+    - GSM460670 1
+    - GSM460671 1
+treatment :
+    - GSM460672 1
+    - GSM460673 1
+    - GSM460674 1
+
+---
+accession : E-GEOD-18494
+platform  : A-GEOD-9419
+pathway   : Hypoxia
+cells     : HepG2 hepatoma cell line
+treatment : 0.5% Oxygen
+effect    : activating
+hours     : 8
+
+control   :
+    - GSM460669 1
+    - GSM460670 1
+    - GSM460671 1
+treatment :
+    - GSM460675 1
+    - GSM460676 1
+    - GSM460677 1
+
+---
+accession : E-GEOD-18494
+platform  : A-GEOD-9419
+pathway   : Hypoxia
+cells     : HepG2 hepatoma cell line
+treatment : 0.5% Oxygen
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM460669 1
+    - GSM460670 1
+    - GSM460671 1
+treatment :
+    - GSM460678 1
+    - GSM460679 1
+    - GSM460680 1
+
+---
+accession : E-GEOD-18494
+platform  : A-GEOD-9419
+pathway   : Hypoxia
+cells     : U87 glioma cell line
+treatment : 0.5% Oxygen
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM460681 1
+    - GSM460682 1
+    - GSM460683 1
+treatment :
+    - GSM460684 1
+    - GSM460685 1
+    - GSM460686 1
+
+---
+accession : E-GEOD-18494
+platform  : A-GEOD-9419
+pathway   : Hypoxia
+cells     : U87 glioma cell line
+treatment : 0.5% Oxygen
+effect    : activating
+hours     : 8
+
+control   :
+    - GSM460681 1
+    - GSM460682 1
+    - GSM460683 1
+treatment :
+    - GSM460687 1
+    - GSM460688 1
+    - GSM460689 1
+
+---
+accession : E-GEOD-18494
+platform  : A-GEOD-9419
+pathway   : Hypoxia
+cells     : U87 glioma cell line
+treatment : 0.5% Oxygen
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM460687 1
+    - GSM460688 1
+    - GSM460689 1
+treatment :
+    - GSM460690 1
+    - GSM460691 1
+    - GSM460692 1
+...

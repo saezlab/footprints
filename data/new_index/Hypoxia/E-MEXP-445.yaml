@@ -1,0 +1,42 @@
+---
+accession : E-MEX-445
+platform  : A-AFFY-33
+pathway   : Hypoxia
+cells     : blood monocytes
+treatment : 1% oxygen
+effect    : activating
+hours     : 3
+
+control   :
+    - Homo sapiens
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181856
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181858
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181862
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181864
+    - mono control_6
+    - mono control_7
+    - mono control_8
+    - mono control_9
+    - mono control_10
+    - mono control_11
+    - mono control_12
+    - mono control_13
+    - mono control_14
+    - mono control_15
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181857
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181859
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181861
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181863
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181865
+    - mono hypo_6
+    - mono hypo_7
+    - mono hypo_8
+    - mono hypo_9
+    - mono hypo_10
+    - mono hypo_11
+    - mono hypo_12
+    - mono hypo_13
+    - mono hypo_14
+    - mono hypo_15
+...

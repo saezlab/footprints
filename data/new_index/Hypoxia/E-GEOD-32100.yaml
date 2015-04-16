@@ -1,0 +1,58 @@
+---
+accession : E-GEOD-32100
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : U87 (glioblastoma)
+treatment : 0.3% Oxygen
+effect    : activating
+hours     : 52
+
+control   :
+    - GSM795820 1
+    - GSM795821 1
+    - GSM795822 1
+treatment :
+    - GSM795824 1
+    - GSM795825 1
+    - GSM795827 1
+
+---
+accession : E-GEOD-32100
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : Glioblastoma primary serum-free culture
+treatment : 0.3% Oxygen (vs. 3%)
+effect    : activating
+hours     : 52
+
+control   :
+    - GSM795828 1
+    - GSM795829 1
+    - GSM795831 1
+    - GSM795832 1
+treatment :
+    - GSM795834 1
+    - GSM795835 1
+    - GSM795837 1
+    - GSM795838 1
+    - GSM795839 1
+
+---
+accession : E-GEOD-32100
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : Glioblastoma primary culture (with serum)
+treatment : 0.3% Oxygen (vs. 3%)
+effect    : activating
+hours     : 52
+
+control   :
+    - GSM795841 1
+    - GSM795842 1
+    - GSM795843 1
+treatment :
+    - GSM795845 1
+    - GSM795847 1
+    - GSM795848 1
+    - GSM795849 1
+...

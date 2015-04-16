@@ -1,0 +1,32 @@
+---
+accession : E-GEOD-25452
+platform  : A-AFFY-143
+pathway   : Hypoxia
+cells     : HEK-293 cells MSCV-transfected
+treatment : 1% Oxygen
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM624690 1
+    - GSM624691 1
+treatment :
+    - GSM624694 1
+    - GSM624695 1
+
+---
+accession : E-GEOD-25452
+platform  : A-AFFY-143
+pathway   : Hypoxia
+cells     : HEK-293 cells Hace1-transfected
+treatment : 1% Oxygen
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM624692 1
+    - GSM624693 1
+treatment :
+    - GSM624696 1
+    - GSM624697 1
+...

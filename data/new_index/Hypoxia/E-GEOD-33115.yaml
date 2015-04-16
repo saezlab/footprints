@@ -1,0 +1,35 @@
+---
+accession : E-GEOD-33115
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : HUVEC cells
+treatment : hypoxia
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM820143 1
+    - GSM820144 1
+treatment :
+    - GSM820138 1
+    - GSM820139 1
+
+---
+accession : E-GEOD-33115
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : HUVEC cells
+treatment : hypoxia in melanoma-conditioned medium
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM820145 1
+    - GSM820146 1
+    - GSM820147 1
+    - GSM820148 1
+treatment :
+    - GSM820140 1
+    - GSM820141 1
+    - GSM820142 1
+...

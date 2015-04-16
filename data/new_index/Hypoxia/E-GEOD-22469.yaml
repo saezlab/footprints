@@ -1,0 +1,48 @@
+---
+accession : E-GEOD-22469
+platform  : A-AFFY-37
+pathway   : Hypoxia
+cells     : Rhabdomyosarcoma cells (SJRH30)
+treatment : 1% Oxygen
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM558109 1
+    - GSM558110 1
+treatment :
+    - GSM558111 1
+    - GSM558112 1
+
+---
+accession : E-GEOD-22469
+platform  : A-AFFY-37
+pathway   : Hypoxia
+cells     : Rhabdomyosarcoma cells (SJRH30)
+treatment : 1% Oxygen
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM558109 1
+    - GSM558110 1
+treatment :
+    - GSM558113 1
+    - GSM558114 1
+
+---
+accession : E-GEOD-22469
+platform  : A-AFFY-37
+pathway   : Hypoxia
+cells     : Rhabdomyosarcoma cells (SJRH30)
+treatment : 1% Oxygen
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM558109 1
+    - GSM558110 1
+treatment :
+    - GSM558115 1
+    - GSM558116 1
+...

@@ -1,0 +1,30 @@
+---
+accession : E-GEOD-15583
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : 9 human neuroblastoma cell linesa
+treatment : 1% Oxygen
+effect    : activating
+hours     : 18
+
+control   :
+    - GSE15583GSM389811
+    - GSE15583GSM389813
+    - GSE15583GSM389815
+    - GSE15583GSM389817
+    - GSE15583GSM389819
+    - GSE15583GSM389822
+    - GSE15583GSM389824
+    - GSE15583GSM389827
+    - GSE15583GSM389829
+treatment :
+    - GSE15583GSM389810
+    - GSE15583GSM389812
+    - GSE15583GSM389814
+    - GSE15583GSM389816
+    - GSE15583GSM389818
+    - GSE15583GSM389820
+    - GSE15583GSM389823
+    - GSE15583GSM389825
+    - GSE15583GSM389828
+...

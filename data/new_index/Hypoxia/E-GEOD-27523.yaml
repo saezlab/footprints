@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-27523
+platform  : A-AFFY-143
+pathway   : Hypoxia
+cells     : LN229 glioblastoma cells, non-targeting siRNA
+treatment : 0.5-1% Oxygen
+effect    : activating
+hours     : 16
+
+control   :
+    - GSM679844 1
+    - GSM679845 1
+    - GSM679846 1
+treatment :
+    - GSM679835 1
+    - GSM679836 1
+    - GSM679837 1
+...

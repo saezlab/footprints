@@ -1,0 +1,22 @@
+---
+accession : E-GEOD-19123
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : MCF-7
+treatment : 1% Oxygen
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM474352 1
+    - GSM474353 1
+    - GSM474354 1
+    - GSM474355 1
+    - GSM474356 1
+treatment :
+    - GSM474367 1
+    - GSM474368 1
+    - GSM474369 1
+    - GSM474370 1
+    - GSM474371 1
+...

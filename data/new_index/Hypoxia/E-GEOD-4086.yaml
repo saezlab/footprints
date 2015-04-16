@@ -1,0 +1,12 @@
+---
+accession : E-GEOD-4086
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : P493-6, Burkitt's Lymphoma cell line
+treatment : 0.1% oxygen
+effect    : activating
+hours     : 29
+
+control   : [GSE4086GSM93568, GSE4086GSM93568]
+treatment : [GSE4086GSM93566, GSE4086GSM93567]
+...

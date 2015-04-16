@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-52315
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : MM1S cells
+treatment : hypoxia
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1262782 1
+    - GSM1262784 1
+    - GSM1262785 1
+treatment :
+    - GSM1262783 1
+    - GSM1262786 1
+    - GSM1262787 1
+...

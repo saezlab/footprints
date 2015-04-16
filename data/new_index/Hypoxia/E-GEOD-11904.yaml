@@ -1,0 +1,33 @@
+---
+accession : E-GEOD-11904
+platform  : A-AFFY-37
+pathway   : Hypoxia
+cells     : primary human renal clear cell carcinoma
+treatment : HIF status +/-
+effect    : activating
+hours     : 0 
+
+control   :
+    - GSM300838 1
+    - GSM300852 1
+    - GSM300853 1
+    - GSM300856 1
+    - GSM300857 1
+treatment : 
+    - GSM300839 1
+    - GSM300840 1
+    - GSM300841 1
+    - GSM300842 1
+    - GSM300843 1
+    - GSM300844 1
+    - GSM300845 1
+    - GSM300846 1
+    - GSM300847 1
+    - GSM300848 1
+    - GSM300849 1
+    - GSM300850 1
+    - GSM300851 1
+    - GSM300854 1
+    - GSM300855 1
+    - GSM300858 1
+...

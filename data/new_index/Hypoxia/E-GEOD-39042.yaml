@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-39042
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : MDA-MB-231
+treatment : 1% Oxygen
+effect    : activating
+hours     : 16
+
+control   :
+    - GSM954535 1
+    - GSM954541 1
+    - GSM954547 1
+treatment :
+    - GSM954536 1
+    - GSM954542 1
+    - GSM954548 1
+...

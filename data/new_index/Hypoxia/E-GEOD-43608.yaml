@@ -1,0 +1,16 @@
+---
+accession : E-GEOD-43608
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : HCT116 colon cancer cells, serum starved
+treatment : 1% Oxygen
+effect    : activating
+hours     : 72
+
+control   :
+    - GSM1066170 1
+    - GSM1066172 1
+treatment :
+    - GSM1066171 1
+    - GSM1066173 1
+...

@@ -1,0 +1,54 @@
+---
+accession : E-GEOD-53012
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : PC-3 prostate cancer cells
+treatment : 1% Oxygen
+effect    : activating
+hours     : 72
+
+control   :
+    - GSM1280335 1
+    - GSM1280336 1
+    - GSM1280337 1
+treatment :
+    - GSM1280332 1
+    - GSM1280333 1
+    - GSM1280334 1
+
+---
+accession : E-GEOD-53012
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : SK-OV-3 ovarian cancer cells
+treatment : 1% Oxygen
+effect    : activating
+hours     : 72
+
+control   :
+    - GSM1280344 1
+    - GSM1280345 1
+    - GSM1280346 1
+treatment :
+    - GSM1280341 1
+    - GSM1280342 1
+    - GSM1280343 1
+
+---
+accession : E-GEOD-53012
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : WM793B melanoma cells
+treatment : 1% Oxygen
+effect    : activating
+hours     : 72
+
+control   :
+    - GSM1280353 1
+    - GSM1280354 1
+    - GSM1280355 1
+treatment :
+    - GSM1280350 1
+    - GSM1280351 1
+    - GSM1280352 1
+...

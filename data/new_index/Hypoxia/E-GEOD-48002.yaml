@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-48002
+platform  : A-AFFY-141
+pathway   : Hypoxia
+cells     : HeLa cells
+treatment : DFO
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1164873 1
+    - GSM1164874 1
+    - GSM1164875 1
+treatment :
+    - GSM1164876 1
+    - GSM1164877 1
+    - GSM1164878 1
+...

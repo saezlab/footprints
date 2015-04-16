@@ -1,0 +1,54 @@
+---
+accession : E-GEOD-28603
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : human SGBS mature adipocytes
+treatment : 1% Oxygen
+effect    : activating
+hours     : 3
+
+control   :
+    - GSM707909 1
+    - GSM707913 1
+    - GSM707917 1
+treatment :
+    - GSM707910 1
+    - GSM707914 1
+    - GSM707918 1
+
+---
+accession : E-GEOD-28603
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : human SGBS mature adipocytes
+treatment : 1% Oxygen
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM707909 1
+    - GSM707913 1
+    - GSM707917 1
+treatment :
+    - GSM707911 1
+    - GSM707915 1
+    - GSM707919 1
+
+---
+accession : E-GEOD-28603
+platform  : A-AFFY-44
+pathway   : Hypoxia
+cells     : human SGBS mature adipocytes
+treatment : 1% Oxygen
+effect    : activating
+hours     : 16
+
+control   :
+    - GSM707909 1
+    - GSM707913 1
+    - GSM707917 1
+treatment :
+    - GSM707912 1
+    - GSM707916 1
+    - GSM707920 1
+...

@@ -1,0 +1,36 @@
+---
+accession : E-GEOD-29406
+platform  : A-AFFY-37
+pathway   : Hypoxia
+cells     : MCF-7 cells
+treatment : 1% Oxygen
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM727267 1
+    - GSM727268 1
+    - GSM727269 1
+treatment :
+    - GSM727273 1
+    - GSM727274 1
+    - GSM727275 1
+
+---
+accession : E-GEOD-29406
+platform  : A-AFFY-37
+pathway   : Hypoxia
+cells     : MCF-7 cells in 10 mM lactic acid
+treatment : 1% Oxygen
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM727270 1
+    - GSM727271 1
+    - GSM727272 1
+treatment :
+    - GSM727276 1
+    - GSM727277 1
+    - GSM727278 1
+...
