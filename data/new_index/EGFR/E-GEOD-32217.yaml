@@ -1,0 +1,40 @@
+---
+accession : E-GEOD-32217
+platform  : A-AFFY-141
+pathway   : EGFR
+cells     : neonatal foreskin primary keratinocytes (NHEKs) at 50% confluency
+treatment : EGF
+effect    : activating
+hours     : 48
+
+control   :
+    - GSM798302 1
+    - GSM798303 1
+    - GSM798304 1
+    - GSM798305 1
+treatment :
+    - GSM798306 1
+    - GSM798307 1
+    - GSM798308 1
+    - GSM798309 1
+
+---
+accession : E-GEOD-32217
+platform  : A-AFFY-141
+pathway   : EGFR
+cells     : neonatal foreskin primary keratinocytes (NHEKs) at 100% confluency
+treatment : EGF
+effect    : activating
+hours     : 48
+
+control   :
+    - GSM798310 1
+    - GSM798311 1
+    - GSM798312 1
+    - GSM798313 1
+treatment :
+    - GSM798314 1
+    - GSM798315 1
+    - GSM798316 1
+    - GSM798317 1
+...

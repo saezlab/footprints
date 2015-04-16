@@ -1,0 +1,48 @@
+---
+accession : E-GEOD-16659
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : DU145
+treatment : 25 ng/ml HGF
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM417834 1
+    - GSM417836 1
+    - GSM417838 1
+treatment :
+    - GSM417835 1
+
+---
+accession : E-GEOD-16659
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : DU145
+treatment : 25 ng/ml HGF
+effect    : activating
+hours     : 8
+
+control   :
+    - GSM417834 1
+    - GSM417836 1
+    - GSM417838 1
+treatment :
+    - GSM417837 1
+
+---
+accession : E-GEOD-16659
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : DU145
+treatment : 25 ng/ml HGF
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM417834 1
+    - GSM417836 1
+    - GSM417838 1
+treatment :
+    - GSM417838 1
+...

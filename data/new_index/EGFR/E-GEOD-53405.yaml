@@ -1,0 +1,46 @@
+---
+accession : E-GEOD-53405
+platform  : A-AFFY-143
+pathway   : EGFR
+cells     : MCF10A
+treatment : 10 ng/ml EGF
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM1290926 1
+    - GSM1290927 1
+treatment :
+    - GSM1290932 1
+    - GSM1290933 1
+
+---
+accession : E-GEOD-53405
+platform  : A-AFFY-143
+pathway   : EGFR
+cells     : MCF10A
+treatment : 10 ng/ml EGF
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM1290926 1
+    - GSM1290927 1
+treatment :
+    - GSM1290934 1
+
+---
+accession : E-GEOD-53405
+platform  : A-AFFY-143
+pathway   : EGFR
+cells     : MCF10A
+treatment : 10 ng/ml EGF
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM1290926 1
+    - GSM1290927 1
+treatment :
+    - GSM1290935 1
+...

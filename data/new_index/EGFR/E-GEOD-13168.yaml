@@ -1,0 +1,20 @@
+---
+accession : E-GEOD-13168
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : human airway smooth muscle cells
+treatment : EGF
+effect    : activating
+hours     : 8
+
+control   :
+    - GSE13168GSM332913
+    - GSE13168GSM332914
+    - GSE13168GSM332915
+    - GSE13168GSM332916
+treatment :
+    - GSE13168GSM332921
+    - GSE13168GSM332922
+    - GSE13168GSM332923
+    - GSE13168GSM332924
+...

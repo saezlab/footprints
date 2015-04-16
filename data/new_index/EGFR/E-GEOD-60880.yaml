@@ -1,0 +1,95 @@
+---
+accession : E-GEOD-60880
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : Human Lung Fibroblasts
+treatment : EGF
+effect    : activating
+hours     : 0.5
+
+control   :
+    - GSM1492784 1
+    - GSM1492790 1
+    - GSM1492818 1
+    - GSM1492830 1
+    - GSM1492838 1
+    - GSM1492855 1
+treatment :
+    - GSM1492802 1
+    - GSM1492803 1
+    - GSM1492819 1
+    - GSM1492820 1
+    - GSM1492839 1
+    - GSM1492840 1
+
+---
+accession : E-GEOD-60880
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : Human Lung Fibroblasts
+treatment : EGF
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM1492785 1
+    - GSM1492793 1
+    - GSM1492821 1
+    - GSM1492831 1
+    - GSM1492841 1
+    - GSM1492858 1
+treatment :
+    - GSM1492804 1
+    - GSM1492805 1
+    - GSM1492822 1
+    - GSM1492823 1
+    - GSM1492842 1
+    - GSM1492843 1
+
+---
+accession : E-GEOD-60880
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : Human Lung Fibroblasts
+treatment : EGF
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM1492786 1
+    - GSM1492796 1
+    - GSM1492824 1
+    - GSM1492832 1
+    - GSM1492844 1
+    - GSM1492861 1
+treatment :
+    - GSM1492806 1
+    - GSM1492807 1
+    - GSM1492825 1
+    - GSM1492826 1
+    - GSM1492845 1
+    - GSM1492846 1
+
+---
+accession : E-GEOD-60880
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : Human Lung Fibroblasts
+treatment : EGF
+effect    : activating
+hours     : 8
+
+control   :
+    - GSM1492799 1
+    - GSM1492827 1
+    - GSM1492833 1
+    - GSM1492847 1
+    - GSM1492864 1
+treatment :
+    - GSM1492808 1
+    - GSM1492809 1
+    - GSM1492828 1
+    - GSM1492829 1
+    - GSM1492848 1
+    - GSM1492849 1
+...

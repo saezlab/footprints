@@ -1,0 +1,225 @@
+---
+accession : E-GEOD-6462
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : MCF-7
+treatment : 0.1 nM epidermal growth factor
+effect    : activating
+hours     : 1
+
+control   :
+    - GSE6462GSM148516
+    - GSE6462GSM148517
+treatment :
+    - GSE6462GSM148523
+
+---
+accession : E-GEOD-6462
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : MCF-7
+treatment : 0.1 nM epidermal growth factor
+effect    : activating
+hours     : 1.5
+
+control   :
+    - GSE6462GSM148516
+    - GSE6462GSM148517
+treatment :
+    - GSE6462GSM148524
+
+---
+accession : E-GEOD-6462
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : MCF-7
+treatment : 0.5 nM epidermal growth factor
+effect    : activating
+hours     : 1
+
+control   :
+    - GSE6462GSM148516
+    - GSE6462GSM148517
+treatment :
+    - GSE6462GSM148530
+
+---
+accession : E-GEOD-6462
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : MCF-7
+treatment : 0.5 nM epidermal growth factor
+effect    : activating
+hours     : 1.5
+
+control   :
+    - GSE6462GSM148516
+    - GSE6462GSM148517
+treatment :
+    - GSE6462GSM148531
+
+---
+accession : E-GEOD-6462
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : MCF-7
+treatment : 1 nM epidermal growth factor
+effect    : activating
+hours     : 1
+
+control   :
+    - GSE6462GSM148516
+    - GSE6462GSM148517
+treatment :
+    - GSE6462GSM148537
+
+---
+accession : E-GEOD-6462
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : MCF-7
+treatment : 1 nM epidermal growth factor
+effect    : activating
+hours     : 1.5
+
+control   :
+    - GSE6462GSM148516
+    - GSE6462GSM148517
+treatment :
+    - GSE6462GSM148538
+
+---
+accession : E-GEOD-6462
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : MCF-7
+treatment : 10 nM epidermal growth factor
+effect    : activating
+hours     : 1.5
+
+control   :
+    - GSE6462GSM148516
+    - GSE6462GSM148517
+treatment :
+    - GSE6462GSM148544
+
+---
+accession : E-GEOD-6462
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : MCF-7
+treatment : 0.1 nM heregulin
+effect    : activating
+hours     : 1
+
+control   :
+    - GSE6462GSM148516
+    - GSE6462GSM148517
+treatment :
+    - GSE6462GSM148550
+
+---
+accession : E-GEOD-6462
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : MCF-7
+treatment : 0.1 nM heregulin
+effect    : activating
+hours     : 1.5
+
+control   :
+    - GSE6462GSM148516
+    - GSE6462GSM148517
+treatment :
+    - GSE6462GSM148551
+
+---
+accession : E-GEOD-6462
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : MCF-7
+treatment : 0.5 nM heregulin
+effect    : activating
+hours     : 1
+
+control   :
+    - GSE6462GSM148516
+    - GSE6462GSM148517
+treatment :
+    - GSE6462GSM148557
+
+---
+accession : E-GEOD-6462
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : MCF-7
+treatment : 0.5 nM heregulin
+effect    : activating
+hours     : 1.5
+
+control   :
+    - GSE6462GSM148516
+    - GSE6462GSM148517
+treatment :
+    - GSE6462GSM148558
+
+---
+accession : E-GEOD-6462
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : MCF-7
+treatment : 1 nM heregulin
+effect    : activating
+hours     : 1
+
+control   :
+    - GSE6462GSM148516
+    - GSE6462GSM148517
+treatment :
+    - GSE6462GSM148564
+
+---
+accession : E-GEOD-6462
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : MCF-7
+treatment : 1 nM heregulin
+effect    : activating
+hours     : 1.5
+
+control   :
+    - GSE6462GSM148516
+    - GSE6462GSM148517
+treatment :
+    - GSE6462GSM148565
+
+---
+accession : E-GEOD-6462
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : MCF-7
+treatment : 10 nM heregulin
+effect    : activating
+hours     : 1
+
+control   :
+    - GSE6462GSM148516
+    - GSE6462GSM148517
+treatment :
+    - GSE6462GSM148571
+
+---
+accession : E-GEOD-6462
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : MCF-7
+treatment : 10 nM heregulin
+effect    : activating
+hours     : 1.5
+
+control   :
+    - GSE6462GSM148516
+    - GSE6462GSM148517
+treatment :
+    - GSE6462GSM148572
+...

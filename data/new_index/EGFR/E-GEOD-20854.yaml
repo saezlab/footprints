@@ -1,0 +1,64 @@
+---
+accession : E-GEOD-20854
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : Hec50co type II endometrial adenocarcinoma cell line
+treatment : EGF
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM521595 1
+    - GSM521596 1
+treatment :
+    - GSM521597 1
+    - GSM521598 1
+
+---
+accession : E-GEOD-20854
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : Hec50co type II endometrial adenocarcinoma cell line
+treatment : EGF
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM521601 1
+    - GSM521602 1
+treatment :
+    - GSM521603 1
+    - GSM521604 1
+
+---
+accession : E-GEOD-20854
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : Ishikawa H type I endometrial adenocarcinoma cell line
+treatment : EGF
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM521607 1
+    - GSM521608 1
+treatment :
+    - GSM521609 1
+    - GSM521610 1
+
+---
+accession : E-GEOD-20854
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : Ishikawa H type I endometrial adenocarcinoma cell line
+treatment : EGF
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM521613 1
+    - GSM521614 1
+treatment :
+    - GSM521615 1
+    - GSM521616 1
+...

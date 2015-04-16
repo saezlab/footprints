@@ -1,0 +1,1 @@
+(egf* OR "growth factor" OR TGF*α OR epiregulin OR heregulin OR neuregulin OR epigen OR betacellulin OR amphiregulin) organism:sapiens samplecount:[4 TO 10000] raw:true exptype:"Transcription profiling"

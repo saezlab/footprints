@@ -1,0 +1,180 @@
+---
+accession : E-TABM-440
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : human keratinocytes
+treatment : FGF stimulation
+effect    : activating
+hours     : 1
+
+control   :
+    - 1. Kontrolle \#01 0h
+    - 1. Kontrolle \#02 0h
+treatment :
+    - FGF-7 1h
+
+---
+accession : E-TABM-440
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : human keratinocytes
+treatment : FGF stimulation
+effect    : activating
+hours     : 2
+
+control   :
+    - 1. Kontrolle \#01 0h
+    - 1. Kontrolle \#02 0h
+treatment :
+    - FGF-7 2h
+
+---
+accession : E-TABM-440
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : human keratinocytes
+treatment : FGF stimulation
+effect    : activating
+hours     : 3
+
+control   :
+    - 1. Kontrolle \#01 0h
+    - 1. Kontrolle \#02 0h
+treatment :
+    - FGF-7 3h
+
+---
+accession : E-TABM-440
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : human keratinocytes
+treatment : FGF stimulation
+effect    : activating
+hours     : 4
+
+control   :
+    - 1. Kontrolle \#01 0h
+    - 1. Kontrolle \#02 0h
+treatment :
+    - FGF-7 4h
+
+---
+accession : E-TABM-440
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : human keratinocytes
+treatment : FGF stimulation
+effect    : activating
+hours     : 6
+
+control   :
+    - 1. Kontrolle \#01 0h
+    - 1. Kontrolle \#02 0h
+treatment :
+    - FGF-7 6h
+
+---
+accession : E-TABM-440
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : human keratinocytes
+treatment : FGF stimulation
+effect    : activating
+hours     : 8
+
+control   :
+    - 1. Kontrolle \#01 0h
+    - 1. Kontrolle \#02 0h
+treatment :
+    - FGF-7 8h
+
+---
+accession : E-TABM-440
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : human keratinocytes
+treatment : HGF stimulation
+effect    : activating
+hours     : 1
+
+control   :
+    - 1. Kontrolle \#01 0h
+    - 1. Kontrolle \#02 0h
+treatment :
+    - HGF 1h
+
+---
+accession : E-TABM-440
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : human keratinocytes
+treatment : HGF stimulation
+effect    : activating
+hours     : 2
+
+control   :
+    - 1. Kontrolle \#01 0h
+    - 1. Kontrolle \#02 0h
+treatment :
+    - HGF 2h
+
+---
+accession : E-TABM-440
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : human keratinocytes
+treatment : HGF stimulation
+effect    : activating
+hours     : 3
+
+control   :
+    - 1. Kontrolle \#01 0h
+    - 1. Kontrolle \#02 0h
+treatment :
+    - HGF 3h
+
+---
+accession : E-TABM-440
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : human keratinocytes
+treatment : HGF stimulation
+effect    : activating
+hours     : 4
+
+control   :
+    - 1. Kontrolle \#01 0h
+    - 1. Kontrolle \#02 0h
+treatment :
+    - HGF 4h
+
+---
+accession : E-TABM-440
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : human keratinocytes
+treatment : HGF stimulation
+effect    : activating
+hours     : 6
+
+control   :
+    - 1. Kontrolle \#01 0h
+    - 1. Kontrolle \#02 0h
+treatment :
+    - HGF 6h
+
+---
+accession : E-TABM-440
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : human keratinocytes
+treatment : HGF stimulation
+effect    : activating
+hours     : 8
+
+control   :
+    - 1. Kontrolle \#01 0h
+    - 1. Kontrolle \#02 0h
+treatment :
+    - HGF 8h
+...

@@ -1,0 +1,48 @@
+---
+accession : E-GEOD-26732
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : MDA-MB-435 melanoma cells
+treatment : hepatocyte growth factor
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM658100 1
+    - GSM658101 1
+treatment :
+    - GSM658104 1
+    - GSM658105 1
+
+---
+accession : E-GEOD-26732
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : MDA-MB-435 melanoma cells
+treatment : hepatocyte growth factor
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM658100 1
+    - GSM658101 1
+treatment :
+    - GSM658106 1
+    - GSM658107 1
+
+---
+accession : E-GEOD-26732
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : MDA-MB-435 melanoma cells
+treatment : hepatocyte growth factor
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM658100 1
+    - GSM658101 1
+treatment :
+    - GSM658108 1
+    - GSM658109 1
+...

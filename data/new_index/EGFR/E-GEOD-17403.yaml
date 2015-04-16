@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-17403
+platform  : RNA-seq
+pathway   : EGFR
+cells     : HeLa
+treatment : serum + EGF
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM442016 1
+    - GSM442017 1
+    - GSM442018 1
+treatment :
+    - GSM442019 1
+    - GSM442020 1
+    - GSM442021 1
+...

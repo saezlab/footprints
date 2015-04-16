@@ -1,0 +1,63 @@
+---
+accession : E-GEOD-21618
+platform  : A-GEOD-10371
+pathway   : EGFR
+cells     : tamoxifen-resistant MCF-7
+treatment : HRG
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM539602 1
+    - GSM539603 1
+    - GSM539604 1
+    - GSM539605 1
+    - GSM539606 1
+    - GSM539607 1
+    - GSM539608 1
+    - GSM539609 1
+treatment :
+    - GSM539624 1
+
+---
+accession : E-GEOD-21618
+platform  : A-GEOD-10371
+pathway   : EGFR
+cells     : tamoxifen-resistant MCF-7
+treatment : HRG
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM539602 1
+    - GSM539603 1
+    - GSM539604 1
+    - GSM539605 1
+    - GSM539606 1
+    - GSM539607 1
+    - GSM539608 1
+    - GSM539609 1
+treatment :
+    - GSM539625 1
+
+---
+accession : E-GEOD-21618
+platform  : A-GEOD-10371
+pathway   : EGFR
+cells     : tamoxifen-resistant MCF-7
+treatment : HRG
+effect    : activating
+hours     : 3
+
+control   :
+    - GSM539602 1
+    - GSM539603 1
+    - GSM539604 1
+    - GSM539605 1
+    - GSM539606 1
+    - GSM539607 1
+    - GSM539608 1
+    - GSM539609 1
+treatment :
+    - GSM539626 1
+...

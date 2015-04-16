@@ -1,0 +1,48 @@
+---
+accession : E-GEOD-59765
+platform  : RNA-seq
+pathway   : EGFR
+cells     : MCF10A non-tumorigenic immortalized breast epithelia line
+treatment : EGFR transfection
+effect    : activating
+hours     : 18
+
+control   :
+    - GSM1446195 1
+    - GSM1446199 1
+    - GSM1446203 1
+    - GSM1446207 1
+    - GSM1446214 1
+    - GSM1446215 1
+treatment :
+    - GSM1446197 1
+    - GSM1446201 1
+    - GSM1446205 1
+    - GSM1446209 1
+    - GSM1446211 1
+    - GSM1446217 1
+
+---
+accession : E-GEOD-59765
+platform  : RNA-seq
+pathway   : EGFR
+cells     : MCF10A non-tumorigenic immortalized breast epithelia line
+treatment : EGFR+MEK transfection
+effect    : activating
+hours     : 18
+
+control   :
+    - GSM1446195 1
+    - GSM1446199 1
+    - GSM1446203 1
+    - GSM1446207 1
+    - GSM1446214 1
+    - GSM1446215 1
+treatment :
+    - GSM1446198 1
+    - GSM1446202 1
+    - GSM1446206 1
+    - GSM1446210 1
+    - GSM1446212 1
+    - GSM1446218 1
+...

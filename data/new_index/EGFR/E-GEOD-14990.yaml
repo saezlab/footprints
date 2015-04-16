@@ -1,0 +1,36 @@
+---
+accession : E-GEOD-14987
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : MCF10A
+treatment : 50 ng/ml EGF
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM374141 1
+    - GSM374142 1
+    - GSM374143 1
+treatment :
+    - GSM374147 1
+    - GSM374148 1
+    - GSM374149 1
+
+---
+accession : E-GEOD-14987
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : MCF10A
+treatment : ERBB2 overexpression
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM374141 1
+    - GSM374142 1
+    - GSM374143 1
+treatment :
+    - GSM374144 1
+    - GSM374145 1
+    - GSM374146 1
+...

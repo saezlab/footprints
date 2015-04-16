@@ -1,0 +1,16 @@
+---
+accession : E-GEOD-34652
+platform  : A-AFFY-141
+pathway   : EGFR
+cells     : squamous cell carcinoma (SCC) cells
+treatment : KGF
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM852780 1
+    - GSM852782 1
+treatment :
+    - GSM852779 1
+    - GSM852781 1
+...

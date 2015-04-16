@@ -1,0 +1,22 @@
+---
+accession : E-GEOD-55823
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : hTERT-immortalized normal human keratinocytes, clone 1
+treatment : 10 ng/ml TGF alpha
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1346514 1
+    - GSM1346515 1
+    - GSM1346516 1
+    - GSM1346517 1
+    - GSM1346518 1
+treatment :
+    - GSM1346509 1
+    - GSM1346510 1
+    - GSM1346511 1
+    - GSM1346512 1
+    - GSM1346513 1
+...

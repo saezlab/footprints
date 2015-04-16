@@ -1,0 +1,105 @@
+---
+accession : E-GEOD-61364
+platform  : A-AFFY-76
+pathway   : EGFR
+cells     : MDA-MB-231
+treatment : EGF
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM1503020 1
+    - GSM1503052 1
+    - GSM1503084 1
+treatment :
+    - GSM1503021 1
+    - GSM1503053 1
+    - GSM1503085 1
+
+---
+accession : E-GEOD-61364
+platform  : A-AFFY-76
+pathway   : EGFR
+cells     : MDA-MB-231
+treatment : EGF
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM1503024 1
+    - GSM1503056 1
+    - GSM1503088 1
+treatment :
+    - GSM1503025 1
+    - GSM1503057 1
+    - GSM1503089 1
+
+---
+accession : E-GEOD-61364
+platform  : A-AFFY-76
+pathway   : EGFR
+cells     : MDA-MB-231
+treatment : EGF
+effect    : activating
+hours     : 8
+
+control   :
+    - GSM1503028 1
+    - GSM1503060 1
+    - GSM1503092 1
+treatment :
+    - GSM1503029 1
+    - GSM1503061 1
+    - GSM1503093 1
+
+---
+accession : E-GEOD-61364
+platform  : A-AFFY-76
+pathway   : EGFR
+cells     : MDA-MB-231
+treatment : EGF
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM1503033 1
+    - GSM1503065 1
+    - GSM1503097 1
+treatment :
+
+---
+accession : E-GEOD-61364
+platform  : A-AFFY-76
+pathway   : EGFR
+cells     : MDA-MB-231
+treatment : EGF
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1503036 1
+    - GSM1503068 1
+    - GSM1503100 1
+treatment :
+    - GSM1503037 1
+    - GSM1503069 1
+    - GSM1503101 1
+
+---
+accession : E-GEOD-61364
+platform  : A-AFFY-76
+pathway   : EGFR
+cells     : MDA-MB-231
+treatment : EGF
+effect    : activating
+hours     : 48
+
+control   :
+    - GSM1503040 1
+    - GSM1503072 1
+    - GSM1503104 1
+treatment :
+    - GSM1503041 1
+    - GSM1503073 1
+    - GSM1503105 1
+...

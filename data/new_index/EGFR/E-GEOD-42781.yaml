@@ -1,0 +1,36 @@
+---
+accession : E-GEOD-42781
+platform  : A-AFFY-141
+pathway   : EGFR
+cells     : human epithelial cells MCF10A
+treatment : parental vs WT HER2
+effect    : inhibiting
+hours     : 16
+
+control   :
+    - GSM1049835 1
+    - GSM1049836 1
+    - GSM1049837 1
+treatment :
+    - GSM1049838 1
+    - GSM1049839 1
+    - GSM1049840 1
+
+---
+accession : E-GEOD-42781
+platform  : A-AFFY-141
+pathway   : EGFR
+cells     : human epithelial cells MCF10A
+treatment : parental vs more active variant HER2
+effect    : activating
+hours     : 16
+
+control   :
+    - GSM1049835 1
+    - GSM1049836 1
+    - GSM1049837 1
+treatment :
+    - GSM1049841 1
+    - GSM1049842 1
+    - GSM1049843 1
+...

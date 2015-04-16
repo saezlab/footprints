@@ -1,0 +1,32 @@
+---
+accession : E-GEOD-33442
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : U87MG glioma cell line
+treatment : 20 ng/mL EGF
+effect    : activating
+hours     : 3
+
+control   :
+    - GSM827008 1
+    - GSM827010 1
+treatment :
+    - GSM827009 1
+    - GSM827011 1
+
+---
+accession : E-GEOD-33442
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : U178MG glioma cell line
+treatment : 20 ng/mL EGF
+effect    : activating
+hours     : 3
+
+control   :
+    - GSM827012 1
+    - GSM827014 1
+treatment :
+    - GSM827013 1
+    - GSM827015 1
+...

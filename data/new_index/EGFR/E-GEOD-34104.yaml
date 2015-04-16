@@ -1,0 +1,16 @@
+---
+accession : E-GEOD-34104
+platform  : A-AFFY-143
+pathway   : EGFR
+cells     : HEK293 kidney cell line
+treatment : EGF (50 ng/mL)
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM841867 1
+    - GSM841871 1
+treatment :
+    - GSM841868 1
+    - GSM841872 1
+...

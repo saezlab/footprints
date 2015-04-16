@@ -1,0 +1,108 @@
+---
+accession : E-GEOD-15668
+platform  : A-GEOD-8445
+pathway   : EGFR
+cells     : Human Mammary Epithelial Cells
+treatment : EGF
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM392159 1
+    - GSM392160 1
+    - GSM392161 1
+treatment :
+    - GSM392162 1
+    - GSM392163 1
+    - GSM392164 1
+
+---
+accession : E-GEOD-15668
+platform  : A-GEOD-8445
+pathway   : EGFR
+cells     : Human Mammary Epithelial Cells
+treatment : EGF
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM392159 1
+    - GSM392160 1
+    - GSM392161 1
+treatment :
+    - GSM392165 1
+    - GSM392166 1
+    - GSM392167 1
+
+---
+accession : E-GEOD-15668
+platform  : A-GEOD-8445
+pathway   : EGFR
+cells     : Human Mammary Epithelial Cells
+treatment : EGF
+effect    : activating
+hours     : 8
+
+control   :
+    - GSM392159 1
+    - GSM392160 1
+    - GSM392161 1
+treatment :
+    - GSM392168 1
+    - GSM392169 1
+    - GSM392170 1
+
+---
+accession : E-GEOD-15668
+platform  : A-GEOD-8445
+pathway   : EGFR
+cells     : Human Mammary Epithelial Cells
+treatment : EGF
+effect    : activating
+hours     : 13
+
+control   :
+    - GSM392159 1
+    - GSM392160 1
+    - GSM392161 1
+treatment :
+    - GSM392171 1
+    - GSM392172 1
+    - GSM392173 1
+
+---
+accession : E-GEOD-15668
+platform  : A-GEOD-8445
+pathway   : EGFR
+cells     : Human Mammary Epithelial Cells
+treatment : EGF
+effect    : activating
+hours     : 18
+
+control   :
+    - GSM392159 1
+    - GSM392160 1
+    - GSM392161 1
+treatment :
+    - GSM392174 1
+    - GSM392175 1
+    - GSM392176 1
+
+---
+accession : E-GEOD-15668
+platform  : A-GEOD-8445
+pathway   : EGFR
+cells     : Human Mammary Epithelial Cells
+treatment : EGF
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM392159 1
+    - GSM392160 1
+    - GSM392161 1
+treatment :
+    - GSM392177 1
+    - GSM392178 1
+    - GSM392179 1
+...

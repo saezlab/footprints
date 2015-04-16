@@ -1,0 +1,16 @@
+---
+accession : E-MEXP-256
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : human lymphatic endothelial cells
+treatment : 30 ng/ml hepatocyte Growth Factor (HGF)
+effect    : activating
+hours     : 6
+
+control   :
+    - Homo sapiens__S:BioSource:MEXP:175020
+    - Homo sapiens__S:BioSource:MEXP:175021
+treatment :
+    - Homo sapiens__S:BioSource:MEXP:174976
+    - Homo sapiens
+...
