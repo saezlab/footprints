@@ -1,0 +1,22 @@
+---
+accession : E-GEOD-14934
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : HEK-HT cells
+treatment : Ras (G12V,Y40C) activation mutants
+effect    : activating
+hours     : 24 # estimate
+
+control   :
+    - GSM373089 1
+    - GSM373094 1
+    - GSM373099 1
+    - GSM373104 1
+    - GSM373109 1
+treatment :
+    - GSM373093 1
+    - GSM373098 1
+    - GSM373103 1
+    - GSM373108 1
+    - GSM373113 1
+...
