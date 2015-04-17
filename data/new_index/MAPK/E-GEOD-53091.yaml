@@ -1,0 +1,240 @@
+---
+accession : E-GEOD-53091
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : SW480 colorectal cell line, replicate 1
+treatment : MAP2K1 knockdown
+effect    : inhibiting
+hours     : 24 # estimate
+
+control   :
+    - GSM1282212 1
+    - GSM1282214 1
+    - GSM1282216 1
+    - GSM1282218 1
+    - GSM1282220 1
+    - GSM1282222 1
+treatment :
+    - GSM1282242 1
+    - GSM1282244 1
+    - GSM1282246 1
+    - GSM1282248 1
+    - GSM1282250 1
+    - GSM1282252 1
+
+---
+accession : E-GEOD-53091
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : SW480 colorectal cell line, replicate 2
+treatment : MAP2K1 knockdown
+effect    : inhibiting
+hours     : 24 # estimate
+
+control   :
+    - GSM1282212 1
+    - GSM1282214 1
+    - GSM1282216 1
+    - GSM1282218 1
+    - GSM1282220 1
+    - GSM1282222 1
+treatment :
+    - GSM1282254 1
+    - GSM1282256 1
+    - GSM1282258 1
+    - GSM1282260 1
+    - GSM1282262 1
+    - GSM1282264 1
+
+---
+accession : E-GEOD-53091
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : SW480 colorectal cell line
+treatment : MAPK1 knockdown
+effect    : inhibiting
+hours     : 24 # estimate
+
+control   :
+    - GSM1282212 1
+    - GSM1282214 1
+    - GSM1282216 1
+    - GSM1282218 1
+    - GSM1282220 1
+    - GSM1282222 1
+treatment :
+    - GSM1282266 1
+    - GSM1282268 1
+    - GSM1282270 1
+    - GSM1282272 1
+    - GSM1282274 1
+    - GSM1282276 1
+
+---
+accession : E-GEOD-53091
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : SW480 colorectal cell line
+treatment : MAPK3 knockdown
+effect    : inhibiting
+hours     : 24 # estimate
+
+control   :
+    - GSM1282212 1
+    - GSM1282214 1
+    - GSM1282216 1
+    - GSM1282218 1
+    - GSM1282220 1
+    - GSM1282222 1
+treatment :
+    - GSM1282278 1
+    - GSM1282280 1
+    - GSM1282282 1
+    - GSM1282284 1
+    - GSM1282286 1
+    - GSM1282288 1
+
+---
+accession : E-GEOD-53091
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : SW480 colorectal cell line
+treatment : RAF1 knockdown
+effect    : inhibiting
+hours     : 24 # estimate
+
+control   :
+    - GSM1282212 1
+    - GSM1282214 1
+    - GSM1282216 1
+    - GSM1282218 1
+    - GSM1282220 1
+    - GSM1282222 1
+treatment :
+    - GSM1282303 1
+    - GSM1282306 1
+    - GSM1282308 1
+    - GSM1282310 1
+    - GSM1282312 1
+    - GSM1282314 1
+
+---
+accession : E-GEOD-53091
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : SW620 colorectal cell line, replicate 1
+treatment : MAP2K1 knockdown
+effect    : inhibiting
+hours     : 24 # estimate
+
+control   :
+    - GSM1282213 1
+    - GSM1282215 1
+    - GSM1282217 1
+    - GSM1282219 1
+    - GSM1282221 1
+    - GSM1282223 1
+treatment :
+    - GSM1282243 1
+    - GSM1282245 1
+    - GSM1282247 1
+    - GSM1282249 1
+    - GSM1282251 1
+    - GSM1282253 1
+
+---
+accession : E-GEOD-53091
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : SW620 colorectal cell line, replicate 2
+treatment : MAP2K1 knockdown
+effect    : inhibiting
+hours     : 24 # estimate
+
+control   :
+    - GSM1282213 1
+    - GSM1282215 1
+    - GSM1282217 1
+    - GSM1282219 1
+    - GSM1282221 1
+    - GSM1282223 1
+treatment :
+    - GSM1282255 1
+    - GSM1282257 1
+    - GSM1282259 1
+    - GSM1282261 1
+    - GSM1282263 1
+    - GSM1282265 1
+
+---
+accession : E-GEOD-53091
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : SW620 colorectal cell line
+treatment : MAPK1 knockdown
+effect    : inhibiting
+hours     : 24 # estimate
+
+control   :
+    - GSM1282213 1
+    - GSM1282215 1
+    - GSM1282217 1
+    - GSM1282219 1
+    - GSM1282221 1
+    - GSM1282223 1
+treatment :
+    - GSM1282267 1
+    - GSM1282269 1
+    - GSM1282271 1
+    - GSM1282273 1
+    - GSM1282275 1
+    - GSM1282277 1
+
+---
+accession : E-GEOD-53091
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : SW620 colorectal cell line
+treatment : MAPK3 knockdown
+effect    : inhibiting
+hours     : 24 # estimate
+
+control   :
+    - GSM1282213 1
+    - GSM1282215 1
+    - GSM1282217 1
+    - GSM1282219 1
+    - GSM1282221 1
+    - GSM1282223 1
+treatment :
+    - GSM1282279 1
+    - GSM1282281 1
+    - GSM1282283 1
+    - GSM1282285 1
+    - GSM1282287 1
+    - GSM1282289 1
+
+---
+accession : E-GEOD-53091
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : SW620 colorectal cell line
+treatment : RAF1 knockdown
+effect    : inhibiting
+hours     : 24 # estimate
+
+control   :
+    - GSM1282213 1
+    - GSM1282215 1
+    - GSM1282217 1
+    - GSM1282219 1
+    - GSM1282221 1
+    - GSM1282223 1
+treatment :
+    - GSM1282305 1
+    - GSM1282307 1
+    - GSM1282309 1
+    - GSM1282311 1
+    - GSM1282313 1
+    - GSM1282315 1
+...

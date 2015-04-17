@@ -1,0 +1,228 @@
+---
+accession : E-GEOD-61364
+platform  : A-AFFY-76
+pathway   : MAPK
+cells     : MDA-MB-231 cells in 2D culture
+treatment : U0126
+effect    : inhibiting
+hours     : 1
+
+control   :
+    - GSM1503020 1
+    - GSM1503052 1
+treatment :
+    - GSM1503023 1
+    - GSM1503055 1
+
+---
+accession : E-GEOD-61364
+platform  : A-AFFY-76
+pathway   : MAPK
+cells     : MDA-MB-231 cells in 2D culture
+treatment : U0126
+effect    : inhibiting
+hours     : 4
+
+control   :
+    - GSM1503024 1
+    - GSM1503056 1
+treatment :
+    - GSM1503027 1
+    - GSM1503059 1
+
+---
+accession : E-GEOD-61364
+platform  : A-AFFY-76
+pathway   : MAPK
+cells     : MDA-MB-231 cells in 2D culture
+treatment : U0126
+effect    : inhibiting
+hours     : 8
+
+control   :
+    - GSM1503028 1
+    - GSM1503060 1
+treatment :
+    - GSM1503031 1
+    - GSM1503063 1
+
+---
+accession : E-GEOD-61364
+platform  : A-AFFY-76
+pathway   : MAPK
+cells     : MDA-MB-231 cells in 2D culture
+treatment : U0126
+effect    : inhibiting
+hours     : 12
+
+control   :
+    - GSM1503032 1
+    - GSM1503064 1
+treatment :
+    - GSM1503035 1
+    - GSM1503067 1
+
+---
+accession : E-GEOD-61364
+platform  : A-AFFY-76
+pathway   : MAPK
+cells     : MDA-MB-231 cells in 2D culture
+treatment : U0126
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1503036 1
+    - GSM1503068 1
+treatment :
+    - GSM1503039 1
+    - GSM1503071 1
+
+---
+accession : E-GEOD-61364
+platform  : A-AFFY-76
+pathway   : MAPK
+cells     : MDA-MB-231 cells in 2D culture
+treatment : U0126
+effect    : inhibiting
+hours     : 48
+
+control   :
+    - GSM1503040 1
+    - GSM1503072 1
+treatment :
+    - GSM1503043 1
+    - GSM1503075 1
+
+---
+accession : E-GEOD-61364
+platform  : A-AFFY-76
+pathway   : MAPK
+cells     : MDA-MB-231 cells in 3D culture
+treatment : U0126
+effect    : inhibiting
+hours     : 1
+
+control   :
+    - GSM1503076 1 # 0 h
+    - GSM1503077 1 # 0 
+    - GSM1503080 1 # 0.5
+    - GSM1503084 1 # 1
+    - GSM1503088 1 # 4
+    - GSM1503092 1 # 8
+    - GSM1503096 1 # 12
+    - GSM1503100 1 # 24
+    - GSM1503104 1 # 48
+treatment :
+    - GSM1503087 1
+
+---
+accession : E-GEOD-61364
+platform  : A-AFFY-76
+pathway   : MAPK
+cells     : MDA-MB-231 cells in 3D culture
+treatment : U0126
+effect    : inhibiting
+hours     : 4
+
+control   :
+    - GSM1503076 1 # 0 h
+    - GSM1503077 1 # 0 
+    - GSM1503080 1 # 0.5
+    - GSM1503084 1 # 1
+    - GSM1503088 1 # 4
+    - GSM1503092 1 # 8
+    - GSM1503096 1 # 12
+    - GSM1503100 1 # 24
+    - GSM1503104 1 # 48
+treatment :
+    - GSM1503091 1
+
+---
+accession : E-GEOD-61364
+platform  : A-AFFY-76
+pathway   : MAPK
+cells     : MDA-MB-231 cells in 3D culture
+treatment : U0126
+effect    : inhibiting
+hours     : 8
+
+control   :
+    - GSM1503076 1 # 0 h
+    - GSM1503077 1 # 0 
+    - GSM1503080 1 # 0.5
+    - GSM1503084 1 # 1
+    - GSM1503088 1 # 4
+    - GSM1503092 1 # 8
+    - GSM1503096 1 # 12
+    - GSM1503100 1 # 24
+    - GSM1503104 1 # 48
+treatment :
+    - GSM1503095 1
+
+---
+accession : E-GEOD-61364
+platform  : A-AFFY-76
+pathway   : MAPK
+cells     : MDA-MB-231 cells in 3D culture
+treatment : U0126
+effect    : inhibiting
+hours     : 12
+
+control   :
+    - GSM1503076 1 # 0 h
+    - GSM1503077 1 # 0 
+    - GSM1503080 1 # 0.5
+    - GSM1503084 1 # 1
+    - GSM1503088 1 # 4
+    - GSM1503092 1 # 8
+    - GSM1503096 1 # 12
+    - GSM1503100 1 # 24
+    - GSM1503104 1 # 48
+treatment :
+    - GSM1503099 1
+
+---
+accession : E-GEOD-61364
+platform  : A-AFFY-76
+pathway   : MAPK
+cells     : MDA-MB-231 cells in 3D culture
+treatment : U0126
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1503076 1 # 0 h
+    - GSM1503077 1 # 0 
+    - GSM1503080 1 # 0.5
+    - GSM1503084 1 # 1
+    - GSM1503088 1 # 4
+    - GSM1503092 1 # 8
+    - GSM1503096 1 # 12
+    - GSM1503100 1 # 24
+    - GSM1503104 1 # 48
+treatment :
+    - GSM1503103 1
+
+---
+accession : E-GEOD-61364
+platform  : A-AFFY-76
+pathway   : MAPK
+cells     : MDA-MB-231 cells in 3D culture
+treatment : U0126
+effect    : inhibiting
+hours     : 48
+
+control   :
+    - GSM1503076 1 # 0 h
+    - GSM1503077 1 # 0 
+    - GSM1503080 1 # 0.5
+    - GSM1503084 1 # 1
+    - GSM1503088 1 # 4
+    - GSM1503092 1 # 8
+    - GSM1503096 1 # 12
+    - GSM1503100 1 # 24
+    - GSM1503104 1 # 48
+treatment :
+    - GSM1503107 1
+...

@@ -1,0 +1,105 @@
+---
+accession : E-GEOD-35230
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : A375 Melanoma cell line
+treatment : 10 nM GSK1120212
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM864257 1
+    - GSM864258 1
+    - GSM864294 1
+treatment :
+    - GSM864263 1
+    - GSM864264 1
+    - GSM864265 1
+
+---
+accession : E-GEOD-35230
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : A375 Melanoma cell line
+treatment : 30 nM GSK1120212
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM864257 1
+    - GSM864258 1
+    - GSM864294 1
+treatment :
+    - GSM864266 1
+    - GSM864267 1
+
+---
+accession : E-GEOD-35230
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : A375 Melanoma cell line
+treatment : 0.1 uM GSK2118436
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM864257 1
+    - GSM864258 1
+    - GSM864294 1
+treatment :
+    - GSM864259 1
+    - GSM864260 1
+
+---
+accession : E-GEOD-35230
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : A375 Melanoma cell line
+treatment : 1 uM GSK2118436
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM864257 1
+    - GSM864258 1
+    - GSM864294 1
+treatment :
+    - GSM864261 1
+    - GSM864262 1
+
+---
+accession : E-GEOD-35230
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : A375 Melanoma cell line
+treatment : 10 nM GSK1120212 + 0.1 uM GSK2118436
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM864257 1
+    - GSM864258 1
+    - GSM864294 1
+treatment :
+    - GSM864268 1
+    - GSM864269 1
+    - GSM864270 1
+
+---
+accession : E-GEOD-35230
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : A375 Melanoma cell line
+treatment : 10 nM GSK1120212 + 1 uM GSK2118436
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM864257 1
+    - GSM864258 1
+    - GSM864294 1
+treatment :
+    - GSM864271 1
+    - GSM864272 1
+    - GSM864273 1
+...

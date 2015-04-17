@@ -1,0 +1,15 @@
+---
+accession : E-GEOD-29884
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : MCF-7 cells xenografted in nude mice
+treatment : RAF1 overexpression, 1st generation
+effect    : activating
+hours     : 24 # estimated
+
+control   :
+    - GSM740092 1
+    - GSM740093 1
+treatment :
+    - GSM740096 1
+...

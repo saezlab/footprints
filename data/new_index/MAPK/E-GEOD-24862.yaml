@@ -1,0 +1,48 @@
+---
+accession : E-GEOD-24862
+platform  : A-AFFY-141
+pathway   : MAPK
+cells     : M229 melanoma cell lines
+treatment : PLX4032
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - GSM611399 1
+    - GSM611404 1
+treatment :
+    - GSM611411 1
+    - GSM611416 1
+
+---
+accession : E-GEOD-24862
+platform  : A-AFFY-141
+pathway   : MAPK
+cells     : M238 melanoma cell lines
+treatment : PLX4032
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - GSM611406 1
+    - GSM611408 1
+treatment :
+    - GSM611418 1
+    - GSM611420 1
+
+---
+accession : E-GEOD-24862
+platform  : A-AFFY-141
+pathway   : MAPK
+cells     : M249 melanoma cell lines
+treatment : PLX4032
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - GSM611401 1
+    - GSM611410 1
+treatment :
+    - GSM611413 1
+    - GSM611422 1
+...

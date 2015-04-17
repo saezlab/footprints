@@ -1,0 +1,108 @@
+---
+accession : E-GEOD-41816
+platform  : A-GEOD-11532
+pathway   : MAPK
+cells     : MDA231 cells transfected with DUSP4 siRNA for 96 h
+treatment : selumetinib
+effect    : inhibiting
+hours     : 4
+
+control   :
+    - GSM1024695 1
+    - GSM1024696 1
+    - GSM1024697 1
+treatment :
+    - GSM1024698 1
+    - GSM1024699 1
+    - GSM1024700 1
+
+---
+accession : E-GEOD-41816
+platform  : A-GEOD-11532
+pathway   : MAPK
+cells     : MDA231 cells transfected with DUSP4 siRNA for 96 h
+treatment : selumetinib
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1024695 1
+    - GSM1024696 1
+    - GSM1024697 1
+treatment :
+    - GSM1024701 1
+    - GSM1024702 1
+    - GSM1024703 1
+
+---
+accession : E-GEOD-41816
+platform  : A-GEOD-11532
+pathway   : MAPK
+cells     : BT549 cells transfected with DUSP4 siRNA for 96 h
+treatment : selumetinib
+effect    : inhibiting
+hours     : 4
+
+control   :
+    - GSM1024704 1
+    - GSM1024705 1
+    - GSM1024706 1
+treatment :
+    - GSM1024710 1
+    - GSM1024711 1
+    - GSM1024712 1
+
+---
+accession : E-GEOD-41816
+platform  : A-GEOD-11532
+pathway   : MAPK
+cells     : BT549 cells transfected with DUSP4 siRNA for 96 h
+treatment : selumetinib
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1024704 1
+    - GSM1024705 1
+    - GSM1024706 1
+treatment :
+    - GSM1024713 1
+    - GSM1024714 1
+    - GSM1024715 1
+
+---
+accession : E-GEOD-41816
+platform  : A-GEOD-11532
+pathway   : MAPK
+cells     : SUM159PT cells transfected with DUSP4 siRNA for 96 h
+treatment : selumetinib
+effect    : inhibiting
+hours     : 4
+
+control   :
+    - GSM1024719 1
+    - GSM1024720 1
+    - GSM1024721 1
+treatment :
+    - GSM1024722 1
+    - GSM1024723 1
+    - GSM1024724 1
+
+---
+accession : E-GEOD-41816
+platform  : A-GEOD-11532
+pathway   : MAPK
+cells     : SUM159PT cells transfected with DUSP4 siRNA for 96 h
+treatment : selumetinib
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1024719 1
+    - GSM1024720 1
+    - GSM1024721 1
+treatment :
+    - GSM1024725 1
+    - GSM1024726 1
+    - GSM1024727 1
+...

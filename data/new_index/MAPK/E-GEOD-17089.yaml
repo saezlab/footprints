@@ -1,0 +1,96 @@
+---
+accession : E-GEOD-17089
+platform  : A-AFFY-143
+pathway   : MAPK
+cells     : A375P melanoma cells
+treatment : PD184352
+effect    : inhibiting
+hours     : 2
+
+control   :
+    - GSM427335 1
+    - GSM427336 1
+    - GSM427337 1
+treatment :
+    - GSM427338 1
+
+---
+accession : E-GEOD-17089
+platform  : A-AFFY-143
+pathway   : MAPK
+cells     : A375P melanoma cells
+treatment : PD184352
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - GSM427335 1
+    - GSM427336 1
+    - GSM427337 1
+treatment :
+    - GSM427339 1
+
+---
+accession : E-GEOD-17089
+platform  : A-AFFY-143
+pathway   : MAPK
+cells     : A375P melanoma cells
+treatment : PD184352
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM427335 1
+    - GSM427336 1
+    - GSM427337 1
+treatment :
+    - GSM427340 1
+
+---
+accession : E-GEOD-17089
+platform  : A-AFFY-143
+pathway   : MAPK
+cells     : A375P melanoma cells
+treatment : PLX4720
+effect    : inhibiting
+hours     : 2
+
+control   :
+    - GSM427335 1
+    - GSM427336 1
+    - GSM427337 1
+treatment :
+    - GSM427341 1
+
+---
+accession : E-GEOD-17089
+platform  : A-AFFY-143
+pathway   : MAPK
+cells     : A375P melanoma cells
+treatment : PLX4720
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - GSM427335 1
+    - GSM427336 1
+    - GSM427337 1
+treatment :
+    - GSM427342 1
+
+---
+accession : E-GEOD-17089
+platform  : A-AFFY-143
+pathway   : MAPK
+cells     : A375P melanoma cells
+treatment : PLX4720
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM427335 1
+    - GSM427336 1
+    - GSM427337 1
+treatment :
+    - GSM427343 1
+...

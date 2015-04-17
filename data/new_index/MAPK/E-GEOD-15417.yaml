@@ -1,0 +1,21 @@
+---
+accession : E-GEOD-15417
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : primary human keratinocytes
+treatment : Erk1/2 shRNA
+effect    : inhibiting
+hours     : 96
+
+control   :
+    - GSM386967 1
+    - GSM386969 1
+    - GSM386970 1
+treatment :
+    - GSM386971 1
+    - GSM386972 1
+    - GSM386973 1
+    - GSM386975 1
+    - GSM386976 1
+    - GSM386977 1
+...

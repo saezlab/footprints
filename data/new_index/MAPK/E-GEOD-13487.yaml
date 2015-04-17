@@ -1,0 +1,86 @@
+---
+accession : E-GEOD-13487
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : A375 cell line
+treatment : 1 uM BAY-43-9006
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSE13487GSM339978
+    - GSE13487GSM339980
+treatment :
+    - GSE13487GSM339966
+    - GSE13487GSM339967
+
+---
+accession : E-GEOD-13487
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : A375 cell line
+treatment : 1 uM Raf inhibitor
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSE13487GSM339978
+    - GSE13487GSM339980
+treatment :
+    - GSE13487GSM339960
+    - GSE13487GSM339961
+
+---
+accession : E-GEOD-13487
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : A375 cell line shB-Raf (doxycycline inducible)
+treatment : doxycycline
+effect    : inhibiting
+hours     : 48
+
+control   :
+    - GSE13487GSM339971 # no treatment
+    - GSE13487GSM339974
+    - GSE13487GSM339977
+    - GSE13487GSM339979 # DMSO
+    - GSE13487GSM339981
+treatment :
+    - GSE13487GSM339983
+    - GSE13487GSM339984
+    - GSE13487GSM339986
+    - GSE13487GSM339987
+    - GSE13487GSM339989
+
+---
+accession : E-GEOD-13487
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : A375 cell line shB-Raf (doxycycline inducible)
+treatment : 1 uM BAY-43-9006
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSE13487GSM339979
+    - GSE13487GSM339981
+treatment :
+    - GSE13487GSM339968
+    - GSE13487GSM339969
+
+---
+accession : E-GEOD-13487
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : A375 cell line shB-Raf (doxycycline inducible)
+treatment : 1 uM Raf inhibitor
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSE13487GSM339979
+    - GSE13487GSM339981
+treatment :
+    - GSE13487GSM339962
+    - GSE13487GSM339963
+...

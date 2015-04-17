@@ -1,0 +1,16 @@
+---
+accession : E-GEOD-50649
+platform  : A-AFFY-141
+pathway   : MAPK
+cells     : COLO829 cells with shScrambled knockdown
+treatment : BRAF inhibitor PLX4032 (Vemurafenib)
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1225721 1
+    - GSM1225722 1
+treatment :
+    - GSM1225723 1
+    - GSM1225724 1
+...

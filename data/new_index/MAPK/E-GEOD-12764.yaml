@@ -1,0 +1,24 @@
+---
+accession : E-GEOD-12764
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : MCF10A cells
+treatment : MEK1 over-expression
+effect    : activating
+hours     : 24
+
+control   :
+    - GSE12764GSM320243
+    - GSE12764GSM320244
+    - GSE12764GSM320245
+    - GSE12764GSM320246
+    - GSE12764GSM320247
+    - GSE12764GSM320248
+treatment :
+    - GSE12764GSM320254
+    - GSE12764GSM320255
+    - GSE12764GSM320256
+    - GSE12764GSM320257
+    - GSE12764GSM320258
+    - GSE12764GSM320259
+...

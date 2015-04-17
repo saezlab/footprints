@@ -1,0 +1,16 @@
+---
+accession : E-GEOD-13827
+platform  : A-AFFY-44
+pathway   : MAPK
+cells     : human melanocyte
+treatment : activated BRAF
+effect    : activating
+hours     : 120
+
+control   :
+    - GSE13827GSM347901
+    - GSE13827GSM347902
+treatment :
+    - GSE13827GSM347899
+    - GSE13827GSM347900
+...

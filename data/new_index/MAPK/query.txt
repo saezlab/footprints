@@ -1,0 +1,1 @@
+(b-raf OR braf OR raf* OR mek* OR erk* OR PD*0325901 OR CI*1040 OR PLX* OR U0126 OR AZD6244 OR GSK1120212 OR *metinib OR PD*325901) organism:sapiens samplecount:[4 TO 10000] raw:true exptype:"Transcription profiling"

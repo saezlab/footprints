@@ -1,0 +1,40 @@
+---
+accession : E-GEOD-58869
+platform  : A-GEOD-17586
+pathway   : MAPK
+cells     : HepG2 cells were pretreated with PD98059 for 1 hour
+treatment : MEK inhibitor, PD98059
+effect    : inhibiting
+hours     : 8
+
+control   :
+    - GSM1421099 1
+    - GSM1421100 1
+    - GSM1421101 1
+    - GSM1421102 1
+treatment :
+    - GSM1421107 1
+    - GSM1421108 1
+    - GSM1421109 1
+    - GSM1421110 1
+
+---
+accession : E-GEOD-58869
+platform  : A-GEOD-17586
+pathway   : MAPK
+cells     : HepG2 cells were pretreated with PD98059 for 1 hour (no Histdine)
+treatment : MEK inhibitor, PD98059
+effect    : inhibiting
+hours     : 8
+
+control   :
+    - GSM1421103 1
+    - GSM1421104 1
+    - GSM1421105 1
+    - GSM1421106 1
+treatment :
+    - GSM1421111 1
+    - GSM1421112 1
+    - GSM1421113 1
+    - GSM1421114 1
+...

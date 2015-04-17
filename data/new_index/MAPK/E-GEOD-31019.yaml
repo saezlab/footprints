@@ -1,0 +1,36 @@
+---
+accession : E-GEOD-31019
+platform  : A-AFFY-141
+pathway   : MAPK
+cells     : HT1080 cells
+treatment : U0126 MEK inhibitor
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - GSM768611 1
+    - GSM768612 1
+    - GSM768613 1
+treatment :
+    - GSM768623 1
+    - GSM768624 1
+    - GSM768625 1
+
+---
+accession : E-GEOD-31019
+platform  : A-AFFY-141
+pathway   : MAPK
+cells     : HT1080 cells
+treatment : U0126 MEK inhibitor
+effect    : inhibiting
+hours     : 12
+
+control   :
+    - GSM768614 1
+    - GSM768615 1
+    - GSM768616 1
+treatment :
+    - GSM768626 1
+    - GSM768627 1
+    - GSM768628 1
+...

@@ -1,0 +1,396 @@
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : PANC-1 pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113677 1
+    - GSM1113678 1
+    - GSM1113679 1
+treatment :
+    - GSM1113680 1
+    - GSM1113681 1
+    - GSM1113682 1
+
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : BxPC-3 pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113683 1
+    - GSM1113684 1
+    - GSM1113685 1
+treatment :
+    - GSM1113686 1
+    - GSM1113687 1
+    - GSM1113688 1
+
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : Hs766T pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113689 1
+    - GSM1113690 1
+    - GSM1113691 1
+treatment :
+    - GSM1113692 1
+    - GSM1113693 1
+    - GSM1113694 1
+
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : Panc-6.03 pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113695 1
+    - GSM1113696 1
+    - GSM1113697 1
+treatment :
+    - GSM1113698 1
+    - GSM1113699 1
+    - GSM1113700 1
+
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : CFPAC-1 pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113701 1
+    - GSM1113702 1
+    - GSM1113703 1
+treatment :
+    - GSM1113704 1
+    - GSM1113705 1
+    - GSM1113706 1
+
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : Panc-8.13 pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113707 1
+    - GSM1113708 1
+    - GSM1113709 1
+treatment :
+    - GSM1113710 1
+    - GSM1113711 1
+    - GSM1113712 1
+
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : HPAF_II pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113713 1
+    - GSM1113714 1
+    - GSM1113715 1
+treatment :
+    - GSM1113716 1
+    - GSM1113717 1
+    - GSM1113718 1
+
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : Panc-2.13 pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113719 1
+    - GSM1113720 1
+    - GSM1113721 1
+treatment :
+    - GSM1113722 1
+    - GSM1113723 1
+    - GSM1113724 1
+
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : Panc-3.27 pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113725 1
+    - GSM1113726 1
+    - GSM1113727 1
+treatment :
+    - GSM1113728 1
+    - GSM1113729 1
+    - GSM1113730 1
+
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : Panc-10.05 pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113731 1
+    - GSM1113732 1
+    - GSM1113733 1
+treatment :
+    - GSM1113734 1
+    - GSM1113735 1
+    - GSM1113736 1
+
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : MIAPaCa-2 pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113737 1
+    - GSM1113738 1
+    - GSM1113739 1
+treatment :
+    - GSM1113740 1
+    - GSM1113741 1
+    - GSM1113742 1
+
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : SU86.86 pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113743 1
+    - GSM1113744 1
+    - GSM1113745 1
+treatment :
+    - GSM1113746 1
+    - GSM1113747 1
+    - GSM1113748 1
+
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : SW1990 pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113749 1
+    - GSM1113750 1
+    - GSM1113751 1
+treatment :
+    - GSM1113752 1
+    - GSM1113753 1
+    - GSM1113754 1
+
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : Panc-5.04 pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113755 1
+    - GSM1113756 1
+    - GSM1113757 1
+treatment :
+    - GSM1113758 1
+    - GSM1113759 1
+    - GSM1113760 1
+
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : Capan-2 pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113761 1
+    - GSM1113762 1
+    - GSM1113763 1
+treatment :
+    - GSM1113764 1
+    - GSM1113765 1
+    - GSM1113766 1
+
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : Mpanc-96 pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113767 1
+    - GSM1113768 1
+    - GSM1113769 1
+treatment :
+    - GSM1113770 1
+    - GSM1113771 1
+    - GSM1113772 1
+
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : PL45 pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113773 1
+    - GSM1113774 1
+    - GSM1113775 1
+treatment :
+    - GSM1113776 1
+    - GSM1113777 1
+    - GSM1113778 1
+
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : Panc-2.03 pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113779 1
+    - GSM1113780 1
+    - GSM1113781 1
+treatment :
+    - GSM1113782 1
+    - GSM1113783 1
+    - GSM1113784 1
+
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : L3.6pl pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113785 1
+    - GSM1113786 1
+    - GSM1113787 1
+treatment :
+    - GSM1113788 1
+    - GSM1113789 1
+    - GSM1113790 1
+
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : COLO357 pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113791 1
+    - GSM1113792 1
+    - GSM1113793 1
+treatment :
+    - GSM1113794 1
+    - GSM1113795 1
+    - GSM1113796 1
+
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : L3.3 pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113797 1
+    - GSM1113798 1
+    - GSM1113799 1
+treatment :
+    - GSM1113800 1
+    - GSM1113801 1
+    - GSM1113802 1
+
+---
+accession : E-GEOD-45757
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : L3.6sl pancreatic cancer cell line
+treatment : 2 mM CI-1040
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1113803 1
+    - GSM1113804 1
+    - GSM1113805 1
+treatment :
+    - GSM1113806 1
+    - GSM1113807 1
+    - GSM1113808 1
+...

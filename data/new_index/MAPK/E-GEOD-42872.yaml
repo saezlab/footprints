@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-42872
+platform  : A-AFFY-141
+pathway   : MAPK
+cells     : A375 melanoma cells
+treatment : 10 uM vemurafenib
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1052615 1
+    - GSM1052616 1
+    - GSM1052617 1
+treatment :
+    - GSM1052618 1
+    - GSM1052619 1
+    - GSM1052620 1
+...

@@ -1,0 +1,84 @@
+---
+accession : E-GEOD-10086
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : SK-MEL-1,5,19,28 melanoma cell lines
+treatment : PD0325901
+effect    : inhibiting
+hours     : 8
+
+control   :
+    - GSE10086GSM254947
+    - GSE10086GSM254949
+    - GSE10086GSM254951
+    - GSE10086GSM254953
+treatment :
+    - GSE10086GSM254948
+    - GSE10086GSM254950
+    - GSE10086GSM254952
+    - GSE10086GSM254954
+
+---
+accession : E-GEOD-10086
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : SkBr3, MDA-MB-468 cell lines (mammary gland/breast; derived from pleural effusion)
+treatment : PD0325901
+effect    : inhibiting
+hours     : 8
+
+control   :
+    - GSE10086GSM254931
+    - GSE10086GSM254939
+treatment :
+    - GSE10086GSM254932
+    - GSE10086GSM254940
+
+---
+accession : E-GEOD-10086
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : Colo-205, HT-29 colorectal cancer cell lines
+treatment : PD0325901
+effect    : inhibiting
+hours     : 8
+
+control   :
+    - GSE10086GSM254941
+    - GSE10086GSM254943
+treatment :
+    - GSE10086GSM254942
+    - GSE10086GSM254944
+
+---
+accession : E-GEOD-10086
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : BT474 xenograft
+treatment : PD0325901
+effect    : inhibiting
+hours     : 8
+
+control   :
+    - GSE10086GSM254955
+    - GSE10086GSM254956
+treatment :
+    - GSE10086GSM254959
+    - GSE10086GSM254960
+
+---
+accession : E-GEOD-10086
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : SkMel-28 xenograft
+treatment : PD0325901
+effect    : inhibiting
+hours     : 8
+
+control   :
+    - GSE10086GSM254957
+    - GSE10086GSM254958
+treatment :
+    - GSE10086GSM254961
+    - GSE10086GSM254962
+...

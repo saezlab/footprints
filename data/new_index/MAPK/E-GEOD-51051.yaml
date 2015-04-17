@@ -1,0 +1,36 @@
+---
+accession : E-GEOD-51051
+platform  : A-GEOD-14550
+pathway   : MAPK
+cells     : 11 melanoma cell lines
+treatment : PD901
+effect    : inhibiting
+hours     : 8
+
+control   :
+    - GSM1236552 1
+    - GSM1236554 1
+    - GSM1236556 1
+    - GSM1236558 1
+    - GSM1236560 1
+    - GSM1236562 1
+    - GSM1236564 1
+    - GSM1236566 1
+    - GSM1236568 1
+    - GSM1236570 1
+    - GSM1236572 1
+    - GSM1236574 1
+treatment :
+    - GSM1236553 1
+    - GSM1236555 1
+    - GSM1236557 1
+    - GSM1236559 1
+    - GSM1236561 1
+    - GSM1236563 1
+    - GSM1236565 1
+    - GSM1236567 1
+    - GSM1236569 1
+    - GSM1236571 1
+    - GSM1236573 1
+    - GSM1236575 1
+...

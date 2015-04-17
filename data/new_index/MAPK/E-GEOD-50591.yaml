@@ -1,0 +1,68 @@
+---
+accession : E-GEOD-50591
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : Epidermal Keratinocytes
+treatment : PD98059 MEK inhibitor
+effect    : inhibiting
+hours     : 1
+
+control   :
+    - GSM1224304 1 # 1 hour
+    - GSM1224305 1 # 4
+    - GSM1224306 1 # 24
+    - GSM1224307 1 # 48
+treatment :
+    - GSM1224308 1
+
+---
+accession : E-GEOD-50591
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : Epidermal Keratinocytes
+treatment : PD98059 MEK inhibitor
+effect    : inhibiting
+hours     : 4
+
+control   :
+    - GSM1224304 1 # 1 hour
+    - GSM1224305 1 # 4
+    - GSM1224306 1 # 24
+    - GSM1224307 1 # 48
+treatment :
+    - GSM1224309 1
+
+---
+accession : E-GEOD-50591
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : Epidermal Keratinocytes
+treatment : PD98059 MEK inhibitor
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1224304 1 # 1 hour
+    - GSM1224305 1 # 4
+    - GSM1224306 1 # 24
+    - GSM1224307 1 # 48
+treatment :
+    - GSM1224310 1
+
+---
+accession : E-GEOD-50591
+platform  : A-AFFY-37
+pathway   : MAPK
+cells     : Epidermal Keratinocytes
+treatment : PD98059 MEK inhibitor
+effect    : inhibiting
+hours     : 48
+
+control   :
+    - GSM1224304 1 # 1 hour
+    - GSM1224305 1 # 4
+    - GSM1224306 1 # 24
+    - GSM1224307 1 # 48
+treatment :
+    - GSM1224311 1
+...

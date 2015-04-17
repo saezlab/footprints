@@ -1,0 +1,120 @@
+---
+accession : E-GEOD-39745
+platform  : A-AGIL-28
+pathway   : MAPK
+cells     : immature monocyte-derived dendritic cells, donor 4
+treatment : U0126
+effect    : inhibiting
+hours     : 4
+
+control   :
+    - GSM978432 1
+    - GSM978435 1
+treatment :
+    - GSM978438 1
+
+---
+accession : E-GEOD-39745
+platform  : A-AGIL-28
+pathway   : MAPK
+cells     : Human monocyte-derived dendritic cells, donor 4
+treatment : U0126
+effect    : inhibiting
+hours     : 10
+
+control   :
+    - GSM978432 1
+    - GSM978435 1
+treatment :
+    - GSM978450 1
+
+---
+accession : E-GEOD-39745
+platform  : A-AGIL-28
+pathway   : MAPK
+cells     : Human monocyte-derived dendritic cells, donor 4
+treatment : U0126
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM978432 1
+    - GSM978435 1
+treatment :
+    - GSM978462 1
+
+---
+accession : E-GEOD-39745
+platform  : A-AGIL-28
+pathway   : MAPK
+cells     : immature monocyte-derived dendritic cells, donor 5
+treatment : U0126
+effect    : inhibiting
+hours     : 4
+
+control   :
+    - GSM978433 1
+    - GSM978436 1
+treatment :
+    - GSM978439 1
+
+---
+accession : E-GEOD-39745
+platform  : A-AGIL-28
+pathway   : MAPK
+cells     : Human monocyte-derived dendritic cells, donor 5
+treatment : U0126
+effect    : inhibiting
+hours     : 10
+
+control   :
+    - GSM978433 1
+    - GSM978436 1
+treatment :
+    - GSM978451 1
+
+---
+accession : E-GEOD-39745
+platform  : A-AGIL-28
+pathway   : MAPK
+cells     : Human monocyte-derived dendritic cells, donor 5
+treatment : U0126
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM978433 1
+    - GSM978436 1
+treatment :
+    - GSM978463 1
+
+---
+accession : E-GEOD-39745
+platform  : A-AGIL-28
+pathway   : MAPK
+cells     : immature monocyte-derived dendritic cells, donor 7
+treatment : U0126
+effect    : inhibiting
+hours     : 4
+
+control   :
+    - GSM978434 1
+    - GSM978437 1
+treatment :
+    - GSM978440 1
+
+---
+accession : E-GEOD-39745
+platform  : A-AGIL-28
+pathway   : MAPK
+cells     : Human monocyte-derived dendritic cells, donor 7
+treatment : U0126
+effect    : inhibiting
+hours     : 10
+
+control   :
+    - GSM978434 1
+    - GSM978437 1
+treatment :
+    - GSM978452 1
+...
