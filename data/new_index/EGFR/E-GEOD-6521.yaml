@@ -3,6 +3,36 @@ accession : E-GEOD-6521
 platform  : A-AFFY-44
 pathway   : EGFR
 cells     : MCF-7
+treatment : heregulin
+effect    : activating
+hours     : 1
+
+control   :
+    - GSE6521GSM149913
+    - GSE6521GSM149914
+treatment :
+    - GSE6521GSM149920
+
+---
+accession : E-GEOD-6521
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : MCF-7
+treatment : heregulin
+effect    : activating
+hours     : 1.5
+
+control   :
+    - GSE6521GSM149913
+    - GSE6521GSM149914
+treatment :
+    - GSE6521GSM149921
+
+---
+accession : E-GEOD-6521
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : MCF-7
 treatment : AG1478 (EGFR inhibitor)
 effect    : inhibiting
 hours     : 1
