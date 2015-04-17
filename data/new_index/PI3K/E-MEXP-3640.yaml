@@ -1,0 +1,36 @@
+---
+accession : E-MEXP-3640
+platform  : A-AFFY-143
+pathway   : PI3K
+cells     : PC3 prostate cancer cell line
+treatment : LY294002
+effect    : inhibiting
+hours     : 9
+
+control   :
+    - PC3-Co1
+    - PC3-Co2
+    - PC3-Co3
+treatment :
+    - PC3-Inh1
+    - PC3-Inh2
+    - PC3-Inh3
+
+---
+accession : E-MEXP-3640
+platform  : A-AFFY-143
+pathway   : PI3K
+cells     : PNT1A non-transformed prostate cell line
+treatment : LY294002
+effect    : inhibiting
+hours     : 9
+
+control   :
+    - PNT1A-Co1
+    - PNT1A-Co2
+    - PNT1A-Co3
+treatment :
+    - PNT1A-inh1
+    - PNT1A-inh2
+    - PNT1A-inh3
+...

@@ -1,0 +1,54 @@
+---
+accession : E-GEOD-17785
+platform  : A-AFFY-44
+pathway   : PI3K
+cells     : non-tumorigenic MCF10A cell line
+treatment : PIK3CA.H1047R
+effect    : activating
+hours     : 24 # estimate
+
+control   :
+    - GSM443978 1
+    - GSM443979 1
+    - GSM443980 1
+treatment :
+    - GSM443984 1
+    - GSM443985 1
+    - GSM443986 1
+
+---
+accession : E-GEOD-17785
+platform  : A-AFFY-44
+pathway   : PI3K
+cells     : non-tumorigenic MCF10A cell line
+treatment : GDC-0941
+effect    : inhibiting
+hours     : 4
+
+control   :
+    - GSM443978 1
+    - GSM443979 1
+    - GSM443980 1
+treatment :
+    - GSM443981 1
+    - GSM443982 1
+    - GSM443983 1
+
+---
+accession : E-GEOD-17785
+platform  : A-AFFY-44
+pathway   : PI3K
+cells     : MCF10A cell line + PIK3CA.H1047R
+treatment : GDC-0941
+effect    : inhibiting
+hours     : 4
+
+control   :
+    - GSM443984 1
+    - GSM443985 1
+    - GSM443986 1
+treatment :
+    - GSM443987 1
+    - GSM443988 1
+    - GSM443989 1
+...

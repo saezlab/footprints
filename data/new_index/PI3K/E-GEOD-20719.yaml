@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-20719
+platform  : A-AFFY-44
+pathway   : PI3K
+cells     : T47D breast cancer cells
+treatment : 1 mM GDC-0941
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - GSM520228 1
+    - GSM520229 1
+    - GSM520230 1
+treatment :
+    - GSM520225 1
+    - GSM520226 1
+    - GSM520227 1
+...

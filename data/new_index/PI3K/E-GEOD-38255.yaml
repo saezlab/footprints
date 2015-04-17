@@ -1,0 +1,20 @@
+---
+accession : E-GEOD-38255
+platform  : A-AFFY-143
+pathway   : PI3K
+cells     : peripheral blood mononuclear cells
+treatment : 50 uM LY200492
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM937530 1
+    - GSM937531 1
+    - GSM937532 1
+    - GSM937533 1
+treatment :
+    - GSM937534 1
+    - GSM937535 1
+    - GSM937536 1
+    - GSM937537 1
+...

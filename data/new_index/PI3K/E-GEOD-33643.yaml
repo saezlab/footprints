@@ -1,0 +1,180 @@
+---
+accession : E-GEOD-33643
+platform  : A-AFFY-44
+pathway   : PI3K
+cells     : A2058 immortalized cell line
+treatment : BKM120 at IC30
+effect    : inactivating
+hours     : 24
+
+control   :
+    - GSM832047 1
+    - GSM832048 1
+    - GSM832049 1
+    - GSM832050 1
+treatment :
+    - GSM832051 1
+    - GSM832052 1
+    - GSM832053 1
+    - GSM832054 1
+
+---
+accession : E-GEOD-33643
+platform  : A-AFFY-44
+pathway   : PI3K
+cells     : A2058 immortalized cell line
+treatment : BKM120 at IC50
+effect    : inactivating
+hours     : 24
+
+control   :
+    - GSM832047 1
+    - GSM832048 1
+    - GSM832049 1
+    - GSM832050 1
+treatment :
+    - GSM832055 1
+    - GSM832056 1
+    - GSM832057 1
+    - GSM832058 1
+
+---
+accession : E-GEOD-33643
+platform  : A-AFFY-44
+pathway   : PI3K
+cells     : A2058 immortalized cell line
+treatment : BKM120 at IC90 (max)
+effect    : inactivating
+hours     : 24
+
+control   :
+    - GSM832047 1
+    - GSM832048 1
+    - GSM832049 1
+    - GSM832050 1
+treatment :
+    - GSM832059 1
+    - GSM832060 1
+    - GSM832061 1
+    - GSM832062 1
+
+---
+accession : E-GEOD-33643
+platform  : A-AFFY-44
+pathway   : PI3K
+cells     : A2058 immortalized cell line
+treatment : BEZ235 at IC50
+effect    : inactivating
+hours     : 24
+
+control   :
+    - GSM832047 1
+    - GSM832048 1
+    - GSM832049 1
+    - GSM832050 1
+treatment :
+    - GSM832063 1
+    - GSM832064 1
+    - GSM832065 1
+    - GSM832066 1
+
+---
+accession : E-GEOD-33643
+platform  : A-AFFY-44
+pathway   : PI3K
+cells     : A2058 immortalized cell line
+treatment : BEZ235 at IC90
+effect    : inactivating
+hours     : 24
+
+control   :
+    - GSM832047 1
+    - GSM832048 1
+    - GSM832049 1
+    - GSM832050 1
+treatment :
+    - GSM832067 1
+    - GSM832068 1
+    - GSM832069 1
+    - GSM832070 1
+
+---
+accession : E-GEOD-33643
+platform  : A-AFFY-44
+pathway   : PI3K
+cells     : A2058 immortalized cell line
+treatment : BEZ235 at max
+effect    : inactivating
+hours     : 24
+
+control   :
+    - GSM832047 1
+    - GSM832048 1
+    - GSM832049 1
+    - GSM832050 1
+treatment :
+    - GSM832071 1
+    - GSM832072 1
+    - GSM832073 1
+    - GSM832074 1
+
+---
+accession : E-GEOD-33643
+platform  : A-AFFY-44
+pathway   : PI3K
+cells     : A2058 immortalized cell line
+treatment : GCD0941 at IC50
+effect    : inactivating
+hours     : 24
+
+control   :
+    - GSM832047 1
+    - GSM832048 1
+    - GSM832049 1
+    - GSM832050 1
+treatment :
+    - GSM832075 1
+    - GSM832076 1
+    - GSM832077 1
+    - GSM832078 1
+
+---
+accession : E-GEOD-33643
+platform  : A-AFFY-44
+pathway   : PI3K
+cells     : A2058 immortalized cell line
+treatment : GCD0941 at IC90
+effect    : inactivating
+hours     : 24
+
+control   :
+    - GSM832047 1
+    - GSM832048 1
+    - GSM832049 1
+    - GSM832050 1
+treatment :
+    - GSM832079 1
+    - GSM832080 1
+    - GSM832081 1
+    - GSM832082 1
+
+---
+accession : E-GEOD-33643
+platform  : A-AFFY-44
+pathway   : PI3K
+cells     : A2058 immortalized cell line
+treatment : GCD0941 at max
+effect    : inactivating
+hours     : 24
+
+control   :
+    - GSM832047 1
+    - GSM832048 1
+    - GSM832049 1
+    - GSM832050 1
+treatment :
+    - GSM832083 1
+    - GSM832084 1
+    - GSM832085 1
+    - GSM832086 1
+...

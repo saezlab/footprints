@@ -1,0 +1,1 @@
+(SF1126 OR LY294002 OR TGR*1202 OR SAR2454* OR GSK1059615 OR 80*6946 OR Perifosine OR Idelalisib OR PI3K OR PIK3* OR PTEN OR BEZ235 OR RP6530 OR GDC*941 OR INK1117 ) organism:sapiens samplecount:[4 TO 10000] raw:true exptype:"Transcription profiling"

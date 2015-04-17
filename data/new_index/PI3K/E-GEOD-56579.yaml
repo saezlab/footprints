@@ -1,0 +1,40 @@
+---
+accession : E-GEOD-56579
+platform  : A-AGIL-28
+pathway   : PI3K
+cells     : human breast adenocarcinoma cells
+treatment : ETP-45658 PI3K/mTOR inhibitor
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - GSM1364211 1
+    - GSM1364212 1
+    - GSM1364213 1
+    - GSM1364214 1
+treatment :
+    - GSM1364215 1
+    - GSM1364216 1
+    - GSM1364217 1
+    - GSM1364218 1
+
+---
+accession : E-GEOD-56579
+platform  : A-AGIL-28
+pathway   : PI3K
+cells     : human breast adenocarcinoma cells
+treatment : PI-103 PI3K/mTOR inhibitor
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - GSM1364211 1
+    - GSM1364212 1
+    - GSM1364213 1
+    - GSM1364214 1
+treatment :
+    - GSM1364219 1
+    - GSM1364220 1
+    - GSM1364221 1
+    - GSM1364222 1
+...

@@ -1,0 +1,17 @@
+---
+accession : E-GEOD-6263
+platform  : A-AFFY-33
+pathway   : PI3K
+cells     : HCT116 cell line
+treatment : homozygous deletion of PTEN
+effect    : activating
+hours     : 24 # estimate
+
+control   :
+    - GSE6263GSM144202
+    - GSE6263GSM144203
+treatment :
+    - GSE6263GSM144204
+    - GSE6263GSM144205
+    - GSE6263GSM144206
+...

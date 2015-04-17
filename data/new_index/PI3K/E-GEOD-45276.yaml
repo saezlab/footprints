@@ -1,0 +1,20 @@
+---
+accession : E-GEOD-45276
+platform  : A-AFFY-44
+pathway   : PI3K
+cells     : IMR90 cells
+treatment : Akt transfection
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1100694 1
+    - GSM1100695 1
+    - GSM1100696 1
+    - GSM1100697 1
+treatment :
+    - GSM1100690 1
+    - GSM1100691 1
+    - GSM1100692 1
+    - GSM1100693 1
+...

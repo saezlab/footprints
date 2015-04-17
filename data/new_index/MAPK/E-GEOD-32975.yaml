@@ -1,0 +1,64 @@
+---
+accession : E-GEOD-32975
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : HaCaT cell line
+treatment : mock transfection + EGF stimulus + LY294002
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM816831 1
+    - GSM816833 1
+    - GSM816836 1
+    - GSM816837 1
+treatment :
+    - GSM816839 1
+
+---
+accession : E-GEOD-32975
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : HaCaT cell line
+treatment : mock transfection + EGF stimulus + U1026
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM816831 1
+    - GSM816833 1
+    - GSM816836 1
+    - GSM816837 1
+treatment :
+    - GSM816840 1
+
+---
+accession : E-GEOD-32975
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : HaCaT cell line
+treatment : EGFR transfection + EGF stimulus + LY294002
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM816841 1
+    - GSM816845 1
+treatment :
+    - GSM816843 1
+
+---
+accession : E-GEOD-32975
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : HaCaT cell line
+treatment : EGFR transfection + EGF stimulus + U1026
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM816841 1
+    - GSM816845 1
+treatment :
+    - GSM816844 1
+...

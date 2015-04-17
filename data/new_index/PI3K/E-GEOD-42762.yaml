@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-42762
+platform  : A-AFFY-44
+pathway   : PI3K
+cells     : SY5Y neuroblastoma cell line
+treatment : 1 uM PI-103
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - GSM1049515 1
+    - GSM1049519 1
+    - GSM1049523 1
+treatment :
+    - GSM1049516 1
+    - GSM1049520 1
+    - GSM1049524 1
+...

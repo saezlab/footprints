@@ -1,0 +1,36 @@
+---
+accession : E-GEOD-40564
+platform  : A-AFFY-44
+pathway   : PI3K
+cells     : H69 small cell lung cancer cells
+treatment : PIK75 (100 nM)
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM996643 1
+    - GSM996644 1
+    - GSM996645 1
+treatment :
+    - GSM996646 1
+    - GSM996647 1
+    - GSM996648 1
+
+---
+accession : E-GEOD-40564
+platform  : A-AFFY-44
+pathway   : PI3K
+cells     : H69 small cell lung cancer cells
+treatment : TGX221 (1 mM)
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM996643 1
+    - GSM996644 1
+    - GSM996645 1
+treatment :
+    - GSM996649 1
+    - GSM996650 1
+    - GSM996651 1
+...

@@ -1,0 +1,64 @@
+---
+accession : E-GEOD-45495
+platform  : A-GEOD-10558
+pathway   : PI3K
+cells     : DLBCL cellline HT
+treatment : PTEN cDNA
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - GSM1105694 1
+    - GSM1105695 1
+treatment :
+    - GSM1105686 1
+    - GSM1105687 1
+
+---
+accession : E-GEOD-45495
+platform  : A-GEOD-10558
+pathway   : PI3K
+cells     : DLBCL cellline HT
+treatment : PTEN cDNA
+effect    : inhibiting
+hours     : 12
+
+control   :
+    - GSM1105696 1
+    - GSM1105697 1
+treatment :
+    - GSM1105688 1
+    - GSM1105689 1
+
+---
+accession : E-GEOD-45495
+platform  : A-GEOD-10558
+pathway   : PI3K
+cells     : DLBCL cellline HT
+treatment : PTEN cDNA
+effect    : inhibiting
+hours     : 18
+
+control   :
+    - GSM1105698 1
+    - GSM1105699 1
+treatment :
+    - GSM1105690 1
+    - GSM1105691 1
+
+---
+accession : E-GEOD-45495
+platform  : A-GEOD-10558
+pathway   : PI3K
+cells     : DLBCL cellline HT
+treatment : PTEN cDNA
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1105700 1
+    - GSM1105701 1
+treatment :
+    - GSM1105692 1
+    - GSM1105693 1
+...

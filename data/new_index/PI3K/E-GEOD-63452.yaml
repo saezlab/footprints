@@ -1,0 +1,55 @@
+---
+accession : E-GEOD-63452
+platform  : RNA-seq
+pathway   : PI3K
+cells     : MCF-10A
+treatment : PIK3CA H1047R
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM1550099 1
+    - GSM1550100 1
+    - GSM1550101 1
+    - GSM1550102 1
+treatment :
+    - GSM1550096 1
+    - GSM1550097 1
+    - GSM1550098 1
+
+---
+accession : E-GEOD-63452
+platform  : RNA-seq
+pathway   : PI3K
+cells     : MCF-10A
+treatment : PIK3CA H1047R
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM1550109 1
+    - GSM1550110 1
+    - GSM1550111 1
+treatment :
+    - GSM1550090 1
+    - GSM1550091 1
+    - GSM1550092 1
+
+---
+accession : E-GEOD-63452
+platform  : RNA-seq
+pathway   : PI3K
+cells     : MCF-10A
+treatment : PIK3CA H1047R
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1550112 1
+    - GSM1550113 1
+    - GSM1550114 1
+treatment :
+    - GSM1550093 1
+    - GSM1550094 1
+    - GSM1550095 1
+...
