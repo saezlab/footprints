@@ -1,10 +1,10 @@
 ---
 accession : E-GEOD-6521
 platform  : A-AFFY-44
-pathway   : MAPK
-cells     : MCF-7
+pathway   : PI3K
+cells     : MCF-7 + EGF stimulation (HRG)
 treatment : U0126 (MEK inhibitor)
-effect    : inhibiting
+effect    : activating
 hours     : 1
 
 control   :
@@ -16,10 +16,10 @@ treatment :
 ---
 accession : E-GEOD-6521
 platform  : A-AFFY-44
-pathway   : MAPK
-cells     : MCF-7
+pathway   : PI3K
+cells     : MCF-7 + EGF stimulation (HRG)
 treatment : U0126 (MEK inhibitor)
-effect    : inhibiting
+effect    : activating
 hours     : 1.5
 
 control   :
