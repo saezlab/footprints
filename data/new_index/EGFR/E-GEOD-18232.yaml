@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-18232
+platform  : A-AFFY-33
+pathway   : MAPK
+cells     : HCT116, HT-29, SW480 colon cancer cells
+treatment : AG1478 EGFR inhibitor
+effect    : inhibiting
+hours     : 48
+
+control   :
+    - GSM455560 1
+    - GSM455566 1
+    - GSM455572 1
+treatment :
+    - GSM455561 1
+    - GSM455567 1
+    - GSM455573 1
+...

@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-51212
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : HCC827 cell line
+treatment : 1 uM Erlotinib
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - GSM1240545 1
+    - GSM1240546 1
+    - GSM1240547 1
+treatment :
+    - GSM1240548 1
+    - GSM1240549 1
+    - GSM1240550 1
+...
