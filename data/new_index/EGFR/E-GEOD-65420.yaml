@@ -1,0 +1,32 @@
+---
+accession : E-GEOD-65420
+platform  : RNA-seq
+pathway   : EGFR
+cells     : 11-18 (EGFR-mutant lung adenocarcinoma) cells
+treatment : Erlotinib
+effect    : inhibiting
+hours     : 24 # don't know
+
+control   :
+    - GSM1595839 1
+    - GSM1595840 1
+treatment :
+    - GSM1595841 1
+    - GSM1595842 1
+
+---
+accession : E-GEOD-65420
+platform  : RNA-seq
+pathway   : EGFR
+cells     : 11-18 (EGFR-mutant lung adenocarcinoma) cells
+treatment : Erlotinib
+effect    : inhibiting
+hours     : 24 # don't know
+
+control   :
+    - GSM1595850 1
+    - GSM1595851 1
+treatment :
+    - GSM1595852 1
+    - GSM1595853 1
+...

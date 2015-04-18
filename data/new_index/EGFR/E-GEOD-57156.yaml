@@ -1,0 +1,64 @@
+---
+accession : E-GEOD-57156
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : PC-9 differentiated lung adenocarcinoma cell line
+treatment : Erlotinib
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1376320 1
+    - GSM1376321 1
+treatment :
+    - GSM1376322 1
+    - GSM1376323 1
+
+---
+accession : E-GEOD-57156
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : HCC4006 lung cell line derived from pleural effusion
+treatment : Erlotinib
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1376324 1
+    - GSM1376325 1
+treatment :
+    - GSM1376326 1
+    - GSM1376327 1
+
+---
+accession : E-GEOD-57156
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : HCC2279 lung cancer cell line
+treatment : Erlotinib
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1376328 1
+    - GSM1376329 1
+treatment :
+    - GSM1376330 1
+    - GSM1376331 1
+
+---
+accession : E-GEOD-57156
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : HCC2935 lung pleural effusion cell line
+treatment : Erlotinib
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1376332 1
+    - GSM1376333 1
+treatment :
+    - GSM1376334 1
+    - GSM1376335 1
+...

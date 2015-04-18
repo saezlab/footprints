@@ -1,0 +1,16 @@
+---
+accession : E-GEOD-53181
+platform  : A-AGIL-28
+pathway   : EGFR
+cells     : PC-3 prostate cancer cell line
+treatment : Gefitinib
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM1286085 1
+    - GSM1286090 1
+treatment :
+    - GSM1286087 1
+    - GSM1286092 1
+...

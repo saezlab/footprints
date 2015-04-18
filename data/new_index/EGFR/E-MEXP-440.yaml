@@ -1,0 +1,384 @@
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : BT474 breast cancer cell line
+treatment : 0.1 uM Lapatinib
+effect    : inhibiting
+hours     : 2
+
+control   :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181633
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181634
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181635
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181636
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : BT474 breast cancer cell line
+treatment : 1 uM Lapatinib
+effect    : inhibiting
+hours     : 2
+
+control   :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181633
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181634
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181635
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181639
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : BT474 breast cancer cell line
+treatment : 0.1 uM Lapatinib
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181633
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181634
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181635
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181637
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : BT474 breast cancer cell line
+treatment : 1 uM Lapatinib
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181633
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181634
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181635
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181640
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : BT474 breast cancer cell line
+treatment : 0.1 uM Lapatinib
+effect    : inhibiting
+hours     : 12
+
+control   :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181633
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181634
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181635
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181638
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : BT474 breast cancer cell line
+treatment : 1 uM Lapatinib
+effect    : inhibiting
+hours     : 12
+
+control   :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181633
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181634
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181635
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181641
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : SKBR3 breast cancer cell line
+treatment : 0.1 uM Lapatinib
+effect    : inhibiting
+hours     : 2
+
+control   :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181668
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181642
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181643
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181644
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : SKBR3 breast cancer cell line
+treatment : 1 uM Lapatinib
+effect    : inhibiting
+hours     : 2
+
+control   :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181668
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181642
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181643
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181647
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : SKBR3 breast cancer cell line
+treatment : 0.1 uM Lapatinib
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181668
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181642
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181643
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181645
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : SKBR3 breast cancer cell line
+treatment : 1 uM Lapatinib
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181668
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181642
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181643
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181648
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : SKBR3 breast cancer cell line
+treatment : 0.1 uM Lapatinib
+effect    : inhibiting
+hours     : 12
+
+control   :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181668
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181642
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181643
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181646
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : SKBR3 breast cancer cell line
+treatment : 1 uM Lapatinib
+effect    : inhibiting
+hours     : 12
+
+control   :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181668
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181642
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181643
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181649
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : MDA468 breast cancer cell line
+treatment : 0.1 uM Lapatinib
+effect    : inhibiting
+hours     : 2
+
+control   :
+    - Homo sapiens
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181651
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181652
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181653
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : MDA468 breast cancer cell line
+treatment : 1 uM Lapatinib
+effect    : inhibiting
+hours     : 2
+
+control   :
+    - Homo sapiens
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181651
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181652
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181656
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : MDA468 breast cancer cell line
+treatment : 0.1 uM Lapatinib
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - Homo sapiens
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181651
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181652
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181654
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : MDA468 breast cancer cell line
+treatment : 1 uM Lapatinib
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - Homo sapiens
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181651
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181652
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181657
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : MDA468 breast cancer cell line
+treatment : 0.1 uM Lapatinib
+effect    : inhibiting
+hours     : 12
+
+control   :
+    - Homo sapiens
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181651
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181652
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181655
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : MDA468 breast cancer cell line
+treatment : 1 uM Lapatinib
+effect    : inhibiting
+hours     : 12
+
+control   :
+    - Homo sapiens
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181651
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181652
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181658
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : T47D breast cancer cell line
+treatment : 0.1 uM Lapatinib
+effect    : inhibiting
+hours     : 2
+
+control   :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181659
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181660
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181661
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181662
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : T47D breast cancer cell line
+treatment : 1 uM Lapatinib
+effect    : inhibiting
+hours     : 2
+
+control   :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181659
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181660
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181661
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181665
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : T47D breast cancer cell line
+treatment : 0.1 uM Lapatinib
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181659
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181660
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181661
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181663
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : T47D breast cancer cell line
+treatment : 1 uM Lapatinib
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181659
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181660
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181661
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181666
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : T47D breast cancer cell line
+treatment : 0.1 uM Lapatinib
+effect    : inhibiting
+hours     : 12
+
+control   :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181659
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181660
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181661
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181664
+
+---
+accession : E-MEXP-440
+platform  : A-AFFY-33
+pathway   : EGFR
+cells     : T47D breast cancer cell line
+treatment : 1 uM Lapatinib
+effect    : inhibiting
+hours     : 12
+
+control   :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181659
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181660
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181661
+treatment :
+    - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181667
+...

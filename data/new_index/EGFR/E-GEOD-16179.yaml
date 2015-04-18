@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-16179
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : BT474
+treatment : 1 uM lapatinib
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM799168 1
+    - GSM799169 1
+    - GSM799170 1
+treatment :
+    - GSM799171 1
+    - GSM799172 1
+    - GSM799173 1
+...

@@ -1,0 +1,74 @@
+---
+accession : E-GEOD-30516
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : BT20 cells
+treatment : 10 uM Erlotinib
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM756853 1
+    - GSM756854 1
+    - GSM756855 1
+    - GSM756862 1
+treatment :
+    - GSM756859 1
+    - GSM756860 1
+    - GSM756861 1
+
+---
+accession : E-GEOD-30516
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : BT20 cells
+treatment : 10 uM Erlotinib
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - GSM756853 1
+    - GSM756854 1
+    - GSM756855 1
+    - GSM756862 1
+treatment :
+    - GSM756863 1
+    - GSM756864 1
+    - GSM756865 1
+
+---
+accession : E-GEOD-30516
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : MDA-MB-453 cells
+treatment : 10 uM Erlotinib
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM756866 1
+    - GSM756867 1
+    - GSM756868 1
+treatment :
+    - GSM756869 1
+    - GSM756870 1
+    - GSM756871 1
+
+---
+accession : E-GEOD-30516
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : MCF cells
+treatment : 10 uM Erlotinib
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM756872 1
+    - GSM756873 1
+    - GSM756874 1
+treatment :
+    - GSM756875 1
+    - GSM756876 1
+    - GSM756877 1
+...

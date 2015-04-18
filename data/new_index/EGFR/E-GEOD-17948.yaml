@@ -1,0 +1,40 @@
+---
+accession : E-GEOD-17948
+platform  : A-GEOD-8300
+pathway   : EGFR
+cells     : HCMV-infected monocytes
+treatment : anti-EGFR antibody
+effect    : inhibiting
+hours     : 24 # or 4?- descripton mentions both
+
+control   :
+    - GSM448940 1
+    - GSM448941 1
+    - GSM448942 1
+    - GSM448943 1
+treatment :
+    - GSM448944 1
+    - GSM448945 1
+    - GSM448946 1
+    - GSM448947 1
+
+---
+accession : E-GEOD-17948
+platform  : A-GEOD-8300
+pathway   : EGFR
+cells     : HCMV-infected monocytes
+treatment : AG1478
+effect    : inhibiting
+hours     : 24 # or 4?- descripton mentions both
+
+control   :
+    - GSM448940 1
+    - GSM448941 1
+    - GSM448942 1
+    - GSM448943 1
+treatment :
+    - GSM448948 1
+    - GSM448949 1
+    - GSM448950 1
+    - GSM448951 1
+...

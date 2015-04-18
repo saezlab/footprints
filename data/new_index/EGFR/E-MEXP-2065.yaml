@@ -1,0 +1,16 @@
+---
+accession : E-MEXP-2065
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : BT474
+treatment : herceptin
+effect    : inhibiting
+hours     : 12 # estimate
+
+control   :
+    - Control1
+    - Control2
+treatment :
+    - Herceptin1
+    - Herceptin2
+...
