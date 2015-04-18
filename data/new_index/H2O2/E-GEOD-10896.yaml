@@ -1,0 +1,36 @@
+---
+accession : E-GEOD-10896
+platform  : A-AFFY-44
+pathway   : H2O2
+cells     : U937 cell line
+treatment : 100 mM H2O2
+effect    : activating
+hours     : 4
+
+control   :
+    - GSE10896GSM276209
+    - GSE10896GSM276217
+    - GSE10896GSM276225
+treatment :
+    - GSE10896GSM276211
+    - GSE10896GSM276219
+    - GSE10896GSM276227
+
+---
+accession : E-GEOD-10896
+platform  : A-AFFY-44
+pathway   : H2O2
+cells     : U937 cell line
+treatment : 100 mM H2O2
+effect    : activating
+hours     : 18
+
+control   :
+    - GSE10896GSM276213
+    - GSE10896GSM276221
+    - GSE10896GSM276229
+treatment :
+    - GSE10896GSM276215
+    - GSE10896GSM276223
+    - GSE10896GSM276231
+...

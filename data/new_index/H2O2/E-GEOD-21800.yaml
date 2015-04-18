@@ -1,0 +1,216 @@
+---
+accession : E-GEOD-21800
+platform  : A-AFFY-141
+pathway   : H2O2
+cells     : GM07055, GM14569, GM14467, and 12057 pooled cell lines
+treatment : 9 uM hydrogen peroxide
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM542924 1
+    - GSM542925 1
+    - GSM542929 1
+    - GSM542933 1
+    - GSM542937 1
+treatment :
+    - GSM542926 1
+
+---
+accession : E-GEOD-21800
+platform  : A-AFFY-141
+pathway   : H2O2
+cells     : GM07055, GM14569, GM14467, and 12057 pooled cell lines
+treatment : 90 uM hydrogen peroxide
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM542924 1
+    - GSM542925 1
+    - GSM542929 1
+    - GSM542933 1
+    - GSM542937 1
+treatment :
+    - GSM542927 1
+
+---
+accession : E-GEOD-21800
+platform  : A-AFFY-141
+pathway   : H2O2
+cells     : GM07055, GM14569, GM14467, and 12057 pooled cell lines
+treatment : 900 uM hydrogen peroxide
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM542924 1
+    - GSM542925 1
+    - GSM542929 1
+    - GSM542933 1
+    - GSM542937 1
+treatment :
+    - GSM542928 1
+
+---
+accession : E-GEOD-21800
+platform  : A-AFFY-141
+pathway   : H2O2
+cells     : GM07055, GM14569, GM14467, and 12057 pooled cell lines
+treatment : 9 uM hydrogen peroxide
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM542924 1
+    - GSM542925 1
+    - GSM542929 1
+    - GSM542933 1
+    - GSM542937 1
+treatment :
+    - GSM542930 1
+
+---
+accession : E-GEOD-21800
+platform  : A-AFFY-141
+pathway   : H2O2
+cells     : GM07055, GM14569, GM14467, and 12057 pooled cell lines
+treatment : 90 uM hydrogen peroxide
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM542924 1
+    - GSM542925 1
+    - GSM542929 1
+    - GSM542933 1
+    - GSM542937 1
+treatment :
+    - GSM542931 1
+
+---
+accession : E-GEOD-21800
+platform  : A-AFFY-141
+pathway   : H2O2
+cells     : GM07055, GM14569, GM14467, and 12057 pooled cell lines
+treatment : 900 uM hydrogen peroxide
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM542924 1
+    - GSM542925 1
+    - GSM542929 1
+    - GSM542933 1
+    - GSM542937 1
+treatment :
+    - GSM542932 1
+
+---
+accession : E-GEOD-21800
+platform  : A-AFFY-141
+pathway   : H2O2
+cells     : GM07055, GM14569, GM14467, and 12057 pooled cell lines
+treatment : 9 uM hydrogen peroxide
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM542924 1
+    - GSM542925 1
+    - GSM542929 1
+    - GSM542933 1
+    - GSM542937 1
+treatment :
+    - GSM542930 1
+
+---
+accession : E-GEOD-21800
+platform  : A-AFFY-141
+pathway   : H2O2
+cells     : GM07055, GM14569, GM14467, and 12057 pooled cell lines
+treatment : 90 uM hydrogen peroxide
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM542924 1
+    - GSM542925 1
+    - GSM542929 1
+    - GSM542933 1
+    - GSM542937 1
+treatment :
+    - GSM542931 1
+
+---
+accession : E-GEOD-21800
+platform  : A-AFFY-141
+pathway   : H2O2
+cells     : GM07055, GM14569, GM14467, and 12057 pooled cell lines
+treatment : 900 uM hydrogen peroxide
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM542924 1
+    - GSM542925 1
+    - GSM542929 1
+    - GSM542933 1
+    - GSM542937 1
+treatment :
+    - GSM542932 1
+
+---
+accession : E-GEOD-21800
+platform  : A-AFFY-141
+pathway   : H2O2
+cells     : GM07055, GM14569, GM14467, and 12057 pooled cell lines
+treatment : 9 uM hydrogen peroxide
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM542924 1
+    - GSM542925 1
+    - GSM542929 1
+    - GSM542933 1
+    - GSM542937 1
+treatment :
+    - GSM542934 1
+
+---
+accession : E-GEOD-21800
+platform  : A-AFFY-141
+pathway   : H2O2
+cells     : GM07055, GM14569, GM14467, and 12057 pooled cell lines
+treatment : 90 uM hydrogen peroxide
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM542924 1
+    - GSM542925 1
+    - GSM542929 1
+    - GSM542933 1
+    - GSM542937 1
+treatment :
+    - GSM542935 1
+
+---
+accession : E-GEOD-21800
+platform  : A-AFFY-141
+pathway   : H2O2
+cells     : GM07055, GM14569, GM14467, and 12057 pooled cell lines
+treatment : 900 uM hydrogen peroxide
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM542924 1
+    - GSM542925 1
+    - GSM542929 1
+    - GSM542933 1
+    - GSM542937 1
+treatment :
+    - GSM542936 1
+...

@@ -1,0 +1,112 @@
+---
+accession : E-GEOD-39156
+platform  : A-AFFY-44
+pathway   : H2O2
+cells     : primary T-cells
+treatment : 300 uM hydrogen peroxide
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM957099 1
+    - GSM957107 1
+    - GSM957115 1
+    - GSM957123 1
+    - GSM957131 1
+    - GSM957139 1
+    - GSM957147 1
+    - GSM957155 1
+treatment :
+    - GSM957099 1
+    - GSM957107 1
+    - GSM957115 1
+    - GSM957123 1
+    - GSM957131 1
+    - GSM957139 1
+    - GSM957147 1
+    - GSM957155 1
+
+---
+accession : E-GEOD-39156
+platform  : A-AFFY-44
+pathway   : H2O2
+cells     : primary T-cells
+treatment : 25 uM hydrogen peroxide
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM957099 1
+    - GSM957107 1
+    - GSM957115 1
+    - GSM957123 1
+    - GSM957131 1
+    - GSM957139 1
+    - GSM957147 1
+    - GSM957155 1
+treatment :
+    - GSM957100 1
+    - GSM957108 1
+    - GSM957116 1
+    - GSM957124 1
+    - GSM957132 1
+    - GSM957140 1
+    - GSM957148 1
+    - GSM957156 1
+
+---
+accession : E-GEOD-39156
+platform  : A-AFFY-44
+pathway   : H2O2
+cells     : primary thyroid cells
+treatment : 300 uM hydrogen peroxide
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM957095 1
+    - GSM957103 1
+    - GSM957111 1
+    - GSM957119 1
+    - GSM957127 1
+    - GSM957135 1
+    - GSM957143 1
+    - GSM957151 1
+treatment :
+    - GSM957097 1
+    - GSM957105 1
+    - GSM957113 1
+    - GSM957121 1
+    - GSM957129 1
+    - GSM957137 1
+    - GSM957145 1
+    - GSM957153 1
+
+---
+accession : E-GEOD-39156
+platform  : A-AFFY-44
+pathway   : H2O2
+cells     : primary thyroid cells
+treatment : 25 uM hydrogen peroxide
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM957095 1
+    - GSM957103 1
+    - GSM957111 1
+    - GSM957119 1
+    - GSM957127 1
+    - GSM957135 1
+    - GSM957143 1
+    - GSM957151 1
+treatment :
+    - GSM957096 1
+    - GSM957104 1
+    - GSM957112 1
+    - GSM957120 1
+    - GSM957128 1
+    - GSM957136 1
+    - GSM957144 1
+    - GSM957152 1
+...

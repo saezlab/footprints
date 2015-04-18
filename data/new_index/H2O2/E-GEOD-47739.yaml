@@ -1,0 +1,20 @@
+---
+accession : E-GEOD-47739
+platform  : A-AFFY-141
+pathway   : H2O2
+cells     : HepG2 cells
+treatment : 0.5 mM H2O2
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM1155656 1
+    - GSM1155657 1
+    - GSM1155658 1
+    - GSM1155659 1
+treatment :
+    - GSM1155660 1
+    - GSM1155661 1
+    - GSM1155662 1
+    - GSM1155663 1
+...

@@ -1,0 +1,108 @@
+---
+accession : E-GEOD-39291
+platform  : A-GEOD-15798
+pathway   : H2O2
+cells     : HepG2 cells
+treatment : 50 uM hydrogen peroxide
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM960227 1
+    - GSM960228 1
+    - GSM960229 1
+treatment :
+    - GSM960230 1
+    - GSM960231 1
+    - GSM960232 1
+
+---
+accession : E-GEOD-39291
+platform  : A-GEOD-15798
+pathway   : H2O2
+cells     : HepG2 cells
+treatment : 50 uM hydrogen peroxide
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM960233 1
+    - GSM960234 1
+    - GSM960235 1
+treatment :
+    - GSM960236 1
+    - GSM960237 1
+    - GSM960238 1
+
+---
+accession : E-GEOD-39291
+platform  : A-GEOD-15798
+pathway   : H2O2
+cells     : HepG2 cells
+treatment : 50 uM hydrogen peroxide
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM960239 1
+    - GSM960240 1
+    - GSM960241 1
+treatment :
+    - GSM960242 1
+    - GSM960243 1
+    - GSM960244 1
+
+---
+accession : E-GEOD-39291
+platform  : A-GEOD-15798
+pathway   : H2O2
+cells     : HepG2 cells
+treatment : 50 uM hydrogen peroxide
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM960245 1
+    - GSM960246 1
+    - GSM960247 1
+treatment :
+    - GSM960248 1
+    - GSM960249 1
+    - GSM960250 1
+
+---
+accession : E-GEOD-39291
+platform  : A-GEOD-15798
+pathway   : H2O2
+cells     : HepG2 cells
+treatment : 50 uM hydrogen peroxide
+effect    : activating
+hours     : 8
+
+control   :
+    - GSM960251 1
+    - GSM960252 1
+    - GSM960253 1
+treatment :
+    - GSM960254 1
+    - GSM960255 1
+    - GSM960256 1
+
+---
+accession : E-GEOD-39291
+platform  : A-GEOD-15798
+pathway   : H2O2
+cells     : HepG2 cells
+treatment : 50 uM hydrogen peroxide
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM960257 1
+    - GSM960258 1
+    - GSM960259 1
+treatment :
+    - GSM960260 1
+    - GSM960261 1
+    - GSM960262 1
+...

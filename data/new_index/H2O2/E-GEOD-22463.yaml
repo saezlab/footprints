@@ -1,0 +1,56 @@
+---
+accession : E-GEOD-22463
+platform  : A-AFFY-141
+pathway   : H2O2
+cells     : PBMCs
+treatment : H2O2
+effect    : activating
+hours     : 3
+
+control   :
+    - GSM558027 1
+    - GSM558028 1
+    - GSM558029 1
+    - GSM558030 1
+    - GSM558031 1
+    - GSM558032 1
+    - GSM558033 1
+    - GSM558034 1
+treatment :
+    - GSM558035 1
+    - GSM558036 1
+    - GSM558037 1
+    - GSM558038 1
+    - GSM558039 1
+    - GSM558040 1
+    - GSM558041 1
+    - GSM558042 1
+
+---
+accession : E-GEOD-22463
+platform  : A-AFFY-141
+pathway   : H2O2
+cells     : PBMCs
+treatment : H2O2
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM558027 1
+    - GSM558028 1
+    - GSM558029 1
+    - GSM558030 1
+    - GSM558031 1
+    - GSM558032 1
+    - GSM558033 1
+    - GSM558034 1
+treatment :
+    - GSM558043 1
+    - GSM558044 1
+    - GSM558045 1
+    - GSM558046 1
+    - GSM558047 1
+    - GSM558048 1
+    - GSM558049 1
+    - GSM558050 1
+...
