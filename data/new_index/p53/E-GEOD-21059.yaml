@@ -1,0 +1,100 @@
+---
+accession : E-GEOD-21059
+platform  : A-AGIL-28
+pathway   : p53
+cells     : primary lung fibroblasts
+treatment : irradiation 0.5 Gy
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM526626 1
+    - GSM526627 1
+    - GSM526628 1
+    - GSM526629 1
+treatment :
+    - GSM526618 1
+    - GSM526619 1
+    - GSM526620 1
+    - GSM526621 1
+
+---
+accession : E-GEOD-21059
+platform  : A-AGIL-28
+pathway   : p53
+cells     : primary lung fibroblasts
+treatment : irradiation 0.5 Gy
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM526638 1
+    - GSM526639 1
+    - GSM526640 1
+    - GSM526641 1
+treatment :
+    - GSM526630 1
+    - GSM526631 1
+    - GSM526632 1
+    - GSM526633 1
+
+---
+accession : E-GEOD-21059
+platform  : A-AGIL-28
+pathway   : p53
+cells     : primary lung fibroblasts
+treatment : irradiation 0.5 Gy
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM526650 1
+    - GSM526651 1
+    - GSM526652 1
+    - GSM526653 1
+treatment :
+    - GSM526642 1
+    - GSM526643 1
+    - GSM526644 1
+    - GSM526645 1
+
+---
+accession : E-GEOD-21059
+platform  : A-AGIL-28
+pathway   : p53
+cells     : primary lung fibroblasts
+treatment : irradiation 0.5 Gy
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM526662 1
+    - GSM526663 1
+    - GSM526664 1
+    - GSM526665 1
+treatment :
+    - GSM526654 1
+    - GSM526655 1
+    - GSM526656 1
+    - GSM526657 1
+
+---
+accession : E-GEOD-21059
+platform  : A-AGIL-28
+pathway   : p53
+cells     : primary lung fibroblasts
+treatment : irradiation 0.5 Gy
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM526674 1
+    - GSM526675 1
+    - GSM526676 1
+    - GSM526677 1
+treatment :
+    - GSM526666 1
+    - GSM526667 1
+    - GSM526668 1
+    - GSM526669 1
+...

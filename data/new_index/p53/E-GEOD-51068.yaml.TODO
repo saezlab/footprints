@@ -1,0 +1,14 @@
+---
+accession : E-GEOD-51068
+platform  : A-GEOD-13667
+pathway   : p53
+cells     : OCI-Ly3 cell line
+treatment : Aclacinomycin A,Camptothecin,Cycloheximide,Doxorubicin hydrochloride,etoposide,mitomycin C
+effect    : activating
+hours     : 6,12,24
+
+control   :
+    -
+treatment :
+    -
+...

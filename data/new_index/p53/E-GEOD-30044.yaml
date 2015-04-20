@@ -1,0 +1,48 @@
+---
+accession : E-GEOD-30043
+platform  : A-GEOD-9355
+pathway   : p53
+cells     : HEK cells
+treatment : 8.5 Gy radiation
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM743775 1
+    - GSM743779 1
+    - GSM743783 1
+    - GSM743787 1
+    - GSM743791 1
+    - GSM743795 1
+treatment :
+    - GSM743777 1
+    - GSM743781 1
+    - GSM743785 1
+    - GSM743789 1
+    - GSM743793 1
+    - GSM743797 1
+
+---
+accession : E-GEOD-30043
+platform  : A-GEOD-9355
+pathway   : p53
+cells     : HEK cells treated with minor grove binding ligand
+treatment : 8.5 Gy radiation
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM743776 1
+    - GSM743780 1
+    - GSM743784 1
+    - GSM743788 1
+    - GSM743792 1
+    - GSM743796 1
+treatment :
+    - GSM743778 1
+    - GSM743782 1
+    - GSM743786 1
+    - GSM743790 1
+    - GSM743794 1
+    - GSM743798 1
+...

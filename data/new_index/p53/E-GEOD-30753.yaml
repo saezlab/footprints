@@ -1,0 +1,40 @@
+---
+accession : E-GEOD-30753
+platform  : A-AFFY-141
+pathway   : p53
+cells     : immortalized B5/589 human mammary epithelial cells, inducible p53
+treatment : 3 ng doxicyclin
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM763011 1
+    - GSM763012 1
+    - GSM763013 1
+    - GSM763014 1
+treatment :
+    - GSM763015 1
+    - GSM763016 1
+    - GSM763017 1
+    - GSM763018 1
+
+---
+accession : E-GEOD-30753
+platform  : A-AFFY-141
+pathway   : p53
+cells     : immortalized B5/589 human mammary epithelial cells, inducible p53
+treatment : 5 ng doxicyclin
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM763011 1
+    - GSM763012 1
+    - GSM763013 1
+    - GSM763014 1
+treatment :
+    - GSM763019 1
+    - GSM763020 1
+    - GSM763021 1
+    - GSM763022 1
+...

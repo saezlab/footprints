@@ -1,0 +1,54 @@
+---
+accession : E-MEXP-390
+platform  : A-AFFY-44
+pathway   : p53
+cells     : HCT116 cell line
+treatment : oxaliplatin
+effect    : activating
+hours     : 6
+
+control   :
+    - Homo sapiens__S:BioSource:MEXP:179486
+    - Homo sapiens__S:BioSource:MEXP:179487
+    - Homo sapiens__S:BioSource:MEXP:179488
+treatment :
+    - Homo sapiens__S:BioSource:MEXP:179498
+    - Homo sapiens__S:BioSource:MEXP:179499
+    - Homo sapiens__S:BioSource:MEXP:179500
+
+---
+accession : E-MEXP-390
+platform  : A-AFFY-44
+pathway   : p53
+cells     : HCT116 cell line
+treatment : oxaliplatin
+effect    : activating
+hours     : 12
+
+control   :
+    - Homo sapiens__S:BioSource:MEXP:179486
+    - Homo sapiens__S:BioSource:MEXP:179487
+    - Homo sapiens__S:BioSource:MEXP:179488
+treatment :
+    - Homo sapiens__S:BioSource:MEXP:179501
+    - Homo sapiens__S:BioSource:MEXP:179502
+    - Homo sapiens__S:BioSource:MEXP:179503
+
+---
+accession : E-MEXP-390
+platform  : A-AFFY-44
+pathway   : p53
+cells     : HCT116 cell line
+treatment : oxaliplatin
+effect    : activating
+hours     : 24
+
+control   :
+    - Homo sapiens__S:BioSource:MEXP:179486
+    - Homo sapiens__S:BioSource:MEXP:179487
+    - Homo sapiens__S:BioSource:MEXP:179488
+treatment :
+    - Homo sapiens__S:BioSource:MEXP:179504
+    - Homo sapiens__S:BioSource:MEXP:179505
+    - Homo sapiens__S:BioSource:MEXP:179506
+...

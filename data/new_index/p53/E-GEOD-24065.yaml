@@ -1,0 +1,79 @@
+---
+accession : E-GEOD-24065
+platform  : A-AGIL-28
+pathway   : p53
+cells     : MCF7 cells grown in estrogen-depleted conditions
+treatment : doxorubicin
+effect    : activating
+hours     : 10
+
+control   :
+    - GSM591738 1
+    - GSM591755 1
+    - GSM591756 1
+    - GSM591757 1
+    - GSM591758 1
+    - GSM591759 1
+treatment :
+    - GSM591760 1
+    - GSM591773 1
+    - GSM591774 1
+    - GSM591775 1
+    - GSM591776 1
+    - GSM591777 1
+    - GSM591778 1
+
+---
+accession : E-GEOD-24065
+platform  : A-AGIL-28
+pathway   : p53
+cells     : MCF7 cells grown in physiological estrogen conditions
+treatment : doxorubicin
+effect    : activating
+hours     : 10
+
+control   :
+    - GSM591791 1
+    - GSM591794 1
+    - GSM591795 1
+treatment :
+    - GSM592126 1
+    - GSM592127 1
+    - GSM592128 1
+
+---
+accession : E-GEOD-24065
+platform  : A-AGIL-28
+pathway   : p53
+cells     : MCF7 cells grown in pharmacological estrogen conditions
+treatment : doxorubicin
+effect    : activating
+hours     : 10
+
+control   :
+    - GSM591780 1
+    - GSM591789 1
+    - GSM591790 1
+treatment :
+    - GSM591813 1
+    - GSM591814 1
+    - GSM591816 1
+
+---
+accession : E-GEOD-24065
+platform  : A-AGIL-28
+pathway   : p53
+cells     : MCF7 cells treated with TNFa
+treatment : doxorubicin
+effect    : activating
+hours     : 10
+
+control   :
+    - GSM591802 1
+    - GSM591807 1
+    - GSM591810 1
+treatment :
+    - GSM592132 1
+    - GSM592133 1
+    - GSM592134 1
+...

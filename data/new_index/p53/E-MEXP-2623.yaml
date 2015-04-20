@@ -1,0 +1,48 @@
+---
+accession : E-MEXP-2623
+platform  : A-AFFY-37
+pathway   : p53
+cells     : HCT116 colon cancer cell line
+treatment : 4 Gy irradiation
+effect    : activating
+hours     : 1
+
+control   :
+    - HCT116_P53p_C # p53 WT, 0 Gy
+    - HCT116_P53m_C # p53 KD, 0 Gy
+    - HCT116_P53m_1h # p53 KD, 4 Gy
+treatment :
+    - HCT116_P53p_1h # p53 WT, 4 Gy
+
+---
+accession : E-MEXP-2623
+platform  : A-AFFY-37
+pathway   : p53
+cells     : HCT116 colon cancer cell line
+treatment : 4 Gy irradiation
+effect    : activating
+hours     : 12
+
+control   :
+    - HCT116_P53p_C # p53 WT, 0 Gy
+    - HCT116_P53m_C # p53 KD, 0 Gy
+    - HCT116_P53m_12h # p53 KD, 4 Gy
+treatment :
+    - HCT116_P53p_12h # p53 WT, 4 Gy
+
+---
+accession : E-MEXP-2623
+platform  : A-AFFY-37
+pathway   : p53
+cells     : HCT116 colon cancer cell line
+treatment : 4 Gy irradiation
+effect    : activating
+hours     : 24
+
+control   :
+    - HCT116_P53p_C # p53 WT, 0 Gy
+    - HCT116_P53m_C # p53 KD, 0 Gy
+    - HCT116_P53m_24h # p53 KD, 4 Gy
+treatment :
+    - HCT116_P53p_24h # p53 WT, 4 Gy
+...

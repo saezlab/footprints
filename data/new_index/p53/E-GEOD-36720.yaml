@@ -1,0 +1,36 @@
+---
+accession : E-GEOD-36720
+platform  : A-GEOD-6248
+pathway   : p53
+cells     : LNCap prostate cancer cell lines
+treatment : 5 Gy radiation
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM899650 1
+    - GSM899651 1
+    - GSM899652 1
+treatment :
+    - GSM899653 1
+    - GSM899654 1
+    - GSM899655 1
+
+---
+accession : E-GEOD-36720
+platform  : A-GEOD-6248
+pathway   : p53
+cells     : LNCap prostate cancer cell lines
+treatment : 10 Gy radiation
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM899650 1
+    - GSM899651 1
+    - GSM899652 1
+treatment :
+    - GSM899656 1
+    - GSM899657 1
+    - GSM899658 1
+...

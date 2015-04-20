@@ -1,0 +1,34 @@
+---
+accession : E-GEOD-15658
+platform  : A-AFFY-44
+pathway   : p53
+cells     : Saos-2 osteosarcoma cell line treated with PRIMA-1
+treatment : transcriptionally more active p53-His273
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM385356 1 # p53 null
+    - GSM385362 1
+treatment :
+    - GSM385383 1 # p53-His273
+    - GSM385388 1
+    - GSM385648 1
+
+---
+accession : E-GEOD-15658
+platform  : A-AFFY-44
+pathway   : p53
+cells     : Saos-2 osteosarcoma cell line treated with PRIMA-1
+treatment : transcriptionally more active p53-His273
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM385363 1 # p53 null
+    - GSM385392 1
+treatment :
+    - GSM385384 1 # p53-His273
+    - GSM385385 1
+    - GSM385389 1
+...

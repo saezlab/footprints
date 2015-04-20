@@ -1,0 +1,36 @@
+---
+accession : E-GEOD-35006
+platform  : A-AFFY-44
+pathway   : p53
+cells     : IPH-926
+treatment : heat-stable vs. labile condition
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM860189 1
+    - GSM860191 1
+    - GSM860193 1
+treatment :
+    - GSM860190 1
+    - GSM860192 1
+    - GSM860194 1
+
+---
+accession : E-GEOD-35006
+platform  : A-AFFY-44
+pathway   : p53
+cells     : BT-474
+treatment : heat-stable vs. labile condition
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM860201 1
+    - GSM860203 1
+    - GSM860205 1
+treatment :
+    - GSM860202 1
+    - GSM860204 1
+    - GSM860206 1
+...

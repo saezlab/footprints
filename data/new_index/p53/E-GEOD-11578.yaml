@@ -1,0 +1,36 @@
+---
+accession : E-GEOD-11578
+platform  : A-AFFY-37
+pathway   : p53
+cells     : HCT116 cell line
+treatment : MDM2 replacing compound RITA
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM291532 1
+    - GSM291533 1
+    - GSM291534 1
+treatment :
+    - GSM291535 1
+    - GSM291536 1
+    - GSM291537 1
+
+---
+accession : E-GEOD-11578
+platform  : A-AFFY-37
+pathway   : p53
+cells     : HCT116 cell line + RITA
+treatment : p53 knockout vs WT
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM291529 1
+    - GSM291530 1
+    - GSM291531 1
+treatment :
+    - GSM291535 1
+    - GSM291536 1
+    - GSM291537 1
+...

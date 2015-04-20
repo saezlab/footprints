@@ -1,0 +1,16 @@
+---
+accession : E-GEOD-18552
+platform  : A-AFFY-44
+pathway   : p53
+cells     : MCF-7
+treatment : doxorubicin
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM490029 1
+    - GSM490030 1
+treatment :
+    - GSM490037 1
+    - GSM490038 1
+...

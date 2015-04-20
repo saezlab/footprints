@@ -1,0 +1,32 @@
+---
+accession : E-GEOD-30137
+platform  : A-AFFY-141
+pathway   : p53
+cells     : HepG2 cells, 10 uM Nutlin
+treatment : shRNA p53
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM746058 1
+    - GSM746059 1
+treatment :
+    - GSM746060 1
+    - GSM746061 1
+
+---
+accession : E-GEOD-30137
+platform  : A-AFFY-141
+pathway   : p53
+cells     : HepG2 cells, 0.5 mM AICAR
+treatment : shRNA p53
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSM746062 1
+    - GSM746063 1
+treatment :
+    - GSM746064 1
+    - GSM746065 1
+...

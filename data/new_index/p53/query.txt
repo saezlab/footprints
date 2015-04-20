@@ -1,0 +1,1 @@
+(sa:*p53 OR sa:mdm2 OR sa:nutlin* OR sa:*radiation OR sa:*radiated OR sa:"dna damage" OR sa:ddr OR sa:*rubicin OR sa:*platin OR sa:docetaxel OR sa:gamma) organism:sapiens samplecount:[4 TO 10000] raw:true exptype:"Transcription profiling"

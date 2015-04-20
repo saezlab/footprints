@@ -1,0 +1,16 @@
+---
+accession : E-MTAB-1403
+platform  : A-AFFY-44
+pathway   : p53
+cells     : SAOS cells
+treatment : p53 WT transfected
+effect    : activating
+hours     : 18
+
+control   :
+    - SAOS+GFP_1
+    - SAOS+GFP_2
+treatment :
+    - SAOS+p53wt_1
+    - SAOS+p53wt_2
+...

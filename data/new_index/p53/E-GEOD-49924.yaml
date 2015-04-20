@@ -1,0 +1,48 @@
+---
+accession : E-GEOD-49924
+platform  : A-GEOD-13607
+pathway   : p53
+cells     : placentas after term pregnancy
+treatment : irradiation
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM1209844 1
+    - GSM1209855 1
+treatment :
+    - GSM1209845 1
+    - GSM1209857 1
+
+---
+accession : E-GEOD-49924
+platform  : A-GEOD-13607
+pathway   : p53
+cells     : placentas after term pregnancy
+treatment : irradiation
+effect    : activating
+hours     : 8
+
+control   :
+    - GSM1209847 1
+    - GSM1209859 1
+treatment :
+    - GSM1209849 1
+    - GSM1209862 1
+
+---
+accession : E-GEOD-49924
+platform  : A-GEOD-13607
+pathway   : p53
+cells     : placentas after term pregnancy
+treatment : irradiation
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1209864 1
+    - GSM1209851 1
+treatment :
+    - GSM1209854 1
+    - GSM1209866 1
+...

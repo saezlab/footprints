@@ -1,0 +1,32 @@
+---
+accession : E-GEOD-30174
+platform  : A-AFFY-44
+pathway   : p53
+cells     : primary peripheral blood from multiple prostate cancer patients
+treatment : external beam radiation therapy (EBRT)
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM753571 1
+    - GSM753579 1
+    - GSM753587 1
+    - GSM753595 1
+    - GSM753603 1
+    - GSM753611 1
+    - GSM753619 1
+    - GSM753627 1
+    - GSM753635 1
+    - GSM753643 1
+treatment :
+    - GSM753573 1
+    - GSM753581 1
+    - GSM753589 1
+    - GSM753597 1
+    - GSM753605 1
+    - GSM753613 1
+    - GSM753621 1
+    - GSM753629 1
+    - GSM753637 1
+    - GSM753645 1
+...

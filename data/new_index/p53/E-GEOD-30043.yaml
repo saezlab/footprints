@@ -1,0 +1,48 @@
+---
+accession : E-GEOD-30043
+platform  : A-GEOD-9355
+pathway   : p53
+cells     : U87 glioma cell line
+treatment : 8.5 Gy radiation
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM743751 1
+    - GSM743755 1
+    - GSM743759 1
+    - GSM743763 1
+    - GSM743767 1
+    - GSM743771 1
+treatment :
+    - GSM743753 1
+    - GSM743757 1
+    - GSM743761 1
+    - GSM743765 1
+    - GSM743769 1
+    - GSM743773 1
+
+---
+accession : E-GEOD-30043
+platform  : A-GEOD-9355
+pathway   : p53
+cells     : U87 glioma cell line treated with minor grove binding ligand
+treatment : 8.5 Gy radiation
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM743752 1
+    - GSM743756 1
+    - GSM743760 1
+    - GSM743764 1
+    - GSM743768 1
+    - GSM743772 1
+treatment :
+    - GSM743754 1
+    - GSM743758 1
+    - GSM743762 1
+    - GSM743766 1
+    - GSM743770 1
+    - GSM743774 1
+...

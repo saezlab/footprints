@@ -1,0 +1,36 @@
+---
+accession : E-GEOD-46642
+platform  : A-AFFY-44
+pathway   : p53
+cells     : U2OS osteosarcoma cell line
+treatment : 0.6 ug/ml Doxorubicin
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1131226 1
+    - GSM1131227 1
+    - GSM1131228 1
+treatment :
+    - GSM1131229 1
+    - GSM1131230 1
+    - GSM1131231 1
+
+---
+accession : E-GEOD-46642
+platform  : A-AFFY-44
+pathway   : p53
+cells     : U2OS osteosarcoma cell line
+treatment : 10 uM Nutlin-3a
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1131232 1
+    - GSM1131233 1
+    - GSM1131234 1
+treatment :
+    - GSM1131235 1
+    - GSM1131236 1
+    - GSM1131237 1
+...

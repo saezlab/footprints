@@ -1,0 +1,16 @@
+---
+accession : E-GEOD-47042
+platform  : RNA-seq
+pathway   : p53
+cells     : MCF-7
+treatment : 5 uM Nutlin-3a
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1143672 1
+    - GSM1143673 1
+treatment :
+    - GSM1143674 1
+    - GSM1143675 1
+...
