@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-55772
+platform  : A-GEOD-15491
+pathway   : Trail
+cells     : Kasumi-1 cells
+treatment : 5 uM FTY720 reportedly causing apoptosis
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM1345906 1
+    - GSM1345907 1
+    - GSM1345908 1
+treatment :
+    - GSM1345903 1
+    - GSM1345904 1
+    - GSM1345905 1
+...

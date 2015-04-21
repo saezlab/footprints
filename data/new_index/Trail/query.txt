@@ -1,2 +1,4 @@
 (rtrail OR trail* OR fas OR fasl) organism:sapiens samplecount:[4 TO 10000]
 raw:true exptype:"Transcription profiling" array:(A-AFFY-33 OR A-AFFY-44 OR A-AFFY-37 OR A-AFFY-141)
+
+(Genasense OR ABT-737 OR ABT-199 OR obatoclax OR GX15-070 OR casp8 OR caspase) organism:sapiens samplecount:[4 TO 10000] raw:true exptype:"Transcription profiling"

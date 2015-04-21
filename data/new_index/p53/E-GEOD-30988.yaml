@@ -1,0 +1,15 @@
+---
+accession : E-GEOD-30988
+platform  : A-AFFY-44
+pathway   : p53
+cells     : HeLa cells
+treatment : Doxorubicin
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM767917 1
+    - GSM767919 1
+treatment :
+    - GSM767916 1
+...

@@ -1,0 +1,64 @@
+---
+accession : E-GEOD-36149
+platform  : A-AFFY-44
+pathway   : Trail
+cells     : SEM-K2 acute lymphoblastic leukemia cell line
+treatment : 72h EC50 obatoclax
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM881826 1
+    - GSM881832 1
+treatment :
+    - GSM881827 1
+    - GSM881833 1
+
+---
+accession : E-GEOD-36149
+platform  : A-AFFY-44
+pathway   : Trail
+cells     : SEM-K2 acute lymphoblastic leukemia cell line
+treatment : 3x 72h EC50 obatoclax
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM881826 1
+    - GSM881832 1
+treatment :
+    - GSM881828 1
+    - GSM881834 1
+
+---
+accession : E-GEOD-36149
+platform  : A-AFFY-44
+pathway   : Trail
+cells     : RS4:11 acute lymphoblastic leukemia cell line
+treatment : 72h EC50 obatoclax
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM881823 1
+    - GSM881829 1
+treatment :
+    - GSM881824 1
+    - GSM881830 1
+
+---
+accession : E-GEOD-36149
+platform  : A-AFFY-44
+pathway   : Trail
+cells     : RS4:11 acute lymphoblastic leukemia cell line
+treatment : 3x 72h EC50 obatoclax
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM881823 1
+    - GSM881829 1
+treatment :
+    - GSM881825 1
+    - GSM881831 1
+...
