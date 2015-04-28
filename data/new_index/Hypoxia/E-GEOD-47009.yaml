@@ -10,7 +10,7 @@ hours     : 90
 control   :
     - GSM1142893 1
     - GSM1142895 1
-treatment :
+perturbed :
     - GSM1142894 1
 
 ---
@@ -25,6 +25,6 @@ hours     : 90
 control   :
     - GSM1142893 1
     - GSM1142895 1
-treatment :
+perturbed :
     - GSM1142892 1
 ...

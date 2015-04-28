@@ -11,7 +11,7 @@ control   :
     - GSM520228 1
     - GSM520229 1
     - GSM520230 1
-treatment :
+perturbed :
     - GSM520225 1
     - GSM520226 1
     - GSM520227 1

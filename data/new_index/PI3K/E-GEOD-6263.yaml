@@ -10,7 +10,7 @@ hours     : 24 # estimate
 control   :
     - GSE6263GSM144202
     - GSE6263GSM144203
-treatment :
+perturbed :
     - GSE6263GSM144204
     - GSE6263GSM144205
     - GSE6263GSM144206

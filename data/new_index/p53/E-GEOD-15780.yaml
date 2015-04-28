@@ -10,7 +10,7 @@ hours     : 24
 control   :
     - GSM501693 1
     - GSM501694 1
-treatment :
+perturbed :
     - GSM501699 1
     - GSM501700 1
 ...

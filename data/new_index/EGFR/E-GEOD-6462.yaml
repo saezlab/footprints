@@ -10,7 +10,7 @@ hours     : 1
 control   :
     - GSE6462GSM148516
     - GSE6462GSM148517
-treatment :
+perturbed :
     - GSE6462GSM148523
 
 ---
@@ -25,7 +25,7 @@ hours     : 1.5
 control   :
     - GSE6462GSM148516
     - GSE6462GSM148517
-treatment :
+perturbed :
     - GSE6462GSM148524
 
 ---
@@ -40,7 +40,7 @@ hours     : 1
 control   :
     - GSE6462GSM148516
     - GSE6462GSM148517
-treatment :
+perturbed :
     - GSE6462GSM148530
 
 ---
@@ -55,7 +55,7 @@ hours     : 1.5
 control   :
     - GSE6462GSM148516
     - GSE6462GSM148517
-treatment :
+perturbed :
     - GSE6462GSM148531
 
 ---
@@ -70,7 +70,7 @@ hours     : 1
 control   :
     - GSE6462GSM148516
     - GSE6462GSM148517
-treatment :
+perturbed :
     - GSE6462GSM148537
 
 ---
@@ -85,7 +85,7 @@ hours     : 1.5
 control   :
     - GSE6462GSM148516
     - GSE6462GSM148517
-treatment :
+perturbed :
     - GSE6462GSM148538
 
 ---
@@ -100,7 +100,7 @@ hours     : 1.5
 control   :
     - GSE6462GSM148516
     - GSE6462GSM148517
-treatment :
+perturbed :
     - GSE6462GSM148544
 
 ---
@@ -115,7 +115,7 @@ hours     : 1
 control   :
     - GSE6462GSM148516
     - GSE6462GSM148517
-treatment :
+perturbed :
     - GSE6462GSM148550
 
 ---
@@ -130,7 +130,7 @@ hours     : 1.5
 control   :
     - GSE6462GSM148516
     - GSE6462GSM148517
-treatment :
+perturbed :
     - GSE6462GSM148551
 
 ---
@@ -145,7 +145,7 @@ hours     : 1
 control   :
     - GSE6462GSM148516
     - GSE6462GSM148517
-treatment :
+perturbed :
     - GSE6462GSM148557
 
 ---
@@ -160,7 +160,7 @@ hours     : 1.5
 control   :
     - GSE6462GSM148516
     - GSE6462GSM148517
-treatment :
+perturbed :
     - GSE6462GSM148558
 
 ---
@@ -175,7 +175,7 @@ hours     : 1
 control   :
     - GSE6462GSM148516
     - GSE6462GSM148517
-treatment :
+perturbed :
     - GSE6462GSM148564
 
 ---
@@ -190,7 +190,7 @@ hours     : 1.5
 control   :
     - GSE6462GSM148516
     - GSE6462GSM148517
-treatment :
+perturbed :
     - GSE6462GSM148565
 
 ---
@@ -205,7 +205,7 @@ hours     : 1
 control   :
     - GSE6462GSM148516
     - GSE6462GSM148517
-treatment :
+perturbed :
     - GSE6462GSM148571
 
 ---
@@ -220,6 +220,6 @@ hours     : 1.5
 control   :
     - GSE6462GSM148516
     - GSE6462GSM148517
-treatment :
+perturbed :
     - GSE6462GSM148572
 ...

@@ -10,7 +10,7 @@ hours     : 6
 control   :
     - Homo sapiens__S:BioSource:MEXP:175020
     - Homo sapiens__S:BioSource:MEXP:175021
-treatment :
+perturbed :
     - Homo sapiens__S:BioSource:MEXP:174976
     - Homo sapiens
 ...

@@ -11,7 +11,7 @@ control   :
     - GSM291532 1
     - GSM291533 1
     - GSM291534 1
-treatment :
+perturbed :
     - GSM291535 1
     - GSM291536 1
     - GSM291537 1
@@ -29,7 +29,7 @@ control   :
     - GSM291529 1
     - GSM291530 1
     - GSM291531 1
-treatment :
+perturbed :
     - GSM291535 1
     - GSM291536 1
     - GSM291537 1

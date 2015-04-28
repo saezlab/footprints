@@ -11,7 +11,7 @@ control   :
     - GSM727267 1
     - GSM727268 1
     - GSM727269 1
-treatment :
+perturbed :
     - GSM727273 1
     - GSM727274 1
     - GSM727275 1
@@ -29,7 +29,7 @@ control   :
     - GSM727270 1
     - GSM727271 1
     - GSM727272 1
-treatment :
+perturbed :
     - GSM727276 1
     - GSM727277 1
     - GSM727278 1

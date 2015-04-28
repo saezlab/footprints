@@ -11,7 +11,7 @@ control   :
     - PC3-Co1
     - PC3-Co2
     - PC3-Co3
-treatment :
+perturbed :
     - PC3-Inh1
     - PC3-Inh2
     - PC3-Inh3
@@ -29,7 +29,7 @@ control   :
     - PNT1A-Co1
     - PNT1A-Co2
     - PNT1A-Co3
-treatment :
+perturbed :
     - PNT1A-inh1
     - PNT1A-inh2
     - PNT1A-inh3

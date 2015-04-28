@@ -10,6 +10,6 @@ hours     : 24
 control   :
     - GSM767917 1
     - GSM767919 1
-treatment :
+perturbed :
     - GSM767916 1
 ...

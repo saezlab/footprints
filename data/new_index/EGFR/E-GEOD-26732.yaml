@@ -10,7 +10,7 @@ hours     : 1
 control   :
     - GSM658100 1
     - GSM658101 1
-treatment :
+perturbed :
     - GSM658104 1
     - GSM658105 1
 
@@ -26,7 +26,7 @@ hours     : 6
 control   :
     - GSM658100 1
     - GSM658101 1
-treatment :
+perturbed :
     - GSM658106 1
     - GSM658107 1
 
@@ -42,7 +42,7 @@ hours     : 24
 control   :
     - GSM658100 1
     - GSM658101 1
-treatment :
+perturbed :
     - GSM658108 1
     - GSM658109 1
 ...

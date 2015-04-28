@@ -11,7 +11,7 @@ control   :
     - GSM864257 1
     - GSM864258 1
     - GSM864294 1
-treatment :
+perturbed :
     - GSM864263 1
     - GSM864264 1
     - GSM864265 1
@@ -29,7 +29,7 @@ control   :
     - GSM864257 1
     - GSM864258 1
     - GSM864294 1
-treatment :
+perturbed :
     - GSM864266 1
     - GSM864267 1
 
@@ -46,7 +46,7 @@ control   :
     - GSM864257 1
     - GSM864258 1
     - GSM864294 1
-treatment :
+perturbed :
     - GSM864259 1
     - GSM864260 1
 
@@ -63,7 +63,7 @@ control   :
     - GSM864257 1
     - GSM864258 1
     - GSM864294 1
-treatment :
+perturbed :
     - GSM864261 1
     - GSM864262 1
 
@@ -80,7 +80,7 @@ control   :
     - GSM864257 1
     - GSM864258 1
     - GSM864294 1
-treatment :
+perturbed :
     - GSM864268 1
     - GSM864269 1
     - GSM864270 1
@@ -98,7 +98,7 @@ control   :
     - GSM864257 1
     - GSM864258 1
     - GSM864294 1
-treatment :
+perturbed :
     - GSM864271 1
     - GSM864272 1
     - GSM864273 1

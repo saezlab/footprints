@@ -12,7 +12,7 @@ control   :
     - GSM756854 1
     - GSM756855 1
     - GSM756862 1
-treatment :
+perturbed :
     - GSM756859 1
     - GSM756860 1
     - GSM756861 1
@@ -31,7 +31,7 @@ control   :
     - GSM756854 1
     - GSM756855 1
     - GSM756862 1
-treatment :
+perturbed :
     - GSM756863 1
     - GSM756864 1
     - GSM756865 1
@@ -49,7 +49,7 @@ control   :
     - GSM756866 1
     - GSM756867 1
     - GSM756868 1
-treatment :
+perturbed :
     - GSM756869 1
     - GSM756870 1
     - GSM756871 1
@@ -67,7 +67,7 @@ control   :
     - GSM756872 1
     - GSM756873 1
     - GSM756874 1
-treatment :
+perturbed :
     - GSM756875 1
     - GSM756876 1
     - GSM756877 1

@@ -11,7 +11,7 @@ control   :
     - GSM554579 1
     - GSM554580 1
     - GSM554581 1
-treatment :
+perturbed :
     - GSM554588 1
     - GSM554589 1
     - GSM554590 1
@@ -29,7 +29,7 @@ control   :
     - GSM554579 1
     - GSM554580 1
     - GSM554581 1
-treatment :
+perturbed :
     - GSM554582 1
     - GSM554583 1
     - GSM554584 1
@@ -47,7 +47,7 @@ control   :
     - GSM554579 1
     - GSM554580 1
     - GSM554581 1
-treatment :
+perturbed :
     - GSM554585 1
     - GSM554586 1
     - GSM554597 1

@@ -8,12 +8,12 @@ effect    : activating
 hours     : 48
 
 control   :
-    - GSM842048 1 # no treatment
+    - GSM842048 1 # no perturbed
     - GSM842049 1
     - GSM842050 1 # DMSO
     - GSM842051 1
-treatment :
-    - GSM842056 1 # no treatment
+perturbed :
+    - GSM842056 1 # no perturbed
     - GSM842057 1
     - GSM842042 1 # DMSO
     - GSM842043 1

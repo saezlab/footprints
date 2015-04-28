@@ -11,7 +11,7 @@ control   :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181633
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181634
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181635
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181636
 
 ---
@@ -27,7 +27,7 @@ control   :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181633
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181634
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181635
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181639
 
 ---
@@ -43,7 +43,7 @@ control   :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181633
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181634
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181635
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181637
 
 ---
@@ -59,7 +59,7 @@ control   :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181633
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181634
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181635
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181640
 
 ---
@@ -75,7 +75,7 @@ control   :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181633
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181634
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181635
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181638
 
 ---
@@ -91,7 +91,7 @@ control   :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181633
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181634
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181635
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181641
 
 ---
@@ -107,7 +107,7 @@ control   :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181668
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181642
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181643
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181644
 
 ---
@@ -123,7 +123,7 @@ control   :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181668
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181642
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181643
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181647
 
 ---
@@ -139,7 +139,7 @@ control   :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181668
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181642
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181643
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181645
 
 ---
@@ -155,7 +155,7 @@ control   :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181668
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181642
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181643
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181648
 
 ---
@@ -171,7 +171,7 @@ control   :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181668
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181642
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181643
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181646
 
 ---
@@ -187,7 +187,7 @@ control   :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181668
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181642
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181643
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181649
 
 ---
@@ -203,7 +203,7 @@ control   :
     - Homo sapiens
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181651
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181652
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181653
 
 ---
@@ -219,7 +219,7 @@ control   :
     - Homo sapiens
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181651
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181652
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181656
 
 ---
@@ -235,7 +235,7 @@ control   :
     - Homo sapiens
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181651
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181652
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181654
 
 ---
@@ -251,7 +251,7 @@ control   :
     - Homo sapiens
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181651
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181652
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181657
 
 ---
@@ -267,7 +267,7 @@ control   :
     - Homo sapiens
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181651
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181652
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181655
 
 ---
@@ -283,7 +283,7 @@ control   :
     - Homo sapiens
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181651
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181652
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181658
 
 ---
@@ -299,7 +299,7 @@ control   :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181659
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181660
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181661
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181662
 
 ---
@@ -315,7 +315,7 @@ control   :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181659
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181660
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181661
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181665
 
 ---
@@ -331,7 +331,7 @@ control   :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181659
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181660
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181661
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181663
 
 ---
@@ -347,7 +347,7 @@ control   :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181659
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181660
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181661
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181666
 
 ---
@@ -363,7 +363,7 @@ control   :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181659
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181660
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181661
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181664
 
 ---
@@ -379,6 +379,6 @@ control   :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181659
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181660
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181661
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181667
 ...

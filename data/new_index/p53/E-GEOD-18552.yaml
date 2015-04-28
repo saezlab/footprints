@@ -10,7 +10,7 @@ hours     : 6
 control   :
     - GSM490029 1
     - GSM490030 1
-treatment :
+perturbed :
     - GSM490037 1
     - GSM490038 1
 ...

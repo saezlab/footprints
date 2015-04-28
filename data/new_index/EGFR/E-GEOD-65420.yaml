@@ -10,7 +10,7 @@ hours     : 24 # don't know
 control   :
     - GSM1595839 1
     - GSM1595840 1
-treatment :
+perturbed :
     - GSM1595841 1
     - GSM1595842 1
 
@@ -26,7 +26,7 @@ hours     : 24 # don't know
 control   :
     - GSM1595850 1
     - GSM1595851 1
-treatment :
+perturbed :
     - GSM1595852 1
     - GSM1595853 1
 ...

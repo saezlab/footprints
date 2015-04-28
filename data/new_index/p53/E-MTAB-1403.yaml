@@ -10,7 +10,7 @@ hours     : 18
 control   :
     - SAOS+GFP_1
     - SAOS+GFP_2
-treatment :
+perturbed :
     - SAOS+p53wt_1
     - SAOS+p53wt_2
 ...

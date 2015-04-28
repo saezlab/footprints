@@ -10,7 +10,7 @@ hours     : 24
 control   :
     - GSM1376320 1
     - GSM1376321 1
-treatment :
+perturbed :
     - GSM1376322 1
     - GSM1376323 1
 
@@ -26,7 +26,7 @@ hours     : 24
 control   :
     - GSM1376324 1
     - GSM1376325 1
-treatment :
+perturbed :
     - GSM1376326 1
     - GSM1376327 1
 
@@ -42,7 +42,7 @@ hours     : 24
 control   :
     - GSM1376328 1
     - GSM1376329 1
-treatment :
+perturbed :
     - GSM1376330 1
     - GSM1376331 1
 
@@ -58,7 +58,7 @@ hours     : 24
 control   :
     - GSM1376332 1
     - GSM1376333 1
-treatment :
+perturbed :
     - GSM1376334 1
     - GSM1376335 1
 ...

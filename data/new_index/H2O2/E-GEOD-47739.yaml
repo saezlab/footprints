@@ -12,7 +12,7 @@ control   :
     - GSM1155657 1
     - GSM1155658 1
     - GSM1155659 1
-treatment :
+perturbed :
     - GSM1155660 1
     - GSM1155661 1
     - GSM1155662 1

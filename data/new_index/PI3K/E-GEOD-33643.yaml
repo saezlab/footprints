@@ -12,7 +12,7 @@ control   :
     - GSM832048 1
     - GSM832049 1
     - GSM832050 1
-treatment :
+perturbed :
     - GSM832051 1
     - GSM832052 1
     - GSM832053 1
@@ -32,7 +32,7 @@ control   :
     - GSM832048 1
     - GSM832049 1
     - GSM832050 1
-treatment :
+perturbed :
     - GSM832055 1
     - GSM832056 1
     - GSM832057 1
@@ -52,7 +52,7 @@ control   :
     - GSM832048 1
     - GSM832049 1
     - GSM832050 1
-treatment :
+perturbed :
     - GSM832059 1
     - GSM832060 1
     - GSM832061 1
@@ -72,7 +72,7 @@ control   :
     - GSM832048 1
     - GSM832049 1
     - GSM832050 1
-treatment :
+perturbed :
     - GSM832063 1
     - GSM832064 1
     - GSM832065 1
@@ -92,7 +92,7 @@ control   :
     - GSM832048 1
     - GSM832049 1
     - GSM832050 1
-treatment :
+perturbed :
     - GSM832067 1
     - GSM832068 1
     - GSM832069 1
@@ -112,7 +112,7 @@ control   :
     - GSM832048 1
     - GSM832049 1
     - GSM832050 1
-treatment :
+perturbed :
     - GSM832071 1
     - GSM832072 1
     - GSM832073 1
@@ -132,7 +132,7 @@ control   :
     - GSM832048 1
     - GSM832049 1
     - GSM832050 1
-treatment :
+perturbed :
     - GSM832075 1
     - GSM832076 1
     - GSM832077 1
@@ -152,7 +152,7 @@ control   :
     - GSM832048 1
     - GSM832049 1
     - GSM832050 1
-treatment :
+perturbed :
     - GSM832079 1
     - GSM832080 1
     - GSM832081 1
@@ -172,7 +172,7 @@ control   :
     - GSM832048 1
     - GSM832049 1
     - GSM832050 1
-treatment :
+perturbed :
     - GSM832083 1
     - GSM832084 1
     - GSM832085 1

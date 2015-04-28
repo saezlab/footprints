@@ -11,7 +11,7 @@ control   :
     - GSM707909 1
     - GSM707913 1
     - GSM707917 1
-treatment :
+perturbed :
     - GSM707910 1
     - GSM707914 1
     - GSM707918 1
@@ -29,7 +29,7 @@ control   :
     - GSM707909 1
     - GSM707913 1
     - GSM707917 1
-treatment :
+perturbed :
     - GSM707911 1
     - GSM707915 1
     - GSM707919 1
@@ -47,7 +47,7 @@ control   :
     - GSM707909 1
     - GSM707913 1
     - GSM707917 1
-treatment :
+perturbed :
     - GSM707912 1
     - GSM707916 1
     - GSM707920 1

@@ -10,7 +10,7 @@ hours     : 24
 control   :
     - GSE13487GSM339978
     - GSE13487GSM339980
-treatment :
+perturbed :
     - GSE13487GSM339966
     - GSE13487GSM339967
 
@@ -26,7 +26,7 @@ hours     : 24
 control   :
     - GSE13487GSM339978
     - GSE13487GSM339980
-treatment :
+perturbed :
     - GSE13487GSM339960
     - GSE13487GSM339961
 
@@ -40,12 +40,12 @@ effect    : inhibiting
 hours     : 48
 
 control   :
-    - GSE13487GSM339971 # no treatment
+    - GSE13487GSM339971 # no perturbed
     - GSE13487GSM339974
     - GSE13487GSM339977
     - GSE13487GSM339979 # DMSO
     - GSE13487GSM339981
-treatment :
+perturbed :
     - GSE13487GSM339983
     - GSE13487GSM339984
     - GSE13487GSM339986
@@ -64,7 +64,7 @@ hours     : 24
 control   :
     - GSE13487GSM339979
     - GSE13487GSM339981
-treatment :
+perturbed :
     - GSE13487GSM339968
     - GSE13487GSM339969
 
@@ -80,7 +80,7 @@ hours     : 24
 control   :
     - GSE13487GSM339979
     - GSE13487GSM339981
-treatment :
+perturbed :
     - GSE13487GSM339962
     - GSE13487GSM339963
 ...

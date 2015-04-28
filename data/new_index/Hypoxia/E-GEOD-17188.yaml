@@ -12,7 +12,7 @@ control   :
     - GSM429892 1
     - GSM429897 1
     - GSM429898 1
-treatment :
+perturbed :
     - GSM429893 1
     - GSM429894 1
     - GSM429899 1
@@ -32,7 +32,7 @@ control   :
     - GSM429892 1
     - GSM429897 1
     - GSM429898 1
-treatment :
+perturbed :
     - GSM429895 1
     - GSM429896 1
     - GSM429901 1

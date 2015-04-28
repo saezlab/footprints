@@ -10,7 +10,7 @@ hours     : 24
 control   :
     - GSM1286085 1
     - GSM1286090 1
-treatment :
+perturbed :
     - GSM1286087 1
     - GSM1286092 1
 ...

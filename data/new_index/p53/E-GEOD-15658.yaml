@@ -10,7 +10,7 @@ hours     : 6
 control   :
     - GSM385356 1 # p53 null
     - GSM385362 1
-treatment :
+perturbed :
     - GSM385383 1 # p53-His273
     - GSM385388 1
     - GSM385648 1
@@ -27,7 +27,7 @@ hours     : 12
 control   :
     - GSM385363 1 # p53 null
     - GSM385392 1
-treatment :
+perturbed :
     - GSM385384 1 # p53-His273
     - GSM385385 1
     - GSM385389 1

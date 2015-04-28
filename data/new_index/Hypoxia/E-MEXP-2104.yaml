@@ -13,7 +13,7 @@ control   :
     - D10N_B
     - D10N_810
     - D10N_A
-treatment :
+perturbed :
     - D1H_810
     - D1H_A
     - D10H_A

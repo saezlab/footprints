@@ -10,7 +10,7 @@ hours     : 24
 control   :
     - GSM746058 1
     - GSM746059 1
-treatment :
+perturbed :
     - GSM746060 1
     - GSM746061 1
 
@@ -26,7 +26,7 @@ hours     : 24
 control   :
     - GSM746062 1
     - GSM746063 1
-treatment :
+perturbed :
     - GSM746064 1
     - GSM746065 1
 ...

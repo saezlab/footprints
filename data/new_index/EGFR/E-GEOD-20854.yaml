@@ -10,7 +10,7 @@ hours     : 12
 control   :
     - GSM521595 1
     - GSM521596 1
-treatment :
+perturbed :
     - GSM521597 1
     - GSM521598 1
 
@@ -26,7 +26,7 @@ hours     : 24
 control   :
     - GSM521601 1
     - GSM521602 1
-treatment :
+perturbed :
     - GSM521603 1
     - GSM521604 1
 
@@ -42,7 +42,7 @@ hours     : 12
 control   :
     - GSM521595 1
     - GSM521596 1
-treatment :
+perturbed :
     - GSM521599 1
     - GSM521600 1
 
@@ -58,7 +58,7 @@ hours     : 24
 control   :
     - GSM521601 1
     - GSM521602 1
-treatment :
+perturbed :
     - GSM521605 1
     - GSM521606 1
 
@@ -74,7 +74,7 @@ hours     : 12
 control   :
     - GSM521607 1
     - GSM521608 1
-treatment :
+perturbed :
     - GSM521609 1
     - GSM521610 1
 
@@ -90,7 +90,7 @@ hours     : 24
 control   :
     - GSM521613 1
     - GSM521614 1
-treatment :
+perturbed :
     - GSM521615 1
     - GSM521616 1
 
@@ -106,7 +106,7 @@ hours     : 12
 control   :
     - GSM521607 1
     - GSM521608 1
-treatment :
+perturbed :
     - GSM521611 1
     - GSM521612 1
 
@@ -122,7 +122,7 @@ hours     : 24
 control   :
     - GSM521613 1
     - GSM521614 1
-treatment :
+perturbed :
     - GSM521617 1
     - GSM521618 1
 ...

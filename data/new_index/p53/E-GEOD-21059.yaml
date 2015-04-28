@@ -12,7 +12,7 @@ control   :
     - GSM526627 1
     - GSM526628 1
     - GSM526629 1
-treatment :
+perturbed :
     - GSM526618 1
     - GSM526619 1
     - GSM526620 1
@@ -32,7 +32,7 @@ control   :
     - GSM526639 1
     - GSM526640 1
     - GSM526641 1
-treatment :
+perturbed :
     - GSM526630 1
     - GSM526631 1
     - GSM526632 1
@@ -52,7 +52,7 @@ control   :
     - GSM526651 1
     - GSM526652 1
     - GSM526653 1
-treatment :
+perturbed :
     - GSM526642 1
     - GSM526643 1
     - GSM526644 1
@@ -72,7 +72,7 @@ control   :
     - GSM526663 1
     - GSM526664 1
     - GSM526665 1
-treatment :
+perturbed :
     - GSM526654 1
     - GSM526655 1
     - GSM526656 1
@@ -92,7 +92,7 @@ control   :
     - GSM526675 1
     - GSM526676 1
     - GSM526677 1
-treatment :
+perturbed :
     - GSM526666 1
     - GSM526667 1
     - GSM526668 1

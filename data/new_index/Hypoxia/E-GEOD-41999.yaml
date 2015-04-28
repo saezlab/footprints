@@ -11,7 +11,7 @@ control   :
     - GSM1030358 1
     - GSM1030359 1
     - GSM1030360 1
-treatment :
+perturbed :
     - GSM1030364 1
     - GSM1030365 1
     - GSM1030366 1
@@ -29,7 +29,7 @@ control   :
     - GSM1030361 1
     - GSM1030362 1
     - GSM1030363 1
-treatment :
+perturbed :
     - GSM1030367 1
     - GSM1030368 1
     - GSM1030369 1

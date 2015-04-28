@@ -11,7 +11,7 @@ control   :
     - GSM795820 1
     - GSM795821 1
     - GSM795822 1
-treatment :
+perturbed :
     - GSM795824 1
     - GSM795825 1
     - GSM795827 1
@@ -30,7 +30,7 @@ control   :
     - GSM795829 1
     - GSM795831 1
     - GSM795832 1
-treatment :
+perturbed :
     - GSM795834 1
     - GSM795835 1
     - GSM795837 1
@@ -50,7 +50,7 @@ control   :
     - GSM795841 1
     - GSM795842 1
     - GSM795843 1
-treatment :
+perturbed :
     - GSM795845 1
     - GSM795847 1
     - GSM795848 1

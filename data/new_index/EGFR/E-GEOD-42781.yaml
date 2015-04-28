@@ -11,7 +11,7 @@ control   :
     - GSM1049835 1
     - GSM1049836 1
     - GSM1049837 1
-treatment :
+perturbed :
     - GSM1049838 1
     - GSM1049839 1
     - GSM1049840 1
@@ -29,7 +29,7 @@ control   :
     - GSM1049835 1
     - GSM1049836 1
     - GSM1049837 1
-treatment :
+perturbed :
     - GSM1049841 1
     - GSM1049842 1
     - GSM1049843 1

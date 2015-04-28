@@ -13,7 +13,7 @@ control   :
     - GSM373099 1
     - GSM373104 1
     - GSM373109 1
-treatment :
+perturbed :
     - GSM373093 1
     - GSM373098 1
     - GSM373103 1

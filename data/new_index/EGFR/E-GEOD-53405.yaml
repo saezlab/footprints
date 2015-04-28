@@ -10,7 +10,7 @@ hours     : 1
 control   :
     - GSM1290926 1
     - GSM1290927 1
-treatment :
+perturbed :
     - GSM1290932 1
     - GSM1290933 1
 
@@ -26,7 +26,7 @@ hours     : 2
 control   :
     - GSM1290926 1
     - GSM1290927 1
-treatment :
+perturbed :
     - GSM1290934 1
 
 ---
@@ -41,6 +41,6 @@ hours     : 4
 control   :
     - GSM1290926 1
     - GSM1290927 1
-treatment :
+perturbed :
     - GSM1290935 1
 ...

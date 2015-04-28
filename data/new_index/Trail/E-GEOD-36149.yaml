@@ -10,7 +10,7 @@ hours     : 6
 control   :
     - GSM881826 1
     - GSM881832 1
-treatment :
+perturbed :
     - GSM881827 1
     - GSM881833 1
 
@@ -26,7 +26,7 @@ hours     : 6
 control   :
     - GSM881826 1
     - GSM881832 1
-treatment :
+perturbed :
     - GSM881828 1
     - GSM881834 1
 
@@ -42,7 +42,7 @@ hours     : 6
 control   :
     - GSM881823 1
     - GSM881829 1
-treatment :
+perturbed :
     - GSM881824 1
     - GSM881830 1
 
@@ -58,7 +58,7 @@ hours     : 6
 control   :
     - GSM881823 1
     - GSM881829 1
-treatment :
+perturbed :
     - GSM881825 1
     - GSM881831 1
 ...

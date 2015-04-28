@@ -16,7 +16,7 @@ control   :
     - GSM539607 1
     - GSM539608 1
     - GSM539609 1
-treatment :
+perturbed :
     - GSM539624 1
 
 ---
@@ -37,7 +37,7 @@ control   :
     - GSM539607 1
     - GSM539608 1
     - GSM539609 1
-treatment :
+perturbed :
     - GSM539625 1
 
 ---
@@ -58,6 +58,6 @@ control   :
     - GSM539607 1
     - GSM539608 1
     - GSM539609 1
-treatment :
+perturbed :
     - GSM539626 1
 ...

@@ -11,7 +11,7 @@ control   :
     - GSM386967 1
     - GSM386969 1
     - GSM386970 1
-treatment :
+perturbed :
     - GSM386971 1
     - GSM386972 1
     - GSM386973 1

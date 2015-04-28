@@ -18,7 +18,7 @@ control   :
     - GSM753627 1
     - GSM753635 1
     - GSM753643 1
-treatment :
+perturbed :
     - GSM753573 1
     - GSM753581 1
     - GSM753589 1

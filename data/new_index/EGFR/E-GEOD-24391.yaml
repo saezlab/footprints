@@ -11,7 +11,7 @@ control   :
     - GSM601318 1
     - GSM601319 1
     - GSM601320 1
-treatment :
+perturbed :
     - GSM601327 1
     - GSM601328 1
     - GSM601329 1
@@ -29,7 +29,7 @@ control   :
     - GSM601318 1
     - GSM601319 1
     - GSM601320 1
-treatment :
+perturbed :
     - GSM601330 1
     - GSM601331 1
     - GSM601332 1
@@ -47,7 +47,7 @@ control   :
     - GSM601318 1
     - GSM601319 1
     - GSM601320 1
-treatment :
+perturbed :
     - GSM601333 1
     - GSM601334 1
     - GSM601335 1
@@ -65,7 +65,7 @@ control   :
     - GSM601318 1
     - GSM601319 1
     - GSM601320 1
-treatment :
+perturbed :
     - GSM601336 1
     - GSM601337 1
     - GSM601338 1

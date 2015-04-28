@@ -12,7 +12,7 @@ control   :
     - GSM1550100 1
     - GSM1550101 1
     - GSM1550102 1
-treatment :
+perturbed :
     - GSM1550096 1
     - GSM1550097 1
     - GSM1550098 1
@@ -30,7 +30,7 @@ control   :
     - GSM1550109 1
     - GSM1550110 1
     - GSM1550111 1
-treatment :
+perturbed :
     - GSM1550090 1
     - GSM1550091 1
     - GSM1550092 1
@@ -48,7 +48,7 @@ control   :
     - GSM1550112 1
     - GSM1550113 1
     - GSM1550114 1
-treatment :
+perturbed :
     - GSM1550093 1
     - GSM1550094 1
     - GSM1550095 1

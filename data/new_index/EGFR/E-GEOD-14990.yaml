@@ -11,7 +11,7 @@ control   :
     - GSM374141 1
     - GSM374142 1
     - GSM374143 1
-treatment :
+perturbed :
     - GSM374147 1
     - GSM374148 1
     - GSM374149 1
@@ -29,7 +29,7 @@ control   :
     - GSM374141 1
     - GSM374142 1
     - GSM374143 1
-treatment :
+perturbed :
     - GSM374144 1
     - GSM374145 1
     - GSM374146 1

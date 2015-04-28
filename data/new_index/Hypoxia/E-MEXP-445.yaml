@@ -23,7 +23,7 @@ control   :
     - mono control_13
     - mono control_14
     - mono control_15
-treatment :
+perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181857
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181859
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181861

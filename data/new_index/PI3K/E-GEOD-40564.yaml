@@ -11,7 +11,7 @@ control   :
     - GSM996643 1
     - GSM996644 1
     - GSM996645 1
-treatment :
+perturbed :
     - GSM996646 1
     - GSM996647 1
     - GSM996648 1
@@ -29,7 +29,7 @@ control   :
     - GSM996643 1
     - GSM996644 1
     - GSM996645 1
-treatment :
+perturbed :
     - GSM996649 1
     - GSM996650 1
     - GSM996651 1

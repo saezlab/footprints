@@ -11,7 +11,7 @@ control   :
     - GSM1345906 1
     - GSM1345907 1
     - GSM1345908 1
-treatment :
+perturbed :
     - GSM1345903 1
     - GSM1345904 1
     - GSM1345905 1

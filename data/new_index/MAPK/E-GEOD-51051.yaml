@@ -20,7 +20,7 @@ control   :
     - GSM1236570 1
     - GSM1236572 1
     - GSM1236574 1
-treatment :
+perturbed :
     - GSM1236553 1
     - GSM1236555 1
     - GSM1236557 1

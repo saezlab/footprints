@@ -11,7 +11,7 @@ control   :
     - GSM442016 1
     - GSM442017 1
     - GSM442018 1
-treatment :
+perturbed :
     - GSM442019 1
     - GSM442020 1
     - GSM442021 1

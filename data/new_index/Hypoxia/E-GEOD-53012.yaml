@@ -11,7 +11,7 @@ control   :
     - GSM1280335 1
     - GSM1280336 1
     - GSM1280337 1
-treatment :
+perturbed :
     - GSM1280332 1
     - GSM1280333 1
     - GSM1280334 1
@@ -29,7 +29,7 @@ control   :
     - GSM1280344 1
     - GSM1280345 1
     - GSM1280346 1
-treatment :
+perturbed :
     - GSM1280341 1
     - GSM1280342 1
     - GSM1280343 1
@@ -47,7 +47,7 @@ control   :
     - GSM1280353 1
     - GSM1280354 1
     - GSM1280355 1
-treatment :
+perturbed :
     - GSM1280350 1
     - GSM1280351 1
     - GSM1280352 1

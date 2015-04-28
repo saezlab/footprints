@@ -11,7 +11,7 @@ control   :
     - GSM417834 1
     - GSM417836 1
     - GSM417838 1
-treatment :
+perturbed :
     - GSM417835 1
 
 ---
@@ -27,7 +27,7 @@ control   :
     - GSM417834 1
     - GSM417836 1
     - GSM417838 1
-treatment :
+perturbed :
     - GSM417837 1
 
 ---
@@ -43,6 +43,6 @@ control   :
     - GSM417834 1
     - GSM417836 1
     - GSM417838 1
-treatment :
+perturbed :
     - GSM417838 1
 ...

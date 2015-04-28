@@ -12,7 +12,7 @@ control   :
     - GSM816833 1
     - GSM816836 1
     - GSM816837 1
-treatment :
+perturbed :
     - GSM816840 1
 
 ---
@@ -27,6 +27,6 @@ hours     : 4
 control   :
     - GSM816841 1
     - GSM816845 1
-treatment :
+perturbed :
     - GSM816844 1
 ...

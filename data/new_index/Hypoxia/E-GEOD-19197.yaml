@@ -10,7 +10,7 @@ hours     : 24
 control   :
     - GSE19197GSM475944
     - GSE19197GSM475948
-treatment :
+perturbed :
     - GSE19197GSM475946
     - GSE19197GSM475950
 
@@ -26,7 +26,7 @@ hours     : 24
 control   :
     - GSE19197GSM475945
     - GSE19197GSM475949
-treatment :
+perturbed :
     - GSE19197GSM475947
     - GSE19197GSM475951
 
@@ -42,7 +42,7 @@ hours     : 24
 control   :
     - GSE19197GSM475952
     - GSE19197GSM475954
-treatment :
+perturbed :
     - GSE19197GSM475953
     - GSE19197GSM475955
 ...

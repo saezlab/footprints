@@ -10,7 +10,7 @@ hours     : 3
 control   :
     - GSM827008 1
     - GSM827010 1
-treatment :
+perturbed :
     - GSM827009 1
     - GSM827011 1
 
@@ -26,7 +26,7 @@ hours     : 3
 control   :
     - GSM827012 1
     - GSM827014 1
-treatment :
+perturbed :
     - GSM827013 1
     - GSM827015 1
 ...

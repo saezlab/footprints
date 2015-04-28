@@ -16,7 +16,7 @@ control   :
     - GSM558032 1
     - GSM558033 1
     - GSM558034 1
-treatment :
+perturbed :
     - GSM558035 1
     - GSM558036 1
     - GSM558037 1
@@ -44,7 +44,7 @@ control   :
     - GSM558032 1
     - GSM558033 1
     - GSM558034 1
-treatment :
+perturbed :
     - GSM558043 1
     - GSM558044 1
     - GSM558045 1

@@ -14,7 +14,7 @@ control   :
     - GSM741287 1
     - GSM741288 1
     - GSM741289 1
-treatment :
+perturbed :
     - GSM741290 1
     - GSM741291 1
     - GSM741292 1

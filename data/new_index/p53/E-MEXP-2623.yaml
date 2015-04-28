@@ -11,7 +11,7 @@ control   :
     - HCT116_P53p_C # p53 WT, 0 Gy
     - HCT116_P53m_C # p53 KD, 0 Gy
     - HCT116_P53m_1h # p53 KD, 4 Gy
-treatment :
+perturbed :
     - HCT116_P53p_1h # p53 WT, 4 Gy
 
 ---
@@ -27,7 +27,7 @@ control   :
     - HCT116_P53p_C # p53 WT, 0 Gy
     - HCT116_P53m_C # p53 KD, 0 Gy
     - HCT116_P53m_12h # p53 KD, 4 Gy
-treatment :
+perturbed :
     - HCT116_P53p_12h # p53 WT, 4 Gy
 
 ---
@@ -43,6 +43,6 @@ control   :
     - HCT116_P53p_C # p53 WT, 0 Gy
     - HCT116_P53m_C # p53 KD, 0 Gy
     - HCT116_P53m_24h # p53 KD, 4 Gy
-treatment :
+perturbed :
     - HCT116_P53p_24h # p53 WT, 4 Gy
 ...

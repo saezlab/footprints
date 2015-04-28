@@ -11,7 +11,7 @@ control   :
     - GSM899650 1
     - GSM899651 1
     - GSM899652 1
-treatment :
+perturbed :
     - GSM899653 1
     - GSM899654 1
     - GSM899655 1
@@ -29,7 +29,7 @@ control   :
     - GSM899650 1
     - GSM899651 1
     - GSM899652 1
-treatment :
+perturbed :
     - GSM899656 1
     - GSM899657 1
     - GSM899658 1

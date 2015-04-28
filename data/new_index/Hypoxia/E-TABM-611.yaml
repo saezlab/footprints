@@ -10,7 +10,7 @@ hours     : 24
 control   :
     - IGR_HeuN_normoxia_noRNAi
     - IGR_HeuN_normoxia_noRNAi
-treatment :
+perturbed :
     - IGR_HeuN_hypoxia_noRNAi
     - IGR_HeuN_hypoxia_noRNAi
 ...

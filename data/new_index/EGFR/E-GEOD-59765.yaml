@@ -14,7 +14,7 @@ control   :
     - GSM1446207 1
     - GSM1446214 1
     - GSM1446215 1
-treatment :
+perturbed :
     - GSM1446197 1
     - GSM1446201 1
     - GSM1446205 1
@@ -38,7 +38,7 @@ control   :
     - GSM1446207 1
     - GSM1446214 1
     - GSM1446215 1
-treatment :
+perturbed :
     - GSM1446198 1
     - GSM1446202 1
     - GSM1446206 1

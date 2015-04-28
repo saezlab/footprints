@@ -11,7 +11,7 @@ control   :
     - GSM427335 1
     - GSM427336 1
     - GSM427337 1
-treatment :
+perturbed :
     - GSM427338 1
 
 ---
@@ -27,7 +27,7 @@ control   :
     - GSM427335 1
     - GSM427336 1
     - GSM427337 1
-treatment :
+perturbed :
     - GSM427339 1
 
 ---
@@ -43,7 +43,7 @@ control   :
     - GSM427335 1
     - GSM427336 1
     - GSM427337 1
-treatment :
+perturbed :
     - GSM427340 1
 
 ---
@@ -59,7 +59,7 @@ control   :
     - GSM427335 1
     - GSM427336 1
     - GSM427337 1
-treatment :
+perturbed :
     - GSM427341 1
 
 ---
@@ -75,7 +75,7 @@ control   :
     - GSM427335 1
     - GSM427336 1
     - GSM427337 1
-treatment :
+perturbed :
     - GSM427342 1
 
 ---
@@ -91,6 +91,6 @@ control   :
     - GSM427335 1
     - GSM427336 1
     - GSM427337 1
-treatment :
+perturbed :
     - GSM427343 1
 ...

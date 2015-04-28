@@ -13,7 +13,7 @@ control   :
     - GSM474354 1
     - GSM474355 1
     - GSM474356 1
-treatment :
+perturbed :
     - GSM474367 1
     - GSM474368 1
     - GSM474369 1

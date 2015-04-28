@@ -12,7 +12,7 @@ control   :
     - GSM1224305 1 # 4
     - GSM1224306 1 # 24
     - GSM1224307 1 # 48
-treatment :
+perturbed :
     - GSM1224308 1
 
 ---
@@ -29,7 +29,7 @@ control   :
     - GSM1224305 1 # 4
     - GSM1224306 1 # 24
     - GSM1224307 1 # 48
-treatment :
+perturbed :
     - GSM1224309 1
 
 ---
@@ -46,7 +46,7 @@ control   :
     - GSM1224305 1 # 4
     - GSM1224306 1 # 24
     - GSM1224307 1 # 48
-treatment :
+perturbed :
     - GSM1224310 1
 
 ---
@@ -63,6 +63,6 @@ control   :
     - GSM1224305 1 # 4
     - GSM1224306 1 # 24
     - GSM1224307 1 # 48
-treatment :
+perturbed :
     - GSM1224311 1
 ...

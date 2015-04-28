@@ -11,7 +11,7 @@ control   :
     - GSM1113812 1
     - GSM1113813 1
     - GSM1113814 1
-treatment :
+perturbed :
     - GSM1113816 1
     - GSM1113817 1
 
@@ -27,7 +27,7 @@ hours     : 12
 control   :
     - GSM1113834 1
     - GSM1113835 1
-treatment :
+perturbed :
     - GSM1113832 1
     - GSM1113833 1
 
@@ -44,7 +44,7 @@ control   :
     - GSM1113820 1
     - GSM1113821 1
     - GSM1113822 1
-treatment :
+perturbed :
     - GSM1113823 1
     - GSM1113824 1
     - GSM1113825 1
@@ -61,7 +61,7 @@ hours     : 12
 control   :
     - GSM1113828 1
     - GSM1113829 1
-treatment :
+perturbed :
     - GSM1113830 1
     - GSM1113831 1
 ...

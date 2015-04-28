@@ -17,7 +17,7 @@ control   :
     - GSM546105 1
     - GSM546118 1
     - GSM546121 1
-treatment :
+perturbed :
     - GSM546086 1
     - GSM546088 1
     - GSM546090 1
@@ -47,7 +47,7 @@ control   :
     - GSM546112 1
     - GSM546114 1
     - GSM546116 1
-treatment :
+perturbed :
     - GSM546092 1
     - GSM546094 1
     - GSM546096 1

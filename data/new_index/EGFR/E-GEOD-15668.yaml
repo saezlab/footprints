@@ -11,7 +11,7 @@ control   :
     - GSM392159 1
     - GSM392160 1
     - GSM392161 1
-treatment :
+perturbed :
     - GSM392162 1
     - GSM392163 1
     - GSM392164 1
@@ -29,7 +29,7 @@ control   :
     - GSM392159 1
     - GSM392160 1
     - GSM392161 1
-treatment :
+perturbed :
     - GSM392165 1
     - GSM392166 1
     - GSM392167 1
@@ -47,7 +47,7 @@ control   :
     - GSM392159 1
     - GSM392160 1
     - GSM392161 1
-treatment :
+perturbed :
     - GSM392168 1
     - GSM392169 1
     - GSM392170 1
@@ -65,7 +65,7 @@ control   :
     - GSM392159 1
     - GSM392160 1
     - GSM392161 1
-treatment :
+perturbed :
     - GSM392171 1
     - GSM392172 1
     - GSM392173 1
@@ -83,7 +83,7 @@ control   :
     - GSM392159 1
     - GSM392160 1
     - GSM392161 1
-treatment :
+perturbed :
     - GSM392174 1
     - GSM392175 1
     - GSM392176 1
@@ -101,7 +101,7 @@ control   :
     - GSM392159 1
     - GSM392160 1
     - GSM392161 1
-treatment :
+perturbed :
     - GSM392177 1
     - GSM392178 1
     - GSM392179 1

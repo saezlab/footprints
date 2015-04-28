@@ -12,7 +12,7 @@ control   :
     - GSE2742GSM60140
     - GSE2742GSM92816
     - GSE2742GSM92817
-treatment :
+perturbed :
     - GSE2742GSM92818
     - GSE2742GSM92819
 ...

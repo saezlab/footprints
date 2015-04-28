@@ -10,7 +10,7 @@ hours     : 6
 control   :
     - GSM558109 1
     - GSM558110 1
-treatment :
+perturbed :
     - GSM558111 1
     - GSM558112 1
 
@@ -26,7 +26,7 @@ hours     : 12
 control   :
     - GSM558109 1
     - GSM558110 1
-treatment :
+perturbed :
     - GSM558113 1
     - GSM558114 1
 
@@ -42,7 +42,7 @@ hours     : 24
 control   :
     - GSM558109 1
     - GSM558110 1
-treatment :
+perturbed :
     - GSM558115 1
     - GSM558116 1
 ...

@@ -10,7 +10,7 @@ hours     : 1
 control   :
     - GSM841867 1
     - GSM841871 1
-treatment :
+perturbed :
     - GSM841868 1
     - GSM841872 1
 ...

@@ -14,7 +14,7 @@ control   :
     - GSM1492830 1
     - GSM1492838 1
     - GSM1492855 1
-treatment :
+perturbed :
     - GSM1492802 1
     - GSM1492803 1
     - GSM1492819 1
@@ -38,7 +38,7 @@ control   :
     - GSM1492831 1
     - GSM1492841 1
     - GSM1492858 1
-treatment :
+perturbed :
     - GSM1492804 1
     - GSM1492805 1
     - GSM1492822 1
@@ -62,7 +62,7 @@ control   :
     - GSM1492832 1
     - GSM1492844 1
     - GSM1492861 1
-treatment :
+perturbed :
     - GSM1492806 1
     - GSM1492807 1
     - GSM1492825 1
@@ -85,7 +85,7 @@ control   :
     - GSM1492833 1
     - GSM1492847 1
     - GSM1492864 1
-treatment :
+perturbed :
     - GSM1492808 1
     - GSM1492809 1
     - GSM1492828 1

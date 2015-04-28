@@ -11,7 +11,7 @@ control   :
     - GSM1052615 1
     - GSM1052616 1
     - GSM1052617 1
-treatment :
+perturbed :
     - GSM1052618 1
     - GSM1052619 1
     - GSM1052620 1

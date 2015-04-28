@@ -12,7 +12,7 @@ control   :
     - GSM840339 1
     - GSM840340 1
     - GSM840341 1
-treatment :
+perturbed :
     - GSM840342 1
     - GSM840343 1
     - GSM840344 1

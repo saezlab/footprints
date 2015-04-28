@@ -16,7 +16,7 @@ control   :
     - GSM957139 1
     - GSM957147 1
     - GSM957155 1
-treatment :
+perturbed :
     - GSM957099 1
     - GSM957107 1
     - GSM957115 1
@@ -44,7 +44,7 @@ control   :
     - GSM957139 1
     - GSM957147 1
     - GSM957155 1
-treatment :
+perturbed :
     - GSM957100 1
     - GSM957108 1
     - GSM957116 1
@@ -72,7 +72,7 @@ control   :
     - GSM957135 1
     - GSM957143 1
     - GSM957151 1
-treatment :
+perturbed :
     - GSM957097 1
     - GSM957105 1
     - GSM957113 1
@@ -100,7 +100,7 @@ control   :
     - GSM957135 1
     - GSM957143 1
     - GSM957151 1
-treatment :
+perturbed :
     - GSM957096 1
     - GSM957104 1
     - GSM957112 1

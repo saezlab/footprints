@@ -10,7 +10,7 @@ hours     : 12
 control   :
     - GSM820143 1
     - GSM820144 1
-treatment :
+perturbed :
     - GSM820138 1
     - GSM820139 1
 
@@ -28,7 +28,7 @@ control   :
     - GSM820146 1
     - GSM820147 1
     - GSM820148 1
-treatment :
+perturbed :
     - GSM820140 1
     - GSM820141 1
     - GSM820142 1

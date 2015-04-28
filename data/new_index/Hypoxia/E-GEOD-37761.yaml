@@ -10,7 +10,7 @@ hours     : 12
 control   :
     - GSM927280 1
     - GSM927281 1
-treatment :
+perturbed :
     - GSM927282 1
     - GSM927283 1
 
@@ -26,7 +26,7 @@ hours     : 12
 control   :
     - GSM927280 1
     - GSM927281 1
-treatment :
+perturbed :
     - GSM927284 1
     - GSM927285 1
 
@@ -43,7 +43,7 @@ hours     : 24
 control   :
     - GSM927286 1
     - GSM927287 1
-treatment :
+perturbed :
     - GSM927288 1
     - GSM927289 1
 
@@ -60,7 +60,7 @@ hours     : 24
 control   :
     - GSM927286 1
     - GSM927287 1
-treatment :
+perturbed :
     - GSM927290 1
     - GSM927291 1
 
@@ -77,7 +77,7 @@ hours     : 120
 control   :
     - GSM927298 1
     - GSM927299 1
-treatment :
+perturbed :
     - GSM927294 1
     - GSM927295 1
 
@@ -93,7 +93,7 @@ hours     : 120
 control   :
     - GSM927298 1
     - GSM927299 1
-treatment :
+perturbed :
     - GSM927296 1
     - GSM927297 1
 ...

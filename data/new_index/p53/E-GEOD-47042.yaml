@@ -10,7 +10,7 @@ hours     : 24
 control   :
     - GSM1143672 1
     - GSM1143673 1
-treatment :
+perturbed :
     - GSM1143674 1
     - GSM1143675 1
 ...

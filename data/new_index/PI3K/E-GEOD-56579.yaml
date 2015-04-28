@@ -12,7 +12,7 @@ control   :
     - GSM1364212 1
     - GSM1364213 1
     - GSM1364214 1
-treatment :
+perturbed :
     - GSM1364215 1
     - GSM1364216 1
     - GSM1364217 1
@@ -32,7 +32,7 @@ control   :
     - GSM1364212 1
     - GSM1364213 1
     - GSM1364214 1
-treatment :
+perturbed :
     - GSM1364219 1
     - GSM1364220 1
     - GSM1364221 1

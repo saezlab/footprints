@@ -10,7 +10,7 @@ hours     : 24
 control   :
     - GSM852780 1
     - GSM852782 1
-treatment :
+perturbed :
     - GSM852779 1
     - GSM852781 1
 ...

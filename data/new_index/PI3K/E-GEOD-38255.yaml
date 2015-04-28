@@ -12,7 +12,7 @@ control   :
     - GSM937531 1
     - GSM937532 1
     - GSM937533 1
-treatment :
+perturbed :
     - GSM937534 1
     - GSM937535 1
     - GSM937536 1

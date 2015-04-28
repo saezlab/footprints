@@ -10,7 +10,7 @@ hours     : 12 # estimate
 control   :
     - Control1
     - Control2
-treatment :
+perturbed :
     - Herceptin1
     - Herceptin2
 ...

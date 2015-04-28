@@ -10,7 +10,7 @@ hours     : 24 # estimate
 control   :
     - GSM1376853 1 # p53 siRNA
     - GSM1376856 1
-treatment :
+perturbed :
     - GSM1376850 1 # scrambled siRNA
 
 ---
@@ -25,6 +25,6 @@ hours     : 24 # estimate
 control   :
     - GSM1376855 1 # p53 siRNA
     - GSM1376857 1
-treatment :
+perturbed :
     - GSM1376851 1 # scrambled siRNA
 ...

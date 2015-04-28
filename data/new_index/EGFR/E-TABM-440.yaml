@@ -10,7 +10,7 @@ hours     : 1
 control   :
     - 1. Kontrolle \#01 0h
     - 1. Kontrolle \#02 0h
-treatment :
+perturbed :
     - FGF-7 1h
 
 ---
@@ -25,7 +25,7 @@ hours     : 2
 control   :
     - 1. Kontrolle \#01 0h
     - 1. Kontrolle \#02 0h
-treatment :
+perturbed :
     - FGF-7 2h
 
 ---
@@ -40,7 +40,7 @@ hours     : 3
 control   :
     - 1. Kontrolle \#01 0h
     - 1. Kontrolle \#02 0h
-treatment :
+perturbed :
     - FGF-7 3h
 
 ---
@@ -55,7 +55,7 @@ hours     : 4
 control   :
     - 1. Kontrolle \#01 0h
     - 1. Kontrolle \#02 0h
-treatment :
+perturbed :
     - FGF-7 4h
 
 ---
@@ -70,7 +70,7 @@ hours     : 6
 control   :
     - 1. Kontrolle \#01 0h
     - 1. Kontrolle \#02 0h
-treatment :
+perturbed :
     - FGF-7 6h
 
 ---
@@ -85,7 +85,7 @@ hours     : 8
 control   :
     - 1. Kontrolle \#01 0h
     - 1. Kontrolle \#02 0h
-treatment :
+perturbed :
     - FGF-7 8h
 
 ---
@@ -100,7 +100,7 @@ hours     : 1
 control   :
     - 1. Kontrolle \#01 0h
     - 1. Kontrolle \#02 0h
-treatment :
+perturbed :
     - HGF 1h
 
 ---
@@ -115,7 +115,7 @@ hours     : 2
 control   :
     - 1. Kontrolle \#01 0h
     - 1. Kontrolle \#02 0h
-treatment :
+perturbed :
     - HGF 2h
 
 ---
@@ -130,7 +130,7 @@ hours     : 3
 control   :
     - 1. Kontrolle \#01 0h
     - 1. Kontrolle \#02 0h
-treatment :
+perturbed :
     - HGF 3h
 
 ---
@@ -145,7 +145,7 @@ hours     : 4
 control   :
     - 1. Kontrolle \#01 0h
     - 1. Kontrolle \#02 0h
-treatment :
+perturbed :
     - HGF 4h
 
 ---
@@ -160,7 +160,7 @@ hours     : 6
 control   :
     - 1. Kontrolle \#01 0h
     - 1. Kontrolle \#02 0h
-treatment :
+perturbed :
     - HGF 6h
 
 ---
@@ -175,6 +175,6 @@ hours     : 8
 control   :
     - 1. Kontrolle \#01 0h
     - 1. Kontrolle \#02 0h
-treatment :
+perturbed :
     - HGF 8h
 ...

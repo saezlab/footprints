@@ -11,7 +11,7 @@ control   :
     - GSM1049515 1
     - GSM1049519 1
     - GSM1049523 1
-treatment :
+perturbed :
     - GSM1049516 1
     - GSM1049520 1
     - GSM1049524 1

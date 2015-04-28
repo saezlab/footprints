@@ -10,7 +10,7 @@ hours     : 2
 control   :
     - GSM624690 1
     - GSM624691 1
-treatment :
+perturbed :
     - GSM624694 1
     - GSM624695 1
 
@@ -26,7 +26,7 @@ hours     : 2
 control   :
     - GSM624692 1
     - GSM624693 1
-treatment :
+perturbed :
     - GSM624696 1
     - GSM624697 1
 ...

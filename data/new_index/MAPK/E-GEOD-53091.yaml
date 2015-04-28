@@ -14,7 +14,7 @@ control   :
     - GSM1282218 1
     - GSM1282220 1
     - GSM1282222 1
-treatment :
+perturbed :
     - GSM1282242 1
     - GSM1282244 1
     - GSM1282246 1
@@ -38,7 +38,7 @@ control   :
     - GSM1282218 1
     - GSM1282220 1
     - GSM1282222 1
-treatment :
+perturbed :
     - GSM1282254 1
     - GSM1282256 1
     - GSM1282258 1
@@ -62,7 +62,7 @@ control   :
     - GSM1282218 1
     - GSM1282220 1
     - GSM1282222 1
-treatment :
+perturbed :
     - GSM1282266 1
     - GSM1282268 1
     - GSM1282270 1
@@ -86,7 +86,7 @@ control   :
     - GSM1282218 1
     - GSM1282220 1
     - GSM1282222 1
-treatment :
+perturbed :
     - GSM1282278 1
     - GSM1282280 1
     - GSM1282282 1
@@ -110,7 +110,7 @@ control   :
     - GSM1282218 1
     - GSM1282220 1
     - GSM1282222 1
-treatment :
+perturbed :
     - GSM1282303 1
     - GSM1282306 1
     - GSM1282308 1
@@ -134,7 +134,7 @@ control   :
     - GSM1282219 1
     - GSM1282221 1
     - GSM1282223 1
-treatment :
+perturbed :
     - GSM1282243 1
     - GSM1282245 1
     - GSM1282247 1
@@ -158,7 +158,7 @@ control   :
     - GSM1282219 1
     - GSM1282221 1
     - GSM1282223 1
-treatment :
+perturbed :
     - GSM1282255 1
     - GSM1282257 1
     - GSM1282259 1
@@ -182,7 +182,7 @@ control   :
     - GSM1282219 1
     - GSM1282221 1
     - GSM1282223 1
-treatment :
+perturbed :
     - GSM1282267 1
     - GSM1282269 1
     - GSM1282271 1
@@ -206,7 +206,7 @@ control   :
     - GSM1282219 1
     - GSM1282221 1
     - GSM1282223 1
-treatment :
+perturbed :
     - GSM1282279 1
     - GSM1282281 1
     - GSM1282283 1
@@ -230,7 +230,7 @@ control   :
     - GSM1282219 1
     - GSM1282221 1
     - GSM1282223 1
-treatment :
+perturbed :
     - GSM1282305 1
     - GSM1282307 1
     - GSM1282309 1

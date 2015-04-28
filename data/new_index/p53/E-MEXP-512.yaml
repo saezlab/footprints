@@ -15,7 +15,7 @@ control   :
     - N5-unirrad
     - N6-unirrad
     - N7-unirrad
-treatment :
+perturbed :
     - N1-rad
     - N2-rad
     - N3-rad
@@ -38,7 +38,7 @@ control   :
     - S1B-unirrad
     - S2-unirrad
     - S3-unirrad
-treatment :
+perturbed :
     - S1A-rad
     - S1B-rad
     - S2-rad

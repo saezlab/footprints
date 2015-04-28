@@ -11,7 +11,7 @@ control   :
     - GSM860189 1
     - GSM860191 1
     - GSM860193 1
-treatment :
+perturbed :
     - GSM860190 1
     - GSM860192 1
     - GSM860194 1
@@ -29,7 +29,7 @@ control   :
     - GSM860201 1
     - GSM860203 1
     - GSM860205 1
-treatment :
+perturbed :
     - GSM860202 1
     - GSM860204 1
     - GSM860206 1

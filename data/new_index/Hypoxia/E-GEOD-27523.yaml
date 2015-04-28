@@ -11,7 +11,7 @@ control   :
     - GSM679844 1
     - GSM679845 1
     - GSM679846 1
-treatment :
+perturbed :
     - GSM679835 1
     - GSM679836 1
     - GSM679837 1

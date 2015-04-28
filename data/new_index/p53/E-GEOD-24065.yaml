@@ -14,7 +14,7 @@ control   :
     - GSM591757 1
     - GSM591758 1
     - GSM591759 1
-treatment :
+perturbed :
     - GSM591760 1
     - GSM591773 1
     - GSM591774 1
@@ -36,7 +36,7 @@ control   :
     - GSM591791 1
     - GSM591794 1
     - GSM591795 1
-treatment :
+perturbed :
     - GSM592126 1
     - GSM592127 1
     - GSM592128 1
@@ -54,7 +54,7 @@ control   :
     - GSM591780 1
     - GSM591789 1
     - GSM591790 1
-treatment :
+perturbed :
     - GSM591813 1
     - GSM591814 1
     - GSM591816 1
@@ -72,7 +72,7 @@ control   :
     - GSM591802 1
     - GSM591807 1
     - GSM591810 1
-treatment :
+perturbed :
     - GSM592132 1
     - GSM592133 1
     - GSM592134 1

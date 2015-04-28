@@ -12,7 +12,7 @@ control   :
     - GSM798303 1
     - GSM798304 1
     - GSM798305 1
-treatment :
+perturbed :
     - GSM798306 1
     - GSM798307 1
     - GSM798308 1
@@ -32,7 +32,7 @@ control   :
     - GSM798311 1
     - GSM798312 1
     - GSM798313 1
-treatment :
+perturbed :
     - GSM798314 1
     - GSM798315 1
     - GSM798316 1

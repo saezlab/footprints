@@ -10,6 +10,6 @@ hours     : 24 # estimated
 control   :
     - GSM740092 1
     - GSM740093 1
-treatment :
+perturbed :
     - GSM740096 1
 ...

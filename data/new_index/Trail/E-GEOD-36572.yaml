@@ -11,7 +11,7 @@ control   :
     - GSM897007 1
     - GSM897011 1
     - GSM897015 1
-treatment :
+perturbed :
     - GSM897010 1
     - GSM897014 1
     - GSM897018 1

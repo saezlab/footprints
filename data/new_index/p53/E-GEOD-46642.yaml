@@ -11,7 +11,7 @@ control   :
     - GSM1131226 1
     - GSM1131227 1
     - GSM1131228 1
-treatment :
+perturbed :
     - GSM1131229 1
     - GSM1131230 1
     - GSM1131231 1
@@ -29,7 +29,7 @@ control   :
     - GSM1131232 1
     - GSM1131233 1
     - GSM1131234 1
-treatment :
+perturbed :
     - GSM1131235 1
     - GSM1131236 1
     - GSM1131237 1

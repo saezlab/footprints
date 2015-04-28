@@ -10,7 +10,7 @@ hours     : 8
 control   :
     - GSE10061GSM254297
     - GSE10061GSM254298
-treatment :
+perturbed :
     - GSE10061GSM254305
     - GSE10061GSM254306
 ...

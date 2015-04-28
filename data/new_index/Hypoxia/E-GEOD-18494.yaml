@@ -11,7 +11,7 @@ control   :
     - GSM460669 1
     - GSM460670 1
     - GSM460671 1
-treatment :
+perturbed :
     - GSM460672 1
     - GSM460673 1
     - GSM460674 1
@@ -29,7 +29,7 @@ control   :
     - GSM460669 1
     - GSM460670 1
     - GSM460671 1
-treatment :
+perturbed :
     - GSM460675 1
     - GSM460676 1
     - GSM460677 1
@@ -47,7 +47,7 @@ control   :
     - GSM460669 1
     - GSM460670 1
     - GSM460671 1
-treatment :
+perturbed :
     - GSM460678 1
     - GSM460679 1
     - GSM460680 1
@@ -65,7 +65,7 @@ control   :
     - GSM460681 1
     - GSM460682 1
     - GSM460683 1
-treatment :
+perturbed :
     - GSM460684 1
     - GSM460685 1
     - GSM460686 1
@@ -83,7 +83,7 @@ control   :
     - GSM460681 1
     - GSM460682 1
     - GSM460683 1
-treatment :
+perturbed :
     - GSM460687 1
     - GSM460688 1
     - GSM460689 1
@@ -101,7 +101,7 @@ control   :
     - GSM460687 1
     - GSM460688 1
     - GSM460689 1
-treatment :
+perturbed :
     - GSM460690 1
     - GSM460691 1
     - GSM460692 1

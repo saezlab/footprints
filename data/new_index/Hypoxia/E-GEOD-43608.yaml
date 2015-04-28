@@ -10,7 +10,7 @@ hours     : 72
 control   :
     - GSM1066170 1
     - GSM1066172 1
-treatment :
+perturbed :
     - GSM1066171 1
     - GSM1066173 1
 ...

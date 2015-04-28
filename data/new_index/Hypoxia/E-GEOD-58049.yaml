@@ -11,7 +11,7 @@ control   :
     - GSM1400088 1
     - GSM1400092 1
     - GSM1400096 1
-treatment :
+perturbed :
     - GSM1400089 1
     - GSM1400093 1
     - GSM1400094 1

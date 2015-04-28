@@ -10,7 +10,7 @@ hours     : 4
 control   :
     - GSM1209844 1
     - GSM1209855 1
-treatment :
+perturbed :
     - GSM1209845 1
     - GSM1209857 1
 
@@ -26,7 +26,7 @@ hours     : 8
 control   :
     - GSM1209847 1
     - GSM1209859 1
-treatment :
+perturbed :
     - GSM1209849 1
     - GSM1209862 1
 
@@ -42,7 +42,7 @@ hours     : 24
 control   :
     - GSM1209864 1
     - GSM1209851 1
-treatment :
+perturbed :
     - GSM1209854 1
     - GSM1209866 1
 ...

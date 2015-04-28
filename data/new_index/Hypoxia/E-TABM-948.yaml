@@ -14,7 +14,7 @@ control   :
     - 08 2.4 DU145 Control 48h
     - 10 3.2 DU145 Control 24h
     - 12 3.4 DU145 Control 48h
-treatment :
+perturbed :
     - 01 1.1 DU145 Hypoxia 24h
     - 05 2.1 DU145 Hypoxia 24h
     - 09 3.1 DU145 Hypoxia 24h
@@ -35,7 +35,7 @@ control   :
     - 08 2.4 DU145 Control 48h
     - 10 3.2 DU145 Control 24h
     - 12 3.4 DU145 Control 48h
-treatment :
+perturbed :
     - 03 1.3 DU145 Hypoxia 48h
     - 07 2.3 DU145 Hypoxia 48h
     - 11 3.3 DU145 Hypoxia 48h
@@ -56,7 +56,7 @@ control   :
     - 20 2.10 PC3 Control 48h
     - 22 3.8 PC3 Control 24h
     - 24 3.10 PC3 Control 48h
-treatment :
+perturbed :
     - 13 1.7 PC3 Hypoxia 24h
     - 17 2.7 PC3 Hypoxia 24h
     - 21 3.7 PC3 Hypoxia 24h
@@ -77,7 +77,7 @@ control   :
     - 20 2.10 PC3 Control 48h
     - 22 3.8 PC3 Control 24h
     - 24 3.10 PC3 Control 48h
-treatment :
+perturbed :
     - 15 1.9 PC3 Hypoxia 48h
     - 19 2.9 PC3 Hypoxia 48h
     - 23 3.9 PC3 Hypoxia 48h
@@ -98,7 +98,7 @@ control   :
     - 32 2.16 LNCaP Control 48h
     - 34 3.14 LNCaP Control 24h
     - 36 3.16 LNCaP Control 48h
-treatment :
+perturbed :
     - 25 1.13 LNCaP Hypoxia 24h
     - 29 2.13 LNCaP Hypoxia 24h
     - 33 3.13 LNCaP Hypoxia 24h
@@ -119,7 +119,7 @@ control   :
     - 32 2.16 LNCaP Control 48h
     - 34 3.14 LNCaP Control 24h
     - 36 3.16 LNCaP Control 48h
-treatment :
+perturbed :
     - 27 1.15 LNCaP Hypoxia 48h
     - 31 2.15 LNCaP Hypoxia 48h
     - 35 3.15 LNCaP Hypoxia 48h
@@ -140,7 +140,7 @@ control   :
     - 44 2.22 22RV1 Control 48h
     - 46 3.20 22RV1 Control 24h
     - 48 3.22 22RV1 Control 48h
-treatment :
+perturbed :
     - 37 1.19 22RV1 Hypoxia 24h
     - 41 2.19 22RV1 Hypoxia 24h
     - 45 3.19 22RV1 Hypoxia 24h
@@ -161,7 +161,7 @@ control   :
     - 44 2.22 22RV1 Control 48h
     - 46 3.20 22RV1 Control 24h
     - 48 3.22 22RV1 Control 48h
-treatment :
+perturbed :
     - 39 1.21 22RV1 Hypoxia 48h
     - 43 2.21 22RV1 Hypoxia 48h
     - 47 3.21 22RV1 Hypoxia 48h
@@ -189,7 +189,7 @@ control   :
     - 72 3.40 PrEC-5 P3 Control 48h
     - 74 1.44 PrEC-3 P3 Control 24h
     - 76 1.46 PrEC-3 P3 Control 48h
-treatment :
+perturbed :
     - 49 1.25 PrEC-4 P6 Hypoxia 24h
     - 53 2.25 PrEC-4 P6 Hypoxia 24h
     - 57 3.25 PrEC-4 P6 Hypoxia 24h
@@ -220,7 +220,7 @@ control   :
     - 72 3.40 PrEC-5 P3 Control 48h
     - 74 1.44 PrEC-3 P3 Control 24h
     - 76 1.46 PrEC-3 P3 Control 48h
-treatment :
+perturbed :
     - 51 1.27 PrEC-4 P6 Hypoxia 48h
     - 55 2.27 PrEC-4 P6 Hypoxia 48h
     - 59 3.27 PrEC-4 P6 Hypoxia 48h

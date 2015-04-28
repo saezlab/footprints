@@ -11,7 +11,7 @@ control   :
     - Homo sapiens__S:BioSource:MEXP:179486
     - Homo sapiens__S:BioSource:MEXP:179487
     - Homo sapiens__S:BioSource:MEXP:179488
-treatment :
+perturbed :
     - Homo sapiens__S:BioSource:MEXP:179498
     - Homo sapiens__S:BioSource:MEXP:179499
     - Homo sapiens__S:BioSource:MEXP:179500
@@ -29,7 +29,7 @@ control   :
     - Homo sapiens__S:BioSource:MEXP:179486
     - Homo sapiens__S:BioSource:MEXP:179487
     - Homo sapiens__S:BioSource:MEXP:179488
-treatment :
+perturbed :
     - Homo sapiens__S:BioSource:MEXP:179501
     - Homo sapiens__S:BioSource:MEXP:179502
     - Homo sapiens__S:BioSource:MEXP:179503
@@ -47,7 +47,7 @@ control   :
     - Homo sapiens__S:BioSource:MEXP:179486
     - Homo sapiens__S:BioSource:MEXP:179487
     - Homo sapiens__S:BioSource:MEXP:179488
-treatment :
+perturbed :
     - Homo sapiens__S:BioSource:MEXP:179504
     - Homo sapiens__S:BioSource:MEXP:179505
     - Homo sapiens__S:BioSource:MEXP:179506

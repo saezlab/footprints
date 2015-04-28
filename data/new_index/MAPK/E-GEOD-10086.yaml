@@ -12,7 +12,7 @@ control   :
     - GSE10086GSM254949
     - GSE10086GSM254951
     - GSE10086GSM254953
-treatment :
+perturbed :
     - GSE10086GSM254948
     - GSE10086GSM254950
     - GSE10086GSM254952
@@ -30,7 +30,7 @@ hours     : 8
 control   :
     - GSE10086GSM254931
     - GSE10086GSM254939
-treatment :
+perturbed :
     - GSE10086GSM254932
     - GSE10086GSM254940
 
@@ -46,7 +46,7 @@ hours     : 8
 control   :
     - GSE10086GSM254941
     - GSE10086GSM254943
-treatment :
+perturbed :
     - GSE10086GSM254942
     - GSE10086GSM254944
 
@@ -62,7 +62,7 @@ hours     : 8
 control   :
     - GSE10086GSM254955
     - GSE10086GSM254956
-treatment :
+perturbed :
     - GSE10086GSM254959
     - GSE10086GSM254960
 
@@ -78,7 +78,7 @@ hours     : 8
 control   :
     - GSE10086GSM254957
     - GSE10086GSM254958
-treatment :
+perturbed :
     - GSE10086GSM254961
     - GSE10086GSM254962
 ...

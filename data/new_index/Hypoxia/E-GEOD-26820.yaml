@@ -11,7 +11,7 @@ control   :
     - GSM659595 1
     - GSM659596 1
     - GSM659597 1
-treatment :
+perturbed :
     - GSM659592 1
     - GSM659593 1
     - GSM659594 1

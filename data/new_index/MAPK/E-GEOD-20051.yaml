@@ -13,7 +13,7 @@ control   :
     - GSM501260 1
     - GSM501262 1
     - GSM501265 1
-treatment :
+perturbed :
     - GSM501257 1
     - GSM501259 1
     - GSM501261 1
@@ -35,7 +35,7 @@ control   :
     - GSM501260 1
     - GSM501262 1
     - GSM501265 1
-treatment :
+perturbed :
     - GSM501264 1
     - GSM501267 1
 ...

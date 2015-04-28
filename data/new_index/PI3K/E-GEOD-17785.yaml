@@ -11,7 +11,7 @@ control   :
     - GSM443978 1
     - GSM443979 1
     - GSM443980 1
-treatment :
+perturbed :
     - GSM443984 1
     - GSM443985 1
     - GSM443986 1
@@ -29,7 +29,7 @@ control   :
     - GSM443978 1
     - GSM443979 1
     - GSM443980 1
-treatment :
+perturbed :
     - GSM443981 1
     - GSM443982 1
     - GSM443983 1
@@ -47,7 +47,7 @@ control   :
     - GSM443984 1
     - GSM443985 1
     - GSM443986 1
-treatment :
+perturbed :
     - GSM443987 1
     - GSM443988 1
     - GSM443989 1

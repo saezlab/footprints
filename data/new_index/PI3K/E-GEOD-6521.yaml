@@ -10,7 +10,7 @@ hours     : 1
 control   :
     - GSE6521GSM149913
     - GSE6521GSM149914
-treatment :
+perturbed :
     - GSE6521GSM149927
 
 ---
@@ -25,6 +25,6 @@ hours     : 1.5
 control   :
     - GSE6521GSM149913
     - GSE6521GSM149914
-treatment :
+perturbed :
     - GSE6521GSM149928
 ...

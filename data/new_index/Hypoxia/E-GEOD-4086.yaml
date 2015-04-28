@@ -10,7 +10,7 @@ hours     : 29
 control   :
     - GSE4086GSM93568
     - GSE4086GSM93568
-treatment :
+perturbed :
     - GSE4086GSM93566
     - GSE4086GSM93567
 ...

@@ -18,7 +18,7 @@ control   :
     - GSM767793 1
     - GSM767794 1
     - GSM767795 1
-treatment :
+perturbed :
     - GSM767776 1
     - GSM767777 1
     - GSM767778 1

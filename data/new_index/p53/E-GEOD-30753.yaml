@@ -12,7 +12,7 @@ control   :
     - GSM763012 1
     - GSM763013 1
     - GSM763014 1
-treatment :
+perturbed :
     - GSM763015 1
     - GSM763016 1
     - GSM763017 1
@@ -32,7 +32,7 @@ control   :
     - GSM763012 1
     - GSM763013 1
     - GSM763014 1
-treatment :
+perturbed :
     - GSM763019 1
     - GSM763020 1
     - GSM763021 1

@@ -12,7 +12,7 @@ control   :
     - GSM1421100 1
     - GSM1421101 1
     - GSM1421102 1
-treatment :
+perturbed :
     - GSM1421107 1
     - GSM1421108 1
     - GSM1421109 1
@@ -32,7 +32,7 @@ control   :
     - GSM1421104 1
     - GSM1421105 1
     - GSM1421106 1
-treatment :
+perturbed :
     - GSM1421111 1
     - GSM1421112 1
     - GSM1421113 1

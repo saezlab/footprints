@@ -12,7 +12,7 @@ control   :
     - GSM448941 1
     - GSM448942 1
     - GSM448943 1
-treatment :
+perturbed :
     - GSM448944 1
     - GSM448945 1
     - GSM448946 1
@@ -32,7 +32,7 @@ control   :
     - GSM448941 1
     - GSM448942 1
     - GSM448943 1
-treatment :
+perturbed :
     - GSM448948 1
     - GSM448949 1
     - GSM448950 1

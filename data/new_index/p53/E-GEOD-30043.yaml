@@ -14,7 +14,7 @@ control   :
     - GSM743763 1
     - GSM743767 1
     - GSM743771 1
-treatment :
+perturbed :
     - GSM743753 1
     - GSM743757 1
     - GSM743761 1
@@ -38,7 +38,7 @@ control   :
     - GSM743764 1
     - GSM743768 1
     - GSM743772 1
-treatment :
+perturbed :
     - GSM743754 1
     - GSM743758 1
     - GSM743762 1
