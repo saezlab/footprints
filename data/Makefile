@@ -8,4 +8,4 @@ print-%:
 	@echo $* = $($*)
 
 normalized/%.RData: normalize_data.r
-	Rscript $< $@
+	Rscript $< $(@:normalized/%.RData=%) $@
