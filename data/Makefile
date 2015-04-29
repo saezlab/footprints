@@ -8,4 +8,5 @@ print-%:
 	@echo $* = $($*)
 
 normalized/%.RData: normalize_data.r
-	Rscript $< $(@:normalized/%.RData=%) $@
+	bsub -K -M 10240 -R "rusage[mem=10240]" -R "select[gpfs]" -oo $(@:%.RData=%.log) \
+		Rscript $< $(@:normalized/%.RData=%) $@
