@@ -6,7 +6,6 @@
 \#*\#
 *.lyx.emergency
 *.db
-DATA/*
 backup
 cache
 
@@ -100,6 +99,3 @@ Security.txt
 *.tar
 *.swp
 *.txt
-data/*
-DATA
-DATA/*
