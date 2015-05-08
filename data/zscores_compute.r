@@ -15,10 +15,10 @@ record2zscore = function(record, expr) {
         expr = expr[[record$platform]]
 
     # get expression values from source name
-    pd = pData(expr)
+    pd = Biobase::pData(expr)
     mapping = setNames(rownames(pd), pd$Source.Name)
-    control = exprs(expr)[,mapping[record$control]]
-    perturbed = exprs(expr)[,mapping[record$perturbed]]
+    control = Biobase::exprs(expr)[,mapping[record$control]]
+    perturbed = Biobase::exprs(expr)[,mapping[record$perturbed]]
 
     # build models
     mean_control= apply(control, 1, mean)
@@ -34,7 +34,11 @@ record2zscore = function(record, expr) {
 
     list(zscores=zscores, index=index)
 }
-result = lapply(yaml, function(r) record2zscore(r, expr))
+
+records = lapply(yaml, function(r) record2zscore(r, expr))
+index = lapply(records, function(x) x$index) %>% do.call(rbind, .)
+zscores = lapply(records, function(x) x$zscores) %>% do.call(cbind, .)
+result = list(index=index, zscores=zscores)
 
 # separate index file w/ metadata derived from yaml [preferred?]
 save(result, file=ZFILE)
