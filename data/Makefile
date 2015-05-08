@@ -5,8 +5,9 @@ NORMALIZED = $(ACCESSION:%=normalized/%.RData)
 ZSCORES = $(YAML:new_index/%.yaml=zscores/%.RData)
 
 .SECONDARY:
+.SECONDEXPANSION:
 
-zscores: zscores.RData
+zscores: $(ZSCORES) zscores.RData
 
 normalize: $(NORMALIZED)
 
@@ -20,30 +21,8 @@ print-%:
 zscores.RData: $(shell find zscores -type f)
 	Rscript zscores_assemble.r $@ $^
 
-#zscores/$(1)/%.RData: new_index/$(1)/%.yaml normalized/%.RData zscores_compute.r
-#	Rscript zscores_compute.r $(word 1,$^) $(word 2,$^) $@
-
-zscores/EGFR/%.RData: new_index/EGFR/%.yaml normalized/%.RData zscores_compute.r
+zscores/%.RData: new_index/%.yaml normalized/$$(notdir %).RData zscores_compute.r
 	Rscript zscores_compute.r $(word 1,$^) $(word 2,$^) $@
-
-zscores/MAPK/%.RData: new_index/MAPK/%.yaml normalized/%.RData zscores_compute.r
-	Rscript zscores_compute.r $(word 1,$^) $(word 2,$^) $@
-
-zscores/PI3K/%.RData: new_index/PI3K/%.yaml normalized/%.RData zscores_compute.r
-	Rscript zscores_compute.r $(word 1,$^) $(word 2,$^) $@
-
-zscores/p53/%.RData: new_index/p53/%.yaml normalized/%.RData zscores_compute.r
-	Rscript zscores_compute.r $(word 1,$^) $(word 2,$^) $@
-
-zscores/Trail/%.RData: new_index/Trail/%.yaml normalized/%.RData zscores_compute.r
-	Rscript zscores_compute.r $(word 1,$^) $(word 2,$^) $@
-
-zscores/H2O2/%.RData: new_index/H2O2/%.yaml normalized/%.RData zscores_compute.r
-	Rscript zscores_compute.r $(word 1,$^) $(word 2,$^) $@
-
-zscores/Hypoxia/%.RData: new_index/Hypoxia/%.yaml normalized/%.RData zscores_compute.r
-	Rscript zscores_compute.r $(word 1,$^) $(word 2,$^) $@
-
 
 normalized/%.RData: normalize_data.r
 	@rm -f $@ # required to replace annex links
