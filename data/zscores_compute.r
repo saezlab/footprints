@@ -23,9 +23,10 @@ record2zscore = function(record, expr) {
     # build models
     mean_control= apply(control, 1, mean)
     sd_control = apply(control, 1, sd)
-    fc = mean_control / apply(perturbed, 1, mean)
+    mean_perturbed = apply(perturbed, 1, mean)
+    logFC = mean_perturbed - mean_control
     model = loess(sd_control ~ mean_control)
-    zscores = fc / predict(model, mean_control)
+    zscores = logFC / predict(model, mean_perturbed)
 
     # create index column
     index = record
