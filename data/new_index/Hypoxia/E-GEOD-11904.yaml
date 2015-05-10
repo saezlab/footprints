@@ -13,7 +13,7 @@ control   :
     - GSM300853 1
     - GSM300856 1
     - GSM300857 1
-treatment : 
+perturbed : 
     - GSM300839 1
     - GSM300840 1
     - GSM300841 1
