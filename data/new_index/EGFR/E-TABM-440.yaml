@@ -8,8 +8,8 @@ effect    : activating
 hours     : 1
 
 control   :
-    - 1. Kontrolle \#01 0h
-    - 1. Kontrolle \#02 0h
+    - "1. Kontrolle #01 0h"
+    - "2. Kontrolle  #02 0h"
 perturbed :
     - FGF-7 1h
 
@@ -23,8 +23,8 @@ effect    : activating
 hours     : 2
 
 control   :
-    - 1. Kontrolle \#01 0h
-    - 1. Kontrolle \#02 0h
+    - "1. Kontrolle #01 0h"
+    - "2. Kontrolle  #02 0h"
 perturbed :
     - FGF-7 2h
 
@@ -38,8 +38,8 @@ effect    : activating
 hours     : 3
 
 control   :
-    - 1. Kontrolle \#01 0h
-    - 1. Kontrolle \#02 0h
+    - "1. Kontrolle #01 0h"
+    - "2. Kontrolle  #02 0h"
 perturbed :
     - FGF-7 3h
 
@@ -53,8 +53,8 @@ effect    : activating
 hours     : 4
 
 control   :
-    - 1. Kontrolle \#01 0h
-    - 1. Kontrolle \#02 0h
+    - "1. Kontrolle #01 0h"
+    - "2. Kontrolle  #02 0h"
 perturbed :
     - FGF-7 4h
 
@@ -68,8 +68,8 @@ effect    : activating
 hours     : 6
 
 control   :
-    - 1. Kontrolle \#01 0h
-    - 1. Kontrolle \#02 0h
+    - "1. Kontrolle #01 0h"
+    - "2. Kontrolle  #02 0h"
 perturbed :
     - FGF-7 6h
 
@@ -83,8 +83,8 @@ effect    : activating
 hours     : 8
 
 control   :
-    - 1. Kontrolle \#01 0h
-    - 1. Kontrolle \#02 0h
+    - "1. Kontrolle #01 0h"
+    - "2. Kontrolle  #02 0h"
 perturbed :
     - FGF-7 8h
 
@@ -98,8 +98,8 @@ effect    : activating
 hours     : 1
 
 control   :
-    - 1. Kontrolle \#01 0h
-    - 1. Kontrolle \#02 0h
+    - "1. Kontrolle #01 0h"
+    - "2. Kontrolle  #02 0h"
 perturbed :
     - HGF 1h
 
@@ -113,8 +113,8 @@ effect    : activating
 hours     : 2
 
 control   :
-    - 1. Kontrolle \#01 0h
-    - 1. Kontrolle \#02 0h
+    - "1. Kontrolle #01 0h"
+    - "2. Kontrolle  #02 0h"
 perturbed :
     - HGF 2h
 
@@ -128,8 +128,8 @@ effect    : activating
 hours     : 3
 
 control   :
-    - 1. Kontrolle \#01 0h
-    - 1. Kontrolle \#02 0h
+    - "1. Kontrolle #01 0h"
+    - "2. Kontrolle  #02 0h"
 perturbed :
     - HGF 3h
 
@@ -143,8 +143,8 @@ effect    : activating
 hours     : 4
 
 control   :
-    - 1. Kontrolle \#01 0h
-    - 1. Kontrolle \#02 0h
+    - "1. Kontrolle #01 0h"
+    - "2. Kontrolle  #02 0h"
 perturbed :
     - HGF 4h
 
@@ -158,8 +158,8 @@ effect    : activating
 hours     : 6
 
 control   :
-    - 1. Kontrolle \#01 0h
-    - 1. Kontrolle \#02 0h
+    - "1. Kontrolle #01 0h"
+    - "2. Kontrolle  #02 0h"
 perturbed :
     - HGF 6h
 
@@ -173,8 +173,8 @@ effect    : activating
 hours     : 8
 
 control   :
-    - 1. Kontrolle \#01 0h
-    - 1. Kontrolle \#02 0h
+    - "1. Kontrolle #01 0h"
+    - "2. Kontrolle  #02 0h"
 perturbed :
     - HGF 8h
 ...
