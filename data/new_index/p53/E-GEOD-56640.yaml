@@ -13,18 +13,18 @@ control   :
 perturbed :
     - GSM1376850 1 # scrambled siRNA
 
----
-accession : E-GEOD-56640
-platform  : A-GEOD-18627
-pathway   : p53
-cells     : Human neonatal foreskin keratinocytes + cisplatin
-treatment : +/- p53 siRNA
-effect    : inhibiting
-hours     : 24 # estimate
-
-control   :
-    - GSM1376855 1 # p53 siRNA
-    - GSM1376857 1
-perturbed :
-    - GSM1376851 1 # scrambled siRNA
+#---
+#accession : E-GEOD-56640
+#platform  : A-GEOD-18627
+#pathway   : p53
+#cells     : Human neonatal foreskin keratinocytes + cisplatin
+#treatment : +/- p53 siRNA
+#effect    : inhibiting
+#hours     : 24 # estimate
+#
+#control   :
+#    - GSM1376855 1 # p53 siRNA
+#    - GSM1376857 1
+#perturbed :
+#    - GSM1376851 1 # scrambled siRNA
 ...

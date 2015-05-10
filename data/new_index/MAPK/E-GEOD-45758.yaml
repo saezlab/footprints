@@ -49,19 +49,19 @@ perturbed :
     - GSM1113824 1
     - GSM1113825 1
 
----
-accession : E-GEOD-45758
-platform  : A-AFFY-37
-pathway   : MAPK
-cells     : SU86.86 xenografted into mice
-treatment : PD0325901 MEK inhibitor
-effect    : inhibiting
-hours     : 12
-
-control   :
-    - GSM1113828 1
-    - GSM1113829 1
-perturbed :
-    - GSM1113830 1
-    - GSM1113831 1
+#---
+#accession : E-GEOD-45758
+#platform  : A-AFFY-37
+#pathway   : MAPK
+#cells     : SU86.86 xenografted into mice
+#treatment : PD0325901 MEK inhibitor
+#effect    : inhibiting
+#hours     : 12
+#
+#control   :
+#    - GSM1113828 1
+#    - GSM1113829 1
+#perturbed :
+#    - GSM1113830 1
+#    - GSM1113831 1
 ...

@@ -14,11 +14,26 @@ record2zscore = function(record, expr) {
     if (is.list(expr))
         expr = expr[[record$platform]]
 
-    # get expression values from source name
     pd = Biobase::pData(expr)
+    emat = Biobase::exprs(expr)
     mapping = setNames(rownames(pd), pd$Source.Name)
-    control = Biobase::exprs(expr)[,mapping[record$control]]
-    perturbed = Biobase::exprs(expr)[,mapping[record$perturbed]]
+    sub_control = mapping[record$control]
+    sub_perturbed = mapping[record$perturbed]
+
+    # only use arrays that passed qc, fail if we discard whole record
+    rec_both = c(record$control, record$perturbed)
+    sub_both = c(sub_control, sub_perturbed)
+    missing = is.na(sub_both)
+    if (any(missing))
+        warning("discarding ", paste(rec_both[missing], collapse=", "))
+    sub_control = sub_control[!is.na(sub_control)]
+    sub_perturbed = sub_perturbed[!is.na(sub_perturbed)]
+    if (length(sub_control) < 2 || length(sub_perturbed) < 1)
+        stop("record ", record$accession, " failed")
+
+    # get expression values from source name
+    control = emat[,sub_control, drop=FALSE]
+    perturbed = emat[,sub_perturbed, drop=FALSE]
 
     # build models
     mean_control= apply(control, 1, mean)
