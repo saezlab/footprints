@@ -11,9 +11,6 @@ zscores: $(ZSCORES) zscores.RData
 
 normalize: $(NORMALIZED)
 
-dirs:
-	@mkdir -p normalized $(shell dirname $(ZSCORES))
-
 clean:
 	rm -f $(ZSCORES) $(NORMALIZED) $(NORMALIZED:%.RData=%.log)
 
