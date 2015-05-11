@@ -1,7 +1,7 @@
 MODEL_SCRIPTS = $(wildcard model_*.r)
 MODELS = $(MODEL_SCRIPTS:%.r=%.RData)
 SCORES = $(MODELS:model_%=scores_%)
-PLOTS = $(SCORES:scores_%=%.pdf)
+PLOTS = $(SCORES:scores_%.RData=%.pdf)
 
 .PHONY: models scores plots
 
