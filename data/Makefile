@@ -20,9 +20,9 @@ clean:
 print-%:
 	@echo $* = $($*)
 
-zscores.RData: $(ZSCORES)
+zscores.RData: zscores_assemble.r $(ZSCORES)
 	@rm -f $@ # required to replace annex links
-	Rscript zscores_assemble.r $@ $^
+	Rscript $< $@ $(filter-out $<,$^)
 
 zscores/%.RData: new_index/%.yaml normalized/$$(notdir %).RData zscores_compute.r
 	@mkdir -p $(shell dirname $@)

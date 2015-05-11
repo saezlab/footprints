@@ -11,6 +11,13 @@ INFILES = commandArgs(TRUE)[-1] %or% c("zscores/H2O2/E-GEOD-47739.RData",
 contents = io$load(INFILES)
 
 zscores = lapply(contents, function(x) x$zscores) %>% ar$stack(along=2)
-index = lapply(contents, function(x) x$index) %>% do.call(rbind, .)
+colnames(zscores) = 1:ncol(zscores)
+
+index = lapply(contents, function(x) {
+    as.data.frame(x$index, stringsAsFactors=FALSE) %>%
+        lapply(unlist) %>%
+        as.data.frame(stringsAsFactors=FALSE)
+}) %>% do.call(rbind, .)
+rownames(index) = 1:nrow(index)
 
 save(zscores, index, file=OUTFILE)
