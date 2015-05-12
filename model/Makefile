@@ -20,5 +20,5 @@ scores_%.RData: model2scores.r model_%.RData
 	Rscript $< $(word 2,$^) $@
 
 # use each scores object to create plots
-%.pdf: scores_%.RData
-	Rscript $< $@
+%.pdf: scores2plot.r scores_%.RData
+	Rscript $< $(word 2,$^) $@
