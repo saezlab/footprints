@@ -1,0 +1,3 @@
+[submodule "ebits"]
+	path = ebits
+	url = git@github.com:saezlab/ebits.git
