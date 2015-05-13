@@ -21,8 +21,10 @@ zscores = na.omit(zscores) #TODO: handle this better
 zscores = t(zscores)
 
 # fit model to pathway perturbations
-pathway = index$pathway
-mod = lm(zscores ~ 0+pathway) #TODO: pathway matrix
+pathway = ar$mask(index$pathway) + 0
+pathway[,"EGFR"] = pathway[,"EGFR"] + pathway[,"MAPK"] + pathway[,"PI3K"]
+#pathway[,"EGFR"] = 0.5*pathway[,"EGFR"] + 0.25*pathway[,"MAPK"] + 0.25*pathway[,"PI3K"]
+mod = lm(zscores ~ 0 + pathway)
 coeff = coef(summary(mod))
 zfit = do.call(rbind, lapply(coeff, function(x) x[,'Estimate']))
 pval = do.call(rbind, lapply(coeff, function(x) x[,'Pr(>|t|)']))
