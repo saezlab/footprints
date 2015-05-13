@@ -12,8 +12,8 @@ scores: $(SCORES)
 models: $(MODELS)
 
 # use each model script to create a model file
-model_%.RData: model_%.r
-	Rscript $< $@
+model_%.RData: model_%.r ../data/zscores.RData
+	Rscript $< $(word 2,$^) $@
 
 # use each model to create scores object
 scores_%.RData: model2scores.r model_%.RData
