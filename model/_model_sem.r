@@ -42,5 +42,3 @@ summary(lavaan::sem(mod, data=cbind(gmat, dmat)))#, fit.measures=TRUE)
 
 # will likely have to use openmx because lavaan too slow
 # -> try to get same example w/ 100 genes running + compare times
-
-# alternatively, coeff matrix+EGFR(->EGFR,MAPK,PI3K) could work

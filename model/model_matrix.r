@@ -31,28 +31,8 @@ pval = do.call(rbind, lapply(coeff, function(x) x[,'Pr(>|t|)']))
 colnames(zfit) = colnames(pval) = sub("^pathway", "", colnames(zfit))
 rownames(zfit) = rownames(pval) = sub("^Response ", "", rownames(zfit))
 
-###
-### old code begin
-###
-selectFeatures = function(X, min=NULL, max=NULL, n, discard.value=0) {
-    if (!is.null(min) && !is.null(max))
-        stop("only min OR max supported")
+# filter zfit to only include top 100 genes per pathway
+zfit[apply(pval, 2, z -> z > b$minN(z, 100))] = 0
 
-    select_mask = matrix(F, nrow=nrow(X), ncol=ncol(X), dimnames=dimnames(X))
-
-    if (is.null(min)) # select by maximum
-        keep = apply(max, 2, val -> val>=b$maxN(val, n))
-    else # select by minimum
-        keep = apply(min, 2, val -> val<=b$minN(val, n))
-
-    X[!keep] = discard.value
-    X
-}
-zfit = selectFeatures(zfit, min=pval, n=100)
-###
-### old code end
-###
-
-#zfit[pval>0.01] = 0
-
+# save resulting object
 save(zfit, file=OUTFILE)
