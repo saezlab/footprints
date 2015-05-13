@@ -17,45 +17,19 @@ zscores[,inh] = -zscores[,inh]
 zscores = na.omit(zscores) #TODO: handle this better
 zscores = t(zscores)
 
-###
-### begin old code
-###
-fit = function(formula, data=NULL, method="lm") {
-    if (is.matrix(data))
-        data = as.data.frame(data)
+# fit model to pathway perturbations
+index = c(as.list(index), list(zscores=zscores)) # combination between parent.frame()+expl.data <-fix
+mod = st$lm(zscores ~ 0 + pathway, data=index) %>%
+    transmute(gene = zscores,
+              pathway = sub("^pathway", "", term),
+              zscore = estimate,
+              p.value = p.value) %>%
+    group_by(gene) %>%
+    mutate(p.adj = p.adjust(p.value, method="fdr")) %>%
+    ungroup()
 
-    mod = lm(formula, data=data)
-    coeff = coef(summary(mod))
-    fit = do.call(rbind, lapply(coeff, function(x) x[,'Estimate']))
-    pval = do.call(rbind, lapply(coeff, function(x) x[,'Pr(>|t|)']))
-
-    varnames = all.vars(formula)
-    if (length(varnames) == 2 && varnames[2] != '.')
-        colnames(fit) = colnames(pval) = sub(paste0("^", varnames[2]), "", colnames(fit))
-
-    rownames(fit) = rownames(pval) = sub("^Response ", "", rownames(fit))
-
-    list(fit=fit, pval=pval)
-}
-mod = fit(zscores~0+pathway, data=index)
-zfit = mod$fit
-pval = mod$pval
-###
-### end old code
-###
-
-## fit model to pathway perturbations
-#mod = st$lm(zscores ~ 0 + pathway, data=index) %>%
-#    transmute(gene = response,
-#              pathway = sub("^pathway", "", term),
-#              zscore = estimate,
-#              p.value = p.value) %>%
-#    group_by(gene) %>%
-#    mutate(p.adj = p.adjust(p.value, method="fdr")) %>%
-#    ungroup()
-#
-#zfit = ar$construct(zscore ~ gene + pathway, data=mod)
-#pval = ar$construct(p.adj ~ gene + pathway, data=mod)
+zfit = ar$construct(zscore ~ gene + pathway, data=mod)
+pval = ar$construct(p.adj ~ gene + pathway, data=mod)
 
 ###
 ### old code begin
