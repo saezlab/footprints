@@ -17,6 +17,9 @@ runGSEA = function(expr, sigs, tcenter=F, transform.normal=F, error=NA) {
     if (!is.list(sigs))
         sigs = list(sigs)
 
+    if (length(intersect(c(unlist(sigs)), rownames(expr))) == 0)
+        stop("no common names between expression and signature")
+
     result = do.call(cbind,
         setNames(lapply(sigs, function(sig) {
             score = apply(expr, 2, function(e) wGSEA(e, sig))

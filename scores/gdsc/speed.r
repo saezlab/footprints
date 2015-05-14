@@ -15,10 +15,9 @@ OUTFILE = commandArgs(TRUE)[2] %or% "scores_linear.RData"
 zfit = io$load(INFILE)
 
 # load sanger data
-Ys = gdsc$getDrugResponse('IC50s') # or AUC
-tissues = gdsc$getTissues(minN=5)
+#tissues = gdsc$getTissues(minN=5)
 expr = t(gdsc$getBasalExpression())
-ar$intersect(expr, tissues, Ys, along=1)
+#ar$intersect(expr, tissues, along=1)
 
 # calculate scores on panel
 expr = expr[,intersect(rownames(zfit),colnames(expr))]

@@ -6,8 +6,8 @@ st = import('stats')
 gdsc = import('data/gdsc')
 plt = import('plot')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/speed/linear.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "linear.pdf"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/gdsc/speed_linear.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "speed_linear.pdf"
 
 # load scores
 scores = io$load(INFILE)

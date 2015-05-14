@@ -1,6 +1,7 @@
 MODEL_SCRIPTS = $(wildcard ../../model/model_*.r)
 MODELS = $(MODEL_SCRIPTS:%.r=%.RData)
-SCORES = $(MODELS:../../model/model_%=%)
+SETS = $(wildcard ../../genesets/*.RData)
+SCORES = $(MODELS:../../model/model_%=speed_%) $(SETS:../../genesets/%=%)
 
 .PHONY: models scores
 
@@ -12,5 +13,8 @@ print-%: ; @echo $* = $($*)
 	make -C $(basename $@) $@
 
 # use each model to create scores object
-%.RData: speed.r ../../model/model_%.RData
+speed_%.RData: speed.r ../../model/model_%.RData
+	Rscript $< $(word 2,$^) $@
+
+%.RData: set_enrichment.r ../../genesets/%.RData
 	Rscript $< $(word 2,$^) $@
