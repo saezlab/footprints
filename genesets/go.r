@@ -1,8 +1,9 @@
 library(biomaRt)
 library(modules)
 library(dplyr)
-lincs = import('lincs')
-ma = import('microarray')
+b = import('base')
+
+OUTFILE = commandArgs(TRUE)[1] %or% "go.RData"
 
 GO = list("H2O2" = "GO:0042542", # response to hydrogen peroxide
           "IL-1" = "GO:0070498", # interleukin-1-mediated signalling pathway
@@ -31,10 +32,10 @@ GO = list("H2O2" = "GO:0042542", # response to hydrogen peroxide
           "PPAR" = "GO:0035357") # peroxisome proliferator activated receptor signaling pathway
 
 # 319k x2 for all genes, 20k x2 for landmarks
-mart = useMart(biomart="ensembl", dataset="hsapiens_gene_ensembl")
+mart = biomaRt::useMart(biomart="ensembl", dataset="hsapiens_gene_ensembl")
 
-mapGO = getBM(attributes=c("hgnc_symbol", "go_id", "name_1006"),
-              filter="hgnc_symbol", values=ma$probesToHGNC(lincs$projected), mart=mart)
+mapGO = biomaRt::getBM(attributes=c("hgnc_symbol", "go_id", "name_1006"),
+    filter="go_id", values=unname(GO), mart=mart)
 
 stacked = mapGO %>%
     filter(go_id != "") %>%
@@ -43,4 +44,4 @@ stacked = mapGO %>%
 
 genesets = unstack(stacked)
 
-save(genesets, file="GO_projected.RData")
+save(genesets, file=OUTFILE)
