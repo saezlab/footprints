@@ -1,0 +1,53 @@
+Signature	Pathway	References
+ACIDOSIS	Acidosis response	PMID: 21672245, PMID: 22078435
+ACTIVE ENDOTHELIUM	Activated endothelium	PMID: 23975155
+AKT 	Akt signaling	PMID: 20335537, PMID: 22078435
+βCATENIN	Beta catenin activation	PMID: 20335537, PMID: 22078435
+BMYB	BMYB signaling	PMID: 19043454
+BRCA1	BRCA1 signaling	PMID:11823860
+CMYB	CMYB signaling	PMID:20949095
+E2 ACTIVATED (IE)	Estrogen activated signaling	PMID:16505416
+E2 REPRESSED (IIE)	Estrogene repressed signaling	PMID:16505416
+E2F1	E2F1 signaling	PMID: 20335537, PMID: 22078435
+EGFR 	EGFR activation	PMID: 20335537, PMID: 22078435
+ER	Estrogen receptor signaling	PMID: 20335537, PMID: 22078435
+ESC HUMAN	Human Embryonic Stem Cell	PMID:18397753
+FOS JUN	Fos-Jun kinase signaling	PMID: 21214954
+GATA3	Wild-type GATA3-mediated signaling	PMID:15361840 
+GLUCOSE DEPLETION	Glucose depletion response	PMID: 21672245, PMID: 22078435
+GYCOLYSIS	Glycolysis response	PMID:19291283
+HER1 C1	HER1/EGFR Cluster 1	PMID:17663798
+HER1 C2	HER1/EGFR Cluster 2	PMID:17663798
+HER1 C3	HER1/EGFR Cluster 3	PMID:17663798
+HER2	HER2/ERBB2 overexpression	PMID: 20335537, PMID: 22078435
+HER2 AMP	HER2/ERBB2 amplification 	PMID: 21214954
+HYPOXIA	Hypoxia response	PMID: 21672245, PMID: 22078435
+IFNA	Interferon alpha response	PMID: 20335537, PMID: 22078435
+IFNG	Interferon gamma response	PMID: 20335537, PMID: 22078435
+LACTIC ACID	Lactic acidosis response	PMID: 21672245, PMID: 22078435
+LKB1	LKB1 signaling	PMID:17676035
+MYC DUKE	Myc activation	PMID: 20335537, PMID: 22078435
+MYC UNC	Myc signaling	PMID:19690609
+P53	p53 signaling	PMID: 20335537, PMID: 22078435
+P53 MUT	Mutant p53 signaling	PMID:17150101
+P53 WT	Wild-type p53 signaling	PMID:17150101
+P63	p63 activation	PMID: 20335537, PMID: 22078435
+PI3K	PI3 kinase signaling	PMID: 20335537, PMID: 22078435
+PIK3CA	PI3 kinase signaling	PMID:22552288
+PR	Progesterone Receptor	PMID: 20335537, PMID: 22078435
+PROLIFERATION	Proliferation	PMID: 21214954
+PROLIFERATION (PAM50)	Proliferation 	PMID:19204204
+PTEN WT	Wild-type PTEN signaling	PMID: 17452630
+PTEN DEL	Mutant PTEN signaling	PMID: 17452630
+RAS	Ras activation	PMID: 20335537, PMID: 22078435
+RB LOH	Loss of RB expression	PMID:18782450
+SRC	Src kinase 	PMID: 20335537, PMID: 22078435
+STAT1	Stat1 activation	PMID: 19272155
+STAT3	Stat3 activation	PMID: 20335537, PMID: 22078435
+STEM CELL	Stem cell associated expression	PMID:15931389
+STROMAL DOWN	Low stromal cellularity	PMID:19648928
+STROMAL UP	High stromal cellularity	PMID:19648928
+TGFB	Tumor growth factor beta	PMID: 20335537, PMID: 22078435
+TNFA	Tumor necrosis factor alpha	PMID: 20335537, PMID: 22078435
+VEGF/HYPOXIA	Vascular endothelial growth factor / hypoxia signaling	PMID:19291283
+WOUND RESPONSE	Wound response in breast cancer microenvironment	PMID:19887484
