@@ -9,8 +9,12 @@ scores: $(SCORES)
 
 print-%: ; @echo $* = $($*)
 
+# call other makefiles for dependencies
 ../../model/model_%.RData:
-	make -C $(basename $@) $@
+	make -C $(shell dirname $@) $@
+
+../../genesets/%.RData:
+	make -C $(shell dirname $@) $@
 
 # use each model to create scores object
 speed_%.RData: speed.r ../../model/model_%.RData
