@@ -6,7 +6,7 @@ st = import('stats')
 gdsc = import('data/gdsc')
 plt = import('plot')
 
-INFILE = commandArgs(TRUE)[1] %or% "scores_linear.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/speed/linear.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "linear.pdf"
 
 # load scores

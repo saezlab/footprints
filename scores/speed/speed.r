@@ -8,7 +8,7 @@ io = import('io')
 ar = import('array')
 gdsc = import('data/gdsc')
 
-INFILE = commandArgs(TRUE)[1] %or% "model_linear.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../model/model_linear.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "scores_linear.RData"
 
 # load zscores
