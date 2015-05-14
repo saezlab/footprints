@@ -5,13 +5,14 @@ library(MASS)
 library(sROC)
 library(parallel)
 
-# Calculates raw GSEA scores for a list of signatures
-#  expr     : expression matrix (genes x samples)
-#  sigs     : signature gene symbol vector or list thereof
-#  tcenter  : tissue-center expression (default: false) [not implemented]
-#  transform: transform density to normal distribution
-#  error    : return value on error (e.g. an empty list given; NULL: drop)
-#  @return  : matrix or vector of enrichment scores (cell lines x signatures)
+#' Calculates raw GSEA scores for a list of signatures
+#'
+#' @param expr       expression matrix (genes x samples)
+#' @param sigs       signature gene symbol vector or list thereof
+#' @param tcenter    tissue-center expression (default: false) [not implemented]
+#' @param transform  transform density to normal distribution
+#' @param error      return value on error (e.g. an empty list given; NULL: drop)
+#' @return            matrix or vector of enrichment scores (cell lines x signatures)
 runGSEA = function(expr, sigs, tcenter=F, transform.normal=F, error=NA) {
     if (!is.list(sigs))
         sigs = list(sigs)
@@ -36,29 +37,31 @@ runGSEA = function(expr, sigs, tcenter=F, transform.normal=F, error=NA) {
     drop(result)
 }
 
-# Calculates two-tailed GSEA scores for a list of signatures
-#  expr     : expression matrix (genes x cell lines)
-#  upreg    : signature gene symbol vector of upregulated genes or list thereof
-#  downreg  : signature gene symbol vector of downregulated genes or list thereof
-#  tcenter  : tissue-center expression (default: false) [not implemented]
-#  transform: transform density to normal distribution
-#  error    : return value on error (e.g. an empty list given; NULL: drop)
-#  @return  : matrix or vector of enrichment scores (cell lines x signatures)
+#' Calculates two-tailed GSEA scores for a list of signatures
+#'
+#' @param expr       expression matrix (genes x cell lines)
+#' @param upreg      signature gene symbol vector of upregulated genes or list thereof
+#' @param downreg    signature gene symbol vector of downregulated genes or list thereof
+#' @param tcenter    tissue-center expression (default: false) [not implemented]
+#' @param transform  transform density to normal distribution
+#' @param error      return value on error (e.g. an empty list given; NULL: drop)
+#' @return           matrix or vector of enrichment scores (cell lines x signatures)
 runTwoTailedGSEA = function(expr, upreg, downreg, tcenter=F, transform=T, error=NA) {
     up = runGSEA(expr, upreg, tcenter, transform, error)
     down = runGSEA(expr, downreg, tcenter, transform, error)
     up - down
 }
 
-# Performs weighted Gene Set Enrichment Analysis
-#  norm_express: named vector of expression values
-#  signature   : vector of genes in the target set
-#  p           : weight multiplier
-#  display     : draw enrichment plot [T/F]
-#  returnRS    : hit-miss difference for each position [T/F]
-#  significance: compute significance by shuffling genes
-#  trial       : number of runs to shuffle genes if significance=T
-#  @return     : enrichtment score, or list of options specified
+#' Performs weighted Gene Set Enrichment Analysis
+#'
+#' @param norm_express  named vector of expression values
+#' @param signature     vector of genes in the target set
+#' @param p             weight multiplier
+#' @param display       draw enrichment plot [T/F]
+#' @param returnRS      hit-miss difference for each position [T/F]
+#' @param significance  compute significance by shuffling genes
+#' @param trial         number of runs to shuffle genes if significance=T
+#' @return              enrichtment score, or list of options specified
 wGSEA = function(norm_express, signature, p=1, display=F, returnRS=F, significance=F, trial=1000) {
     if (is.null(names(norm_express)) || !is.vector(norm_express) || is.list(norm_express))
         stop("norm_express must be a named vector")
@@ -112,10 +115,11 @@ wGSEA = function(norm_express, signature, p=1, display=F, returnRS=F, significan
         return(ES)
 }
 
-# Uses a kernel density estimator to 
-#  ES       : a vector of enrichment scores
-#  transform: transform the resulting distribution from Uniform to Normal [T/F]
-#  @return  : the resulting score
+#' Uses a kernel density estimator to obtain normally distributed scores
+#'
+#' @param ES         a vector of enrichment scores
+#' @param transform  transform the resulting distribution from Uniform to Normal [T/F]
+#' @return           the resulting score
 normalizeCDF = function(ES, transform.normal=T) {
     CDF = kCDF(ES, xgrid=ES, adjust=1)
     nep = CDF$Fhat[match(ES, CDF$x)]
