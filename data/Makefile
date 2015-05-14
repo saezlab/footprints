@@ -1,13 +1,13 @@
 YAML = $(shell find new_index -mindepth 2 -name "*.yaml")
 ACCESSION = $(basename $(notdir $(YAML)))
 NORMALIZED = $(ACCESSION:%=normalized/%.RData)
-ZSCORES = $(YAML:new_index/%.yaml=zscores/%.RData)
+SCORES = $(YAML:new_index/%.yaml=scores/%.RData)
 
 .SECONDARY:
 .SECONDEXPANSION:
-.PHONY: zscores normalize clean
+.PHONY: scores normalize clean
 
-zscores: $(ZSCORES) zscores.RData
+scores: $(SCORES) zscores.RData dscores.RData
 
 normalize: $(NORMALIZED)
 
@@ -17,14 +17,14 @@ clean:
 print-%:
 	@echo $* = $($*)
 
-zscores.RData: zscores_assemble.r $(ZSCORES)
+%scores.RData: scores_assemble.r $(SCORES)
 	@rm -f $@ # required to replace annex links
-	Rscript $< $@ $(filter-out $<,$^)
+	Rscript $< $* $@ $(filter-out $<,$^)
 
-zscores/%.RData: new_index/%.yaml normalized/$$(notdir %).RData zscores_compute.r
+scores/%.RData: new_index/%.yaml normalized/$$(notdir %).RData scores_compute.r
 	@mkdir -p $(shell dirname $@)
 	@rm -f $@ # required to replace annex links
-	Rscript zscores_compute.r $(word 1,$^) $(word 2,$^) $@
+	Rscript scores_compute.r $(word 1,$^) $(word 2,$^) $@
 
 normalized/%.RData: normalize_data.r
 	@mkdir -p $(shell dirname $@)

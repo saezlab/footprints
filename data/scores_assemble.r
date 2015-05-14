@@ -3,15 +3,16 @@ io = import('io')
 ar = import('array')
 
 # read individual z-score files
-OUTFILE = commandArgs(TRUE)[1]
-INFILES = commandArgs(TRUE)[-1] %or% c("zscores/H2O2/E-GEOD-47739.RData",
-                                       "zscores/MAPK/E-GEOD-14934.RData")
+TYPE = commandArgs(TRUE)[1] %or% "z"
+OUTFILE = commandArgs(TRUE)[2]
+INFILES = commandArgs(TRUE)[c(-1,-2)] %or% c("scores/H2O2/E-GEOD-47739.RData",
+                                             "scores/MAPK/E-GEOD-14934.RData")
 
 # put together data matrix + index df
 contents = io$load(INFILES)
 
-zscores = lapply(contents, function(x) x$zscores) %>% ar$stack(along=2)
-colnames(zscores) = 1:ncol(zscores)
+scores = lapply(contents, function(x) x[[paste0(TYPE,"scores")]]) %>% ar$stack(along=2)
+colnames(scores) = 1:ncol(scores)
 
 index = lapply(contents, function(x) {
     as.data.frame(x$index, stringsAsFactors=FALSE) %>%
@@ -20,4 +21,4 @@ index = lapply(contents, function(x) {
 }) %>% do.call(rbind, .)
 rownames(index) = 1:nrow(index)
 
-save(zscores, index, file=OUTFILE)
+save(scores, index, file=OUTFILE)
