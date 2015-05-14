@@ -1,3 +1,7 @@
+b = import('base')
+ar = import('array')
+er = import('./enrichr')
+
 BioCarta = list("H2O2" = "ARENRF2_PATHWAY",
           "IL-1" = "IL1R_PATHWAY",
           "IL1" = "IL1R_PATHWAY",
@@ -24,3 +28,8 @@ BioCarta = list("H2O2" = "ARENRF2_PATHWAY",
           "NFkB" = "NFKB_PATHWAY",
           "PPAR" = c("PPARA_PATHWAY", "PPARG_PATHWAY"))
 
+INFILE = commandArgs(TRUE)[1] %or% "./Enrichr/src/main/resources/BioCarta.gmt"
+OUTFILE = commandArgs(TRUE)[2] %or% "biocarta.RData"
+
+lists = er$parse_gmt(INFILE)
+save(lists, file=OUTFILE)
