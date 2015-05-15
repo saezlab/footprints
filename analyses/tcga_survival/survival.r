@@ -1,9 +1,10 @@
 library(dplyr)
 b = import('base')
 io = import('io')
+ar = import('array')
 st = import('stats')
 plt = import('plot')
-icgc = import('icgc')
+icgc = import('data/icgc')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_linear.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "speed_linear.pdf"
@@ -31,16 +32,36 @@ clinical = icgc$clinical() %>% #TODO: select tumor only
 #    - does a treatment activate pathways?
 # -- all in covariate and subset tissue data
 
-scores = io$load(OUTFILE)
-survival = clinical[c('known_survival_time','donor_vital_status')]
+scores = io$load(INFILE)
+survival = clinical[c('known_survival_time','donor_vital_status','tissue')]
 rownames(survival) = clinical$icgc_sample_id
-#TODO: make sure they are ordered the same
+survival$donor_vital_status = as.integer(survival$donor_vital_status=="alive")
+survival = as.matrix(survival)
+ar$intersect(scores, survival, along=1)
+status = as.integer(survival[,'donor_vital_status'])
+time = as.integer(survival[,'known_survival_time'])
+tissue = survival[,'tissue']
 
 pdf(OUTFILE, paper="a4r", width=26, height=20)
 on.exit(dev.off())
 
+# tissue covariate
+st$coxph(time + status ~ tissue + scores) %>%
+    filter(term == "scores") %>%
+    select(-time, -status, -tissue, -term) %>%
+    mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
+    plt$color$p_effect() %>%
+    mutate(label = scores) %>%
+    plt$volcano() %>%
+    print()
+
 # run cox regression for associations (tissue as covariate)
-st$cox(survival ~ scores, subsets=clinical$tissue) %>%
-    mutate(p.adj = p.adjust(p.value, method="fdr") %>%
+st$coxph(time + status ~ scores, subsets=tissue) %>%
+    select(-time, -status, -term) %>%
+    group_by(subset) %>%
+    mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
+    ungroup() %>%
+    plt$color$p_effect() %>%
+    mutate(label = paste(subset, scores, sep=":")) %>%
     plt$volcano() %>%
     print()
