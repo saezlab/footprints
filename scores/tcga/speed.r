@@ -4,7 +4,7 @@ io = import('io')
 ar = import('array')
 icgc = import('data/icgc')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../data/zscores.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../../model/model_linear.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "speed.RData"
 
 # load vectors, clinical data

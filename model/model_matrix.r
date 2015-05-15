@@ -11,7 +11,7 @@ OUTFILE = commandArgs(TRUE)[2] %or% "model_matrix.RData"
 
 # load speed data, index
 zobj = io$load('../data/zscores.RData')
-zscores = zobj$zscores
+zscores = zobj$scores
 index = zobj$index
 
 # adjust object for linear modelling
