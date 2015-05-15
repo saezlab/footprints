@@ -52,7 +52,7 @@ st$coxph(time + status ~ tissue + scores) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
     plt$color$p_effect() %>%
     mutate(label = scores) %>%
-    plt$volcano() %>%
+    plt$volcano(base.size=0.1) %>%
     print()
 
 # run cox regression for associations (tissue as covariate)
@@ -63,5 +63,5 @@ st$coxph(time + status ~ scores, subsets=tissue) %>%
     ungroup() %>%
     plt$color$p_effect() %>%
     mutate(label = paste(subset, scores, sep=":")) %>%
-    plt$volcano() %>%
+    plt$volcano(p=0.1) %>%
     print()
