@@ -13,24 +13,35 @@ OUTFILE = commandArgs(TRUE)[2] %or% "speed_linear.pdf"
 scores = io$load(INFILE)
 
 # load sanger data
-Ys = gdsc$getDrugResponse('IC50s') # or AUC
-tissues = gdsc$getTissues(minN=5)
+Ys = gdsc$drug_response('IC50s') # or AUC
+tissues = gdsc$tissues(minN=5)
 ar$intersect(scores, tissues, Ys, along=1)
 
 # save pdf w/ pan-cancer & tissue specific
 pdf(OUTFILE, paper="a4r", width=26, height=20)
 on.exit(dev.off())
 
+# tissues as covariate
 st$lm(Ys ~ tissues + scores) %>%
     filter(term == "scores") %>%
     select(-term, -tissues) %>%
-    mutate(p.adj = p.adjust(p.value, method="fdr"),
+    mutate(adj.p = p.adjust(p.value, method="fdr"),
            label = paste(Ys, scores, sep=":")) %>%
-    plt$color$p_effect(pvalue="p.adj", effect="estimate", dir=-1) %>%
+    plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1) %>%
     plt$volcano(base.size=0.2) %>%
     print()
 
-##TODO: filter by screening range
-#Yf = sg$filterDrugResponse(Ys, tissues, top=0.1, abs=0, delta=2) # sensitive cell lines
-#assocs.tissue = st$lm(Yf, scores, subsets=tissues, p.adjust="fdr", stack=T)
-#print(plt$volcano(assocs.tissue, top=40, p=0.2, log='y', base.size=2))
+# separate associations for each tissue
+Yf = gdsc$drug_response('IC50s', min_tissue_measured=2)
+ar$intersect(Yf, scores, tissues)
+
+st$lm(Yf ~ scores, subsets=tissues) %>%
+    filter(term == "scores") %>%
+    select(-term) %>%
+    group_by(subset) %>%
+    mutate(adj.p = p.adjust(p.value, method="fdr"),
+           label = paste(subset, Yf, scores, sep=":")) %>%
+    ungroup() %>%
+    plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1) %>%
+    plt$volcano(p=0.2) %>%
+    print()
