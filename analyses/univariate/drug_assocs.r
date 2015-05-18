@@ -51,16 +51,22 @@ assocs.tissue = st$lm(Yf ~ scores, subsets=tissues) %>%
     filter(term == "scores") %>%
     select(-term) %>%
     group_by(subset) %>%
-    mutate(adj.p = p.adjust(p.value, method="fdr"))
+    mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
+    ungroup()
 
 # volcano plot for tissue subsets
 assocs.tissue %>%
+    filter(adj.p < 0.2) # leave out insignificant hits, too many -> file size, etc.
     mutate(label = paste(subset, Yf, scores, sep=":")) %>%
-    ungroup() %>%
     plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1) %>%
     plt$volcano(p=0.2) %>%
     print()
 
-## matrix plots for tissue subsets
+## matrix plots for tissue subsets # this doesn't really work, not many assocs
 #assocs.tissue %>%
-#    plt$matrix()
+#    mutate(lp = -log(adj.p),
+#           id = paste(scores, subset, sep=":"),
+#           label = ifelse(adj.p < 0.05, '*', ''),
+#           estimate = ifelse(adj.p < 0.2, estimate, NA)) %>%
+#    plt$cluster(lp ~ id + Yf, size=c(30,40)) %>%
+#    plt$matrix(estimate ~ id + Yf)
