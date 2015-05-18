@@ -8,7 +8,7 @@ OUTFILE = commandArgs(TRUE)[2] %or% "go.RData"
 
 # load gene list and expression
 genelist = io$load(INFILE)
-expr = gdsc$getBasalExpression()
+expr = gdsc$basal_expression()
 
 # perform GSEA
 result = gsea$runGSEA(expr, genelist, transform.normal=TRUE)

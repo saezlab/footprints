@@ -16,7 +16,7 @@ zfit = io$load(INFILE)
 
 # load sanger data
 #tissues = gdsc$getTissues(minN=5)
-expr = t(gdsc$getBasalExpression())
+expr = t(gdsc$basal_expression())
 #ar$intersect(expr, tissues, along=1)
 
 # calculate scores on panel
