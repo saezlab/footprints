@@ -26,7 +26,6 @@ clinical = icgc$clinical() %>% #TODO: select tumor only
 
 # possible questions here:
 #  using all tumor data, is pathway activity associated with survival outcome?
-#    - filter for last known alive? [where is this field?]
 #    - subset treatment naive?
 #    - can it predict relapse?
 #    - does a treatment activate pathways?
@@ -55,7 +54,7 @@ st$coxph(time + status ~ tissue + scores) %>%
     plt$volcano() %>%
     print()
 
-# run cox regression for associations (tissue as covariate)
+# separate regressions for each tissue
 st$coxph(time + status ~ scores, subsets=tissue) %>%
     select(-time, -status, -term) %>%
     group_by(subset) %>%
