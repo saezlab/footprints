@@ -1,7 +1,11 @@
-all: speed_linear.RData speed_matrix.RData
+GENESETS = $(wildcard ../../genesets/*.RData)
+SETSCORES = $(GENESETS:../../genesets/%=%)
 
-speed_linear.RData: speed.r ../../model/model_linear.RData
+all: speed_linear.RData speed_matrix.RData $(SETSCORES)
+
+speed_%.RData: speed.r ../../model/model_%.RData
 	Rscript $< $(word 2,$^) $@
 
-speed_matrix.RData: speed.r ../../model/model_matrix.RData
+%.RData: set_enrichment.r ../../genesets/%.RData
+	bsub -K -M 10240 -R "rusage[mem=10240]" -R "select[gpfs]" -oo $(@:%.RData=%.log) \
 	Rscript $< $(word 2,$^) $@

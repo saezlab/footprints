@@ -1,6 +1,7 @@
 b = import('base')
 io = import('io')
 gdsc = import('data/gdsc')
+icgc = import('data/icgc')
 gsea = import('../../genesets/gsea')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../genesets/go.RData"
