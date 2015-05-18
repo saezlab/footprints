@@ -22,26 +22,45 @@ pdf(OUTFILE, paper="a4r", width=26, height=20)
 on.exit(dev.off())
 
 # tissues as covariate
-st$lm(Ys ~ tissues + scores) %>%
+assocs.pan = st$lm(Ys ~ tissues + scores) %>%
     filter(term == "scores") %>%
     select(-term, -tissues) %>%
-    mutate(adj.p = p.adjust(p.value, method="fdr"),
-           label = paste(Ys, scores, sep=":")) %>%
+    mutate(adj.p = p.adjust(p.value, method="fdr"))
+
+# volcano plot for pan-cancer
+assocs.pan %>%
+    mutate(label = paste(Ys, scores, sep=":")) %>%
     plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1) %>%
     plt$volcano(base.size=0.2) %>%
     print()
+
+# matrix plot for pan-cancer
+assocs.pan %>%
+    mutate(lp = -log(adj.p),
+           label = ifelse(adj.p < 1e-2, '*', ''),
+           estimate = ifelse(adj.p < 0.1, estimate, NA)) %>%
+    plt$cluster(lp ~ scores + Ys, size=c(Inf,20)) %>%
+    plt$matrix(estimate ~ scores + Ys)
 
 # separate associations for each tissue
 Yf = gdsc$drug_response('IC50s', min_tissue_measured=2)
 ar$intersect(Yf, scores, tissues)
 
-st$lm(Yf ~ scores, subsets=tissues) %>%
+# tissues as subsets
+assocs.tissue = st$lm(Yf ~ scores, subsets=tissues) %>%
     filter(term == "scores") %>%
     select(-term) %>%
     group_by(subset) %>%
-    mutate(adj.p = p.adjust(p.value, method="fdr"),
-           label = paste(subset, Yf, scores, sep=":")) %>%
+    mutate(adj.p = p.adjust(p.value, method="fdr"))
+
+# volcano plot for tissue subsets
+assocs.tissue %>%
+    mutate(label = paste(subset, Yf, scores, sep=":")) %>%
     ungroup() %>%
     plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1) %>%
     plt$volcano(p=0.2) %>%
     print()
+
+## matrix plots for tissue subsets
+#assocs.tissue %>%
+#    plt$matrix()
