@@ -9,8 +9,11 @@ all: speed_linear.RData speed_matrix.RData $(SETSCORES)
 	make -C $(shell dirname $@) $@
 
 speed_%.RData: speed.r ../../model/model_%.RData
-	Rscript $< $(word 2,$^) $@
+	@rm -f $@ # annex link overwrite
+	bsub -K -M 10240 -R "rusage[mem=10240]" -R "select[gpfs]" -oo $(@:%.RData=%.log) \
+		Rscript $< $(word 2,$^) $@
 
 %.RData: set_enrichment.r ../../genesets/%.RData
+	@rm -f $@ # annex link overwrite
 	bsub -K -M 10240 -R "rusage[mem=10240]" -R "select[gpfs]" -oo $(@:%.RData=%.log) \
-	Rscript $< $(word 2,$^) $@
+		Rscript $< $(word 2,$^) $@
