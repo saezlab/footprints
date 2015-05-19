@@ -20,7 +20,7 @@ clinical = icgc$clinical()
 # -- all in covariate and subset tissue data
 
 # calculate scores from expr and speed vectors
-expr = unique(clinical$icgc_sample_id) %>% icgc$rna_seq(voom=TRUE)
+expr = icgc$rna_seq(voom=TRUE)
 ar$intersect(vecs, expr, along=1)
 scores = t(expr) %*% vecs %>% ar$map(along=1, scale)
 
