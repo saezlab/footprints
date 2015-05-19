@@ -1,7 +1,12 @@
 GENESETS = $(wildcard ../../genesets/*.RData)
 SETSCORES = $(GENESETS:../../genesets/%=%)
 
+.PHONY: $(GENESETS)
+
 all: speed_linear.RData speed_matrix.RData $(SETSCORES)
+
+../../genesets/%.RData:
+	make -C $(shell dirname $@) $@
 
 speed_%.RData: speed.r ../../model/model_%.RData
 	Rscript $< $(word 2,$^) $@
