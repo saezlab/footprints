@@ -9,10 +9,6 @@ icgc = import('data/icgc')
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_linear.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "speed_linear.pdf"
 
-# load clinical data, extract survival time+status
-clinicalsample = icgc$clinical_sample() %>%
-    select(icgc_specimen_id, icgc_sample_id)
-
 clinical = icgc$clinical() %>% #TODO: select tumor only
 #    filter(tumour_confirmed == "yes") %>%
 #    filter(specimen_donor_treatment_type == "no treatment") %>%
@@ -20,9 +16,7 @@ clinical = icgc$clinical() %>% #TODO: select tumor only
     select(icgc_specimen_id, known_survival_time, donor_vital_status,
            donor_sex, donor_age_at_diagnosis, tissue) %>%
     filter(!is.na(known_survival_time),
-           donor_vital_status %in% c('alive','deceased')) %>%
-    left_join(clinicalsample, by="icgc_specimen_id") %>%
-    filter(icgc_sample_id %in% icgc$names$rna_seq()[[1]])
+           donor_vital_status %in% c('alive','deceased'))
 
 # possible questions here:
 #  using all tumor data, is pathway activity associated with survival outcome?
@@ -32,20 +26,21 @@ clinical = icgc$clinical() %>% #TODO: select tumor only
 # -- all in covariate and subset tissue data
 
 scores = io$load(INFILE)
-survival = clinical[c('known_survival_time','donor_vital_status','tissue')]
-rownames(survival) = clinical$icgc_sample_id
-survival$donor_vital_status = as.integer(survival$donor_vital_status=="alive")
-survival = as.matrix(survival)
-ar$intersect(scores, survival, along=1)
-status = as.integer(survival[,'donor_vital_status'])
-time = as.integer(survival[,'known_survival_time'])
-tissue = survival[,'tissue']
+rownames(clinical) = clinical$icgc_specimen_id
+ar$intersect(scores, clinical, along=1) #TODO: check if works with data.frame; if not, make it work
+
+clinical = as.list(clinical)
+clinical$donor_vital_status = as.integer(clinical$donor_vital_status == "alive")
+clinical$scores = scores
+
+if (nrow(clinical) < 10)
+    stop("survival+expression scores < 10 observations, stopping")
 
 pdf(OUTFILE, paper="a4r", width=26, height=20)
 on.exit(dev.off())
 
 # tissue covariate
-st$coxph(time + status ~ tissue + scores) %>%
+st$coxph(time + status ~ donor_sex + tissue + scores) %>%
     filter(term == "scores") %>%
     select(-time, -status, -tissue, -term) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
@@ -55,7 +50,7 @@ st$coxph(time + status ~ tissue + scores) %>%
     print()
 
 # separate regressions for each tissue
-st$coxph(time + status ~ scores, subsets=tissue) %>%
+st$coxph(time + status ~ donor_sex + scores, subsets=tissue) %>%
     select(-time, -status, -term) %>%
     group_by(subset) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
