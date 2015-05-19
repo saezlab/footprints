@@ -7,9 +7,8 @@ icgc = import('data/icgc')
 INFILE = commandArgs(TRUE)[1] %or% "../../model/model_linear.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "speed.RData"
 
-# load vectors, clinical data
+# load vectors
 vecs = io$load(INFILE)
-clinical = icgc$clinical()
 
 # possible questions here:
 #  using all tumor data, is pathway activity associated with survival outcome?
@@ -20,7 +19,9 @@ clinical = icgc$clinical()
 # -- all in covariate and subset tissue data
 
 # calculate scores from expr and speed vectors
-expr = icgc$rna_seq(voom=TRUE)
+expr = icgc$rna_seq(voom=TRUE, map.ids="icgc_specimen_id")
+expr = expr[,!duplicated(colnames(expr))]
+
 ar$intersect(vecs, expr, along=1)
 scores = t(expr) %*% vecs %>% ar$map(along=1, scale)
 
