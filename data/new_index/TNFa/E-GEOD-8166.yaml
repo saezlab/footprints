@@ -1,0 +1,30 @@
+---
+accession : E-GEOD-8166
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human umbilical vein endothelial cells
+treatment : TNFa
+effect    : activating
+hours     : 3
+
+control   :
+    - GSE8166GSM202176 # 3 h
+    - GSE8166GSM202178 # 8 h
+perturbed :
+    - GSE8166GSM202183
+
+---
+accession : E-GEOD-8166
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human umbilical vein endothelial cells
+treatment : TNFa
+effect    : activating
+hours     : 8
+
+control   :
+    - GSE8166GSM202176 # 3 h
+    - GSE8166GSM202178 # 8 h
+perturbed :
+    - GSE8166GSM202184
+...

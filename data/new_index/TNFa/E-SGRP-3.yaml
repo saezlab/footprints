@@ -1,0 +1,52 @@
+---
+accession : E-SGRP-3
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human endothelial cells
+treatment : 5 pg/mL TNFa
+effect    : activating
+hours     : 6
+
+control   :
+    - Huvec1
+    - Huvec1-II
+    - Huvec1-III
+    - Huvec1-IV
+    - Huvec3
+    - Huvec3-II
+    - Huvec3-III
+    - Huvec3-IV
+perturbed :
+    - Huvec2
+    - Huvec2-II
+    - Huvec2-III
+    - Huvec2-IV
+    - Huvec5
+    - Huvec5-II
+    - Huvec5-III
+    - Huvec5-IV
+
+---
+accession : E-SGRP-3
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human endothelial cells
+treatment : 10 ng/mL TNFa
+effect    : activating
+hours     : 6
+
+control   :
+    - Huvec1
+    - Huvec1-II
+    - Huvec1-III
+    - Huvec1-IV
+    - Huvec3
+    - Huvec3-II
+    - Huvec3-III
+    - Huvec3-IV
+perturbed :
+    - Huvec7
+    - Huvec7-II
+    - Huvec7-III
+    - Huvec7-IV
+...

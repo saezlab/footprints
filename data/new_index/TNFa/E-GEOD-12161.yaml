@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-12161
+platform  : A-AFFY44
+pathway   : TNFa
+cells     : human hepatocellular carcinoma cell line HepG2
+treatment : 0.5 nM TNFa
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM306132 1
+    - GSM306133 1
+    - GSM306145 1
+perturbed :
+    - GSM306134 1
+    - GSM306135 1
+    - GSM306146 1
+...

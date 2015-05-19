@@ -1,0 +1,19 @@
+---
+accession : E-GEOD-59237
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : primary human blood dendritic cells
+treatment : 20 ng/mL TNFa
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM1431116 1
+    - GSM1431117 1
+    - GSM1431118 1
+    - GSM1431119 1
+perturbed :
+    - GSM1431125 1
+    - GSM1431126 1
+    - GSM1431127 1
+...

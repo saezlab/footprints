@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-65707
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : immortalised myometrial (womb) smooth muscle cells
+treatment : 10 ng/mL TNFa
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM1603354 1
+    - GSM1603355 1
+    - GSM1603356 1
+perturbed :
+    - GSM1603357 1
+    - GSM1603358 1
+    - GSM1603359 1
+...

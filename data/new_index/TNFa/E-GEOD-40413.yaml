@@ -1,0 +1,15 @@
+---
+accession : E-GEOD-40413
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : melanocytes
+treatment : 10 ng/mL TNFa
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM993399 1
+    - GSM993405 1 # 48 hour control
+perturbed :
+    - GSM993400 1
+...

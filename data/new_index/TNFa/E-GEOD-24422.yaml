@@ -1,0 +1,48 @@
+---
+accession : E-GEOD-24422
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human mesenchymal stem cell derived stromal adipocytes
+treatment : 10 ng/mL TNF
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM601621 1
+    - GSM601622 1
+perturbed :
+    - GSM601625 1
+    - GSM601626 1
+
+---
+accession : E-GEOD-24422
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human mesenchymal stem cell derived stromal adipocytes, buoyant fraction
+treatment : 10 ng/mL TNF
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM601629 1
+    - GSM601630 1
+perturbed :
+    - GSM601633 1
+    - GSM601634 1
+
+---
+accession : E-GEOD-24422
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human mesenchymal stem cell derived stromal adipocytes, peletted fraction
+treatment : 10 ng/mL TNF
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM601639 1
+    - GSM601640 1
+perturbed :
+    - GSM601641 1
+    - GSM601642 1
+...

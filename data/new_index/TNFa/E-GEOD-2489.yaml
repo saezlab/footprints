@@ -1,0 +1,45 @@
+---
+accession : E-GEOD-2489
+platform  : A-AFFY-1
+pathway   : TNFa
+cells     : cultured human keratinocytes
+treatment : TNFa
+effect    : activating
+hours     : 1
+
+control   :
+    - GSE2489GSM47302
+    - GSE2489GSM47303
+perturbed :
+    - GSE2489GSM47311
+
+---
+accession : E-GEOD-2489
+platform  : A-AFFY-1
+pathway   : TNFa
+cells     : cultured human keratinocytes
+treatment : TNFa
+effect    : activating
+hours     : 4
+
+control   :
+    - GSE2489GSM47302
+    - GSE2489GSM47303
+perturbed :
+    - GSE2489GSM47312
+
+---
+accession : E-GEOD-2489
+platform  : A-AFFY-1
+pathway   : TNFa
+cells     : cultured human keratinocytes
+treatment : TNFa
+effect    : activating
+hours     : 24
+
+control   :
+    - GSE2489GSM47302
+    - GSE2489GSM47303
+perturbed :
+    - GSE2489GSM47313
+...

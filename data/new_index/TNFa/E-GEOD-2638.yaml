@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-2638
+platform  : A-AFFY-33
+pathway   : TNFa
+cells     : human mammary epithelial cells (HMEC)
+treatment : 2 ng/mL TNFa
+effect    : activating
+hours     : 5
+
+control   :
+    - GSM50771
+    - GSM50772
+    - GSM50773
+perturbed :
+    - GSM50774
+    - GSM50775
+    - GSM50776
+...

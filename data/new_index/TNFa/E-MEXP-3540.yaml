@@ -1,0 +1,16 @@
+---
+accession : E-MEXP-3540
+platform  : A-AFFY-143
+pathway   : TNFa
+cells     : aorta endothelial cells
+treatment : TNFa
+effect    : activating
+hours     : 6
+
+control   :
+    - UT1
+    - UT2
+perturbed :
+    - TNF1
+    - TNF2
+...

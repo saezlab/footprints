@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-28548
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : HEK293 cells
+treatment : TNFa
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM707024 1
+    - GSM707025 1
+    - GSM707026 1
+perturbed :
+    - GSM707027 1
+    - GSM707028 1
+    - GSM707029 1
+...

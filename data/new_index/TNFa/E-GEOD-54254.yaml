@@ -1,0 +1,20 @@
+---
+accession : E-GEOD-54254
+platform  : A-GEOD-13158
+pathway   : TNFa
+cells     : HepG2
+treatment : TNFa
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM1311090 1
+    - GSM1311116 1
+    - GSM1311142 1
+    - GSM1311168 1
+perturbed :
+    - GSM1311092 1
+    - GSM1311118 1
+    - GSM1311144 1
+    - GSM1311170 1
+...

@@ -1,0 +1,34 @@
+---
+accession : E-GEOD-26868
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : HeLa cells
+treatment : 10 ng/mL TNFa
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM661462 1
+    - GSM661463 1 
+perturbed :
+    - GSM661464 1 
+    - GSM661465 1
+
+---
+accession : E-GEOD-26868
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : HeLa cells
+treatment : 10 ng/mL TNFa
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM661466 1
+    - GSM661467 1 
+    - GSM661468 1 
+perturbed :
+    - GSM661469 1 
+    - GSM661470 1 
+    - GSM661471 1 
+...

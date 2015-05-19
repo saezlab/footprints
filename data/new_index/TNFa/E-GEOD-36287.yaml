@@ -1,0 +1,21 @@
+---
+accession : E-GEOD-36287
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : primary human keratinocytes
+treatment : TNFa
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM886421 1
+    - GSM886422 1
+    - GSM886423 1
+    - GSM886433 1
+    - GSM886434 1
+    - GSM886435 1
+perturbed :
+    - GSM886442 1
+    - GSM886443 1
+    - GSM886444 1
+...

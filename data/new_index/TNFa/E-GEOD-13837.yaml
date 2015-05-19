@@ -1,0 +1,96 @@
+---
+accession : E-GEOD-13837
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : synovial membrane fibroblasts from human rheumatoid arthritis patients
+treatment : TNFa
+effect    : activating
+hours     : 1
+
+control   :
+    - GSE13837GSM347764
+    - GSE13837GSM347342
+    - GSE13837GSM348023
+    - GSE13837GSM348037
+    - GSE13837GSM347193
+    - GSE13837GSM347840
+perturbed :
+    - GSE13837GSM347737
+    - GSE13837GSM348017
+    - GSE13837GSM347746
+    - GSE13837GSM348031
+    - GSE13837GSM347819
+    - GSE13837GSM347196
+
+---
+accession : E-GEOD-13837
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : synovial membrane fibroblasts from human rheumatoid arthritis patients
+treatment : TNFa
+effect    : activating
+hours     : 2
+
+control   :
+    - GSE13837GSM347764
+    - GSE13837GSM347342
+    - GSE13837GSM348023
+    - GSE13837GSM348037
+    - GSE13837GSM347193
+    - GSE13837GSM347840
+perturbed :
+    - GSE13837GSM347738
+    - GSE13837GSM347837
+    - GSE13837GSM348034
+    - GSE13837GSM347328
+    - GSE13837GSM347747
+    - GSE13837GSM348018
+
+---
+accession : E-GEOD-13837
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : synovial membrane fibroblasts from human rheumatoid arthritis patients
+treatment : TNFa
+effect    : activating
+hours     : 4
+
+control   :
+    - GSE13837GSM347764
+    - GSE13837GSM347342
+    - GSE13837GSM348023
+    - GSE13837GSM348037
+    - GSE13837GSM347193
+    - GSE13837GSM347840
+perturbed :
+    - GSE13837GSM347332
+    - GSE13837GSM348035
+    - GSE13837GSM347739
+    - GSE13837GSM347748
+    - GSE13837GSM347838
+    - GSE13837GSM348020
+
+---
+accession : E-GEOD-13837
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : synovial membrane fibroblasts from human rheumatoid arthritis patients
+treatment : TNFa
+effect    : activating
+hours     : 12
+
+control   :
+    - GSE13837GSM347764
+    - GSE13837GSM347342
+    - GSE13837GSM348023
+    - GSE13837GSM348037
+    - GSE13837GSM347193
+    - GSE13837GSM347840
+perturbed :
+    - GSE13837GSM348022
+    - GSE13837GSM347337
+    - GSE13837GSM347740
+    - GSE13837GSM348036
+    - GSE13837GSM347839
+    - GSE13837GSM347749
+...

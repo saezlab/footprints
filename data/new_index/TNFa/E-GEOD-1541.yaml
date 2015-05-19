@@ -1,0 +1,64 @@
+---
+accession : E-GEOD-1541
+platform  : A-AFFY-41
+pathway   : TNFa
+cells     : A549 cell line
+treatment : 20 ng/mL TNFa
+effect    : activating
+hours     : 1
+
+control   :
+    - GSE1541GSM26477
+    - GSE1541GSM26478
+perturbed :
+    - GSE1541GSM26489
+    - GSE1541GSM26490
+
+---
+accession : E-GEOD-1541
+platform  : A-AFFY-41
+pathway   : TNFa
+cells     : A549 cell line
+treatment : 20 ng/mL TNFa
+effect    : activating
+hours     : 4
+
+control   :
+    - GSE1541GSM26479
+    - GSE1541GSM26480
+perturbed :
+    - GSE1541GSM26491
+    - GSE1541GSM26492
+
+---
+accession : E-GEOD-1541
+platform  : A-AFFY-41
+pathway   : TNFa
+cells     : A549 cell line + cyclic stretch
+treatment : 20 ng/mL TNFa
+effect    : activating
+hours     : 1
+
+control   :
+    - GSE1541GSM26485
+    - GSE1541GSM26486
+perturbed :
+    - GSE1541GSM26493
+    - GSE1541GSM26494
+
+---
+accession : E-GEOD-1541
+platform  : A-AFFY-41
+pathway   : TNFa
+cells     : A549 cell line + cyclic stretch
+treatment : 20 ng/mL TNFa
+effect    : activating
+hours     : 4
+
+control   :
+    - GSE1541GSM26487
+    - GSE1541GSM26488
+perturbed :
+    - GSE1541GSM26495
+    - GSE1541GSM26496
+...

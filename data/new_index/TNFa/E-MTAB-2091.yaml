@@ -1,0 +1,19 @@
+---
+accession : E-MTAB-2091.taml
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : normal human bronchial epithelial cells
+treatment : 100 ng/mL TNFa
+effect    : activating
+hours     : 6
+
+control   :
+    - BATCH1_RNA.H.A.B11
+    - BATCH1_RNA.H.A.C11
+    - BATCH1_RNA.H.B.B11
+    - BATCH1_RNA.H.B.C11
+perturbed :
+    - BATCH1_RNA.H.B.C3
+    - BATCH1_RNA.H.B.C5
+    - BATCH1_RNA.H.B.C7
+...

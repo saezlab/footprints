@@ -1,0 +1,31 @@
+---
+accession : E-GEOD-43738
+platform  : A-AFFY-141
+pathway   : TNFa
+cells     : PANC1 cell line, siRNA control
+treatment : 0.5 ng/mL TNFa
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1070095 1
+    - GSM1070099 1
+perturbed :
+    - GSM1070097 1
+
+---
+accession : E-GEOD-43738
+platform  : A-AFFY-141
+pathway   : TNFa
+cells     : PANC1 cell line, siRNA p53
+treatment : 0.5 ng/mL TNFa
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1070096 1
+    - GSM1070100 1
+perturbed :
+    - GSM1070098 1
+    - GSM1070101 1
+...

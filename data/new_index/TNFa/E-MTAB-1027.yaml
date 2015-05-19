@@ -1,0 +1,288 @@
+---
+accession : E-MTAB-1027
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human normal bronchial epithelial cells
+treatment : 0.1 ng/mL TNFa
+effect    : activating
+hours     : 0.5
+
+control   :
+    - 13674_181
+    - 13674_182
+    - 13674_183
+perturbed :
+    - 13674_184
+    - 13674_185
+    - 13674_186
+
+---
+accession : E-MTAB-1027
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human normal bronchial epithelial cells
+treatment : 1 ng/mL TNFa
+effect    : activating
+hours     : 0.5
+
+control   :
+    - 13674_181
+    - 13674_182
+    - 13674_183
+perturbed :
+    - 13674_187
+    - 13674_188
+    - 13674_189
+
+---
+accession : E-MTAB-1027
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human normal bronchial epithelial cells
+treatment : 10 ng/mL TNFa
+effect    : activating
+hours     : 0.5
+
+control   :
+    - 13674_181
+    - 13674_182
+    - 13674_183
+perturbed :
+    - 13674_190
+    - 13674_191
+    - 13674_192
+
+---
+accession : E-MTAB-1027
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human normal bronchial epithelial cells
+treatment : 100 ng/mL TNFa
+effect    : activating
+hours     : 0.5
+
+control   :
+    - 13674_181
+    - 13674_182
+    - 13674_183
+perturbed :
+    - 13674_193
+    - 13674_194
+    - 13674_195
+
+---
+accession : E-MTAB-1027
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human normal bronchial epithelial cells
+treatment : 0.1 ng/mL TNFa
+effect    : activating
+hours     : 2
+
+control   :
+    - 13674_019
+    - 13674_020
+    - 13674_021
+perturbed :
+    - 13674_022
+    - 13674_023
+    - 13674_024
+
+---
+accession : E-MTAB-1027
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human normal bronchial epithelial cells
+treatment : 1 ng/mL TNFa
+effect    : activating
+hours     : 2
+
+control   :
+    - 13674_019
+    - 13674_020
+    - 13674_021
+perturbed :
+    - 13674_025
+    - 13674_026
+    - 13674_027
+
+---
+accession : E-MTAB-1027
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human normal bronchial epithelial cells
+treatment : 10 ng/mL TNFa
+effect    : activating
+hours     : 2
+
+control   :
+    - 13674_019
+    - 13674_020
+    - 13674_021
+perturbed :
+    - 13674_028
+    - 13674_029
+    - 13674_030
+
+---
+accession : E-MTAB-1027
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human normal bronchial epithelial cells
+treatment : 100 ng/mL TNFa
+effect    : activating
+hours     : 2
+
+control   :
+    - 13674_019
+    - 13674_020
+    - 13674_021
+perturbed :
+    - 13674_031
+    - 13674_032
+    - 13674_033
+
+---
+accession : E-MTAB-1027
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human normal bronchial epithelial cells
+treatment : 0.1 ng/mL TNFa
+effect    : activating
+hours     : 4
+
+control   :
+    - 13674_037
+    - 13674_038
+    - 13674_039
+perturbed :
+    - 13674_040
+    - 13674_041
+    - 13674_042
+
+---
+accession : E-MTAB-1027
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human normal bronchial epithelial cells
+treatment : 1 ng/mL TNFa
+effect    : activating
+hours     : 4
+
+control   :
+    - 13674_037
+    - 13674_038
+    - 13674_039
+perturbed :
+    - 13674_043
+    - 13674_044
+    - 13674_045
+
+---
+accession : E-MTAB-1027
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human normal bronchial epithelial cells
+treatment : 10 ng/mL TNFa
+effect    : activating
+hours     : 4
+
+control   :
+    - 13674_037
+    - 13674_038
+    - 13674_039
+perturbed :
+    - 13674_046
+    - 13674_047
+    - 13674_048
+
+---
+accession : E-MTAB-1027
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human normal bronchial epithelial cells
+treatment : 100 ng/mL TNFa
+effect    : activating
+hours     : 4
+
+control   :
+    - 13674_037
+    - 13674_038
+    - 13674_039
+perturbed :
+    - 13674_049
+    - 13674_050
+    - 13674_051
+
+---
+accession : E-MTAB-1027
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human normal bronchial epithelial cells
+treatment : 0.1 ng/mL TNFa
+effect    : activating
+hours     : 24
+
+control   :
+    - 13674_055
+    - 13674_056
+    - 13674_057
+perturbed :
+    - 13674_058
+    - 13674_059
+    - 13674_060
+
+---
+accession : E-MTAB-1027
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human normal bronchial epithelial cells
+treatment : 1 ng/mL TNFa
+effect    : activating
+hours     : 24
+
+control   :
+    - 13674_055
+    - 13674_056
+    - 13674_057
+perturbed :
+    - 13674_061
+    - 13674_062
+    - 13674_063
+
+---
+accession : E-MTAB-1027
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human normal bronchial epithelial cells
+treatment : 10 ng/mL TNFa
+effect    : activating
+hours     : 24
+
+control   :
+    - 13674_055
+    - 13674_056
+    - 13674_057
+perturbed :
+    - 13674_064
+    - 13674_065
+    - 13674_066
+
+---
+accession : E-MTAB-1027
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human normal bronchial epithelial cells
+treatment : 100 ng/mL TNFa
+effect    : activating
+hours     : 24
+
+control   :
+    - 13674_055
+    - 13674_056
+    - 13674_057
+perturbed :
+    - 13674_067
+    - 13674_068
+    - 13674_069
+...

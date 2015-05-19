@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-11467
+platform  : A-AFFY-33
+pathway   : TNFa
+cells     : MCF-7 Breast Cancer Cells
+treatment : 10 ng/mL TNFa
+effect    : activating
+hours     : 2
+
+control   :
+    - GSE11467GSM288961
+    - GSE11467GSM288962
+    - GSE11467GSM288963
+perturbed :
+    - GSE11467GSM288967
+    - GSE11467GSM288968
+    - GSE11467GSM288969
+...

@@ -1,0 +1,32 @@
+---
+accession : E-GEOD-16650
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human bronchial epithelial cells
+treatment : 20 ng/mL TNFa
+effect    : activating
+hours     : 4
+
+control   :
+    - GSE16650GSM417770
+    - GSE16650GSM417776
+perturbed :
+    - GSE16650GSM417774
+    - GSE16650GSM417780
+
+---
+accession : E-GEOD-16650
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human bronchial epithelial cells + mechanical stretch
+treatment : 20 ng/mL TNFa
+effect    : activating
+hours     : 4
+
+control   :
+    - GSE16650GSM417771
+    - GSE16650GSM417777
+perturbed :
+    - GSE16650GSM417775
+    - GSE16650GSM417781
+...

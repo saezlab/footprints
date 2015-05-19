@@ -1,0 +1,26 @@
+---
+accession : E-GEOD-38351
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : healthy human monocytes, multiple donors
+treatment : TNFa
+effect    : activating
+hours     : 1.5
+
+control   :
+    - GSM940505 1
+    - GSM940506 1
+    - GSM940507 1
+    - GSM940508 1
+    - GSM940509 1
+    - GSM940510 1
+    - GSM940511 1
+    - GSM940512 1
+    - GSM940513 1
+    - GSM940514 1
+    - GSM940515 1
+perturbed :
+    - GSM940488 1
+    - GSM940489 1
+    - GSM940490 1
+...

@@ -1,0 +1,71 @@
+---
+accession : E-GEOD-12548
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : retinal pigment epithelium cell line
+treatment : TNFa
+effect    : activating
+hours     : 1
+
+control   :
+    - GSE12548GSM315430
+    - GSE12548GSM315431
+    - GSE12548GSM315432
+perturbed :
+    - GSE12548GSM315433
+    - GSE12548GSM315434
+
+---
+accession : E-GEOD-12548
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : retinal pigment epithelium cell line
+treatment : TNFa
+effect    : activating
+hours     : 6
+
+control   :
+    - GSE12548GSM315430
+    - GSE12548GSM315431
+    - GSE12548GSM315432
+perturbed :
+    - GSE12548GSM315435
+    - GSE12548GSM315436
+    - GSE12548GSM315437
+
+---
+accession : E-GEOD-12548
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : retinal pigment epithelium cell line
+treatment : TNFa
+effect    : activating
+hours     : 16
+
+control   :
+    - GSE12548GSM315430
+    - GSE12548GSM315431
+    - GSE12548GSM315432
+perturbed :
+    - GSE12548GSM315438
+    - GSE12548GSM315439
+    - GSE12548GSM315626
+
+---
+accession : E-GEOD-12548
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : retinal pigment epithelium cell line
+treatment : TNFa
+effect    : activating
+hours     : 24
+
+control   :
+    - GSE12548GSM315430
+    - GSE12548GSM315431
+    - GSE12548GSM315432
+perturbed :
+    - GSE12548GSM315440
+    - GSE12548GSM315441
+    - GSE12548GSM315442
+...

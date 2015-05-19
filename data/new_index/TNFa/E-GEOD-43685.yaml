@@ -1,0 +1,16 @@
+---
+accession : E-GEOD-43685
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : human placental cytotrophoblasts
+treatment : 10 ng/mL TNFa
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1068188 1
+    - GSM1068189 1
+perturbed :
+    - GSM1068190 1
+    - GSM1068191 1
+...

@@ -1,0 +1,32 @@
+---
+accession : E-GEOD-37139
+platform  : A-AFFY-141
+pathway   : TNFa
+cells     : MCF7 breast cancer cells
+treatment : TNFa
+effect    : activating
+hours     : 0.33
+
+control   :
+    - GSM912015 1
+    - GSM912016 1
+perturbed :
+    - GSM912019 1
+    - GSM912020 1
+
+---
+accession : E-GEOD-37139
+platform  : A-AFFY-141
+pathway   : TNFa
+cells     : MCF7 breast cancer cells
+treatment : TNFa
+effect    : activating
+hours     : 1.5
+
+control   :
+    - GSM912015 1
+    - GSM912016 1
+perturbed :
+    - GSM912011 1
+    - GSM912012 1
+...

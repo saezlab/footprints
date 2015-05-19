@@ -1,0 +1,16 @@
+---
+accession : E-GEOD-59472
+platform  : A-AFFY-141
+pathway   : TNFa
+cells     : CA2 ES cells
+treatment : 10 ng/ml TNF
+effect    : activating
+hours     : 5
+
+control   :
+    - GSM1437564 1
+    - GSM1437565 1
+perturbed :
+    - GSM1437566 1
+    - GSM1437567 1
+...

@@ -1,0 +1,16 @@
+---
+accession : E-GEOD-22807
+platform  : A-AFFY-141
+pathway   : TNFa
+cells     : human DU145 prostate cancer cells
+treatment : 10 ng/ml TNFalpha
+effect    : activating
+hours     : 1.5
+
+control   :
+    - GSM563798 1
+    - GSM563799 1
+perturbed :
+    - GSM563802 1
+    - GSM563803 1
+...

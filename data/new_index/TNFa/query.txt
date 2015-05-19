@@ -1,0 +1,1 @@
+(tnf* OR "necrosis factor") organism:sapiens samplecount:[4 TO 10000] raw:true exptype:"Transcription profiling"

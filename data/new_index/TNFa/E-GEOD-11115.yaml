@@ -1,0 +1,19 @@
+---
+accession : E-GEOD-11115
+platform  : A-AFFY-33
+pathway   : TNFa
+cells     : U2OS-ERalpha cells
+treatment : TNFa
+effect    : activating
+hours     : 1
+
+control   :
+    - GSE11115GSM280387
+    - GSE11115GSM280388
+    - GSE11115GSM280389
+perturbed :
+    - GSE11115GSM280379
+    - GSE11115GSM280380
+    - GSE11115GSM280381
+    - GSE11115GSM280382
+...

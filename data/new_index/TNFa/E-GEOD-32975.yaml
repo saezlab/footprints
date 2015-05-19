@@ -1,0 +1,36 @@
+---
+accession : E-GEOD-32975
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : HaCaT cell line
+treatment : TNFa
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM816831 1
+    - GSM816833 1
+    - GSM816836 1
+    - GSM816837 1
+perturbed :
+    - GSM816828 1
+    - GSM816830 1
+    - GSM816835 1
+
+---
+accession : E-GEOD-32975
+platform  : A-AFFY-44
+pathway   : TNFa
+cells     : HaCaT cell line + RELA/p65
+treatment : TNFa
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM816821 1
+    - GSM816822 1
+perturbed :
+    - GSM816820 1
+    - GSM816824 1
+    - GSM816826 1
+...
