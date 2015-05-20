@@ -1,0 +1,20 @@
+---
+accession : E-GEOD-22103
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : human neutrophils
+treatment : 50 ng/ml LPS
+effect    : activating
+hours     : 16
+
+control   :
+    - GSM549573 1
+    - GSM549574 1
+    - GSM549575 1
+    - GSM549576 1
+perturbed :
+    - GSM549577 1
+    - GSM549578 1
+    - GSM549579 1
+    - GSM549580 1
+...

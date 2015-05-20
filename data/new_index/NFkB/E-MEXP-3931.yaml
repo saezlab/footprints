@@ -1,0 +1,18 @@
+---
+accession : E-MEXP-3931
+platform  : A-MEXP-2246
+pathway   : NFkB
+cells     : THP-1 monocytes
+treatment : 1 ng/ml LPS
+effect    : activating
+hours     : 12
+
+control   :
+    - Control A
+    - Control B
+    - Control C
+perturbed :
+    - LPS A
+    - LPS B
+    - LPS C
+...

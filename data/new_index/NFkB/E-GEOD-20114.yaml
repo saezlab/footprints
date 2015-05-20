@@ -1,0 +1,39 @@
+---
+accession : E-GEOD-20114
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : human peripheral blood mononuclear cells
+treatment : LPS
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM502612 1
+    - GSM502613 1
+    - GSM502614 1
+    - GSM502615 1
+perturbed :
+    - GSM502620 1
+    - GSM502621 1
+    - GSM502622 1
+    - GSM502623 1
+
+---
+accession : E-GEOD-20114
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : human peripheral blood mononuclear cells + 90 days docosahexaenoic acid
+treatment : LPS
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM502616 1
+    - GSM502617 1
+    - GSM502618 1
+    - GSM502619 1
+perturbed :
+    - GSM502624 1
+    - GSM502625 1
+    - GSM502626 1
+...

@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-9916
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : human mononuclear cells
+treatment : 1 mg/ml LPS
+effect    : activating
+hours     : 4
+
+control   :
+    - GSE9916GSM250931
+    - GSE9916GSM250932
+    - GSE9916GSM250933
+perturbed :
+    - GSE9916GSM250940
+    - GSE9916GSM250941
+    - GSE9916GSM250942
+...

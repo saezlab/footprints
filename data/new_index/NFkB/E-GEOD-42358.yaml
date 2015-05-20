@@ -1,0 +1,20 @@
+---
+accession : E-GEOD-42358
+platform  : A-AFFY-143
+pathway   : NFkB
+cells     : CD16/CD62L neutrophils
+treatment : LPS
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM1038292 1
+    - GSM1038296 1
+    - GSM1038300 1
+    - GSM1038304 1
+perturbed :
+    - GSM1038293 1
+    - GSM1038297 1
+    - GSM1038301 1
+    - GSM1038305 1
+...

@@ -1,0 +1,20 @@
+---
+accession : E-GEOD-32141
+platform  : A-AFFY-143
+pathway   : NFkB
+cells     : THP-1 cells
+treatment : LPS
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM796548 1
+    - GSM796550 1
+    - GSM796552 1
+    - GSM796554 1
+perturbed :
+    - GSM796549 1
+    - GSM796551 1
+    - GSM796553 1
+    - GSM796555 1
+...

@@ -1,0 +1,36 @@
+---
+accession : E-MTAB-1393
+platform  : A-AFFY-141
+pathway   : NFkB
+cells     : female blood promyeloblastNcells
+treatment : 100 ng/ml LPS
+effect    : activating
+hours     : 2
+
+control   :
+    - PBS-2H-1
+    - PBS-2H-2
+    - PBS-2H-3
+perturbed :
+    - LPS-2H-1
+    - LPS-2H-2
+    - LPS-2H-3
+
+---
+accession : E-MTAB-1393
+platform  : A-AFFY-141
+pathway   : NFkB
+cells     : female blood promyeloblastNcells
+treatment : 100 ng/ml LPS
+effect    : activating
+hours     : 6
+
+control   :
+    - PBS-6H-1
+    - PBS-6H-2
+    - PBS-6H-3
+perturbed :
+    - LPS-6H-1
+    - LPS-6H-2
+    - LPS-6H-3
+...

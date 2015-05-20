@@ -1,0 +1,53 @@
+---
+accession : E-GEOD-24897
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : human macrophages
+treatment : P. gingivalis
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM612262 1
+    - GSM612263 1
+    - GSM612264 1
+perturbed :
+    - GSM612265 1
+    - GSM612266 1
+    - GSM612267 1
+
+---
+accession : E-GEOD-24897
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : human macrophages
+treatment : PG-LPS
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM612262 1
+    - GSM612263 1
+    - GSM612264 1
+perturbed :
+    - GSM612268 1
+    - GSM612269 1
+    - GSM612270 1
+---
+accession : E-GEOD-24897
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : human macrophages
+treatment : PG-fimbriae
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM612262 1
+    - GSM612263 1
+    - GSM612264 1
+perturbed :
+    - GSM612271 1
+    - GSM612272 1
+    - GSM612273 1
+...

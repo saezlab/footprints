@@ -1,0 +1,64 @@
+---
+accession : E-GEOD-25146
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : HEK-TLR2 cells
+treatment : Helicobacter pylori lipopolysaccharide
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM618017 1
+    - GSM618018 1
+perturbed :
+    - GSM618010 1
+    - GSM618020 1
+
+---
+accession : E-GEOD-25146
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : HEK-TLR2 cells
+treatment : Helicobacter pylori lipopolysaccharide
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM618021 1
+    - GSM618022 1
+perturbed :
+    - GSM618023 1
+    - GSM618024 1
+
+---
+accession : E-GEOD-25146
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : HEK-TLR2 cells
+treatment : Helicobacter pylori lipopolysaccharide
+effect    : activating
+hours     : 8
+
+control   :
+    - GSM618025 1
+    - GSM618026 1
+perturbed :
+    - GSM618027 1
+    - GSM618028 1
+
+---
+accession : E-GEOD-25146
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : HEK-TLR2 cells
+treatment : Helicobacter pylori lipopolysaccharide
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM618029 1
+    - GSM618030 1
+perturbed :
+    - GSM618031 1
+    - GSM618032 1
+...

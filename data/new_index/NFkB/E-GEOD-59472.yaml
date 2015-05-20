@@ -1,0 +1,16 @@
+---
+accession : E-GEOD-59472
+platform  : A-AFFY-141
+pathway   : NFkB
+cells     : airway epithelium derived from ES
+treatment : 5 ug/ml LPS
+effect    : activating
+hours     : 5
+
+control   :
+    - GSM1437564 1
+    - GSM1437565 1
+perturbed :
+    - GSM1437568 1
+    - GSM1437569 1
+...

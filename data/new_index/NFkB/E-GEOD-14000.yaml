@@ -1,0 +1,40 @@
+---
+accession : E-GEOD-14000
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : human dendritic cells
+treatment : LPS
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM349874 1
+    - GSM351530 1
+    - GSM351537 1
+    - GSM351622 1
+perturbed :
+    - GSM349876 1
+    - GSM351532 1
+    - GSM351539 1
+    - GSM351638 1
+
+---
+accession : E-GEOD-14000
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : human dendritic cells
+treatment : LPS
+effect    : activating
+hours     : 16
+
+control   :
+    - GSM349874 1
+    - GSM351530 1
+    - GSM351537 1
+    - GSM351622 1
+perturbed :
+    - GSM349878 1
+    - GSM351535 1
+    - GSM351615 1
+    - GSM351641 1
+...

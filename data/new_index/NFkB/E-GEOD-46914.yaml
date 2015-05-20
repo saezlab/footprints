@@ -1,0 +1,48 @@
+---
+accession : E-GEOD-46914
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : PBMCs
+treatment : LPS
+effect    : activating
+hours     : 15
+
+control   :
+    - GSM1141035 1
+    - GSM1141039 1
+    - GSM1141043 1
+    - GSM1141047 1
+    - GSM1141051 1
+    - GSM1141055 1
+perturbed :
+    - GSM1141036 1
+    - GSM1141040 1
+    - GSM1141044 1
+    - GSM1141048 1
+    - GSM1141052 1
+    - GSM1141056 1
+
+---
+accession : E-GEOD-46914
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : PBMCs
+treatment : 2x LPS
+effect    : activating
+hours     : 15
+
+control   :
+    - GSM1141035 1
+    - GSM1141039 1
+    - GSM1141043 1
+    - GSM1141047 1
+    - GSM1141051 1
+    - GSM1141055 1
+perturbed :
+    - GSM1141037 1
+    - GSM1141041 1
+    - GSM1141045 1
+    - GSM1141049 1
+    - GSM1141053 1
+    - GSM1141057 1
+...

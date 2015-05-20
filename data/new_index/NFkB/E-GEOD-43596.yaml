@@ -1,0 +1,36 @@
+---
+accession : E-GEOD-43596
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : macrophages
+treatment : 100 ng/ml LPS
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM1066056 1
+    - GSM1066057 1
+    - GSM1066058 1
+perturbed :
+    - GSM1066059 1
+    - GSM1066060 1
+    - GSM1066061 1
+
+---
+accession : E-GEOD-43596
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : macrophages
+treatment : 100 ng/ml LPS
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM1066068 1
+    - GSM1066069 1
+    - GSM1066070 1
+perturbed :
+    - GSM1066071 1
+    - GSM1066072 1
+    - GSM1066073 1
+...

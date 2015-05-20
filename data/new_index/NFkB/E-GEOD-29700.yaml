@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-29700
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : BL2 cell line
+treatment : LPS
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM736728 1
+    - GSM736729 1
+    - GSM736730 1
+perturbed :
+    - GSM736731 1
+    - GSM736732 1
+    - GSM736733 1
+...

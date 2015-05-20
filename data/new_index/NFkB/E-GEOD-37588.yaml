@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-37588
+platform  : A-AFFY44
+pathway   : NFkB
+cells     : human monocytes
+treatment : LPS
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM922959 1
+    - GSM922961 1
+    - GSM922963 1
+perturbed :
+    - GSM922960 1
+    - GSM922962 1
+    - GSM922964 1
+...

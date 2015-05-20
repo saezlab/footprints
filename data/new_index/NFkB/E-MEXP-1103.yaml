@@ -1,0 +1,24 @@
+---
+accession : E-MEXP-1103
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : normal human monocytes
+treatment : 10 ng/ml LPS
+effect    : activating
+hours     : 6
+
+control   :
+    - Kr-1-1 media only
+    - Kr-2-1media only
+    - Kr-3-1 media only
+    - Kr-4-1 media only
+    - Kr-5-1 media only
+    - Kr-6-1 media only
+perturbed :
+    - Kr-1-3 LPS
+    - Kr-2-3 LPS
+    - Kr-3-3 LPS
+    - Kr-4-3 LPS
+    - Kr-5-3 LPS
+    - Kr-6-3 LPS
+...

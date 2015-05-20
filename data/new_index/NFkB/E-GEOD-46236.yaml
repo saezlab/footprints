@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-46236
+platform  : A-AFFY-141
+pathway   : NFkB
+cells     : HBVP (human brain vascular pericytes)
+treatment : 1 ug/ml LPS
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM1126865 1
+    - GSM1126866 1
+    - GSM1126867 1
+perturbed :
+    - GSM1126868 1
+    - GSM1126869 1
+    - GSM1126870 1
+...

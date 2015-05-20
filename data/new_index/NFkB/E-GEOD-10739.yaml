@@ -1,0 +1,16 @@
+---
+accession : E-GEOD-10739
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : human parental MM6 cells
+treatment : LPS
+effect    : activating
+hours     : 24
+
+control   :
+    - GSE10739GSM257473
+    - GSE10739GSM257624
+perturbed :
+    - GSE10739GSM257635
+    - GSE10739GSM257639
+...

@@ -1,0 +1,34 @@
+---
+accession : E-GEOD-7538
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : human primary CD34+ acute myelogenous leukemia specimens obtained from 12 patients
+treatment : 7.5 micromolar parthenolide (PTL)
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - GSE7538GSM182630
+    - GSE7538GSM182632
+    - GSE7538GSM182634
+    - GSE7538GSM182636
+    - GSE7538GSM182638
+    - GSE7538GSM182640
+    - GSE7538GSM182642
+    - GSE7538GSM182644
+    - GSE7538GSM182648
+    - GSE7538GSM182650
+    - GSE7538GSM182652
+perturbed :
+    - GSE7538GSM182629
+    - GSE7538GSM182631
+    - GSE7538GSM182633
+    - GSE7538GSM182635
+    - GSE7538GSM182637
+    - GSE7538GSM182639
+    - GSE7538GSM182641
+    - GSE7538GSM182643
+    - GSE7538GSM182647
+    - GSE7538GSM182649
+    - GSE7538GSM182651
+...

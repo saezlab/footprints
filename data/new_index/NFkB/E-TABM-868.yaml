@@ -1,0 +1,24 @@
+---
+accession : E-TABM-868
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : THP-1 cells
+treatment : 100 ng/ml LPS
+effect    : activating
+hours     : 6
+
+control   :
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+perturbed :
+    - 10
+    - 11
+    - 12
+...

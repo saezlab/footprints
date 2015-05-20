@@ -1,0 +1,16 @@
+---
+accession : E-GEOD-25146
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : MKN45 cells
+treatment : Helicobacter pylori lipopolysaccharide
+effect    : activating
+hours     : 8
+
+control   :
+    - GSM618013 1
+    - GSM618014 1
+perturbed :
+    - GSM618015 1
+    - GSM618016 1
+...

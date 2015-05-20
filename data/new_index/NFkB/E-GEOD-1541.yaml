@@ -1,0 +1,32 @@
+---
+accession : E-GEOD-1541
+platform  : A-AFFY-41
+pathway   : NFkB
+cells     : A549 cell line
+treatment : 1 mcg/mL LPS
+effect    : activating
+hours     : 1
+
+control   :
+    - GSE1541GSM26477
+    - GSE1541GSM26478
+perturbed :
+    - GSE1541GSM26481
+    - GSE1541GSM26482
+
+---
+accession : E-GEOD-1541
+platform  : A-AFFY-41
+pathway   : NFkB
+cells     : A549 cell line
+treatment : 1 mcg/mL LPS
+effect    : activating
+hours     : 1
+
+control   :
+    - GSE1541GSM26479
+    - GSE1541GSM26480
+perturbed :
+    - GSE1541GSM26483
+    - GSE1541GSM26484
+...

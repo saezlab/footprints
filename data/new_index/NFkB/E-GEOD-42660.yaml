@@ -1,0 +1,35 @@
+---
+accession : E-GEOD-42660
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : BL2 cells
+treatment : LPS
+effect    : activating
+hours     : 0.5
+
+control   :
+    - GSM1047543 1
+    - GSM1047551 1
+    - GSM1047558 1
+perturbed :
+    - GSM1047544 1
+    - GSM1047552 1
+
+---
+accession : E-GEOD-42660
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : BL2 cells
+treatment : LPS
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM1047543 1
+    - GSM1047551 1
+    - GSM1047558 1
+perturbed :
+    - GSM1047545 1
+    - GSM1047553 1
+    - GSM1047559 1
+...

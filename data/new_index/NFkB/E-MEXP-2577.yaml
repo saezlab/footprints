@@ -1,0 +1,32 @@
+---
+accession : E-MEXP-2577
+platform  : A-AFFY-143
+pathway   : NFkB
+cells     : CD14 positive monocyte derived macrophages
+treatment : 10 ng/ml LPS
+effect    : activating
+hours     : 2
+
+control   :
+    - AB01
+    - AB04
+perturbed :
+    - AB02
+    - AB05
+
+---
+accession : E-MEXP-2577
+platform  : A-AFFY-143
+pathway   : NFkB
+cells     : CD14 positive monocyte derived macrophages
+treatment : 10 ng/ml LPS
+effect    : activating
+hours     : 6
+
+control   :
+    - AB01
+    - AB04
+perturbed :
+    - AB03
+    - AB06
+...

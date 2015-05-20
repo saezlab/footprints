@@ -1,0 +1,40 @@
+---
+accession : E-GEOD-14419
+platform  : A-AFFY-37
+pathway   : NFkB
+cells     : monocyte-derived macrophages
+treatment : zymosan
+effect    : activating
+hours     : 3
+
+control   :
+    - GSE14419GSM360139
+    - GSE14419GSM360143
+    - GSE14419GSM360182
+    - GSE14419GSM360186
+perturbed :
+    - GSE14419GSM360141
+    - GSE14419GSM360145
+    - GSE14419GSM360184
+    - GSE14419GSM360188
+
+---
+accession : E-GEOD-14419
+platform  : A-AFFY-37
+pathway   : NFkB
+cells     : monocyte-derived macrophages + PMN-Ectosomes
+treatment : zymosan
+effect    : activating
+hours     : 3
+
+control   :
+    - GSE14419GSM360140
+    - GSE14419GSM360144
+    - GSE14419GSM360183
+    - GSE14419GSM360187
+perturbed :
+    - GSE14419GSM360142
+    - GSE14419GSM360146
+    - GSE14419GSM360185
+    - GSE14419GSM360189
+...

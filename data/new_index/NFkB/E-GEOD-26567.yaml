@@ -1,0 +1,17 @@
+---
+accession : E-GEOD-26567
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : human MSCs
+treatment : LPS
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM653193 1
+    - GSM653195 1
+perturbed :
+    - GSM653191 1
+    - GSM653192 1
+    - GSM653194 1
+...

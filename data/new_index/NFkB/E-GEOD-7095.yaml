@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-7095
+platform  : A-AFFY-41
+pathway   : NFkB
+cells     : human monocyte derived dentritic cells
+treatment : LPS
+effect    : activating
+hours     : 12
+
+control   :
+    - GSE7095GSM170694
+    - GSE7095GSM170697
+    - GSE7095GSM170701
+perturbed :
+    - GSE7095GSM170692
+    - GSE7095GSM170695
+    - GSE7095GSM170698
+...

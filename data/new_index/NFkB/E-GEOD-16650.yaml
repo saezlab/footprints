@@ -1,0 +1,32 @@
+---
+accession : E-GEOD-16650
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : human bronchial epithelial cells
+treatment : LPS
+effect    : activating
+hours     : 4
+
+control   :
+    - GSE16650GSM417770
+    - GSE16650GSM417776
+perturbed :
+    - GSE16650GSM417772
+    - GSE16650GSM417778
+
+---
+accession : E-GEOD-16650
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : human bronchial epithelial cells + mechanical stretch
+treatment : LPS
+effect    : activating
+hours     : 4
+
+control   :
+    - GSE16650GSM417771
+    - GSE16650GSM417777
+perturbed :
+    - GSE16650GSM417773
+    - GSE16650GSM417779
+...

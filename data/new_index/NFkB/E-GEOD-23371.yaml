@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-23371
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : monocyte-derives DCs
+treatment : LPS
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM573357 1
+    - GSM573358 1
+    - GSM573359 1
+perturbed :
+    - GSM573360 1
+    - GSM573361 1
+    - GSM573362 1
+...

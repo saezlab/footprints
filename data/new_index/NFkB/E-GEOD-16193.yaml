@@ -1,0 +1,44 @@
+---
+accession : E-GEOD-16193
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : Human Monocytes
+treatment : 1 ug/ml LPS
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM406482 1
+    - GSM406483 1
+    - GSM406484 1
+    - GSM406485 1
+    - GSM406486 1
+perturbed :
+    - GSM406497 1
+    - GSM406498 1
+    - GSM406499 1
+    - GSM406500 1
+    - GSM406501 1
+
+---
+accession : E-GEOD-16193
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : Human Monocytes + 250 ppm carbon monoxide
+treatment : 1 ug/ml LPS
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM406487 1
+    - GSM406488 1
+    - GSM406489 1
+    - GSM406490 1
+    - GSM406491 1
+perturbed :
+    - GSM406492 1
+    - GSM406493 1
+    - GSM406494 1
+    - GSM406495 1
+    - GSM406496 1
+...

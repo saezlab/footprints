@@ -1,0 +1,26 @@
+---
+accession : E-GEOD-40885
+platform  : A-AFFY-44
+pathway   : NFkB
+cells     : alveolar macrophages
+treatment : LPS
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM1004101 1
+    - GSM1004103 1
+    - GSM1004105 1
+    - GSM1004107 1
+    - GSM1004109 1
+    - GSM1004111 1
+    - GSM1004113 1
+perturbed :
+    - GSM1004102 1
+    - GSM1004104 1
+    - GSM1004106 1
+    - GSM1004108 1
+    - GSM1004110 1
+    - GSM1004112 1
+    - GSM1004114 1
+...
