@@ -56,7 +56,7 @@ assocs.tissue = st$lm(Yf ~ scores, subsets=tissues) %>%
 
 # volcano plot for tissue subsets
 assocs.tissue %>%
-    filter(adj.p < 0.2) # leave out insignificant hits, too many -> file size, etc.
+    filter(adj.p < 0.2) %>% # leave out insignificant hits, too many -> file size, etc.
     mutate(label = paste(subset, Yf, scores, sep=":")) %>%
     plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1) %>%
     plt$volcano(p=0.2) %>%
