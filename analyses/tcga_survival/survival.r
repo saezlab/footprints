@@ -29,18 +29,19 @@ scores = io$load(INFILE)
 rownames(clinical) = clinical$icgc_specimen_id
 ar$intersect(scores, clinical, along=1) #TODO: check if works with data.frame; if not, make it work
 
-clinical = as.list(clinical)
-clinical$donor_vital_status = as.integer(clinical$donor_vital_status == "alive")
-clinical$scores = scores
-
 if (nrow(clinical) < 10)
     stop("survival+expression scores < 10 observations, stopping")
+
+clinical = as.list(clinical)
+clinical$status = as.integer(clinical$donor_vital_status == "alive")
+clinical$time = clinical$known_survival_time
+clinical$scores = scores
 
 pdf(OUTFILE, paper="a4r", width=26, height=20)
 on.exit(dev.off())
 
 # tissue covariate
-st$coxph(time + status ~ donor_sex + tissue + scores) %>%
+st$coxph(time + status ~ donor_sex + tissue + scores, data=clinical, min_pts=100) %>%
     filter(term == "scores") %>%
     select(-time, -status, -tissue, -term) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
@@ -49,8 +50,10 @@ st$coxph(time + status ~ donor_sex + tissue + scores) %>%
     plt$volcano(base.size=0.1) %>%
     print()
 
-# separate regressions for each tissue
-st$coxph(time + status ~ donor_sex + scores, subsets=tissue) %>%
+# separate regressions for each tissue #TODO: better error if e.g. "time"->function
+#TODO: tissue as clinical subset ref should work
+#TODO: add donor_sex + make it work w/ only one
+st$coxph(time + status ~ scores, subsets=clinical$tissue, data=clinical, min_pts=20) %>%
     select(-time, -status, -term) %>%
     group_by(subset) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
