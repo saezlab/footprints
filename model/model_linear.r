@@ -17,12 +17,12 @@ index = zobj$index
 # adjust object for linear modelling
 inh = index$effect=="inhibiting"
 zscores[,inh] = -zscores[,inh]
-zscores = na.omit(zscores) #TODO: handle this better
+#zscores = na.omit(zscores) #TODO: handle this better
 zscores = t(zscores)
 
 # fit model to pathway perturbations
 index = c(as.list(index), list(zscores=zscores)) # combination between parent.frame()+expl.data <-fix
-mod = st$lm(zscores ~ 0 + pathway, data=index) %>%
+mod = st$lm(zscores ~ 0 + pathway, data=index, min_pts=30) %>%
     transmute(gene = zscores,
               pathway = sub("^pathway", "", term),
               zscore = estimate,

@@ -17,19 +17,26 @@ index = zobj$index
 # adjust object for linear modelling
 inh = index$effect=="inhibiting"
 zscores[,inh] = -zscores[,inh]
-zscores = na.omit(zscores) #TODO: handle this better
 zscores = t(zscores)
 
 # fit model to pathway perturbations
 pathway = ar$mask(index$pathway) + 0
 pathway[,"EGFR"] = pathway[,"EGFR"] + pathway[,"MAPK"] + pathway[,"PI3K"]
-#pathway[,"EGFR"] = 0.5*pathway[,"EGFR"] + 0.25*pathway[,"MAPK"] + 0.25*pathway[,"PI3K"]
-mod = lm(zscores ~ 0 + pathway)
-coeff = coef(summary(mod))
-zfit = do.call(rbind, lapply(coeff, function(x) x[,'Estimate']))
-pval = do.call(rbind, lapply(coeff, function(x) x[,'Pr(>|t|)']))
-colnames(zfit) = colnames(pval) = sub("^pathway", "", colnames(zfit))
-rownames(zfit) = rownames(pval) = sub("^Response ", "", rownames(zfit))
+pathway[,"TNFa"] = pathway[,"TNFa"] + pathway[,"NFkB"]
+
+index = c(as.list(index), list(zscores=zscores, pathway=pathway))
+# ^^ combination between parent.frame()+expl.data <-fix
+mod = st$lm(zscores ~ 0 + pathway, data=index, min_pts=30, atomic="pathway") %>%
+    transmute(gene = zscores,
+              pathway = sub("^pathway", "", term),
+              zscore = estimate,
+              p.value = p.value) %>%
+    group_by(gene) %>%
+    mutate(p.adj = p.adjust(p.value, method="fdr")) %>%
+    ungroup()
+
+zfit = ar$construct(zscore ~ gene + pathway, data=mod)
+pval = ar$construct(p.adj ~ gene + pathway, data=mod)
 
 # filter zfit to only include top 100 genes per pathway
 zfit[apply(pval, 2, z -> z > b$minN(z, 100))] = 0
