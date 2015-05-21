@@ -1,24 +1,22 @@
 MODEL_SCRIPTS = $(wildcard ../../model/model_*.r)
 MODELS = $(MODEL_SCRIPTS:%.r=%.RData)
 SETS = $(wildcard ../../genesets/*.RData)
-SCORES = $(MODELS:../../model/model_%=speed_%) $(SETS:../../genesets/%=%)
+SPEED_SCORES = $(MODELS:../../model/model_%=speed_%)
+SET_SCORES = $(SETS:../../genesets/%=%)
 
-.PHONY: models scores
+.PHONY: prereqs scores
 
-scores: $(SCORES)
+scores: $(SPEED_SCORES) $(SET_SCORES)
+
+prereqs:
+	make -C ../../model $(notdir $(MODELS))
+	make -C ../../genesets $(notdir $(SETS))
 
 print-%: ; @echo $* = $($*)
 
-# call other makefiles for dependencies
-../../model/model_%.RData:
-	make -C $(shell dirname $@) $@
-
-../../genesets/%.RData:
-	make -C $(shell dirname $@) $@
-
 # use each model to create scores object
-speed_%.RData: speed.r ../../model/model_%.RData
-	Rscript $< $(word 2,$^) $@
+speed_%.RData: speed.r prereqs ../../model/model_%.RData
+	Rscript $< $(word 3,$^) $@
 
-%.RData: set_enrichment.r ../../genesets/%.RData
-	Rscript $< $(word 2,$^) $@
+%.RData: set_enrichment.r prereqs ../../genesets/%.RData
+	Rscript $< $(word 3,$^) $@
