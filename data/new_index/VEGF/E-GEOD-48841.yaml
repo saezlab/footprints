@@ -1,0 +1,96 @@
+---
+accession : E-GEOD-48841
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : primary cultured human lung endothelial cells
+treatment : 50 ng/ml VEGF
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM1185521 1
+    - GSM1185522 1
+    - GSM1185525 1
+perturbed :
+    - GSM1185526 1
+
+---
+accession : E-GEOD-48841
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : primary cultured human lung endothelial cells
+treatment : 50 ng/ml VEGF
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM1185521 1
+    - GSM1185522 1
+    - GSM1185525 1
+perturbed :
+    - GSM1185527 1
+
+---
+accession : E-GEOD-48841
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : primary cultured human lung endothelial cells
+treatment : 50 ng/ml VEGF
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1185521 1
+    - GSM1185522 1
+    - GSM1185525 1
+perturbed :
+    - GSM1185528 1
+
+---
+accession : E-GEOD-48841
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : primary cultured human lung endothelial cells, siDSCR1
+treatment : 50 ng/ml VEGF
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM1185523 1
+    - GSM1185524 1
+    - GSM1185529 1
+perturbed :
+    - GSM1185530 1
+
+---
+accession : E-GEOD-48841
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : primary cultured human lung endothelial cells, siDSCR1
+treatment : 50 ng/ml VEGF
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM1185523 1
+    - GSM1185524 1
+    - GSM1185529 1
+perturbed :
+    - GSM1185531 1
+
+---
+accession : E-GEOD-48841
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : primary cultured human lung endothelial cells, siDSCR1
+treatment : 50 ng/ml VEGF
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1185523 1
+    - GSM1185524 1
+    - GSM1185529 1
+perturbed :
+    - GSM1185532 1
+...

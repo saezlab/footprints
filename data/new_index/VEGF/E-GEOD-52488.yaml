@@ -1,0 +1,40 @@
+---
+accession : E-GEOD-52488
+platform  : A-AFFY-141
+pathway   : VEGF
+cells     : primary human bladder smooth muscle cells
+treatment : 1 nM PDGF-BB
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM1267763 1
+    - GSM1267764 1
+    - GSM1267765 1
+    - GSM1267766 1
+perturbed :
+    - GSM1267767 1
+    - GSM1267768 1
+    - GSM1267769 1
+    - GSM1267770 1
+
+---
+accession : E-GEOD-52488
+platform  : A-AFFY-141
+pathway   : VEGF
+cells     : primary human bladder smooth muscle cells
+treatment : 1 nM PDGF-BB
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1267763 1
+    - GSM1267764 1
+    - GSM1267765 1
+    - GSM1267766 1
+perturbed :
+    - GSM1267771 1
+    - GSM1267772 1
+    - GSM1267773 1
+    - GSM1267774 1
+...

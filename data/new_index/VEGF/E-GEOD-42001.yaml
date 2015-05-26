@@ -1,0 +1,150 @@
+---
+accession : E-GEOD-42001
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : ALL114 human B cell precursor leukemia cells
+treatment : PDGF-BB
+effect    : activating
+hours     : 0.5
+
+control   :
+    - GSM1030376 1
+    - GSM1030382 1
+perturbed :
+    - GSM1030383 1
+
+---
+accession : E-GEOD-42001
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : ALL114 human B cell precursor leukemia cells
+treatment : PDGF-BB
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM1030376 1
+    - GSM1030382 1
+perturbed :
+    - GSM1030384 1
+
+---
+accession : E-GEOD-42001
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : ALL114 human B cell precursor leukemia cells
+treatment : PDGF-BB
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM1030376 1
+    - GSM1030382 1
+perturbed :
+    - GSM1030385 1
+
+---
+accession : E-GEOD-42001
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : ALL114 human B cell precursor leukemia cells
+treatment : PDGF-BB
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM1030376 1
+    - GSM1030382 1
+perturbed :
+    - GSM1030386 1
+
+---
+accession : E-GEOD-42001
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : ALL114 human B cell precursor leukemia cells
+treatment : PDGF-BB
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM1030376 1
+    - GSM1030382 1
+perturbed :
+    - GSM1030387 1
+
+---
+accession : E-GEOD-42001
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : ALL22089 human B cell precursor leukemia cells
+treatment : PDGF-BB
+effect    : activating
+hours     : 0.5
+
+control   :
+    - GSM1030388 1
+    - GSM1030394 1
+perturbed :
+    - GSM1030395 1
+
+---
+accession : E-GEOD-42001
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : ALL22089 human B cell precursor leukemia cells
+treatment : PDGF-BB
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM1030388 1
+    - GSM1030394 1
+perturbed :
+    - GSM1030396 1
+
+---
+accession : E-GEOD-42001
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : ALL22089 human B cell precursor leukemia cells
+treatment : PDGF-BB
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM1030388 1
+    - GSM1030394 1
+perturbed :
+    - GSM1030397 1
+
+---
+accession : E-GEOD-42001
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : ALL22089 human B cell precursor leukemia cells
+treatment : PDGF-BB
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM1030388 1
+    - GSM1030394 1
+perturbed :
+    - GSM1030398 1
+
+---
+accession : E-GEOD-42001
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : ALL22089 human B cell precursor leukemia cells
+treatment : PDGF-BB
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM1030388 1
+    - GSM1030394 1
+perturbed :
+    - GSM1030399 1
+...

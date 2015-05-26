@@ -1,0 +1,81 @@
+---
+accession : E-GEOD-7403
+platform  : A-AFFY-33
+pathway   : VEGF
+cells     : SH-SY5Y
+treatment : PDGF
+effect    : activating
+hours     : 0.5
+
+control   :
+    - GSE7403GSM178575
+    - GSE7403GSM178576
+perturbed :
+    - GSE7403GSM178569
+    - GSE7403GSM178570
+
+---
+accession : E-GEOD-7403
+platform  : A-AFFY-33
+pathway   : VEGF
+cells     : SH-SY5Y
+treatment : PDGF
+effect    : activating
+hours     : 1
+
+control   :
+    - GSE7403GSM178575 # 0.5 h
+    - GSE7403GSM178576
+    - GSE7403GSM178583 # 1 h
+perturbed :
+    - GSE7403GSM178577
+    - GSE7403GSM178578
+
+---
+accession : E-GEOD-7403
+platform  : A-AFFY-33
+pathway   : VEGF
+cells     : SH-SY5Y
+treatment : PDGF
+effect    : activating
+hours     : 2
+
+control   :
+    - GSE7403GSM178590
+    - GSE7403GSM178591
+perturbed :
+    - GSE7403GSM178584
+    - GSE7403GSM178585
+
+---
+accession : E-GEOD-7403
+platform  : A-AFFY-33
+pathway   : VEGF
+cells     : SH-SY5Y
+treatment : PDGF
+effect    : activating
+hours     : 3
+
+control   :
+    - GSE7403GSM178598
+    - GSE7403GSM178599
+perturbed :
+    - GSE7403GSM178592
+    - GSE7403GSM178593
+
+---
+accession : E-GEOD-7403
+platform  : A-AFFY-33
+pathway   : VEGF
+cells     : SH-SY5Y
+treatment : PDGF
+effect    : activating
+hours     : 4
+
+control   :
+    - GSE7403GSM178606
+    - GSE7403GSM178607
+perturbed :
+    - GSE7403GSM178600
+    - GSE7403GSM178601
+...

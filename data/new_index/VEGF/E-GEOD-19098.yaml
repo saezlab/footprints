@@ -1,0 +1,36 @@
+---
+accession : E-GEOD-19098
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : fully spread HUVECs
+treatment : 50 ng/ml VEGF
+effect    : activating
+hours     : 18
+
+control   :
+    - GSM473026 1
+    - GSM473027 1
+    - GSM473028 1
+perturbed :
+    - GSM473029 1
+    - GSM473030 1
+    - GSM473031 1
+
+---
+accession : E-GEOD-19098
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : spread restricted HUVECs
+treatment : 50 ng/ml VEGF
+effect    : activating
+hours     : 18
+
+control   :
+    - GSM473032 1
+    - GSM473033 1
+    - GSM473034 1
+perturbed :
+    - GSM473035 1
+    - GSM473036 1
+    - GSM473037 1
+...

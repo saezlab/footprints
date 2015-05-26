@@ -1,0 +1,96 @@
+---
+accession : E-GEOD-58203
+platform  : A-GEOD-15445
+pathway   : VEGF
+cells     : Synovial fibroblasts of 6 RA patients
+treatment : PDGF
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM1403253 1
+    - GSM1403258 1
+    - GSM1403263 1
+    - GSM1403268 1
+    - GSM1403273 1
+    - GSM1403278 1
+perturbed :
+    - GSM1403254 1
+    - GSM1403259 1
+    - GSM1403264 1
+    - GSM1403269 1
+    - GSM1403274 1
+    - GSM1403279 1
+
+---
+accession : E-GEOD-58203
+platform  : A-GEOD-15445
+pathway   : VEGF
+cells     : Synovial fibroblasts of 6 RA patients
+treatment : PDGF
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM1403253 1
+    - GSM1403258 1
+    - GSM1403263 1
+    - GSM1403268 1
+    - GSM1403273 1
+    - GSM1403278 1
+perturbed :
+    - GSM1403255 1
+    - GSM1403260 1
+    - GSM1403265 1
+    - GSM1403270 1
+    - GSM1403275 1
+    - GSM1403280 1
+
+---
+accession : E-GEOD-58203
+platform  : A-GEOD-15445
+pathway   : VEGF
+cells     : Synovial fibroblasts of 6 RA patients
+treatment : PDGF
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM1403253 1
+    - GSM1403258 1
+    - GSM1403263 1
+    - GSM1403268 1
+    - GSM1403273 1
+    - GSM1403278 1
+perturbed :
+    - GSM1403256 1
+    - GSM1403261 1
+    - GSM1403266 1
+    - GSM1403271 1
+    - GSM1403276 1
+    - GSM1403281 1
+
+---
+accession : E-GEOD-58203
+platform  : A-GEOD-15445
+pathway   : VEGF
+cells     : Synovial fibroblasts of 6 RA patients
+treatment : PDGF
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM1403253 1
+    - GSM1403258 1
+    - GSM1403263 1
+    - GSM1403268 1
+    - GSM1403273 1
+    - GSM1403278 1
+perturbed :
+    - GSM1403257 1
+    - GSM1403262 1
+    - GSM1403267 1
+    - GSM1403272 1
+    - GSM1403277 1
+    - GSM1403282 1
+...

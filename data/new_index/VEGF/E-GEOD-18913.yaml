@@ -1,0 +1,37 @@
+---
+accession : E-GEOD-18913 
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : umbilical vein endothelial cells (HUVEC) 
+treatment : VEGF
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM468603 1
+    - GSM468604 1
+    - GSM468621 1
+perturbed :
+    - GSM468609 1
+    - GSM468610 1
+    - GSM468611 1
+    - GSM468622 1
+
+---
+accession : E-GEOD-18913 
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : umbilical vein endothelial cells (HUVEC) 
+treatment : VEGF
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM468603 1
+    - GSM468604 1
+    - GSM468621 1
+perturbed :
+    - GSM468615 1
+    - GSM468616 1
+    - GSM468623 1
+...

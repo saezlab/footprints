@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-28698
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : Hematopoetic progenitors expressing the ETV6-PDGFRB oncogene
+treatment : imatinib (PDGFR inhibitor)
+effect    : inhibiting
+hours     : 4
+
+control   :
+    - GSM710733 1
+    - GSM710735 1
+    - GSM710737 1
+perturbed :
+    - GSM710734 1
+    - GSM710736 1
+    - GSM710738 1
+...

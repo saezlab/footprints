@@ -1,0 +1,15 @@
+---
+accession : E-MEXP-391
+platform  : A-AFFY-33
+pathway   : VEGF
+cells     : primary human mesangial cells
+treatment : PDGF
+effect    : activating
+hours     : 24
+
+control   :
+    - Homo sapiens__S:BioSource:MEXP:178207
+    - Homo sapiens__S:BioSource:MEXP:179149
+perturbed :
+    - Homo sapiens__S:BioSource:MEXP:178208
+...

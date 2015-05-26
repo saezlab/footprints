@@ -1,0 +1,42 @@
+---
+accession : E-GEOD-1923
+platform  : A-AFFY-1
+pathway   : VEGF
+cells     : U87 clone
+treatment : PDGF-A dominant negative
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSE1923GSM34580
+    - GSE1923GSM34581
+    - GSE1923GSM34582
+    - GSE1923GSM34583
+    - GSE1923GSM34584
+    - GSE1923GSM34585
+    - GSE1923GSM34592
+    - GSE1923GSM34593
+    - GSE1923GSM34594
+perturbed :
+    - GSE1923GSM34586
+    - GSE1923GSM34587
+    - GSE1923GSM34588
+
+---
+accession : E-GEOD-1923
+platform  : A-AFFY-1
+pathway   : VEGF
+cells     : PDGF-A dominant negative U87 clone
+treatment : PDGF-A
+effect    : activating
+hours     : 24
+
+control   :
+    - GSE1923GSM34586
+    - GSE1923GSM34587
+    - GSE1923GSM34588
+perturbed :
+    - GSE1923GSM34589
+    - GSE1923GSM34590
+    - GSE1923GSM34591
+...

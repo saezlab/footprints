@@ -1,0 +1,32 @@
+---
+accession : E-GEOD-14256
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : AG01518 forskin human fibroblasts
+treatment : b-FGF
+effect    : activating
+hours     : 1
+
+control   :
+    - GSE14256GSM356969
+    - GSE14256GSM356970
+perturbed :
+    - GSE14256GSM356968
+    - GSE14256GSM356971
+
+---
+accession : E-GEOD-14256
+platform  : A-AFFY-37
+pathway   : EGFR
+cells     : AG01518 forskin human fibroblasts
+treatment : b-FGF
+effect    : activating
+hours     : 24
+
+control   :
+    - GSE14256GSM356969
+    - GSE14256GSM356970
+perturbed :
+    - GSE14256GSM356967
+    - GSE14256GSM356972
+...

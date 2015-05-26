@@ -1,0 +1,32 @@
+---
+accession : E-GEOD-53633
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : EOL1 Cell line
+treatment : imatinib (PDGFR inhibitor)
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - GSM1297530 1
+    - GSM1297531 1
+perturbed :
+    - GSM1297528 1
+    - GSM1297529 1
+
+---
+accession : E-GEOD-53633
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : peripheral T-cell lymphoma cells
+treatment : imatinib (PDGFR inhibitor)
+effect    : inhibiting
+hours     : 6
+
+control   :
+    - GSM1297534 1
+    - GSM1297535 1
+perturbed :
+    - GSM1297532 1
+    - GSM1297533 1
+...
