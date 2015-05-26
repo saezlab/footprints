@@ -1,18 +1,18 @@
----
-accession : E-GEOD-7403
-platform  : A-AFFY-33
-pathway   : VEGF
-cells     : SH-SY5Y
-treatment : PDGF
-effect    : activating
-hours     : 0.5
-
-control   :
-    - GSE7403GSM178575
-    - GSE7403GSM178576
-perturbed :
-    - GSE7403GSM178569
-    - GSE7403GSM178570
+#--- QC fail
+#accession : E-GEOD-7403
+#platform  : A-AFFY-33
+#pathway   : VEGF
+#cells     : SH-SY5Y
+#treatment : PDGF
+#effect    : activating
+#hours     : 0.5
+#
+#control   :
+#    - GSE7403GSM178575
+#    - GSE7403GSM178576
+#perturbed :
+#    - GSE7403GSM178569
+#    - GSE7403GSM178570
 
 ---
 accession : E-GEOD-7403
