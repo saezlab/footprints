@@ -1,0 +1,16 @@
+---
+accession : E-GEOD-20272
+platform  : A-AFFY-44
+pathway   : JAK-STAT
+cells     : SKOV-3 and CaOV-3 ovarian cancer cell lines
+treatment : IL-6
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM508291 1
+    - GSM508294 1
+perturbed :
+    - GSM508292 1
+    - GSM508295 1
+...

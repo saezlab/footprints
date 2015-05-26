@@ -1,0 +1,102 @@
+---
+accession : E-MTAB-2477
+platform  : A-GEOD-13667
+pathway   : JAK-STAT
+cells     : hepatocyte-like cells
+treatment : IFN alpha 2a
+effect    : activating
+hours     : 6
+
+control   :
+    - iHLC_vehicle_06h
+    - iHLC_vehicle_12h
+    - iHLC_vehicle_24h
+    - iHLC_vehicle_48h
+perturbed :
+    - iHLC_ALFA_06h
+
+---
+accession : E-MTAB-2477
+platform  : A-GEOD-13667
+pathway   : JAK-STAT
+cells     : hepatocyte-like cells
+treatment : IFN alpha 2a
+effect    : activating
+hours     : 12
+
+control   :
+    - iHLC_vehicle_06h
+    - iHLC_vehicle_12h
+    - iHLC_vehicle_24h
+    - iHLC_vehicle_48h
+perturbed :
+    - iHLC_ALFA_12h
+
+---
+accession : E-MTAB-2477
+platform  : A-GEOD-13667
+pathway   : JAK-STAT
+cells     : hepatocyte-like cells
+treatment : IFN alpha 2a
+effect    : activating
+hours     : 24
+
+control   :
+    - iHLC_vehicle_06h
+    - iHLC_vehicle_12h
+    - iHLC_vehicle_24h
+    - iHLC_vehicle_48h
+perturbed :
+    - iHLC_ALFA_24h
+
+---
+accession : E-MTAB-2477
+platform  : A-GEOD-13667
+pathway   : JAK-STAT
+cells     : hepatocyte-like cells
+treatment : IFN lambda 1a
+effect    : activating
+hours     : 6
+
+control   :
+    - iHLC_vehicle_06h
+    - iHLC_vehicle_12h
+    - iHLC_vehicle_24h
+    - iHLC_vehicle_48h
+perturbed :
+    - iHLC_Lambda_06h
+
+---
+accession : E-MTAB-2477
+platform  : A-GEOD-13667
+pathway   : JAK-STAT
+cells     : hepatocyte-like cells
+treatment : IFN lambda 1a
+effect    : activating
+hours     : 12
+
+control   :
+    - iHLC_vehicle_06h
+    - iHLC_vehicle_12h
+    - iHLC_vehicle_24h
+    - iHLC_vehicle_48h
+perturbed :
+    - iHLC_Lambda_12h
+
+---
+accession : E-MTAB-2477
+platform  : A-GEOD-13667
+pathway   : JAK-STAT
+cells     : hepatocyte-like cells
+treatment : IFN lambda 1a
+effect    : activating
+hours     : 24
+
+control   :
+    - iHLC_vehicle_06h
+    - iHLC_vehicle_12h
+    - iHLC_vehicle_24h
+    - iHLC_vehicle_48h
+perturbed :
+    - iHLC_Lambda_24h
+...

@@ -1,0 +1,20 @@
+---
+accession : E-GEOD-55510
+platform  : A-AFFY-44
+pathway   : JAK-STAT
+cells     : human ovarian surface epithelial cell line, HOSE-E7/hTERT (HOSE)
+treatment : IFN gamma
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM1338372 1
+    - GSM1338373 1
+    - GSM1338374 1
+    - GSM1338375 1
+perturbed :
+    - GSM1338376 1
+    - GSM1338377 1
+    - GSM1338378 1
+    - GSM1338379 1
+...

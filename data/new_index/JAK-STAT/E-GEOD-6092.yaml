@@ -1,0 +1,16 @@
+---
+accession : E-GEOD-6092
+platform  : A-AFFY-44
+pathway   : JAK-STAT
+cells     : human umbilical vein endothelial cells
+treatment : IFN-gamma
+effect    : activating
+hours     : 24
+
+control   :
+    - GSE6092GSM141250
+    - GSE6092GSM141251
+perturbed :
+    - GSE6092GSM141254
+    - GSE6092GSM141255
+...

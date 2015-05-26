@@ -1,0 +1,66 @@
+---
+accession : E-GEOD-53213
+platform  : A-AFFY-37
+pathway   : JAK-STAT
+cells     : LNT-229 glioma cell line
+treatment : IFN beta
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM1287751 1 # 6 h
+    - GSM1287753 1 # 24
+perturbed :
+    - GSM1287752 1
+
+---
+accession : E-GEOD-53213
+platform  : A-AFFY-37
+pathway   : JAK-STAT
+cells     : LNT-229 glioma cell line
+treatment : IFN beta
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1287751 1 # 6 h
+    - GSM1287753 1 # 24
+perturbed :
+    - GSM1287754 1
+
+---
+accession : E-GEOD-53213
+platform  : A-AFFY-37
+pathway   : JAK-STAT
+cells     : GS-2 glioma cell line
+treatment : IFN beta
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM1287755 1 # 6 h
+    - GSM1287759 1
+    - GSM1287757 1 # 24a
+    - GSM1287761
+perturbed :
+    - GSM1287756 1
+    - GSM1287759 1
+
+---
+accession : E-GEOD-53213
+platform  : A-AFFY-37
+pathway   : JAK-STAT
+cells     : GS-2 glioma cell line
+treatment : IFN beta
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1287755 1 # 6 h
+    - GSM1287759 1
+    - GSM1287757 1 # 24a
+    - GSM1287761
+perturbed :
+    - GSM1287758 1
+    - GSM1287762 1
+...

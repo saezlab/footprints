@@ -1,0 +1,38 @@
+---
+accession : E-GEOD-7095
+platform  : A-AFFY-41
+pathway   : JAK-STAT
+cells     : human monocyte derived LPS-activated activated dendritic cells
+treatment : viral IL-10
+effect    : activating
+hours     : 12
+
+control   :
+    - GSE7095GSM170692
+    - GSE7095GSM170695
+    - GSE7095GSM170698
+    - GSE7095GSM170702
+perturbed :
+    - GSE7095GSM170693
+    - GSE7095GSM170696
+    - GSE7095GSM170699
+    - GSE7095GSM170703
+
+---
+accession : E-GEOD-7095
+platform  : A-AFFY-41
+pathway   : JAK-STAT
+cells     : human monocyte derived LPS-activated activated dendritic cells
+treatment : human IL-10
+effect    : activating
+hours     : 12
+
+control   :
+    - GSE7095GSM170692
+    - GSE7095GSM170695
+    - GSE7095GSM170698
+    - GSE7095GSM170702
+perturbed :
+    - GSE7095GSM170700
+    - GSE7095GSM170704
+...

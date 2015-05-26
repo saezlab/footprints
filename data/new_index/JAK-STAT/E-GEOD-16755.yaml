@@ -1,0 +1,18 @@
+---
+accession : E-GEOD-16755
+platform  : A-AFFY-44
+pathway   : JAK-STAT
+cells     : human monocyte-derived macrophages
+treatment : IFN alpha
+effect    : activating
+hours     : 4
+
+control   :
+    - GSE16755GSM419987
+    - GSE16755GSM419988
+    - GSE16755GSM419989
+perturbed :
+    - GSE16755GSM419990
+    - GSE16755GSM419991
+    - GSE16755GSM419992
+...

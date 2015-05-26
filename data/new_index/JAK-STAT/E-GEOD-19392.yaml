@@ -1,0 +1,306 @@
+---
+accession : E-GEOD-19392
+platform  : A-AFFY-113
+pathway   : JAK-STAT
+cells     : Human bronchial epithelial cells (HBE)
+treatment : IFN beta
+effect    : activating
+hours     : 0.5
+
+control   :
+    - GSM528739 1 # 0.25 h
+    - GSM528740 1
+    - GSM528741 1 # 0.5
+    - GSM528742 1
+    - GSM528743 1 # 1.5
+    - GSM528744 1
+    - GSM528745 1 # 1
+    - GSM528746 1
+    - GSM528747 1 # 12
+    - GSM528748 1
+    - GSM528749 1 # 18
+    - GSM528750 1
+    - GSM528751 1 # 2
+    - GSM528752 1
+    - GSM528753 1 # 4
+    - GSM528754 1
+    - GSM528755 1 # 6
+    - GSM528756 1
+    - GSM528757 1 # 8
+    - GSM528758 1
+perturbed :
+    - GSM528683 1
+    - GSM528684 1
+
+---
+accession : E-GEOD-19392
+platform  : A-AFFY-113
+pathway   : JAK-STAT
+cells     : Human bronchial epithelial cells (HBE)
+treatment : IFN beta
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM528739 1 # 0.25 h
+    - GSM528740 1
+    - GSM528741 1 # 0.5
+    - GSM528742 1
+    - GSM528743 1 # 1.5
+    - GSM528744 1
+    - GSM528745 1 # 1
+    - GSM528746 1
+    - GSM528747 1 # 12
+    - GSM528748 1
+    - GSM528749 1 # 18
+    - GSM528750 1
+    - GSM528751 1 # 2
+    - GSM528752 1
+    - GSM528753 1 # 4
+    - GSM528754 1
+    - GSM528755 1 # 6
+    - GSM528756 1
+    - GSM528757 1 # 8
+    - GSM528758 1
+perturbed :
+    - GSM528687 1
+    - GSM528688 1
+
+---
+accession : E-GEOD-19392
+platform  : A-AFFY-113
+pathway   : JAK-STAT
+cells     : Human bronchial epithelial cells (HBE)
+treatment : IFN beta
+effect    : activating
+hours     : 1.5
+
+control   :
+    - GSM528739 1 # 0.25 h
+    - GSM528740 1
+    - GSM528741 1 # 0.5
+    - GSM528742 1
+    - GSM528743 1 # 1.5
+    - GSM528744 1
+    - GSM528745 1 # 1
+    - GSM528746 1
+    - GSM528747 1 # 12
+    - GSM528748 1
+    - GSM528749 1 # 18
+    - GSM528750 1
+    - GSM528751 1 # 2
+    - GSM528752 1
+    - GSM528753 1 # 4
+    - GSM528754 1
+    - GSM528755 1 # 6
+    - GSM528756 1
+    - GSM528757 1 # 8
+    - GSM528758 1
+perturbed :
+    - GSM528685 1
+    - GSM528686 1
+
+---
+accession : E-GEOD-19392
+platform  : A-AFFY-113
+pathway   : JAK-STAT
+cells     : Human bronchial epithelial cells (HBE)
+treatment : IFN beta
+effect    : activating
+hours     : 2
+
+control   :
+    - GSM528739 1 # 0.25 h
+    - GSM528740 1
+    - GSM528741 1 # 0.5
+    - GSM528742 1
+    - GSM528743 1 # 1.5
+    - GSM528744 1
+    - GSM528745 1 # 1
+    - GSM528746 1
+    - GSM528747 1 # 12
+    - GSM528748 1
+    - GSM528749 1 # 18
+    - GSM528750 1
+    - GSM528751 1 # 2
+    - GSM528752 1
+    - GSM528753 1 # 4
+    - GSM528754 1
+    - GSM528755 1 # 6
+    - GSM528756 1
+    - GSM528757 1 # 8
+    - GSM528758 1
+perturbed :
+    - GSM528693 1
+    - GSM528694 1
+
+---
+accession : E-GEOD-19392
+platform  : A-AFFY-113
+pathway   : JAK-STAT
+cells     : Human bronchial epithelial cells (HBE)
+treatment : IFN beta
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM528739 1 # 0.25 h
+    - GSM528740 1
+    - GSM528741 1 # 0.5
+    - GSM528742 1
+    - GSM528743 1 # 1.5
+    - GSM528744 1
+    - GSM528745 1 # 1
+    - GSM528746 1
+    - GSM528747 1 # 12
+    - GSM528748 1
+    - GSM528749 1 # 18
+    - GSM528750 1
+    - GSM528751 1 # 2
+    - GSM528752 1
+    - GSM528753 1 # 4
+    - GSM528754 1
+    - GSM528755 1 # 6
+    - GSM528756 1
+    - GSM528757 1 # 8
+    - GSM528758 1
+perturbed :
+    - GSM528695 1
+    - GSM528696 1
+
+---
+accession : E-GEOD-19392
+platform  : A-AFFY-113
+pathway   : JAK-STAT
+cells     : Human bronchial epithelial cells (HBE)
+treatment : IFN beta
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM528739 1 # 0.25 h
+    - GSM528740 1
+    - GSM528741 1 # 0.5
+    - GSM528742 1
+    - GSM528743 1 # 1.5
+    - GSM528744 1
+    - GSM528745 1 # 1
+    - GSM528746 1
+    - GSM528747 1 # 12
+    - GSM528748 1
+    - GSM528749 1 # 18
+    - GSM528750 1
+    - GSM528751 1 # 2
+    - GSM528752 1
+    - GSM528753 1 # 4
+    - GSM528754 1
+    - GSM528755 1 # 6
+    - GSM528756 1
+    - GSM528757 1 # 8
+    - GSM528758 1
+perturbed :
+    - GSM528697 1
+    - GSM528698 1
+
+---
+accession : E-GEOD-19392
+platform  : A-AFFY-113
+pathway   : JAK-STAT
+cells     : Human bronchial epithelial cells (HBE)
+treatment : IFN beta
+effect    : activating
+hours     : 8
+
+control   :
+    - GSM528739 1 # 0.25 h
+    - GSM528740 1
+    - GSM528741 1 # 0.5
+    - GSM528742 1
+    - GSM528743 1 # 1.5
+    - GSM528744 1
+    - GSM528745 1 # 1
+    - GSM528746 1
+    - GSM528747 1 # 12
+    - GSM528748 1
+    - GSM528749 1 # 18
+    - GSM528750 1
+    - GSM528751 1 # 2
+    - GSM528752 1
+    - GSM528753 1 # 4
+    - GSM528754 1
+    - GSM528755 1 # 6
+    - GSM528756 1
+    - GSM528757 1 # 8
+    - GSM528758 1
+perturbed :
+    - GSM528699 1
+    - GSM528700 1
+
+---
+accession : E-GEOD-19392
+platform  : A-AFFY-113
+pathway   : JAK-STAT
+cells     : Human bronchial epithelial cells (HBE)
+treatment : IFN beta
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM528739 1 # 0.25 h
+    - GSM528740 1
+    - GSM528741 1 # 0.5
+    - GSM528742 1
+    - GSM528743 1 # 1.5
+    - GSM528744 1
+    - GSM528745 1 # 1
+    - GSM528746 1
+    - GSM528747 1 # 12
+    - GSM528748 1
+    - GSM528749 1 # 18
+    - GSM528750 1
+    - GSM528751 1 # 2
+    - GSM528752 1
+    - GSM528753 1 # 4
+    - GSM528754 1
+    - GSM528755 1 # 6
+    - GSM528756 1
+    - GSM528757 1 # 8
+    - GSM528758 1
+perturbed :
+    - GSM528689 1
+    - GSM528690 1
+
+---
+accession : E-GEOD-19392
+platform  : A-AFFY-113
+pathway   : JAK-STAT
+cells     : Human bronchial epithelial cells (HBE)
+treatment : IFN beta
+effect    : activating
+hours     : 18
+
+control   :
+    - GSM528739 1 # 0.25 h
+    - GSM528740 1
+    - GSM528741 1 # 0.5
+    - GSM528742 1
+    - GSM528743 1 # 1.5
+    - GSM528744 1
+    - GSM528745 1 # 1
+    - GSM528746 1
+    - GSM528747 1 # 12
+    - GSM528748 1
+    - GSM528749 1 # 18
+    - GSM528750 1
+    - GSM528751 1 # 2
+    - GSM528752 1
+    - GSM528753 1 # 4
+    - GSM528754 1
+    - GSM528755 1 # 6
+    - GSM528756 1
+    - GSM528757 1 # 8
+    - GSM528758 1
+perturbed :
+    - GSM528691 1
+    - GSM528692 1
+...

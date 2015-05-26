@@ -1,0 +1,20 @@
+---
+accession : E-GEOD-43700
+platform  : A-AFFY-44
+pathway   : JAK-STAT
+cells     : adherent peripheral blood mononuclear cells
+treatment : 10 ng/ml IL-10
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1068613 1
+    - GSM1068615 1
+    - GSM1068617 1
+    - GSM1068619 1
+perturbed :
+    - GSM1068614 1
+    - GSM1068616 1
+    - GSM1068618 1
+    - GSM1068620 1
+...

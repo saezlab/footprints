@@ -1,0 +1,42 @@
+---
+accession : E-GEOD-32407
+platform  : A-AFFY-37
+pathway   : JAK-STAT
+cells     : healthy skin in vivo
+treatment : IFN gamma
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM802135 1
+    - GSM802136 1
+    - GSM802138 1
+    - GSM802139 1
+    - GSM802147 1
+    - GSM802148 1
+    - GSM802150 1
+    - GSM802152 1
+    - GSM802159 1
+    - GSM802160 1
+    - GSM802162 1
+    - GSM802163 1
+    - GSM802171 1
+    - GSM802172 1
+    - GSM802174 1
+    - GSM802175 1
+    - GSM802183 1
+    - GSM802184 1
+    - GSM802186 1
+    - GSM802187 1
+perturbed :
+    - GSM802137 1
+    - GSM802140 1
+    - GSM802149 1
+    - GSM802151 1
+    - GSM802161 1
+    - GSM802164 1
+    - GSM802173 1
+    - GSM802176 1
+    - GSM802185 1
+    - GSM802188 1
+...

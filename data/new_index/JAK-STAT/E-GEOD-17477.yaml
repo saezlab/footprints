@@ -1,0 +1,20 @@
+---
+accession : E-GEOD-17477
+platform  : A-AFFY-37
+pathway   : JAK-STAT
+cells     : THP-1 cell line
+treatment : IFN-gamma
+effect    : activating
+hours     : 6 # guess
+
+control   :
+    - GSM435905 1
+    - GSM435906 1
+    - GSM435907 1
+    - GSM435908 1
+perturbed :
+    - GSM435893 1
+    - GSM435894 1
+    - GSM435895 1
+    - GSM435896 1
+...

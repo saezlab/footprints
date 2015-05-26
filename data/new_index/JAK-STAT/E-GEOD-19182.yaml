@@ -1,0 +1,84 @@
+---
+accession : E-GEOD-19182
+platform  : A-AFFY-141
+pathway   : JAK-STAT
+cells     : human nasal epithelium cells
+treatment : IL-13
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM475537 1
+    - GSM475540 1
+    - GSM475543 1
+    - GSM475547 1
+    - GSM475551 1
+    - GSM475555 1
+perturbed :
+    - GSM475536 1
+    - GSM475539 1
+    - GSM475542 1
+
+---
+accession : E-GEOD-19182
+platform  : A-AFFY-141
+pathway   : JAK-STAT
+cells     : human nasal epithelium cells
+treatment : IFN alpha
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM475537 1
+    - GSM475540 1
+    - GSM475543 1
+    - GSM475547 1
+    - GSM475551 1
+    - GSM475555 1
+perturbed :
+    - GSM475544 1
+    - GSM475548 1
+    - GSM475552 1
+
+---
+accession : E-GEOD-19182
+platform  : A-AFFY-141
+pathway   : JAK-STAT
+cells     : human nasal epithelium cells
+treatment : IFN beta
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM475537 1
+    - GSM475540 1
+    - GSM475543 1
+    - GSM475547 1
+    - GSM475551 1
+    - GSM475555 1
+perturbed :
+    - GSM475545 1
+    - GSM475549 1
+    - GSM475553 1
+
+---
+accession : E-GEOD-19182
+platform  : A-AFFY-141
+pathway   : JAK-STAT
+cells     : human nasal epithelium cells
+treatment : IFN gamma
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM475537 1
+    - GSM475540 1
+    - GSM475543 1
+    - GSM475547 1
+    - GSM475551 1
+    - GSM475555 1
+perturbed :
+    - GSM475546 1
+    - GSM475550 1
+    - GSM475554 1
+...

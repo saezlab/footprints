@@ -1,0 +1,22 @@
+---
+accession : E-GEOD-8515
+platform  : A-AFFY-33
+pathway   : JAK-STAT
+cells     : human monocyte derived macrophages
+treatment : 25 ng/ml IL-6
+effect    : activating
+hours     : 4
+
+control   :
+    - GSE8515GSM211500
+    - GSE8515GSM211501
+    - GSE8515GSM211502
+    - GSE8515GSM211503
+    - GSE8515GSM211504
+perturbed :
+    - GSE8515GSM211510
+    - GSE8515GSM211511
+    - GSE8515GSM211512
+    - GSE8515GSM211513
+    - GSE8515GSM211514
+...

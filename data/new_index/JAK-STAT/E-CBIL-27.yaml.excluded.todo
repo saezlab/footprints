@@ -1,0 +1,19 @@
+---
+accession : E-CBIL-27
+platform  : A-AFFY-33
+pathway   : JAK-STAT
+cells     : cultured normal human islet tissue
+treatment : IFN alpha 2 beta
+effect    : activating
+hours     : 24 # guess
+
+control   :
+    - Donor_1
+    - Donor_2:2
+    - Donor_5
+    - Donor_8
+    - Donor_9
+perturbed :
+    - Donor_2
+    - Donor_8:2
+...

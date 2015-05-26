@@ -1,0 +1,54 @@
+---
+accession : E-GEOD-8687
+platform  : A-AFFY-44
+pathway   : JAK-STAT
+cells     : Sez-4 cell line
+treatment : IL-2
+effect    : activating
+hours     : 16
+
+control   :
+    - GSE8687GSM215361
+    - GSE8687GSM215362
+    - GSE8687GSM215363
+perturbed :
+    - GSE8687GSM215364
+    - GSE8687GSM215365
+    - GSE8687GSM215366
+
+---
+accession : E-GEOD-8687
+platform  : A-AFFY-44
+pathway   : JAK-STAT
+cells     : Sez-4 cell line + IL-2
+treatment : pan-Jak inhibitor
+effect    : activating
+hours     : 16
+
+control   :
+    - GSE8687GSM215364
+    - GSE8687GSM215365
+    - GSE8687GSM215366
+perturbed :
+    - GSE8687GSM215367
+    - GSE8687GSM215368
+    - GSE8687GSM215369
+
+---
+accession : E-GEOD-8687
+platform  : A-AFFY-44
+pathway   : JAK-STAT
+cells     : Sez-4 cell line + IL-2
+treatment : Jak3 inhibitor
+effect    : activating
+hours     : 16
+
+control   :
+    - GSE8687GSM215364
+    - GSE8687GSM215365
+    - GSE8687GSM215366
+perturbed :
+    - GSE8687GSM215370
+    - GSE8687GSM215371
+    - GSE8687GSM215372
+...

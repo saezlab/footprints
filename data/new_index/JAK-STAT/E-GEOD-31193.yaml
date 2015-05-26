@@ -1,0 +1,36 @@
+---
+accession : E-GEOD-31193
+platform  : A-AFFY-44
+pathway   : JAK-STAT
+cells     : primary human hepatocytes from hepatitis C patients
+treatment : type III interferons
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM773317 1
+    - GSM773318 1
+    - GSM773319 1
+perturbed :
+    - GSM773323 1
+    - GSM773324 1
+    - GSM773325 1
+
+---
+accession : E-GEOD-31193
+platform  : A-AFFY-44
+pathway   : JAK-STAT
+cells     : primary human hepatocytes from hepatitis C patients
+treatment : type III interferons
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM773317 1
+    - GSM773318 1
+    - GSM773319 1
+perturbed :
+    - GSM773320 1
+    - GSM773321 1
+    - GSM773322 1
+...

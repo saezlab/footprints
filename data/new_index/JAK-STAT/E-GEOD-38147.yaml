@@ -1,0 +1,64 @@
+---
+accession : E-GEOD-38147
+platform  : A-AFFY-141
+pathway   : JAK-STAT
+cells     : primary human hepatocytes
+treatment : IFN alpha
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM935881 1
+    - GSM935882 1
+perturbed :
+    - GSM935883 1
+    - GSM935884 1
+
+---
+accession : E-GEOD-38147
+platform  : A-AFFY-141
+pathway   : JAK-STAT
+cells     : primary human hepatocytes
+treatment : IFN alpha
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM935881 1
+    - GSM935882 1
+perturbed :
+    - GSM935885 1
+    - GSM935886 1
+
+---
+accession : E-GEOD-38147
+platform  : A-AFFY-141
+pathway   : JAK-STAT
+cells     : primary human hepatocytes
+treatment : IFN gamma
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM935881 1
+    - GSM935882 1
+perturbed :
+    - GSM935887 1
+    - GSM935888 1
+
+---
+accession : E-GEOD-38147
+platform  : A-AFFY-141
+pathway   : JAK-STAT
+cells     : primary human hepatocytes
+treatment : IFN gamma
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM935881 1
+    - GSM935882 1
+perturbed :
+    - GSM935889 1
+    - GSM935890 1
+...

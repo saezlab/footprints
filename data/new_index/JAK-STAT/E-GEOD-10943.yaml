@@ -1,0 +1,16 @@
+---
+accession : E-GEOD-10943
+platform  : A-AFFY-44
+pathway   : JAK-STAT
+cells     : non-side population of ovarian cancer cells
+treatment : IFN-alpha
+effect    : activating
+hours     : 5
+
+control   :
+    - GSM277429 1
+    - GSM277430 1
+perturbed :
+    - GSM277427 1
+    - GSM277428 1
+...

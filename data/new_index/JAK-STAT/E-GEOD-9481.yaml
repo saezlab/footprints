@@ -1,0 +1,16 @@
+---
+accession : E-GEOD-9481
+platform  : A-AFFY-44
+pathway   : JAK-STAT
+cells     : human side population ovarian cancer cells
+treatment : IFN-alpha
+effect    : activating
+hours     : 5
+
+control   :
+    - GSE9481GSM240637
+    - GSE9481GSM240638
+perturbed :
+    - GSE9481GSM240639
+    - GSE9481GSM240640
+...

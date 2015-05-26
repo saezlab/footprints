@@ -1,0 +1,36 @@
+---
+accession : E-GEOD-10685
+platform  : A-AFFY-44
+pathway   : JAK-STAT
+cells     : Human skeletal muscle biopsies
+treatment : IL-6
+effect    : activating
+hours     : 3
+
+control   :
+    - GSM269808 1
+    - GSM269811 1
+    - GSM269932 1
+perturbed :
+    - GSM269809 1
+    - GSM269834 1
+    - GSM269933 1
+
+---
+accession : E-GEOD-10685
+platform  : A-AFFY-44
+pathway   : JAK-STAT
+cells     : Human skeletal muscle biopsies
+treatment : IL-6
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM269808 1
+    - GSM269811 1
+    - GSM269932 1
+perturbed :
+    - GSM269810 1
+    - GSM269835 1
+    - GSM269934 1
+...

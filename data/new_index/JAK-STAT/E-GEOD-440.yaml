@@ -1,0 +1,54 @@
+---
+accession : E-GEOD-440
+platform  : A-AFFY-1
+pathway   : JAK-STAT
+cells     : epidermal keratinocytes
+treatment : IFN-gamma
+effect    : activating
+hours     : 1
+
+control   :
+    - GSE440GSM6709
+    - GSE440GSM6710
+    - GSE440GSM6714
+    - GSE440GSM6716
+    - GSE440GSM6719
+perturbed :
+    - GSE440GSM7765
+
+---
+accession : E-GEOD-440
+platform  : A-AFFY-1
+pathway   : JAK-STAT
+cells     : epidermal keratinocytes
+treatment : IFN-gamma
+effect    : activating
+hours     : 4
+
+control   :
+    - GSE440GSM6709
+    - GSE440GSM6710
+    - GSE440GSM6714
+    - GSE440GSM6716
+    - GSE440GSM6719
+perturbed :
+    - GSE440GSM7766
+
+---
+accession : E-GEOD-440
+platform  : A-AFFY-1
+pathway   : JAK-STAT
+cells     : epidermal keratinocytes
+treatment : IFN-gamma
+effect    : activating
+hours     : 24
+
+control   :
+    - GSE440GSM6709
+    - GSE440GSM6710
+    - GSE440GSM6714
+    - GSE440GSM6716
+    - GSE440GSM6719
+perturbed :
+    - GSE440GSM7767
+...

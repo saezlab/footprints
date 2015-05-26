@@ -1,0 +1,48 @@
+---
+accession : E-GEOD-51402
+platform  : A-AFFY-141
+pathway   : JAK-STAT
+cells     : AML patient mononuclear cells, multiple donors
+treatment : IL-3
+effect    : activating
+hours     : 6
+
+control   :
+    - GSM1244793 1 # 6 h
+    - GSM1244802 1
+    - GSM1244804 1
+    - GSM1244806 1
+    - GSM1244795 1 # 16 h
+    - GSM1244797 1
+    - GSM1244799 1
+    - GSM1244808 1
+perturbed :
+    - GSM1244801 1
+    - GSM1244803 1
+    - GSM1244805 1
+    - GSM1244807 1
+
+---
+accession : E-GEOD-51402
+platform  : A-AFFY-141
+pathway   : JAK-STAT
+cells     : AML patient mononuclear cells, multiple donors
+treatment : IL-3
+effect    : activating
+hours     : 16
+
+control   :
+    - GSM1244793 1 # 6 h
+    - GSM1244802 1
+    - GSM1244804 1
+    - GSM1244806 1
+    - GSM1244795 1 # 16 h
+    - GSM1244797 1
+    - GSM1244799 1
+    - GSM1244808 1
+perturbed :
+    - GSM1244794 1
+    - GSM1244796 1
+    - GSM1244798 1
+    - GSM1244800 1
+...

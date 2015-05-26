@@ -1,0 +1,32 @@
+---
+accession : E-GEOD-53751
+platform  : A-AFFY-44
+pathway   : JAK-STAT
+cells     : human epidermal keratinocytes
+treatment : IFN gamma
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1299978 1
+    - GSM1299979 1
+perturbed :
+    - GSM1299980 1
+    - GSM1299981 1
+
+---
+accession : E-GEOD-53751
+platform  : A-AFFY-44
+pathway   : JAK-STAT
+cells     : human epidermal keratinocytes
+treatment : IL-6
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1299978 1
+    - GSM1299979 1
+perturbed :
+    - GSM1299988 1
+    - GSM1299989 1
+...

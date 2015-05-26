@@ -1,0 +1,16 @@
+---
+accession : E-GEOD-35601
+platform  : A-AFFY-141
+pathway   : JAK-STAT
+cells     : memory T-cells cocultured with monocytes
+treatment : IFN beta
+effect    : activating
+hours     : 16
+
+control   :
+    - GSM871405 1
+    - GSM871406 1
+perturbed :
+    - GSM871407 1
+    - GSM871408 1
+...

@@ -1,0 +1,1 @@
+(ifn* OR interferon OR JAK OR STAT OR prolaktin OR EPO OR IL-2 OR IL2 OR IL-3 OR IL3 OR IL-6 OR IL6 OR IL-10 OR IL10 OR IL-13 OR IL13) organism:sapiens samplecount:[4 TO 10000] raw:true exptype:"Transcription profiling"

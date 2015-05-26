@@ -1,0 +1,16 @@
+---
+accession : E-MEXP-3746
+platform  : A-MEXP-2246
+pathway   : JAK-STAT
+cells     : blood vessel endothelial cell
+treatment : 10 ng/ml IFN alpha 2b
+effect    : activating
+hours     : 6
+
+control   :
+    - Cntl_1
+    - Cntl_3
+perturbed :
+    - Ifn_1
+    - Ifn_3
+...

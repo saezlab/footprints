@@ -1,0 +1,72 @@
+---
+accession : E-GEOD-16452
+platform  : A-AFFY-44
+pathway   : JAK-STAT
+cells     : human BE(2)-C neuroblastoma cells
+treatment : IFN-alpha
+effect    : activating
+hours     : 6
+
+control   :
+    - GSE16452GSM413549
+    - GSE16452GSM413550
+    - GSE16452GSM413551
+perturbed :
+    - GSE16452GSM413552
+    - GSE16452GSM413553
+    - GSE16452GSM413554
+
+---
+accession : E-GEOD-16452
+platform  : A-AFFY-44
+pathway   : JAK-STAT
+cells     : human BE(2)-C neuroblastoma cells
+treatment : IFN-alpha
+effect    : activating
+hours     : 12
+
+control   :
+    - GSE16452GSM413549
+    - GSE16452GSM413550
+    - GSE16452GSM413551
+perturbed :
+    - GSE16452GSM413555
+    - GSE16452GSM413556
+    - GSE16452GSM413557
+
+---
+accession : E-GEOD-16452
+platform  : A-AFFY-44
+pathway   : JAK-STAT
+cells     : human BE(2)-C neuroblastoma cells, retinoic acid differentiation
+treatment : IFN-alpha
+effect    : activating
+hours     : 6
+
+control   :
+    - GSE16452GSM413558
+    - GSE16452GSM413559
+    - GSE16452GSM413560
+perturbed :
+    - GSE16452GSM413561
+    - GSE16452GSM413562
+    - GSE16452GSM413563
+
+---
+accession : E-GEOD-16452
+platform  : A-AFFY-44
+pathway   : JAK-STAT
+cells     : human BE(2)-C neuroblastoma cells, retinoic acid differentiation
+treatment : IFN-alpha
+effect    : activating
+hours     : 12
+
+control   :
+    - GSE16452GSM413558
+    - GSE16452GSM413559
+    - GSE16452GSM413560
+perturbed :
+    - GSE16452GSM413564
+    - GSE16452GSM413565
+    - GSE16452GSM413566
+...

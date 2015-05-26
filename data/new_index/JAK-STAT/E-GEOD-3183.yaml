@@ -1,0 +1,63 @@
+---
+accession : E-GEOD-3183
+platform  : A-AFFY-33
+pathway   : JAK-STAT
+cells     : A549
+treatment : IL-13
+effect    : activating
+hours     : 4
+
+control   :
+    - GSE3183GSM47462 # 0 h
+    - GSE3183GSM47468
+    - GSE3183GSM47472
+    - GSE3183GSM47465 # 24 h
+    - GSE3183GSM47469
+    - GSE3183GSM47470
+perturbed :
+    - GSE3183GSM47461
+    - GSE3183GSM47464
+    - GSE3183GSM47473
+
+---
+accession : E-GEOD-3183
+platform  : A-AFFY-33
+pathway   : JAK-STAT
+cells     : A549
+treatment : IL-13
+effect    : activating
+hours     : 12
+
+control   :
+    - GSE3183GSM47462 # 0 h
+    - GSE3183GSM47468
+    - GSE3183GSM47472
+    - GSE3183GSM47465 # 24 h
+    - GSE3183GSM47469
+    - GSE3183GSM47470
+perturbed :
+    - GSE3183GSM47459
+    - GSE3183GSM47460
+    - GSE3183GSM47466
+
+---
+accession : E-GEOD-3183
+platform  : A-AFFY-33
+pathway   : JAK-STAT
+cells     : A549
+treatment : IL-13
+effect    : activating
+hours     : 24
+
+control   :
+    - GSE3183GSM47462 # 0 h
+    - GSE3183GSM47468
+    - GSE3183GSM47472
+    - GSE3183GSM47465 # 24 h
+    - GSE3183GSM47469
+    - GSE3183GSM47470
+perturbed :
+    - GSE3183GSM47463
+    - GSE3183GSM47467
+    - GSE3183GSM47471
+...

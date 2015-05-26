@@ -1,0 +1,40 @@
+---
+accession : E-GEOD-32387
+platform  : A-GEOD-11532
+pathway   : JAK-STAT
+cells     : parathyroid adenomas
+treatment : prolactin
+effect    : acitvating
+hours     : 3
+
+control   :
+    - GSM801627 1
+    - GSM801631 1
+    - GSM801635 1
+    - GSM801639 1
+perturbed :
+    - GSM801628 1
+    - GSM801632 1
+    - GSM801636 1
+    - GSM801640 1
+
+---
+accession : E-GEOD-32387
+platform  : A-GEOD-11532
+pathway   : JAK-STAT
+cells     : parathyroid adenomas
+treatment : prolactin
+effect    : acitvating
+hours     : 24
+
+control   :
+    - GSM801629 1
+    - GSM801633 1
+    - GSM801637 1
+    - GSM801641 1
+perturbed :
+    - GSM801630 1
+    - GSM801634 1
+    - GSM801638 1
+    - GSM801642 1
+...
