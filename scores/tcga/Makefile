@@ -5,9 +5,6 @@ SETSCORES = $(GENESETS:../../genesets/%=%)
 
 all: prereqs speed_linear.RData speed_matrix.RData
 
-../../genesets/%.RData:
-	make -C $(shell dirname $@) $@
-
 prereqs:
 	make -C ../../model $(notdir $(wildcard ../../model/*.RData))
 	make -C ../../genesets $(notdir $(GENESETS))
