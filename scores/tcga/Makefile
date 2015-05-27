@@ -1,9 +1,9 @@
 GENESETS = $(wildcard ../../genesets/*.RData)
 SETSCORES = $(GENESETS:../../genesets/%=%)
 
-.PHONY: $(GENESETS)
+.PHONY: prereqs
 
-all: speed_linear.RData speed_matrix.RData
+all: prereqs speed_linear.RData speed_matrix.RData
 
 ../../genesets/%.RData:
 	make -C $(shell dirname $@) $@
@@ -12,12 +12,12 @@ prereqs:
 	make -C ../../model $(notdir $(wildcard ../../model/*.RData))
 	make -C ../../genesets $(notdir $(GENESETS))
 
-speed_%.RData: speed.r prereqs ../../model/model_%.RData
+speed_%.RData: speed.r ../../model/model_%.RData
 	@rm -f $@ # annex link overwrite
 	bsub -K -M 10240 -R "rusage[mem=10240]" -R "select[gpfs]" -oo $(@:%.RData=%.log) \
-		Rscript $< $(word 3,$^) $@
+		Rscript $< $(word 2,$^) $@
 
-%.RData: set_enrichment.r prereqs ../../genesets/%.RData
+%.RData: set_enrichment.r ../../genesets/%.RData
 	@rm -f $@ # annex link overwrite
 	bsub -K -M 10240 -R "rusage[mem=10240]" -R "select[gpfs]" -oo $(@:%.RData=%.log) \
-		Rscript $< $(word 3,$^) $@
+		Rscript $< $(word 2,$^) $@

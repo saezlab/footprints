@@ -6,7 +6,7 @@ SET_SCORES = $(SETS:../../genesets/%=%)
 
 .PHONY: prereqs scores
 
-scores: $(SPEED_SCORES) $(SET_SCORES)
+scores: prereqs $(SPEED_SCORES) $(SET_SCORES)
 
 prereqs:
 	make -C ../../model $(notdir $(MODELS))
@@ -15,8 +15,8 @@ prereqs:
 print-%: ; @echo $* = $($*)
 
 # use each model to create scores object
-speed_%.RData: speed.r prereqs ../../model/model_%.RData
-	Rscript $< $(word 3,$^) $@
+speed_%.RData: speed.r ../../model/model_%.RData
+	Rscript $< $(word 2,$^) $@
 
-%.RData: set_enrichment.r prereqs ../../genesets/%.RData
-	Rscript $< $(word 3,$^) $@
+%.RData: set_enrichment.r ../../genesets/%.RData
+	Rscript $< $(word 2,$^) $@

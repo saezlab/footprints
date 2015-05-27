@@ -2,9 +2,9 @@
 SCORES = $(wildcard ../../scores/gdsc/*.RData)
 PLOTS = $(SCORES:../../scores/gdsc/%.RData=%.pdf)
 
-.PHONY: models prereqs
+.PHONY: prereqs
 
-plots: $(PLOTS)
+all: prereqs $(PLOTS)
 
 prereqs:
 	make -C ../../scores/gdsc $(notdir $(SCORES))
@@ -12,5 +12,5 @@ prereqs:
 print-%: ; @echo $* = $($*)
 
 # use each model script to create a model file
-%.pdf: drug_assocs.r prereqs ../../scores/gdsc/%.RData
-	Rscript $< $(word 3,$^) $@
+%.pdf: drug_assocs.r ../../scores/gdsc/%.RData
+	Rscript $< $(word 2,$^) $@
