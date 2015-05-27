@@ -23,6 +23,7 @@ expr = icgc$rna_seq(voom=TRUE, map.ids="icgc_specimen_id")
 expr = expr[,!duplicated(colnames(expr))]
 
 ar$intersect(vecs, expr, along=1)
-scores = t(expr) %*% vecs %>% ar$map(along=1, scale)
+scores = t(expr) %*% vecs %>%
+    ar$map(along=1, scale)
 
 save(scores, file=OUTFILE)
