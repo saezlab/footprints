@@ -23,12 +23,9 @@ print-%:
 
 scores/%.RData: new_index/%.yaml normalized/$$(notdir %).RData scores_compute.r
 	@mkdir -p $(shell dirname $@)
-	@rm -f $@ # required to replace annex links
 	Rscript scores_compute.r $(word 1,$^) $(word 2,$^) $@
 
 normalized/%.RData: normalize_data.r
 	@mkdir -p $(shell dirname $@)
-	@rm -f $@ # required to replace annex links
-	@rm -f $(@:%.RData=%.log) # required to replace annex links
 	bsub -K -M 20480 -R "rusage[mem=20480]" -R "select[gpfs]" -oo $(@:%.RData=%.log) \
 		Rscript $< $(@:normalized/%.RData=%) $@
