@@ -10,8 +10,9 @@ OUTFILE = commandArgs(TRUE)[2] %or% "go.RData"
 genelist = io$load(INFILE)
 speed = io$load('../../data/dscores.RData')
 
-index = speed$index[-c('control','perturbed')]
 expr = speed$scores
+index = speed$index %>%
+    select(-control, -perturbed)
 
 # perform GSEA
 scores = gsea$runGSEA(expr, genelist, transform.normal=TRUE)
