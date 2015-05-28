@@ -27,5 +27,5 @@ scores/%.RData: new_index/%.yaml normalized/$$(notdir %).RData scores_compute.r
 
 normalized/%.RData: normalize_data.r
 	@mkdir -p $(shell dirname $@)
-	bsub -K -M 20480 -R "rusage[mem=20480]" -R "select[gpfs]" -oo $(@:%.RData=%.log) \
+	bsub -K -M 20480 -R "rusage[mem=20480]" -oo $(@:%.RData=%.log) \
 		Rscript $< $(@:normalized/%.RData=%) $@

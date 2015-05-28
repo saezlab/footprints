@@ -20,5 +20,5 @@ speed_%.RData: speed.r ../../model/model_%.RData
 
 %.RData: set_enrichment.r ../../genesets/%.RData
 	@rm -f $@ # annex link overwrite
-	bsub -K -M 1024 -R "rusage[mem=1024]" -R "select[gpfs]" -oo $(@:%.RData=%.log) \
+	bsub -K -M 1024 -R "rusage[mem=1024]" -oo $(@:%.RData=%.log) \
 		Rscript $< $(word 2,$^) $@
