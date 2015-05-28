@@ -14,6 +14,6 @@ index = speed$index[-c('control','perturbed')]
 expr = speed$scores
 
 # perform GSEA
-result = gsea$runGSEA(expr, genelist, transform.normal=TRUE)
+scores = gsea$runGSEA(expr, genelist, transform.normal=TRUE)
 
-save(result, index, file=OUTFILE)
+save(scores, index, file=OUTFILE)
