@@ -3,7 +3,7 @@ SETSCORES = $(GENESETS:../../genesets/%=%)
 
 .PHONY: prereqs
 
-all: prereqs speed_linear.RData speed_matrix.RData
+all: prereqs speed_linear.RData speed_matrix.RData $(SETSCORES)
 
 prereqs:
 	make -C ../../model $(notdir $(wildcard ../../model/*.RData))
