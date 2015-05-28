@@ -18,4 +18,4 @@ ar$intersect(vecs, expr, along=1)
 scores = t(expr) %*% vecs %>%
     ar$map(along=1, scale)
 
-save(scores, file=OUTFILE)
+save(scores, index, file=OUTFILE)
