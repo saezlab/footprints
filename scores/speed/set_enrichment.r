@@ -9,12 +9,11 @@ OUTFILE = commandArgs(TRUE)[2] %or% "go.RData"
 # load gene list and expression
 genelist = io$load(INFILE)
 speed = io$load('../../data/dscores.RData')
-expr = speed$scores
 
-## use only experiments with > 18000 genes so we can compare GSEA scores
-#expr = na.omit(expr[,colSums(!is.na(expr)) > 18000])
+index = speed$index[-c('control','perturbed')]
+expr = speed$scores
 
 # perform GSEA
 result = gsea$runGSEA(expr, genelist, transform.normal=TRUE)
 
-save(result, file=OUTFILE)
+save(result, index, file=OUTFILE)

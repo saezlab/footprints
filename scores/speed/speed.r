@@ -11,6 +11,7 @@ vecs = io$load(INFILE)
 
 # calculate scores from expr and speed vectors
 speed = io$load('../../data/dscores.RData')
+index = speed$index[-c('control','perturbed')]
 expr = speed$scores
 
 ar$intersect(vecs, expr, along=1)
