@@ -21,4 +21,7 @@ index = lapply(contents, function(x) {
 }) %>% do.call(rbind, .)
 rownames(index) = 1:nrow(index)
 
+if (TYPE == "d")
+    scores = impute::impute.knn(scores)$data
+
 save(scores, index, file=OUTFILE)
