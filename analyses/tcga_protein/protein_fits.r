@@ -10,10 +10,12 @@ OUTFILE = "speed_linear.pdf"
 avail = icgc$available(clinical=TRUE, rna_seq=TRUE, rppa=TRUE, map_to="specimen")
 clinical = icgc$clinical(specimen=avail)
 prot = t(icgc$rppa(specimen=avail))
+
 scores = io$load(INFILE)[avail,]
+prot = prot[avail,] # get rid of duplicates
 
 # plot linear fits w/ covar = exp.series for both, see what difference
 #TODO: linear fits for pathway<-->respective phospho
 mapk = scores[,"MAPK"]
-mek = prot[,"MEK1_pS217_S221"] / prot[,"MEK1"]
+mek = prot[,"MEK1_pS217_S221"] #/ prot[,"MEK1"]
 plt$linear_fit(mapk ~ mek, subsets=)
