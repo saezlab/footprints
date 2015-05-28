@@ -9,5 +9,10 @@ go.RData: go.r
 biocarta.RData: biocarta.r Enrichr/src/main/resources/BioCarta.gmt
 	Rscript $< $(word 2,$^) $@
 
-reactome.RData: reactome.r Enrichr/src/main/resources/Reactome.gmt
+reactome.RData: reactome.r ReactomePathways.gmt
 	Rscript $< $(word 2,$^) $@
+
+ReactomePathways.gmt:
+	wget -N http://www.reactome.org/download/current/ReactomePathways.gmt.zip
+	unzip ReactomePathways.gmt.zip
+	rm ReactomePathways.gmt.zip

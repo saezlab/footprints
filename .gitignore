@@ -6,6 +6,7 @@
 \#*\#
 *.lyx.emergency
 *.db
+*.gmt
 backup
 cache
 
