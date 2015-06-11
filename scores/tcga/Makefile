@@ -3,11 +3,14 @@ SETSCORES = $(GENESETS:../../genesets/%=%)
 
 .PHONY: prereqs
 
-all: prereqs speed_linear.RData speed_matrix.RData $(SETSCORES)
+all: prereqs speed_linear.RData speed_matrix.RData rppa.RData $(SETSCORES)
 
 prereqs:
 	make -C ../../model $(notdir $(wildcard ../../model/*.RData))
 	make -C ../../genesets $(notdir $(GENESETS))
+
+rppa.RData: rppa.r
+	Rscript $<
 
 speed_%.RData: speed.r ../../model/model_%.RData
 	@rm -f $@ # annex link overwrite
