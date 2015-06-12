@@ -24,7 +24,7 @@ GO = list("H2O2" = "GO:0042542", # response to hydrogen peroxide
           "Insulin" = "GO:0008286", # insulin receptor signaling pathway
           "Hypoxia" = "GO:0071456", # cellular response to hypoxia
           "RAR" = "GO:0048384", # retinoic acid receptor signaling pathway
-          "p53" = "GO:0072331", # signal transduction by p53 class mediator
+          "p53" = "GO:0030330", # DNA damage response, signal transduction by p53 class mediator
           "Estrogen" = "GO:0030520", # intracellular estrogen receptor signaling pathway
           "Trail" = "GO:0036462", # TRAIL-activated apoptotic signaling pathway
           "notch" = "GO:0007219", # Notch signaling pathway

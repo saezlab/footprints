@@ -12,7 +12,7 @@ speed = io$load('../../data/dscores.RData')
 
 expr = speed$scores
 index = speed$index %>%
-    select(-control, -perturbed)
+    dplyr::select(-control, -perturbed)
 
 # perform GSEA
 scores = gsea$runGSEA(expr, genelist, transform.normal=TRUE)
