@@ -34,11 +34,12 @@ coph = select(clust, k, rho) %>% unique()
 n = coph$k[which(diff(coph$rho) > 0) + 1]
 
 # create ar$mask for tcga and gdsc separately
-n2mask = function(n) {
-    df = clust %>% filter(k == n) %>% select(sample, cluster)
-    setNames(df$cluster, df$sample) %>% ar$mask() + 0
-}
-masks = lapply(n, n2mask)
+masks = lapply(n, function(n) {
+    df = clust %>% filter(k == n)
+    re = setNames(df$cluster, df$sample) %>% ar$mask() + 0
+    colnames(re) = paste0("k", n, "_", colanmes(re))
+    re
+})
 
 # save object with matrix for TCGA, GDSC
 tumors = lapply(masks, x -> x[grepl("^SP", rownames(x)),]) %>% ar$stack(along=2)
