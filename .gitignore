@@ -9,6 +9,7 @@
 *.gmt
 backup
 cache
+*.h5
 
 # History files
 .Rhistory

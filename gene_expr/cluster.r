@@ -5,10 +5,10 @@ tissue2clusters = function(expr) {
 
     # nmf-cluster them together, get optimal number of clusters
     # couple of hours w/o hpc
-    clust = st$nmf(expr, k=2:10, max_iter=5000, rep=10) %>%
+    clust = st$nmf(expr, k=2:10, max_iter=10000, rep=10) %>%
         arrange(k, cluster)
     coph = select(clust, k, rho) %>% unique()
-    n = coph$k[which(diff(coph$rho) > 0) + 1]
+    n = coph$k[which(diff(sign(diff(coph$rho)))==-2)+1]
 
     # create ar$mask for tcga and gdsc separately
     lapply(n, function(n) {
@@ -39,7 +39,6 @@ if (is.null(module_name())) {
 #    clusters = lapply(expr, tissue2clusters)
 
     expr = dset$corrected[,dset$covar==TISSUE]
-    rm(dset); gc()
     clusters = tissue2clusters(expr)
 
 #    clusters = hpc$Q(tissue2clusters, expr, memory=10240)
