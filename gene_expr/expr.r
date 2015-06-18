@@ -35,4 +35,4 @@ mat = model.matrix(~as.factor(covar))
 corrected = sva::ComBat(expr, batch=batches, mod=mat, par.prior=T)
 
 # save object with matrix for TCGA, GDSC
-io$h5save(corrected, file=OUTFILE)
+io$h5save(list(expr=corrected, tissue=covar), file=OUTFILE)
