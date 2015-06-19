@@ -3,7 +3,7 @@ gdsc = import('data/gdsc')
 expr = gdsc$basal_expression()
 tissues = unique(gdsc$tissues(minN=10))
 
-pdf("gdsc_tsne.pdf", paper="a4r", width=26, height=20)
+pdf("tsne_gdsc.pdf", paper="a4r", width=26, height=20)
 on.exit(dev.off)
 
 for (tissue in tissues) {
