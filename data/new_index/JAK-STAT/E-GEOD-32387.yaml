@@ -4,7 +4,7 @@ platform  : A-GEOD-11532
 pathway   : JAK-STAT
 cells     : parathyroid adenomas
 treatment : prolactin
-effect    : acitvating
+effect    : activating
 hours     : 3
 
 control   :
@@ -24,7 +24,7 @@ platform  : A-GEOD-11532
 pathway   : JAK-STAT
 cells     : parathyroid adenomas
 treatment : prolactin
-effect    : acitvating
+effect    : activating
 hours     : 24
 
 control   :
