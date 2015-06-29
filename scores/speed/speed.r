@@ -15,6 +15,8 @@ expr = speed$scores
 index = speed$index %>%
     select(-control, -perturbed)
 
+expr[,index$effect == "inhibiting"] = - expr[,index$effect == "inhibiting"]
+
 ar$intersect(vecs, expr, along=1)
 scores = t(expr) %*% vecs %>%
     ar$map(along=1, scale)

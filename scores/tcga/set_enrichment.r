@@ -9,7 +9,7 @@ OUTFILE = commandArgs(TRUE)[2] %or% "go.RData"
 
 # load gene list and expression
 genelist = io$load(INFILE)
-expr = icgc$rna_seq(voom=TRUE, map.ids="icgc_specimen_id")
+expr = icgc$rna_seq(voom=TRUE, map_ids="icgc_specimen_id")
 expr = expr[,!duplicated(colnames(expr))]
 
 # perform GSEA

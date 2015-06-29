@@ -7,7 +7,7 @@ ar = import('array')
 st = import('stats')
 
 INFILE = commandArgs(TRUE)[1] %or% "../data/zscores.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "model_linear.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "model_norm.RData"
 
 # load speed data, index
 zobj = io$load('../data/zscores.RData')
@@ -17,6 +17,7 @@ index = zobj$index
 # adjust object for linear modelling
 inh = index$effect=="inhibiting"
 zscores[,inh] = -zscores[,inh]
+zscores = ar$map(zscores, along=1, scale)
 zscores = t(zscores)
 
 # fit model to pathway perturbations

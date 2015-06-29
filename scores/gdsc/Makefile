@@ -18,7 +18,7 @@ print-%: ; @echo $* = $($*)
 speed_%.RData: speed.r ../../model/model_%.RData
 	Rscript $< $(word 2,$^) $@
 
-%.RData: set_enrichment.r ../../genesets/%.RData
+%.RData: set_enrichment.r ../../genesets/%.RData ../../data/zscores.RData
 	@rm -f $@ # annex link overwrite
-	bsub -K -M 1024 -R "rusage[mem=1024]" -oo $(@:%.RData=%.log) \
+	bsub -K -M 1024 -R "rusage[mem=1024]" -R "select[panfs_nobackup_research]" -oo $(@:%.RData=%.log) \
 		Rscript $< $(word 2,$^) $@

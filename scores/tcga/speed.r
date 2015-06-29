@@ -19,7 +19,7 @@ vecs = io$load(INFILE)
 # -- all in covariate and subset tissue data
 
 # calculate scores from expr and speed vectors
-expr = icgc$rna_seq(voom=TRUE, map.ids="icgc_specimen_id")
+expr = icgc$rna_seq(voom=TRUE, map_ids="icgc_specimen_id")
 expr = expr[,!duplicated(colnames(expr))]
 
 ar$intersect(vecs, expr, along=1)

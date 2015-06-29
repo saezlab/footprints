@@ -5,7 +5,7 @@ ar = import('array')
 
 # get icgc RPPA data
 icgc = import('data/icgc')
-raw = t(icgc$rppa(map.ids = "icgc_specimen_id"))
+raw = t(icgc$rppa())
 
 # discard where many values missing, impute rest
 raw = raw[,colSums(is.na(raw)) < 0.8 * nrow(raw)]

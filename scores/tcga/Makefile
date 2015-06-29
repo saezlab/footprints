@@ -1,9 +1,12 @@
 GENESETS = $(wildcard ../../genesets/*.RData)
 SETSCORES = $(GENESETS:../../genesets/%=%)
+MODEL_SCRIPTS = $(wildcard ../../model/model_*.r)
+MODELS = $(MODEL_SCRIPTS:%.r=%.RData)
+SPEED_SCORES = $(MODELS:../../model/model_%=speed_%)
 
 .PHONY: prereqs
 
-all: prereqs speed_linear.RData speed_matrix.RData rppa.RData $(SETSCORES)
+all: prereqs rppa.RData $(SETSCORES) $(SPEED_SCORES)
 
 prereqs:
 	make -C ../../model $(notdir $(wildcard ../../model/*.RData))
@@ -14,10 +17,10 @@ rppa.RData: rppa.r
 
 speed_%.RData: speed.r ../../model/model_%.RData
 	@rm -f $@ # annex link overwrite
-	bsub -K -M 10240 -R "rusage[mem=10240]" -oo $(@:%.RData=%.log) \
+	bsub -K -M 10240 -R "rusage[mem=10240]" -R "select[panfs_nobackup_research]" -oo $(@:%.RData=%.log) \
 		Rscript $< $(word 2,$^) $@
 
-%.RData: set_enrichment.r ../../genesets/%.RData
+%.RData: set_enrichment.r ../../genesets/%.RData ../../data/zscores.RData
 	@rm -f $@ # annex link overwrite
-	bsub -K -M 10240 -R "rusage[mem=10240]" -oo $(@:%.RData=%.log) \
+	bsub -K -M 10240 -R "rusage[mem=10240]" -R "select[panfs_nobackup_research]" -oo $(@:%.RData=%.log) \
 		Rscript $< $(word 2,$^) $@
