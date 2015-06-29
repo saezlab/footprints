@@ -12,7 +12,6 @@ index = scores$index %>%
     arrange(pathway)
 
 scores = scores$scores[index$id,]
-scores[index$effect == "inhibiting",] = -scores[index$effect == "inhibiting",]
 scores = t(scores)
 
 rownames(index) = index$id
