@@ -12,26 +12,33 @@ ar$intersect(Ys, mut, scores, tissues, along=1)
 
 df = data.frame(mut = mut[,"TP53"],
                 speed = scale(scores[,"p53"]),
-                drug = Ys[,'Nutlin-3a'],
-                tissue = tissues)
+                drug = Ys[,'Nutlin-3a'])
+
+# takes a data.frame, and returns only matching columns with value
+dd = function(df, condition, value, field="value") {
+    sub = df[condition,]
+    sub[[field]] = value
+    sub
+}
+
+data = rbind(
+    dd(df, !df$mut, "wt"),
+    dd(df, df$mut, "mut"),
+    dd(df, df$speed > 1, "active"),
+    dd(df, abs(df$speed) <= 1, "unknown"),
+    dd(df, df$speed < -1, "inactive"),
+    dd(df, !df$mut & df$speed > 1, "active-mut")
+)
+
+data$value = factor(data$value, levels=c("wt","mut","inactive","unknown","active","active-mut"))
 
 # histogram: drug response for mutated/wt
 #ggplot(df, aes(x=mut, y=drug)) + geom_boxplot()
 
-# histogram: split wt in high/low speed score
-df$p53 = "all"
-
-df3 = df
-df3$p53 = "wt"
-df3$p53[df$mut] = "mutated" 
-df3 = df3[! df3$p53 %in% c("wt"),]
-
-df2 = df
-df2$p53[! df$mut & df$speed > 1] = "wt_active"
-df2$p53[! df$mut & df$speed < -1] = "wt_inactive"
-df2 = df2[! df2$p53 %in% c("wt","mutated"),]
-
-df = rbind(df, df3, df2)
-
-ggplot(df, aes(x=p53, y=drug)) + geom_boxplot()
+ggplot(data, aes(x=value, y=drug)) +
+    geom_boxplot(outlier.size=NA) +
+    geom_point(shape=21, position=position_jitter(width=.25)) +
+    xlab("Phenotype") +
+    ylab("Drug IC50 [log uM]") +
+    ggtitle("Response to Nutlin-3a [p53]")
 #ggplot(df, aes(x=p53, y=drug, fill=tissue)) + geom_boxplot() + facet_grid(.~tissue)
