@@ -14,7 +14,7 @@ STUDY = c("Breast_Invasive_Carcinoma-TCGA-US",
           "Lung_Adenocarcinoma-TCGA-US",
           "Kidney_Renal_Clear_Cell_Carcinoma-TCGA-US",
           "Thyroid_Carcinoma-TCGA-US",
-          "Neuroblastoma-TARGET-US",
+#        "Neuroblastoma-TARGET-US", # nothing avail
           "Uterine_Corpus_Endometrioid_Carcinoma-TCGA-US",
         # "Acute_Lymphoblastic_Leukemia-TARGET-US", # blood cancer, needs different fields
           "Colon_Adenocarcinoma-TCGA-US",
