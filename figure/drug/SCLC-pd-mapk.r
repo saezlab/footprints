@@ -7,7 +7,7 @@ gdsc = import('data/gdsc')
 tissues = gdsc$tissues("SCLC")
 Ys = gdsc$drug_response('IC50s')
 mut = gdsc$mutated_genes()
-scores = io$load('../scores/gdsc/speed_norm.RData')
+scores = io$load('../../scores/gdsc/speed_norm.RData')
 ar$intersect(Ys, mut, scores, tissues, along=1)
 
 df = data.frame(mut = mut[,"MAP2K4"] | mut[,"MAP3K1"] |
@@ -35,6 +35,9 @@ data$value = factor(data$value, levels=c("wt","mut","inactive","unknown","active
 
 # histogram: drug response for mutated/wt
 #ggplot(df, aes(x=mut, y=drug)) + geom_boxplot()
+
+pdf("SCLC-pd-mapk.pdf", paper="a4r", width=26, height=20)
+on.exit(dev.off)
 
 ggplot(data, aes(x=value, y=drug)) +
     geom_boxplot(outlier.size=NA) +

@@ -7,7 +7,7 @@ gdsc = import('data/gdsc')
 tissues = gdsc$tissues(minN=10)
 Ys = gdsc$drug_response('IC50s')
 mut = gdsc$mutated_genes()
-scores = io$load('../scores/gdsc/speed_norm.RData')
+scores = io$load('../../scores/gdsc/speed_norm.RData')
 ar$intersect(Ys, mut, scores, tissues, along=1)
 
 df = data.frame(mut = mut[,"MAP2K4"] | mut[,"MAP3K1"] |
@@ -36,10 +36,13 @@ data$value = factor(data$value, levels=c("wt","mut","inactive","unknown","active
 # histogram: drug response for mutated/wt
 #ggplot(df, aes(x=mut, y=drug)) + geom_boxplot()
 
+pdf("az628-mapk.pdf", paper="a4r", width=26, height=20)
+on.exit(dev.off)
+
 ggplot(data, aes(x=value, y=drug)) +
     geom_boxplot(outlier.size=NA) +
     geom_point(shape=21, position=position_jitter(width=.25)) +
     xlab("Phenotype") +
     ylab("Drug IC50 [log uM]") +
-    ggtitle("Response to Trametinib [MAPK]")
+    ggtitle("Response to AZ628 [MAPK]")
 #ggplot(df, aes(x=p53, y=drug, fill=tissue)) + geom_boxplot() + facet_grid(.~tissue)
