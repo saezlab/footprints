@@ -3,6 +3,7 @@ library(reshape2)
 library(dplyr)
 io = import('io')
 ar = import('array')
+df = import('data_frame')
 icgc = import('data/icgc')
 
 speed_full = io$load('../../model/model_norm.RData')
@@ -42,16 +43,23 @@ for (cur_study in STUDY) {
     scores = t(expr) %*% speed %>% ar$map(along=1, scale)
     scores = scores[cc$icgc_specimen_id,]
 
-    # compute linear model for pathway changes
-    # because of the sample sizes everything is significant - need other method
-    design = ar$mask(cc$specimen_type) + 0
-    colnames(design) = c("tumor", "normal")
-    fit.1 = limma::lmFit(t(scores), design)
-    contrast = makeContrasts("tumor-normal", levels=design)
-    fit.2 = limma::contrasts.fit(fit.1, contrast)
-    fit.3 = limma::eBayes(fit.2)
-    pval = setNames(p.adjust(fit.3$p.value, method="fdr"), rownames(fit.3))
-    coeff = fit.3$coefficients[,1]
+#    # compute linear model for pathway changes
+#    # because of the sample sizes everything is significant - need other method
+#    design = ar$mask(cc$specimen_type) + 0
+#    colnames(design) = c("tumor", "normal")
+#    fit.1 = limma::lmFit(t(scores), design)
+#    contrast = makeContrasts("tumor-normal", levels=design)
+#    fit.2 = limma::contrasts.fit(fit.1, contrast)
+#    fit.3 = limma::eBayes(fit.2)
+#    pval = setNames(p.adjust(fit.3$p.value, method="fdr"), rownames(fit.3))
+#    coeff = fit.3$coefficients[,1]
+
+#    # calculate fold change and distribution overlap
+#    means = ar$map(scores, along=1, mean, subsets=cc$specimen_type)
+#    sds = ar$map(scores, along=1, sd, subsets=cc$specimen_type)
+#    calls = data.frame(mu1 = means[1,], mu2 = means[2,],
+#                       sd1 = sds[1,], sd2 = sds[2,])
+#    overlaps = df$call(calls, st$overlap_normals, result_only=TRUE)
 
     # boxplot which pathways change from normal to tumour
     df = as.data.frame(scores)
