@@ -33,16 +33,27 @@ for (cur_study in STUDY) {
                                     "Primary tumour - solid tissue"),
 #               donor_sex == "female",
                icgc_specimen_id %in% avail) %>%
-        select(icgc_donor_id, icgc_specimen_id, specimen_type)
+        select(icgc_donor_id, icgc_specimen_id, specimen_type, tissue)
 
     # compute speed scores for all
     speed = speed_full
-    expr = na.omit(icgc$rna_seq(cc$icgc_specimen_id))
+    expr = na.omit(icgc$rna_seq(cc$icgc_specimen_id, voom=TRUE))
     ar$intersect(speed, expr, along=1)
     scores = t(expr) %*% speed %>% ar$map(along=1, scale)
     scores = scores[cc$icgc_specimen_id,]
 
-    # see which pathways change from normal to tumour
+    # compute linear model for pathway changes
+    # because of the sample sizes everything is significant - need other method
+    design = ar$mask(cc$specimen_type) + 0
+    colnames(design) = c("tumor", "normal")
+    fit.1 = limma::lmFit(t(scores), design)
+    contrast = makeContrasts("tumor-normal", levels=design)
+    fit.2 = limma::contrasts.fit(fit.1, contrast)
+    fit.3 = limma::eBayes(fit.2)
+    pval = setNames(p.adjust(fit.3$p.value, method="fdr"), rownames(fit.3))
+    coeff = fit.3$coefficients[,1]
+
+    # boxplot which pathways change from normal to tumour
     df = as.data.frame(scores)
     df$type = cc$specimen_type
     df = melt(df)
