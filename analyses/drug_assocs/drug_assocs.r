@@ -70,3 +70,5 @@ assocs.tissue %>%
 #           estimate = ifelse(adj.p < 0.2, estimate, NA)) %>%
 #    plt$cluster(lp ~ id + Yf, size=c(30,40)) %>%
 #    plt$matrix(estimate ~ id + Yf)
+
+#TODO: linear fits of significant pan-can assocs

@@ -2,7 +2,7 @@ library(dplyr)
 b = import('base')
 io = import('io')
 ar = import('array')
-icgc = import('data/icgc')
+tcga = import('data/tcga')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../model/model_linear.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "speed.RData"
@@ -19,11 +19,17 @@ vecs = io$load(INFILE)
 # -- all in covariate and subset tissue data
 
 # calculate scores from expr and speed vectors
-expr = icgc$rna_seq(voom=TRUE, map_ids="icgc_specimen_id")
-expr = expr[,!duplicated(colnames(expr))]
+tt = tcga$tissues()
+tissue2scores = function(t) {
+    cur_vecs = vecs
+    expr = tcga$rna_seq(t)
+    ar$intersect(cur_vecs, expr, along=1)
+    scores = t(expr) %*% cur_vecs %>%
+        ar$map(along=1, scale)
+}
+scores = do.call(rbind, lapply(tt, tissue2scores))
+scores = scores[!duplicated(rownames(scores)),]
 
-ar$intersect(vecs, expr, along=1)
-scores = t(expr) %*% vecs %>%
-    ar$map(along=1, scale)
+# do lapply instead of for as soon as works, then ar$stack + save
 
 save(scores, file=OUTFILE)
