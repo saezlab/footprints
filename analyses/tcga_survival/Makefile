@@ -1,10 +1,14 @@
 TCGA_SCORES = $(wildcard ../../scores/tcga/*.RData)
 SURV = $(TCGA_SCORES:../../scores/tcga/%.RData=%.pdf)
+DISCR = $(SURV:%=discr_%)
 
-all: prereqs $(SURV)
+all: prereqs $(SURV) $(DISCR)
 
 prereqs:
 	make -C ../../scores/tcga
+
+discr_%.pdf: ../../scores/tcga/%.RData survival_discrete.r
+	Rscript survival_discrete.r $< $@
 
 %.pdf: ../../scores/tcga/%.RData survival.r
 	Rscript survival.r $< $@
