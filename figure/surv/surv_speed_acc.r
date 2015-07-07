@@ -7,12 +7,12 @@ plt = import('plot')
 tcga = import('data/tcga')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_linear.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "surv_speed_esca.pdf"
+OUTFILE = commandArgs(TRUE)[2] %or% "surv_speed_acc.pdf"
 
 clinical = tcga$clinical() %>%
-    filter(study == "ESCA") %>%
+    filter(study == "ACC") %>%
     transmute(age_days = - as.integer(patient.days_to_birth),
-              alive = is.na(patient.days_to_death),
+              alive = 1 - as.integer(is.na(patient.days_to_death)),
               surv_days = as.integer(patient.days_to_death %or%
                                      patient.days_to_last_followup),
               barcode = toupper(patient.bcr_patient_barcode),
@@ -38,17 +38,18 @@ cc = do.call(rbind, lapply(rownames(scores), function(s) {
 }))
 nas = is.na(cc$alive)
 clinical = cc[!nas,]
-scores = scores[!nas,"Hypoxia"]
-clinical$Hypoxia = "normal"
-clinical$Hypoxia[scores > 0.8] = "active"
-clinical$Hypoxia[scores < -0.8] = "inactive"
-clinical$Hypoxia = factor(clinical$Hypoxia,
+scores = scores[!nas,"PI3K"]
+clinical$PI3K = "normal"
+clinical$PI3K[scores > quantile(scores)[4]] = "active"
+clinical$PI3K[scores < quantile(scores)[1]] = "inactive"
+clinical$PI3K = factor(clinical$PI3K,
     levels = c("normal", "active", "inactive"))
-clinical = dplyr::filter(clinical, surv_days > 1)
+clinical$surv_days = clinical$surv_days / 30.4
+clinical = dplyr::filter(clinical, surv_days >= 0)
 
-pdf(OUTFILE, width=10, height=10)
+pdf(OUTFILE, width=8, height=6)
 on.exit(dev.off)
 
 library(survival)
-print(survfit(Surv(surv_days, alive) ~ Hypoxia, data=clinical) %>%
-    plt$ggsurv() + xlim(0,1500) + theme_bw())
+print(survfit(Surv(surv_days, alive) ~ PI3K, data=clinical) %>%
+    plt$ggsurv() + theme_bw())# + xlim(0,2000))

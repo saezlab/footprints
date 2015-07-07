@@ -12,11 +12,12 @@ OUTFILE = commandArgs(TRUE)[2] %or% "speed_linear.pdf"
 clinical = tcga$clinical() %>%
     transmute(study = study,
               age_days = - as.integer(patient.days_to_birth),
-              alive = is.na(patient.days_to_death),
+              alive = 1 - as.integer(is.na(patient.days_to_death)),
               surv_days = as.integer(patient.days_to_death %or%
                                      patient.days_to_last_followup),
               barcode = toupper(patient.bcr_patient_barcode),
-              gender = as.factor(patient.gender))
+              gender = as.factor(patient.gender)) %>%
+    filter(surv_days > 0) #FIXME:
 
 # possible questions here:
 #  using all tumor data, is pathway activity associated with survival outcome?
@@ -42,12 +43,12 @@ scores = scores[!nas,]
 
 scores = ar$map(scores, along=1, subsets=clinical$study, function(x) {
 #    x = st$median_scale(x)
-    re = ifelse(x > 1, TRUE, FALSE)
+    re = ifelse(x > unname(quantile(x)[4]), TRUE, FALSE)
     if (sum(re) < 5)
         rep(NA, length(x))
     else
         re
-})
+}) + 0
 
 if (nrow(clinical) < 10)
     stop("survival+expression scores < 10 observations, stopping")
@@ -56,7 +57,7 @@ clinical = as.list(clinical)
 clinical$scores = scores
 
 pdf(OUTFILE, paper="a4r", width=26, height=20)
-on.exit(dev.off())
+on.exit(dev.off)
 
 # tissue covariate
 st$coxph(surv_days + alive ~ gender + age_days + study + scores, data=clinical, min_pts=100) %>%

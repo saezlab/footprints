@@ -12,11 +12,12 @@ OUTFILE = commandArgs(TRUE)[2] %or% "speed_norm.pdf"
 clinical = tcga$clinical() %>%
     transmute(study = study,
               age_days = - as.integer(patient.days_to_birth),
-              alive = is.na(patient.days_to_death),
+              alive = 1 - as.integer(is.na(patient.days_to_death)),
               surv_days = as.integer(patient.days_to_death %or%
                                      patient.days_to_last_followup),
               barcode = toupper(patient.bcr_patient_barcode),
-              gender = as.factor(patient.gender))
+              gender = as.factor(patient.gender)) %>%
+    filter(surv_days > 0) #FIXME:
 
 # possible questions here:
 #  using all tumor data, is pathway activity associated with survival outcome?
@@ -27,6 +28,8 @@ clinical = tcga$clinical() %>%
 
 scores = io$load(INFILE)
 # subset primary tumors only
+#TODO: what if i do average over all tumor samples for each patient
+#  (but strong signals should be in there either way)
 scores = scores[substr(rownames(scores), 14, 16) == "01A",]
 # construct clinical df for samples
 cc = do.call(rbind, lapply(rownames(scores), function(s) {
@@ -47,7 +50,7 @@ clinical = as.list(clinical)
 clinical$scores = scores
 
 pdf(OUTFILE, paper="a4r", width=26, height=20)
-on.exit(dev.off())
+on.exit(dev.off)
 
 # tissue covariate
 st$coxph(surv_days + alive ~ gender + age_days + study + scores, data=clinical, min_pts=100) %>%
@@ -69,5 +72,5 @@ st$coxph(surv_days + alive ~ age_days + scores, subsets=clinical$study, data=cli
     ungroup() %>%
     plt$color$p_effect("adj.p") %>%
     mutate(label = paste(subset, scores, sep=":")) %>%
-    plt$volcano(p=0.1) %>%
+    plt$volcano(p=0.1) + ggtitle(sum(clinical$adj.p < 0.1)) %>%
     print()
