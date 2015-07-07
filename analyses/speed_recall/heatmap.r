@@ -13,11 +13,18 @@ index = scores$index %>%
 
 scores = scores$scores[index$id,]
 scores = t(scores)
+rownames(scores) = substr(rownames(scores), 0, 40)
 
+# remove id column, add names for pheatmap to understand
 rownames(index) = index$id
 index$id = NULL
 
 pdf(OUTFILE, paper="a4r", width=26, height=20)
 on.exit(dev.off)
 
-pheatmap::pheatmap(scores, annotation=index, scale="column", cluster_cols=FALSE)
+pheatmap::pheatmap(scores,
+                   annotation = index,
+                   scale = "column",
+                   cluster_cols = FALSE,
+                   show_colnames = FALSE,
+                   annotation_legend = FALSE)
