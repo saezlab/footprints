@@ -4,7 +4,6 @@
 # --
 # -> or also: full model, how much variability can scores/mut/etc explain
 
-.df = import('data_frame')
 # Q: how much variance for each tissue-drug can be explained by tissue+<signature> features?
 
 #' @param drug     drug index or identifer to subset \code{DRUGS}
@@ -40,8 +39,9 @@ cv_err = function(formula, data=parent.frame(), min_pts=11, group=NULL, subsets=
         result$aggr
     }
 
-    idf = .df$from_formula(formula, data=data, group=group, subsets=subsets, atomic=atomic)
-    .df$call(idf, one_item, hpc_args=hpc_args)
+    df = import('data_frame')
+    idf = df$from_formula(formula, data=data, group=group, subsets=subsets, atomic=atomic)
+    df$call(idf, one_item, hpc_args=hpc_args)
 }
 
 
@@ -49,16 +49,20 @@ cv_err = function(formula, data=parent.frame(), min_pts=11, group=NULL, subsets=
 # pathway scores 19/50 pathways (columns) <-> features
 # 19 different tissues (subset along rows)
 if (is.null(module_name())) {
+    b = import('base')
     io = import('io')
     ar = import('array')
     gdsc = import('data/gdsc')
 
+    args = commandArgs(TRUE)
+    OUTFILE = args[1] %or% 'speed_linear.RData'
+    DATASETS = args[-1] %or% '../../scores/gdsc/speed_linear.RData'
+
     tissues = gdsc$tissues()
     drugs = gdsc$drug_response()
-    gatza = io$load('../../scores/gdsc/gatza.RData')
-    speed = io$load('../../scores/gdsc/speed_linear.RData')
-    ar$intersect(tissues, drugs, gatza, speed, along=1)
+    dset = ar$stack(lapply(DATASETS, io$load), along=2)
+    ar$intersect(tissues, drugs, dset, along=1)
 
-    speedr = cv_err(drugs ~ speed, subsets=tissues, atomic="speed",
+    result = cv_err(drugs ~ dset, subsets=tissues, atomic="dset",
                     hpc_args = list(chunk.size=200, memory=512))
 }
