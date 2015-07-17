@@ -26,6 +26,8 @@ tcga_index = tcga$barcode2index(colnames(tcga_expr)) %>%
 
 # intersect tissues and subset matrices/index
 tcga_expr = tcga_expr[,tcga_index$id]
+gdsc_expr = gdsc_expr[,gdsc_tissues %in% unique(tcga_index$tissue)]
+gdsc_tissues = gdsc_tissues[gdsc_tissues %in% unique(tcga_index$tissue)]
 
 # define covariates and batches
 batches = c(tcga_index$study, rep("cell_line", ncol(gdsc_expr)))

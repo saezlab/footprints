@@ -27,9 +27,9 @@ if (is.null(module_name())) {
     INFILE = commandArgs(TRUE)[1] %or% "../model/model_linear.RData"
     OUTFILE = commandArgs(TRUE)[2] %or% "speed_cluster.RData"
 
-    dset = io$load("./corrected_expr.RData")
+    tissues = io$h5load("corrected_expr.h5", "/tissue")
+    expr = t(io$h5load("corrected_expr.h5", "/expr"))
     zfit = io$load(INFILE)
-    expr = dset$corrected
 
     ar$intersect(zfit, expr, along=1)
     scores = t(expr) %*% zfit %>%
@@ -39,8 +39,8 @@ if (is.null(module_name())) {
     #FIXME: along=1 should throw error
     #FIXME: along=2 should do the right thing
     expr = list()
-    for (t in unique(dset$covar))
-       expr[[t]] = t(scores[dset$covar==t,])
+    for (t in unique(sub("_N", "", tissues)))
+       expr[[t]] = t(scores[tissues==t,])
     clusters = lapply(expr, tissue2clusters)
 
     save(clusters, file=OUTFILE)
