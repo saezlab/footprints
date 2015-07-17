@@ -23,24 +23,14 @@ if (is.null(module_name())) {
     b = import('base')
     io = import('io')
     ar = import('array')
-#    hpc = import('hpc')
 
     TISSUE = commandArgs(TRUE)[1] %or% "BRCA"
     OUTFILE = commandArgs(TRUE)[2] %or% "cluster_BRCA.RData"
 
-    dset = io$load("./corrected_expr.RData")
-#    expr = ar$split(t(dset$corrected), along=2, subsets=dset$covar)
-    #FIXME: along=1 should throw error
-    #FIXME: along=2 should do the right thing
+    tissue = io$h5load("corrected_expr.h5", "/tissue")
+    expr = t(io$h5load("corrected_expr.h5", "/expr", 
+                       index = which(tissue==TISSUE)))
 
-#    expr = list()
-#    for (t in unique(dset$covar))
-#       expr[[t]] = dset$corrected[,dset$covar==t]
-#    clusters = lapply(expr, tissue2clusters)
-
-    expr = dset$corrected[,dset$covar==TISSUE]
     clusters = tissue2clusters(expr)
-
-#    clusters = hpc$Q(tissue2clusters, expr, memory=10240)
     save(clusters, file=OUTFILE)
 }
