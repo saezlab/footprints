@@ -6,10 +6,13 @@ io = import('io')
 ar = import('array')
 df = import('data_frame')
 st = import('stats')
+gdsc = import('data/gdsc')
 tcga = import('data/tcga')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_linear.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "tissue_act.pdf"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/merge/speed_linear.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "tact_merge.pdf"
+
+#TODO: use merged expression, include cell lines here
 
 # create simple data.frame with barcode, type, and study; same for scores
 scores = io$load(INFILE)
@@ -20,6 +23,8 @@ index = tcga$barcode2index(rownames(scores)) %>%
               type = Sample.Definition,
               study = Study.Abbreviation) %>%
     mutate(type = ifelse(grepl("Normal", type), "normal", "tumor"))
+clines = gdsc$tissues()[grep("^[0-9]+$", rownames(scores), value=TRUE)]
+index = rbind(index, data.frame(barcode = names(clines), type="cell line", study=unname(clines)))
 scores = scores[index$barcode,]
 
 pdf(OUTFILE, paper="a4r", width=26, height=20)
@@ -41,7 +46,8 @@ for (tissue in unique(index$study)) {
         (x - median(x[normals])) / sd(x[normals])
     })
 
-    df = melt(data.frame(type=type, score, check.names=FALSE))
+    df = melt(data.frame(type=factor(type, levels=c("normal", "tumor", "cell line")),
+                         score, check.names=FALSE))
 
     box = ggplot(df, aes(x=variable, y=value, fill=type)) +
         geom_boxplot() +
