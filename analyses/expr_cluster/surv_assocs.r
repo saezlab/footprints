@@ -3,54 +3,55 @@ b = import('base')
 io = import('io')
 ar = import('array')
 st = import('stats')
-icgc = import('data/icgc')
+tcga = import('data/tcga')
 plt = import('plot')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../expr_cluster/speed_cluster.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "surv_speed.pdf"
 
-# load scores
+# load scores, from tumors only
 clusters = io$load(INFILE)
 clusters = clusters[lapply(clusters, length) != 0]
+clusters$SKCM = NULL #FIXME: only cell lines in there
+clusters$THCA = NULL #FIXME: only cell lines in there
 scores = lapply(clusters, function(cl) {
     re = cl %>%
-        lapply(function(x) x[grepl("^SP[0-9]+$", rownames(x)),]) %>%
+        lapply(function(x) x[grepl("^TCGA-[A-Z0-9]{2}-[A-Z0-9]{4}-0[13]A$", rownames(x)),]) %>%
         ar$stack(along=2)
-    re[,colSums(re)>0]
+    rownames(re) = substr(rownames(re), 1, 12)
+    re[,colSums(re)>1]
 })
-
-# load sanger data
-# separate associations for each tissue
-clinical = icgc$clinical() %>% #TODO: select tumor only
-#    filter(tumour_confirmed == "yes") %>%
-#    filter(specimen_donor_treatment_type == "no treatment") %>%
-    mutate(known_survival_time = donor_survival_time %or% donor_interval_of_last_followup) %>%
-    select(icgc_specimen_id, known_survival_time, donor_vital_status,
-           donor_sex, donor_age_at_diagnosis, tissue) %>%
-    filter(!is.na(known_survival_time),
-           donor_vital_status %in% c('alive','deceased'))
 
 # save pdf w/ pan-cancer & tissue specific
 pdf(OUTFILE, paper="a4r", width=26, height=20)
 on.exit(dev.off())
 
-for (cur_tissue in names(scores)) {
-    score = scores[[cur_tissue]]
-    clin = filter(clinical, tissue == cur_tissue)
-    rownames(clin) = clin$icgc_specimen_id
-    ar$intersect(score, clin)
+#TODO: this is quite similar code to analyses/tcga_survival_surv_assocs
+for (tissue in names(scores)) {
+    message(tissue)
+    score = scores[[tissue]]
+    clinical = tcga$clinical(tissue = tissue) %>%
+        transmute(age_days = - as.integer(patient.days_to_birth),
+                  alive = 1 - as.integer(is.na(patient.days_to_death)),
+                  surv_days = as.integer(patient.days_to_death %or%
+                                         patient.days_to_last_followup),
+                  barcode = toupper(patient.bcr_patient_barcode),
+                  gender = as.factor(patient.gender)) %>%
+        distinct()
 
-    if (nrow(clin) == 0)
+    rownames(clinical) = clinical$barcode
+    ar$intersect(score, clinical)
+
+    if (nrow(clinical) == 0)
         next
 
-    assocs.tissue = clin %>%
-        mutate(status = donor_vital_status=="alive",
-               time = known_survival_time) %>%
-        st$coxph(time + status ~ score, data=.) %>%
-        select(-time, -status, -term) %>%
+    #TODO: add gender if both present
+    re = st$coxph(surv_days + alive ~ age_days + score, data=clinical, min_pts=20) %>%
+        filter(term == "score") %>%
+        select(score, estimate, p.value, size) %>%
         mutate(adj.p = p.adjust(p.value, method="fdr"),
                label = score) %>%
-        plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1) %>%
-        plt$volcano(p=0.1) + ggtitle(cur_tissue)
-    print(assocs.tissue)
+        plt$color$p_effect("adj.p") %>%
+        plt$volcano(p=0.1) + ggtitle(tissue)
+    print(re)
 }

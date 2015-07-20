@@ -16,7 +16,7 @@ scores = lapply(clusters, function(cl) {
     re = cl %>%
         lapply(function(x) x[grepl("^[0-9]+$", rownames(x)),]) %>%
         ar$stack(along=2)
-    re[,colSums(re)>0]
+    re[,colSums(re)>0] #TODO: this filter should cover the one below
 })
 
 # load sanger data
