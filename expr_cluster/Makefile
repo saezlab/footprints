@@ -13,4 +13,5 @@ speed_cluster.RData: cluster_speed.r
 		Rscript $< $* $@
 
 corrected_expr.h5: expr.r
-	Rscript expr.r $@
+	bsub -K -M 10240 -R "rusage[mem=10240]" -R "select[panfs_nobackup_research]" -oo $(@:%.h5=%.log) \
+		Rscript expr.r $@
