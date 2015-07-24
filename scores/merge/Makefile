@@ -6,7 +6,7 @@ SPEED_SCORES = $(MODELS:../../model/model_%=speed_%)
 
 .PHONY: prereqs
 
-all: prereqs $(SPEED_SCORES) #rppa.RData $(SETSCORES) $(SPEED_SCORES)
+all: prereqs $(SPEED_SCORES) pathifier.RData spia.RData #rppa.RData $(SETSCORES) $(SPEED_SCORES)
 
 prereqs:
 	make -C ../../model $(notdir $(wildcard ../../model/*.RData))
@@ -14,6 +14,12 @@ prereqs:
 
 rppa.RData: rppa.r
 	Rscript $<
+
+pathifier.RData: pathifier.r ../../genesets/reactome.RData ../../expr_cluster/corrected_expr.h5
+	Rscript $^ $@
+
+spia.RData: spia.r ../../genesets/reactome.RData ../../expr_cluster/corrected_expr.h5
+	Rscript $^ $@
 
 speed_%.RData: speed.r ../../model/model_%.RData ../../expr_cluster/corrected_expr.h5
 	bsub -K -R "select[panfs_nobackup_research]" -oo $(@:%.RData=%.log) \

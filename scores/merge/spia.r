@@ -14,7 +14,7 @@ KEGG = list(
 )
 
 tissue2scores = function(tissue, lookup, EXPR, KEGG) {
-    library(dplyr)
+    b = import('base')
     io = import('io')
     ar = import('array')
     spia = import_package('SPIA')
@@ -45,28 +45,30 @@ tissue2scores = function(tissue, lookup, EXPR, KEGG) {
         result = dplyr::data_frame(gene = rownames(fit),
             p.value = fit$p.value[,1],
             fold_change = fit$coefficients[,1]) %>%
-            mutate(adj.p = p.adjust(p.value, method="fdr"))
+            dplyr::mutate(adj.p = p.adjust(p.value, method="fdr"))
 
         # calculate SPIA scores (relevant fields: Name [KEGG name], ID [KEGG ID], tA [score])
         re = spia$spia(
-            de = setNames(result$fold_change, result$gene)[result$adj.p < 0.05],
+            de = setNames(result$fold_change, result$gene), #[result$adj.p < 0.1],
             all = result$gene,
             organism = "hsa",
             pathids = unlist(KEGG, use.names=FALSE),
             nB = 2000, # bootstraps
             plots = FALSE,
             verbose = FALSE
-        )
+        ) %catch% data.frame()
         setNames(re$tA, re$Name)
     }
     
-    sapply(colnames(tumors), sample2score, USE.NAMES=TRUE) %>%
-        ar$stack(along=2)
+    sapply(colnames(tumors), sample2score, simplify=FALSE, USE.NAMES=TRUE) %>%
+        ar$stack(along=1) %>%
+        ar$map(along=1, scale)
 }
 
 if (is.null(module_name())) {
     b = import('base')
     io = import('io')
+    ar = import('array')
     hpc = import('hpc')
 
     INFILE = commandArgs(TRUE)[1] %or% "../../genesets/reactome.RData"
@@ -87,7 +89,9 @@ if (is.null(module_name())) {
 
     # run pathifier in jobs
     result = hpc$Q(tissue2scores, tissue=tissues,
-        more.args=list(EXPR=EXPR, KEGG=KEGG, lookup=lookup), memory=2048)
+        more.args=list(EXPR=EXPR, KEGG=KEGG, lookup=lookup), memory=4096)
+
+    result = ar$stack(result, along=1)
 
     # save results
     save(result, file=OUTFILE)

@@ -5,9 +5,10 @@ tissue2scores = function(tissue, genesets, EXPR) {
     tissues = io$h5load(EXPR, "/tissue")
     tumors = t(io$h5load(EXPR, "/expr", index=which(tissues == tissue)))
     normals = t(io$h5load(EXPR, "/expr", index=which(tissues == paste0(tissue, "_N"))))
+    data = cbind(tumors, normals)
 
-    pathifier$quantify_pathways_deregulation(
-        data = cbind(tumors, normals),
+    result = pathifier$quantify_pathways_deregulation(
+        data = data,
         allgenes = rownames(tumors),
         syms = genesets,
         pathwaynames = names(genesets),
@@ -16,11 +17,16 @@ tissue2scores = function(tissue, genesets, EXPR) {
         min_exp = -Inf,
         min_std = 0.4
     )
+
+    re = do.call(cbind, lapply(result$scores, c))
+    rownames(re) = colnames(data)
+    re
 }
 
 if (is.null(module_name())) {
     b = import('base')
     io = import('io')
+    ar = import('array')
     hpc = import('hpc')
 
     INFILE = commandArgs(TRUE)[1] %or% "../../genesets/reactome.RData"
@@ -37,6 +43,8 @@ if (is.null(module_name())) {
     # run pathifier in jobs
     result = hpc$Q(tissue2scores, tissue=tissues,
         more.args=list(EXPR=EXPR, genesets=genesets), memory=4096)
+
+    result = ar$stack(result, along=1)
 
     # save results
     save(result, file=OUTFILE)
