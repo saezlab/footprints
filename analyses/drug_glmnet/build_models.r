@@ -16,18 +16,23 @@ st = import('stats')
 gdsc = import('data/gdsc')
 
 args = commandArgs(TRUE)
-OUTFILE = args[1] %or% 'speed_linear.RData'
-DATASETS = args[-1] %or% '../../scores/gdsc/speed_linear.RData'
+OUTFILE = args[1] %or% 'model_mse.RData'
+#DATASETS = args[-1] %or% '../../scores/gdsc/speed_linear.RData'
+
+speed = io$load("../../scores/gdsc/speed_linear.RData")
+pathifier = io$load("../../scores/merge/pathifier.RData")
+spia = io$load("../../scores/merge/spia.RData")
 
 tissues = gdsc$tissues(minN=10)
 drugs = gdsc$drug_response()
-dset = ar$stack(lapply(DATASETS, io$load), along=2)
-ar$intersect(tissues, drugs, dset, along=1)
 
-df = import('data_frame')
-result = st$ml(drugs ~ dset, subsets = tissues, atomic = "dset", aggr=TRUE,
+ar$intersect(tissues, drugs, speed, pathifier, spia, along=1)
+dset = list(speed=speed, pathifier=pathifier, spia=spia)
+
+drugs = drugs[,c(1,2)]
+result = st$ml(drugs ~ dset, subsets = tissues, xval=10, aggr=TRUE,
                train_args = list("regr.glmnet"),
-               hpc_args = NULL)
-#               hpc_args = list(chunk.size=200, memory=512))
+#               hpc_args = NULL)
+               hpc_args = list(chunk.size=200, memory=512))
 
 save(result, file=OUTFILE)
