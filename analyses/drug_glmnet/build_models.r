@@ -29,10 +29,8 @@ drugs = gdsc$drug_response()
 ar$intersect(tissues, drugs, speed, pathifier, spia, along=1)
 dset = list(speed=speed, pathifier=pathifier, spia=spia)
 
-drugs = drugs[,c(1,2)]
 result = st$ml(drugs ~ dset, subsets = tissues, xval=10, aggr=TRUE,
                train_args = list("regr.glmnet"),
-#               hpc_args = NULL)
                hpc_args = list(chunk.size=200, memory=512))
 
 save(result, file=OUTFILE)
