@@ -51,5 +51,6 @@ pdf(OUTFILE, width=8, height=6)
 on.exit(dev.off)
 
 library(survival)
+library(GGally)
 print(survfit(Surv(surv_days, alive) ~ PI3K, data=clinical) %>%
-    plt$ggsurv() + theme_bw())# + xlim(0,2000))
+    ggsurv() + theme_bw())# + xlim(0,2000))

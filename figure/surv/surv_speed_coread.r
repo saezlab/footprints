@@ -50,5 +50,6 @@ pdf(OUTFILE, width=10, height=10)
 on.exit(dev.off)
 
 library(survival)
+library(GGally)
 print(survfit(Surv(surv_days, alive) ~ H2O2, data=clinical) %>%
-    plt$ggsurv() + xlim(0,1500) + theme_bw())
+    ggsurv() + xlim(0,1500) + theme_bw())
