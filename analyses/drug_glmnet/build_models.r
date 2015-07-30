@@ -22,12 +22,14 @@ OUTFILE = args[1] %or% 'model_mse.RData'
 speed = io$load("../../scores/gdsc/speed_linear.RData")
 pathifier = io$load("../../scores/merge/pathifier.RData")
 spia = io$load("../../scores/merge/spia.RData")
+reactome = io$load("../../scores/gdsc/reactome.RData")
+go = io$load("../../scores/gdsc/go.RData")
 
 tissues = gdsc$tissues(minN=10)
 drugs = gdsc$drug_response()
 
-ar$intersect(tissues, drugs, speed, pathifier, spia, along=1)
-dset = list(speed=speed, pathifier=pathifier, spia=spia)
+ar$intersect(tissues, drugs, speed, pathifier, spia, reactome, go, along=1)
+dset = list(speed=speed, pathifier=pathifier, spia=spia, reactome=reactome, go=go)
 
 result = st$ml(drugs ~ dset, subsets = tissues, xval=10, aggr=TRUE,
                train_args = list("regr.glmnet"),
