@@ -26,9 +26,18 @@ gatza2014 = list(
 )
 
 INFILE = commandArgs(TRUE)[1] %or% 'ng.3073-S2.csv'
+OUTFILE = commandArgs(TRUE)[2] %or% 'gatza.RData'
 
 df = read.csv('ng.3073-S2.csv', row.names=NULL, check.names=FALSE)
 lists = lapply(ar$split(as.matrix(df), 2, drop=TRUE), b$omit$empty)
 lists = lists[unique(unlist(gatza2014))]
 
-save(lists, file = commandArgs(TRUE)[2] %or% 'gatza.RData')
+# if mapping to SPEED pathways
+pathways = sapply(names(gatza2014), function(path) {
+    unique(unlist(lists[gatza2014[[path]]]))
+})
+
+# if using the original pathways
+#pathways = [unique(unlist(reactome))]
+
+save(pathways, file=OUTFILE)

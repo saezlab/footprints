@@ -1,11 +1,11 @@
 KEGG = list(
     MAPK = "04010", # MAPK signaling pathway
     EGFR = "04012", # ErbB signaling pathway
-    PPAR = "03320", # PPAR signaling pathway
+#    PPAR = "03320", # PPAR signaling pathway
     PI3K = "04150", # mTOR signaling pathway
-    Wnt = "04310", # Wnt signaling pathway
-    Notch = "04330", # Notch signaling pathway
-    Insulin = "04910", # Insulin signaling pathway
+#    Wnt = "04310", # Wnt signaling pathway
+#    Notch = "04330", # Notch signaling pathway
+#    Insulin = "04910", # Insulin signaling pathway
     NFkB = "04064", # NF-kappa B signaling pathway
     VEGF = "04370", # VEGF signaling pathway
     `JAK-STAT` = "04630", # Jak-STAT signaling pathway
@@ -87,7 +87,7 @@ if (is.null(module_name())) {
         biomaRt::getBM(attributes=c("hgnc_symbol", "entrezgene"),
         filter="hgnc_symbol", values=io$h5names(EXPR, "/expr")[[2]], mart=.)
 
-    # run pathifier in jobs
+    # run spia in jobs
     result = hpc$Q(tissue2scores, tissue=tissues,
         more.args=list(EXPR=EXPR, KEGG=KEGG, lookup=lookup), memory=4096)
 

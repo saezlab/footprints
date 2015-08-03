@@ -31,5 +31,14 @@ BioCarta = list("H2O2" = "ARENRF2_PATHWAY",
 INFILE = commandArgs(TRUE)[1] %or% "./Enrichr/src/main/resources/BioCarta.gmt"
 OUTFILE = commandArgs(TRUE)[2] %or% "biocarta.RData"
 
-lists = er$parse_gmt(INFILE)[unique(unlist(BioCarta))]
-save(lists, file=OUTFILE)
+lists = er$parse_gmt(INFILE)
+ 
+# if mapping to SPEED pathways
+pathways = sapply(names(BioCarta), function(path) {
+    unique(unlist(lists[BioCarta[[path]]]))
+})
+
+# if using the original pathways
+#pathways = [unique(unlist(reactome))]
+
+save(pathways, file=OUTFILE)
