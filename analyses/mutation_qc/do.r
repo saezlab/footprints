@@ -51,7 +51,16 @@ result = lapply(names(scores), function(path) {
     do.call(dplyr::bind_rows, .) %>%
     na.omit() %>%
     filter(term == "mutationTRUE") %>%
-    select(score, mutation, estimate, p.value) %>%
-    mutate(adj.p = p.adjust(p.value, method="fdr"))
+    select(score, mutation, estimate, p.value)
+
 
 # plot them as matrix
+pdf("matrix_plot.pdf", paper="a4r")
+on.exit(dev.off)
+result %>%
+    mutate(adj.p = p.adjust(p.value, method="fdr"),
+           label = ifelse(adj.p < 0.05, "*", ""),
+           label = ifelse(adj.p < 0.005, "**", label),
+           label = ifelse(adj.p < 1e-5, "***", label)) %>%
+    filter(adj.p < 0.1) %>%
+    plt$matrix(estimate ~ mutation + score)
