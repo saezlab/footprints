@@ -1,0 +1,15 @@
+36	EGFL8	trt_oe	+
+4	EGFR_del3	trt_oe	?
+3	EGFR_G719S	trt_oe	?
+4	EGFR_insNPG	trt_oe	?
+4	EGFR_L858R_T790M	trt_oe	?
+4	EGFR_L858R	trt_oe	?
+4	EGFR_T790M	trt_oe	?
+48	EGFR	trt_lig	+
+145	EGFR	trt_oe	+
+447	EGFR	trt_oe.mut	+
+680	EGFR	trt_sh	-
+4	EGFR_vIII	trt_oe	+
+824	EGF	trt_lig	+
+175	EGF	trt_sh	-
+174	ERK inhibitor 11e	trt_cp	-

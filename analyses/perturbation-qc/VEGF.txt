@@ -1,0 +1,10 @@
+48	VEGFA	trt_lig	+
+33	VEGFA	trt_oe	+
+173	VEGFA	trt_sh	-
+44	VEGFB	trt_lig	+
+34	VEGFB	trt_oe	+
+75	VEGFB	trt_sh	-
+47	VEGFC	trt_lig	+
+95	VEGFC	trt_sh	-
+33	VEGF Receptor 2 Kinase Inhibitor IV	trt_cp	-
+53	VEGF Receptor 3 Kinase Inhibitor, MAZ51	trt_cp	-

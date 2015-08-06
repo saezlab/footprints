@@ -1,0 +1,4 @@
+36	HIF1AN	trt_oe	+
+100	HIF1AN	trt_sh	-
+34	HIF1A	trt_oe	+
+190	HIF1A	trt_sh	-

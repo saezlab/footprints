@@ -1,0 +1,12 @@
+164	Nutlin-3	trt_cp	+
+127	TP53BP1	trt_sh	-
+73	TP53BP2	trt_sh	-
+39	TP53RK	trt_oe	+
+101	TP53RK	trt_sh	-
+108	TP53TG1	trt_sh	-
+74	TP53	trt_oe	+
+196	TP53	trt_sh	-
+14	Doxorubicin.HCl (3013-0085)	trt_cp	+
+64	Doxorubicin hydrochloride	trt_cp	+
+134	doxorubicin	trt_cp	+
+33	DOXORUBICIN	trt_cp	+

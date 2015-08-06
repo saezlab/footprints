@@ -1,0 +1,14 @@
+47	MAP2K1	trt_oe	+
+48	MAP2K1	trt_oe.mut	+
+196	MAP2K1	trt_sh	-
+132	MAP2K2	trt_sh	-
+4	MAP2K3	trt_oe	+
+111	MAP2K3	trt_sh	-
+383	MAP2K4	trt_sh	-
+36	MAP2K5	trt_oe	+
+260	MAP2K5	trt_sh	-
+43	MAP2K6	trt_oe	+
+102	MAP2K6	trt_sh	-
+4	MAP2K7	trt_oe	+
+15	MAP2K7	trt_sh	-
+32	MEK1/2 Inhibitor	trt_cp	-
