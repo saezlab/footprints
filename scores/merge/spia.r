@@ -9,7 +9,7 @@ KEGG = list(
     NFkB = "04064", # NF-kappa B signaling pathway
     VEGF = "04370", # VEGF signaling pathway
     `JAK-STAT` = "04630", # Jak-STAT signaling pathway
-    TGFB = "04350", # TGF-beta signaling pathway
+    TGFb = "04350", # TGF-beta signaling pathway
     Trail = "04210" # Apoptosis
 )
 

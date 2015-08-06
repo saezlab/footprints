@@ -9,7 +9,7 @@ KEGG = list(
     NFkB = "04064", # NF-kappa B signaling pathway
     VEGF = "04370", # VEGF signaling pathway
     `JAK-STAT` = "04630", # Jak-STAT signaling pathway
-    TGFB = "04350", # TGF-beta signaling pathway
+    TGFb = "04350", # TGF-beta signaling pathway
     Trail = "04210" # Apoptosis
 )
 
@@ -98,7 +98,7 @@ if (is.null(module_name())) {
 
     # run spia in jobs
     result = hpc$Q(tissue2scores, tissue=tissues,
-        more.args=list(INDEX=INDEX, EXPR=EXPR, KEGG=KEGG, lookup=lookup), memory=1024)
+        more.args=list(INDEX=INDEX, EXPR=EXPR, KEGG=KEGG, lookup=lookup), memory=4096)
 
     result = ar$stack(result, along=1)
 
