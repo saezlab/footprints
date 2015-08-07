@@ -1,16 +1,14 @@
-tissue2scores = function(tissue, genesets, INDEX, EXPR) {
+tissue2scores = function(tissue, genesets, INDEX) {
     io = import('io')
+    lincs = import('data/lincs')
     pathifier = import_package('pathifier')
 
     # prepare data
     index = io$load(INDEX)
-    expr = io$load(EXPR)
-# tissues = pathway perturbation subsets
-    tissues = index$pathway
-# tumors = perturbed
-    tumors = expr[,index$sign == "+" & index$pathway == tissue]
-# normals = control
-    normals = expr[,index$sign == "0" & index$pathway == tissue]
+    cid_control = unique(index[index$pathway == "control",]$distil_id)
+    cid_perturbed = unique(index[index$pathway == tissue,]$distil_id)
+    tumors = lincs$get_z(cid=cid_perturbed, rid=lincs$projected, map.genes="hgnc_symbol")
+    normals = lincs$get_z(cid=cid_control, rid=lincs$projected, map.genes="hgnc_symbol")
     data = cbind(tumors, normals)
 
     result = pathifier$quantify_pathways_deregulation(
@@ -37,20 +35,15 @@ if (is.null(module_name())) {
 
     INFILE = commandArgs(TRUE)[1] %or% "../../genesets/reactome.RData"
     INDEX = "../../data/lincs_perturbation_qc/index.RData"
-    EXPR = commandArgs(TRUE)[2] %or% "../../data/lincs_perturbation_qc/expr.RData"
     OUTFILE = commandArgs(TRUE)[3] %or% "pathifier.RData"
 
     # load pathway gene sets
     genesets = io$load(INFILE)
-
-#    # get all tissues which have a normal
-#    tissues = io$h5load(EXPR, "/tissue")
-#    tissues = sub("_N", "", unique(tissues[grepl("_N", tissues)]))
-    tissues = unique(io$load(INDEX)$pathway)
+    pathways = intersect(names(genesets), unique(io$load(INDEX)$pathway))
 
     # run pathifier in jobs
-    result = hpc$Q(tissue2scores, tissue=tissues,
-        more.args=list(INDEX=INDEX, EXPR=EXPR, genesets=genesets), memory=4096)
+    result = hpc$Q(tissue2scores, tissue=pathways,
+        more.args=list(INDEX=INDEX, genesets=genesets), memory=8192)
 
     result = ar$stack(result, along=1)
 

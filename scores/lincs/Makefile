@@ -15,14 +15,14 @@ all: $(SPEED_SCORES) $(SETSCORES) pathifier.RData spia.RData #rppa.RData $(SETSC
 #rppa.RData: rppa.r
 #	Rscript $<
 
-pathifier.RData: pathifier.r ../../genesets/reactome.RData ../../data/lincs_perturbation_qc/expr.RData
+pathifier.RData: pathifier.r ../../genesets/reactome.RData
 	Rscript $^ $@
 
-spia.RData: spia.r ../../data/lincs_perturbation_qc/index.RData ../../data/lincs_perturbation_qc/expr.RData
+spia.RData: spia.r ../../data/lincs_perturbation_qc/index.RData
 	Rscript $^ $@
 
-speed_%.RData: speed.r ../../model/model_%.RData ../../data/lincs_perturbation_qc/expr.RData
-	Rscript $< $(word 2,$^) $(word 3,$^) $@
+speed_%.RData: speed.r ../../model/model_%.RData ../../data/lincs_perturbation_qc/index.RData
+	Rscript $^ $@
 
-%.RData: set_enrichment.r ../../genesets/%.RData ../../data/lincs_perturbation_qc/expr.RData
-	Rscript $< $(word 2,$^) $(word 3,$^) $@
+%.RData: set_enrichment.r ../../genesets/%.RData ../../data/lincs_perturbation_qc/index.RData
+	Rscript $^ $@

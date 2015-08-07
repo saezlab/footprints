@@ -42,7 +42,7 @@ if (is.null(module_name())) {
 
     # run pathifier in jobs
     result = hpc$Q(tissue2scores, tissue=tissues,
-        more.args=list(EXPR=EXPR, genesets=genesets), memory=4096)
+        more.args=list(EXPR=EXPR, genesets=genesets), memory=8192)
 
     result = ar$stack(result, along=1)
 

@@ -13,26 +13,20 @@ KEGG = list(
     Trail = "04210" # Apoptosis
 )
 
-tissue2scores = function(tissue, lookup, INDEX, EXPR, KEGG) {
+tissue2scores = function(tissue, INDEX, KEGG) {
     b = import('base')
     io = import('io')
     ar = import('array')
+    lincs = import('data/lincs')
     spia = import_package('SPIA')
 
     # prepare data
     index = io$load(INDEX)
-    expr = io$load(EXPR)
-# tissues = pathway perturbation subsets
-    tissues = index$pathway
-# tumors = perturbed
-    tumors = expr[,index$sign == "+" & index$pathway == tissue]
-# normals = control
-    normals = expr[,index$sign == "0" & index$pathway == tissue]
+    cid_control = unique(index[index$pathway == "control",]$distil_id)
+    cid_perturbed = unique(index[index$pathway == tissue,]$distil_id)
+    tumors = lincs$get_z(cid=cid_perturbed, rid=lincs$projected, map.genes="entrezgene")
+    normals = lincs$get_z(cid=cid_control, rid=lincs$projected, map.genes="entrezgene")
     data = cbind(tumors, normals)
-
-    # map IDs to entrez gene IDs, SPIA needs this
-    rownames(data) = lookup$entrezgene[match(rownames(data), lookup$hgnc_symbol)]
-    data = limma::avereps(data[!is.na(rownames(data)),])
 
     sample2score = function(sample) {
         # create data for each sample
@@ -78,27 +72,12 @@ if (is.null(module_name())) {
     ar = import('array')
     hpc = import('hpc')
 
-#    INFILE = commandArgs(TRUE)[1] %or% "../../genesets/reactome.RData"
     INDEX = commandArgs(TRUE)[1] %or% "../../data/lincs_perturbation_qc/index.RData"
-    EXPR = commandArgs(TRUE)[2] %or% "../../data/lincs_perturbation_qc/expr.RData"
     OUTFILE = commandArgs(TRUE)[3] %or% "spia.RData"
 
-    # load pathway gene sets
-#    genesets = io$load(INFILE)
-
-#    # get all tissues which have a normal
-#    tissues = io$h5load(EXPR, "/tissue")
-#    tissues = sub("_N", "", unique(tissues[grepl("_N", tissues)]))
-    tissues = unique(io$load(INDEX)$pathway)
-
-    # HGNC -> entrez gene lookup
-    lookup = biomaRt::useMart(biomart="ensembl", dataset="hsapiens_gene_ensembl") %>%
-        biomaRt::getBM(attributes=c("hgnc_symbol", "entrezgene"),
-        filter="hgnc_symbol", values=rownames(io$load(EXPR)), mart=.)
-
     # run spia in jobs
-    result = hpc$Q(tissue2scores, tissue=tissues,
-        more.args=list(INDEX=INDEX, EXPR=EXPR, KEGG=KEGG, lookup=lookup), memory=4096)
+    result = hpc$Q(tissue2scores, tissue=names(KEGG),
+        more.args=list(INDEX=INDEX, KEGG=KEGG), memory=8192)
 
     result = ar$stack(result, along=1)
 

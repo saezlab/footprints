@@ -2,15 +2,18 @@ library(dplyr)
 b = import('base')
 io = import('io')
 ar = import('array')
-tcga = import('data/tcga')
+lincs = import('data/lincs')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../model/model_linear.RData"
-EXPR = commandArgs(TRUE)[2] %or% "../../data/lincs_perturbation_qc/expr.RData"
-OUTFILE = commandArgs(TRUE)[3] %or% "speed.RData"
+INDEX = commandArgs(TRUE)[2] %or% "../../data/lincs_perturbation_qc/index.RData"
+OUTFILE = commandArgs(TRUE)[3] %or% "speed_linear.RData"
 
-# load vectors
+# load index, filter & load expression
+index = unique(io$load(INDEX)$distil_id)
+expr = lincs$get_z(cid=index, rid=lincs$projected, map.genes="hgnc_symbol")
+
+# load vectors, calculate scores
 vecs = io$load(INFILE)
-expr = io$load(EXPR)
 ar$intersect(vecs, expr, along=1)
 
 scores = t(expr) %*% vecs %>%

@@ -1,15 +1,16 @@
 b = import('base')
 io = import('io')
+lincs = import('data/lincs')
 gsea = import('../../genesets/gsea')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../genesets/go.RData"
-EXPR = commandArgs(TRUE)[2] %or% "../../data/lincs_perturbation_qc/expr.RData"
+INDEX = commandArgs(TRUE)[2] %or% "../../data/lincs_perturbation_qc/index.RData"
 OUTFILE = commandArgs(TRUE)[3] %or% "go.RData"
 
 # load gene list and expression
 genelist = io$load(INFILE)
-expr = io$load(EXPR)
-#index = io$load('../../data/lincs_perturbation_qc/index.RData')
+index = unique(io$load(INDEX)$distil_id)
+expr = lincs$get_z(cid=index, rid=lincs$projected, map.genes="hgnc_symbol")
 
 # perform GSEA
 scores = gsea$runGSEA(expr, genelist, transform.normal=TRUE)
