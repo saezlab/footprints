@@ -27,26 +27,24 @@ tissue2scores = function(tissue, genesets, INDEX) {
     re
 }
 
-if (is.null(module_name())) {
-    b = import('base')
-    io = import('io')
-    ar = import('array')
-    hpc = import('hpc')
+b = import('base')
+io = import('io')
+ar = import('array')
+hpc = import('hpc')
 
-    INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/reactome.RData"
-    INDEX = "../../util/lincs_perturbation_qc/index.RData"
-    OUTFILE = commandArgs(TRUE)[3] %or% "pathifier.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/reactome.RData"
+INDEX = "../../util/lincs_perturbation_qc/index.RData"
+OUTFILE = commandArgs(TRUE)[3] %or% "pathifier.RData"
 
-    # load pathway gene sets
-    genesets = io$load(INFILE)
-    pathways = intersect(names(genesets), unique(io$load(INDEX)$pathway))
+# load pathway gene sets
+genesets = io$load(INFILE)
+pathways = intersect(names(genesets), unique(io$load(INDEX)$pathway))
 
-    # run pathifier in jobs
-    result = hpc$Q(tissue2scores, tissue=pathways,
-        more.args=list(INDEX=INDEX, genesets=genesets), memory=8192)
+# run pathifier in jobs
+result = hpc$Q(tissue2scores, tissue=pathways,
+    more.args=list(INDEX=INDEX, genesets=genesets), memory=8192)
 
-    result = ar$stack(result, along=1)
+result = ar$stack(result, along=1)
 
-    # save results
-    save(result, file=OUTFILE)
-}
+# save results
+save(result, file=OUTFILE)

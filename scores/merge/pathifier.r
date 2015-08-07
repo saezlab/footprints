@@ -23,29 +23,27 @@ tissue2scores = function(tissue, genesets, EXPR) {
     re
 }
 
-if (is.null(module_name())) {
-    b = import('base')
-    io = import('io')
-    ar = import('array')
-    hpc = import('hpc')
+b = import('base')
+io = import('io')
+ar = import('array')
+hpc = import('hpc')
 
-    INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/reactome.RData"
-    EXPR = commandArgs(TRUE)[2] %or% "../../util/expr_cluster/corrected_expr.h5"
-    OUTFILE = commandArgs(TRUE)[3] %or% "pathifier.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/reactome.RData"
+EXPR = commandArgs(TRUE)[2] %or% "../../util/expr_cluster/corrected_expr.h5"
+OUTFILE = commandArgs(TRUE)[3] %or% "pathifier.RData"
 
-    # load pathway gene sets
-    genesets = io$load(INFILE)
+# load pathway gene sets
+genesets = io$load(INFILE)
 
-    # get all tissues which have a normal
-    tissues = io$h5load(EXPR, "/tissue")
-    tissues = sub("_N", "", unique(tissues[grepl("_N", tissues)]))
+# get all tissues which have a normal
+tissues = io$h5load(EXPR, "/tissue")
+tissues = sub("_N", "", unique(tissues[grepl("_N", tissues)]))
 
-    # run pathifier in jobs
-    result = hpc$Q(tissue2scores, tissue=tissues,
-        more.args=list(EXPR=EXPR, genesets=genesets), memory=8192)
+# run pathifier in jobs
+result = hpc$Q(tissue2scores, tissue=tissues,
+    more.args=list(EXPR=EXPR, genesets=genesets), memory=8192)
 
-    result = ar$stack(result, along=1)
+result = ar$stack(result, along=1)
 
-    # save results
-    save(result, file=OUTFILE)
-}
+# save results
+save(result, file=OUTFILE)
