@@ -3,9 +3,9 @@ io = import('io')
 ar = import('array')
 gdsc = import('data/gdsc')
 tcga = import('data/tcga')
-gsea = import('../../genesets/gsea')
+gsea = import('../../util/gsea')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../genesets/go.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/go.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "go.RData"
 
 # load gene list and expression

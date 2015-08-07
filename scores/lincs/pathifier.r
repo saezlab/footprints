@@ -33,8 +33,8 @@ if (is.null(module_name())) {
     ar = import('array')
     hpc = import('hpc')
 
-    INFILE = commandArgs(TRUE)[1] %or% "../../genesets/reactome.RData"
-    INDEX = "../../data/lincs_perturbation_qc/index.RData"
+    INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/reactome.RData"
+    INDEX = "../../util/lincs_perturbation_qc/index.RData"
     OUTFILE = commandArgs(TRUE)[3] %or% "pathifier.RData"
 
     # load pathway gene sets

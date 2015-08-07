@@ -72,7 +72,7 @@ if (is.null(module_name())) {
     ar = import('array')
     hpc = import('hpc')
 
-    INDEX = commandArgs(TRUE)[1] %or% "../../data/lincs_perturbation_qc/index.RData"
+    INDEX = commandArgs(TRUE)[1] %or% "../../util/lincs_perturbation_qc/index.RData"
     OUTFILE = commandArgs(TRUE)[3] %or% "spia.RData"
 
     # run spia in jobs

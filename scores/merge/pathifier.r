@@ -29,8 +29,8 @@ if (is.null(module_name())) {
     ar = import('array')
     hpc = import('hpc')
 
-    INFILE = commandArgs(TRUE)[1] %or% "../../genesets/reactome.RData"
-    EXPR = commandArgs(TRUE)[2] %or% "../../expr_cluster/corrected_expr.h5"
+    INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/reactome.RData"
+    EXPR = commandArgs(TRUE)[2] %or% "../../util/expr_cluster/corrected_expr.h5"
     OUTFILE = commandArgs(TRUE)[3] %or% "pathifier.RData"
 
     # load pathway gene sets

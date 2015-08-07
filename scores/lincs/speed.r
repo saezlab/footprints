@@ -5,7 +5,7 @@ ar = import('array')
 lincs = import('data/lincs')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../model/model_linear.RData"
-INDEX = commandArgs(TRUE)[2] %or% "../../data/lincs_perturbation_qc/index.RData"
+INDEX = commandArgs(TRUE)[2] %or% "../../util/lincs_perturbation_qc/index.RData"
 OUTFILE = commandArgs(TRUE)[3] %or% "speed_linear.RData"
 
 # load index, filter & load expression

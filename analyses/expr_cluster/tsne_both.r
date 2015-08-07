@@ -1,7 +1,7 @@
 library(ggplot2)
 io = import('io')
 
-dset = io$load("../../expr_cluster/corrected_expr.RData")
+dset = io$load("../../util/expr_cluster/corrected_expr.RData")
 expr = dset$corrected
 tissues = dset$covar
 

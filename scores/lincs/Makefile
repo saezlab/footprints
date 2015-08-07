@@ -1,5 +1,5 @@
-GENESETS = $(wildcard ../../genesets/*.RData)
-SETSCORES = $(GENESETS:../../genesets/%=%)
+GENESETS = $(wildcard ../../util/genesets/*.RData)
+SETSCORES = $(GENESETS:../../util/genesets/%=%)
 MODEL_SCRIPTS = $(wildcard ../../model/model_*.r)
 MODELS = $(MODEL_SCRIPTS:%.r=%.RData)
 SPEED_SCORES = $(MODELS:../../model/model_%=speed_%)
@@ -15,14 +15,14 @@ all: $(SPEED_SCORES) $(SETSCORES) pathifier.RData spia.RData #rppa.RData $(SETSC
 #rppa.RData: rppa.r
 #	Rscript $<
 
-pathifier.RData: pathifier.r ../../genesets/reactome.RData
+pathifier.RData: pathifier.r ../../util/genesets/reactome.RData
 	Rscript $^ $@
 
-spia.RData: spia.r ../../data/lincs_perturbation_qc/index.RData
+spia.RData: spia.r ../../util/lincs_perturbation_qc/index.RData
 	Rscript $^ $@
 
-speed_%.RData: speed.r ../../model/model_%.RData ../../data/lincs_perturbation_qc/index.RData
+speed_%.RData: speed.r ../../model/model_%.RData ../../util/lincs_perturbation_qc/index.RData
 	Rscript $^ $@
 
-%.RData: set_enrichment.r ../../genesets/%.RData ../../data/lincs_perturbation_qc/index.RData
+%.RData: set_enrichment.r ../../util/genesets/%.RData ../../util/lincs_perturbation_qc/index.RData
 	Rscript $^ $@

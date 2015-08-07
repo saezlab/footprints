@@ -6,7 +6,7 @@ st = import('stats')
 tcga = import('data/tcga')
 plt = import('plot')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../expr_cluster/speed_cluster.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../../util/expr_cluster/speed_cluster.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "surv_speed.pdf"
 
 # load scores, from tumors only

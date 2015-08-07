@@ -6,7 +6,7 @@ st = import('stats')
 gdsc = import('data/gdsc')
 plt = import('plot')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../expr_cluster/speed_cluster.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../../util/expr_cluster/speed_cluster.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "drug_speed.pdf"
 
 # load scores
