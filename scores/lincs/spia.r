@@ -16,8 +16,7 @@ pathway2scores = function(pathway, index, spia) {
     perturbed = lincs$get_z(cid=cid_perturbed, rid=lincs$projected, map.genes="entrezgene")
     control = lincs$get_z(cid=cid_control, rid=lincs$projected, map.genes="entrezgene")
 
-    re = spia$spia(perturbed, control, per_sample=TRUE, pathids=spia$speed2kegg, verbose=TRUE)
-    setNames(re$score, re$name)
+    spia$spia(perturbed, control, per_sample=TRUE, pathids=spia$speed2kegg, verbose=TRUE)
 }
 
 # get index and pathways
@@ -26,5 +25,8 @@ pathway = intersect(names(spia$speed2kegg), unique(index$pathway))
 
 # run spia in jobs and save
 result = hpc$Q(pathway2scores, pathway=pathway, more.args=list(spia=spia, index=index), memory=8192)
+
 result = ar$stack(result, along=1)
+colnames(result) = spia$kegg2speed[colnames(result)]
+
 save(result, file=OUTFILE)

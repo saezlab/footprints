@@ -40,10 +40,12 @@ spia = function(samples, controls, per_sample=FALSE, organism="hsa", pathids=NUL
             verbose = FALSE
         ) %catch% data.frame()
 
-        data.frame(id=re$ID, name=re$Name, score=re$tA)
+#        data.frame(id=re$ID, name=re$Name, score=re$tA)
+        setNames(re$tA, re$ID)
     }
 
     b = import('base')
+    ar = import('array')
     dplyr = import_package('dplyr')
     spia = import_package('SPIA')
     limma = import_package('limma')
@@ -51,7 +53,7 @@ spia = function(samples, controls, per_sample=FALSE, organism="hsa", pathids=NUL
 
     if (per_sample)
         sapply(colnames(samples), sample2score, simplify=FALSE, USE.NAMES=TRUE) %>%
-            dplyr$bind_rows()
+            ar$stack(along=1)
     else
         sample2score(colnames(samples))
 }

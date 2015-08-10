@@ -44,7 +44,8 @@ pathways = intersect(names(genesets), unique(io$load(INDEX)$pathway))
 result = hpc$Q(tissue2scores, tissue=pathways,
     more.args=list(INDEX=INDEX, genesets=genesets), memory=8192)
 
-result = ar$stack(result, along=1)
+result = ar$stack(result, along=3) #TODO: check why this is required
+result = ar$map(result, along=3, function(x) x[1])
 
 # save results
 save(result, file=OUTFILE)

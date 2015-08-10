@@ -21,8 +21,7 @@ tissue2scores = function(tissue, EXPR, spia, lookup) {
     tumors = e(t(io$h5load(EXPR, "/expr", index=which(tissues == tissue))))
     normals = e(t(io$h5load(EXPR, "/expr", index=which(tissues == paste0(tissue, "_N")))))
 
-    re = spia$spia(tumors, normals, per_sample=TRUE, pathids=spia$speed2kegg, verbose=TRUE)
-    setNames(re$score, re$name)
+    spia$spia(tumors, normals, per_sample=TRUE, pathids=spia$speed2kegg, verbose=TRUE)
 }
 
 # load pathway gene sets and tissues
@@ -38,6 +37,9 @@ lookup = biomaRt::useMart(biomart="ensembl", dataset="hsapiens_gene_ensembl") %>
 
 # run spia in jobs and save
 result = hpc$Q(tissue2scores, tissue=tissues, more.args=list(EXPR=EXPR,
-               spia=spia, lookup=lookup), memory=4096)
+               spia=spia, lookup=lookup), memory=8192)
+
 result = ar$stack(result, along=1)
+colnames(result) = spia$kegg2speed[colnames(result)]
+
 save(result, file=OUTFILE)
