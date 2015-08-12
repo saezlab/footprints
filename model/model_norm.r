@@ -1,7 +1,8 @@
 # point of this file:
 # - use the zscores to create a linear model
 library(dplyr)
-b = import('base')
+b = import('base', attach_operators=FALSE)
+import('base/operators')
 io = import('io')
 ar = import('array')
 st = import('stats')
@@ -21,7 +22,6 @@ zscores = ar$map(zscores, along=1, scale)
 zscores = t(zscores)
 
 # fit model to pathway perturbations
-index = c(as.list(index), list(zscores=zscores)) #FIXME: @st$lm: use parent.frame()+provided df
 mod = st$lm(zscores ~ 0 + pathway, data=index, min_pts=100) %>%
     transmute(gene = zscores,
               pathway = sub("^pathway", "", term),
