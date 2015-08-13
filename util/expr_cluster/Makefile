@@ -1,3 +1,5 @@
+include ../../Makefile.inc
+
 TISSUES = BLCA BRCA CESC COREAD GBM HNSC KIRC LAML LGG LIHC LUAD LUSC OV PAAD SKCM THCA
 
 all: corrected_expr.h5 speed_cluster.RData expr_cluster.RData
@@ -9,9 +11,7 @@ speed_cluster.RData: cluster_speed.r
 	Rscript $< ../model/model_linear.RData $@
 
 .cluster_%.RData: cluster_expr.r
-	bsub -K -M 10240 -R "rusage[mem=10240]" -R "select[panfs_nobackup_research]" -oo $(@:%.RData=%.log) \
-		Rscript $< $* $@
+	$(call bsub_log,10240) Rscript $< $* $@
 
 corrected_expr.h5: expr.r
-	bsub -K -M 10240 -R "rusage[mem=10240]" -R "select[panfs_nobackup_research]" -oo $(@:%.h5=%.log) \
-		Rscript expr.r $@
+	$(call bsub_log,10240) Rscript expr.r $@

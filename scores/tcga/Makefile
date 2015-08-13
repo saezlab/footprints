@@ -1,3 +1,5 @@
+include ../../Makefile.inc
+	
 GENESETS = $(wildcard ../../util/genesets/*.RData)
 SETSCORES = $(GENESETS:../../util/genesets/%=%)
 MODEL_SCRIPTS = $(wildcard ../../model/model_*.r)
@@ -16,9 +18,7 @@ rppa.RData: rppa.r
 	Rscript $<
 
 speed_%.RData: speed.r ../../model/model_%.RData
-	bsub -K -M 10240 -R "rusage[mem=10240]" -R "select[panfs_nobackup_research]" -oo $(@:%.RData=%.log) \
-		Rscript $< $(word 2,$^) $@
+	$(call bsub_log,10240) Rscript $< $(word 2,$^) $@
 
 %.RData: set_enrichment.r ../../util/genesets/%.RData ../../data/zscores.RData
-	bsub -K -M 10240 -R "rusage[mem=10240]" -R "select[panfs_nobackup_research]" -oo $(@:%.RData=%.log) \
-		Rscript $< $(word 2,$^) $@
+	$(call bsub_log,10240) Rscript $< $(word 2,$^) $@

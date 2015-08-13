@@ -1,3 +1,5 @@
+include ../../Makefile.inc
+
 MODEL_SCRIPTS = $(wildcard ../../model/model_*.r)
 MODELS = $(MODEL_SCRIPTS:%.r=%.RData)
 SETS = $(wildcard ../../util/genesets/*.RData)
@@ -19,5 +21,4 @@ speed_%.RData: speed.r ../../model/model_%.RData
 	Rscript $< $(word 2,$^) $@
 
 %.RData: set_enrichment.r ../../util/genesets/%.RData ../../data/zscores.RData
-	bsub -K -M 1024 -R "rusage[mem=1024]" -R "select[panfs_nobackup_research]" -oo $(@:%.RData=%.log) \
-		Rscript $< $(word 2,$^) $@
+	$(call bsub_log,1024) Rscript $< $(word 2,$^) $@
