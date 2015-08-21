@@ -62,5 +62,5 @@ result %>%
            label = ifelse(adj.p < 0.05, "*", ""),
            label = ifelse(adj.p < 0.005, "**", label),
            label = ifelse(adj.p < 1e-5, "***", label)) %>%
-    filter(adj.p < 0.1) %>%
+#    filter(adj.p < 0.1) %>%
     plt$matrix(estimate ~ mutation + score)

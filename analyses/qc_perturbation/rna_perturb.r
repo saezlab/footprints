@@ -8,7 +8,8 @@ plt = import('plot')
 fnames = list.files("../../scores/lincs", "\\.RData", full.names=TRUE)
 names(fnames) = b$grep("/([a-zA-Z0-9_]+).RData", fnames)
 index = io$load("../../util/lincs_perturbation_qc/index.RData") %>%
-    filter(sign %in% c("ctl_vehicle","trt_lig","trt_cp"))
+    filter(sign %in% c("+","0") &
+           pert_type %in% c("control", "expression"))
 index = index[!duplicated(index$distil_id),] #FIXME:
 rownames(index) = index$distil_id
 index = setNames(index$pathway, index$distil_id)
@@ -42,7 +43,7 @@ result = lapply(names(scores), function(path) {
 
 
 # plot them as matrix
-pdf("matrix_plot.pdf", paper="a4r")
+pdf("rna_perturb.pdf", paper="a4r")
 on.exit(dev.off)
 result %>%
     mutate(adj.p = p.adjust(p.value, method="fdr"),
