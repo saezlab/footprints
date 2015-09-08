@@ -8,7 +8,7 @@ ar = import('array')
 st = import('stats')
 
 INFILE = commandArgs(TRUE)[1] %or% "../data/zscores.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "model_z1.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "model_z12.RData"
 
 # load speed data, index
 zobj = io$load('../data/zscores.RData')
@@ -27,7 +27,7 @@ meanz = ar$map(abs(zscores), along=2, function(x) {
 })
 library(mclust)
 mc = Mclust(meanz)
-keep = mc$classification == 2
+keep = mc$classification != 3
 index = index[keep,]
 zscores = zscores[keep,]
 
