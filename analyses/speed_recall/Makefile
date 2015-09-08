@@ -1,5 +1,5 @@
 SCORES = $(wildcard ../../scores/speed/*.RData)
-PLOTS = $(SCORES:../../scores/speed/%.RData=%.pdf)
+PLOTS = $(SCORES:../../scores/speed/%.RData=%.pdf) zscores.pdf
 
 plot: $(PLOTS)
 

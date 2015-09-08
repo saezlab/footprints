@@ -31,3 +31,11 @@ ggplot(z$index, aes(x=pathway, y=meanz)) +
     xlab("pathway") +
     ylab("sum |z|") +
     ggtitle("Expression impact for different pathways")
+
+# violin plot of z-scores for each pathway
+ggplot(z$index, aes(x=pathway, y=meanz)) +
+    geom_violin() +
+    geom_point() +
+    xlab("pathway") +
+    ylab("sum |z|") +
+    ggtitle("Expression impact for different pathways")
