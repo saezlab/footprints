@@ -34,7 +34,7 @@ zfit = ar$construct(zscore ~ gene + pathway, data=mod)
 pval = ar$construct(p.adj ~ gene + pathway, data=mod)
 
 # filter zfit to only include top 100 genes per pathway
-zfit[apply(pval, 2, p -> !b$min_mask(p, 100))] = 0
+zfit[apply(pval, 2, function(p) !b$min_mask(p, 100))] = 0
 
 # save resulting object
 save(zfit, file=OUTFILE)
