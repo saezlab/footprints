@@ -22,8 +22,8 @@ zscores = t(zscores)
 
 # fit model to pathway perturbations
 pathway = ar$mask(index$pathway) + 0
-pathway[,"EGFR"] = pathway[,"EGFR"] + pathway[,"MAPK"] + pathway[,"PI3K"]
-pathway[,"TNFa"] = pathway[,"TNFa"] + pathway[,"NFkB"]
+pathway["EGFR",] = pathway["EGFR",] + pathway["MAPK",] + pathway["PI3K",]
+pathway["TNFa",] = pathway["TNFa",] + pathway["NFkB",]
 
 mod = st$lm(zscores ~ 0 + pathway, data=index, min_pts=30, atomic="pathway") %>%
     transmute(gene = zscores,
