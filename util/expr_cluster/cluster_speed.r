@@ -24,7 +24,7 @@ if (is.null(module_name())) {
     io = import('io')
     ar = import('array')
 
-    INFILE = commandArgs(TRUE)[1] %or% "../model/model_linear.RData"
+    INFILE = commandArgs(TRUE)[1] %or% "../../model/model_linear.RData"
     OUTFILE = commandArgs(TRUE)[2] %or% "speed_cluster.RData"
 
     tissues = io$h5load("corrected_expr.h5", "/tissue")
