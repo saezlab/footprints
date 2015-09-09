@@ -24,7 +24,7 @@ spia.RData: spia.r ../../util/genesets/reactome.RData ../../util/expr_cluster/co
 	Rscript $^ $@
 
 speed_%.RData: speed.r ../../model/model_%.RData ../../util/expr_cluster/corrected_expr.h5
-	$(call bsub_log) Rscript $< $(word 2,$^) $(word 3,$^) $@
+	$(call bsub_log,4096) Rscript $< $(word 2,$^) $(word 3,$^) $@
 
 #%.RData: set_enrichment.r ../../util/genesets/%.RData ../../data/zscores.RData
 #	@rm -f $@ # annex link overwrite
