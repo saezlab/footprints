@@ -8,11 +8,10 @@ plt = import('plot')
 fnames = list.files("../../scores/lincs", "\\.RData", full.names=TRUE)
 names(fnames) = b$grep("/([a-zA-Z0-9_]+).RData", fnames)
 index = io$load("../../util/lincs_perturbation_qc/index.RData") %>%
-    filter(sign %in% c("+","0") &
-           pert_type %in% c("control", "expression"))
+    filter(pert_type %in% c("control", "expression")) %>%
+    as.data.frame()
 index = index[!duplicated(index$distil_id),] #FIXME:
 rownames(index) = index$distil_id
-index = setNames(index$pathway, index$distil_id)
 scores = lapply(fnames, io$load)
 
 scores = ar$intersect_list(scores, along=1)
@@ -21,22 +20,30 @@ scores2 = ar$stack(scores, along=3) %>%
     lapply(function(x) ar$map(x, along=1, scale))
 scores = scores2
 
-scores = scores[!names(scores) %in% c("H2O2")]
+# make sure index and scores have same rows
+print(table(index$pathway))
+scores$index = index
+scores = ar$intersect_list(scores, along=1)
+index = scores$index
+scores$index = NULL
+print(table(index$pathway))
+scores = scores[unique(index$pathway)]
 
-result = lapply(names(scores), function(path) {
+path2assocs = function(path) {
     message(path)
     score = scores[[path]]
-    ar$intersect(score, index, along=1)
-    pathway = as.matrix(index == path)
+    pathway = index$pathway == path
+    score = score * ifelse(index$sign == "-", -1, 1) #FIXME:
     re = st$lm(score ~ pathway)
     re$pathway = path
     re
-}) %>%
+}
+result = lapply(names(scores), path2assocs) %>%
     lapply(function(x) { #FIXME: this should be named properly already DPLYR BUG
         colnames(x) = sub("result\\.", "", colnames(x))
         x
     }) %>%
-    do.call(dplyr::bind_rows, .) %>%
+    bind_rows() %>%
     na.omit() %>%
     filter(term == "pathwayTRUE") %>%
     select(score, pathway, estimate, p.value)
