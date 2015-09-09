@@ -32,7 +32,8 @@ index = index[keep,]
 zscores = zscores[keep,]
 
 # fit model to pathway perturbations
-mod = st$lm(zscores ~ 0 + pathway, data=index, min_pts=100) %>%
+mod = st$lm(zscores ~ 0 + pathway, data=index, min_pts=100,
+            hpc_args=list(n_jobs=10, memory=512)) %>%
     transmute(gene = zscores,
               pathway = sub("^pathway", "", term),
               zscore = estimate,
