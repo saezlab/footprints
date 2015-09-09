@@ -1,3 +1,5 @@
+include ../../Makefile.inc
+	
 GENESETS = $(wildcard ../../util/genesets/*.RData)
 SETSCORES = $(GENESETS:../../util/genesets/%=%)
 MODEL_SCRIPTS = $(wildcard ../../model/model_*.r)

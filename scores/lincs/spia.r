@@ -24,7 +24,8 @@ index = io$load(INDEX)
 pathway = intersect(names(spia$speed2kegg), unique(index$pathway))
 
 # run spia in jobs and save
-result = hpc$Q(pathway2scores, pathway=pathway, more.args=list(spia=spia, index=index), memory=8192)
+result = hpc$Q(pathway2scores, pathway=pathway,
+    const=list(spia=spia, index=index), memory=8192, n_jobs=50)
 
 result = ar$stack(result, along=1)
 colnames(result) = spia$kegg2speed[colnames(result)]

@@ -27,7 +27,8 @@ tissue2scores = function(tissue, genesets, INDEX) {
     re
 }
 
-b = import('base')
+b = import('base', attach_operators=FALSE)
+import('base/operators')
 io = import('io')
 ar = import('array')
 hpc = import('hpc')
@@ -42,10 +43,10 @@ pathways = intersect(names(genesets), unique(io$load(INDEX)$pathway))
 
 # run pathifier in jobs
 result = hpc$Q(tissue2scores, tissue=pathways,
-    more.args=list(INDEX=INDEX, genesets=genesets), memory=8192)
+    const=list(INDEX=INDEX, genesets=genesets), memory=8192, n_jobs=50)
 
 result = ar$stack(result, along=3) #TODO: check why this is required
-result = ar$map(result, along=3, function(x) x[1])
+result = ar$map(result2, along=3, function(x) mean(x,na.rm=TRUE))
 
 # save results
 save(result, file=OUTFILE)
