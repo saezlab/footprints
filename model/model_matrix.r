@@ -26,7 +26,7 @@ pathway["EGFR",] = pathway["EGFR",] + pathway["MAPK",] + pathway["PI3K",]
 pathway["TNFa",] = pathway["TNFa",] + pathway["NFkB",]
 
 mod = st$lm(zscores ~ 0 + pathway, data=index, min_pts=30, atomic="pathway",
-            hpc_args=list(n_jobs=10, memory=512)) %>%
+            hpc_args=list(n_jobs=10, memory=2048)) %>%
     transmute(gene = zscores,
               pathway = sub("^pathway", "", term),
               zscore = estimate,
