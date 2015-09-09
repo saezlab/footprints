@@ -1,3 +1,5 @@
+print-%  : ; @echo $* = $($*)
+
 # target word, split by '.', '/' and '_'
 tw = $(word $(1), $(subst /, ,$(subst ., ,$(subst _, ,$@))))
 
