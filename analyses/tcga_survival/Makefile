@@ -10,5 +10,5 @@ prereqs:
 discr_%.pdf: ../../scores/tcga/%.RData survival_discrete.r
 	Rscript survival_discrete.r $< $@
 
-%.pdf: ../../scores/tcga/%.RData survival.r
+cont_%.pdf: ../../scores/tcga/%.RData survival.r
 	Rscript survival.r $< $@
