@@ -60,7 +60,8 @@ pdf(OUTFILE, paper="a4r", width=26, height=20)
 on.exit(dev.off)
 
 # tissue covariate
-st$coxph(surv_days + alive ~ gender + age_days + study + scores, data=clinical, min_pts=100) %>%
+#FIXME: gender should work as covar here
+st$coxph(surv_days + alive ~ age_days + study + scores, data=clinical, min_pts=100) %>%
     filter(term == "scores") %>%
     select(scores, estimate, p.value, size) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr")) %>%

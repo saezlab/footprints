@@ -7,7 +7,7 @@ plt = import('plot')
 tcga = import('data/tcga')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_norm.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "speed_norm.pdf"
+OUTFILE = commandArgs(TRUE)[2] %or% "cont_speed_norm.pdf"
 
 clinical = tcga$clinical() %>%
     transmute(study = study,
@@ -53,7 +53,8 @@ pdf(OUTFILE, paper="a4r", width=26, height=20)
 on.exit(dev.off)
 
 # tissue covariate
-st$coxph(surv_days + alive ~ gender + age_days + study + scores, data=clinical, min_pts=100) %>%
+#TODO: add gender as covar; but: util tries to subset it, shouldn't
+st$coxph(surv_days + alive ~ age_days + study + scores, data=clinical, min_pts=100) %>%
     filter(term == "scores") %>%
     select(scores, estimate, p.value, size) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
