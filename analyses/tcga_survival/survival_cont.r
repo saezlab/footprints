@@ -54,11 +54,11 @@ on.exit(dev.off)
 
 # tissue covariate
 #TODO: add gender as covar; but: util tries to subset it, shouldn't
-st$coxph(surv_days + alive ~ age_days + study + scores, data=clinical, min_pts=100) %>%
+st$coxph(surv_days + alive ~ study + age_days + scores, data=clinical, min_pts=100) %>%
     filter(term == "scores") %>%
     select(scores, estimate, p.value, size) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
-    plt$color$p_effect("adj.p") %>%
+    plt$color$p_effect("adj.p", dir=-1) %>%
     mutate(label = scores) %>%
     plt$volcano(base.size=0.1) %>%
     print()
@@ -71,7 +71,7 @@ st$coxph(surv_days + alive ~ age_days + scores, subsets=clinical$study, data=cli
     group_by(subset) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
     ungroup() %>%
-    plt$color$p_effect("adj.p") %>%
+    plt$color$p_effect("adj.p", dir=-1) %>%
     mutate(label = paste(subset, scores, sep=":")) %>%
     plt$volcano(p=0.1) + ggtitle(sum(clinical$adj.p < 0.1)) %>%
     print()

@@ -1,3 +1,5 @@
+library(survival)
+library(GGally)
 library(dplyr)
 b = import('base')
 io = import('io')
@@ -24,7 +26,6 @@ clinical = tcga$clinical() %>%
 #    - subset treatment naive?
 #    - can it predict relapse?
 #    - does a treatment activate pathways?
-# -- all in covariate and subset tissue data
 
 scores = io$load(INFILE)
 # subset primary tumors only
@@ -42,43 +43,87 @@ clinical = cc[!nas,]
 scores = scores[!nas,]
 
 scores = ar$map(scores, along=1, subsets=clinical$study, function(x) {
-#    x = st$median_scale(x)
-    re = ifelse(x > unname(quantile(x)[4]), TRUE, FALSE)
-    if (sum(re) < 5)
+    qq = quantile(x)
+    re = rep(0, length(x))
+    re[x > unname(qq[4])] = 1
+    re[x < unname(qq[2])] = -1
+    if (sum(abs(re)) < 10)
         rep(NA, length(x))
     else
         re
-}) + 0
+})
 
 if (nrow(clinical) < 10)
     stop("survival+expression scores < 10 observations, stopping")
 
-clinical = as.list(clinical)
-clinical$scores = scores
-
-pdf(OUTFILE, paper="a4r", width=26, height=20)
-on.exit(dev.off)
-
 # tissue covariate
-#FIXME: gender should work as covar here
-st$coxph(surv_days + alive ~ age_days + study + scores, data=clinical, min_pts=100) %>%
+#assocs.pan = st$coxph(surv_days + alive ~ study + gender + age_days + scores,
+assocs.pan = st$coxph(surv_days + alive ~ study + scores,
+        data=clinical, min_pts=100) %>%
     filter(term == "scores") %>%
     select(scores, estimate, p.value, size) %>%
-    mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
-    plt$color$p_effect("adj.p") %>%
-    mutate(label = scores) %>%
-    plt$volcano(base.size=0.1) %>%
-    print()
+    mutate(adj.p = p.adjust(p.value, method="fdr"))
 
 # separate regressions for each tissue
-#TODO: add gender + make it work w/ only one
-st$coxph(surv_days + alive ~ age_days + scores, subsets=clinical$study, data=clinical, min_pts=20) %>%
+#assocs.tissue = st$coxph(surv_days + alive ~ gender + age_days + scores,
+assocs.tissue = st$coxph(surv_days + alive ~ scores,
+        subsets=clinical$study, data=clinical, min_pts=20) %>%
     filter(term == "scores") %>%
     select(scores, subset, estimate, p.value, size) %>%
     group_by(subset) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
-    ungroup() %>%
-    plt$color$p_effect("adj.p") %>%
+    ungroup()
+
+row2survFit = function(row, include_normal=FALSE) {
+    if ("subset" %in% names(row))
+        study_filter = clinical$study == row['subset']
+    else
+        study_filter = rep(TRUE, nrow(clinical))
+
+    clin = clinical[study_filter,]
+    pathway = as.factor(scores[study_filter, row['scores']])
+    stopifnot(levels(pathway) == c("-1", "0", "1"))
+    levels(pathway) = c("inactive", "normal", "active")
+
+    if (!include_normal)
+        pathway[pathway == "normal"] = NA
+
+    clin$surv_months = clin$surv_days / 30.4
+    clin$pathway = pathway
+
+    survfit(Surv(surv_months, alive) ~ pathway, data=clin) %>%
+        ggsurv() +
+            xlim(0, 52) +
+            theme_bw() +
+            xlab("Survival (weeks)") +
+            ggtitle(paste(row['subset'], row['scores'], row['adj.p'])) %>%
+        print()
+}
+
+pdf(OUTFILE, paper="a4r", width=26, height=20)
+
+assocs.pan %>%
+    plt$color$p_effect("adj.p", dir=-1) %>%
+    mutate(label = scores) %>%
+    plt$volcano(base.size=0.1) %>%
+    print()
+
+assocs.pan %>%
+    arrange(adj.p) %>%
+    filter(adj.p < 0.1) %>%
+    head(5) %>%
+    apply(1, row2survFit)
+
+assocs.tissue %>%
+    plt$color$p_effect("adj.p", dir=-1) %>%
     mutate(label = paste(subset, scores, sep=":")) %>%
     plt$volcano(p=0.1) %>%
     print()
+
+assocs.tissue %>%
+    arrange(adj.p) %>%
+    filter(adj.p < 0.1) %>%
+    head(15) %>%
+    apply(1, row2survFit)
+
+dev.off()
