@@ -68,4 +68,24 @@ names(records) = 1:length(records)
 index = lapply(records, function(x) x$index) %>% bind_rows()
 scores = lapply(records, function(x) x$zscores) %>% ar$stack(along=2)
 
+# pathifier #TODO: can this handle NAs?
+all_perturbed = lapply(all_combined, function(x) x$control) %>%
+    ar$stack(along=2)
+genesets = io$load("../util/genesets/reactome.RData")
+pathifier = import_package('pathifier')$quantify_pathways_deregulation(
+    data = cbind(all_control, all_perturbed),
+    allgenes = rownames(expr),
+    syms = genesets,
+    pathwaynames = names(genesets),
+    normals = c(rep(TRUE, ncol(all_control)), rep(FALSE, ncol(all_perturbed))),
+    attempts = 100,
+    min_exp = -Inf,
+    min_std = 0.4
+)
+pathifier = do.call(cbind, lapply(pathifier$scores, c))
+rownames(pathifier) = c(colnames(control), colnames(perturbed))
+
+
+
+
 save(index, scores, file=OUTFILE)
