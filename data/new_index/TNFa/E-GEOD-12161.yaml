@@ -1,6 +1,6 @@
 ---
 accession : E-GEOD-12161
-platform  : A-AFFY44
+platform  : A-AFFY-44
 pathway   : TNFa
 cells     : human hepatocellular carcinoma cell line HepG2
 treatment : 0.5 nM TNFa
