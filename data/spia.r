@@ -1,10 +1,10 @@
 # todo: move somewhere else(?)
 
-records2pathway = function(recs, exp) {
+records2pathway = function(recs, exp, lookup) {
     spia = import('../util/spia')
     b = import('base/operators')
 
-    record2pathway = function(rec) {
+    record2pathway = function(rec, exp) {
         print(rec)
 
         rownames(exp) = lookup$entrezgene[match(rownames(exp), lookup$hgnc_symbol)]
@@ -15,8 +15,9 @@ records2pathway = function(recs, exp) {
     }
 
     lapply(recs, function(r) {
-        result = record2pathway(r)
-        if (!is.na(result))
+        result = record2pathway(r, exp)
+        print(result)
+        if (!identical(result, NA) && !identical(result, NULL)) # why NULL?
             setNames(result, spia$kegg2speed[names(result)])
         else
             NA
@@ -26,6 +27,7 @@ records2pathway = function(recs, exp) {
 if (is.null(module_name())) {
     library(dplyr)
     io = import('io')
+    hpc = import('hpc')
 
     OUTFILE = "spia_scores.RData"
 
@@ -38,10 +40,16 @@ if (is.null(module_name())) {
     lookup = biomaRt::useMart(biomart="ensembl", dataset="hsapiens_gene_ensembl") %>%
         biomaRt::getBM(attributes=c("hgnc_symbol", "entrezgene"), mart=.)
 
-    scores = mapply(records2pathway, recs=records, exp=expr) %>%
-        unlist(recursive=FALSE)
+    scores = mapply(records2pathway, recs=records, exp=expr,
+                    MoreArgs=list(lookup=lookup)) %>%
+#    scores = hpc$Q(records2pathway,
+#                   iter = list(recs = records, exp = expr),
+#                   const = list(lookup = lookup),
+#                   memory=4096, n_jobs=20) %>%
+        unlist(recursive=FALSE) %>%
+        unname()
 
-    records = unlist(records, recurive=FALSE)
+    records = unname(unlist(records, recursive=FALSE))
     stopifnot(length(records) == length(scores))
 
     save(scores, records, file=OUTFILE)
