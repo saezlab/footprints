@@ -15,7 +15,7 @@ spia = function(samples, controls, per_sample=FALSE, organism="hsa", pathids=NUL
         if (verbose)
             message(sample)
         data2 = cbind(data[,sample,drop=FALSE], data[,colnames(controls)])
-        types = c("sample", rep("control", ncol(controls)))
+        types = c(rep("sample", length(sample)), rep("control", ncol(controls)))
 
         # compute differential expression between tumor and normal
         design = model.matrix(~ 0 + as.factor(types))
