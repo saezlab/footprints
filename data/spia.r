@@ -40,12 +40,10 @@ if (is.null(module_name())) {
     lookup = biomaRt::useMart(biomart="ensembl", dataset="hsapiens_gene_ensembl") %>%
         biomaRt::getBM(attributes=c("hgnc_symbol", "entrezgene"), mart=.)
 
-    scores = mapply(records2pathway, recs=records, exp=expr,
-                    MoreArgs=list(lookup=lookup)) %>%
-#    scores = hpc$Q(records2pathway,
-#                   iter = list(recs = records, exp = expr),
-#                   const = list(lookup = lookup),
-#                   memory=4096, n_jobs=20) %>%
+    scores = hpc$Q(records2pathway,
+                   recs = records, exp = expr,
+                   const = list(lookup = lookup),
+                   memory=4096, n_jobs=10) %>%
         unlist(recursive=FALSE) %>%
         unname()
 

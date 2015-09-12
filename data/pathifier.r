@@ -1,6 +1,5 @@
 # todo: move somewhere else(?)
-
-records2pathway = function(recs, exp) {
+records2pathway = function(recs, expr, genesets) {
     library(dplyr)
     import('base/operators')
     ar = import('array')
@@ -9,7 +8,7 @@ records2pathway = function(recs, exp) {
     record2pathway = function(rec) {
         print(rec)
 
-        data = exp[,c(rec$control, rec$perturbed)]
+        data = expr[,c(rec$control, rec$perturbed)]
         colnames(data) = c(rep("control", length(rec$control)),
                            rep("perturbed", length(rec$perturbed)))
 
@@ -38,6 +37,7 @@ records2pathway = function(recs, exp) {
 if (is.null(module_name())) {
     library(dplyr)
     io = import('io')
+    hpc = import('hpc')
 
     OUTFILE = "pathifier_scores.RData"
 
@@ -46,7 +46,10 @@ if (is.null(module_name())) {
     expr = data$expr
     records = data$records
 
-    scores = mapply(records2pathway, rec=records, exp=expr) %>%
+    scores = hpc$Q(records2pathway,
+                   recs = records, expr = expr,
+                   const = list(genesets=genesets),
+                   memory=4096, n_jobs=50) %>%
         unlist(recursive=FALSE)
 
     records = unlist(records, recursive=FALSE)
