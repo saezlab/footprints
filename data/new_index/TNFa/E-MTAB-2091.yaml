@@ -1,5 +1,6 @@
 ---
-accession : E-MTAB-2091.taml
+id        : TNFa.E-MTAB-2091.1
+accession : E-MTAB-2091
 platform  : A-AFFY-44
 pathway   : TNFa
 cells     : normal human bronchial epithelial cells

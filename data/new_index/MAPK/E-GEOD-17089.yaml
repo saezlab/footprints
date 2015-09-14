@@ -1,4 +1,5 @@
 ---
+id        : MAPK.E-GEOD-17089.1
 accession : E-GEOD-17089
 platform  : A-AFFY-143
 pathway   : MAPK
@@ -15,6 +16,7 @@ perturbed :
     - GSM427338 1
 
 ---
+id        : MAPK.E-GEOD-17089.2
 accession : E-GEOD-17089
 platform  : A-AFFY-143
 pathway   : MAPK
@@ -31,6 +33,7 @@ perturbed :
     - GSM427339 1
 
 ---
+id        : MAPK.E-GEOD-17089.3
 accession : E-GEOD-17089
 platform  : A-AFFY-143
 pathway   : MAPK
@@ -47,6 +50,7 @@ perturbed :
     - GSM427340 1
 
 ---
+id        : MAPK.E-GEOD-17089.4
 accession : E-GEOD-17089
 platform  : A-AFFY-143
 pathway   : MAPK
@@ -63,6 +67,7 @@ perturbed :
     - GSM427341 1
 
 ---
+id        : MAPK.E-GEOD-17089.5
 accession : E-GEOD-17089
 platform  : A-AFFY-143
 pathway   : MAPK
@@ -79,6 +84,7 @@ perturbed :
     - GSM427342 1
 
 ---
+id        : MAPK.E-GEOD-17089.6
 accession : E-GEOD-17089
 platform  : A-AFFY-143
 pathway   : MAPK

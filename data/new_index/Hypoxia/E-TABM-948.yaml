@@ -1,4 +1,5 @@
 ---
+id        : Hypoxia.E-TABM-948.1
 accession : E-TABM-948
 platform  : A-AFFY-44
 pathway   : Hypoxia
@@ -20,6 +21,7 @@ perturbed :
     - 09 3.1 DU145 Hypoxia 24h
 
 ---
+id        : Hypoxia.E-TABM-948.2
 accession : E-TABM-948
 platform  : A-AFFY-44
 pathway   : Hypoxia
@@ -41,6 +43,7 @@ perturbed :
     - 11 3.3 DU145 Hypoxia 48h
 
 ---
+id        : Hypoxia.E-TABM-948.3
 accession : E-TABM-948
 platform  : A-AFFY-44
 pathway   : Hypoxia
@@ -62,6 +65,7 @@ perturbed :
     - 21 3.7 PC3 Hypoxia 24h
 
 ---
+id        : Hypoxia.E-TABM-948.4
 accession : E-TABM-948
 platform  : A-AFFY-44
 pathway   : Hypoxia
@@ -83,6 +87,7 @@ perturbed :
     - 23 3.9 PC3 Hypoxia 48h
 
 ---
+id        : Hypoxia.E-TABM-948.5
 accession : E-TABM-948
 platform  : A-AFFY-44
 pathway   : Hypoxia
@@ -104,6 +109,7 @@ perturbed :
     - 33 3.13 LNCaP Hypoxia 24h
 
 ---
+id        : Hypoxia.E-TABM-948.6
 accession : E-TABM-948
 platform  : A-AFFY-44
 pathway   : Hypoxia
@@ -125,6 +131,7 @@ perturbed :
     - 35 3.15 LNCaP Hypoxia 48h
 
 ---
+id        : Hypoxia.E-TABM-948.7
 accession : E-TABM-948
 platform  : A-AFFY-44
 pathway   : Hypoxia
@@ -146,6 +153,7 @@ perturbed :
     - 45 3.19 22RV1 Hypoxia 24h
 
 ---
+id        : Hypoxia.E-TABM-948.8
 accession : E-TABM-948
 platform  : A-AFFY-44
 pathway   : Hypoxia
@@ -167,6 +175,7 @@ perturbed :
     - 47 3.21 22RV1 Hypoxia 48h
 
 ---
+id        : Hypoxia.E-TABM-948.9
 accession : E-TABM-948
 platform  : A-AFFY-44
 pathway   : Hypoxia
@@ -198,6 +207,7 @@ perturbed :
     - 73 1.43 PrEC-3 P3 Hypoxia 24h
 
 ---
+id        : Hypoxia.E-TABM-948.10
 accession : E-TABM-948
 platform  : A-AFFY-44
 pathway   : Hypoxia

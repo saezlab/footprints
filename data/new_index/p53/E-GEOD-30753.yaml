@@ -1,4 +1,5 @@
 ---
+id        : p53.E-GEOD-30753.1
 accession : E-GEOD-30753
 platform  : A-AFFY-141
 pathway   : p53
@@ -19,6 +20,7 @@ perturbed :
     - GSM763018 1
 
 ---
+id        : p53.E-GEOD-30753.2
 accession : E-GEOD-30753
 platform  : A-AFFY-141
 pathway   : p53

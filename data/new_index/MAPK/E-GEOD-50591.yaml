@@ -1,4 +1,5 @@
 ---
+id        : MAPK.E-GEOD-50591.1
 accession : E-GEOD-50591
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -16,6 +17,7 @@ perturbed :
     - GSM1224308 1
 
 ---
+id        : MAPK.E-GEOD-50591.2
 accession : E-GEOD-50591
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -33,6 +35,7 @@ perturbed :
     - GSM1224309 1
 
 ---
+id        : MAPK.E-GEOD-50591.3
 accession : E-GEOD-50591
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -50,6 +53,7 @@ perturbed :
     - GSM1224310 1
 
 ---
+id        : MAPK.E-GEOD-50591.4
 accession : E-GEOD-50591
 platform  : A-AFFY-37
 pathway   : MAPK

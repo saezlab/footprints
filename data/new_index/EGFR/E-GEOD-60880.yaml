@@ -1,4 +1,5 @@
 ---
+id        : EGFR.E-GEOD-60880.1
 accession : E-GEOD-60880
 platform  : A-AFFY-37
 pathway   : EGFR
@@ -23,6 +24,7 @@ perturbed :
     - GSM1492840 1
 
 ---
+id        : EGFR.E-GEOD-60880.2
 accession : E-GEOD-60880
 platform  : A-AFFY-37
 pathway   : EGFR
@@ -47,6 +49,7 @@ perturbed :
     - GSM1492843 1
 
 ---
+id        : EGFR.E-GEOD-60880.3
 accession : E-GEOD-60880
 platform  : A-AFFY-37
 pathway   : EGFR
@@ -71,6 +74,7 @@ perturbed :
     - GSM1492846 1
 
 ---
+id        : EGFR.E-GEOD-60880.4
 accession : E-GEOD-60880
 platform  : A-AFFY-37
 pathway   : EGFR

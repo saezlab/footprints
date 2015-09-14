@@ -1,4 +1,5 @@
 ---
+id        : VEGF.E-GEOD-52488.1
 accession : E-GEOD-52488
 platform  : A-AFFY-141
 pathway   : VEGF
@@ -19,6 +20,7 @@ perturbed :
     - GSM1267770 1
 
 ---
+id        : VEGF.E-GEOD-52488.2
 accession : E-GEOD-52488
 platform  : A-AFFY-141
 pathway   : VEGF

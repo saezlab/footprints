@@ -1,4 +1,5 @@
 ---
+id        : p53.E-GEOD-46642.1
 accession : E-GEOD-46642
 platform  : A-AFFY-44
 pathway   : p53
@@ -17,6 +18,7 @@ perturbed :
     - GSM1131231 1
 
 ---
+id        : p53.E-GEOD-46642.2
 accession : E-GEOD-46642
 platform  : A-AFFY-44
 pathway   : p53

@@ -1,4 +1,5 @@
 ---
+id        : EGFR.E-GEOD-14256.1
 accession : E-GEOD-14256
 platform  : A-AFFY-37
 pathway   : EGFR
@@ -15,6 +16,7 @@ perturbed :
     - GSE14256GSM356971
 
 ---
+id        : EGFR.E-GEOD-14256.2
 accession : E-GEOD-14256
 platform  : A-AFFY-37
 pathway   : EGFR

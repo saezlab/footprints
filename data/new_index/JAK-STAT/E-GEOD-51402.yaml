@@ -1,4 +1,5 @@
 ---
+id        : JAK-STAT.E-GEOD-51402.1
 accession : E-GEOD-51402
 platform  : A-AFFY-141
 pathway   : JAK-STAT
@@ -23,6 +24,7 @@ perturbed :
     - GSM1244807 1
 
 ---
+id        : JAK-STAT.E-GEOD-51402.2
 accession : E-GEOD-51402
 platform  : A-AFFY-141
 pathway   : JAK-STAT

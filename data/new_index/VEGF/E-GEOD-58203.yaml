@@ -1,4 +1,5 @@
 ---
+id        : VEGF.E-GEOD-58203.1
 accession : E-GEOD-58203
 platform  : A-GEOD-15445
 pathway   : VEGF
@@ -23,6 +24,7 @@ perturbed :
     - GSM1403279 1
 
 ---
+id        : VEGF.E-GEOD-58203.2
 accession : E-GEOD-58203
 platform  : A-GEOD-15445
 pathway   : VEGF
@@ -47,6 +49,7 @@ perturbed :
     - GSM1403280 1
 
 ---
+id        : VEGF.E-GEOD-58203.3
 accession : E-GEOD-58203
 platform  : A-GEOD-15445
 pathway   : VEGF
@@ -71,6 +74,7 @@ perturbed :
     - GSM1403281 1
 
 ---
+id        : VEGF.E-GEOD-58203.4
 accession : E-GEOD-58203
 platform  : A-GEOD-15445
 pathway   : VEGF

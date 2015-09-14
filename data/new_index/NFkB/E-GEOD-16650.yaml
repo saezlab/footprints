@@ -1,4 +1,5 @@
 ---
+id        : NFkB.E-GEOD-16650.1
 accession : E-GEOD-16650
 platform  : A-AFFY-44
 pathway   : NFkB
@@ -15,6 +16,7 @@ perturbed :
     - GSE16650GSM417778
 
 ---
+id        : NFkB.E-GEOD-16650.2
 accession : E-GEOD-16650
 platform  : A-AFFY-44
 pathway   : NFkB

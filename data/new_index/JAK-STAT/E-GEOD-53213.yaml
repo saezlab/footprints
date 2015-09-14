@@ -1,4 +1,5 @@
 ---
+id        : JAK-STAT.E-GEOD-53213.1
 accession : E-GEOD-53213
 platform  : A-AFFY-37
 pathway   : JAK-STAT
@@ -14,6 +15,7 @@ perturbed :
     - GSM1287752 1
 
 ---
+id        : JAK-STAT.E-GEOD-53213.2
 accession : E-GEOD-53213
 platform  : A-AFFY-37
 pathway   : JAK-STAT
@@ -29,6 +31,7 @@ perturbed :
     - GSM1287754 1
 
 ---
+id        : JAK-STAT.E-GEOD-53213.3
 accession : E-GEOD-53213
 platform  : A-AFFY-37
 pathway   : JAK-STAT
@@ -47,6 +50,7 @@ perturbed :
     - GSM1287759 1
 
 ---
+id        : JAK-STAT.E-GEOD-53213.4
 accession : E-GEOD-53213
 platform  : A-AFFY-37
 pathway   : JAK-STAT

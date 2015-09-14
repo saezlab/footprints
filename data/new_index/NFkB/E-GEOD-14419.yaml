@@ -1,4 +1,5 @@
 ---
+id        : NFkB.E-GEOD-14419.1
 accession : E-GEOD-14419
 platform  : A-AFFY-37
 pathway   : NFkB
@@ -19,6 +20,7 @@ perturbed :
     - GSE14419GSM360188
 
 ---
+id        : NFkB.E-GEOD-14419.2
 accession : E-GEOD-14419
 platform  : A-AFFY-37
 pathway   : NFkB

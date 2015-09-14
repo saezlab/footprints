@@ -1,4 +1,5 @@
 ---
+id        : Hypoxia.E-GEOD-47009.1
 accession : E-GEOD-47009
 platform  : A-GEOD-16686
 pathway   : Hypoxia
@@ -14,6 +15,7 @@ perturbed :
     - GSM1142894 1
 
 ---
+id        : Hypoxia.E-GEOD-47009.2
 accession : E-GEOD-47009
 platform  : A-GEOD-16686
 pathway   : Hypoxia

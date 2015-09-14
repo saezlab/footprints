@@ -1,4 +1,5 @@
 ---
+id        : EGFR.E-GEOD-20854.1
 accession : E-GEOD-20854
 platform  : A-AFFY-44
 pathway   : EGFR
@@ -15,6 +16,7 @@ perturbed :
     - GSM521598 1
 
 ---
+id        : EGFR.E-GEOD-20854.2
 accession : E-GEOD-20854
 platform  : A-AFFY-44
 pathway   : EGFR
@@ -31,6 +33,7 @@ perturbed :
     - GSM521604 1
 
 ---
+id        : EGFR.E-GEOD-20854.3
 accession : E-GEOD-20854
 platform  : A-AFFY-44
 pathway   : EGFR
@@ -47,6 +50,7 @@ perturbed :
     - GSM521600 1
 
 ---
+id        : EGFR.E-GEOD-20854.4
 accession : E-GEOD-20854
 platform  : A-AFFY-44
 pathway   : EGFR
@@ -63,6 +67,7 @@ perturbed :
     - GSM521606 1
 
 ---
+id        : EGFR.E-GEOD-20854.5
 accession : E-GEOD-20854
 platform  : A-AFFY-44
 pathway   : EGFR
@@ -79,6 +84,7 @@ perturbed :
     - GSM521610 1
 
 ---
+id        : EGFR.E-GEOD-20854.6
 accession : E-GEOD-20854
 platform  : A-AFFY-44
 pathway   : EGFR
@@ -95,6 +101,7 @@ perturbed :
     - GSM521616 1
 
 ---
+id        : EGFR.E-GEOD-20854.7
 accession : E-GEOD-20854
 platform  : A-AFFY-44
 pathway   : EGFR
@@ -111,6 +118,7 @@ perturbed :
     - GSM521612 1
 
 ---
+id        : EGFR.E-GEOD-20854.8
 accession : E-GEOD-20854
 platform  : A-AFFY-44
 pathway   : EGFR

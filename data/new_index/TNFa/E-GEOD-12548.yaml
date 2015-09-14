@@ -1,4 +1,5 @@
 ---
+id        : TNFa.E-GEOD-12548.1
 accession : E-GEOD-12548
 platform  : A-AFFY-44
 pathway   : TNFa
@@ -16,6 +17,7 @@ perturbed :
     - GSE12548GSM315434
 
 ---
+id        : TNFa.E-GEOD-12548.2
 accession : E-GEOD-12548
 platform  : A-AFFY-44
 pathway   : TNFa
@@ -34,6 +36,7 @@ perturbed :
     - GSE12548GSM315437
 
 ---
+id        : TNFa.E-GEOD-12548.3
 accession : E-GEOD-12548
 platform  : A-AFFY-44
 pathway   : TNFa
@@ -52,6 +55,7 @@ perturbed :
     - GSE12548GSM315626
 
 ---
+id        : TNFa.E-GEOD-12548.4
 accession : E-GEOD-12548
 platform  : A-AFFY-44
 pathway   : TNFa

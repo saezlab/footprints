@@ -1,4 +1,5 @@
 ---
+id        : TNFa.E-GEOD-8166.1
 accession : E-GEOD-8166
 platform  : A-AFFY-44
 pathway   : TNFa
@@ -14,6 +15,7 @@ perturbed :
     - GSE8166GSM202183
 
 ---
+id        : TNFa.E-GEOD-8166.2
 accession : E-GEOD-8166
 platform  : A-AFFY-44
 pathway   : TNFa

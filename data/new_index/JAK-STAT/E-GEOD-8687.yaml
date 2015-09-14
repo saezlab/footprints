@@ -1,4 +1,5 @@
 ---
+id        : JAK-STAT.E-GEOD-8687.1
 accession : E-GEOD-8687
 platform  : A-AFFY-44
 pathway   : JAK-STAT
@@ -17,6 +18,7 @@ perturbed :
     - GSE8687GSM215366
 
 ---
+id        : JAK-STAT.E-GEOD-8687.2
 accession : E-GEOD-8687
 platform  : A-AFFY-44
 pathway   : JAK-STAT
@@ -35,6 +37,7 @@ perturbed :
     - GSE8687GSM215369
 
 ---
+id        : JAK-STAT.E-GEOD-8687.3
 accession : E-GEOD-8687
 platform  : A-AFFY-44
 pathway   : JAK-STAT

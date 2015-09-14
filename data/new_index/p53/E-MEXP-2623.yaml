@@ -1,4 +1,5 @@
 ---
+id        : p53.E-MEXP-2623.1
 accession : E-MEXP-2623
 platform  : A-AFFY-37
 pathway   : p53
@@ -15,6 +16,7 @@ perturbed :
     - HCT116_P53p_1h # p53 WT, 4 Gy
 
 ---
+id        : p53.E-MEXP-2623.2
 accession : E-MEXP-2623
 platform  : A-AFFY-37
 pathway   : p53
@@ -31,6 +33,7 @@ perturbed :
     - HCT116_P53p_12h # p53 WT, 4 Gy
 
 ---
+id        : p53.E-MEXP-2623.3
 accession : E-MEXP-2623
 platform  : A-AFFY-37
 pathway   : p53

@@ -1,4 +1,5 @@
 ---
+id        : VEGF.E-GEOD-18913.1
 accession : E-GEOD-18913 
 platform  : A-AFFY-44
 pathway   : VEGF
@@ -18,6 +19,7 @@ perturbed :
     - GSM468622 1
 
 ---
+id        : VEGF.E-GEOD-18913.2
 accession : E-GEOD-18913 
 platform  : A-AFFY-44
 pathway   : VEGF

@@ -1,4 +1,5 @@
 ---
+id        : VEGF.E-GEOD-1923.1
 accession : E-GEOD-1923
 platform  : A-AFFY-1
 pathway   : VEGF
@@ -23,6 +24,7 @@ perturbed :
     - GSE1923GSM34588
 
 ---
+id        : VEGF.E-GEOD-1923.2
 accession : E-GEOD-1923
 platform  : A-AFFY-1
 pathway   : VEGF

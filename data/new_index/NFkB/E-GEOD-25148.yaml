@@ -1,5 +1,6 @@
 ---
-accession : E-GEOD-25146
+id        : NFkB.E-GEOD-25148.1
+accession : E-GEOD-25148
 platform  : A-AFFY-44
 pathway   : NFkB
 cells     : HEK-TLR2 cells
@@ -15,7 +16,8 @@ perturbed :
     - GSM618020 1
 
 ---
-accession : E-GEOD-25146
+id        : NFkB.E-GEOD-25148.2
+accession : E-GEOD-25148
 platform  : A-AFFY-44
 pathway   : NFkB
 cells     : HEK-TLR2 cells
@@ -31,7 +33,8 @@ perturbed :
     - GSM618024 1
 
 ---
-accession : E-GEOD-25146
+id        : NFkB.E-GEOD-25148.3
+accession : E-GEOD-25148
 platform  : A-AFFY-44
 pathway   : NFkB
 cells     : HEK-TLR2 cells
@@ -47,7 +50,8 @@ perturbed :
     - GSM618028 1
 
 ---
-accession : E-GEOD-25146
+id        : NFkB.E-GEOD-25148.4
+accession : E-GEOD-25148
 platform  : A-AFFY-44
 pathway   : NFkB
 cells     : HEK-TLR2 cells

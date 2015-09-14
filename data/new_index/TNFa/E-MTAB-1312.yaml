@@ -1,4 +1,5 @@
 ---
+id        : TNFa.E-MTAB-1312.1
 accession : E-MTAB-1312
 platform  : A-AFFY-44
 pathway   : TNFa
@@ -17,6 +18,7 @@ perturbed :
     - 13440-126
 
 ---
+id        : TNFa.E-MTAB-1312.2
 accession : E-MTAB-1312
 platform  : A-AFFY-44
 pathway   : TNFa
@@ -36,6 +38,7 @@ perturbed :
 
 
 ---
+id        : TNFa.E-MTAB-1312.3
 accession : E-MTAB-1312
 platform  : A-AFFY-44
 pathway   : TNFa
@@ -54,6 +57,7 @@ perturbed :
     - 13440-132
 
 ---
+id        : TNFa.E-MTAB-1312.4
 accession : E-MTAB-1312
 platform  : A-AFFY-44
 pathway   : TNFa
@@ -72,6 +76,7 @@ perturbed :
     - 13440-138
 
 ---
+id        : TNFa.E-MTAB-1312.5
 accession : E-MTAB-1312
 platform  : A-AFFY-44
 pathway   : TNFa
@@ -90,6 +95,7 @@ perturbed :
     - 13440-141
 
 ---
+id        : TNFa.E-MTAB-1312.6
 accession : E-MTAB-1312
 platform  : A-AFFY-44
 pathway   : TNFa
@@ -108,6 +114,7 @@ perturbed :
     - 13440-144
 
 ---
+id        : TNFa.E-MTAB-1312.7
 accession : E-MTAB-1312
 platform  : A-AFFY-44
 pathway   : TNFa
@@ -126,6 +133,7 @@ perturbed :
     - 13440-150
 
 ---
+id        : TNFa.E-MTAB-1312.8
 accession : E-MTAB-1312
 platform  : A-AFFY-44
 pathway   : TNFa
@@ -144,6 +152,7 @@ perturbed :
     - 13440-153
 
 ---
+id        : TNFa.E-MTAB-1312.9
 accession : E-MTAB-1312
 platform  : A-AFFY-44
 pathway   : TNFa
@@ -162,6 +171,7 @@ perturbed :
     - 13440-156
 
 ---
+id        : TNFa.E-MTAB-1312.10
 accession : E-MTAB-1312
 platform  : A-AFFY-44
 pathway   : TNFa
@@ -180,6 +190,7 @@ perturbed :
     - 13440-162
 
 ---
+id        : TNFa.E-MTAB-1312.11
 accession : E-MTAB-1312
 platform  : A-AFFY-44
 pathway   : TNFa
@@ -198,6 +209,7 @@ perturbed :
     - 13440-165
 
 ---
+id        : TNFa.E-MTAB-1312.12
 accession : E-MTAB-1312
 platform  : A-AFFY-44
 pathway   : TNFa

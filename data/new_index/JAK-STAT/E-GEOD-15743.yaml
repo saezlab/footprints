@@ -1,4 +1,5 @@
 ---
+id        : JAK-STAT.E-GEOD-15743.1
 accession : E-GEOD-15743
 platform  : A-AFFY-44
 pathway   : JAK-STAT
@@ -14,6 +15,7 @@ perturbed :
     - GSM394094 1
 
 ---
+id        : JAK-STAT.E-GEOD-15743.2
 accession : E-GEOD-15743
 platform  : A-AFFY-44
 pathway   : JAK-STAT

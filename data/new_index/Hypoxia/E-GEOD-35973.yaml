@@ -1,4 +1,5 @@
 ---
+id        : Hypoxia.E-GEOD-35973.1
 accession : E-GEOD-35973
 platform  : A-AFFY-44
 pathway   : Hypoxia
@@ -15,6 +16,7 @@ perturbed :
     - GSM878206 1
 
 ---
+id        : Hypoxia.E-GEOD-35973.2
 accession : E-GEOD-35973
 platform  : A-AFFY-44
 pathway   : Hypoxia

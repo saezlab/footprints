@@ -1,4 +1,5 @@
 ---
+id        : NFkB.E-GEOD-46914.1
 accession : E-GEOD-46914
 platform  : A-AFFY-44
 pathway   : NFkB
@@ -23,6 +24,7 @@ perturbed :
     - GSM1141056 1
 
 ---
+id        : NFkB.E-GEOD-46914.2
 accession : E-GEOD-46914
 platform  : A-AFFY-44
 pathway   : NFkB

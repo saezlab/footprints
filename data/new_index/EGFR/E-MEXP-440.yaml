@@ -1,4 +1,5 @@
 ---
+id        : EGFR.E-MEXP-440.1
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -15,6 +16,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181636
 
 ---
+id        : EGFR.E-MEXP-440.2
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -31,6 +33,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181639
 
 ---
+id        : EGFR.E-MEXP-440.3
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -47,6 +50,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181637
 
 ---
+id        : EGFR.E-MEXP-440.4
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -63,6 +67,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181640
 
 ---
+id        : EGFR.E-MEXP-440.5
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -79,6 +84,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181638
 
 ---
+id        : EGFR.E-MEXP-440.6
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -95,6 +101,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181641
 
 ---
+id        : EGFR.E-MEXP-440.7
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -111,6 +118,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181644
 
 ---
+id        : EGFR.E-MEXP-440.8
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -127,6 +135,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181647
 
 ---
+id        : EGFR.E-MEXP-440.9
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -143,6 +152,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181645
 
 ---
+id        : EGFR.E-MEXP-440.10
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -159,6 +169,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181648
 
 ---
+id        : EGFR.E-MEXP-440.11
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -175,6 +186,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181646
 
 ---
+id        : EGFR.E-MEXP-440.12
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -191,6 +203,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181649
 
 ---
+id        : EGFR.E-MEXP-440.13
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -207,6 +220,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181653
 
 ---
+id        : EGFR.E-MEXP-440.14
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -223,6 +237,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181656
 
 ---
+id        : EGFR.E-MEXP-440.15
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -239,6 +254,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181654
 
 ---
+id        : EGFR.E-MEXP-440.16
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -255,6 +271,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181657
 
 ---
+id        : EGFR.E-MEXP-440.17
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -271,6 +288,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181655
 
 ---
+id        : EGFR.E-MEXP-440.18
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -287,6 +305,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181658
 
 ---
+id        : EGFR.E-MEXP-440.19
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -303,6 +322,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181662
 
 ---
+id        : EGFR.E-MEXP-440.20
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -319,6 +339,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181665
 
 ---
+id        : EGFR.E-MEXP-440.21
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -335,6 +356,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181663
 
 ---
+id        : EGFR.E-MEXP-440.22
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -351,6 +373,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181666
 
 ---
+id        : EGFR.E-MEXP-440.23
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR
@@ -367,6 +390,7 @@ perturbed :
     - Homo sapiens__ebi.ac.uk:MIAMExpress:BioSource:181664
 
 ---
+id        : EGFR.E-MEXP-440.24
 accession : E-MEXP-440
 platform  : A-AFFY-33
 pathway   : EGFR

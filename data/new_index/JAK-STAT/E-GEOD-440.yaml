@@ -1,4 +1,5 @@
 ---
+id        : JAK-STAT.E-GEOD-440.1
 accession : E-GEOD-440
 platform  : A-AFFY-1
 pathway   : JAK-STAT
@@ -17,6 +18,7 @@ perturbed :
     - GSE440GSM7765
 
 ---
+id        : JAK-STAT.E-GEOD-440.2
 accession : E-GEOD-440
 platform  : A-AFFY-1
 pathway   : JAK-STAT
@@ -35,6 +37,7 @@ perturbed :
     - GSE440GSM7766
 
 ---
+id        : JAK-STAT.E-GEOD-440.3
 accession : E-GEOD-440
 platform  : A-AFFY-1
 pathway   : JAK-STAT

@@ -1,4 +1,5 @@
 ---
+id        : JAK-STAT.E-GEOD-36287.1
 accession : E-GEOD-36287
 platform  : A-AFFY-44
 pathway   : JAK-STAT
@@ -23,6 +24,7 @@ perturbed :
     - GSM886429 1
 
 ---
+id        : JAK-STAT.E-GEOD-36287.2
 accession : E-GEOD-36287
 platform  : A-AFFY-44
 pathway   : JAK-STAT

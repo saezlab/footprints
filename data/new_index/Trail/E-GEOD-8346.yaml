@@ -1,4 +1,5 @@
 ---
+id        : Trail.E-GEOD-8346.1
 accession : E-GEOD-8346
 platform  : A-AFFY-37
 pathway   : Trail
@@ -19,6 +20,7 @@ perturbed :
     - GSE8346GSM206837
 
 ---
+id        : Trail.E-GEOD-8346.2
 accession : E-GEOD-8346
 platform  : A-AFFY-37
 pathway   : Trail

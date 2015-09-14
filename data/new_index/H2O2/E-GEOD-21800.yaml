@@ -1,4 +1,5 @@
 ---
+id        : H2O2.E-GEOD-21800.1
 accession : E-GEOD-21800
 platform  : A-AFFY-141
 pathway   : H2O2
@@ -17,6 +18,7 @@ perturbed :
     - GSM542926 1
 
 ---
+id        : H2O2.E-GEOD-21800.2
 accession : E-GEOD-21800
 platform  : A-AFFY-141
 pathway   : H2O2
@@ -35,6 +37,7 @@ perturbed :
     - GSM542927 1
 
 ---
+id        : H2O2.E-GEOD-21800.3
 accession : E-GEOD-21800
 platform  : A-AFFY-141
 pathway   : H2O2
@@ -53,6 +56,7 @@ perturbed :
     - GSM542928 1
 
 ---
+id        : H2O2.E-GEOD-21800.4
 accession : E-GEOD-21800
 platform  : A-AFFY-141
 pathway   : H2O2
@@ -71,6 +75,7 @@ perturbed :
     - GSM542930 1
 
 ---
+id        : H2O2.E-GEOD-21800.5
 accession : E-GEOD-21800
 platform  : A-AFFY-141
 pathway   : H2O2
@@ -89,6 +94,7 @@ perturbed :
     - GSM542931 1
 
 ---
+id        : H2O2.E-GEOD-21800.6
 accession : E-GEOD-21800
 platform  : A-AFFY-141
 pathway   : H2O2
@@ -107,6 +113,7 @@ perturbed :
     - GSM542932 1
 
 ---
+id        : H2O2.E-GEOD-21800.7
 accession : E-GEOD-21800
 platform  : A-AFFY-141
 pathway   : H2O2
@@ -125,6 +132,7 @@ perturbed :
     - GSM542934 1
 
 ---
+id        : H2O2.E-GEOD-21800.8
 accession : E-GEOD-21800
 platform  : A-AFFY-141
 pathway   : H2O2
@@ -143,6 +151,7 @@ perturbed :
     - GSM542935 1
 
 ---
+id        : H2O2.E-GEOD-21800.9
 accession : E-GEOD-21800
 platform  : A-AFFY-141
 pathway   : H2O2

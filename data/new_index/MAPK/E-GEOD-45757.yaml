@@ -1,4 +1,5 @@
 ---
+id        : MAPK.E-GEOD-45757.1
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -17,6 +18,7 @@ perturbed :
     - GSM1113682 1
 
 ---
+id        : MAPK.E-GEOD-45757.2
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -35,6 +37,7 @@ perturbed :
     - GSM1113688 1
 
 ---
+id        : MAPK.E-GEOD-45757.3
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -53,6 +56,7 @@ perturbed :
     - GSM1113694 1
 
 ---
+id        : MAPK.E-GEOD-45757.4
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -71,6 +75,7 @@ perturbed :
     - GSM1113700 1
 
 ---
+id        : MAPK.E-GEOD-45757.5
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -89,6 +94,7 @@ perturbed :
     - GSM1113706 1
 
 ---
+id        : MAPK.E-GEOD-45757.6
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -107,6 +113,7 @@ perturbed :
     - GSM1113712 1
 
 ---
+id        : MAPK.E-GEOD-45757.7
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -125,6 +132,7 @@ perturbed :
     - GSM1113718 1
 
 ---
+id        : MAPK.E-GEOD-45757.8
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -143,6 +151,7 @@ perturbed :
     - GSM1113724 1
 
 ---
+id        : MAPK.E-GEOD-45757.9
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -161,6 +170,7 @@ perturbed :
     - GSM1113730 1
 
 ---
+id        : MAPK.E-GEOD-45757.10
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -179,6 +189,7 @@ perturbed :
     - GSM1113736 1
 
 ---
+id        : MAPK.E-GEOD-45757.11
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -197,6 +208,7 @@ perturbed :
     - GSM1113742 1
 
 ---
+id        : MAPK.E-GEOD-45757.12
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -215,6 +227,7 @@ perturbed :
     - GSM1113748 1
 
 ---
+id        : MAPK.E-GEOD-45757.13
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -233,6 +246,7 @@ perturbed :
     - GSM1113754 1
 
 ---
+id        : MAPK.E-GEOD-45757.14
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -251,6 +265,7 @@ perturbed :
     - GSM1113760 1
 
 ---
+id        : MAPK.E-GEOD-45757.15
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -269,6 +284,7 @@ perturbed :
     - GSM1113766 1
 
 ---
+id        : MAPK.E-GEOD-45757.16
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -287,6 +303,7 @@ perturbed :
     - GSM1113772 1
 
 ---
+id        : MAPK.E-GEOD-45757.17
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -305,6 +322,7 @@ perturbed :
     - GSM1113778 1
 
 ---
+id        : MAPK.E-GEOD-45757.18
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -323,6 +341,7 @@ perturbed :
     - GSM1113784 1
 
 ---
+id        : MAPK.E-GEOD-45757.19
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -341,6 +360,7 @@ perturbed :
     - GSM1113790 1
 
 ---
+id        : MAPK.E-GEOD-45757.20
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -359,6 +379,7 @@ perturbed :
     - GSM1113796 1
 
 ---
+id        : MAPK.E-GEOD-45757.21
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK
@@ -377,6 +398,7 @@ perturbed :
     - GSM1113802 1
 
 ---
+id        : MAPK.E-GEOD-45757.22
 accession : E-GEOD-45757
 platform  : A-AFFY-37
 pathway   : MAPK

@@ -1,4 +1,5 @@
 ---
+id        : p53.E-GEOD-15658.1
 accession : E-GEOD-15658
 platform  : A-AFFY-44
 pathway   : p53
@@ -16,6 +17,7 @@ perturbed :
     - GSM385648 1
 
 ---
+id        : p53.E-GEOD-15658.2
 accession : E-GEOD-15658
 platform  : A-AFFY-44
 pathway   : p53

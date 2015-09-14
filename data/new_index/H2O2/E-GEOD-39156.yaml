@@ -1,4 +1,5 @@
 ---
+id        : H2O2.E-GEOD-39156.1
 accession : E-GEOD-39156
 platform  : A-AFFY-44
 pathway   : H2O2
@@ -27,6 +28,7 @@ perturbed :
     - GSM957155 1
 
 ---
+id        : H2O2.E-GEOD-39156.2
 accession : E-GEOD-39156
 platform  : A-AFFY-44
 pathway   : H2O2
@@ -55,6 +57,7 @@ perturbed :
     - GSM957156 1
 
 ---
+id        : H2O2.E-GEOD-39156.3
 accession : E-GEOD-39156
 platform  : A-AFFY-44
 pathway   : H2O2
@@ -83,6 +86,7 @@ perturbed :
     - GSM957153 1
 
 ---
+id        : H2O2.E-GEOD-39156.4
 accession : E-GEOD-39156
 platform  : A-AFFY-44
 pathway   : H2O2

@@ -1,4 +1,5 @@
 ---
+id        : p53.E-GEOD-56640.1
 accession : E-GEOD-56640
 platform  : A-GEOD-18627
 pathway   : p53
@@ -14,6 +15,7 @@ perturbed :
     - GSM1376850 1 # scrambled siRNA
 
 #---
+#id        : p53.E-GEOD-46642.2
 #accession : E-GEOD-56640
 #platform  : A-GEOD-18627
 #pathway   : p53

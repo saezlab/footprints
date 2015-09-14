@@ -1,4 +1,5 @@
 ---
+id        : EGFR.E-GEOD-42781.1
 accession : E-GEOD-42781
 platform  : A-AFFY-141
 pathway   : EGFR
@@ -17,6 +18,7 @@ perturbed :
     - GSM1049840 1
 
 ---
+id        : EGFR.E-GEOD-42781.2
 accession : E-GEOD-42781
 platform  : A-AFFY-141
 pathway   : EGFR

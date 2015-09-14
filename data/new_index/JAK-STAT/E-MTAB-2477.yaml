@@ -1,4 +1,5 @@
 ---
+id        : JAK-STAT.E-MTAB-2477.1
 accession : E-MTAB-2477
 platform  : A-GEOD-13667
 pathway   : JAK-STAT
@@ -16,6 +17,7 @@ perturbed :
     - iHLC_ALFA_06h
 
 ---
+id        : JAK-STAT.E-MTAB-2477.2
 accession : E-MTAB-2477
 platform  : A-GEOD-13667
 pathway   : JAK-STAT
@@ -33,6 +35,7 @@ perturbed :
     - iHLC_ALFA_12h
 
 ---
+id        : JAK-STAT.E-MTAB-2477.3
 accession : E-MTAB-2477
 platform  : A-GEOD-13667
 pathway   : JAK-STAT
@@ -50,6 +53,7 @@ perturbed :
     - iHLC_ALFA_24h
 
 ---
+id        : JAK-STAT.E-MTAB-2477.4
 accession : E-MTAB-2477
 platform  : A-GEOD-13667
 pathway   : JAK-STAT
@@ -67,6 +71,7 @@ perturbed :
     - iHLC_Lambda_06h
 
 ---
+id        : JAK-STAT.E-MTAB-2477.5
 accession : E-MTAB-2477
 platform  : A-GEOD-13667
 pathway   : JAK-STAT
@@ -84,6 +89,7 @@ perturbed :
     - iHLC_Lambda_12h
 
 ---
+id        : JAK-STAT.E-MTAB-2477.6
 accession : E-MTAB-2477
 platform  : A-GEOD-13667
 pathway   : JAK-STAT

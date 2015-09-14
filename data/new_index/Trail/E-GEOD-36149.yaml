@@ -1,4 +1,5 @@
 ---
+id        : Trail.E-GEOD-36149.1
 accession : E-GEOD-36149
 platform  : A-AFFY-44
 pathway   : Trail
@@ -15,6 +16,7 @@ perturbed :
     - GSM881833 1
 
 ---
+id        : Trail.E-GEOD-36149.2
 accession : E-GEOD-36149
 platform  : A-AFFY-44
 pathway   : Trail
@@ -31,6 +33,7 @@ perturbed :
     - GSM881834 1
 
 ---
+id        : Trail.E-GEOD-36149.3
 accession : E-GEOD-36149
 platform  : A-AFFY-44
 pathway   : Trail
@@ -47,6 +50,7 @@ perturbed :
     - GSM881830 1
 
 ---
+id        : Trail.E-GEOD-36149.4
 accession : E-GEOD-36149
 platform  : A-AFFY-44
 pathway   : Trail

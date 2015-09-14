@@ -1,4 +1,5 @@
 ---
+id        : EGFR.E-GEOD-21618.1
 accession : E-GEOD-21618
 platform  : A-GEOD-10371
 pathway   : EGFR
@@ -20,6 +21,7 @@ perturbed :
     - GSM539624 1
 
 ---
+id        : EGFR.E-GEOD-21618.2
 accession : E-GEOD-21618
 platform  : A-GEOD-10371
 pathway   : EGFR
@@ -41,6 +43,7 @@ perturbed :
     - GSM539625 1
 
 ---
+id        : EGFR.E-GEOD-21618.3
 accession : E-GEOD-21618
 platform  : A-GEOD-10371
 pathway   : EGFR

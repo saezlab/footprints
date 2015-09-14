@@ -1,4 +1,5 @@
 ---
+id        : TNFa.E-GEOD-24422.1
 accession : E-GEOD-24422
 platform  : A-AFFY-44
 pathway   : TNFa
@@ -15,6 +16,7 @@ perturbed :
     - GSM601626 1
 
 ---
+id        : TNFa.E-GEOD-24422.2
 accession : E-GEOD-24422
 platform  : A-AFFY-44
 pathway   : TNFa
@@ -31,6 +33,7 @@ perturbed :
     - GSM601634 1
 
 ---
+id        : TNFa.E-GEOD-24422.3
 accession : E-GEOD-24422
 platform  : A-AFFY-44
 pathway   : TNFa

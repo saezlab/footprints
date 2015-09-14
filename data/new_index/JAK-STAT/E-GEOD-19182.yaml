@@ -1,4 +1,5 @@
 ---
+id        : JAK-STAT.E-GEOD-19182.1
 accession : E-GEOD-19182
 platform  : A-AFFY-141
 pathway   : JAK-STAT
@@ -20,6 +21,7 @@ perturbed :
     - GSM475542 1
 
 ---
+id        : JAK-STAT.E-GEOD-19182.2
 accession : E-GEOD-19182
 platform  : A-AFFY-141
 pathway   : JAK-STAT
@@ -41,6 +43,7 @@ perturbed :
     - GSM475552 1
 
 ---
+id        : JAK-STAT.E-GEOD-19182.3
 accession : E-GEOD-19182
 platform  : A-AFFY-141
 pathway   : JAK-STAT
@@ -62,6 +65,7 @@ perturbed :
     - GSM475553 1
 
 ---
+id        : JAK-STAT.E-GEOD-19182.4
 accession : E-GEOD-19182
 platform  : A-AFFY-141
 pathway   : JAK-STAT

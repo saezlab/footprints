@@ -1,4 +1,5 @@
 ---
+id        : VEGF.E-GEOD-53633.1
 accession : E-GEOD-53633
 platform  : A-AFFY-44
 pathway   : VEGF
@@ -15,6 +16,7 @@ perturbed :
     - GSM1297529 1
 
 #--- QC fail
+#id        : VEGF.E-GEOD-53633.2
 #accession : E-GEOD-53633
 #platform  : A-AFFY-44
 #pathway   : VEGF

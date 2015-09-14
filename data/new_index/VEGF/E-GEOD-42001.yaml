@@ -1,4 +1,5 @@
 ---
+id        : VEGF.E-GEOD-42001.1
 accession : E-GEOD-42001
 platform  : A-AFFY-44
 pathway   : VEGF
@@ -14,6 +15,7 @@ perturbed :
     - GSM1030383 1
 
 ---
+id        : VEGF.E-GEOD-42001.2
 accession : E-GEOD-42001
 platform  : A-AFFY-44
 pathway   : VEGF
@@ -29,6 +31,7 @@ perturbed :
     - GSM1030384 1
 
 ---
+id        : VEGF.E-GEOD-42001.3
 accession : E-GEOD-42001
 platform  : A-AFFY-44
 pathway   : VEGF
@@ -44,6 +47,7 @@ perturbed :
     - GSM1030385 1
 
 ---
+id        : VEGF.E-GEOD-42001.4
 accession : E-GEOD-42001
 platform  : A-AFFY-44
 pathway   : VEGF
@@ -59,6 +63,7 @@ perturbed :
     - GSM1030386 1
 
 ---
+id        : VEGF.E-GEOD-42001.5
 accession : E-GEOD-42001
 platform  : A-AFFY-44
 pathway   : VEGF
@@ -74,6 +79,7 @@ perturbed :
     - GSM1030387 1
 
 ---
+id        : VEGF.E-GEOD-42001.6
 accession : E-GEOD-42001
 platform  : A-AFFY-44
 pathway   : VEGF
@@ -89,6 +95,7 @@ perturbed :
     - GSM1030395 1
 
 ---
+id        : VEGF.E-GEOD-42001.7
 accession : E-GEOD-42001
 platform  : A-AFFY-44
 pathway   : VEGF
@@ -104,6 +111,7 @@ perturbed :
     - GSM1030396 1
 
 ---
+id        : VEGF.E-GEOD-42001.8
 accession : E-GEOD-42001
 platform  : A-AFFY-44
 pathway   : VEGF
@@ -119,6 +127,7 @@ perturbed :
     - GSM1030397 1
 
 ---
+id        : VEGF.E-GEOD-42001.9
 accession : E-GEOD-42001
 platform  : A-AFFY-44
 pathway   : VEGF
@@ -134,6 +143,7 @@ perturbed :
     - GSM1030398 1
 
 ---
+id        : VEGF.E-GEOD-42001.10
 accession : E-GEOD-42001
 platform  : A-AFFY-44
 pathway   : VEGF

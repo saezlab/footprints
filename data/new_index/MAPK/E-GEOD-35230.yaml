@@ -1,4 +1,5 @@
 ---
+id        : MAPK.E-GEOD-35230.1
 accession : E-GEOD-35230
 platform  : A-AFFY-44
 pathway   : MAPK
@@ -17,6 +18,7 @@ perturbed :
     - GSM864265 1
 
 ---
+id        : MAPK.E-GEOD-35230.2
 accession : E-GEOD-35230
 platform  : A-AFFY-44
 pathway   : MAPK
@@ -34,6 +36,7 @@ perturbed :
     - GSM864267 1
 
 ---
+id        : MAPK.E-GEOD-35230.3
 accession : E-GEOD-35230
 platform  : A-AFFY-44
 pathway   : MAPK
@@ -51,6 +54,7 @@ perturbed :
     - GSM864260 1
 
 ---
+id        : MAPK.E-GEOD-35230.4
 accession : E-GEOD-35230
 platform  : A-AFFY-44
 pathway   : MAPK
@@ -68,6 +72,7 @@ perturbed :
     - GSM864262 1
 
 ---
+id        : MAPK.E-GEOD-35230.5
 accession : E-GEOD-35230
 platform  : A-AFFY-44
 pathway   : MAPK
@@ -86,6 +91,7 @@ perturbed :
     - GSM864270 1
 
 ---
+id        : MAPK.E-GEOD-35230.6
 accession : E-GEOD-35230
 platform  : A-AFFY-44
 pathway   : MAPK
