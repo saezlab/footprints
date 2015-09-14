@@ -49,7 +49,7 @@ if (is.null(module_name())) {
     scores = hpc$Q(records2pathway,
                    recs = records, expr = expr,
                    const = list(genesets=genesets),
-                   memory=4096, n_jobs=50) %>%
+                   memory=1024, n_jobs=50) %>%
         unlist(recursive=FALSE)
 
     records = unlist(records, recursive=FALSE)
