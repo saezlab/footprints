@@ -46,7 +46,7 @@ result = hpc$Q(tissue2scores, tissue=pathways,
     const=list(INDEX=INDEX, genesets=genesets), memory=8192, n_jobs=50)
 
 result = ar$stack(result, along=3) #TODO: check why this is required
-result = ar$map(result2, along=3, function(x) mean(x,na.rm=TRUE))
+result = ar$map(result, along=3, function(x) mean(x,na.rm=TRUE))
 
 # save results
 save(result, file=OUTFILE)
