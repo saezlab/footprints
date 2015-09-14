@@ -4,7 +4,7 @@ MODEL_SCRIPTS = $(wildcard ../../model/model_*.r)
 MODELS = $(MODEL_SCRIPTS:%.r=%.RData)
 SETS = $(wildcard ../../util/genesets/*.RData)
 SPEED_SCORES = $(MODELS:../../model/model_%=speed_%)
-SET_SCORES = $(SETS:../../util/genesets/%=%)
+SET_SCORES = $(SETS:../../util/genesets/%=gsea_%)
 
 .PHONY: prereqs scores
 
@@ -21,5 +21,5 @@ print-%: ; @echo $* = $($*)
 speed_%.RData: speed.r ../../model/model_%.RData
 	Rscript $< $(word 2,$^) $@
 
-%.RData: set_enrichment.r ../../util/genesets/%.RData ../../data/zscores.RData
+gsea_%.RData: set_enrichment.r ../../util/genesets/%.RData ../../data/zscores.RData
 	$(call bsub_log,1024) Rscript $< $(word 2,$^) $@
