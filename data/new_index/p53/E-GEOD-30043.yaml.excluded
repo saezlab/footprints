@@ -1,3 +1,4 @@
+# reason for exclusion: uses OciChip (don't know to to process data on there)
 ---
 accession : E-GEOD-30043
 platform  : A-GEOD-9355
