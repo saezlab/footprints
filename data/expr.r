@@ -12,33 +12,16 @@
 #'
 #' It will discard all experiments for which there are not at least
 #' two controls and one perturbed arrays.
-NULL
+invisible(NULL)
 
-library(dplyr)
-b = import('base')
-io = import('io')
-ar = import('array')
+subset_expr = function(rec) {
+    expr_id = paste(rec$accession, rec$platform, sep=".")
+    e = expr[[expr_id]]
 
-filter_record = function(record, expr_avail) {
-    record$control = intersect(record$control, expr_avail)
-    record$perturbed = intersect(record$perturbed, expr_avail)
-    if (length(record$control) > 1 && length(record$perturbed) > 0)
-        record
-    else
-        NULL
-}
-
-subset_expr = function(id) {
-    message(id)
-    split_id = strsplit(id, "\\.")[[1]]
-
-    if (!split_id[1] %in% names(yaml)) {
-        warning("No index for expression object: ", id)
+    if (is.null(e)) {
+        warning("Discarding record (no expression available): ", rec$id)
         return(NULL)
     }
-
-    e = expr[[id]]
-    yaml = yaml[names(yaml) == split_id[1]] # only one otherwise
 
     # convert sample identifiers to those used in AE/yaml
     pd = Biobase::pData(e)
@@ -47,39 +30,38 @@ subset_expr = function(id) {
     colnames(emat) = mapping[colnames(emat)]
 
     # filter out records that do not have enough samples available
-    records = yaml[sapply(yaml, function(x) x$platform == split_id[2])] %>%
-        lapply(function(r) filter_record(r, colnames(emat))) %>%
-        b$omit$null()
-
-    if (length(records) == 0) {
-        warning("Discarding ID: ", id)
-        return(NULL)
-    }
-
-    # subset expression matrix to the samples used
-    in_both = sapply(records, function(x) c(x$control, x$perturbed)) %>%
-        unlist() %>%
-        unique()
-    list(records=records, expr=emat[,in_both])
+    rec$control = intersect(rec$control, colnames(emat))
+    rec$perturbed = intersect(rec$perturbed, colnames(emat))
+    if (length(rec$control) < 2 || length(rec$perturbed) < 1)
+        warning("Discarding record (not enough samples): ", rec$id)
+    else
+        list(record=rec, expr=emat[,c(rec$control, rec$perturbed)])
 }
 
 if (is.null(module_name())) {
+    library(dplyr)
+    b = import('base')
+    io = import('io')
+    ar = import('array')
+
     YAML = commandArgs(TRUE)[1] %or% list.files("new_index", "[0-9]+\\.yaml$",
                                      recursive=TRUE, full.names=TRUE)
     EXPR = commandArgs(TRUE)[2] %or% list.files("normalized", "\\.RData", full.names=TRUE)
     OUTFILE = commandArgs(TRUE)[3] %or% "./expr.RData"
 
     # load all index files
-    yaml = lapply(YAML, function(y) io$read_yaml(y, drop=FALSE)) %>%
-        do.call(c, .) %>%
-        setNames(., lapply(., function(x) x$accession))
+    records = lapply(YAML, function(y) io$read_yaml(y, drop=FALSE)) %>%
+        unlist(recursive=FALSE) %>%
+        b$omit$null() %>%
+        setNames(., lapply(., function(x) x$id))
+    stopifnot(sum(duplicated(names(records))) == 0)
 
     # load all expression objects
     expr = lapply(EXPR, function(e) io$load(e)) %>%
         setNames(b$grep("/([^/]+)\\.RData", EXPR)) %>%
-        do.call(c, .)
+        unlist(recursive=FALSE)
 
-    # to check: discard expression objects that are not named properly
+    #TODO: check: discard expression objects that are not named properly
     keep = grepl("\\.", names(expr))
     if (any(!keep)) {
         warning("Discarding ", paste(names(expr)[!keep], collapse=", "))
@@ -87,9 +69,9 @@ if (is.null(module_name())) {
     }
 
     # get all data and corresponding index, save to file
-    data = sapply(names(expr), subset_expr, simplify=FALSE, USE.NAMES=TRUE) %>%
+    data = sapply(records, subset_expr, simplify=FALSE, USE.NAMES=TRUE) %>%
         b$omit$null()
-    records = sapply(data, function(x) x$records, simplify=FALSE, USE.NAMES=TRUE)
+    records = sapply(data, function(x) x$record, simplify=FALSE, USE.NAMES=TRUE)
     expr = sapply(data, function(x) x$expr, simplify=FALSE, USE.NAMES=TRUE)
     save(records, expr, file=OUTFILE)
 }
