@@ -7,6 +7,7 @@ cells     : Human vascular smooth muscle cells
 treatment : 10 ng/ml TRAIL
 effect    : activating
 hours     : 6
+exclusion : test-set
 
 control   :
     - GSM741281 1

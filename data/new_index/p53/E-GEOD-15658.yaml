@@ -7,6 +7,7 @@ cells     : Saos-2 osteosarcoma cell line treated with PRIMA-1
 treatment : transcriptionally more active p53-His273
 effect    : activating
 hours     : 6
+exclusion : test-set
 
 control   :
     - GSM385356 1 # p53 null

@@ -7,6 +7,7 @@ cells     : HCC827 cell line
 treatment : 1 uM BEZ235
 effect    : inhibiting
 hours     : 6
+exclusion : test-set
 
 control   :
     - GSM1240545 1

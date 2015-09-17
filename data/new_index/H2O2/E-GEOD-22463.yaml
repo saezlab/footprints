@@ -7,6 +7,7 @@ cells     : PBMCs
 treatment : H2O2
 effect    : activating
 hours     : 3
+exclusion : test-set
 
 control   :
     - GSM558027 1
@@ -36,6 +37,7 @@ cells     : PBMCs
 treatment : H2O2
 effect    : activating
 hours     : 6
+exclusion : test-set
 
 control   :
     - GSM558027 1

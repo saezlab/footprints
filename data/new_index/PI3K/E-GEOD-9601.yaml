@@ -7,6 +7,7 @@ cells     : HCMV-Infected monocytes
 treatment : LY294002
 effect    : inhibiting
 hours     : 4
+exclusion : test-set
 
 control   :
     - GSE9601GSM242894

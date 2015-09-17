@@ -7,6 +7,7 @@ cells     : primary human bladder smooth muscle cells
 treatment : 1 nM PDGF-BB
 effect    : activating
 hours     : 4
+exclusion : test-set
 
 control   :
     - GSM1267763 1
@@ -28,6 +29,7 @@ cells     : primary human bladder smooth muscle cells
 treatment : 1 nM PDGF-BB
 effect    : activating
 hours     : 24
+exclusion : test-set
 
 control   :
     - GSM1267763 1

@@ -7,6 +7,7 @@ cells     : HaCaT cell line
 treatment : mock transfection + EGF stimulus
 effect    : activating
 hours     : 4
+exclusion : test-set
 
 control   :
     - GSM816831 1
@@ -30,6 +31,7 @@ cells     : HaCaT cell line
 treatment : EGFR transfection + EGF stimulus
 effect    : activating
 hours     : 4
+exclusion : test-set
 
 control   :
     - GSM816831 1

@@ -7,6 +7,7 @@ cells     : HEK-HT cells
 treatment : Ras (G12V,Y40C) activation mutants - said to activate mostly PI3K
 effect    : activating
 hours     : 24 # estimate
+exclusion : test-set
 
 control   :
     - GSM373089 1

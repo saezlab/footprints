@@ -7,6 +7,7 @@ cells     : SkMel-1,5,19,28, Malme3M BRAFV600E melanoma cell lines
 treatment : 250 nM PLX4032
 effect    : inhibiting
 hours     : 8
+exclusion : test-set
 
 control   :
     - GSM501256 1
@@ -30,6 +31,7 @@ cells     : SkMel-1,5,19,28, Malme3M BRAFV600E melanoma cell lines
 treatment : 1 uM PLX4032
 effect    : inhibiting
 hours     : 8
+exclusion : test-set
 
 control   :
     - GSM501256 1

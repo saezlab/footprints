@@ -7,6 +7,7 @@ cells     : HCT116, HT-29, SW480 colon cancer cells
 treatment : AG1478 EGFR inhibitor
 effect    : inhibiting
 hours     : 48
+exclusion : test-set
 
 control   :
     - GSM455560 1

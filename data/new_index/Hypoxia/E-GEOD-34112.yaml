@@ -7,6 +7,7 @@ cells     : PC-3 prostate cancer cells
 treatment : 0.2% Oxygen
 effect    : activating
 hours     : 48
+exclusion : test-set
 
 control   :
     - GSM842048 1 # no perturbed

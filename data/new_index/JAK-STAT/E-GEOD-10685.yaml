@@ -7,6 +7,7 @@ cells     : Human skeletal muscle biopsies
 treatment : IL-6
 effect    : activating
 hours     : 3
+exclusion : test-set
 
 control   :
     - GSM269808 1
@@ -26,6 +27,7 @@ cells     : Human skeletal muscle biopsies
 treatment : IL-6
 effect    : activating
 hours     : 6
+exclusion : test-set
 
 control   :
     - GSM269808 1
