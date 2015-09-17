@@ -9,7 +9,7 @@ SCORES = $(YAML:new_index/%.yaml=scores/%.RData)
 .SECONDEXPANSION:
 .PHONY: scores normalize clean
 
-scores: $(SCORES) zscores.RData dscores.RData
+scores: $(SCORES) zscores.RData dscores.RData expr.RData
 
 normalize: $(NORMALIZED)
 
@@ -18,6 +18,9 @@ clean:
 
 print-%:
 	@echo $* = $($*)
+
+expr.RData: normalize
+	Rscript expr.r
 
 %scores.RData: scores_assemble.r $(SCORES)
 	Rscript $< $* $@ $(filter-out $<,$^)

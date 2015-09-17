@@ -1,12 +1,14 @@
+library(Biobase) # otherwise loaded objects might return NULL instead of data
 b = import('base')
 io = import('io')
 
 # better: mapping yaml->zscore file
 YAML = commandArgs(TRUE)[1] %or% "new_index/MAPK/E-GEOD-51212.yaml"
 EXPR = commandArgs(TRUE)[2] %or% "normalized/E-GEOD-51212.RData"
-OUTFILE = commandArgs(TRUE)[3] %or% "zscores/MAPK/E-GEOD-51212.RData"
+OUTFILE = commandArgs(TRUE)[3] %or% "scores/MAPK/E-GEOD-51212.RData"
 
 yaml = io$read_yaml(YAML, drop=FALSE)
+yaml = yaml[!sapply(yaml, is.null)] # in case there are empty records (e.g. E-GEOD-7403, first)
 expr = io$load(EXPR)
 
 # for each contrast, compute z-scores
@@ -35,7 +37,7 @@ record2zscore = function(record, expr) {
     control = emat[,sub_control, drop=FALSE]
     perturbed = emat[,sub_perturbed, drop=FALSE]
 
-    # build models
+    # build speed models
     mean_control= apply(control, 1, mean)
     sd_control = apply(control, 1, sd)
     mean_perturbed = apply(perturbed, 1, mean)

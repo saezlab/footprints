@@ -87,9 +87,9 @@ if (is.null(module_name())) {
     }
 
     # get all data and corresponding index, save to file
-    data = lapply(names(expr), subset_expr) %>%
+    data = sapply(names(expr), subset_expr, simplify=FALSE, USE.NAMES=TRUE) %>%
         b$omit$null()
-    records = lapply(data, function(x) x$records)
-    expr = lapply(data, function(x) x$expr)
+    records = sapply(data, function(x) x$records, simplify=FALSE, USE.NAMES=TRUE)
+    expr = sapply(data, function(x) x$expr, simplify=FALSE, USE.NAMES=TRUE)
     save(records, expr, file=OUTFILE)
 }
