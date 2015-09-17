@@ -1,0 +1,38 @@
+---
+id        : Trail.E-GEOD-62533.1
+accession : E-GEOD-62533
+platform  : A-AFFY-44
+pathway   : Trail
+cells     : PBMCs
+treatment : BV6 (degrades apoptosis inhibiting peptides)
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM1528450 1
+    - GSM1528456 1
+    - GSM1528458 1
+perturbed :
+    - GSM1528449 1
+    - GSM1528455 1
+    - GSM1528457 1
+
+---
+id        : Trail.E-GEOD-62533.2
+accession : E-GEOD-62533
+platform  : A-AFFY-44
+pathway   : Trail
+cells     : PBMCs
+treatment : BV6 (degrades apoptosis inhibiting peptides)
+effect    : activating
+hours     : 20
+
+control   :
+    - GSM1528448 1
+    - GSM1528452 1
+    - GSM1528454 1
+perturbed :
+    - GSM1528447 1
+    - GSM1528451 1
+    - GSM1528453 1
+...

@@ -2,7 +2,7 @@
 id        : EGFR.E-GEOD-18232.1
 accession : E-GEOD-18232
 platform  : A-AFFY-33
-pathway   : MAPK
+pathway   : EGFR
 cells     : HCT116, HT-29, SW480 colon cancer cells
 treatment : AG1478 EGFR inhibitor
 effect    : inhibiting

@@ -2,9 +2,9 @@
 id        : PI3K.E-GEOD-14934.1
 accession : E-GEOD-14934
 platform  : A-AFFY-37
-pathway   : MAPK
+pathway   : PI3K
 cells     : HEK-HT cells
-treatment : Ras (G12V,Y40C) activation mutants
+treatment : Ras (G12V,Y40C) activation mutants - said to activate mostly PI3K
 effect    : activating
 hours     : 24 # estimate
 
