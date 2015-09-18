@@ -1,3 +1,5 @@
+include ../../Makefile.inc
+
 # this only works if scores target was run before
 GSCORES = $(wildcard ../../scores/gdsc/*.RData)
 GPLOTS = $(GSCORES:../../scores/gdsc/%.RData=gdsc/%.pdf)
@@ -6,17 +8,17 @@ CPLOTS = $(CSCORES:../../scores/ccle/%.RData=ccle/%.pdf)
 
 .PHONY: prereqs
 
-all: prereqs $(GPLOTS) $(CPLOTS)
+all: prereqs $(GPLOTS) #$(CPLOTS)
 
 prereqs:
 	make -C ../../scores/gdsc $(notdir $(GSCORES))
-	make -C ../../scores/ccle $(notdir $(CSCORES))
+#	make -C ../../scores/ccle $(notdir $(CSCORES))
 
 print-%: ; @echo $* = $($*)
 
 # use each model script to create a model file
 gdsc/%.pdf: drug_assocs.r ../../scores/gdsc/%.RData
-	Rscript $< $(word 2,$^) $@
+	$(call bsub_log,1024) Rscript $< $(word 2,$^) $@
 
 ccle/%.pdf: drug_assocs.r ../../scores/ccle/%.RData
-	Rscript $< $(word 2,$^) $@
+	$(call bsub_log,1024) Rscript $< $(word 2,$^) $@
