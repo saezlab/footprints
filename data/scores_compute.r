@@ -27,9 +27,10 @@ b = import('base')
 io = import('io')
 ar = import('array')
 
-OUTFILE = commandArgs(TRUE)[1] %or% "scores.RData"
+INFILE = commandArgs(TRUE)[1] %or% "expr.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "scores.RData"
 
-data = io$load('expr.RData')
+data = io$load(INFILE)
 records = data$records
 expr = data$expr
 

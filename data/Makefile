@@ -9,25 +9,20 @@ SCORES = $(YAML:new_index/%.yaml=scores/%.RData)
 .SECONDEXPANSION:
 .PHONY: scores normalize clean
 
-scores: $(SCORES) zscores.RData dscores.RData expr.RData
+scores: scores.RData
+
+expr: expr.RData
 
 normalize: $(NORMALIZED)
 
 clean:
 	rm -f $(ZSCORES) $(NORMALIZED) $(NORMALIZED:%.RData=%.log)
 
-print-%:
-	@echo $* = $($*)
-
 expr.RData: normalize
 	Rscript expr.r
 
-%scores.RData: scores_assemble.r $(SCORES)
-	Rscript $< $* $@ $(filter-out $<,$^)
-
-scores/%.RData: new_index/%.yaml normalized/$$(notdir %).RData scores_compute.r
-	@mkdir -p $(shell dirname $@)
-	Rscript scores_compute.r $(word 1,$^) $(word 2,$^) $@
+scores.RData: scores_compute.r expr.RData
+	Rscript $^ $(word 2,$@) $@
 
 normalized/%.RData: normalize_data.r
 	@mkdir -p $(shell dirname $@)
