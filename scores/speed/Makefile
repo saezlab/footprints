@@ -8,7 +8,7 @@ SET_SCORES = $(SETS:../../util/genesets/%=gsea_%)
 
 .PHONY: prereqs scores
 
-scores: prereqs $(SPEED_SCORES) $(SET_SCORES)
+scores: prereqs $(SPEED_SCORES) $(SET_SCORES) pathifier.RData spia.RData
 
 prereqs:
 	make -C ../../data scores.RData
@@ -23,3 +23,9 @@ speed_%.RData: speed.r ../../model/model_%.RData
 
 gsea_%.RData: set_enrichment.r ../../util/genesets/%.RData ../../data/scores.RData
 	$(call bsub_log,1024) Rscript $< $(word 2,$^) $@
+
+pathifier.RData: pathifier.r ../../util/genesets/reactome.RData  ../../data/expr.RData
+	Rscript $^ $@
+
+spia.RData: spia.r ../../data/expr.RData
+	Rscript $^ $@

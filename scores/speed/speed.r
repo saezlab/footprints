@@ -17,10 +17,21 @@ expr = speed$expr[keep]
 
 # scaling: assume mean/sd across scores per sample is constant
 # this protects against missing genes, etc in platform
-expr2scores = function(vecs, expr) {
+expr2scores = function(index, expr, vecs) {
     ar$intersect(vecs, expr, along=1)
-    t(expr) %*% vecs %>% ar$map(along=1, scale)
+    t(expr) %*% vecs %>%
+        ar$map(along=1, scale) %>%
+        ar$map(along=1, function(x)
+            mean(x[names(x) %in% index$perturbed]) -
+            mean(x[names(x) %in% index$control]))
 }
-scores = mapply(expr2scores, expr=expr, MoreArgs=list(vecs=vecs), SIMPLIFY=FALSE)
+
+scores = mapply(expr2scores, index=index, expr=expr,
+    MoreArgs=list(vecs=vecs), SIMPLIFY=FALSE) %>%
+    ar$stack(along=1)
+
+filter_index = function(x) x[! names(x) %in% c('control', 'perturbed', 'exclusion')]
+index = lapply(index, filter_index) %>%
+    bind_rows()
 
 save(scores, index, file=OUTFILE)
