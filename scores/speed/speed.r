@@ -21,9 +21,7 @@ expr2scores = function(index, expr, vecs) {
     ar$intersect(vecs, expr, along=1)
     t(expr) %*% vecs %>%
         ar$map(along=1, scale) %>%
-        ar$map(along=1, function(x)
-            mean(x[names(x) %in% index$perturbed]) -
-            mean(x[names(x) %in% index$control]))
+        ar$map(along=1, function(x) mean(x[index$perturbed]) - mean(x[index$control]))
 }
 
 scores = mapply(expr2scores, index=index, expr=expr,
