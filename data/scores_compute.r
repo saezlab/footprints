@@ -22,22 +22,25 @@ expr2zscore = function(rec, emat) {
     list(zscores=zscores, dscores=logFC, index=index)
 }
 
+library(dplyr)
 b = import('base')
 io = import('io')
 ar = import('array')
+
+OUTFILE = commandArgs(TRUE)[1] %or% "scores.RData"
 
 data = io$load('expr.RData')
 records = data$records
 expr = data$expr
 
-result = mapply(expr2zscore, rec=records, emat=expr)
+result = mapply(expr2zscore, rec=records, emat=expr, SIMPLIFY=FALSE)
 
 index = lapply(result, function(x) x$index) %>%
     bind_rows()
 zscores = lapply(result, function(x) x$zscores) %>%
-    ar$stack(along=1)
+    ar$stack(along=2)
 dscores = lapply(result, function(x) x$dscores) %>%
-    ar$stack(along=1) %>%
+    ar$stack(along=2) %>%
     impute::impute.knn()
 dscores = dscores$data
 

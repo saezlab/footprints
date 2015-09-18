@@ -6,15 +6,17 @@ gsea = import('../../util/gsea')
 INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/go.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "go.RData"
 
-# load gene list and expression
+# load gene lists for pathways
 genelist = io$load(INFILE)
-speed = io$load('../../data/dscores.RData')
 
-expr = speed$scores
-index = speed$index %>%
-    dplyr::select(-control, -perturbed)
+# get index, expr data for test set
+speed = io$load('../../data/expr.RData')
+keep = sapply(speed$records, function(x) identical(x$exclusion, "test-set"))
+index = speed$records[keep]
+expr = speed$expr[keep]
 
 # perform GSEA
-scores = gsea$runGSEA(expr, genelist, transform.normal=TRUE)
+scores = mapply(gsea$runGSEA, expr=expr,
+    MoreArgs=list(sigs=genelist, transform.normal=TRUE))
 
 save(scores, index, file=OUTFILE)

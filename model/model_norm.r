@@ -10,10 +10,10 @@ st = import('stats')
 INFILE = commandArgs(TRUE)[1] %or% "../data/zscores.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "model_norm.RData"
 
-# load speed data, index
-zobj = io$load('../data/zscores.RData')
-zscores = zobj$scores
-index = zobj$index
+# load speed data, index; filter for train set only
+zobj = io$load('../data/scores.RData')
+index = zobj$index %>% filter(is.na(exclusion))
+zscores = zobj$zscores[,index$id]
 
 # adjust object for linear modelling
 inh = index$effect=="inhibiting"

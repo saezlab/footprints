@@ -6,10 +6,10 @@ MODELS = $(MODEL_SCRIPTS:%.r=%.RData)
 models: prereqs $(MODELS)
 
 prereqs:
-	make -C ../data zscores.RData
+	make -C ../data scores.RData
 
 print-%: ; @echo $* = $($*)
 
 # use each model script to create a model file
-model_%.RData: model_%.r ../data/zscores.RData
+model_%.RData: model_%.r ../data/scores.RData
 	Rscript $< $(word 3,$^) $@
