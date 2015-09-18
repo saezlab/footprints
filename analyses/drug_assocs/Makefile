@@ -14,11 +14,9 @@ prereqs:
 	make -C ../../scores/gdsc $(notdir $(GSCORES))
 #	make -C ../../scores/ccle $(notdir $(CSCORES))
 
-print-%: ; @echo $* = $($*)
-
 # use each model script to create a model file
 gdsc/%.pdf: drug_assocs.r ../../scores/gdsc/%.RData
-	$(call bsub_log,1024) Rscript $< $(word 2,$^) $@
+	Rscript $< $(word 2,$^) $@
 
 ccle/%.pdf: drug_assocs.r ../../scores/ccle/%.RData
-	$(call bsub_log,1024) Rscript $< $(word 2,$^) $@
+	Rscript $< $(word 2,$^) $@
