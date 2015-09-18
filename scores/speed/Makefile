@@ -19,13 +19,13 @@ print-%: ; @echo $* = $($*)
 
 # use each model to create scores object
 speed_%.RData: speed.r ../../model/model_%.RData
-	Rscript $^ $@
+	$(call bsub_log,1024) Rscript $^ $@
 
 gsea_%.RData: set_enrichment.r ../../util/genesets/%.RData ../../data/scores.RData
-	Rscript $^ $@
+	$(call bsub_log,1024) Rscript $^ $@
 
 pathifier.RData: pathifier.r ../../util/genesets/reactome.RData  ../../data/expr.RData
-	Rscript $^ $@
+	$(call bsub_log,1024) Rscript $^ $@
 
 spia.RData: spia.r ../../data/expr.RData
-	Rscript $^ $@
+	$(call bsub_log,1024) Rscript $^ $@
