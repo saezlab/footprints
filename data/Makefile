@@ -5,8 +5,8 @@ ACCESSION = $(basename $(notdir $(YAML)))
 NORMALIZED = $(ACCESSION:%=normalized/%.RData)
 SCORES = $(YAML:new_index/%.yaml=scores/%.RData)
 
-.SECONDARY:
-.SECONDEXPANSION:
+#.SECONDARY:
+#.SECONDEXPANSION:
 .PHONY: scores normalize clean
 
 scores: scores.RData
@@ -18,11 +18,11 @@ normalize: $(NORMALIZED)
 clean:
 	rm -f $(SCORES) $(NORMALIZED) $(NORMALIZED:%.RData=%.log)
 
-expr.RData: normalize
-	Rscript expr.r
+expr.RData: expr.r $(NORMALIZED)
+	Rscript $^
 
 scores.RData: scores.r expr.RData
-	Rscript $^ $(word 2,$@) $@
+	Rscript $< $(word 2,$^) $@
 
 normalized/%.RData: normalize_data.r
 	@mkdir -p $(shell dirname $@)

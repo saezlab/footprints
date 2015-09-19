@@ -1,8 +1,8 @@
 include ../../Makefile.inc
 
-MODEL_SCRIPTS = $(wildcard ../../model/model_*.r)
+MODEL_SCRIPTS = $(wildcard ../../model_nocv/model_*.r)
 MODELS = $(MODEL_SCRIPTS:%.r=%.RData)
-SPEED_SCORES = $(MODELS:../../model/model_%=speed_%)
+SPEED_SCORES = $(MODELS:../../model_nocv/model_%=speed_%)
 
 .PHONY: prereqs scores
 
@@ -12,8 +12,6 @@ prereqs:
 	make -C ../../data scores.RData
 	make -C ../../model $(notdir $(MODELS))
 
-print-%: ; @echo $* = $($*)
-
 # use each model to create scores object
-speed_%.RData: speed.r ../../model/model_%.RData
+speed_%.RData: speed.r ../../model_nocv/model_%.RData
 	$(call bsub_log,1024) Rscript $^ $@
