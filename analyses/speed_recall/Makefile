@@ -1,10 +1,10 @@
-SCORES = $(wildcard ../../scores/speed/*.RData)
-PLOTS = $(SCORES:../../scores/speed/%.RData=%.pdf) zscores.pdf
+SCORES = $(wildcard ../../scores/speed_train/*.RData)
+HEATMAPS = $(SCORES:../../scores/speed_train/%.RData=heatmap_%.pdf) zscores.pdf
 
-plot: $(PLOTS)
+plot: $(HEATMAPS)
 
 zscores.pdf: zscores.r
 	Rscript $<
 
-%.pdf: ../../scores/speed/%.RData heatmap.r
+heatmap_%.pdf: ../../scores/speed_train/%.RData heatmap.r
 	Rscript heatmap.r $< $@

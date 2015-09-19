@@ -2,16 +2,16 @@ library(dplyr)
 b = import('base')
 io = import('io')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/speed/speed_linear.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/speed_train/speed_linear.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "speed_linear.pdf"
 
-scores = io$load(INFILE)
-index = scores$index %>%
-    mutate(id = rownames(.)) %>%
+data = io$load(INFILE)
+index = data$index %>%
     select(id, pathway, cells, accession, effect) %>%
-    arrange(pathway)
+    arrange(pathway) %>%
+    as.data.frame()
 
-scores = scores$scores[index$id,]
+scores = data$scores[index$id,]
 scores = t(scores)
 rownames(scores) = substr(rownames(scores), 0, 40)
 
@@ -20,7 +20,6 @@ rownames(index) = index$id
 index$id = NULL
 
 pdf(OUTFILE, paper="a4r", width=26, height=20)
-on.exit(dev.off)
 
 pheatmap::pheatmap(scores,
                    annotation = index,
@@ -28,3 +27,5 @@ pheatmap::pheatmap(scores,
                    cluster_cols = FALSE,
                    show_colnames = FALSE,
                    annotation_legend = FALSE)
+
+dev.off()
