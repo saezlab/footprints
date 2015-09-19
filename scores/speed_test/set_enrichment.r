@@ -5,13 +5,14 @@ ar = import('array')
 hpc = import('hpc')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/go.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "go.RData"
+EXPR = commandArgs(TRUE)[2] %or% "../../data/expr.RData"
+OUTFILE = commandArgs(TRUE)[3] %or% "go.RData"
 
 # load gene lists for pathways
 genelist = io$load(INFILE)
 
 # get index, expr data for test set
-speed = io$load('../../data/expr.RData')
+speed = io$load(EXPR)
 keep = sapply(speed$records, function(x) identical(x$exclusion, "test-set"))
 index = speed$records[keep]
 expr = speed$expr[keep]

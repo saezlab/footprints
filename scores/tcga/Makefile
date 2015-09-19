@@ -26,5 +26,5 @@ pathifier.RData: pathifier.r ../../util/genesets/reactome.RData
 speed_%.RData: speed.r ../../model/model_%.RData
 	$(call bsub_log,10240) Rscript $^ $@
 
-gsea_%.RData: set_enrichment.r ../../util/genesets/%.RData ../../data/zscores.RData
+gsea_%.RData: set_enrichment.r ../../util/genesets/%.RData
 	$(call bsub_log,10240) Rscript $^ $@
