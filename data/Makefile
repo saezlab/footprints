@@ -16,12 +16,12 @@ expr: expr.RData
 normalize: $(NORMALIZED)
 
 clean:
-	rm -f $(ZSCORES) $(NORMALIZED) $(NORMALIZED:%.RData=%.log)
+	rm -f $(SCORES) $(NORMALIZED) $(NORMALIZED:%.RData=%.log)
 
 expr.RData: normalize
 	Rscript expr.r
 
-scores.RData: scores_compute.r expr.RData
+scores.RData: scores.r expr.RData
 	Rscript $^ $(word 2,$@) $@
 
 normalized/%.RData: normalize_data.r
