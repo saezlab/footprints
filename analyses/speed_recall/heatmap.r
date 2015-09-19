@@ -7,8 +7,8 @@ OUTFILE = commandArgs(TRUE)[2] %or% "speed_linear.pdf"
 
 data = io$load(INFILE)
 index = data$index %>%
-    select(id, pathway, cells, accession, effect) %>%
-    arrange(pathway) %>%
+    select(id, pathway, effect) %>%
+    arrange(pathway, effect) %>%
     as.data.frame()
 
 scores = data$scores[index$id,]
@@ -26,6 +26,6 @@ pheatmap::pheatmap(scores,
                    scale = "column",
                    cluster_cols = FALSE,
                    show_colnames = FALSE,
-                   annotation_legend = FALSE)
+                   annotation_legend = TRUE)
 
 dev.off()
