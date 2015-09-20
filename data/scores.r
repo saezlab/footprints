@@ -38,6 +38,19 @@ result = mapply(expr2zscore, rec=records, emat=expr, SIMPLIFY=FALSE)
 
 index = lapply(result, function(x) x$index) %>%
     bind_rows()
+### TEST SET TEST
+# sample a third all accessions for each pathway, designate test set
+set.seed(1829571)
+test = index %>%
+    select(pathway,accession) %>%
+    distinct() %>%
+    group_by(pathway) %>%
+    do(sample_frac(.,0.3)) %>%
+    ungroup()
+excl = rep(NA, nrow(index))
+excl[index$accession %in% test$accession] = "test-set"
+index$exclusion = excl
+### TEST SET TEST
 zscores = lapply(result, function(x) x$zscores) %>%
     ar$stack(along=2)
 dscores = lapply(result, function(x) x$dscores) %>%
