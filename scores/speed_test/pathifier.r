@@ -55,7 +55,7 @@ result = hpc$Q(record2pathway,
 errors = sapply(result, function(r) class(r) == "try-error")
 if (any(errors)) {
     print(result[errors])
-    result = result[!errors]
+    result[errors] = NA
 }
 scores = ar$stack(result, along=1)
 
