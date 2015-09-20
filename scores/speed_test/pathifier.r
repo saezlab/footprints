@@ -16,8 +16,8 @@ record2pathway = function(rec, exp, genesets) {
         syms = genesets,
         pathwaynames = names(genesets),
         normals = colnames(data) == "control",
-        attempts = 1000,
 # default values
+#        attempts = 100, # maybe set this higher and see if fewer NAs
 #        min_exp = 4,
 #        min_std = 0.4
     )
@@ -46,12 +46,18 @@ keep = sapply(speed$records, function(x) identical(x$exclusion, "test-set"))
 index = speed$records[keep]
 expr = speed$expr[keep]
 
-scores = hpc$Q(record2pathway,
+result = hpc$Q(record2pathway,
                rec = index, exp = expr,
                const = list(genesets=genesets),
                memory=1024, n_jobs=length(index)) %>%
-    setNames(names(index)) %>%
-    ar$stack(along=1)
+    setNames(names(index))
+
+errors = sapply(result, function(r) class(r) == "try-error")
+if (any(errors)) {
+    print(result[errors])
+    result = result[!errors]
+}
+scores = ar$stack(result, along=1)
 
 filter_index = function(x) x[! names(x) %in% c('control', 'perturbed', 'exclusion')]
 index = lapply(index, filter_index) %>%
