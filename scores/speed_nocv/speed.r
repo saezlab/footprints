@@ -21,7 +21,7 @@ expr2scores = function(index, expr, vecs) {
     mat = t(expr) %*% vecs
     ctl = mat[index$control,,drop=FALSE]
     ptb = mat[index$perturbed,,drop=FALSE]
-    (colMeans(ptb) - colMeans(ctl)) / ar$map(ctl, along=1, sd)
+    (colMeans(ptb) - colMeans(ctl)) #/ ar$map(ctl, along=1, sd)
 }
 
 scores = mapply(expr2scores, index=index, expr=expr,

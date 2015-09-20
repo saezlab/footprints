@@ -10,8 +10,8 @@ scores: prereqs $(SPEED_SCORES) $(SET_SCORES)
 
 prereqs:
 	make -C ../../data scores.RData
-	make -C ../../model $(notdir $(MODELS))
+	make -C ../../model_nocv $(notdir $(MODELS))
 
 # use each model to create scores object
 speed_%.RData: speed.r ../../model_nocv/model_%.RData
-	$(call bsub_log,1024) Rscript $^ $@
+	Rscript $^ $@
