@@ -3,7 +3,7 @@ b = import('base')
 io = import('io')
 ar = import('array')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/speed_train/speed_linear.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/speed_test/speed_linear.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "speed_linear.pdf"
 
 data = io$load(INFILE)
