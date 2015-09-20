@@ -18,9 +18,10 @@ expr = speed$expr
 # this protects against missing genes, etc in platform
 expr2scores = function(index, expr, vecs) {
     ar$intersect(vecs, expr, along=1)
-    t(expr) %*% vecs %>%
-        ar$map(along=1, scale) %>%
-        ar$map(along=1, function(x) mean(x[index$perturbed]) - mean(x[index$control]))
+    mat = t(expr) %*% vecs
+    ctl = mat[index$control,,drop=FALSE]
+    ptb = mat[index$perturbed,,drop=FALSE]
+    (colMeans(ptb) - colMeans(ctl)) / ar$map(ctl, along=1, sd)
 }
 
 scores = mapply(expr2scores, index=index, expr=expr,
