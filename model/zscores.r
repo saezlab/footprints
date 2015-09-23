@@ -12,14 +12,8 @@ expr2zscore = function(rec, emat) {
     mean_perturbed = apply(perturbed, 1, mean)
     logFC = mean_perturbed - mean_control
     model = loess(sd_control ~ mean_control)
-    zscores = logFC / predict(model, mean_perturbed)
-
-    # create index column
-    index = rec
-    index$control = NULL
-    index$perturbed = NULL
-
-    list(zscores=zscores, dscores=logFC, index=index)
+    
+    logFC / predict(model, mean_perturbed)
 }
 
 library(dplyr)
@@ -36,14 +30,8 @@ expr = data$expr
 
 result = mapply(expr2zscore, rec=records, emat=expr, SIMPLIFY=FALSE)
 
-index = lapply(result, function(x) x$index) %>%
-    bind_rows()
 zscores = lapply(result, function(x) x$zscores) %>%
     ar$stack(along=2)
-dscores = lapply(result, function(x) x$dscores) %>%
-    ar$stack(along=2) %>%
-    impute::impute.knn()
-dscores = dscores$data
 
 # separate index file w/ metadata derived from yaml [preferred?]
-save(index, zscores, dscores, file=OUTFILE)
+save(zscores, file=OUTFILE)
