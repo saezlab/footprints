@@ -40,7 +40,37 @@ test_hyper = function() {
                logp = log(result))
 }
 
-result = ar$construct(result ~ path + method, data=test_hyper())
+test_wilcox = function() {
+    method2concordance = function(path, method) {
+        score = scores[[method]]
+        score[index$effect == "inhibiting",] = - score[index$effect == "inhibiting",]
+
+        ranks = ar$map(score, along=2, function(x) {
+            re = order(x)
+            re[is.na(x)] = NA
+            re
+        })
+
+        s1 = ranks[index$pathway == path, path]
+        s2 = ranks[index$pathway != path, path]
+        wilcox.test(s1, s2, paired=FALSE, alternative="greater") %>%
+            broom::tidy() %>%
+            as.list()
+    }
+
+    idx_df = df$create_index(path = unique(index$pathway),
+                             method = names(scores),
+                             expand_grid = TRUE)
+    df$call(idx_df, function(path, method) method2concordance(path, method) %catch% NA) %>%
+        mutate(adj.p = p.adjust(result, method="fdr"),
+               logp = log(result))
+}
+
+hyper = ar$construct(result ~ path + method, data=test_hyper())
+wilcox = test_wilcox()
+effect = ar$construct(statistic ~ path + method, data=wilcox)
+pval = ar$construct(p.value ~ path + method, data=wilcox)
+
 pdf("validate.pdf", paper="a4r", width=26, height=20)
 pheatmap::pheatmap(result,
                    cluster_cols = FALSE,
