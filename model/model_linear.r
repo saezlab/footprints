@@ -71,19 +71,14 @@ cutoff_recall_test = function(zfit, pval, zcut, pcut, records, expr) {
     re = mapply(calc_scores, rec=records, exp=expr,
         MoreArgs=list(zfit=zfit, pval=pval, zcut=zcut, pcut=pcut), SIMPLIFY=FALSE)
     paths = sapply(re, function(x) x$pathway)
-    reverse = sapply(re, function(x) x$reverse) %>%
-        ar$split(along=1, subsets=paths)
+    reverse = sapply(re, function(x) x$reverse)
     scores = sapply(re, function(x) x$scores) %>%
-        ar$map(along=2, scale) %>%
-        ar$split(along=2, subsets=paths)
+        ar$map(along=2, scale)
 
     # concordance: highest pathway score is the one activated (lowest/inhibited)
-    path2concordance = function(scores, paths, reverse) {
-        con_fun = function(s,p,r) names(sort(s,decreasing=!r))[1] == p
-        concordance = mapply(con_fun, ar$split(scores, along=2, drop=TRUE), paths, reverse)
-        sum(concordance) / length(concordance)
-    }
-    mapply(path2concordance, scores, names(scores), reverse)
+    con_fun = function(s,p,r) names(sort(s,decreasing=!r))[1] == p
+    concordance = mapply(con_fun, ar$split(scores, along=2, drop=TRUE), paths, reverse)
+    sum(concordance) / length(concordance)
 
 #    # do statistical test here
 #    1.0 - phyper(q = sum(concordance) - 1,    # number of white balls drawn
