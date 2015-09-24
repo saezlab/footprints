@@ -44,10 +44,9 @@ if (is.null(module_name())) {
     io = import('io')
     ar = import('array')
 
-    YAML = commandArgs(TRUE)[1] %or% list.files("new_index", "[0-9]+\\.yaml$",
-                                     recursive=TRUE, full.names=TRUE)
-    EXPR = commandArgs(TRUE)[2] %or% list.files("normalized", "\\.RData", full.names=TRUE)
-    OUTFILE = commandArgs(TRUE)[3] %or% "./expr.RData"
+    EXPR = commandArgs(TRUE) %or% list.files("normalized", "\\.RData", full.names=TRUE)
+    YAML = list.files("new_index", "[0-9]+\\.yaml$", recursive=TRUE, full.names=TRUE)
+    OUTFILE = "expr.RData"
 
     # load all index files
     records = lapply(YAML, function(y) io$read_yaml(y, drop=FALSE)) %>%
