@@ -8,8 +8,8 @@ MODELS = $(MODEL_SCRIPTS:%.r=%.RData)
 models: prereqs $(MODELS)
 
 prereqs:
-	make -C ../data scores.RData
+	make -C ../data expr.RData zscores.RData
 
 # use each model script to create a model file
-model_%.RData: model_%.r ../data/scores.RData
-	Rscript $< $(word 3,$^) $@
+model_%.RData: model_%.r ../data/zscores.RData
+	Rscript $^ $@

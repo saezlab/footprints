@@ -7,18 +7,13 @@ io = import('io')
 ar = import('array')
 st = import('stats')
 
-INFILE = commandArgs(TRUE)[1] %or% "../data/scores.RData"
+ZDATA = commandArgs(TRUE)[1] %or% "../data/zscores.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "model_linear.RData"
 
 # load speed data, index; filter for train set only
-zobj = io$load('../data/scores.RData')
-index = zobj$index #%>% filter(is.na(exclusion))
-zscores = zobj$zscores[,index$id]
-
-# adjust object for linear modelling
-inh = index$effect=="inhibiting"
-zscores[,inh] = -zscores[,inh]
-zscores = t(zscores)
+zdata = io$load(ZDATA)
+index = zdata$index
+zscores = t(zdata$zscores) * index$sign
 
 # fit model to pathway perturbations
 mod = st$lm(zscores ~ 0 + pathway, data=index, min_pts=100,

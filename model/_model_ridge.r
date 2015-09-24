@@ -7,22 +7,23 @@ io = import('io')
 ar = import('array')
 st = import('stats')
 
-INFILE = commandArgs(TRUE)[1] %or% "../data/scores.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "model_ridge.RData"
+ZDATA = commandArgs(TRUE)[1] %or% "../data/zscores.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "model_linear.RData"
 
 # load speed data, index; filter for train set only
-zobj = io$load('../data/scores.RData')
-index = zobj$index #%>% filter(is.na(exclusion))
-dscores = zobj$dscores[,index$id]
-
-# adjust object for linear modelling
-inh = index$effect=="inhibiting"
-dscores[,inh] = -dscores[,inh]
-dscores = t(dscores)
+zdata = io$load(ZDATA)
+index = zdata$index
+zscores = t(zdata$zscores) * index$sign
 
 do_path = function(path) {
     path_sign = ifelse(index$effect == "activating", 1, -1)
     path_mask = index$pathway == path
+    if (path == "NFkB")
+        path_mask = index$pathway %in% c("NFkB", "TNFa")
+    if (path == "MAPK")
+        path_mask = index$pathway %in% c("MAPK", "EGFR")
+    if (path == "PI3K")
+        path_mask = index$pathway %in% c("PI3K", "EGFR")
     path_sign[!path_mask] = 0
 
 #    re = st$ml(path_sign ~ dscores, train_args=list("regr.glmnet", dfmax=100, alpha=0.5),
