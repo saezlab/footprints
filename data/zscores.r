@@ -28,10 +28,16 @@ data = io$load(INFILE)
 records = data$records
 expr = data$expr
 
-result = mapply(expr2zscore, rec=records, emat=expr, SIMPLIFY=FALSE)
-
-zscores = lapply(result, function(x) x$zscores) %>%
+zscores = mapply(expr2zscore, rec=records, emat=expr, SIMPLIFY=FALSE) %>%
     ar$stack(along=2)
 
+idx_remove = c("control", "perturbed")
+sign_lookup = setNames(c(1,-1), c("activating","inhibiting"))
+index = lapply(records, function(x) x[setdiff(names(x), idx_remove)]) %>%
+    bind_rows() %>%
+    mutate(sign = sapply(effect, function(x) sign_lookup[x]))
+
+stopifnot(colnames(zscores) == index$id)
+
 # separate index file w/ metadata derived from yaml [preferred?]
-save(zscores, file=OUTFILE)
+save(zscores, index, file=OUTFILE)
