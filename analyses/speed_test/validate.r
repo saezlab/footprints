@@ -4,6 +4,7 @@ io = import('io')
 ar = import('array')
 st = import('stats')
 df = import('data_frame')
+plt = import('plot')
 
 # load all in ../scores/speed/*.RData
 objs = io$load_regex("(.*)\\.RData", "../../scores/speed_test")
@@ -25,19 +26,19 @@ test_hyper = function() {
         con_fun = function(s,r) names(sort(s,decreasing=!r))[1] == path
         concordance = mapply(con_fun, ar$split(score, along=1, drop=TRUE), reverse) %>%
             b$omit$na()
-
-        1.0 - phyper(q = sum(concordance) - 1,
-                     m = length(concordance),
-                     n = length(concordance) * ncol(score),
-                     k = length(concordance))
+        
+        list(p.value = 1.0 - phyper(q = sum(concordance) - 1,
+                                    m = length(concordance),
+                                    n = length(concordance) * ncol(score),
+                                    k = length(concordance)),
+             fraction = sum(concordance) / length(concordance))
     }
 
     idx_df = df$create_index(path = unique(index$pathway),
                              method = names(scores),
                              expand_grid = TRUE)
     df$call(idx_df, method2concordance) %>%
-        mutate(adj.p = p.adjust(result, method="fdr"),
-               logp = log(result))
+        mutate(adj.p = p.adjust(p.value, method="fdr"))
 }
 
 test_wilcox = function() {
@@ -66,13 +67,12 @@ test_wilcox = function() {
                logp = log(result))
 }
 
-hyper = ar$construct(result ~ path + method, data=test_hyper())
-wilcox = test_wilcox()
-effect = ar$construct(statistic ~ path + method, data=wilcox)
-pval = ar$construct(p.value ~ path + method, data=wilcox)
+hyper = test_hyper() %>%
+    mutate(fraction = ifelse(p.value < 0.2, fraction, NA)) %>%
+    mutate(label = ifelse(p.value < 0.05, "*", "")) %>%
+    mutate(label = ifelse(p.value < 1e-5, "***", label)) %>%
+    plt$matrix(fraction ~ path + method, palette="Blues")
 
 pdf("validate.pdf", paper="a4r", width=26, height=20)
-pheatmap::pheatmap(result,
-                   cluster_cols = FALSE,
-                   cluster_rows = FALSE)
+print(hyper)
 dev.off()

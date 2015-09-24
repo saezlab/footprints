@@ -9,7 +9,7 @@ SCORES = $(YAML:new_index/%.yaml=scores/%.RData)
 #.SECONDEXPANSION:
 .PHONY: scores normalize clean
 
-scores: scores.RData
+scores: zscores.RData
 
 expr: expr.RData
 
@@ -21,8 +21,8 @@ clean:
 expr.RData: expr.r $(NORMALIZED)
 	Rscript $^
 
-scores.RData: scores.r expr.RData
-	Rscript $< $(word 2,$^) $@
+zscores.RData: zscores.r expr.RData
+	Rscript $^ $@
 
 normalized/%.RData: normalize_data.r
 	@mkdir -p $(shell dirname $@)

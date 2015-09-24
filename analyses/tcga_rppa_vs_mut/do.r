@@ -43,8 +43,8 @@ mapk$speed = speed
 mapk$rppa = rppa
 
 mat = data.matrix(mapk[-c(1:3)])
-st$lm(mat ~ mapk$mut) %>%
-    filter(term != "(Intercept)")
+st$lm(mat ~ mut, data=mapk, subsets=mapk$study) %>%
+    filter(term != "(Intercept)") #todo: mapk$mut generates warning message
 
 #TODO: other way around, which mutations activate mapk in breast cancer?
 #  which mutations are used/planned to be used to stratify patients for MEKi treatment?

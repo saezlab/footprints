@@ -39,18 +39,18 @@ subs2plots = function(subs, mut, scores) {
         mutate(adj.p = p.adjust(p.value, method="fdr"))
 
     # matrix plot
-    result %>%
+    p1 = result %>%
         mutate(label = ifelse(adj.p < 0.01, "*", "")) %>%
         plt$cluster(estimate ~ scores + m) %>%
         filter(adj.p < 0.1) %>%
-        plt$matrix(estimate ~ scores + m, color="estimate") + ggtitle(subs) %>%
-        print()
+        plt$matrix(estimate ~ scores + m, color="estimate") + ggtitle(subs)
+    print(p1)
 
     # volcano plot
-    result %>%
+    p2 = result %>%
         mutate(label = paste(m, scores, sep=":")) %>%
         plt$color$p_effect(pvalue = "adj.p") %>%
-        plt$volcano(base.size=0.1) + ggtitle(subs) %>%
-        print()
+        plt$volcano(base.size=0.1) + ggtitle(subs)
+    print(p2)
 }
 lapply(unique(mut$study), function(s) subs2plots(s, mut, scores) %catch% NULL)

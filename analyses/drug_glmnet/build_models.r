@@ -16,23 +16,46 @@ st = import('stats')
 gdsc = import('data/gdsc')
 
 args = commandArgs(TRUE)
-OUTFILE = args[1] %or% 'model_mse.RData'
+#OUTFILE = args[1] %or% 'model_ontopof_mut_NULL_100rep_alldrugs.RData'
+OUTFILE = 'test_75000.RData'
 #DATASETS = args[-1] %or% '../../scores/gdsc/speed_linear.RData'
 
-speed = io$load("../../scores/gdsc/speed_linear.RData")
-pathifier = io$load("../../scores/merge/pathifier.RData")
-spia = io$load("../../scores/merge/spia.RData")
-reactome = io$load("../../scores/gdsc/reactome.RData")
-go = io$load("../../scores/gdsc/go.RData")
+dset = list(
+    speed = "../../scores/gdsc/speed_linear.RData",
+    pathifier = "../../scores/merge/pathifier.RData",
+    spia = "../../scores/merge/spia.RData",
+    reactome = "../../scores/gdsc/reactome.RData",
+    go = "../../scores/gdsc/go.RData"
+) %>% io$load()
 
-tissues = gdsc$tissues(minN=10)
-drugs = gdsc$drug_response()
+dset$tissues = gdsc$tissues(minN=10)
+dset$mut = gdsc$mutated_genes(intogen=TRUE) + 0
+dset$drugs = gdsc$drug_response('AUC')
 
-ar$intersect(tissues, drugs, speed, pathifier, spia, reactome, go, along=1)
-dset = list(speed=speed, pathifier=pathifier, spia=spia, reactome=reactome, go=go)
+dset = ar$intersect_list(dset, along=1)
 
-result = st$ml(drugs ~ dset, subsets = tissues, xval=10, aggr=TRUE,
-               train_args = list("regr.glmnet"),
-               hpc_args = list(chunk.size=200, memory=512))
+tissues = dset$tissues
+dset$tissues = NULL
+drugs = dset$drugs
+dset$drugs = NULL
+
+mut = list(mut=dset$mut)
+dset$mut = NULL
+
+#set.seed(12416)
+#drugs = drugs[,sample(colnames(drugs), 10)]
+result = st$ml(drugs ~ mut + dset, subsets = tissues, xval=10, aggr=list(mlr::mse, mlr::mae, mlr::rmse),
+               train_args = list("regr.glmnet"), shuffle_labels=TRUE, rep=5, atomic_class=NULL,
+               hpc_args = list(n_jobs=20, memory=512)) # 200 jobs, 3 hrs per job
+
+#@FIXED:
+# for 1 rep, 20 jobs: 3% cpu @master / full @worker, 3 min runtime
+# for 10 reps, 100 jobs: 10% cpu @master / full @worker, 14:22-14:32 (+ df processing time: 15:00)
+# for 100 reps, 300 jobs: 80% cpu @master / ~30% @worker, 15:17-
+
+#@BEFORE:
+# for 1 rep, 20 jobs: 30% cpu @master / full @worker, 5 minutes runtime
+# for 100 reps, 100 jobs: something on the master is too slow, it doesn't fill up the workers
+# for 1000 reps, 300 jobs: master needs >10G of mem + a lot of time before even submitting
 
 save(result, file=OUTFILE)

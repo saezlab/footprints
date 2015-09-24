@@ -66,7 +66,7 @@ runTwoTailedGSEA = function(expr, upreg, downreg, transform=TRUE, error=NA) {
 #' @param trial         number of runs to shuffle genes if significance=T
 #' @return              enrichtment score, or list of options specified
 wGSEA = function(norm_express, signature, p=1, display=FALSE, returnRS=FALSE,
-        normalize=TRUE, significance=FALSE, trial=1000) {
+        normalize=FALSE, significance=FALSE, trial=1000) {
     if (is.null(names(norm_express)) || !is.vector(norm_express) || is.list(norm_express))
         stop("norm_express must be a named vector")
 

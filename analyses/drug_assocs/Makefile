@@ -10,9 +10,9 @@ CPLOTS = $(CSCORES:../../scores/ccle/%.RData=ccle/%.pdf)
 
 all: prereqs $(GPLOTS) #$(CPLOTS)
 
-prereqs:
-	make -C ../../scores/gdsc $(notdir $(GSCORES))
-#	make -C ../../scores/ccle $(notdir $(CSCORES))
+prereqs: ;
+#	make -C ../../scores/gdsc $(notdir $(GSCORES))
+##	make -C ../../scores/ccle $(notdir $(CSCORES))
 
 # use each model script to create a model file
 gdsc/%.pdf: drug_assocs.r ../../scores/gdsc/%.RData

@@ -23,10 +23,6 @@ dscores = t(dscores)
 do_path = function(path) {
     path_sign = ifelse(index$effect == "activating", 1, -1)
     path_mask = index$pathway == path
-    if (path == "NFkB")
-        path_mask = index$pathway %in% c("NFkB", "TNFa")
-    if (path == "MAPK")
-        path_mask = index$pathway %in% c("MAPK", "EGFR")
     path_sign[!path_mask] = 0
 
 #    re = st$ml(path_sign ~ dscores, train_args=list("regr.glmnet", dfmax=100, alpha=0.5),

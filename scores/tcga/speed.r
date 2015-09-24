@@ -5,7 +5,7 @@ ar = import('array')
 tcga = import('data/tcga')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../model/model_linear.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "speed.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "speed_linear.RData"
 
 # load vectors
 vecs = io$load(INFILE)

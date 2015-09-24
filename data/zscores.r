@@ -22,7 +22,7 @@ io = import('io')
 ar = import('array')
 
 INFILE = commandArgs(TRUE)[1] %or% "expr.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "scores.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "zscores.RData"
 
 data = io$load(INFILE)
 records = data$records
