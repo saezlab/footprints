@@ -3,7 +3,7 @@ b = import('base')
 io = import('io')
 ar = import('array')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/speed_nocv/speed_linear.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/speed/gsea_reactome.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "speed_linear.pdf"
 
 data = io$load(INFILE)
@@ -22,6 +22,23 @@ rownames(scores) = substr(rownames(scores), 0, 40)
 rownames(index) = index$id
 index$id = NULL
 
+# this does the same as scale columns
+scale_pheatmap = function(mat, n=100, center=TRUE) {
+    color = 1:n
+#    color = colorRampPalette(rev(RColorBrewer::brewer.pal(n = 7, name = "RdYlBu")))(n)
+
+    # scale matrix
+    x = ar$map(mat, along=1, scale)
+
+    # generate breaks
+    m = max(abs(c(min(x, na.rm = T), max(x, na.rm = T))))
+    breaks = seq(-m, m, length.out = n + 1)
+
+    scaled = color[as.numeric(cut(c(x), breaks=breaks, include.lowest=TRUE))]
+    mat[] = scaled
+    mat
+}
+
 pdf(OUTFILE, paper="a4r", width=26, height=20)
 
 pheatmap::pheatmap(scores,
@@ -29,6 +46,13 @@ pheatmap::pheatmap(scores,
                    cluster_cols = FALSE,
                    show_colnames = FALSE,
                    annotation_legend = TRUE)
+
+# this does the same as scale columns
+#pheatmap::pheatmap(scale_pheatmap(scores),
+#                   annotation = index,
+#                   cluster_cols = FALSE,
+#                   show_colnames = FALSE,
+#                   annotation_legend = TRUE)
 
 pheatmap::pheatmap(scores,
                    annotation = index,
