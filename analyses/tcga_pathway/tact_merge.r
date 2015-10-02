@@ -53,22 +53,15 @@ for (tissue in unique(index$study)) {
         geom_boxplot() +
         xlab("pathways") +
         ylab("standard deviations") +
-        ggtitle(paste0(tissue, ": pathway activation normal vs tumour"))
+        ggtitle(paste0(tissue, ": pathway activation normal vs tumour")) +
+        theme_bw()
 
-    violin = ggplot(df, aes(x=variable, y=value, fill=type)) +
-        geom_violin() +
-        xlab("pathways") +
-        ylab("standard deviations") +
-        ggtitle(paste0(tissue, ": pathway activation normal vs tumour"))
+#    violin = ggplot(df, aes(x=variable, y=value, fill=type)) +
+#        geom_violin() +
+#        xlab("pathways") +
+#        ylab("standard deviations") +
+#        ggtitle(paste0(tissue, ": pathway activation normal vs tumour"))
 
     print(box)
-    print(violin)
+#    print(violin)
 }
- 
-#    tumor_medians = ar$map(scores[cc$specimen_type == "Primary tumour - solid tissue",],
-#            along=1, median)
-#medians = ar$stack(lapply(result, r -> r$tumor_medians), along=2)
-#pheatmap::pheatmap(medians, scale="row")
-##TODO: could be interesting to have number of clinical drugs targeting each pathway
-#lapply(result, r -> print(r$boxplot))
-#lapply(result, r -> print(r$violinplot))
