@@ -27,7 +27,7 @@ do_plot = function(tissue, drug, path) {
 }
 
 p1 = do_plot("BRCA", "Trametinib", "MAPK")
-p2 = do_plot("SCLC", "PD-0325901", "TNFa") + xlim(-1.7,0.8)
+p2 = do_plot("SCLC", "PD-0325901", "TNFa") + xlim(-1.7,0.6)
 p3 = do_plot("SCLC", "FK866", "TNFa")
 
 pcol = arrangeGrob(p1, p2, p3, ncol=1, nrow=3)
