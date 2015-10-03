@@ -62,7 +62,7 @@ tissues = gdsc$tissues(minN=5)
 ar$intersect(s_speed, s_reac, s_go, tissues, Ys, along=1)
 
 # a_: prefix for associations
-a_speed = scores2assocs(s_speed) # limit are there so axes are equal
+a_speed = scores2assocs(s_speed)
 a_reac = scores2assocs(s_reac)
 a_go = scores2assocs(s_go)
 
