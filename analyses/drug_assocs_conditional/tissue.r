@@ -78,14 +78,14 @@ c_reac = conditional_assocs(s_reac)
 c_go = conditional_assocs(s_go)
 
 # v_: prefix for volcano plots
-v_speed = assocs2plot(a_speed, c(1,1e-5)) # limit are there so axes are equal
-v_reac = assocs2plot(a_reac, c(1,1e-5))#, condition=c_reac)
-v_go = assocs2plot(a_go, c(1,1e-5))#, condition=c_go)
+v_speed = assocs2plot(a_speed, c(1,1e-6)) # limit are there so axes are equal
+v_reac = assocs2plot(a_reac, c(1,1e-6), condition=c_reac)
+v_go = assocs2plot(a_go, c(1,1e-6), condition=c_go)
 
 # arrange plots
-prow = arrangeGrob(v_speed, v_reac, v_go, ncol=3, nrow=1)
+pcol = arrangeGrob(v_speed, v_reac, v_go, ncol=1, nrow=3)
 
 # save to pdf
-pdf("tissue.pdf", width=18, height=5)
-plot(prow)
+pdf("tissue.pdf", width=6, height=15)
+plot(pcol)
 dev.off()
