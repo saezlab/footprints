@@ -105,22 +105,22 @@ wGSEA = function(norm_express, signature, p=1, display=FALSE, returnRS=FALSE,
     
     if (normalize || significance) {
         EMPES = computeSimpleEMPES(norm_express, signature, trial)
-    }
-    if (significance) {
-        P = ((ES>=0) * sum(EMPES>=ES) + (ES<0) * sum(EMPES<=ES)) / trial
-    }
+        if (significance) {
+#            P = ((ES>=0) * sum(EMPES>=ES) + (ES<0) * sum(EMPES<=ES)) / trial
+#            return(list(NES=NES, p.value=P))
+            normalizeESgamma(ES, EMPES)
+        } else {
+            normalizeESsimple(ES, EMPES)
+        }
+    } else
+        ES
+
 #    if (returnRS) {
 #        POSITIONS = which(HITS == 1)
 #        names(POSITIONS) = ranking[POSITIONS]
 #        POSITIONS = POSITIONS[order(names(POSITIONS))]
 #        return(list(ES = ES, RS = RS, POSITIONS = POSITIONS, PEAK = peak))
 #    }
-    if (significance)
-        return(list(ES = ES, P = P))
-    else if (normalize)
-        return(normalizeESsimple(ES, EMPES))
-    else
-        return(ES)
 }
 
 #' Uses a kernel density estimator to obtain normally distributed scores
