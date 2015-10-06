@@ -17,7 +17,7 @@ prereqs:
 rppa.RData: rppa.r
 	Rscript $<
 
-spia.RData: spia.r ../../util/genesets/reactome.RData
+spia.RData: spia.r
 	$(call bsub_log,1024) Rscript $^ $@
 
 pathifier.RData: pathifier.r ../../util/genesets/reactome.RData

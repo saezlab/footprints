@@ -1,15 +1,14 @@
 b = import('base')
 io = import('io')
 ar = import('array')
-spia = import('../../util/spia')
 hpc = import('hpc')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/reactome.RData"
-OUTFILE = commandArgs(TRUE)[3] %or% "spia.RData"
+OUTFILE = commandArgs(TRUE)[1] %or% "spia.RData"
 
-tissue2scores = function(tissue, spia) {
+tissue2scores = function(tissue) {
     io = import('io')
     tcga = import('data/tcga')
+    spia = import('../../util/spia')
 
     # convert hgnc to entrez
     expr = tcga$rna_seq(tissue)
@@ -30,13 +29,12 @@ tissue2scores = function(tissue, spia) {
 }
 
 # load pathway gene sets
-genesets = io$load(INFILE)
 tissues = c("BLCA", "BRCA", "CESC", "COREAD", "ESCA", "HNSC",
             "KIRC", "LIHC", "LUAD", "LUSC", "PAAD")
 
 # run spia in jobs and save
 result = hpc$Q(tissue2scores, tissue=tissues,
-    const=list(spia=spia), memory=8192, n_jobs=length(tissues))
+    memory=8192, n_jobs=length(tissues), log_worker=TRUE)
 
 result = ar$stack(result, along=1)
 colnames(result) = spia$kegg2speed[colnames(result)]

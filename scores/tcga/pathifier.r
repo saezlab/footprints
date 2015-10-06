@@ -4,7 +4,7 @@ ar = import('array')
 hpc = import('hpc')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/reactome.RData"
-OUTFILE = commandArgs(TRUE)[3] %or% "pathifier.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "pathifier.RData"
 
 tissue2scores = function(tissue, genesets) {
     io = import('io')
