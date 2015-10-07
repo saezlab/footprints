@@ -73,7 +73,7 @@ assocs2plot = function(assocs, ylim=c(NA,NA), fdr=0.1, condition=NULL) {
     }
 
     assocs %>%
-        plt$volcano(base.size=2, p=fdr, ylim=ylim)
+        plt$volcano(base.size=0.2, p=fdr, ylim=ylim)
 }
 
 
@@ -108,9 +108,9 @@ c_reac = conditional_assocs(s_reac, clinical, condition=s_speed)
 c_go = conditional_assocs(s_go, clinical, condition=s_speed)
 
 # v_: prefix for volcano plots
-v_speed = assocs2plot(a_speed, clinical) # limit are there so axes are equal
-v_reac = assocs2plot(a_reac, clinical, condition=c_reac)
-v_go = assocs2plot(a_go, clinical, condition=c_go)
+v_speed = assocs2plot(a_speed) # limit are there so axes are equal
+v_reac = assocs2plot(a_reac, condition=c_reac)
+v_go = assocs2plot(a_go, condition=c_go)
 
 # arrange plots
 pcol = arrangeGrob(v_speed, v_reac, v_go, ncol=1, nrow=3)
