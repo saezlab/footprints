@@ -65,7 +65,7 @@ assocs2plot = function(assocs, ylim=c(NA,NA), fdr=0.1, condition=NULL) {
 
     if (!is.null(condition)) {
         subset_valid = condition %>%
-            select(Ys, scores) %>%
+            select(subset, scores) %>%
             df$contains(assocs, .) %catch% FALSE
 
         assocs[!subset_valid & assocs$adj.p < fdr,'color'] = "#00000000"
