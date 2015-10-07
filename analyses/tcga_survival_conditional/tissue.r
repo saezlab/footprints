@@ -73,7 +73,7 @@ assocs2plot = function(assocs, ylim=c(NA,NA), fdr=0.1, condition=NULL) {
     }
 
     assocs %>%
-        plt$volcano(base.size=0.2, p=fdr, ylim=ylim)
+        plt$volcano(base.size=0.2, p=fdr, ylim=c(1,1e-7), xlim=c(-0.8,0.8))
 }
 
 
@@ -85,7 +85,10 @@ clinical = tcga$clinical() %>%
                                      patient.days_to_last_followup),
               barcode = toupper(patient.bcr_patient_barcode),
               gender = as.factor(patient.gender)) %>%
-    filter(surv_days > 0) #FIXME: why is there 0 survival days?
+    filter(surv_days > 0) %>% #FIXME: why is there 0 survival days?
+    filter(study %in% c("BLCA", "BRCA", "CESC", "ESCA", "HNSC", "COAD",
+            "KIRC", "LIHC", "LUAD", "LUSC", "PAAD")
+)
 
 # load scores; s_: prefix for scores
 load_scores = function(fname) {
