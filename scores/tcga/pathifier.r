@@ -32,14 +32,13 @@ tissue2scores = function(tissue, genesets) {
 
 # load pathway gene sets
 genesets = io$load(INFILE)
-tissues = c("BLCA", "BRCA", "CESC", "COREAD", "ESCA", "HNSC",
+tissues = c("BLCA", "BRCA", "CESC", "ESCA", "HNSC", "COAD",
             "KIRC", "LIHC", "LUAD", "LUSC", "PAAD")
 
 # run pathifier in jobs
 result = hpc$Q(tissue2scores, tissue=tissues,
-    const=list(genesets=genesets), memory=8192, n_jobs=length(tissues))
-
-result = ar$stack(result, along=1)
+    const=list(genesets=genesets), memory=8192, n_jobs=length(tissues)) %>%
+    ar$stack(along=1)
 
 # save results
 save(result, file=OUTFILE)

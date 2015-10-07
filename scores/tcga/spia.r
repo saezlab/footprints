@@ -2,6 +2,7 @@ b = import('base')
 io = import('io')
 ar = import('array')
 hpc = import('hpc')
+spia = import('../../util/spia')
 
 OUTFILE = commandArgs(TRUE)[1] %or% "spia.RData"
 
@@ -29,14 +30,15 @@ tissue2scores = function(tissue) {
 }
 
 # load pathway gene sets
-tissues = c("BLCA", "BRCA", "CESC", "COREAD", "ESCA", "HNSC",
+tissues = c("BLCA", "BRCA", "CESC", "ESCA", "HNSC", "COAD",
             "KIRC", "LIHC", "LUAD", "LUSC", "PAAD")
 
 # run spia in jobs and save
 result = hpc$Q(tissue2scores, tissue=tissues,
-    memory=8192, n_jobs=length(tissues), log_worker=TRUE)
+    memory=8192, n_jobs=length(tissues)) %>%
+    setNames(tissues) %>%
+    ar$stack(along=1)
 
-result = ar$stack(result, along=1)
 colnames(result) = spia$kegg2speed[colnames(result)]
 
 save(result, file=OUTFILE)
