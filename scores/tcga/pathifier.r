@@ -20,24 +20,26 @@ tissue2scores = function(tissue, genesets) {
         syms = genesets,
         pathwaynames = names(genesets),
         normals = is_normal,
-        attempts = 100,
-        min_exp = -Inf,
-        min_std = 0.4
+#        attempts = 100, # default settings
+        min_exp = -Inf, #TODO: std=4, applicable to voom?
+#        min_std = 0.4
     )
 
     re = do.call(cbind, lapply(result$scores, c))
-    rownames(re) = colnames(data)
+    rownames(re) = colnames(expr)
     re
 }
 
 # load pathway gene sets
+# COADREAD includes all COAD + additional READ
 genesets = io$load(INFILE)
-tissues = c("BLCA", "BRCA", "CESC", "ESCA", "HNSC", "COAD",
+tissues = c("BLCA", "BRCA", "CESC", "ESCA", "HNSC", "COADREAD",
             "KIRC", "LIHC", "LUAD", "LUSC", "PAAD")
 
 # run pathifier in jobs
 result = hpc$Q(tissue2scores, tissue=tissues,
     const=list(genesets=genesets), memory=8192, n_jobs=length(tissues)) %>%
+    setNames(tissues) %>%
     ar$stack(along=1)
 
 # save results

@@ -30,7 +30,8 @@ tissue2scores = function(tissue) {
 }
 
 # load pathway gene sets
-tissues = c("BLCA", "BRCA", "CESC", "ESCA", "HNSC", "COAD",
+# COADREAD includes all COAD + additional READ
+tissues = c("BLCA", "BRCA", "CESC", "ESCA", "HNSC", "COADREAD",
             "KIRC", "LIHC", "LUAD", "LUSC", "PAAD")
 
 # run spia in jobs and save
