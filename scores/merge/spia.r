@@ -37,7 +37,7 @@ lookup = biomaRt::useMart(biomart="ensembl", dataset="hsapiens_gene_ensembl") %>
 
 # run spia in jobs and save
 result = hpc$Q(tissue2scores, tissue=tissues,
-    const=list(EXPR=EXPR, spia=spia, lookup=lookup), memory=8192, n_jobs=50)
+    const=list(EXPR=EXPR, spia=spia, lookup=lookup), memory=8192, n_jobs=length(tissues))
 
 result = ar$stack(result, along=1)
 colnames(result) = spia$kegg2speed[colnames(result)]

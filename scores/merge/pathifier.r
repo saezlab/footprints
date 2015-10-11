@@ -41,7 +41,7 @@ tissues = sub("_N", "", unique(tissues[grepl("_N", tissues)]))
 
 # run pathifier in jobs
 result = hpc$Q(tissue2scores, tissue=tissues,
-    const=list(EXPR=EXPR, genesets=genesets), memory=8192, n_jobs=50)
+    const=list(EXPR=EXPR, genesets=genesets), memory=8192, n_jobs=length(tissues))
 
 result = ar$stack(result, along=1)
 
