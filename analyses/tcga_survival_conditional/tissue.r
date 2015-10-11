@@ -58,7 +58,7 @@ conditional_assocs = function(scores, clinical, condition, fdr=0.1) {
         filter(adj.p < fdr)
 }
 
-assocs2plot = function(assocs, ylim=c(NA,NA), fdr=0.1, condition=NULL) {
+assocs2plot = function(assocs, title="", ylim=c(NA,NA), fdr=0.1, condition=NULL) {
     assocs = assocs %>%
         mutate(label = paste(subset, scores, sep=":")) %>%
         plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1, thresh=fdr)
@@ -73,7 +73,8 @@ assocs2plot = function(assocs, ylim=c(NA,NA), fdr=0.1, condition=NULL) {
     }
 
     assocs %>%
-        plt$volcano(base.size=0.2, p=fdr, ylim=c(1,1e-7), xlim=c(-0.8,0.8))
+        plt$volcano(base.size=0.2, p=fdr,
+            ylim=c(1,1e-7), xlim=c(-0.8,0.8)) + ggtitle(title)
 }
 
 
@@ -95,30 +96,38 @@ load_scores = function(fname) {
     re = io$load(fname)
     re = re[substr(rownames(re), 14, 16) == "01A",]
     rownames(re) = substr(rownames(re), 1, 12)
-    re
+    ar$map(re, along=1, function(x) x/sd(x))
 }
 s_speed = load_scores('../../scores/tcga/speed_matrix.RData')
 s_reac = load_scores('../../scores/tcga/gsea_reactome.RData')
 s_go = load_scores('../../scores/tcga/gsea_go.RData')
+s_spia = load_scores('../../scores/tcga/spia.RData')
+s_pathifier = load_scores('../../scores/tcga/pathifier.RData')
 
 # a_: prefix for associations
 a_speed = scores2assocs(s_speed, clinical, 0.1) #
 a_reac = scores2assocs(s_reac, clinical, 0.1) # 0.2: , 0.1:
 a_go = scores2assocs(s_go, clinical, 0.1) # 
+a_spia = scores2assocs(s_spia, clinical, 0.1)
+a_pathifier = scores2assocs(s_pathifier, clinical, 0.1)
 
 # c_: prefix conditional associations
 c_reac = conditional_assocs(s_reac, clinical, condition=s_speed)
 c_go = conditional_assocs(s_go, clinical, condition=s_speed)
+c_spia = conditional_assocs(s_spia, clinical, condition=s_speed)
+c_pathifier = conditional_assocs(s_pathifier, clinical, condition=s_speed)
 
 # v_: prefix for volcano plots
-v_speed = assocs2plot(a_speed) # limit are there so axes are equal
-v_reac = assocs2plot(a_reac, condition=c_reac)
-v_go = assocs2plot(a_go, condition=c_go)
+v_speed = assocs2plot(a_speed, "speed") # limit are there so axes are equal
+v_reac = assocs2plot(a_reac, "reactome", condition=c_reac)
+v_go = assocs2plot(a_go, "GO", condition=c_go)
+v_spia = assocs2plot(a_spia, "spia", condition=c_spia)
+v_pathifier = assocs2plot(a_pathifier, "pathifier", condition=c_pathifier)
 
 # arrange plots
-pcol = arrangeGrob(v_speed, v_reac, v_go, ncol=1, nrow=3)
+pcol = arrangeGrob(v_speed, v_spia, v_reac, v_pathifier, v_go, ncol=2, nrow=3)
 
 # save to pdf
-pdf("tissue.pdf", width=6, height=15)
+pdf("tissue.pdf", width=12, height=15)
 plot(pcol)
 dev.off()
