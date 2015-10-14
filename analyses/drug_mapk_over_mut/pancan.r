@@ -17,7 +17,7 @@ speed = io$load('../../scores/gdsc/speed_matrix.RData')[,"MAPK"] %>%
     data.frame(cosmic=names(.),
                mapk = .,
                up = . > quantile(.)[4],
-               down = . < quantile(.)[2]) %>%
+               down = . < quantile(.)[2]) %>% # alternatively: 4,2 <-> 3,3
     select(-mapk) %>%
     melt(id="cosmic") %>%
     filter(value == TRUE) %>%
@@ -32,7 +32,12 @@ resp = gdsc$drug_response()[,MEKis] %>%
     left_join(speed) %>%
     mutate(no_mut = is.na(gene))
 resp$no_mapk_up = resp$no_mut | resp$mapk!="up" | is.na(resp$mapk)
-resp$no_both = !resp$no_mut | !resp$no_mapk_up
+resp$no_both = resp$no_mut | resp$no_mapk_up
+
+test = function(pos, neg) wilcox.test(pos[!is.na(pos)], neg[!is.na(neg)])$statistic
+test(resp$IC50[!resp$no_mut], resp$IC50[resp$no_mut])
+test(resp$IC50[!resp$no_mapk_up], resp$IC50[resp$no_mapk_up])
+test(resp$IC50[!resp$no_both], resp$IC50[resp$no_both])
 
 pdf("pancan.pdf", width=10, height=8)
 
@@ -45,7 +50,7 @@ ggplot(resp, aes(IC50, fill=no_mapk_up)) +
     theme_bw()
 
 ggplot(resp, aes(IC50, fill=no_both)) +
-    stat_density(aes(y = ..count..), position="identity", color="black") +
+    stat_density(aes(y = ..count..), position="stack", color="black") +
     theme_bw()
 
 dev.off()
