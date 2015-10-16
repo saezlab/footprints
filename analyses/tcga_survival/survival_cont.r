@@ -10,7 +10,11 @@ INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_norm.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "cont_speed_norm.pdf"
 
 clinical = tcga$clinical() %>%
-    transmute(study = study,
+    filter(patient.history_of_neoadjuvant_treatment == "no" &
+           is.na(patient.radiations) &
+           is.na(patient.follow_ups) &
+           is.na(patient.drugs)) %>%
+    transmute(study = toupper(admin.disease_code),
               age_days = - as.integer(patient.days_to_birth),
               alive = 1 - as.integer(is.na(patient.days_to_death)),
               surv_days = as.integer(patient.days_to_death %or%
