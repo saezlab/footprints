@@ -7,7 +7,7 @@ plt = import('plot')
 gdsc = import('data/gdsc')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/gdsc/speed_matrix.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "speed_matrix.pdf"
+OUTFILE = commandArgs(TRUE)[2] %or% "speed_matrix.RData"
 
 # response data for 52 cell lines
 # >=10 measured data points: 76 drugs
@@ -24,11 +24,4 @@ assocs.tissue = st$lm(Yf ~ scores) %>%
     select(-term) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr"))
 
-# volcano plot for tissue subsets
-pdf(OUTFILE, paper="a4r", width=26, height=20)
-assocs.tissue %>%
-    mutate(label = paste(Yf, scores, sep=":")) %>%
-    plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1) %>%
-    plt$volcano(p=0.2) %>%
-    print()
-dev.off()
+save(assocs.tissue, file=OUTFILE)
