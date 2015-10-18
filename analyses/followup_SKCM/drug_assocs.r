@@ -24,4 +24,4 @@ assocs.tissue = st$lm(Yf ~ scores) %>%
     select(-term) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr"))
 
-save(assocs.tissue, file=OUTFILE)
+save(scores, Yf, assocs.tissue, file=OUTFILE)
