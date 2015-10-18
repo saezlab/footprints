@@ -10,8 +10,8 @@ all: prereqs $(CONT) $(DISCR)
 prereqs:;
 #	make -C ../../scores/tcga
 
-discr_%.pdf: ../../scores/tcga/%.RData survival_discrete.r
-	Rscript survival_discrete.r $< $@
+discr_%.pdf: survival_discrete.r ../../scores/tcga/%.RData
+	Rscript $^ $@
 
-cont_%.pdf: ../../scores/tcga/%.RData survival_cont.r
-	Rscript survival_cont.r $< $@
+cont_%.pdf: survival_cont.r ../../scores/tcga/%.RData
+	Rscript $^ $@
