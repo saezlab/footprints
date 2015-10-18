@@ -15,8 +15,8 @@ scores = io$load(INFILE)
 if (grepl("gdsc", INFILE)) {
     gdsc = import('data/gdsc')
     Ys = gdsc$drug_response('IC50s') # or AUC
-    Yf = gdsc$drug_response('IC50s', min_tissue_measured=2)
-    tissues = gdsc$tissues(minN=5)
+    Yf = gdsc$drug_response('IC50s', min_tissue_measured=10)
+    tissues = gdsc$tissues(minN=15)
     ar$intersect(scores, tissues, Ys, Yf, along=1)
 } else if (grepl("ccle", INFILE)) {
     ccle = import('data/ccle')
