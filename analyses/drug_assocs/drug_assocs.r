@@ -27,14 +27,22 @@ if (grepl("gdsc", INFILE)) {
     ar$intersect(scores, tissues, Ys, Yf, along=1)
 }
 
-# save pdf w/ pan-cancer & tissue specific
-pdf(OUTFILE, paper="a4r", width=26, height=20)
-
 # tissues as covariate
 assocs.pan = st$lm(Ys ~ tissues + scores) %>%
     filter(term == "scores") %>%
     select(-term) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr"))
+
+# tissues as subsets
+assocs.tissue = st$lm(Yf ~ scores, subsets=tissues) %>%
+    filter(term == "scores") %>%
+    select(-term) %>%
+    group_by(subset) %>%
+    mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
+    ungroup()
+
+# save pdf w/ pan-cancer & tissue specific
+pdf(OUTFILE, paper="a4r", width=26, height=20)
 
 # volcano plot for pan-cancer
 assocs.pan %>%
@@ -51,14 +59,6 @@ assocs.pan %>%
     plt$cluster(lp ~ scores + Ys, size=c(Inf,20)) %>%
     plt$matrix(estimate ~ scores + Ys)
 
-# tissues as subsets
-assocs.tissue = st$lm(Yf ~ scores, subsets=tissues) %>%
-    filter(term == "scores") %>%
-    select(-term) %>%
-    group_by(subset) %>%
-    mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
-    ungroup()
-
 # volcano plot for tissue subsets
 assocs.tissue %>%
     mutate(label = paste(subset, Yf, scores, sep=":")) %>%
@@ -66,15 +66,13 @@ assocs.tissue %>%
     plt$volcano(p=0.2) %>%
     print()
 
-## matrix plots for tissue subsets # this doesn't really work, not many assocs
-#assocs.tissue %>%
-#    mutate(lp = -log(adj.p),
-#           id = paste(scores, subset, sep=":"),
-#           label = ifelse(adj.p < 0.05, '*', ''),
-#           estimate = ifelse(adj.p < 0.2, estimate, NA)) %>%
-#    plt$cluster(lp ~ id + Yf, size=c(30,40)) %>%
-#    plt$matrix(estimate ~ id + Yf)
-
-#TODO: linear fits of significant pan-can assocs
+for (tissue in unique(assocs.tissue$subset)) {
+    p = assocs.tissue %>%
+        filter(subset == tissue) %>%
+        mutate(label = paste(Yf, scores, sep=":")) %>%
+        plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1) %>%
+        plt$volcano(p=0.2) + ggtitle(tissue)
+    print(p)
+}
 
 dev.off()
