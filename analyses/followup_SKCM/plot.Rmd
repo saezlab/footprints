@@ -1,3 +1,9 @@
+---
+title: "SKCM drug associations for perturbation-response genes"
+author: "Michael Schubert (schubert@ebi.ac.uk)"
+---
+
+```{r code, include=FALSE}
 library(dplyr)
 b = import('base')
 io = import('io')
@@ -7,7 +13,7 @@ df = import('data_frame')
 plt = import('plot')
 gdsc = import('data/gdsc')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/gdsc/speed_matrix.RData"
+INFILE = commandArgs(TRUE)[1] %or% "speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "SKCM_assocs.pdf"
 
 assocfile2plot = function(fname) {
@@ -34,21 +40,30 @@ do_fit = function(tissue, drug, path, gene) {
 
     ggplot(fits, aes(x=path, y=drug, label=muts, fill=gene)) +
         geom_smooth(method=stats::lm, se=FALSE, na.rm=TRUE, alpha=0.1) +
-        geom_point(pch=21, size=5, colour="black") +
+        geom_point(pch=21, size=5, colour="black", na.rm=TRUE) +
         scale_fill_gradient(low="white", high="black",
                             limits=c(min(fits$gene, na.rm=TRUE),
                                      max(fits$gene, na.rm=TRUE)),
                             guide = guide_legend(title = gene)) +
         theme_bw() +
-        ggtitle("SKCM: FH535 response and VEGF activity") +
-        xlab("predicted VEGF activity") +
+        ggtitle(paste(tissue, ":", drug, "response and",
+                      path, "activity")) +
+        xlab(paste("predicted", path, "activity")) +
         ylab("log IC50 FH535 [beta-catenin]")
 }
 
 speed = io$load("speed_matrix.RData")
+```
 
-pdf(OUTFILE, paper="a4r", width=26, height=20)
+missing: explain volcano, maybe fewer labels
+
+```{r volcano, echo=FALSE}
 print(assocfile2plot(INFILE))
+```
+
+missing: label cell lines that have highest expr in both plots
+
+```{r fits, echo=FALSE}
 print(do_fit("SKCM", "FH535", "VEGF", "PDGFRA"))
 print(do_fit("SKCM", "FH535", "VEGF", "PDGFRB"))
-dev.off()
+```
