@@ -1,7 +1,4 @@
-all: mut_tissue.pdf mut_pan.pdf
+all: tissue.pdf pancan.pdf
 
-mut_tissue.pdf:
-	Rscript mut_tissue.r
-
-mut_pan.pdf:
-	Rscript mut_pan.r
+%.pdf: %.r ../../scores/tcga/speed_matrix.RData
+	Rscript $^ $@

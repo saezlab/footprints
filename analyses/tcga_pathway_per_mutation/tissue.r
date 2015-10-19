@@ -7,8 +7,8 @@ ar = import('array')
 plt = import('plot')
 tcga = import('data/tcga')
 
-INFILE = "../../scores/tcga/speed_linear.RData"
-OUTFILE = "speed_linear.pdf"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "tissue.pdf"
 
 # load expression, RPPA for all cancers where both available
 scores = io$load(INFILE) #TODO: add tissue normals with 0 mutations?
