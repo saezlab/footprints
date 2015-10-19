@@ -7,8 +7,8 @@ ar = import('array')
 plt = import('plot')
 tcga = import('data/tcga')
 
-INFILE = "../../scores/tcga/speed_linear.RData"
-OUTFILE = "speed_linear.pdf"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "tissue.pdf"
 
 # load expression, RPPA for all cancers where both available
 scores = io$load(INFILE) #TODO: add tissue normals with 0 mutations?
@@ -49,8 +49,8 @@ subs2plots = function(subs, mut, scores) {
     # volcano plot
     p2 = result %>%
         mutate(label = paste(m, scores, sep=":")) %>%
-        plt$color$p_effect(pvalue = "adj.p") %>%
-        plt$volcano(base.size=0.1) + ggtitle(subs)
+        plt$color$p_effect(pvalue="adj.p", thresh=0.1) %>%
+        plt$volcano(base.size=0.1, p=0.1) + ggtitle(subs)
     print(p2)
 }
 lapply(unique(mut$study), function(s) subs2plots(s, mut, scores) %catch% NULL)
