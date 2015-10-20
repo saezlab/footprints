@@ -6,7 +6,7 @@ ASSOC_OUT = $(ASSOCS:%=%.RData)
 
 all: SKCM_assocs.pdf
 
-SKCM_assocs.pdf: plot.Rmd speed_matrix.RData
+%.pdf: %.Rmd speed_matrix.RData
 	Rscript -e "rmarkdown::render('$<', 'pdf_document', output_file='$@')"
 
 speed_matrix.RData: drug_assocs.r ../../scores/gdsc/speed_matrix.RData
