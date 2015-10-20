@@ -1,16 +1,19 @@
-all: gatza.RData go.RData biocarta.RData reactome.RData
+all: gatza.RData go.RData biocarta.RData reactome.RData chea.RData
 
 gatza.RData: gatza2014.r ng.3073-S2.csv
-	Rscript $< $(word 2,$^) $@
+	Rscript $^ $@
 
 go.RData: go.r
-	Rscript $< $@
+	Rscript $^ $@
 
 biocarta.RData: biocarta.r Enrichr/src/main/resources/BioCarta.gmt
-	Rscript $< $(word 2,$^) $@
+	Rscript $^ $@
 
 reactome.RData: reactome.r ReactomePathways.gmt
-	Rscript $< $(word 2,$^) $@
+	Rscript $^ $@
+
+chea.RData: chea.r Enrichr/src/main/resources/ChEA.gmt
+	Rscript $^ $@
 
 ReactomePathways.gmt:
 	wget -N http://www.reactome.org/download/current/ReactomePathways.gmt.zip
