@@ -12,14 +12,18 @@ OUTFILE = commandArgs(TRUE)[2] %or% "tissue.pdf"
 scores = io$load(INFILE)
 rownames(scores) = substr(rownames(scores), 1, 16)
 
-mut = tcga$mutations() %>%
-    transmute(hgnc = Hugo_Symbol,
+mut_file = "./mutations_annotated_pathwayactivities_v3_mikeformat.txt"
+get_study = function(x) tcga$barcode2index(x)$Study.Abbreviation %OR% NA
+
+mut = io$read_table(mut_file, header=TRUE) %>%
+    transmute(hgnc = GENE_NAME,
               sample = substr(Tumor_Sample_Barcode, 1, 16),
-              study = study) %>%
+              study = sapply(Tumor_Sample_Barcode, get_study)) %>%
+    filter(!is.na(study)) %>%
     group_by(study, hgnc) %>%
     filter(n() >= 5) %>%
-    filter(study != "OV") %>% # no overlap
-    ungroup()
+    ungroup() %>%
+    filter(!study %in% c("READ"))
 
 subs2plots = function(subs, mut, scores) {
     message(subs)
