@@ -1,0 +1,16 @@
+---
+id        : TGFb.E-GEOD-28074.1
+accession : E-GEOD-28074
+platform  : A-GEOD-13303
+pathway   : TGFb
+cells     : mesenchymal stem cells
+treatment : BMP6
+effect    : activating
+hours     : 8
+
+control   :
+    - GSM694223 1
+    - GSM694210 1
+perturbed :
+    - GSM694224 1
+...

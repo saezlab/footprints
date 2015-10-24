@@ -1,0 +1,38 @@
+---
+id        : TGFb.E-GEOD-26241.1
+accession : E-GEOD-26241
+platform  : A-AFFY-141
+pathway   : TGFb
+cells     : A549 lung carcinoma cell line control siRNA
+treatment : TGF-beta
+effect    : activating
+hours     : 8
+
+control   :
+    - GSM644066 1
+    - GSM644072 1
+    - GSM644078 1
+perturbed :
+    - GSM644068 1
+    - GSM644074 1
+    - GSM644080 1
+
+---
+id        : TGFb.E-GEOD-26241.2
+accession : E-GEOD-26241
+platform  : A-AFFY-141
+pathway   : TGFb
+cells     : A549 lung carcinoma cell line control siRNA
+treatment : TGF-beta
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM644066 1
+    - GSM644072 1
+    - GSM644078 1
+perturbed :
+    - GSM644070 1
+    - GSM644076 1
+    - GSM644082 1
+...

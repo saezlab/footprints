@@ -1,0 +1,17 @@
+---
+id        : TGFb.E-GEOD-16111.1
+accession : E-GEOD-16111
+platform  : A-AFFY-37
+pathway   : TGFb
+cells     : Primary human epidermal keratinocytes
+treatment : 50 ng/nm BMP4
+effect    : activating
+hours     : 8
+
+control   :
+    - GSM403053 1
+    - GSM403055 1
+perturbed :
+    - GSM403054 1
+    - GSM403056 1
+...

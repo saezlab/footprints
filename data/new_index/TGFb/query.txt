@@ -1,0 +1,22 @@
+(sa:tgf OR sa:"transforming growth factor" OR sa:"A 83-01" OR sa:"D 4476" OR
+ sa:"GW 788388" OR sa:"LY 364947" OR sa:"R 268712" OR sa:RepSox OR sa:"SB
+ 431542" OR sa:"SB 505124" OR sa:"SB 525334" OR sa:"SD 208") organism:sapiens samplecount:[4 TO 10000] raw:true exptype:"Transcription profiling"
+
+#63 hits:
+(tgf OR "transforming growth factor" OR "A 83-01" OR "A-83-01" OR "A83-01" OR
+ "D 4476" OR "D4476" OR "D-4476" OR  "GW 788388" OR "GW788388" OR "GW-788388"
+ OR "LY 364947" OR "LY-364947" OR "LY364947" OR "R 268712" OR "R-268712" OR
+ "R268712" OR RepSox OR "SB 431542" OR "SB-431542" OR "SB431542" OR "SB
+ 505124" OR "SB-505124" OR "SB505124" OR "SB 525334" OR "SB-525334" OR
+ "SB525334" OR "SD 208" OR "SD208" OR "SD-208") organism:sapiens
+samplecount:[4 TO 10000] raw:true exptype:"Transcription profiling"
+
+#124 results:
+(tgf OR "tgf-*" OR "bmp*" OR "SMAD*" "transforming growth factor" OR "A 83-01"
+ OR "A-83-01" OR "A83-01" OR "D 4476" OR "D4476" OR "D-4476" OR  "GW 788388"
+ OR "GW788388" OR "GW-788388" OR "LY 364947" OR "LY-364947" OR "LY364947" OR
+ "R 268712" OR "R-268712" OR "R268712" OR RepSox OR "SB 431542" OR "SB-431542"
+ OR "SB431542" OR "SB 505124" OR "SB-505124" OR "SB505124" OR "SB 525334" OR
+ "SB-525334" OR "SB525334" OR "SD 208" OR "SD208" OR "SD-208")
+organism:sapiens samplecount:[4 TO 10000] raw:true exptype:"Transcription
+profiling"

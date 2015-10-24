@@ -1,0 +1,19 @@
+---
+id        : TGFb.E-GEOD-27526.1
+accession : E-GEOD-27526
+platform  : A-AFFY-44
+pathway   : TGFb
+cells     : A2780 cells
+treatment : TGF-beta
+effect    : activating
+hours     : 3
+
+control   :
+    - GSM687585 1
+    - GSM687586 1
+    - GSM687587 1
+perturbed :
+    - GSM687582 1
+    - GSM687583 1
+    - GSM687584 1
+...

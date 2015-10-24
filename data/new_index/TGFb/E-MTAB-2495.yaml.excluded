@@ -1,0 +1,19 @@
+---
+id        : TGFb.E-MTAB-2495.1
+accession : E-MTAB-2495
+platform  : E-MTAB-2495
+pathway   : TGFb
+cells     : pulmonary arterial endothelial cells (PAECs)
+treatment : BMP2,6,9
+effect    : activating
+hours     : 4
+exclusion : non-unique sample names
+
+control   :
+    - EC_from_E
+    - EC_from_F
+    - EC_from_G
+    - EC_from_H
+perturbed :
+    -
+...

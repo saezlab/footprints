@@ -1,0 +1,38 @@
+---
+id        : TGFb.E-GEOD-63383.1
+accession : E-GEOD-63383
+platform  : A-AFFY-141
+pathway   : TGFb
+cells     : healthy airway smooth muscle cells
+treatment : TGFB 10ng/ml
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1547810 1
+    - GSM1547811 1
+    - GSM1547815 1
+perturbed :
+    - GSM1547807 1
+    - GSM1547798 1
+    - GSM1547796 1
+
+---
+id        : TGFb.E-GEOD-63383.2
+accession : E-GEOD-63383
+platform  : A-AFFY-141
+pathway   : TGFb
+cells     : asthma airway smooth muscle cells
+treatment : TGFB 10ng/ml
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1547804 1
+    - GSM1547805 1
+    - GSM1547813 1
+perturbed :
+    - GSM1547802 1
+    - GSM1547808 1
+    - GSM1547816 1
+...

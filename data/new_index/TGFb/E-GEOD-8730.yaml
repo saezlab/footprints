@@ -1,0 +1,83 @@
+---
+id        : TGFb.E-GEOD-8730.1
+accession : E-GEOD-8730
+platform  : A-AFFY-33
+pathway   : TGFb
+cells     : odontoblasts
+treatment : TGF-beta
+effect    : activating
+hours     : 1
+
+control   :
+    - GSE8730GSM216537 # 1 h
+    - GSE8730GSM216539 # 24 h
+perturbed :
+    - GSE8730GSM216538
+
+---
+id        : TGFb.E-GEOD-8730.2
+accession : E-GEOD-8730
+platform  : A-AFFY-33
+pathway   : TGFb
+cells     : odontoblasts
+treatment : TGF-beta
+effect    : activating
+hours     : 24
+
+control   :
+    - GSE8730GSM216537 # 1 h
+    - GSE8730GSM216539 # 24 h
+perturbed :
+    - GSE8730GSM216540
+
+---
+id        : TGFb.E-GEOD-8730.3
+accession : E-GEOD-8730
+platform  : A-AFFY-44
+pathway   : TGFb
+cells     : pulp tissue
+treatment : TGF-beta
+effect    : activating
+hours     : 1
+
+control   :
+    - GSE8730GSM216541 # 1 h
+    - GSE8730GSM216543 # 5 h
+    - GSE8730GSM216543 # 24 h
+perturbed :
+    - GSE8730GSM216546
+    
+---
+id        : TGFb.E-GEOD-8730.4
+accession : E-GEOD-8730
+platform  : A-AFFY-44
+pathway   : TGFb
+cells     : pulp tissue
+treatment : TGF-beta
+effect    : activating
+hours     : 5
+
+control   :
+    - GSE8730GSM216541 # 1 h
+    - GSE8730GSM216543 # 5 h
+    - GSE8730GSM216543 # 24 h
+perturbed :
+    - GSE8730GSM216547
+
+---
+id        : TGFb.E-GEOD-8730.5
+accession : E-GEOD-8730
+platform  : A-AFFY-44
+pathway   : TGFb
+cells     : pulp tissue
+treatment : TGF-beta
+effect    : activating
+hours     : 24
+
+control   :
+    - GSE8730GSM216541 # 1 h
+    - GSE8730GSM216543 # 5 h
+    - GSE8730GSM216543 # 24 h
+perturbed :
+    - GSE8730GSM216548
+...
