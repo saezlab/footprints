@@ -8,6 +8,9 @@ muts = c("KRAS", "BRAF", "HRAS", "EGFR", "FGFR3", "TP53", "PIK3CA",
          "PTEN", "CTNNB1", "VHL", "NOTCH1", "AKT1", "MAP2K1",
          "MAP3K1", "MTOR", "PIK3R1", "SMAD4")
 # CASP8, SMARC4 not mutated where we have scores
+
+INFILE = commandArgs(TRUE)[1] %or% '../../scores/tcga/speed_matrix.RData'
+OUTFILE = commandArgs(TRUE)[2] %or% 'pancan.pdf'
 MUTFILE = "mutations_annotated_pathwayactivities_v3_mikeformat.txt"
 
 tab = io$read_table(MUTFILE, header=TRUE) %>%
@@ -15,7 +18,7 @@ tab = io$read_table(MUTFILE, header=TRUE) %>%
               tcga_barcode = substr(Tumor_Sample_Barcode, 1, 16),
               code = tcga$barcode2index(Tumor_Sample_Barcode)$Study.Abbreviation)
 
-scores = io$load('../../scores/tcga/speed_matrix.RData')
+scores = io$load(INFILE)
 tissues = tcga$barcode2index(rownames(scores))$Study.Abbreviation
 mut_matrix = matrix(FALSE, nrow=nrow(scores), ncol=length(muts),
                     dimnames=list(rownames(scores), muts))
@@ -31,7 +34,7 @@ pancan = st$lm(scores ~ tissues + mut_matrix) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
     filter(adj.p < 0.05)
 
-pdf("do.pdf", width=10, height=10)
+pdf(OUTFILE, width=10, height=10)
 
 pancan %>%
     plt$matrix(estimate ~ scores + mut_matrix) +
