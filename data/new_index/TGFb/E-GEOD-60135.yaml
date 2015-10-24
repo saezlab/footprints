@@ -1,0 +1,38 @@
+---
+id        : TGFb.E-GEOD-60135.1
+accession : E-GEOD-60135
+platform  : A-AFFY-44
+pathway   : TGFb
+cells     : SK-OV-3
+treatment : recombinant BMP2 (rBMP2) (100 ng/ml)
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1466205 1
+    - GSM1466206 1
+    - GSM1466207 1
+perturbed :
+    - GSM1466208 1
+    - GSM1466209 1
+    - GSM1466210 1
+
+---
+id        : TGFb.E-GEOD-60135.2
+accession : E-GEOD-60135
+platform  : A-AFFY-44
+pathway   : TGFb
+cells     : SK-OV-3 treated with DM
+treatment : recombinant BMP2 (rBMP2) (100 ng/ml)
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1466211 1
+    - GSM1466212 1
+    - GSM1466213 1
+perturbed :
+    - GSM1466214 1
+    - GSM1466215 1
+    - GSM1466216 1
+...

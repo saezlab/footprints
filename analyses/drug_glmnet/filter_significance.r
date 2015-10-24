@@ -1,36 +1,25 @@
-#library(fitdistrplus)
+library(ggplot2)
 library(dplyr)
 b = import('base')
 io = import('io')
 
-#null = io$load("model_vs_mut_NULL_1000rep_20drugs.RData")
 null = io$load("model_vs_mut_NULL_100rep_alldrugs.RData") %>%
-    group_by(drugs, dset, subset) %>%
-    do(data.frame(mse.cutoff = b$minN(.$mse.test.mean, 5)))
+    transmute(drugs = drugs,
+              dset = dset,
+              subset = subset,
+              rep = rep,
+              mse.test.null = mse.test.mean) %>%
+    mutate(mse.test.null[is.na(mse.test.null)] = Inf)
 
 model = io$load("model_vs_mut_alldrugs.RData") %>%
+    select(-rmse.test.sqrt.of.mean, -mae.test.mean) %>%
     filter(drugs %in% null$drugs) %>%
-    inner_join(null) %>%
-    mutate(valid = mse.test.mean < mse.cutoff) %>%
-    group_by(drugs, subset) %>%
-    filter(valid) %>%
-    mutate(best_model = mse.test.mean == min(mse.test.mean))
+    left_join(null) %>%
+    group_by(drugs, dset, subset) %>%
+    summarize(emp.p = (1 + sum(mse.test.mean > mse.test.null)) / n(),
+              mse.test.mean = mse.test.mean[1]) %>%
+    mutate(adj.p = p.adjust(emp.p, method="fdr"))
 
-# total number of models
-# significant number of models
-# plot: # of best significant models
-
-#drug = sample(model$drugs, 1)
-#method = "speed"
-#tissue = "BRCA"
-#nulldist = null %>%
-#    filter(drugs == drug & dset == method & subset == tissue)
-#
-# this does not really follow any distribution
-# can do it empirically, will need a lot of null models
-#dd = nulldist$mse.test.mean
-#hist(dd, 100)
-#plot(fitdist(dd[!is.na(dd)], "norm"))
-
-# select all models that have emp_p<0.05
-# can i just group+merge?
+model %>%
+    filter(adj.p < 0.1) %>%
+    ggplot(aes(dset)) + geom_bar()

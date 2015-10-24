@@ -32,8 +32,10 @@ subset_expr = function(rec) {
     # filter out records that do not have enough samples available
     rec$control = intersect(rec$control, colnames(emat))
     rec$perturbed = intersect(rec$perturbed, colnames(emat))
-    if (length(rec$control) < 2 || length(rec$perturbed) < 1)
+    if (length(rec$control) < 2 || length(rec$perturbed) < 1) {
         warning("Discarding record (not enough samples): ", rec$id)
+        NULL
+    }
     else
         list(record=rec, expr=emat[,c(rec$control, rec$perturbed)])
 }
@@ -53,7 +55,10 @@ if (is.null(module_name())) {
         unlist(recursive=FALSE) %>%
         b$omit$null() %>%
         setNames(., lapply(., function(x) x$id))
-    stopifnot(sum(duplicated(names(records))) == 0)
+
+    id_dups = names(records)[duplicated(names(records))]
+    if (length(id_dups) > 0)
+        stop("duplicated ids:\n", paste(id_dups, sep=", "))
 
     # load all expression objects
     expr = lapply(EXPR, function(e) io$load(e)) %>%
@@ -89,7 +94,7 @@ records = lapply(records, function(r) {
     r
 })
 message("length train set: ", sum(sapply(records, function(x) is.na(x$exclusion))))
-message("length trest set: ", sum(sapply(records, function(x) identical(x$exclusion, "test-set"))))
+message("length test set: ", sum(sapply(records, function(x) identical(x$exclusion, "test-set"))))
 ### TEST SET TEST
     expr = sapply(data, function(x) x$expr, simplify=FALSE, USE.NAMES=TRUE)
     save(records, expr, file=OUTFILE)

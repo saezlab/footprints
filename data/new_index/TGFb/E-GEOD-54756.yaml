@@ -1,0 +1,19 @@
+---
+id        : TGFb.E-GEOD-54756.1
+accession : E-GEOD-54756
+platform  : A-AFFY-141
+pathway   : TGFb
+cells     : SUM159 3D cultures
+treatment : TGFBR3KD knockdown
+effect    : inactivating
+hours     : 24 # guess
+
+control   :
+    - GSM1323555 1
+    - GSM1323557 1
+    - GSM1323559 1
+perturbed :
+    - GSM1323556 1
+    - GSM1323558 1
+    - GSM1323560 1
+...

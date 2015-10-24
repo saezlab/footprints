@@ -1,0 +1,114 @@
+---
+id        : TGFb.E-GEOD-46019.1
+accession : E-GEOD-46019
+platform  : A-AFFY-141
+pathway   : TGFb
+cells     : Bone marrow derived mesenchymal stromal cells (MSC), early passage
+treatment : 1ng/ml TGF-B1
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM909604 1
+    - GSM909606 1
+    - GSM909608 1
+perturbed :
+    - GSM1122002 1
+    - GSM1122008 1
+    - GSM1122014 1
+
+---
+id        : TGFb.E-GEOD-46019.2
+accession : E-GEOD-46019
+platform  : A-AFFY-141
+pathway   : TGFb
+cells     : Bone marrow derived mesenchymal stromal cells (MSC), early passage
+treatment : 1ng/ml TGF-B1
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM909604 1
+    - GSM909606 1
+    - GSM909608 1
+perturbed :
+    - GSM1122003 1
+    - GSM1122009 1
+    - GSM1122015 1
+
+---
+id        : TGFb.E-GEOD-46019.3
+accession : E-GEOD-46019
+platform  : A-AFFY-141
+pathway   : TGFb
+cells     : Bone marrow derived mesenchymal stromal cells (MSC), early passage
+treatment : 1ng/ml TGF-B1
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM909604 1
+    - GSM909606 1
+    - GSM909608 1
+perturbed :
+    - GSM1122004 1
+    - GSM1122010 1
+    - GSM1122016 1
+
+---
+id        : TGFb.E-GEOD-46019.4
+accession : E-GEOD-46019
+platform  : A-AFFY-141
+pathway   : TGFb
+cells     : Bone marrow derived mesenchymal stromal cells (MSC), late passage
+treatment : 1ng/ml TGF-B1
+effect    : activating
+hours     : 1
+
+control   :
+    - GSM909605 1
+    - GSM909607 1
+    - GSM909609 1
+perturbed :
+    - GSM1122005 1
+    - GSM1122011 1
+    - GSM1122017 1
+
+---
+id        : TGFb.E-GEOD-46019.5
+accession : E-GEOD-46019
+platform  : A-AFFY-141
+pathway   : TGFb
+cells     : Bone marrow derived mesenchymal stromal cells (MSC), late passage
+treatment : 1ng/ml TGF-B1
+effect    : activating
+hours     : 4
+
+control   :
+    - GSM909605 1
+    - GSM909607 1
+    - GSM909609 1
+perturbed :
+    - GSM1122006 1
+    - GSM1122012 1
+    - GSM1122018 1
+
+---
+id        : TGFb.E-GEOD-46019.6
+accession : E-GEOD-46019
+platform  : A-AFFY-141
+pathway   : TGFb
+cells     : Bone marrow derived mesenchymal stromal cells (MSC), late passage
+treatment : 1ng/ml TGF-B1
+effect    : activating
+hours     : 12
+
+control   :
+    - GSM909605 1
+    - GSM909607 1
+    - GSM909609 1
+perturbed :
+    - GSM1122007 1
+    - GSM1122013 1
+    - GSM1122019 1
+...

@@ -16,16 +16,14 @@ st = import('stats')
 gdsc = import('data/gdsc')
 
 args = commandArgs(TRUE)
-#OUTFILE = args[1] %or% 'model_ontopof_mut_NULL_100rep_alldrugs.RData'
-OUTFILE = 'test_75000.RData'
-#DATASETS = args[-1] %or% '../../scores/gdsc/speed_linear.RData'
+OUTFILE = args[1] %or% 'model_ontopof_mut_NULL_1000rep_alldrugs.RData'
 
 dset = list(
     speed = "../../scores/gdsc/speed_linear.RData",
     pathifier = "../../scores/merge/pathifier.RData",
     spia = "../../scores/merge/spia.RData",
-    reactome = "../../scores/gdsc/reactome.RData",
-    go = "../../scores/gdsc/go.RData"
+    reactome = "../../scores/gdsc/gsea_reactome.RData",
+    go = "../../scores/gdsc/gsea_go.RData"
 ) %>% io$load()
 
 dset$tissues = gdsc$tissues(minN=10)
@@ -42,20 +40,16 @@ dset$drugs = NULL
 mut = list(mut=dset$mut)
 dset$mut = NULL
 
-#set.seed(12416)
-#drugs = drugs[,sample(colnames(drugs), 10)]
 result = st$ml(drugs ~ mut + dset, subsets = tissues, xval=10, aggr=list(mlr::mse, mlr::mae, mlr::rmse),
-               train_args = list("regr.glmnet"), shuffle_labels=TRUE, rep=5, atomic_class=NULL,
-               hpc_args = list(n_jobs=20, memory=512)) # 200 jobs, 3 hrs per job
+               train_args = list("regr.glmnet"), shuffle_labels=TRUE, rep=1000, atomic_class=NULL,
+               hpc_args = list(n_jobs=200, memory=512)) # 200 jobs, 3 hrs per job
+
+#@NEW mut + dset:
+# 100 reps, 200 jobs: 80-85 min + 8 hours assembly
 
 #@FIXED:
 # for 1 rep, 20 jobs: 3% cpu @master / full @worker, 3 min runtime
 # for 10 reps, 100 jobs: 10% cpu @master / full @worker, 14:22-14:32 (+ df processing time: 15:00)
 # for 100 reps, 300 jobs: 80% cpu @master / ~30% @worker, 15:17-
-
-#@BEFORE:
-# for 1 rep, 20 jobs: 30% cpu @master / full @worker, 5 minutes runtime
-# for 100 reps, 100 jobs: something on the master is too slow, it doesn't fill up the workers
-# for 1000 reps, 300 jobs: master needs >10G of mem + a lot of time before even submitting
 
 save(result, file=OUTFILE)

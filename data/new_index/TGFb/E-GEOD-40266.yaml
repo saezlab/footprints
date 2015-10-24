@@ -1,0 +1,38 @@
+---
+id        : TGFb.E-GEOD-40266.1
+accession : E-GEOD-40266
+platform  : A-AFFY-44
+pathway   : TGFb
+cells     : NOF151 ovarian cell line
+treatment : TGF-beta-1  5 (nanogram per milliliter)
+effect    : activating
+hours     : 48
+
+control   :
+    - GSM989481 1
+    - GSM989483 1
+    - GSM989485 1
+perturbed :
+    - GSM989488 1
+    - GSM989490 1
+    - GSM989492 1
+
+---
+id        : TGFb.E-GEOD-40266.2
+accession : E-GEOD-40266
+platform  : A-AFFY-44
+pathway   : TGFb
+cells     : NOF151 ovarian cell line
+treatment : TGF-beta-2  5 (nanogram per milliliter)
+effect    : activating
+hours     : 48
+
+control   :
+    - GSM989481 1
+    - GSM989483 1
+    - GSM989485 1
+perturbed :
+    - GSM989494 1
+    - GSM989496 1
+    - GSM989499 1
+...

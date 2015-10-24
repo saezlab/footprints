@@ -1,0 +1,82 @@
+---
+id        : TGFb.E-GEOD-10311.1
+accession : E-GEOD-10311
+platform  : A-AFFY-44
+pathway   : TGFb
+cells     : human osteoblasts
+treatment : BMP-2
+effect    : activating
+hours     : 24
+
+control   :
+    - GSE10311GSM260302
+    - GSE10311GSM260303
+    - GSE10311GSM260304
+    - GSE10311GSM260305
+    - GSE10311GSM260306
+    - GSE10311GSM260307
+perturbed :
+    - GSE10311GSM260314
+    - GSE10311GSM260321
+    - GSE10311GSM260322
+
+---
+id        : TGFb.E-GEOD-10311.2
+accession : E-GEOD-10311
+platform  : A-AFFY-44
+pathway   : TGFb
+cells     : human osteoblasts
+treatment : dexamethasone
+effect    : inhibiting
+hours     : 24
+
+control   :
+    - GSE10311GSM260302
+    - GSE10311GSM260303
+    - GSE10311GSM260304
+    - GSE10311GSM260305
+    - GSE10311GSM260306
+    - GSE10311GSM260307
+perturbed :
+    - GSE10311GSM260323
+    - GSE10311GSM260324
+    - GSE10311GSM260325
+
+---
+id        : TGFb.E-GEOD-10311.3
+accession : E-GEOD-10311
+platform  : A-AFFY-44
+pathway   : TGFb
+cells     : human osteoblasts
+treatment : BMP-2
+effect    : activating
+hours     : 2
+
+control   :
+    - GSE10311GSM260311
+    - GSE10311GSM260312
+    - GSE10311GSM260313
+perturbed :
+    - GSE10311GSM260308
+    - GSE10311GSM260309
+    - GSE10311GSM260310
+
+---
+id        : TGFb.E-GEOD-10311.4
+accession : E-GEOD-10311
+platform  : A-AFFY-44
+pathway   : TGFb
+cells     : human osteoblasts
+treatment : dexamethasone
+effect    : inhibiting
+hours     : 2
+
+control   :
+    - GSE10311GSM260311
+    - GSE10311GSM260312
+    - GSE10311GSM260313
+perturbed :
+    - GSE10311GSM260326
+    - GSE10311GSM260327
+    - GSE10311GSM260328
+...

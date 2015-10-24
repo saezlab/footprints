@@ -1,0 +1,38 @@
+---
+id        : TGFb.E-MEXP-2645.1
+accession : E-MEXP-2645
+platform  : A-AFFY-44
+pathway   : TGFb
+cells     : HSC-3 squamous cell carcinoma cell line
+treatment : 10 ng/ml TGF-beta1
+effect    : activating
+hours     : 6
+
+control   :
+    - Control_1 # 24 h
+    - control_2
+    - control_3
+perturbed :
+    - TGF-B 6h_1
+    - TGF-B 6h_2
+    - TGF-B 6h_3
+
+---
+id        : TGFb.E-MEXP-2645.2
+accession : E-MEXP-2645
+platform  : A-AFFY-44
+pathway   : TGFb
+cells     : HSC-3 squamous cell carcinoma cell line
+treatment : 10 ng/ml TGF-beta1
+effect    : activating
+hours     : 24
+
+control   :
+    - Control_1 # 24 h
+    - control_2
+    - control_3
+perturbed :
+    - TGF-B 24h_1
+    - TGF-B 24h_2
+    - TGF-B 24h_3
+...

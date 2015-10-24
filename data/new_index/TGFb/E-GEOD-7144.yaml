@@ -1,0 +1,34 @@
+---
+id        : TGFb.E-GEOD-7144.1
+accession : E-GEOD-7144
+platform  : A-AFFY-33
+pathway   : TGFb
+cells     : trabecular cells
+treatment : TGF-beta1
+effect    : activating
+hours     : 24 # guess
+
+control   :
+    - GSE7144GSM172103
+    - GSE7144GSM172104
+perturbed :
+    - GSE7144GSM172105
+    - GSE7144GSM172106
+
+---
+id        : TGFb.E-GEOD-7144.2
+accession : E-GEOD-7144
+platform  : A-AFFY-33
+pathway   : TGFb
+cells     : trabecular cells
+treatment : TGF-beta2
+effect    : activating
+hours     : 24 # guess
+
+control   :
+    - GSE7144GSM172103
+    - GSE7144GSM172104
+perturbed :
+    - GSE7144GSM172107
+    - GSE7144GSM172108
+...

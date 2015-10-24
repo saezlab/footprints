@@ -1,4 +1,3 @@
-# do the same as with the rppa data:
 # get pathway scores and mutations, and correlate them with each other
 b = import('base')
 io = import('io')
@@ -10,8 +9,7 @@ tcga = import('data/tcga')
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "tissue.pdf"
 
-# load expression, RPPA for all cancers where both available
-scores = io$load(INFILE) #TODO: add tissue normals with 0 mutations?
+scores = io$load(INFILE)
 rownames(scores) = substr(rownames(scores), 1, 16)
 
 mut = tcga$mutations() %>%
@@ -20,16 +18,15 @@ mut = tcga$mutations() %>%
               study = study) %>%
     group_by(study, hgnc) %>%
     filter(n() >= 5) %>%
+    filter(study != "OV") %>% # no overlap
     ungroup()
 
-pdf("mut_tissue.pdf", paper="a4r", width=26, height=20)
-on.exit(dev.off)
-
 subs2plots = function(subs, mut, scores) {
-    print(subs)
+    message(subs)
     m = filter(mut, study==subs)
     m$mut = 1
-    m = ar$construct(mut ~ sample + hgnc, data=m, fun.aggregate = length) > 0
+    m = ar$construct(mut ~ sample + hgnc,
+                     data=m, fun.aggregate = length) > 0
     ar$intersect(m, scores)
 
     # associations
@@ -38,19 +35,22 @@ subs2plots = function(subs, mut, scores) {
         select(-term) %>%
         mutate(adj.p = p.adjust(p.value, method="fdr"))
 
-    # matrix plot
-    p1 = result %>%
-        mutate(label = ifelse(adj.p < 0.01, "*", "")) %>%
-        plt$cluster(estimate ~ scores + m) %>%
-        filter(adj.p < 0.1) %>%
-        plt$matrix(estimate ~ scores + m, color="estimate") + ggtitle(subs)
-    print(p1)
+#    # matrix plot
+#    p1 = result %>%
+#        mutate(label = ifelse(adj.p < 0.01, "*", "")) %>%
+#        plt$cluster(estimate ~ scores + m) %>%
+#        filter(adj.p < 0.1) %>%
+#        plt$matrix(estimate ~ scores + m, color="estimate") +
+#            ggtitle(subs)
+#    print(p1)
 
     # volcano plot
-    p2 = result %>%
+    result %>%
         mutate(label = paste(m, scores, sep=":")) %>%
         plt$color$p_effect(pvalue="adj.p", thresh=0.1) %>%
         plt$volcano(base.size=0.1, p=0.1) + ggtitle(subs)
-    print(p2)
 }
-lapply(unique(mut$study), function(s) subs2plots(s, mut, scores) %catch% NULL)
+
+pdf(OUTFILE, paper="a4r", width=26, height=20)
+lapply(unique(mut$study), function(s) print(subs2plots(s, mut, scores)))
+dev.off()
