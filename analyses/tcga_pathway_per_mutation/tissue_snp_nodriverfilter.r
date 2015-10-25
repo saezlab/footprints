@@ -51,6 +51,12 @@ subs2plots = function(subs, mut, scores) {
         plt$volcano(base.size=0.1, p=0.1) + ggtitle(subs)
 }
 
+plots = mut$study %>%
+    unique() %>%
+    sort() %>%
+    lapply(function(s) subs2plots(s, mut, scores))
+
 pdf(OUTFILE, paper="a4r", width=26, height=20)
-lapply(unique(mut$study), function(s) print(subs2plots(s, mut, scores)))
+for (plot in plots)
+    print(plot)
 dev.off()

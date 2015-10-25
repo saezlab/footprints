@@ -12,7 +12,7 @@ OUTFILE = commandArgs(TRUE)[2] %or% "tissue.pdf"
 scores = io$load(INFILE)
 rownames(scores) = substr(rownames(scores), 1, 16)
 
-mut_file = "./mutations_annotated_pathwayactivities_v3_mikeformat.txt"
+mut_file = "mutations_annotated_pathwayactivities_v3_mikeformat.txt"
 get_study = function(x) tcga$barcode2index(x)$Study.Abbreviation %OR% NA
 
 mut = io$read_table(mut_file, header=TRUE) %>%
@@ -55,6 +55,12 @@ subs2plots = function(subs, mut, scores) {
         plt$volcano(base.size=0.1, p=0.1) + ggtitle(subs)
 }
 
+plots = mut$study %>%
+    unique() %>%
+    sort() %>%
+    lapply(function(s) subs2plots(s, mut, scores))
+
 pdf(OUTFILE, paper="a4r", width=26, height=20)
-lapply(unique(mut$study), function(s) print(subs2plots(s, mut, scores)))
+for (plot in plots)
+    print(plot)
 dev.off()
