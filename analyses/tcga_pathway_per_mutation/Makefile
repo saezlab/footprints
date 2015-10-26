@@ -1,4 +1,6 @@
-all: cna.pdf snp.pdf snp_nodriverfilter.pdf
+SCRIPTS = $(wildcard *.r)
+
+all: $(SCRIPTS:%.r=%.pdf)
 
 %.pdf: %.r ../../scores/tcga/speed_matrix.RData
 	Rscript $^ $@
