@@ -56,7 +56,8 @@ cna = io$read_table(CNAFILE, header=TRUE) %>%
     transmute(hgnc = GENE_NAME,
               sample = substr(Tumor_Sample_Barcode, 1, 15), # NO PORTION
               study = study,
-              gistic = CNA_gistic)
+              gistic = CNA_gistic) %>%
+    filter(study != "KICH") # no alteration present for >= 5 times
 
 plots = cna$study %>%
     unique() %>%
