@@ -8,17 +8,15 @@ tcga = import('data/tcga')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "tissue.pdf"
+MUTFILE = "mutations_annotated_pathwayactivities_v3_mikeformat.txt"
 
 scores = io$load(INFILE)
 rownames(scores) = substr(rownames(scores), 1, 16)
 
-mut_file = "mutations_annotated_pathwayactivities_v3_mikeformat.txt"
-get_study = function(x) tcga$barcode2index(x)$Study.Abbreviation %OR% NA
-
-mut = io$read_table(mut_file, header=TRUE) %>%
+mut = io$read_table(MUTFILE, header=TRUE) %>%
     transmute(hgnc = GENE_NAME,
               sample = substr(Tumor_Sample_Barcode, 1, 16),
-              study = sapply(Tumor_Sample_Barcode, get_study)) %>%
+              study = tcga$barcode2study(Tumor_Sample_Barcode)) %>%
     filter(!is.na(study)) %>%
     group_by(study, hgnc) %>%
     filter(n() >= 5) %>%
