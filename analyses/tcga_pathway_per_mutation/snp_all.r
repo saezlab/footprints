@@ -10,11 +10,13 @@ subs2plots = function(subs, mut, scores) {
     message(subs)
     if (subs == "pan")
         m = mut %>%
-            filter(n() >= 50)
+            group_by(hgnc) %>%
+            filter(n() >= 200) %>%
+            ungroup()
     else
         m = filter(mut, study==subs) %>%
             group_by(hgnc) %>%
-            filter(n() >= 5) %>%
+            filter(n() >= 10) %>%
             ungroup()
 
     m$mut = 1
@@ -45,7 +47,7 @@ subs2plots = function(subs, mut, scores) {
 }
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "snp.pdf"
+OUTFILE = commandArgs(TRUE)[2] %or% "snp_all.pdf"
 
 scores = io$load(INFILE)
 rownames(scores) = substr(rownames(scores), 1, 16)

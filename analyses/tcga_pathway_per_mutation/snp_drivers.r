@@ -44,7 +44,7 @@ subs2plots = function(subs, mut, scores) {
 }
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "snp.pdf"
+OUTFILE = commandArgs(TRUE)[2] %or% "snp_drivers.pdf"
 MUTFILE = "mutations_annotated_pathwayactivities_v3_mikeformat.txt"
 
 scores = io$load(INFILE)

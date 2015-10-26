@@ -9,7 +9,10 @@ tcga = import('data/tcga')
 subs2plots = function(subs, cna, scores) {
     message(subs)
     if (subs == "pan")
-        m = cna
+        m = cna %>%
+            group_by(hgnc) %>%
+            filter(n() >= 50) %>%
+            ungroup()
     else
         m = filter(cna, study==subs) %>%
             group_by(hgnc) %>%
@@ -43,7 +46,7 @@ subs2plots = function(subs, cna, scores) {
 }
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "tissue_cna.pdf"
+OUTFILE = commandArgs(TRUE)[2] %or% "cna_gistic.pdf"
 CNAFILE = "cna.txt"
 
 scores = io$load(INFILE)
@@ -53,10 +56,7 @@ cna = io$read_table(CNAFILE, header=TRUE) %>%
     transmute(hgnc = GENE_NAME,
               sample = substr(Tumor_Sample_Barcode, 1, 15), # NO PORTION
               study = study,
-              gistic = CNA_gistic) %>%
-    group_by(study, hgnc) %>%
-    filter(n() >= 5) %>%
-    ungroup()
+              gistic = CNA_gistic)
 
 plots = cna$study %>%
     unique() %>%
