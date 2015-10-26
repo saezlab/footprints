@@ -11,7 +11,7 @@ SET_SCORES = $(SETS:../../util/genesets/%=gsea_%)
 scores: prereqs $(SPEED_SCORES) $(SET_SCORES) pathifier.RData spia.RData
 
 prereqs:
-	make -C ../../data scores.RData
+	make -C ../../data expr.RData
 	make -C ../../model $(notdir $(MODELS))
 	make -C ../../util/genesets $(notdir $(SETS))
 

@@ -6,28 +6,16 @@ ar = import('array')
 plt = import('plot')
 tcga = import('data/tcga')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "tissue.pdf"
-
-scores = io$load(INFILE)
-rownames(scores) = substr(rownames(scores), 1, 16)
-
-mut_file = "./mutations_annotated_pathwayactivities_v3_mikeformat.txt"
-get_study = function(x) tcga$barcode2index(x)$Study.Abbreviation %OR% NA
-
-mut = io$read_table(mut_file, header=TRUE) %>%
-    transmute(hgnc = GENE_NAME,
-              sample = substr(Tumor_Sample_Barcode, 1, 16),
-              study = sapply(Tumor_Sample_Barcode, get_study)) %>%
-    filter(!is.na(study)) %>%
-    group_by(study, hgnc) %>%
-    filter(n() >= 5) %>%
-    ungroup() %>%
-    filter(!study %in% c("READ"))
-
 subs2plots = function(subs, mut, scores) {
     message(subs)
-    m = filter(mut, study==subs)
+    if (subs == "pan")
+        m = mut
+    else
+        m = filter(mut, study==subs) %>%
+            group_by(hgnc) %>%
+            filter(n() >= 5) %>%
+            ungroup()
+
     m$mut = 1
     m = ar$construct(mut ~ sample + hgnc,
                      data=m, fun.aggregate = length) > 0
@@ -55,6 +43,26 @@ subs2plots = function(subs, mut, scores) {
         plt$volcano(base.size=0.1, p=0.1) + ggtitle(subs)
 }
 
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "snp.pdf"
+MUTFILE = "mutations_annotated_pathwayactivities_v3_mikeformat.txt"
+
+scores = io$load(INFILE)
+rownames(scores) = substr(rownames(scores), 1, 16)
+
+mut = io$read_table(MUTFILE, header=TRUE) %>%
+    transmute(hgnc = GENE_NAME,
+              sample = substr(Tumor_Sample_Barcode, 1, 16),
+              study = tcga$barcode2study(Tumor_Sample_Barcode)) %>%
+    filter(!is.na(study) & study != "READ")
+
+plots = mut$study %>%
+    unique() %>%
+    sort() %>%
+    c("pan", .) %>%
+    lapply(function(s) subs2plots(s, mut, scores))
+
 pdf(OUTFILE, paper="a4r", width=26, height=20)
-lapply(unique(mut$study), function(s) print(subs2plots(s, mut, scores)))
+for (plot in plots)
+    print(plot)
 dev.off()
