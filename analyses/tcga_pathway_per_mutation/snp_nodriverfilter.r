@@ -6,26 +6,17 @@ ar = import('array')
 plt = import('plot')
 tcga = import('data/tcga')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "tissue.pdf"
-MUTFILE = "mutations_annotated_pathwayactivities_v3_mikeformat.txt"
-
-scores = io$load(INFILE)
-rownames(scores) = substr(rownames(scores), 1, 16)
-
-mut = io$read_table(MUTFILE, header=TRUE) %>%
-    transmute(hgnc = GENE_NAME,
-              sample = substr(Tumor_Sample_Barcode, 1, 16),
-              study = tcga$barcode2study(Tumor_Sample_Barcode)) %>%
-    filter(!is.na(study)) %>%
-    group_by(study, hgnc) %>%
-    filter(n() >= 5) %>%
-    ungroup() %>%
-    filter(!study %in% c("READ"))
-
 subs2plots = function(subs, mut, scores) {
     message(subs)
-    m = filter(mut, study==subs)
+    if (subs == "pan")
+        m = mut %>%
+            filter(n() >= 50)
+    else
+        m = filter(mut, study==subs) %>%
+            group_by(hgnc) %>%
+            filter(n() >= 5) %>%
+            ungroup()
+
     m$mut = 1
     m = ar$construct(mut ~ sample + hgnc,
                      data=m, fun.aggregate = length) > 0
@@ -53,9 +44,22 @@ subs2plots = function(subs, mut, scores) {
         plt$volcano(base.size=0.1, p=0.1) + ggtitle(subs)
 }
 
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "snp.pdf"
+
+scores = io$load(INFILE)
+rownames(scores) = substr(rownames(scores), 1, 16)
+
+mut = tcga$mutations() %>%
+    transmute(hgnc = Hugo_Symbol,
+              sample = substr(Tumor_Sample_Barcode, 1, 16),
+              study = study) %>%
+    filter(!is.na(study) & study != "OV")
+
 plots = mut$study %>%
     unique() %>%
     sort() %>%
+    c("pan", .) %>%
     lapply(function(s) subs2plots(s, mut, scores))
 
 pdf(OUTFILE, paper="a4r", width=26, height=20)
