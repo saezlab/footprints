@@ -7,14 +7,14 @@ plt = import('plot')
 tcga = import('data/tcga')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "tissue.pdf"
+OUTFILE = commandArgs(TRUE)[2] %or% "tissue_cna.pdf"
 
 scores = io$load(INFILE)
-rownames(scores) = substr(rownames(scores), 1, 16)
+rownames(scores) = substr(rownames(scores), 1, 15)
 
 cna = io$read_table("cna.txt", header=TRUE) %>%
     transmute(hgnc = GENE_NAME,
-              sample = substr(Tumor_Sample_Barcode, 1, 16),
+              sample = substr(Tumor_Sample_Barcode, 1, 15), # NO PORTION
               study = study,
               gistic = CNA_gistic) %>%
     group_by(study, hgnc) %>%
@@ -50,6 +50,12 @@ subs2plots = function(subs, cna, scores) {
         plt$volcano(base.size=0.1, p=0.1) + ggtitle(subs)
 }
 
+plots = cna$study %>%
+    unique() %>%
+    sort() %>%
+    lapply(function(s) subs2plots(s, cna, scores))
+
 pdf(OUTFILE, paper="a4r", width=26, height=20)
-lapply(unique(mut$study), function(s) print(subs2plots(s, mut, scores)))
+for (plot in plots)
+    print(plot)
 dev.off()
