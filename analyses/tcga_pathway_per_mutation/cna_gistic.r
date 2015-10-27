@@ -8,18 +8,24 @@ tcga = import('data/tcga')
 
 subs2plots = function(subs, cna, scores) {
     message(subs)
-    if (subs == "pan")
+    if (subs == "pan") {
         m = cna %>%
             group_by(hgnc) %>%
             filter(n() >= 50) %>%
             ungroup()
-    else
+        size = 0.1
+    } else {
         m = filter(cna, study==subs) %>%
             group_by(hgnc) %>%
             filter(n() >= 5) %>%
             ungroup()
+        size = 0.5
+    }
 
-    m = ar$construct(gistic ~ sample + hgnc, data=m,
+    num_sample = length(unique(m$sample))
+    altered = m$hgnc
+    m$altered = 1
+    m = ar$construct(altered ~ sample + hgnc, data=m,
                      fun.aggregate = mean, fill=0)
     ar$intersect(m, scores)
 
@@ -42,7 +48,10 @@ subs2plots = function(subs, cna, scores) {
     result %>%
         mutate(label = paste(m, scores, sep=":")) %>%
         plt$color$p_effect(pvalue="adj.p", thresh=0.1) %>%
-        plt$volcano(base.size=0.1, p=0.1) + ggtitle(subs)
+        plt$volcano(base.size=size, p=0.1) +
+            ggtitle(paste0(subs, " (", num_sample, " samples, ",
+                           length(altered), " CNAs in ",
+                           length(unique(altered)), " genes)"))
 }
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
@@ -51,13 +60,16 @@ CNAFILE = "cna.txt"
 
 scores = io$load(INFILE)
 rownames(scores) = substr(rownames(scores), 1, 15)
+gistic_lookup = setNames(c("+", "-"), c(2, -2))
 
 cna = io$read_table(CNAFILE, header=TRUE) %>%
     transmute(hgnc = GENE_NAME,
               sample = substr(Tumor_Sample_Barcode, 1, 15), # NO PORTION
               study = study,
-              gistic = CNA_gistic) %>%
-    filter(study != "KICH") # no alteration present for >= 5 times
+              gistic = sapply(CNA_gistic, function(x) gistic_lookup[as.character(x)])) %>%
+    mutate(hgnc = paste0(hgnc, gistic)) %>%
+    select(-gistic) %>%
+    filter(!study %in% c("KICH","LAML")) # no alteration present n>=cutoff
 
 plots = cna$study %>%
     unique() %>%
