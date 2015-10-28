@@ -10,19 +10,18 @@ print-%: ; @echo $* = $($*)
 # (1) An empty, phony .FORCE target, that will cause
 #     external targets to always be built, so that the
 #     Makefile there will handle dependencies
-# (2) A default rule that uses the Makefile in the target
-#     directory to build a file for all files where no
-#     target is specified.
+# (2) A function that creates explicit rules for each
+#     external dependency
+#
+# Syntax to use this is:
+#   $(call ext_dep,DIR_OF_MAKEFILE,TARGETS)
+#
+# And it will call:
+#   make -C DIR_OF_MAKEFILE $(TARGETS)
+
 .PHONY: .FORCE
 .FORCE: ;
 
-#.DEFAULT: .FORCE
-#	@echo running: $@
-#	make -C $(dir $@) $(notdir $@)
-
-
-# Alternative approach to above
-# this will only work if file to be made is same dir as Makefile
 define EXT_DEP
 
 $1/$2: .FORCE
