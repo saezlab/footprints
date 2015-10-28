@@ -2,14 +2,12 @@ MODEL_SCRIPTS = $(wildcard ../../model/model_*.r)
 MODELS = $(MODEL_SCRIPTS:%.r=%.RData)
 SPEED_SCORES = $(MODELS:../../model/model_%=speed_%)
 
-.PHONY: prereqs scores
+include ../../Makefile.inc
+$(call ext_dep,../../model,$(notdir $(MODELS)))
 
-scores: prereqs $(SPEED_SCORES) $(SET_SCORES)
+.PHONY: scores
 
-prereqs:
-	make -C ../../model $(notdir $(MODELS))
-
-print-%: ; @echo $* = $($*)
+scores: $(SPEED_SCORES) $(SET_SCORES)
 
 # use each model to create scores object
 speed_%.RData: speed.r ../../model/model_%.RData

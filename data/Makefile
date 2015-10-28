@@ -5,8 +5,6 @@ ACCESSION = $(basename $(notdir $(YAML)))
 NORMALIZED = $(ACCESSION:%=normalized/%.RData)
 SCORES = $(YAML:new_index/%.yaml=scores/%.RData)
 
-#.SECONDARY:
-#.SECONDEXPANSION:
 .PHONY: scores normalize clean
 
 scores: zscores.RData

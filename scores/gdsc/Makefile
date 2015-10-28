@@ -1,18 +1,16 @@
-include ../../Makefile.inc
-
 MODEL_SCRIPTS = $(wildcard ../../model/model_*.RData)
 MODELS = $(MODEL_SCRIPTS:%.RData=%.RData)
 SETS = $(wildcard ../../util/genesets/*.RData)
 SPEED_SCORES = $(MODELS:../../model/model_%=speed_%)
 SET_SCORES = $(SETS:../../util/genesets/%=gsea_%)
 
-.PHONY: prereqs scores
+include ../../Makefile.inc
+$(call ext_dep,../../model,$(notdir $(MODELS)))
+$(call ext_dep,../../util/genesets,$(notdir $(SETS)))
 
-scores: prereqs $(SPEED_SCORES) $(SET_SCORES)
+.PHONY: scores
 
-prereqs:
-	make -C ../../model $(notdir $(MODELS))
-	make -C ../../util/genesets $(notdir $(SETS))
+scores: $(SPEED_SCORES) $(SET_SCORES)
 
 # use each model to create scores object
 speed_%.RData: speed.r ../../model/model_%.RData
