@@ -8,14 +8,19 @@ tcga = import('data/tcga')
 
 subs2plots = function(subs, mut, scores) {
     message(subs)
-    if (subs == "pan")
+    if (subs == "pan") {
         m = mut
-    else
+        size = 0.5
+    } else {
         m = filter(mut, study==subs) %>%
             group_by(hgnc) %>%
             filter(n() >= 5) %>%
             ungroup()
+        size = 5
+    }
 
+    num_sample = length(unique(m$sample))
+    altered = m$hgnc
     m$mut = 1
     m = ar$construct(mut ~ sample + hgnc,
                      data=m, fun.aggregate = length) > 0
@@ -40,7 +45,10 @@ subs2plots = function(subs, mut, scores) {
     result %>%
         mutate(label = paste(m, scores, sep=":")) %>%
         plt$color$p_effect(pvalue="adj.p", thresh=0.1) %>%
-        plt$volcano(base.size=0.1, p=0.1) + ggtitle(subs)
+        plt$volcano(base.size=size, p=0.1) +
+            ggtitle(paste0(subs, " (", num_sample, " samples, ",
+                           length(altered), " SNVs in ",
+                           length(unique(altered)), " genes)"))
 }
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"

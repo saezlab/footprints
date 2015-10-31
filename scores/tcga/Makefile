@@ -1,18 +1,15 @@
-include ../../Makefile.inc
-	
 GENESETS = $(wildcard ../../util/genesets/*.RData)
 SETSCORES = $(GENESETS:../../util/genesets/%=gsea_%)
 MODEL_SCRIPTS = $(wildcard ../../model/model_*.r)
 MODELS = $(MODEL_SCRIPTS:%.r=%.RData)
 SPEED_SCORES = $(MODELS:../../model/model_%=speed_%)
 
-.PHONY: prereqs
+include ../../Makefile.inc
+$(call ext_dep,../../model,$(notdir $(wildcard ../../model/*.RData)))
+$(call ext_dep,../../util/genesets,$(notdir $(GENESETS)))
 
-all: prereqs pathifier.RData spia.RData $(SETSCORES) $(SPEED_SCORES) # rppa.RData
 
-prereqs:
-	make -C ../../model $(notdir $(wildcard ../../model/*.RData))
-	make -C ../../util/genesets $(notdir $(GENESETS))
+all: pathifier.RData spia.RData $(SETSCORES) $(SPEED_SCORES) # rppa.RData
 
 rppa.RData: rppa.r
 	Rscript $<
