@@ -1,6 +1,9 @@
 # Use `print-VARNAME` to print arbitrary variables
 print-%: ; @echo $* = $($*)
 
+# Always use "all" as default target
+.DEFAULT_GOAL := all
+
 # Delete targets on nonzero exit status
 .DELETE_ON_ERROR:
 
