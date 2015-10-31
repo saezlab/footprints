@@ -10,13 +10,13 @@ scores = scores[!duplicated(rownames(scores)),]
 #                c('p53','PI3K','MAPK','Hypoxia','NFkB')]
 
 # get samples where we have expression, mutation (and CNV?)
-gene = bind_rows(io$load("gene_variants.RData")) %>%
+gene = io$load("gene_variants.RData")$variants %>%
 #    filter(hgnc == "TP53") %>%
     mutate(variant = paste(hgnc, variant, sep="_")) %>%
     group_by(variant) %>%
     mutate(n=n()) %>%
     ungroup() %>%
-    mutate(variant = ifelse(n>=20 & ! grepl("MUTATED", variant),
+    mutate(variant = ifelse(n>=20 & !grepl("MUTATED", variant),
                             variant, "other")) %>%
     mutate(variant = relevel(as.factor(variant), "other")) %>%
     as.data.frame() # error otherwise; why?
