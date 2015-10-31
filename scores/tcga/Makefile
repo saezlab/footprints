@@ -6,7 +6,7 @@ SPEED_SCORES = $(MODELS:../../model/model_%=speed_%)
 
 include ../../Makefile.inc
 $(call ext_dep,../../model,$(notdir $(wildcard ../../model/*.RData)))
-$(call ext_dep,../../util/genesets $(notdir $(GENESETS)))
+$(call ext_dep,../../util/genesets,$(notdir $(GENESETS)))
 
 
 all: pathifier.RData spia.RData $(SETSCORES) $(SPEED_SCORES) # rppa.RData
