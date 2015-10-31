@@ -3,6 +3,9 @@ io = import('io')
 ar = import('array')
 st = import('stats')
 cbp = import('data/cbioportal')
+plt = import('plot')
+
+OUTFILE = "variant_impact.pdf"
 
 scores = io$load('../../scores/tcga/speed_matrix.RData')
 rownames(scores) = substr(rownames(scores), 1, 15) # do not include portion
@@ -31,4 +34,18 @@ result = st$lm(scores ~ study * variant, data=gene) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
     filter(! grepl("^study[^:]+$", term)) %>%
     arrange(adj.p) %>%
-    filter(adj.p < 0.5)
+    mutate(label = paste(response, sub("study", "", term), sep="_")) %>%
+    plt$color$p_effect(pvalue="adj.p", thresh=0.1)
+
+pdf(OUTFILE)#, width=26, height=20)
+
+result %>%
+    filter(!is.na(size)) %>%
+    plt$volcano(base.size=10, p=0.1) + ggtitle("variants")
+
+result %>%
+    filter(is.na(size)) %>%
+    mutate(size = 50) %>%
+    plt$volcano(p=0.1) + ggtitle("interactions")
+
+dev.off()
