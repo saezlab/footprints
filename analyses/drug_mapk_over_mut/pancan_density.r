@@ -5,6 +5,8 @@ io = import('io')
 gdsc = import('data/gdsc')
 st = import('stats')
 
+OUTFILE = "pancan_density.pdf"
+
 tissues = gdsc$tissues(minN=10)
 
 muts = gdsc$mutated_genes()[,c("HRAS", "KRAS", "MAP2K1", "BRAF")] %>%
@@ -39,7 +41,7 @@ test(resp$IC50[!resp$no_mut], resp$IC50[resp$no_mut])
 test(resp$IC50[!resp$no_mapk_up], resp$IC50[resp$no_mapk_up])
 test(resp$IC50[!resp$no_both], resp$IC50[resp$no_both])
 
-pdf("pancan.pdf", width=10, height=8)
+pdf(OUTFILE, width=10, height=8)
 
 ggplot(resp, aes(IC50, fill=no_mut)) +
     stat_density(aes(y = ..count..), position="stack", color="black") +
