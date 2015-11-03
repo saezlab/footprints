@@ -43,10 +43,13 @@ for (tissue in c("pan", sort(unique(index$study)))) {
     if (sum(normals) < 5)
         next
 
-
+    # calculate pathway cors in normal, tumor, and difference
     cor_normal = cor(score[normals,])
     cor_cancer = cor(score[!normals,])
     cor_diff = 0.5 * (cor_cancer - cor_normal)
+    p_diff = -log10(st$cor$diff_test(score[!normals,], score[normals,]))
+    p_diff[p_diff<2 | p_diff==Inf] = 0
+    p_diff = floor(p_diff)
 
     # median=0, sd=1 for the normals, same factor for tumors
     score = score %>% ar$map(along=1, function(x) {
@@ -63,18 +66,12 @@ for (tissue in c("pan", sort(unique(index$study)))) {
         ggtitle(paste0(tissue, ": pathway activation ", sum(normals),
                        " normals vs ", sum(!normals), " tumours"))
 
-#    violin = ggplot(df, aes(x=variable, y=value, fill=type)) +
-#        geom_violin() +
-#        xlab("pathways") +
-#        ylab("standard deviations") +
-#        ggtitle(paste0(tissue, ": pathway activation normal vs tumour"))
-
     print(box)
-#    print(violin)
 
     old.par = par(mfrow=c(1, 3))
     corrplot(cor_normal, title="normal")
     corrplot(cor_cancer, title="cancer")
-    corrplot(cor_diff, title="difference")
+    corrplot(cor_diff, title="difference",
+             p.mat=p_diff, sig.level=1, insig="p-value")
     par(old.par)
 }
