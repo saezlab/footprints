@@ -56,9 +56,10 @@ for (tissue in c("pan", sort(unique(index$study)))) {
     df = melt(data.frame(type=type, score, check.names=FALSE))
 
     box = ggplot(df, aes(x=variable, y=value, fill=type)) +
-        geom_boxplot() +
+        geom_boxplot(outlier.shape=NA) +
         xlab("pathways") +
         ylab("standard deviations") +
+        theme_bw() +
         ggtitle(paste0(tissue, ": pathway activation ", sum(normals),
                        " normals vs ", sum(!normals), " tumours"))
 
