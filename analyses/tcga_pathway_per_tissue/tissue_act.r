@@ -1,3 +1,4 @@
+library(corrplot)
 library(ggplot2)
 library(reshape2)
 library(dplyr)
@@ -36,6 +37,10 @@ for (tissue in unique(index$study)) {
     if (sum(normals) < 5)
         next
 
+
+    cor_normal = cor(score[normals,])
+    cor_cancer = cor(score[!normals,])
+
     # median=0, sd=1 for the normals, same factor for tumors
     score = score %>% ar$map(along=1, function(x) {
         (x - median(x[normals])) / sd(x[normals])
@@ -49,20 +54,17 @@ for (tissue in unique(index$study)) {
         ylab("standard deviations") +
         ggtitle(paste0(tissue, ": pathway activation normal vs tumour"))
 
-    violin = ggplot(df, aes(x=variable, y=value, fill=type)) +
-        geom_violin() +
-        xlab("pathways") +
-        ylab("standard deviations") +
-        ggtitle(paste0(tissue, ": pathway activation normal vs tumour"))
+#    violin = ggplot(df, aes(x=variable, y=value, fill=type)) +
+#        geom_violin() +
+#        xlab("pathways") +
+#        ylab("standard deviations") +
+#        ggtitle(paste0(tissue, ": pathway activation normal vs tumour"))
 
     print(box)
-    print(violin)
+#    print(violin)
+
+    old.par = par(mfrow=c(1, 2))
+    corrplot(cor_normal)
+    corrplot(cor_cancer)
+    par(old.par)
 }
- 
-#    tumor_medians = ar$map(scores[cc$specimen_type == "Primary tumour - solid tissue",],
-#            along=1, median)
-#medians = ar$stack(lapply(result, r -> r$tumor_medians), along=2)
-#pheatmap::pheatmap(medians, scale="row")
-##TODO: could be interesting to have number of clinical drugs targeting each pathway
-#lapply(result, r -> print(r$boxplot))
-#lapply(result, r -> print(r$violinplot))
