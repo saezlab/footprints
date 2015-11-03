@@ -43,6 +43,18 @@ for (tissue in c("pan", sort(unique(index$study)))) {
     if (sum(normals) < 5)
         next
 
+    # reformat stats summary df
+    if (tissue == "pan")
+        assocs = st$lm(score ~ study + type, data=index) %>%
+            filter(term == "typetumor")
+    else
+        assocs = st$lm(score ~ type)
+
+    assocs = assocs %>%
+        transmute(variable = score,
+                  value = 5, #floor(max(score, na.rm=TRUE)),
+                  label = ifelse(p.value>0.05, "", format(p.value, digits=2)))
+
     # calculate pathway cors in normal, tumor, and difference
     cor_normal = cor(score[normals,])
     cor_cancer = cor(score[!normals,])
@@ -58,13 +70,14 @@ for (tissue in c("pan", sort(unique(index$study)))) {
 
     df = melt(data.frame(type=type, score, check.names=FALSE))
 
-    box = ggplot(df, aes(x=variable, y=value, fill=type)) +
-        geom_boxplot(outlier.shape=NA) +
+    box = ggplot(df, aes(x=variable, y=value)) +
+        geom_boxplot(aes(fill=type), outlier.shape=NA) +
         xlab("pathways") +
         ylab("standard deviations") +
         theme_bw() +
         ggtitle(paste0(tissue, ": pathway activation ", sum(normals),
-                       " normals vs ", sum(!normals), " tumours"))
+                       " normals vs ", sum(!normals), " tumours")) +
+        geom_text(data=assocs, aes(label=label), size=3)
 
     print(box)
 
