@@ -10,7 +10,7 @@ $(call ext_dep,../../scores/gdsc,$(notdir $(GSCORES)))
 $(call ext_dep,../../scores/ccle,$(notdir $(CSCORES)))
 
 
-all: $(GDSC_PLOTS) #$(CPLOTS)
+all: drug_ranges.pdf $(GDSC_PLOTS) #$(CPLOTS)
 
 # use each model script to create a model file
 $(GDSC_PLOTS): %.pdf: plot.r %.RData
@@ -20,6 +20,9 @@ $(GDSC_ASSOCS): %.RData: gdsc_assocs.r ../../scores/gdsc/%.RData
 	Rscript $^ $@
 
 mutation.RData: mutation.r
+	Rscript $^ $@
+
+drug_ranges.pdf: drug_ranges.r
 	Rscript $^ $@
 
 #ccle_%.pdf: drug_assocs.r ../../scores/ccle/%.RData
