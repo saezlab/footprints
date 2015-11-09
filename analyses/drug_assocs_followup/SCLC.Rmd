@@ -1,5 +1,5 @@
 ---
-title: "SKCM drug associations for perturbation-response genes"
+title: "SCLC drug associations for perturbation-response genes"
 author: "Michael Schubert (schubert@ebi.ac.uk)"
 ---
 
@@ -18,7 +18,7 @@ OUTFILE = commandArgs(TRUE)[2] %or% "SCLC_assocs.pdf"
 
 scores = io$load(INFILE)
 tissues = gdsc$tissues("SCLC")
-Yf = gdsc$drug_response('IC50s', min_tissue_measured=10)
+Yf = gdsc$drug_response('IC50s', min_tissue_measured=5)
 ar$intersect(scores, tissues, Yf, along=1)
 Yf = Yf[,ar$map(Yf, along=1, function(x) !all(is.na(x)))]
 
