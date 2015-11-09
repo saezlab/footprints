@@ -14,10 +14,10 @@ plt = import('plot')
 gdsc = import('data/gdsc')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/gdsc/speed_matrix.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "SKCM_assocs.pdf"
+OUTFILE = commandArgs(TRUE)[2] %or% "LGG_assocs.pdf"
 
 scores = io$load(INFILE)
-tissues = gdsc$tissues("SKCM")
+tissues = gdsc$tissues("LGG")
 Yf = gdsc$drug_response('IC50s', min_tissue_measured=10)
 ar$intersect(scores, tissues, Yf, along=1)
 Yf = Yf[,ar$map(Yf, along=1, function(x) !all(is.na(x)))]
@@ -29,29 +29,12 @@ assocs.tissue = st$lm(Yf ~ scores) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr"))
 ```
 
-Associations between predicted pathway activities and drug response:
-Expression of VEGF/PDGF-responsive genes mediates resistance to FH535
-(Tcf/beta catenin inhibitor) with FDR<0.03.
-
-Other hits with a higher FDR (~25%) but additional support include:
-
-* PI3K confers resistance to MEK inhibitors (PD-0325901, RDEA1119,
-  Trametinib). This association has additional support in e.g. BRCA.
-* Hypoxia confers resistance to LAQ824 (HDAC inhibitor). This is
-  also one of the most significant (FDR=1e-3) BRCA associations.
-
 ```{r volcano, echo=FALSE}
 assocs.tissue %>%
     mutate(label = paste(Yf, scores, sep=":")) %>%
     plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1) %>%
     plt$volcano(p=0.2)
 ```
-
-Below are the linear fits between predicted pathway activity and drug
-response to FH535, with cell lines coloured by PDGFR A/B expression.
-
-Results suggest that for at least a part of the resistant cell lines,
-this is mediated by PDGF signaling caused by receptor (over-)expression.
 
 ```{r fits, echo=FALSE}
 do_fit = function(tissue, drug, path, gene, label_top=5) {
@@ -61,6 +44,7 @@ do_fit = function(tissue, drug, path, gene, label_top=5) {
         muts = gdsc$mutated_genes(intogen=TRUE, tissue=tissue) %>%
             ar$map(along=2, function(x) paste(names(x)[x], collapse=",")),
         gene = gdsc$basal_expression()[gene,]
+#        gene = io$load('../../scores/gdsc/gsea_reactome.RData')[,'Trail']
     ) %>% na.omit()
     # <this should not be required once df$assemble works>
     fits$drug = as.numeric(fits$drug)
@@ -85,7 +69,10 @@ do_fit = function(tissue, drug, path, gene, label_top=5) {
         ylab(paste("log IC50", drug))
 }
 
-print(do_fit("SKCM", "FH535", "VEGF", "PDGFRA"))
-print(do_fit("SKCM", "FH535", "VEGF", "PDGFRB"))
-print(do_fit("SKCM", "FH535", "VEGF", "PPARG"))
+print(do_fit("LGG", "Docetaxel", "Trail", "CASP8"))
+print(do_fit("LGG", "Docetaxel", "Trail", "CASP10"))
+print(do_fit("LGG", "Docetaxel", "Trail", "FADD"))
+print(do_fit("LGG", "Docetaxel", "Trail", "TNFRSF10A"))
+print(do_fit("LGG", "Docetaxel", "Trail", "TNFRSF10B"))
+print(do_fit("LGG", "Docetaxel", "Trail", "TNFSF10"))
 ```

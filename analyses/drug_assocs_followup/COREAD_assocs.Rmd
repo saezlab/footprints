@@ -17,7 +17,7 @@ INFILE = commandArgs(TRUE)[1] %or% "../../scores/gdsc/speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "SKCM_assocs.pdf"
 
 scores = io$load(INFILE)
-tissues = gdsc$tissues("SKCM")
+tissues = gdsc$tissues("COREAD")
 Yf = gdsc$drug_response('IC50s', min_tissue_measured=10)
 ar$intersect(scores, tissues, Yf, along=1)
 Yf = Yf[,ar$map(Yf, along=1, function(x) !all(is.na(x)))]
@@ -61,6 +61,7 @@ do_fit = function(tissue, drug, path, gene, label_top=5) {
         muts = gdsc$mutated_genes(intogen=TRUE, tissue=tissue) %>%
             ar$map(along=2, function(x) paste(names(x)[x], collapse=",")),
         gene = gdsc$basal_expression()[gene,]
+        #gene = io$load('../../scores/gdsc/gsea_reactome.RData')[,"JAK-STAT"]
     ) %>% na.omit()
     # <this should not be required once df$assemble works>
     fits$drug = as.numeric(fits$drug)
@@ -85,7 +86,11 @@ do_fit = function(tissue, drug, path, gene, label_top=5) {
         ylab(paste("log IC50", drug))
 }
 
-print(do_fit("SKCM", "FH535", "VEGF", "PDGFRA"))
-print(do_fit("SKCM", "FH535", "VEGF", "PDGFRB"))
-print(do_fit("SKCM", "FH535", "VEGF", "PPARG"))
+print(do_fit("COREAD", "SN-38", "VEGF", "PDGFRA"))
+#print(do_fit("COREAD", "SN-38", "VEGF", "PDGFRB")) 3.4-3.6, might well be random
+
+# JAK-STAT score correlated very well reactome expression (but not drug response)
+#print(do_fit("COREAD", "Vinblastine", "JAK-STAT", "IFNK"))
+#print(do_fit("COREAD", "Camptothecin", "JAK-STAT", "IFNGR2"))
+#print(do_fit("COREAD", "Cytarabine", "JAK-STAT", "IL6"))
 ```
