@@ -1,7 +1,7 @@
 include ../../Makefile.inc
 
 RMDS = $(wildcard *.Rmd)
-PDFs = $(RMDS:%.Rmd=%.pdf)
+PDFS = $(RMDS:%.Rmd=%.pdf)
 
 all: $(PDFS)
 
