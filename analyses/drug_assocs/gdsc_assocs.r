@@ -11,7 +11,7 @@ OUTFILE = commandArgs(TRUE)[2] %or% "speed_linear.RData"
 # load required data
 scores = io$load(INFILE)
 Ys = gdsc$drug_response('IC50s') # or AUC
-Yf = gdsc$drug_response('IC50s', min_tissue_measured=5)
+Yf = gdsc$drug_response('IC50s', min_tissue_measured=5, median_top=10)
 tissues = gdsc$tissues(minN=15)
 ar$intersect(scores, tissues, Ys, Yf, along=1)
 
