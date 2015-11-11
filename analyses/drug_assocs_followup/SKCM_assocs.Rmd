@@ -16,51 +16,95 @@ gdsc = import('data/gdsc')
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/gdsc/speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "SKCM_assocs.pdf"
 
+tissues = gdsc$tissues()
+Ys = gdsc$drug_response('IC50s')
+ar$intersect(tissues, Ys, along=1)
+
+skcm = gdsc$tissues("SKCM")
 scores = io$load(INFILE)
-tissues = gdsc$tissues("SKCM")
-Yf = gdsc$drug_response('IC50s', min_tissue_measured=10)
-ar$intersect(scores, tissues, Yf, along=1)
-Yf = Yf[,ar$map(Yf, along=1, function(x) !all(is.na(x)))]
+Yf = gdsc$drug_response('IC50s', min_tissue_measured=2, median_top=10, drop=TRUE)
+ar$intersect(scores, skcm, Yf, along=1)
 
 # tissues as subsets
 assocs.tissue = st$lm(Yf ~ scores) %>%
     filter(term == "scores") %>%
     select(-term) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr"))
+
+fh535 = filter(assocs.tissue, Yf=="FH535" & scores=="VEGF")
 ```
 
-Associations between predicted pathway activities and drug response:
-Expression of VEGF/PDGF-responsive genes mediates resistance to FH535
-(Tcf/beta catenin inhibitor) with FDR<0.03.
+```{r volcano, echo=FALSE}
+assocs.tissue %>%
+    mutate(label = paste(Yf, scores, sep=":")) %>%
+    plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1, thresh=0.2) %>%
+    plt$volcano(p=0.2)
+```
 
+Volcano plot of associations between predicted pathway activities
+and drug response. Effect size on the horizontal, FDR-adjusted
+p-values on the vertical axis. Size of circles corresponds to the
+number of cell lines screened with each drug.
+
+The top hit suggests that expression of VEGF/PDGF-responsive genes
+mediates resistance to FH535 (Tcf/beta catenin inhibitor) with
+p=10^-5, FDR<1%.
+
+<!--
 Other hits with a higher FDR (~25%) but additional support include:
 
 * PI3K confers resistance to MEK inhibitors (PD-0325901, RDEA1119,
   Trametinib). This association has additional support in e.g. BRCA.
 * Hypoxia confers resistance to LAQ824 (HDAC inhibitor). This is
   also one of the most significant (FDR=1e-3) BRCA associations.
+-->
 
-```{r volcano, echo=FALSE}
-assocs.tissue %>%
-    mutate(label = paste(Yf, scores, sep=":")) %>%
-    plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1) %>%
-    plt$volcano(p=0.2)
+```{r tissue_compare, echo=FALSE}
+drug = "FH535"
+
+min_conc = gdsc$drug$conc('min', colnames(Ys))
+max_conc = gdsc$drug$conc('max', colnames(Ys))
+
+mydf = data.frame(tissue=tissues, drug=Ys[,drug])
+med = function(x) median(x, na.rm=TRUE)
+
+minc = log10(min_conc[drug])
+maxc = log10(max_conc[drug])
+rect = data.frame(xmin=-Inf, xmax=Inf, ymin=minc, ymax=maxc)
+
+box = ggplot(mydf, aes(x=reorder(tissue, drug, FUN=med), y=drug)) +
+	geom_boxplot(na.rm=TRUE) +
+	xlab("Cancer type") +
+	ylab("IC50 [log uM]") +
+	theme_bw() +
+	theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+	geom_abline(intercept=minc, slope=0, linetype="dotted") +
+	geom_abline(intercept=maxc, slope=0, linetype="dotted") +
+	geom_rect(data=rect, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),
+			  fill="plum2", alpha=0.1, inherit.aes=FALSE) +
+	ggtitle(paste("Drug response ranges per tissue for", drug))
+
+print(box)
 ```
 
-Below are the linear fits between predicted pathway activity and drug
-response to FH535, with cell lines coloured by PDGFR A/B expression.
+Box plot of the measured (range indicated in color) and inferred IC50s
+of the FH535 drug in the different cell lines tissues screened.
+Melanoma cells are, by median, the most sensitive tissue.
 
-Results suggest that for at least a part of the resistant cell lines,
-this is mediated by PDGF signaling caused by receptor (over-)expression.
+Here we show that melanomas are the most sensitive tissue for the
+drug FH535. Combined with our resistance marker, this offers a way
+of further stratifying cell lines (and in turn maybe patients) when
+there is no mutation marker available.
 
 ```{r fits, echo=FALSE}
 do_fit = function(tissue, drug, path, gene, label_top=5) {
+gex = gdsc$basal_expression()
     fits = df$assemble(
         drug = Yf[,drug],
         path = scores[,path],
         muts = gdsc$mutated_genes(intogen=TRUE, tissue=tissue) %>%
             ar$map(along=2, function(x) paste(names(x)[x], collapse=",")),
-        gene = gdsc$basal_expression()[gene,]
+        gene = log10(10^gex["PDGFRA",]+10^gex["PDGFRB",])
     ) %>% na.omit()
     # <this should not be required once df$assemble works>
     fits$drug = as.numeric(fits$drug)
@@ -82,10 +126,23 @@ do_fit = function(tissue, drug, path, gene, label_top=5) {
         ggtitle(paste(tissue, ":", drug, "response and",
                       path, "activity")) +
         xlab(paste("predicted", path, "activity")) +
-        ylab(paste("log IC50", drug))
+        ylab(paste("IC50 [log uM]"))
 }
 
-print(do_fit("SKCM", "FH535", "VEGF", "PDGFRA"))
-print(do_fit("SKCM", "FH535", "VEGF", "PDGFRB"))
-print(do_fit("SKCM", "FH535", "VEGF", "PPARG"))
+print(do_fit("SKCM", "FH535", "VEGF", "PDGFRA+B"))
+#print(do_fit("SKCM", "FH535", "VEGF", "PDGFRB"))
+#print(do_fit("SKCM", "FH535", "VEGF", "PPARG"))
 ```
+
+Linear association between predicted pathway activity and drug
+response to FH535, with each point representing a cell line
+coloured by PDGFR A/B expression.
+
+Not only is higher predicted pathway activity significantly associated
+with poorer drug response, but a subset of resistant cell lines have
+ovexpressed their PDGFR receptor.
+
+This suggests a receptor overexpression mediated induction of PDGF
+signaling and thus drug resistance, which he hypothesize could be
+abrogated by either knocking down the receptor or selectively
+inhibiting it.
