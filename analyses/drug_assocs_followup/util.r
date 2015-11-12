@@ -28,13 +28,15 @@ drug_range_box = function(drug, min_n=5) {
 
     ggplot(mydf, aes(x=reorder(tissue, drug,
             FUN=function(x) median(x, na.rm=TRUE)), y=drug)) +
+        scale_x_discrete() +
+        geom_rect(data=rect, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),
+                  fill="plum2", alpha=0.1, inherit.aes=FALSE) +
         geom_boxplot(na.rm=TRUE) +
         xlab("Cancer type") +
         ylab("IC50 [log uM]") +
         theme_bw() +
         theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
-        geom_rect(data=rect, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),
-                  fill="plum2", alpha=0.1, inherit.aes=FALSE) +
+        geom_boxplot(na.rm=TRUE) +
         geom_abline(intercept=minc, slope=0, linetype="dotted") +
         geom_abline(intercept=maxc, slope=0, linetype="dotted") +
         ggtitle(paste("Drug response ranges per tissue for", drug))
