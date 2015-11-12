@@ -50,7 +50,7 @@ do_fit = function(tissue, drug, path, gene, label_top=5) {
         muts = gdsc$mutated_genes(intogen=TRUE, tissue=tissue) %>%
             ar$map(along=2, function(x) paste(names(x)[x], collapse=",")),
         gene = gdsc$basal_expression()[gene,]
-#        gene = io$load('../../scores/gdsc/gsea_reactome.RData')[,'Trail']
+#        gene = io$load('../../scores/gdsc/speed_matrix.RData')[,'PI3K']
     ) %>% na.omit()
     # <this should not be required once df$assemble works>
     fits$drug = as.numeric(fits$drug)
@@ -58,7 +58,7 @@ do_fit = function(tissue, drug, path, gene, label_top=5) {
     fits$gene = as.numeric(fits$gene)
     # </>
     fits$label = gdsc$cosmic$id2name(rownames(fits))
-    fits$label[fits$gene < b$maxN(fits$gene, 5)] = ""
+#    fits$label[fits$gene < b$maxN(fits$gene, 5)] = ""
 
     ggplot(fits, aes(x=path, y=drug, label=label, fill=gene)) +
         geom_smooth(method=stats::lm, se=FALSE, na.rm=TRUE, alpha=0.1) +
@@ -82,7 +82,8 @@ print(do_fit("SCLC", "FK866", "TNFa", "NFKB2"))
 ```
 
 ```{r plk1, echo=FALSE}
-print(do_fit("SCLC", "BI-2536", "TNFa", "PLK1"))
-print(do_fit("SCLC", "BI-2536", "TNFa", "TNFRSF1A"))
-print(do_fit("SCLC", "BI-2536", "TNFa", "NFKB1"))
+print(do_fit("SCLC", "BI-2536", "TNFa", "CDK1"))
+print(do_fit("SCLC", "BI-2536", "TNFa", "CDK2"))
+print(do_fit("SCLC", "BI-2536", "TNFa", "CDK4"))
+print(do_fit("SCLC", "BI-2536", "TNFa", "CDK6"))
 ```

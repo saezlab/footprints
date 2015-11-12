@@ -22,13 +22,12 @@ drug_range_box = function(drug, min_n=5) {
         filter(n() >= min_n) %>%
         ungroup()
 
-    med = function(x) median(x, na.rm=TRUE)
-
     minc = log10(.min_conc[drug])
     maxc = log10(.max_conc[drug])
     rect = data.frame(xmin=-Inf, xmax=Inf, ymin=minc, ymax=maxc)
 
-    ggplot(mydf, aes(x=reorder(tissue, drug, FUN=med), y=drug)) +
+    ggplot(mydf, aes(x=reorder(tissue, drug,
+            FUN=function(x) median(x, na.rm=TRUE)), y=drug)) +
         geom_boxplot(na.rm=TRUE) +
         xlab("Cancer type") +
         ylab("IC50 [log uM]") +

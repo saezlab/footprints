@@ -12,6 +12,7 @@ st = import('stats')
 df = import('data_frame')
 plt = import('plot')
 gdsc = import('data/gdsc')
+util = import('./util')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/gdsc/speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "ESCA_assocs.pdf"
@@ -60,35 +61,7 @@ Other hits with a higher FDR (~25%) but additional support include:
 -->
 
 ```{r tissue_compare, echo=FALSE}
-drug = "Rapamycin"
-
-min_conc = gdsc$drug$conc('min', colnames(Ys))
-max_conc = gdsc$drug$conc('max', colnames(Ys))
-
-mydf = data.frame(tissue=tissues, drug=Ys[,drug]) %>%
-    na.omit() %>%
-    group_by(tissue) %>%
-    filter(n() >= 5) %>%
-    ungroup()
-med = function(x) median(x, na.rm=TRUE)
-
-minc = log10(min_conc[drug])
-maxc = log10(max_conc[drug])
-rect = data.frame(xmin=-Inf, xmax=Inf, ymin=minc, ymax=maxc)
-
-box = ggplot(mydf, aes(x=reorder(tissue, drug, FUN=med), y=drug)) +
-	geom_rect(data=rect, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),
-			  fill="plum2", alpha=0.1, inherit.aes=FALSE) +
-	geom_boxplot(na.rm=TRUE) +
-	xlab("Cancer type") +
-	ylab("IC50 [log uM]") +
-	theme_bw() +
-	theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
-	geom_abline(intercept=minc, slope=0, linetype="dotted") +
-	geom_abline(intercept=maxc, slope=0, linetype="dotted") +
-	ggtitle(paste("Drug response ranges per tissue for", drug))
-
-print(box)
+util$drug_range_box("Rapamycin")
 ```
 
 Box plot of the measured (range indicated in color) and inferred IC50s

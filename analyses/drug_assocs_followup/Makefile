@@ -5,5 +5,5 @@ PDFS = $(RMDS:%.Rmd=%.pdf)
 
 all: $(PDFS)
 
-%.pdf: %.Rmd
+%.pdf: %.Rmd util.r
 	Rscript -e "rmarkdown::render('$<', 'pdf_document', output_file='$@')"
