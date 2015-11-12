@@ -14,14 +14,15 @@ plt = import('plot')
 gdsc = import('data/gdsc')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/gdsc/speed_matrix.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "LGG_assocs.pdf"
+OUTFILE = commandArgs(TRUE)[2] %or% "BRCA_assocs.pdf"
 
 scores = io$load(INFILE)
-tissues = gdsc$tissues("LGG")
-Yf = gdsc$drug_response('IC50s', min_tissue_measured=10)
+tissues = gdsc$tissues("BRCA")
+Yf = gdsc$drug_response('IC50s', min_tissue_measured=0, median_top=10)
 ar$intersect(scores, tissues, Yf, along=1)
 Yf = Yf[,ar$map(Yf, along=1, function(x) !all(is.na(x)))]
 
+#scores["905957", "Hypoxia"] = NA # remove outlier
 # tissues as subsets
 assocs.tissue = st$lm(Yf ~ scores) %>%
     filter(term == "scores") %>%
@@ -44,7 +45,7 @@ do_fit = function(tissue, drug, path, gene, label_top=5) {
         muts = gdsc$mutated_genes(intogen=TRUE, tissue=tissue) %>%
             ar$map(along=2, function(x) paste(names(x)[x], collapse=",")),
         gene = gdsc$basal_expression()[gene,]
-#        gene = io$load('../../scores/gdsc/gsea_reactome.RData')[,'Trail']
+#        gene = io$load('../../scores/gdsc/gsea_chea.RData')[,"Hypoxia"]
     ) %>% na.omit()
     # <this should not be required once df$assemble works>
     fits$drug = as.numeric(fits$drug)
@@ -69,10 +70,6 @@ do_fit = function(tissue, drug, path, gene, label_top=5) {
         ylab(paste("log IC50", drug))
 }
 
-print(do_fit("LGG", "Docetaxel", "Trail", "CASP8"))
-print(do_fit("LGG", "Docetaxel", "Trail", "CASP10"))
-print(do_fit("LGG", "Docetaxel", "Trail", "FADD"))
-print(do_fit("LGG", "Docetaxel", "Trail", "TNFRSF10A"))
-print(do_fit("LGG", "Docetaxel", "Trail", "TNFRSF10B"))
-print(do_fit("LGG", "Docetaxel", "Trail", "TNFSF10"))
+#print(do_fit("BRCA", "LAQ824", "Hypoxia", "reactome"))
+print(do_fit("BRCA", "MP470", "TNFa", "PDGFRB"))
 ```

@@ -1,5 +1,5 @@
 ---
-title: "SKCM drug associations for perturbation-response genes"
+title: "LGG drug associations for perturbation-response genes"
 author: "Michael Schubert (schubert@ebi.ac.uk)"
 ---
 
@@ -14,15 +14,13 @@ plt = import('plot')
 gdsc = import('data/gdsc')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/gdsc/speed_matrix.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "BRCA_assocs.pdf"
+OUTFILE = commandArgs(TRUE)[2] %or% "LGG_assocs.pdf"
 
 scores = io$load(INFILE)
-tissues = gdsc$tissues("BRCA")
-Yf = gdsc$drug_response('IC50s', min_tissue_measured=10)
+tissues = gdsc$tissues("LGG")
+Yf = gdsc$drug_response('IC50s', tissue="LGG", min_tissue_measured=2, median_top=10, drop=TRUE)
 ar$intersect(scores, tissues, Yf, along=1)
-Yf = Yf[,ar$map(Yf, along=1, function(x) !all(is.na(x)))]
 
-#scores["905957", "Hypoxia"] = NA # remove outlier
 # tissues as subsets
 assocs.tissue = st$lm(Yf ~ scores) %>%
     filter(term == "scores") %>%
@@ -33,19 +31,25 @@ assocs.tissue = st$lm(Yf ~ scores) %>%
 ```{r volcano, echo=FALSE}
 assocs.tissue %>%
     mutate(label = paste(Yf, scores, sep=":")) %>%
-    plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1) %>%
+    plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1, thresh=0.2) %>%
     plt$volcano(p=0.2)
 ```
 
+<!--
+```{r fits2, echo=FALSE}
+#TODO: volcano of diff trail genes + trail pathway exp, show is diff?
+```
+-->
+
 ```{r fits, echo=FALSE}
-do_fit = function(tissue, drug, path, gene, label_top=5) {
+do_fit = function(tissue, drug, path, gene_, label_top=5) {
     fits = df$assemble(
         drug = Yf[,drug],
         path = scores[,path],
         muts = gdsc$mutated_genes(intogen=TRUE, tissue=tissue) %>%
             ar$map(along=2, function(x) paste(names(x)[x], collapse=",")),
 #        gene = gdsc$basal_expression()[gene,]
-        gene = io$load('../../scores/gdsc/gsea_chea.RData')[,"Hypoxia"]
+        gene = io$load('../../scores/gdsc/gsea_reactome.RData')[,'Trail']
     ) %>% na.omit()
     # <this should not be required once df$assemble works>
     fits$drug = as.numeric(fits$drug)
@@ -53,7 +57,8 @@ do_fit = function(tissue, drug, path, gene, label_top=5) {
     fits$gene = as.numeric(fits$gene)
     # </>
     fits$label = gdsc$cosmic$id2name(rownames(fits))
-    fits$label[fits$gene < b$maxN(fits$gene, 5)] = ""
+    fits = mutate(fits, label = paste(label, muts, sep="\n"))
+#    fits$label[fits$gene < b$maxN(fits$gene, 5)] = ""
 
     ggplot(fits, aes(x=path, y=drug, label=label, fill=gene)) +
         geom_smooth(method=stats::lm, se=FALSE, na.rm=TRUE, alpha=0.1) +
@@ -61,7 +66,7 @@ do_fit = function(tissue, drug, path, gene, label_top=5) {
         scale_fill_gradient(low="white", high="black",
                             limits=c(min(fits$gene, na.rm=TRUE),
                                      max(fits$gene, na.rm=TRUE)),
-                            guide = guide_legend(title = gene)) +
+                            guide = guide_legend(title = gene_)) +
         geom_text(colour="#353535", size=2, vjust=-1.5, na.rm=TRUE) +
         theme_bw() +
         ggtitle(paste(tissue, ":", drug, "response and",
@@ -70,6 +75,23 @@ do_fit = function(tissue, drug, path, gene, label_top=5) {
         ylab(paste("log IC50", drug))
 }
 
-print(do_fit("BRCA", "LAQ824", "Hypoxia", "reactome"))
-#print(do_fit("BRCA", "LAQ824", "Hypoxia", "PDGFRB"))
+print(do_fit("LGG", "Docetaxel", "Trail", "Trail expression"))
+#print(do_fit("LGG", "Docetaxel", "Trail", "CASP8"))
+#print(do_fit("LGG", "Docetaxel", "Trail", "CASP10"))
+#print(do_fit("LGG", "Docetaxel", "Trail", "FADD"))
+#print(do_fit("LGG", "Docetaxel", "Trail", "TNFRSF10A"))
+#print(do_fit("LGG", "Docetaxel", "Trail", "TNFRSF10B"))
+#print(do_fit("LGG", "Docetaxel", "Trail", "TNFSF10"))
 ```
+
+Expression of Trail-induced genes (on horizontal axis) are
+correlated with drug sensitivity in Low-Grade Glioma (LGG),
+while expression of members of the apoptosis pathway (GSEA score
+as shades of grey) is not.
+
+Presence of TP53 mutations also does not correlate with either
+drug response or Trail activity, so this suggests an independent
+mechanism.
+
+Taken together, we find a possible synergy between rTrail and Docetaxel
+as treatment in LGG.

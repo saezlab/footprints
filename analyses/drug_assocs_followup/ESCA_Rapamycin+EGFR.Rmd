@@ -1,0 +1,136 @@
+---
+title: "ESCA drug associations for perturbation-response genes"
+author: "Michael Schubert (schubert@ebi.ac.uk)"
+---
+
+```{r code, include=FALSE}
+library(dplyr)
+b = import('base')
+io = import('io')
+ar = import('array')
+st = import('stats')
+df = import('data_frame')
+plt = import('plot')
+gdsc = import('data/gdsc')
+
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/gdsc/speed_matrix.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "ESCA_assocs.pdf"
+
+tissues = gdsc$tissues()
+Ys = gdsc$drug_response('IC50s')
+ar$intersect(tissues, Ys, along=1)
+
+esca = gdsc$tissues("ESCA")
+scores = io$load(INFILE)
+Yf = gdsc$drug_response('IC50s', min_tissue_measured=2, median_top=10, drop=TRUE)
+ar$intersect(scores, esca, Yf, along=1)
+
+# tissues as subsets
+assocs.tissue = st$lm(Yf ~ scores) %>%
+    filter(term == "scores") %>%
+    select(-term) %>%
+    mutate(adj.p = p.adjust(p.value, method="fdr"))
+
+#fh535 = filter(assocs.tissue, Yf=="FH535" & scores=="VEGF")
+```
+
+```{r volcano, echo=FALSE}
+assocs.tissue %>%
+    mutate(label = paste(Yf, scores, sep=":")) %>%
+    plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1, thresh=0.2) %>%
+    plt$volcano(p=0.2)
+```
+
+Volcano plot of associations between predicted pathway activities
+and drug response. Effect size on the horizontal, FDR-adjusted
+p-values on the vertical axis. Size of circles corresponds to the
+number of cell lines screened with each drug.
+
+The top hit suggests that expression of VEGF/PDGF-responsive genes
+mediates resistance to FH535 (Tcf/beta catenin inhibitor) with
+p=10^-5, FDR<1%.
+
+<!--
+Other hits with a higher FDR (~25%) but additional support include:
+
+* PI3K confers resistance to MEK inhibitors (PD-0325901, RDEA1119,
+  Trametinib). This association has additional support in e.g. BRCA.
+* Hypoxia confers resistance to LAQ824 (HDAC inhibitor). This is
+  also one of the most significant (FDR=1e-3) BRCA associations.
+-->
+
+```{r tissue_compare, echo=FALSE}
+drug = "Rapamycin"
+
+min_conc = gdsc$drug$conc('min', colnames(Ys))
+max_conc = gdsc$drug$conc('max', colnames(Ys))
+
+mydf = data.frame(tissue=tissues, drug=Ys[,drug]) %>%
+    na.omit() %>%
+    group_by(tissue) %>%
+    filter(n() >= 5) %>%
+    ungroup()
+med = function(x) median(x, na.rm=TRUE)
+
+minc = log10(min_conc[drug])
+maxc = log10(max_conc[drug])
+rect = data.frame(xmin=-Inf, xmax=Inf, ymin=minc, ymax=maxc)
+
+box = ggplot(mydf, aes(x=reorder(tissue, drug, FUN=med), y=drug)) +
+	geom_rect(data=rect, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),
+			  fill="plum2", alpha=0.1, inherit.aes=FALSE) +
+	geom_boxplot(na.rm=TRUE) +
+	xlab("Cancer type") +
+	ylab("IC50 [log uM]") +
+	theme_bw() +
+	theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+	geom_abline(intercept=minc, slope=0, linetype="dotted") +
+	geom_abline(intercept=maxc, slope=0, linetype="dotted") +
+	ggtitle(paste("Drug response ranges per tissue for", drug))
+
+print(box)
+```
+
+Box plot of the measured (range indicated in color) and inferred IC50s
+of the FH535 drug in the different cell lines tissues screened.
+
+```{r fits, echo=FALSE}
+do_fit = function(tissue, drug, path, gene, label_top=5) {
+    fits = df$assemble(
+        drug = Yf[,drug],
+        path = scores[,path],
+        muts = gdsc$mutated_genes(intogen=TRUE, tissue=tissue) %>%
+            ar$map(along=2, function(x) paste(names(x)[x], collapse=",")),
+        gene = gdsc$basal_expression()[gene,]
+    ) %>% na.omit()
+    # <this should not be required once df$assemble works>
+    fits$drug = as.numeric(fits$drug)
+    fits$path = as.numeric(fits$path)
+    fits$gene = as.numeric(fits$gene)
+    # </>
+    fits$label = gdsc$cosmic$id2name(rownames(fits))
+    fits = mutate(fits, label = paste(label, muts, sep="\n"))
+#    fits$label[fits$gene < b$maxN(fits$gene, 5)] = ""
+
+    ggplot(fits, aes(x=path, y=drug, label=label, fill=gene)) +
+        geom_smooth(method=stats::lm, se=FALSE, na.rm=TRUE, alpha=0.1) +
+        geom_point(pch=21, size=5, colour="black", na.rm=TRUE) +
+        scale_fill_gradient(low="white", high="black",
+                            limits=c(min(fits$gene, na.rm=TRUE),
+                                     max(fits$gene, na.rm=TRUE)),
+                            guide = guide_legend(title = gene)) +
+        geom_text(colour="#353535", size=2, vjust=-1.5, na.rm=TRUE) +
+        theme_bw() +
+        ggtitle(paste(tissue, ":", drug, "response and",
+                      path, "activity")) +
+        xlab(paste("predicted", path, "activity")) +
+        ylab(paste("IC50 [log uM]"))
+}
+
+print(do_fit("ESCA", "Rapamycin", "EGFR", "EGFR"))
+print(do_fit("ESCA", "Rapamycin", "MAPK", "MAP2K1"))
+```
+
+Linear association between predicted pathway activity and drug
+response to FH535, with each point representing a cell line
+coloured by PDGFR A/B expression.
