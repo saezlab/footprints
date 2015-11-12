@@ -61,7 +61,7 @@ Other hits with a higher FDR (~25%) but additional support include:
 -->
 
 ```{r tissue_compare, echo=FALSE}
-util$drug_range_box("Rapamycin")
+util$drug_range_box("Rapamycin", highlight="ESCA")
 ```
 
 Box plot of the measured (range indicated in color) and inferred IC50s

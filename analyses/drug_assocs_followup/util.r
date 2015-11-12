@@ -15,23 +15,26 @@ drug_tissue_volcano = function() {
 
 #' @param drug      Name of the drug
 #' @param stratify  A list of tissues that should be stratified
-drug_range_box = function(drug, min_n=5) {
+drug_range_box = function(drug, highlight=NULL, min_n=5) {
     mydf = data.frame(tissue=.tissues, drug=.Ys[,drug]) %>%
         na.omit() %>%
         group_by(tissue) %>%
         filter(n() >= min_n) %>%
-        ungroup()
+        ungroup() %>%
+        mutate(fill = ifelse(tissue %in% highlight, tissue, "other"))
+    #   mutate(fill = plt$brew$qual())
 
     minc = log10(.min_conc[drug])
     maxc = log10(.max_conc[drug])
     rect = data.frame(xmin=-Inf, xmax=Inf, ymin=minc, ymax=maxc)
 
     ggplot(mydf, aes(x=reorder(tissue, drug,
-            FUN=function(x) median(x, na.rm=TRUE)), y=drug)) +
+            FUN=function(x) median(x, na.rm=TRUE)), y=drug, fill=fill)) +
         scale_x_discrete() +
         geom_rect(data=rect, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),
                   fill="plum2", alpha=0.1, inherit.aes=FALSE) +
         geom_boxplot(na.rm=TRUE) +
+        guides(fill=FALSE) +
         xlab("Cancer type") +
         ylab("IC50 [log uM]") +
         theme_bw() +

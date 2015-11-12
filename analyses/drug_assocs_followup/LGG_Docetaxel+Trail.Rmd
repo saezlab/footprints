@@ -37,7 +37,7 @@ assocs.tissue %>%
 ```
 
 ```{r range, echo=FALSE}
-util$drug_range_box("Docetaxel")
+util$drug_range_box("Docetaxel", highlight="LGG")
 ```
 
 <!--
