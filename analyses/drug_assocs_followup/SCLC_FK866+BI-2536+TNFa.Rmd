@@ -12,6 +12,7 @@ st = import('stats')
 df = import('data_frame')
 plt = import('plot')
 gdsc = import('data/gdsc')
+util = import('./util')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/gdsc/speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "SCLC_assocs.pdf"
@@ -75,6 +76,7 @@ do_fit = function(tissue, drug, path, gene, label_top=5) {
         ylab(paste("log IC50", drug))
 }
 
+util$drug_range_box("FK866", highlight="SCLC")
 print(do_fit("SCLC", "FK866", "TNFa", "TNFRSF1A"))
 print(do_fit("SCLC", "FK866", "TNFa", "TNFRSF1B"))
 print(do_fit("SCLC", "FK866", "TNFa", "NFKB1"))
@@ -82,6 +84,7 @@ print(do_fit("SCLC", "FK866", "TNFa", "NFKB2"))
 ```
 
 ```{r plk1, echo=FALSE}
+util$drug_range_box("BI-2536", highlight="SCLC")
 print(do_fit("SCLC", "BI-2536", "TNFa", "CDK1"))
 print(do_fit("SCLC", "BI-2536", "TNFa", "CDK2"))
 print(do_fit("SCLC", "BI-2536", "TNFa", "CDK4"))
