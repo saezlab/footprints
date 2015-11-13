@@ -47,9 +47,8 @@ and drug response. Effect size on the horizontal, FDR-adjusted
 p-values on the vertical axis. Size of circles corresponds to the
 number of cell lines screened with each drug.
 
-The top hit suggests that expression of VEGF/PDGF-responsive genes
-mediates resistance to FH535 (Tcf/beta catenin inhibitor) with
-p=10^-5, FDR<1%.
+The top hit suggests that expression of EGFR/MAPK responsive genes
+mediates resistance to Rapamycin (FDR<3%).
 
 <!--
 Other hits with a higher FDR (~25%) but additional support include:
@@ -65,7 +64,7 @@ util$drug_range_box("Rapamycin", highlight="ESCA")
 ```
 
 Box plot of the measured (range indicated in color) and inferred IC50s
-of the FH535 drug in the different cell lines tissues screened.
+of the drug Rapamycin in the different cell lines tissues screened.
 
 ```{r fits, echo=FALSE}
 do_fit = function(tissue, drug, path, gene, label_top=5) {
@@ -104,6 +103,6 @@ print(do_fit("ESCA", "Rapamycin", "EGFR", "EGFR"))
 print(do_fit("ESCA", "Rapamycin", "MAPK", "MAP2K1"))
 ```
 
-Linear association between predicted pathway activity and drug
-response to FH535, with each point representing a cell line
-coloured by PDGFR A/B expression.
+Linear association between predicted pathway (top: EGFR, bottom: MAPK)
+activity and drug response to Rapamycin, with each point representing
+a cell line coloured by EGFR/MEK expression.
