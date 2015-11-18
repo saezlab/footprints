@@ -83,11 +83,6 @@ gex = gdsc$basal_expression()
             ar$map(along=2, function(x) paste(names(x)[x], collapse=",")),
         gene = log10(10^gex["PDGFRA",]+10^gex["PDGFRB",])
     ) %>% na.omit()
-    # <this should not be required once df$assemble works>
-    fits$drug = as.numeric(fits$drug)
-    fits$path = as.numeric(fits$path)
-    fits$gene = as.numeric(fits$gene)
-    # </>
     fits$label = gdsc$cosmic$id2name(rownames(fits))
     fits$label[fits$gene < b$maxN(fits$gene, 5)] = ""
 

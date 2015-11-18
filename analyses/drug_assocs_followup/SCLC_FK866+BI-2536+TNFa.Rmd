@@ -53,11 +53,6 @@ do_fit = function(tissue, drug, path, gene, label_top=5) {
         gene = gdsc$basal_expression()[gene,]
 #        gene = io$load('../../scores/gdsc/speed_matrix.RData')[,'PI3K']
     ) %>% na.omit()
-    # <this should not be required once df$assemble works>
-    fits$drug = as.numeric(fits$drug)
-    fits$path = as.numeric(fits$path)
-    fits$gene = as.numeric(fits$gene)
-    # </>
     fits$label = gdsc$cosmic$id2name(rownames(fits))
 #    fits$label[fits$gene < b$maxN(fits$gene, 5)] = ""
 

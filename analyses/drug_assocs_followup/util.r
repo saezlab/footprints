@@ -6,8 +6,8 @@ library(dplyr)
 .Ys = .gdsc$drug_response('IC50s')
 .ar$intersect(.tissues, .Ys, along=1)
 
-.min_conc = .gdsc$drug$conc('min', colnames(.Ys))
-.max_conc = .gdsc$drug$conc('max', colnames(.Ys))
+.min_conc = .gdsc$drug$conc('min', colnames(.Ys), log=TRUE)
+.max_conc = .gdsc$drug$conc('max', colnames(.Ys), log=TRUE)
 
 #' @param ...    Parameters passed to plt$volcano
 drug_tissue_volcano = function() {
@@ -24,8 +24,8 @@ drug_range_box = function(drug, highlight=NULL, min_n=5) {
         mutate(fill = ifelse(tissue %in% highlight, tissue, "other"))
     #   mutate(fill = plt$brew$qual())
 
-    minc = log10(.min_conc[drug])
-    maxc = log10(.max_conc[drug])
+    minc = .min_conc[drug]
+    maxc = .max_conc[drug]
     rect = data.frame(xmin=-Inf, xmax=Inf, ymin=minc, ymax=maxc)
 
     ggplot(mydf, aes(x=reorder(tissue, drug,
