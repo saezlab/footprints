@@ -52,7 +52,8 @@ drug_range_box = function(drug, stratify=NULL, min_n=5) {
                     # add a stratified version of the drug response to mydf
                     mydf = mydf %>%
                         filter(cosmic %in% kobj) %>%
-                        mutate(tissue = kname) %>%
+                        mutate(tissue = kname,
+                               fill = jname) %>%
                         bind_rows(mydf)
                 }
             }
