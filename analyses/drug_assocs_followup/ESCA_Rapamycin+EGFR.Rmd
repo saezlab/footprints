@@ -95,6 +95,7 @@ do_fit = function(tissue, drug, path, gene, label_top=5) {
 }
 
 print(do_fit("ESCA", "Rapamycin", "EGFR", "EGFR"))
+print(do_fit("ESCA", "Rapamycin", "EGFR", "ERBB2"))
 print(do_fit("ESCA", "Rapamycin", "MAPK", "MAP2K1"))
 ```
 
