@@ -1,19 +1,22 @@
 library(dplyr)
+b = import('base')
 io = import('io')
 ar = import('array')
 st = import('stats')
 cbp = import('data/cbioportal')
 plt = import('plot')
 
-OUTFILE = "variant_impact.pdf"
+SCOREFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
+VARFILE = commandArgs(TRUE)[2] %or% "gene_variants.RData"
+OUTFILE = commandArgs(TRUE)[3] %or% "speed_matrix.pdf"
 
-scores = io$load('../../scores/tcga/speed_matrix.RData')
+scores = io$load(SCOREFILE)
 rownames(scores) = substr(rownames(scores), 1, 15) # do not include portion
 scores = scores[!duplicated(rownames(scores)),]
 #                c('p53','PI3K','MAPK','Hypoxia','NFkB')]
 
 # get samples where we have expression, mutation (and CNV?)
-gene = io$load("gene_variants.RData")$variants %>%
+gene = io$load(VARFILE)$variants %>%
 #    filter(hgnc == "TP53") %>%
     mutate(variant = paste(hgnc, variant, sep="_")) %>%
     group_by(variant) %>%
