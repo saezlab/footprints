@@ -5,7 +5,8 @@ include ../../Makefile.inc
 # --> this could save quite a bit of var def
 
 TCGA_SCORES = $(wildcard ../../scores/tcga/*.RData) #TODO: this only updates, does not create
-#TCGA_SCORES = $(call import_target, ../../scores/tcga, "*.RData") # this would be preferred
+$(call import_target, ../../scores/tcga, $(TCGA_SCORES))
+#TCGA_SCORES = $(call import_target_pattern, ../../scores/tcga, %.RData) # this would be preferred
 PLOTS = $(TCGA_SCORES:../../scores/tcga/%.RData=%.pdf)
 
 all: $(PLOTS)
