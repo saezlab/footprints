@@ -71,7 +71,13 @@ do_fit = function(tissue, drug, path, gene, label_top=5) {
         ylab(paste("log IC50", drug))
 }
 
-util$drug_range_box("FK866", highlight="SCLC")
+sclc_tnfa = scores[names(tissues), "TNFa"]
+stratify = list(SCLC = list(
+    "SCLC_TNFa+" = names(sclc_tnfa)[sclc_tnfa > -1],
+    "SCLC_TNFa-" = names(sclc_tnfa)[sclc_tnfa < -1]
+))
+util$drug_range_box("FK866", stratify=stratify)
+
 print(do_fit("SCLC", "FK866", "TNFa", "TNFRSF1A"))
 print(do_fit("SCLC", "FK866", "TNFa", "TNFRSF1B"))
 print(do_fit("SCLC", "FK866", "TNFa", "NFKB1"))
@@ -79,7 +85,7 @@ print(do_fit("SCLC", "FK866", "TNFa", "NFKB2"))
 ```
 
 ```{r plk1, echo=FALSE}
-util$drug_range_box("BI-2536", highlight="SCLC")
+util$drug_range_box("BI-2536", stratify=stratify)
 print(do_fit("SCLC", "BI-2536", "TNFa", "CDK1"))
 print(do_fit("SCLC", "BI-2536", "TNFa", "CDK2"))
 print(do_fit("SCLC", "BI-2536", "TNFa", "CDK4"))

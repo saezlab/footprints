@@ -31,8 +31,6 @@ assocs.tissue = st$lm(Yf ~ scores) %>%
     filter(term == "scores") %>%
     select(-term) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr"))
-
-#fh535 = filter(assocs.tissue, Yf=="FH535" & scores=="VEGF")
 ```
 
 ```{r volcano, echo=FALSE}
@@ -60,7 +58,13 @@ Other hits with a higher FDR (~25%) but additional support include:
 -->
 
 ```{r tissue_compare, echo=FALSE}
-util$drug_range_box("Rapamycin", highlight="ESCA")
+esca_egfr = scores[names(esca), "EGFR"]
+stratify = list(ESCA = list(
+    "ESCA_EGFR+" = names(esca_egfr)[esca_egfr > 0],
+    "ESCA_EGFR-" = names(esca_egfr)[esca_egfr < 0]
+))
+
+util$drug_range_box("Rapamycin", stratify=stratify)
 ```
 
 Box plot of the measured (range indicated in color) and inferred IC50s

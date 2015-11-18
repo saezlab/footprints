@@ -37,7 +37,13 @@ assocs.tissue %>%
 ```
 
 ```{r range, echo=FALSE}
-util$drug_range_box("Docetaxel", highlight="LGG")
+lgg_trail = scores[names(tissues), "Trail"]
+stratify = list(LGG = list(
+    "LGG_Trail+" = names(lgg_trail)[lgg_trail > 0],
+    "LGG_Trail-" = names(lgg_trail)[lgg_trail < 0]
+))
+
+util$drug_range_box("Docetaxel", stratify=stratify)
 ```
 
 <!--

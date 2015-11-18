@@ -61,7 +61,13 @@ Other hits with a higher FDR (~25%) but additional support include:
 -->
 
 ```{r tissue_compare, echo=FALSE}
-util$drug_range_box("FH535", highlight="SKCM")
+skcm_vegf = scores[names(skcm), "VEGF"]
+stratify = list(SKCM = list(
+    "SKCM_VEGF+" = names(skcm_vegf)[skcm_vegf > 0],
+    "SKCM_VEGF-" = names(skcm_vegf)[skcm_vegf < 0]
+))
+
+util$drug_range_box("FH535", stratify=stratify)
 ```
 
 Box plot of the measured (range indicated in color) and inferred IC50s
