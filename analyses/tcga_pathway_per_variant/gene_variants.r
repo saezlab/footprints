@@ -29,7 +29,7 @@ variants = cbp$variants(studies, genes) %>%
 # and CNAs
 lookup = c('-2' = "homo_del",
            '-1' = "hemi_del",
-           '0' = NA,
+           '0' = "normal",
            '1' = "low_amp",
            '2' = "high_amp")
 

@@ -13,10 +13,14 @@ OUTFILE = commandArgs(TRUE)[3] %or% "speed_matrix.pdf"
 scores = io$load(SCOREFILE)
 rownames(scores) = substr(rownames(scores), 1, 15) # do not include portion
 scores = scores[!duplicated(rownames(scores)),]
-#                c('p53','PI3K','MAPK','Hypoxia','NFkB')]
+gene_variants = io$load(VARFILE)
+
+###
+### do associations between scores and variants
+###
 
 # get samples where we have expression, mutation (and CNV?)
-gene = io$load(VARFILE)$variants %>%
+gene = gene_variants$variants %>%
 #    filter(study != "BRCA") %>% # to set if TP53_R282W w/o BRCA: p<0.0012 (4% FDR)
 #    filter(hgnc == "TP53") %>%
     mutate(variant = paste(hgnc, variant, sep="_")) %>%
@@ -34,22 +38,58 @@ ar$intersect(scores, gene$id)
 # differences in pathway scores between studies could be anything (including
 # the tissue just have the pathway more active irrespective of p53 status),
 # so discard this and look only at effects where specific variants involved
-result = st$lm(scores ~ study * variant, data=gene) %>%
+variants = st$lm(scores ~ study * variant, data=gene) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
     filter(! grepl("^study[^:]+$", term)) %>%
     arrange(adj.p) %>%
     mutate(label = paste(scores, sub("study", "", term), sep="_")) %>%
     plt$color$p_effect(pvalue="adj.p", thresh=0.1)
 
+###
+### do associations between tissues and variants
+###
+scores = io$load(SCOREFILE)
+rownames(scores) = substr(rownames(scores), 1, 15) # do not include portion
+scores = scores[!duplicated(rownames(scores)),]
+
+gene = ar$construct(variant ~ id + hgnc, data=gene_variants$cna, fill="normal",
+    fun.aggregate=function(x) ifelse(length(unique(x) == 1), unique(x), "NA")) %>%
+    as.data.frame()
+for (cc in 1:ncol(gene))
+    gene[[cc]] =  relevel(as.factor(gene[[cc]]), "normal")
+
+study = setNames(gene_variants$cna$study, gene_variants$cna$id)
+ar$intersect(scores, gene, study)
+
+cnas = st$lm(scores ~ study * gene) %>%
+    mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
+    filter(! grepl("^study[^:]+$", term)) %>%
+    arrange(adj.p) %>%
+    mutate(label = paste(scores, gene, sub("study", "", sub("gene", "", term)), sep="_")) %>%
+    plt$color$p_effect(pvalue="adj.p", thresh=0.1)
+
+###
+### volcano plots of the results
+###
+
 pdf(OUTFILE)#, width=26, height=20)
 
-result %>%
+variants %>%
     filter(!is.na(size)) %>%
-    plt$volcano(base.size=10, p=0.1) + ggtitle("variants")
+    plt$volcano(base.size=10, p=0.1) + ggtitle("pan-cancer variants")
 
-result %>%
+variants %>%
     filter(is.na(size)) %>%
     mutate(size = 50) %>%
-    plt$volcano(p=0.1) + ggtitle("interactions")
+    plt$volcano(p=0.1) + ggtitle("tissue-specific variants (interaction terms)")
+
+cnas %>%
+    filter(!is.na(size)) %>%
+    plt$volcano(base.size=0.01, p=0.1) + ggtitle("pan-cancer CNAs")
+
+cnas %>%
+    filter(is.na(size)) %>%
+    mutate(size = 50) %>%
+    plt$volcano(p=0.1) + ggtitle("tissue-specific CNAs (interaction terms)")
 
 dev.off()
