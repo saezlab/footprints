@@ -37,7 +37,13 @@ assocs.tissue %>%
 ```
 
 ```{r range, echo=FALSE}
-util$drug_range_box("Docetaxel", highlight="LGG")
+lgg_trail = scores[names(tissues), "Trail"]
+stratify = list(LGG = list(
+    "LGG_Trail+" = names(lgg_trail)[lgg_trail > 0],
+    "LGG_Trail-" = names(lgg_trail)[lgg_trail < 0]
+))
+
+util$drug_range_box("Docetaxel", stratify=stratify)
 ```
 
 <!--
@@ -56,11 +62,6 @@ do_fit = function(tissue, drug, path, gene_, label_top=5) {
 #        gene = gdsc$basal_expression()[gene,]
         gene = io$load('../../scores/gdsc/gsea_reactome.RData')[,'Trail']
     ) %>% na.omit()
-    # <this should not be required once df$assemble works>
-    fits$drug = as.numeric(fits$drug)
-    fits$path = as.numeric(fits$path)
-    fits$gene = as.numeric(fits$gene)
-    # </>
     fits$label = gdsc$cosmic$id2name(rownames(fits))
     fits = mutate(fits, label = paste(label, muts, sep="\n"))
 #    fits$label[fits$gene < b$maxN(fits$gene, 5)] = ""

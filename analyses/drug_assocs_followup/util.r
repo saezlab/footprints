@@ -14,15 +14,51 @@ drug_tissue_volcano = function() {
 }
 
 #' @param drug      Name of the drug
-#' @param stratify  A list of tissues that should be stratified
-drug_range_box = function(drug, highlight=NULL, min_n=5) {
-    mydf = data.frame(tissue=.tissues, drug=.Ys[,drug]) %>%
+#' @param stratify  Either a character vector with tissues to highlight, or
+#'                  A nested list with each item a (names, for the x tick) list
+#'                  of COSMIC IDs to include in stratification
+#' @param min_n     Minumum number of drug reponse points to include in plot;
+#'                  stratify'd points will always be plotted
+drug_range_box = function(drug, stratify=NULL, min_n=5) {
+    mydf = data.frame(tissue=.tissues, cosmic = names(.tissues), drug=.Ys[,drug]) %>%
         na.omit() %>%
         group_by(tissue) %>%
         filter(n() >= min_n) %>%
         ungroup() %>%
-        mutate(fill = ifelse(tissue %in% highlight, tissue, "other"))
-    #   mutate(fill = plt$brew$qual())
+        mutate(fill = "other")
+
+    for (i in seq_along(stratify)) {
+        iobj = stratify[i]
+        # get name of list item for stratified highlights
+        # or element for simple highlights
+        iname = names(stratify)[i] %or% iobj
+        if (is.list(iname))
+            stop("stratify needs to be named list or character vector")
+
+        # highlight the requested tissue
+        mydf[mydf$tissue == iname,'fill'] = iname
+
+        # this is the stratification per tissue
+        if (is.list(iobj)) {
+            for (j in seq_along(iobj)) {
+                jobj = iobj[[j]]
+                jname = names(iobj)[j]
+
+                # this is the stratification within tissue
+                for (k in seq_along(jobj)) {
+                    kobj = jobj[[k]]
+                    kname = names(jobj)[k]
+
+                    # add a stratified version of the drug response to mydf
+                    mydf = mydf %>%
+                        filter(cosmic %in% kobj) %>%
+                        mutate(tissue = kname,
+                               fill = jname) %>%
+                        bind_rows(mydf)
+                }
+            }
+        }
+    }
 
     minc = .min_conc[drug]
     maxc = .max_conc[drug]
