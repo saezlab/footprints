@@ -1,0 +1,96 @@
+---
+title: "MM drug associations for perturbation-response genes"
+author: "Michael Schubert (schubert@ebi.ac.uk)"
+---
+
+```{r code, include=FALSE}
+library(dplyr)
+b = import('base')
+io = import('io')
+ar = import('array')
+st = import('stats')
+df = import('data_frame')
+plt = import('plot')
+gdsc = import('data/gdsc')
+util = import('./util')
+
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/gdsc/speed_matrix.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "MM_assocs.pdf"
+
+scores = io$load(INFILE)
+tissues = gdsc$tissues("MM")
+Yf = gdsc$drug_response('IC50s', tissue="MM", stage=2, drop=TRUE)
+ar$intersect(scores, tissues, Yf, along=1)
+
+# tissues as subsets
+assocs.tissue = st$lm(Yf ~ scores) %>%
+    filter(term == "scores") %>%
+    select(-term) %>%
+    mutate(adj.p = p.adjust(p.value, method="fdr"))
+```
+
+```{r volcano, echo=FALSE}
+assocs.tissue %>%
+    mutate(label = paste(Yf, scores, sep=":")) %>%
+    plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1, thresh=0.2) %>%
+    plt$volcano(p=0.2)
+```
+
+```{r range, echo=FALSE}
+util$drug_range_box("Sorafenib", highlight="MM")
+```
+
+<!--
+```{r fits2, echo=FALSE}
+#TODO: volcano of diff trail genes + trail pathway exp, show is diff?
+```
+-->
+
+```{r fits, echo=FALSE}
+do_fit = function(tissue, drug, path, gene_, label_top=5) {
+    fits = df$assemble(
+        drug = Yf[,drug],
+        path = scores[,path],
+        muts = gdsc$mutated_genes(intogen=TRUE, tissue=tissue) %>%
+            ar$map(along=2, function(x) paste(names(x)[x], collapse=",")),
+#        gene = gdsc$basal_expression()[gene,]
+        gene = io$load('../../scores/gdsc/gsea_reactome.RData')[,'Trail']
+    ) %>% na.omit()
+    # <this should not be required once df$assemble works>
+    fits$drug = as.numeric(fits$drug)
+    fits$path = as.numeric(fits$path)
+    fits$gene = as.numeric(fits$gene)
+    # </>
+    fits$label = gdsc$cosmic$id2name(rownames(fits))
+    fits = mutate(fits, label = paste(label, muts, sep="\n"))
+#    fits$label[fits$gene < b$maxN(fits$gene, 5)] = ""
+
+    ggplot(fits, aes(x=path, y=drug, label=label, fill=gene)) +
+        geom_smooth(method=stats::lm, se=FALSE, na.rm=TRUE, alpha=0.1) +
+        geom_point(pch=21, size=5, colour="black", na.rm=TRUE) +
+        scale_fill_gradient(low="white", high="black",
+                            limits=c(min(fits$gene, na.rm=TRUE),
+                                     max(fits$gene, na.rm=TRUE)),
+                            guide = guide_legend(title = gene_)) +
+        geom_text(colour="#353535", size=2, vjust=-1.5, na.rm=TRUE) +
+        theme_bw() +
+        ggtitle(paste(tissue, ":", drug, "response and",
+                      path, "activity")) +
+        xlab(paste("predicted", path, "activity")) +
+        ylab(paste("log IC50", drug))
+}
+
+print(do_fit("MM", "Sorafenib", "Trail", "Trail expression"))
+```
+
+Expression of Trail-induced genes (on horizontal axis) are
+correlated with drug sensitivity in Multiple Myeloma (MM),
+while expression of members of the apoptosis pathway (GSEA score
+as shades of grey) is not.
+
+Presence of TP53 mutations also does not correlate with either
+drug response or Trail activity, so this suggests an independent
+mechanism.
+
+Taken together, we find a possible synergy between rTrail and Sorafenib
+as treatment in MM.
