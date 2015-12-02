@@ -38,12 +38,12 @@ assocs.tissue %>%
 
 ```{r range, echo=FALSE}
 mm_trail = scores[names(tissues), "Trail"]
-stratify = list(LGG = list(
+stratify = list(MM = list(
     "MM_Trail+" = names(mm_trail)[mm_trail > 0],
     "MM_Trail-" = names(mm_trail)[mm_trail < 0]
 ))
 
-util$drug_range_box("Docetaxel", stratify=stratify)
+util$drug_range_box("Sorafenib", stratify=stratify)
 ```
 
 <!--
