@@ -74,7 +74,7 @@ of further stratifying cell lines (and in turn maybe patients) when
 there is no mutation marker available.
 
 ```{r fits, echo=FALSE}
-do_fit = function(tissue, drug, path, gene, label_top=5) {
+do_fit = function(tissue, drug, path, gene, label_top=10) {
 gex = gdsc$basal_expression()
     fits = df$assemble(
         drug = Yf[,drug],
@@ -89,7 +89,7 @@ gex = gdsc$basal_expression()
     fits$gene = as.numeric(fits$gene)
     # </>
     fits$label = gdsc$cosmic$id2name(rownames(fits))
-    fits$label[fits$gene < b$maxN(fits$gene, 5)] = ""
+    fits$label[fits$gene < b$maxN(fits$gene, label_top)] = ""
 
     ggplot(fits, aes(x=path, y=drug, label=label, fill=gene)) +
         geom_smooth(method=stats::lm, se=FALSE, na.rm=TRUE, alpha=0.1) +
