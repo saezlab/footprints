@@ -1,0 +1,98 @@
+---
+title: "LUAD drug associations for perturbation-response genes"
+author: "Michael Schubert (schubert@ebi.ac.uk)"
+---
+
+```{r code, include=FALSE}
+library(dplyr)
+b = import('base')
+io = import('io')
+ar = import('array')
+st = import('stats')
+df = import('data_frame')
+plt = import('plot')
+gdsc = import('data/gdsc')
+util = import('./util')
+
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/gdsc/speed_matrix.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "LUAD_assocs.pdf"
+
+tissues = gdsc$tissues()
+Ys = gdsc$drug_response('IC50s')
+ar$intersect(tissues, Ys, along=1)
+
+luad = gdsc$tissues("LUAD")
+scores = io$load(INFILE)
+Yf = gdsc$drug_response('IC50s', stage=2, drop=TRUE)
+ar$intersect(scores, luad, Yf, along=1)
+
+# tissues as subsets
+assocs.tissue = st$lm(Yf ~ scores) %>%
+    filter(term == "scores") %>%
+    select(-term) %>%
+    mutate(adj.p = p.adjust(p.value, method="fdr"))
+```
+
+```{r volcano, echo=FALSE}
+assocs.tissue %>%
+    mutate(label = paste(Yf, scores, sep=":")) %>%
+    plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1, thresh=0.2) %>%
+    plt$volcano(p=0.2)
+```
+
+Volcano plot of associations between predicted pathway activities
+and drug response. Effect size on the horizontal, FDR-adjusted
+p-values on the vertical axis. Size of circles corresponds to the
+number of cell lines screened with each drug.
+
+```{r tissue_compare, echo=FALSE}
+egfr = scores[names(luad), "EGFR"]
+tgfb = scores[names(luad), "TGFb"]
+stratify = list(LUAD = list(
+    "LUAD_EGFR+" = names(egfr)[egfr > 0],
+    "LUAD_EGFR-" = names(egfr)[egfr < 0],
+    "LUAD_TGFb+" = names(tgfb)[tgfb > 0],
+    "LUAD_TGFb-" = names(tgfb)[tgfb < 0],
+    "LUAD_TGFb+_EGFR-" = names(tgfb)[egfr < 0 & tgfb > 0]
+))
+
+util$drug_range_box("Temsirolimus", stratify=stratify)
+```
+
+Box plot of the measured (range indicated in color) and inferred IC50s
+of the drug Temsirolimus in the different cell lines tissues screened.
+
+```{r fits, echo=FALSE}
+do_fit = function(tissue, drug, path, gene, label_top=5) {
+    fits = df$assemble(
+        drug = Yf[,drug],
+        path = scores[,path],
+        muts = gdsc$mutated_genes(intogen=TRUE, tissue=tissue) %>%
+            ar$map(along=2, function(x) paste(names(x)[x], collapse=",")),
+        gene = gdsc$basal_expression()[gene,]
+    ) %>% na.omit()
+    fits$label = gdsc$cosmic$id2name(rownames(fits))
+    fits = mutate(fits, label = paste(label, muts, sep="\n"))
+#    fits$label[fits$gene < b$maxN(fits$gene, 5)] = ""
+
+    ggplot(fits, aes(x=path, y=drug, label=label, fill=gene)) +
+        geom_smooth(method=stats::lm, se=FALSE, na.rm=TRUE, alpha=0.1) +
+        geom_point(pch=21, size=5, colour="black", na.rm=TRUE) +
+        scale_fill_gradient(low="white", high="black",
+                            limits=c(min(fits$gene, na.rm=TRUE),
+                                     max(fits$gene, na.rm=TRUE)),
+                            guide = guide_legend(title = gene)) +
+        geom_text(colour="#353535", size=2, vjust=-1.5, na.rm=TRUE) +
+        theme_bw() +
+        ggtitle(paste(tissue, ":", drug, "response and",
+                      path, "activity")) +
+        xlab(paste("predicted", path, "activity")) +
+        ylab(paste("IC50 [log uM]"))
+}
+
+#print(do_fit("ESCA", "Rapamycin", "EGFR", "EGFR"))
+```
+
+Linear association between predicted pathway (top: EGFR, bottom: MAPK)
+activity and drug response to Rapamycin, with each point representing
+a cell line coloured by EGFR/MEK expression.
