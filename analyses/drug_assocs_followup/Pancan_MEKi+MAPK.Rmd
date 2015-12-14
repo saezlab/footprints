@@ -42,6 +42,29 @@ util$drug_range_box("Trametinib", stratify=stratify)
 util$drug_range_box("RDEA119", stratify=stratify)
 ```
 
+```{r mapk2, echo=FALSE, fig.width=4, fig.height=4}
+mapk = scores[names(tissues), "MAPK"]
+stratify = list(Pancan = list(
+    "MAPK+" = nst(mapk > quantile(mapk)[4]), # top 25%
+    "MAPK-" = nst(mapk < quantile(mapk)[2]), # bottom 25%
+    "MAPK_null" = nst(mapk > quantile(mapk)[2] & mapk < quantile(mapk)[4]) # bottom 25%
+))
+
+util$drug_range_box("Trametinib", stratify=stratify) + ggtitle("w/o mut")
+```
+
+```{r mapk3, echo=FALSE, fig.width=4, fig.height=4}
+stratify = list(Pancan = list(
+    "MAPK_mut" = nst(mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"]),
+    "MAPK+_mut" = nst((mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"]) & mapk > quantile(mapk)[4]),
+    "MAPK-_mut" = nst((mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"]) & mapk < quantile(mapk)[4])
+))
+
+
+util$drug_range_box("Trametinib", stratify=stratify) + ggtitle("MAPK mut")
+```
+
+
 ```{r p53, echo=FALSE}
 p53 = scores[names(tissues), "p53"]
 stratify = list(Pancan = list(
