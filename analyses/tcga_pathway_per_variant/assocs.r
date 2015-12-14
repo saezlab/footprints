@@ -4,11 +4,10 @@ io = import('io')
 ar = import('array')
 st = import('stats')
 cbp = import('data/cbioportal')
-plt = import('plot')
 
 SCOREFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
 VARFILE = commandArgs(TRUE)[2] %or% "gene_variants.RData"
-OUTFILE = commandArgs(TRUE)[3] %or% "speed_matrix.pdf"
+OUTFILE = commandArgs(TRUE)[3] %or% "assocs/speed_matrix.RData"
 
 scores = io$load(SCOREFILE)
 rownames(scores) = substr(rownames(scores), 1, 15) # do not include portion
@@ -57,28 +56,5 @@ cnas = st$lm(scores ~ study * gene) %>%
     mutate(label = paste(scores, gene, sub("study", "", sub("gene", "", term)), sep="_")) %>%
     plt$color$p_effect(pvalue="adj.p", thresh=0.1)
 
-###
-### volcano plots of the results
-###
-
-pdf(OUTFILE)#, width=26, height=20)
-
-variants %>%
-    filter(!is.na(size)) %>%
-    plt$volcano(base.size=10, p=0.1) + ggtitle("pan-cancer variants")
-
-variants %>%
-    filter(is.na(size)) %>%
-    mutate(size = 50) %>%
-    plt$volcano(p=0.1) + ggtitle("tissue-specific variants (interaction terms)")
-
-cnas %>%
-    filter(!is.na(size)) %>%
-    plt$volcano(base.size=0.01, p=0.1) + ggtitle("pan-cancer CNAs")
-
-cnas %>%
-    filter(is.na(size)) %>%
-    mutate(size = 50) %>%
-    plt$volcano(p=0.1) + ggtitle("tissue-specific CNAs (interaction terms)")
-
-dev.off()
+# save results to plot later
+save(variants, cnas, file=OUTFILE)
