@@ -20,18 +20,7 @@ gene_variants = io$load(VARFILE)
 ###
 
 # get samples where we have expression, mutation (and CNV?)
-gene = gene_variants$variants %>%
-#    filter(study != "BRCA") %>% # to set if TP53_R282W w/o BRCA: p<0.0012 (4% FDR)
-#    filter(hgnc == "TP53") %>%
-    mutate(variant = paste(hgnc, variant, sep="_")) %>%
-    group_by(variant) %>%
-    mutate(n=n()) %>%
-    ungroup() %>%
-    mutate(variant = ifelse(n>=20 & !grepl("MUTATED", variant),
-                            variant, "other")) %>%
-    mutate(variant = relevel(as.factor(variant), "other")) %>%
-    as.data.frame() # error otherwise; why?
-
+gene = as.data.frame(gene_variants$variants) # "duplicate row names" error otherwise!?
 gene = gene[!duplicated(gene$id),] # this could be done better
 ar$intersect(scores, gene$id)
 

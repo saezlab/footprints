@@ -17,14 +17,21 @@ genes = io$read_table(INFILE, header=TRUE) %>%
 # for all tcga studies
 studies = cbp$studies(tcga=TRUE)
 
-# get SNVs
+# get SNVs + put labels for frequent variants and "other"
 variants = cbp$variants(studies, genes) %>%
     transmute(id = id,
               study = tcga$barcode2study(id),
               hgnc = hgnc,
               variant = amino_acid_change) %>%
     distinct() %>%
-    na.omit()
+    na.omit() %>%
+    mutate(label = paste(hgnc, variant, sep="_")) %>%
+    group_by(label) %>%
+    mutate(n_label=n()) %>%
+    ungroup() %>%
+    mutate(label = ifelse(n_label>=20 & !grepl("MUTATED", label),
+                          label, "other")) %>%
+    mutate(label = relevel(as.factor(label), "other"))
 
 # and CNAs
 lookup = c('-2' = "homo_del",
