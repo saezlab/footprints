@@ -2,7 +2,7 @@ library(dplyr)
 .ar = import('array')
 .gdsc = import('data/gdsc')
 
-.tissues = .gdsc$tissues()
+.tissues = .gdsc$tissues(minN=15)
 .Ys = .gdsc$drug_response('IC50s')
 .ar$intersect(.tissues, .Ys, along=1)
 
@@ -19,8 +19,9 @@ drug_tissue_volcano = function() {
 #'                  of COSMIC IDs to include in stratification
 #' @param min_n     Minumum number of drug reponse points to include in plot;
 #'                  stratify'd points will always be plotted
-drug_range_box = function(drug, stratify=NULL, min_n=5) {
-    mydf = data.frame(tissue=.tissues, cosmic = names(.tissues), drug=.Ys[,drug]) %>%
+#' @param tissues   Tissue vector, with COSMIC IDs as names
+drug_range_box = function(drug, stratify=NULL, min_n=5, tissues=.tissues) {
+    mydf = data.frame(tissue=tissues, cosmic = names(tissues), drug=.Ys[,drug]) %>%
         na.omit() %>%
         group_by(tissue) %>%
         filter(n() >= min_n) %>%
