@@ -18,6 +18,7 @@ genes = io$read_table(INFILE, header=TRUE) %>%
 studies = cbp$studies(tcga=TRUE)
 
 # get SNVs + put labels for frequent variants and "other"
+# include numbers of protein mutated + variant, across all and for specific studies
 variants = cbp$variants(studies, genes) %>%
     transmute(id = id,
               study = tcga$barcode2study(id),
@@ -26,10 +27,19 @@ variants = cbp$variants(studies, genes) %>%
     distinct() %>%
     na.omit() %>%
     mutate(label = paste(hgnc, variant, sep="_")) %>%
-    group_by(label) %>%
-    mutate(n_label=n()) %>%
+    group_by(hgnc) %>%
+        mutate(n_gene = n_distinct(id)) %>%
     ungroup() %>%
-    mutate(label = ifelse(n_label>=20 & !grepl("MUTATED", label),
+    group_by(study, hgnc) %>%
+        mutate(n_gene_per_study = n_distinct(id)) %>%
+    ungroup() %>%
+    group_by(label) %>%
+        mutate(n_var = n_distinct(id)) %>%
+    ungroup() %>%
+    group_by(study, label) %>%
+        mutate(n_var_per_study = n_distinct(id)) %>%
+    ungroup() %>%
+    mutate(label = ifelse(n_var>=20 & !grepl("MUTATED", label),
                           label, "other")) %>%
     mutate(label = relevel(as.factor(label), "other"))
 

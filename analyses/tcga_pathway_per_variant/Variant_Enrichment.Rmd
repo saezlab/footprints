@@ -1,0 +1,55 @@
+```{r prepare, include=FALSE}
+library(pheatmap)
+library(dplyr)
+io = import('io')
+ar = import('array')
+plt = import('plot')
+
+vars = io$load(module_file('gene_variants.RData'))$variants
+```
+
+# Mutated gene enrichment
+
+Test for enrichment of mutated genes of a certain cancer type
+compared to other cancer types.
+
+```{r freqs, echo=FALSE}
+#' @param TP  current study where gene is mutated
+#' @param FN  current study where gene is not mutated
+#' @param FP  other studies where gene is mutated
+#' @param TN  other studies where gene is not mutated
+FET = function(TP, FN, FP, TN) {
+    ff = function(tp, fn, fp, tn) fisher.test(matrix(c(tp, fn, tn, fp), nrow=2))
+    re = mapply(ff, TP, FN, FP, TN, SIMPLIFY=FALSE, USE.NAMES=FALSE)
+
+    list(p.value = sapply(re, function(x) x$p.value, USE.NAMES=FALSE),
+         odds.ratio = unname(sapply(re, function(x) x$estimate, USE.NAMES=FALSE)))
+}
+
+genes = vars %>%
+    select(id, study, hgnc, n_gene, n_gene_per_study) %>%
+    mutate(n = n_distinct(id)) %>%
+    group_by(study) %>%
+    mutate(n_study = n_distinct(id)) %>%
+    ungroup() %>%
+    select(-id) %>%
+    distinct() %>%
+    do(mutate(., p.value = FET(n_gene_per_study, n_study - n_gene_per_study,
+                               n - n_gene, n_gene - n_gene_per_study)$p.value)) %>%
+    do(mutate(., estimate = FET(n_gene_per_study, n_study - n_gene_per_study,
+                                n - n_gene, n_gene - n_gene_per_study)$odds.ratio))
+
+```
+
+# Variant enrichment
+
+Test for enrichment of variant frequency in one cancer type
+compared to others.
+
+```{r freqs, echo=FALSE}
+```
+
+TeaTasting = matrix(c(3,1,1,3), nrow = 2)
+fisher.test(TeaTasting)
+
+
