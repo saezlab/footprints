@@ -26,7 +26,8 @@ ar$intersect(scores, gene$id)
 # differences in pathway scores between studies could be anything (including
 # the tissue just have the pathway more active irrespective of p53 status),
 # so discard this and look only at effects where specific variants involved
-variants = st$lm(scores ~ study * variant, data=gene) %>%
+variants = st$lm(scores ~ study * variant, data=gene,
+                 hpc_args=list(n_jobs = ncol(scores))) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
     filter(! grepl("^study[^:]+$", term)) %>%
     arrange(adj.p) %>%
@@ -48,7 +49,8 @@ for (cc in 1:ncol(gene))
 study = setNames(gene_variants$cna$study, gene_variants$cna$id)
 ar$intersect(scores, gene, study)
 
-cnas = st$lm(scores ~ study * gene) %>%
+cnas = st$lm(scores ~ study * gene,
+             hpc_args=list(n_jobs = ncol(scores))) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
     filter(! grepl("^study[^:]+$", term)) %>%
     arrange(adj.p) %>%
