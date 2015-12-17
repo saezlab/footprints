@@ -9,20 +9,24 @@ pdf(OUTFILE)#, width=26, height=20)
 
 variants %>%
     filter(!is.na(size)) %>%
+    plt$color$p_effect(pvalue="adj.p", thresh=0.1)
     plt$volcano(base.size=10, p=0.1) + ggtitle("pan-cancer variants")
 
 variants %>%
     filter(is.na(size)) %>%
     mutate(size = 50) %>%
+    plt$color$p_effect(pvalue="adj.p", thresh=0.1)
     plt$volcano(p=0.1) + ggtitle("tissue-specific variants (interaction terms)")
 
 cnas %>%
     filter(!is.na(size)) %>%
+    plt$color$p_effect(pvalue="adj.p", thresh=0.1)
     plt$volcano(base.size=0.01, p=0.1) + ggtitle("pan-cancer CNAs")
 
 cnas %>%
     filter(is.na(size)) %>%
     mutate(size = 50) %>%
+    plt$color$p_effect(pvalue="adj.p", thresh=0.1)
     plt$volcano(p=0.1) + ggtitle("tissue-specific CNAs (interaction terms)")
 
 dev.off()

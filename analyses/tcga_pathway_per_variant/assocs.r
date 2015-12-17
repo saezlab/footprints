@@ -30,8 +30,7 @@ variants = st$lm(scores ~ study * variant, data=gene) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
     filter(! grepl("^study[^:]+$", term)) %>%
     arrange(adj.p) %>%
-    mutate(label = paste(scores, sub("study", "", term), sep="_")) %>%
-    plt$color$p_effect(pvalue="adj.p", thresh=0.1)
+    mutate(label = paste(scores, sub("study", "", term), sep="_"))
 
 ###
 ### do associations between tissues and variants
@@ -53,8 +52,7 @@ cnas = st$lm(scores ~ study * gene) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
     filter(! grepl("^study[^:]+$", term)) %>%
     arrange(adj.p) %>%
-    mutate(label = paste(scores, gene, sub("study", "", sub("gene", "", term)), sep="_")) %>%
-    plt$color$p_effect(pvalue="adj.p", thresh=0.1)
+    mutate(label = paste(scores, gene, sub("study", "", sub("gene", "", term)), sep="_"))
 
 # save results to plot later
 save(variants, cnas, file=OUTFILE)
