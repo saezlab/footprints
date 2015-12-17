@@ -6,7 +6,7 @@ plt = import('plot')
 tcga = import('data/tcga')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "pancan_heatmap.pdf"
+OUTFILE = commandArgs(TRUE)[2] %or% "plots/speed_matrix.pdf"
 MUTFILE = "mutations_annotated_pathwayactivities_v3_mikeformat.txt"
 
 scores = io$load(INFILE)
