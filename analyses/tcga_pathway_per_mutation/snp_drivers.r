@@ -26,7 +26,12 @@ subs2plots = function(subs, mut, scores) {
                      data=m, fun.aggregate = length) > 0
     ar$intersect(m, scores)
 
-    # associations
+    if (nrow(m) == 0) {
+        warning("no overlap between mutations and scores for ", subs)
+        return(NULL)
+    }
+
+   # associations
     result = st$lm(scores ~ m) %>%
         filter(term == "mTRUE") %>%
         select(-term) %>%
