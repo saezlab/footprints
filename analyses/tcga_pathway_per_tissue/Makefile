@@ -12,7 +12,7 @@ all: $(PLOTS) tact_merge.pdf
 box+cor/%.pdf: tissue_act.r ../../scores/tcga/%.RData
 	Rscript $^ $@
 
-heatmap/%.pdf: pancan_heatmap.r ../../scores/tcga/%.RData
+heatmap/%.pdf: heatmap.r ../../scores/tcga/%.RData
 	Rscript $^ $@
 
 tact_merge.pdf: tact_merge.r ../../scores/merge/speed_linear.RData
