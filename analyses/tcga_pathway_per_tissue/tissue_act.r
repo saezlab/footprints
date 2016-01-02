@@ -9,8 +9,8 @@ df = import('data_frame')
 st = import('stats')
 tcga = import('data/tcga')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_linear.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "tissue_act.pdf"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "box+cor/speed_matrix.pdf"
 
 # create simple data.frame with barcode, type, and study; same for scores
 scores = io$load(INFILE)
@@ -44,11 +44,12 @@ for (tissue in c("pan", sort(unique(index$study)))) {
         next
 
     # reformat stats summary df
-    if (tissue == "pan")
+    if (tissue == "pan") {
         assocs = st$lm(score ~ study + type, data=index) %>%
             filter(term == "typetumor")
-    else
+    } else {
         assocs = st$lm(score ~ type)
+    }
 
     assocs = assocs %>%
         transmute(variable = score,
@@ -85,6 +86,6 @@ for (tissue in c("pan", sort(unique(index$study)))) {
     corrplot(cor_normal, title="normal")
     corrplot(cor_cancer, title="cancer")
     corrplot(cor_diff, title="difference",
-             p.mat=p_diff, sig.level=1, insig="p-value")
+             p.mat=p_diff, sig.level=1, insig="p-value") %catch% NULL
     par(old.par)
 }
