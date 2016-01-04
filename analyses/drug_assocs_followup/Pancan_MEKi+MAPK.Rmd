@@ -65,15 +65,21 @@ util$drug_range_box("Trametinib", stratify=list(Pancan=pancan))
 
 ## Stratification by mutation alone
 
-```{r tram2, echo=FALSE}
+```{r tram2, echo=FALSE, fig.width=4}
 util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[1:3]), plot_only=NULL)
+```
+
+```{r tram2_2, echo=FALSE}
 util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[1:3]))
 ```
 
 ## Stratification by pathway score alone
 
-```{r tram3, echo=FALSE}
+```{r tram3, echo=FALSE, fig.width=4}
 util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[4:6]), plot_only=NULL)
+```
+
+```{r tram3_2, echo=FALSE}
 util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[4:6]))
 ```
 
