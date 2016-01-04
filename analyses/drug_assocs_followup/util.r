@@ -13,14 +13,17 @@ library(dplyr)
 drug_tissue_volcano = function() {
 }
 
-#' @param drug      Name of the drug
-#' @param stratify  Either a character vector with tissues to highlight, or
-#'                  A nested list with each item a (names, for the x tick) list
-#'                  of COSMIC IDs to include in stratification
-#' @param min_n     Minumum number of drug reponse points to include in plot;
-#'                  stratify'd points will always be plotted
-#' @param tissues   Tissue vector, with COSMIC IDs as names
-drug_range_box = function(drug, stratify=NULL, min_n=5, tissues=.tissues) {
+#' @param drug        Name of the drug
+#' @param stratify    Either a character vector with tissues to highlight, or
+#'                    A nested list with each item a (names, for the x tick) list
+#'                    of COSMIC IDs to include in stratification
+#' @param min_n       Minumum number of drug reponse points to include in plot;
+#'                    stratify'd points will always be plotted
+#' @param tissues     Tissue vector, with COSMIC IDs as names
+#' @param plot_range  Plot the range the drug was screened in
+#' @param plot_only   Character vector of tissues that should be included in comparison
+drug_range_box = function(drug, stratify=NULL, min_n=5, tissues=.tissues,
+                          plot_range=TRUE, plot_only=unique(tissues)) {
     mydf = data.frame(tissue=tissues, cosmic = names(tissues), drug=.Ys[,drug]) %>%
         na.omit() %>%
         group_by(tissue) %>%
@@ -65,11 +68,18 @@ drug_range_box = function(drug, stratify=NULL, min_n=5, tissues=.tissues) {
     maxc = .max_conc[drug]
     rect = data.frame(xmin=-Inf, xmax=Inf, ymin=minc, ymax=maxc)
 
-    ggplot(mydf, aes(x=reorder(tissue, drug,
+    all_strats = unique(sapply(stratify, names))
+    mydf = filter(mydf, tissue %in% c(plot_only, all_strats))
+
+    p = ggplot(mydf, aes(x=reorder(tissue, drug,
             FUN=function(x) median(x, na.rm=TRUE)), y=drug, fill=fill)) +
-        scale_x_discrete() +
-        geom_rect(data=rect, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),
-                  fill="plum2", alpha=0.1, inherit.aes=FALSE) +
+        scale_x_discrete()
+
+    if (plot_range)
+        p = p + geom_rect(data=rect, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),
+                          fill="plum2", alpha=0.1, inherit.aes=FALSE)
+
+    p +
         geom_boxplot(na.rm=TRUE) +
         guides(fill=FALSE) +
         xlab("Cancer type") +
@@ -78,8 +88,7 @@ drug_range_box = function(drug, stratify=NULL, min_n=5, tissues=.tissues) {
         theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
         geom_boxplot(na.rm=TRUE) +
         geom_abline(intercept=minc, slope=0, linetype="dotted") +
-        geom_abline(intercept=maxc, slope=0, linetype="dotted") +
-        ggtitle(paste("Drug response ranges per tissue for", drug))
+        geom_abline(intercept=maxc, slope=0, linetype="dotted")
 }
 
 drug_fit = function() {
