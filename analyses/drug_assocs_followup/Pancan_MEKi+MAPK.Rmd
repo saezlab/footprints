@@ -27,26 +27,31 @@ nst = function(x) names(x[x])
 
 # prepare stratifications of MAPK pathway
 mapk = scores[names(tissues), "MAPK"]
+has_mut = mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"]
+path_active = mapk > quantile(mapk)[4] # top 25%
+path_inactive = mapk < quantile(mapk)[2] # bottom 25%
+path_null = mapk > quantile(mapk)[2] & mapk < quantile(mapk)[4] # rest
+
 pancan = list(
     # stratification by mutation
     "MAPK_all" = nst(!is.na(mapk)),
-    "MAPK_wt" = nst(!(mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"])),
-    "MAPK_mut" = nst(mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"]),
+    "MAPK_wt" = nst(!has_mut),
+    "MAPK_mut" = nst(has_mut),
 
     # stratification by SPEED score
-    "MAPK+" = nst(mapk > quantile(mapk)[4]), # top 25%
-    "MAPK-" = nst(mapk < quantile(mapk)[2]), # bottom 25%
-    "MAPK_null" = nst(mapk > quantile(mapk)[2] & mapk < quantile(mapk)[4]), # bottom 25%
+    "MAPK+" = nst(path_active),
+    "MAPK-" = nst(path_inactive),
+    "MAPK_null" = nst(path_null),
 
     # stratification by SPEED score, wild-type subset
-    "MAPK_wt" = nst(!(mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"])),
-    "MAPK+_wt" = nst((!(mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"])) & mapk > quantile(mapk)[4]),
-    "MAPK-_wt" = nst((!(mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"])) & mapk < quantile(mapk)[2]),
+    "MAPK_wt" = nst(!has_mut),
+    "MAPK+_wt" = nst(!has_mut & (path_active | path_null)),
+    "MAPK-_wt" = nst(!has_mut & path_inactive),
 
     # stratification by SPEED score, mutated subset
-    "MAPK_mut" = nst(mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"]),
-    "MAPK+_mut" = nst((mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"]) & mapk > quantile(mapk)[4]),
-    "MAPK-_mut" = nst((mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"]) & mapk < quantile(mapk)[4])
+    "MAPK_mut" = nst(has_mut),
+    "MAPK+_mut" = nst(has_mut & path_active),
+    "MAPK-_mut" = nst(has_mut & (path_inactive | path_null))
 )
 ```
 
