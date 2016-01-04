@@ -83,11 +83,16 @@ util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[4:6]), plot_only=N
 util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[4:6]))
 ```
 
-## Stratification of mutated/wild-type sub-population
+## Stratification of wild-type sub-population
 
 ```{r tram4, echo=FALSE}
-util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[7:9])) + ggtitle("MAPK wt")
-util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[10:12])) + ggtitle("MAPK mut")
+util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[7:9]))
+```
+
+## Stratification of mutated sub-population
+
+```{r tram5, echo=FALSE}
+util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[10:12]))
 ```
 
 # RDEA119 + MAPK
