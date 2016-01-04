@@ -59,36 +59,34 @@ pancan = list(
 
 ## Overview
 
-```{r mapk, echo=FALSE}
+```{r tram1, echo=FALSE}
 util$drug_range_box("Trametinib", stratify=list(Pancan=pancan))
 ```
 
 ## Stratification by mutation alone
 
-```{r mapk_1, echo=FALSE}
+```{r tram2, echo=FALSE}
 util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[1:3]), plot_only=NULL)
 util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[1:3]))
 ```
 
 ## Stratification by pathway score alone
 
-```{r mapk2, echo=FALSE}
+```{r tram3, echo=FALSE}
 util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[4:6]), plot_only=NULL)
 util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[4:6]))
 ```
 
 ## Stratification of mutated/wild-type sub-population
 
-```{r mapk3_1, echo=FALSE}
+```{r tram4, echo=FALSE}
 util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[7:9])) + ggtitle("MAPK wt")
 util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[10:12])) + ggtitle("MAPK mut")
 ```
 
 # RDEA119 + MAPK
 
-
 # Nutlin-3a + p53
-
 
 ```{r p53, echo=FALSE}
 p53 = scores[names(tissues), "p53"]
