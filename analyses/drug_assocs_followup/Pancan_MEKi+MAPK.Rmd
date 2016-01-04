@@ -24,6 +24,30 @@ mut = gdsc$mutated_genes(intogen=TRUE)
 ar$intersect(tissues, Ys, scores, mut, along=1)
 
 nst = function(x) names(x[x])
+
+# prepare stratifications of MAPK pathway
+mapk = scores[names(tissues), "MAPK"]
+pancan = list(
+    # stratification by mutation
+    "MAPK_all" = nst(!is.na(mapk)),
+    "MAPK_wt" = nst(!(mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"])),
+    "MAPK_mut" = nst(mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"]),
+
+    # stratification by SPEED score
+    "MAPK+" = nst(mapk > quantile(mapk)[4]), # top 25%
+    "MAPK-" = nst(mapk < quantile(mapk)[2]), # bottom 25%
+    "MAPK_null" = nst(mapk > quantile(mapk)[2] & mapk < quantile(mapk)[4]), # bottom 25%
+
+    # stratification by SPEED score, wild-type subset
+    "MAPK_wt" = nst(!(mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"])),
+    "MAPK+_wt" = nst((!(mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"])) & mapk > quantile(mapk)[4]),
+    "MAPK-_wt" = nst((!(mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"])) & mapk < quantile(mapk)[2]),
+
+    # stratification by SPEED score, mutated subset
+    "MAPK_mut" = nst(mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"]),
+    "MAPK+_mut" = nst((mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"]) & mapk > quantile(mapk)[4]),
+    "MAPK-_mut" = nst((mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"]) & mapk < quantile(mapk)[4])
+)
 ```
 
 # Trametinib + MAPK
@@ -31,69 +55,28 @@ nst = function(x) names(x[x])
 ## Overview
 
 ```{r mapk, echo=FALSE}
-mapk = scores[names(tissues), "MAPK"]
-stratify = list(Pancan = list(
-    "MAPK+" = nst(mapk > quantile(mapk)[4]), # top 25%
-    "MAPK-" = nst(mapk < quantile(mapk)[2]), # bottom 25%
-    "MAPK_null" = nst(mapk > quantile(mapk)[2] & mapk < quantile(mapk)[4]), # bottom 25%
-    "MAPK_wt" = nst(!(mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"])),
-    "MAPK_mut" = nst(mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"]),
-    "MAPK+_mut" = nst((mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"]) & mapk > quantile(mapk)[4]),
-    "MAPK-_mut" = nst((mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"]) & mapk < quantile(mapk)[4])
-))
-
-# could call this with any drug here (e.g. RDEA119, other drugs with strong assocs)
-util$drug_range_box("Trametinib", stratify=stratify)
+util$drug_range_box("Trametinib", stratify=list(Pancan=pancan))
 ```
 
 ## Stratification by mutation alone
 
 ```{r mapk_1, echo=FALSE}
-mapk = scores[names(tissues), "MAPK"]
-stratify = list(Pancan = list(
-    "MAPK_all" = nst(!is.na(mapk)),
-    "MAPK_wt" = nst(!(mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"])),
-    "MAPK_mut" = nst(mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"])
-))
-
-util$drug_range_box("Trametinib", stratify=stratify, plot_only=NULL)
-util$drug_range_box("Trametinib", stratify=stratify)
+util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[1:3]), plot_only=NULL)
+util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[1:3]))
 ```
 
 ## Stratification by pathway score alone
 
 ```{r mapk2, echo=FALSE}
-mapk = scores[names(tissues), "MAPK"]
-stratify = list(Pancan = list(
-    "MAPK+" = nst(mapk > quantile(mapk)[4]), # top 25%
-    "MAPK-" = nst(mapk < quantile(mapk)[2]), # bottom 25%
-    "MAPK_null" = nst(mapk > quantile(mapk)[2] & mapk < quantile(mapk)[4]) # bottom 25%
-))
-
-util$drug_range_box("Trametinib", stratify=stratify, plot_only=NULL)
-util$drug_range_box("Trametinib", stratify=stratify)
+util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[4:6]), plot_only=NULL)
+util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[4:6]))
 ```
 
 ## Stratification of mutated/wild-type sub-population
 
 ```{r mapk3_1, echo=FALSE}
-stratify = list(Pancan = list(
-    "MAPK_wt" = nst(!(mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"])),
-    "MAPK+_wt" = nst((!(mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"])) & mapk > quantile(mapk)[4]),
-    "MAPK-_wt" = nst((!(mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"])) & mapk < quantile(mapk)[2])
-))
-
-util$drug_range_box("Trametinib", stratify=stratify) + ggtitle("MAPK wt")
-```
-
-```{r mapk3, echo=FALSE}
-stratify = list(Pancan = list(
-    "MAPK_mut" = nst(mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"]),
-    "MAPK+_mut" = nst((mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"]) & mapk > quantile(mapk)[4]),
-    "MAPK-_mut" = nst((mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"]) & mapk < quantile(mapk)[4])
-))
-
-util$drug_range_box("Trametinib", stratify=stratify) + ggtitle("MAPK mut")
+util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[7:9])) + ggtitle("MAPK wt")
+util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[10:12])) + ggtitle("MAPK mut")
 ```
 
 # RDEA119 + MAPK
