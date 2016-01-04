@@ -26,6 +26,8 @@ ar$intersect(tissues, Ys, scores, mut, along=1)
 nst = function(x) names(x[x])
 
 # prepare stratifications of MAPK pathway
+drug = "Trametinib" # "(5Z)-7-Oxozeaenol", "RDEA119"
+
 mapk = scores[names(tissues), "MAPK"]
 has_mut = mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"]
 path_active = mapk > quantile(mapk)[4] # top 25%
@@ -60,43 +62,42 @@ pancan = list(
 ## Overview
 
 ```{r tram1, echo=FALSE}
-util$drug_range_box("Trametinib", stratify=list(Pancan=pancan))
+util$drug_range_box(drug, stratify=list(Pancan=pancan))
 ```
 
 ## Stratification by mutation alone
 
 ```{r tram2, echo=FALSE, fig.width=4}
-util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[1:3]), plot_only=NULL)
+util$drug_range_box(drug, stratify=list(Pancan=pancan[1:3]), plot_only=NULL)
 ```
 
 ```{r tram2_2, echo=FALSE}
-util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[1:3]))
+util$drug_range_box(drug, stratify=list(Pancan=pancan[1:3]))
 ```
 
 ## Stratification by pathway score alone
 
 ```{r tram3, echo=FALSE, fig.width=4}
-util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[4:6]), plot_only=NULL)
+util$drug_range_box(drug, stratify=list(Pancan=pancan[4:6]), plot_only=NULL)
 ```
 
 ```{r tram3_2, echo=FALSE}
-util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[4:6]))
+util$drug_range_box(drug, stratify=list(Pancan=pancan[4:6]))
 ```
 
 ## Stratification of wild-type sub-population
 
 ```{r tram4, echo=FALSE}
-util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[7:9]))
+util$drug_range_box(drug, stratify=list(Pancan=pancan[7:9]))
 ```
 
 ## Stratification of mutated sub-population
 
 ```{r tram5, echo=FALSE}
-util$drug_range_box("Trametinib", stratify=list(Pancan=pancan[10:12]))
+util$drug_range_box(drug, stratify=list(Pancan=pancan[10:12]))
 ```
 
-# RDEA119 + MAPK
-
+<!--
 # Nutlin-3a + p53
 
 ```{r p53, echo=FALSE}
@@ -113,3 +114,4 @@ stratify = list(Pancan = list(
 
 util$drug_range_box("Nutlin-3a", stratify=stratify)
 ```
+-->
