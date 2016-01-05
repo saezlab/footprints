@@ -1,0 +1,99 @@
+```{r setup, include=FALSE}
+b = import('base')
+io = import('io')
+st = import('stats')
+ar = import('array')
+plt = import('plot')
+tcga = import('data/tcga')
+
+MUTFILE = "mutations_annotated_pathwayactivities_v3_mikeformat.txt"
+
+#TODO: %each>% || %>>% operator?
+
+#' Loads a specific TCGA scores file
+#' supplies path and extension, and cuts rownames at 16 chars
+#'
+#' @param x  An identifier, like 'speed_matrix'
+#' @return   A matrix with samples as rows and genes and columns
+load_fun = function(x) {
+    re = io$file_path("../../scores/tcga", x, ext=".RData") %>%
+        io$load()
+    rownames(re) = substr(rownames(re), 1, 16)
+    re
+}
+
+#' Calculates pathway score associations per mutation
+#'
+#' @param s  A score matrix, sample IDs x pathways
+#' @param m  A mutation matrix, sample IDs x genes
+#' @return   A data.frame with the results for all pathways and mutations
+lm_fun = function(s, m) {
+    ar$intersect(m, s, along=1)
+    study = tcga$barcode2study(rownames(m))
+    st$lm(s ~ study + m) %>%
+        filter(!grepl("study", term)) %>%
+        select(-term) %>%
+        mutate(adj.p = p.adjust(p.value, method="fdr"))
+}
+
+#' Adds list element names to each data.frame in the list
+#'
+#' @param x    A list of data.frames
+#' @param col  The name of the column to be added
+#' @return     The data frame with an added name per list element
+add_name_col = function(x, col="name") {
+    stopifnot(is.list(x))
+    mapply(function(xi, nxi) {
+        xi[[col]] = nxi
+        xi
+    }, x, names(x), SIMPLIFY=FALSE, USE.NAMES=TRUE)
+}
+
+mut = io$read_table(MUTFILE, header=TRUE) %>%
+    transmute(hgnc = GENE_NAME,
+              sample = substr(Tumor_Sample_Barcode, 1, 16)) %>%
+    mutate(has_mut = 1) %>%
+    ar$construct(has_mut ~ sample + hgnc, data=., fill=0, function(x) x[1])
+mut = mut[,c("TP53", "VHL", "KRAS")]
+
+scores = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia') %>%
+    sapply(load_fun, simplify=FALSE, USE.NAMES=TRUE)
+
+result = scores %>%
+    sapply(lm_fun, m=mut, simplify=FALSE, USE.NAMES=TRUE) %>%
+    add_name_col("method") %>%
+    bind_rows()
+
+```
+
+# Overview of number of driver mutations per cancer type
+
+```{r tp53, echo=FALSE, fig.width=4}
+lmax = max(abs(result$statistic))
+p1 = result %>%
+    filter(m == "TP53") %>%
+    mutate(label = ifelse(adj.p < 1e-3, "*", "")) %>%
+    mutate(label = ifelse(adj.p < 1e-10, "***", label)) %>%
+    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
+print(p1)
+```
+
+```{r vhl, echo=FALSE, fig.width=4}
+lmax = max(abs(result$statistic))
+p1 = result %>%
+    filter(m == "VHL") %>%
+    mutate(label = ifelse(adj.p < 1e-3, "*", "")) %>%
+    mutate(label = ifelse(adj.p < 1e-10, "***", label)) %>%
+    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
+print(p1)
+```
+
+```{r kras, echo=FALSE, fig.width=4}
+lmax = max(abs(result$statistic))
+p1 = result %>%
+    filter(m == "KRAS") %>%
+    mutate(label = ifelse(adj.p < 1e-3, "*", "")) %>%
+    mutate(label = ifelse(adj.p < 1e-10, "***", label)) %>%
+    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
+print(p1)
+```
