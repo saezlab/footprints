@@ -69,19 +69,9 @@ result = scores %>%
 # Overview of number of driver mutations per cancer type
 
 ```{r tp53, echo=FALSE, fig.width=4}
-lmax = max(abs(result$statistic))
-p1 = result %>%
-    filter(m == "TP53") %>%
-    mutate(label = ifelse(adj.p < 1e-3, "*", "")) %>%
-    mutate(label = ifelse(adj.p < 1e-10, "***", label)) %>%
-    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
-print(p1)
-```
-
-```{r vhl, echo=FALSE, fig.width=4}
-lmax = max(abs(result$statistic))
-p1 = result %>%
-    filter(m == "VHL") %>%
+cur = filter(result, m == "TP53")
+lmax = max(abs(cur$statistic))
+p1 = cur %>%
     mutate(label = ifelse(adj.p < 1e-3, "*", "")) %>%
     mutate(label = ifelse(adj.p < 1e-10, "***", label)) %>%
     plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
@@ -89,9 +79,9 @@ print(p1)
 ```
 
 ```{r kras, echo=FALSE, fig.width=4}
-lmax = max(abs(result$statistic))
-p1 = result %>%
-    filter(m == "KRAS") %>%
+cur = filter(result, m == "KRAS")
+lmax = max(abs(cur$statistic))
+p1 = cur %>%
     mutate(label = ifelse(adj.p < 1e-3, "*", "")) %>%
     mutate(label = ifelse(adj.p < 1e-10, "***", label)) %>%
     plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
