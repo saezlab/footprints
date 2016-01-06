@@ -1,0 +1,942 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Signaling footprints outperform pathway expression based methods for cancer
+ drug sensitivity and survival
+\end_layout
+
+\begin_layout Author
+Michael Schubert, Luz Garcia Alonso, Martina Klünemann, Nils Blüthgen, Julio
+ Saez Rodriguez 
+\end_layout
+
+\begin_layout Abstract
+Investigations of cancer drug response and survival are mostly focussed
+ on DNA mutations.
+ This has yielded multiple markers, however, they are rarely put in functional
+ context of the signaling aberrations they create.
+ Because the amount of phosphorylation data available lags behind the one
+ of genomic data, we created a platform which infers signaling activity
+ by identifying publicly available perturbation experiments and the genes
+ responsive to a certain pathway.
+\end_layout
+
+\begin_layout Abstract
+We compared how Gene Ontology, pathway expression, and signaling footprints
+ performed for predicting cell line drug response and patient survival,
+ and found that the latter outperformed the other two on both accounts.
+ Using both our method and pathway expression mapping, we are beginning
+ to understand how signaling activity and pathway expression are interlinked
+ in both cell lines and tumours.
+\end_layout
+
+\begin_layout Abstract
+Taken together, our results suggest that mutation-based biomarkers should
+ be augmented by consensus gene expression signatures in order to improve
+ preclinical and clinical performance.
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+With sequencing technologies becoming more and more commonplace for cancer
+ diagnosis in both the clinical and preclinical setting, there is a wealth
+ of molecular data available that likely harbors yet undiscovered treatment
+ opportunities.
+ Efforts like the TCGA/ICGC have pioneered this characterization on a large
+ scale, offering the opportunity to derive large amounts of information
+ about individual tumors.
+ This represents a step forward over basing the treatment of an individual
+ on the tissue of tumor origin alone, with mutational screens and sensitivity
+ markers providing a first glimpse of the direction that personalized medicine
+ is going to take.
+\end_layout
+
+\begin_layout Standard
+One of the major challenges is how to use the available molecular data in
+ an efficient and reproducible manner.
+ While this is relatively straightforward for mutational data (mostly used
+ as binary features), it gets much for challenging for higher content readouts
+ like gene expression or DNA methylation.
+ Specifically, expression-derived biomarkers that were able to separate
+ distinct populations in a given conditions have often failed to replicate
+ their function once the conditions are altered.
+ As DNA methylation is dynamic, it will likely offer the same challenges.
+ There is still a tremendous amount of information that should be used to
+ decide on the optimal treatment, but most approaches have fallen short
+ of that promise.
+\end_layout
+
+\begin_layout Standard
+One way genes expression has shown promise is using global clustering to
+ identify subtypes of the disease, and associating those with different
+ drug response or survival outcome.
+ We believe that stratifying patients in a reproducible manner should involve
+ both the overall clustering of the data as well as more specific, functionally
+ relevant readouts.
+ An example of those functional readouts is the expression level of pre-defined
+ pathway sets - mostly using the GSEA scores - that has been reported in
+ numerous publications, but also more sophisticated methods that attempt
+ to quantify the signal flow, such as SPIA (Tarca et al.
+ 2008), PARADIGM (Vaske et al.
+ 2010), or Pathifier (Drier et al.
+ 2013).
+\end_layout
+
+\begin_layout Standard
+These methods, however, stand at odds with the notion that signalling in
+ animal - and thus human - cells is tightly post-translationally regulated,
+ since they are based on the mRNA expression of the signalling proteins,
+ in one way or another.
+ To date, it is largely unexplored how much those pathway-expression-based
+ methods are able to make statements about the signal transmission in a
+ protein network.
+ We propose a different strategy: use a large body of publicly available
+ perturbation experiments to quantify gene expression responses to a specified
+ set of stimuli, and then use those genes to infer the upstream signal required
+ to change their expression.
+ This is one way by which - only using gene expression data - we can indirectly
+ observe activity instead of just mRNA expression.
+ To our knowledge, such an approach has only been taken by
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+include Bild2006 here with transfection of oncogenes
+\end_layout
+
+\end_inset
+
+ (Parikh et al.
+ 2010), where the authors did not focus on cancer, and (Gatza et al.
+ 2010; Gatza et al.
+ 2014; Bild et al.
+ 2005) that derived their signatures using a single cell line and perturbation
+ agent concentration only.
+\end_layout
+
+\begin_layout Standard
+Taking our method and previously published approaches
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+Julio: one likely question is how this relates/would perform in the context
+ of the NCI-DREAM challenge (Costello et al Nat Biot 2014).
+ Specially since best performers used PARADIGM.
+ I am not saying we have to do this before submissions, but is possibly
+ coming
+\end_layout
+
+\end_inset
+
+, we investigated how the different pathway scores, derived from mRNA expression
+, relate to or are able to explain drug sensitivity in cancer cell lines
+ and survival in primary tumors using the Genomics of Drug Sensitivity in
+ Cancer (GDSC) (Garnett et al.
+ 2012) and TCGA (The Cancer Genome Atlas Research Network et al.
+ 2013) data, respectively.
+\end_layout
+
+\begin_layout Section
+Results
+\end_layout
+
+\begin_layout Subsection
+Consensus gene signatures reveal pathway-response transcriptional modules
+\end_layout
+
+\begin_layout Itemize
+gene signatures are very different, even if they represent the same thing
+ 
+\end_layout
+
+\begin_layout Itemize
+averaging we can get sigs that are more valid than individual
+\end_layout
+
+\begin_layout Standard
+We have curated a total of 208 different submissions to ArrayExpress/GEO,
+ spanning perturbations of a total of 11 pathways, 580 experiment (a comparison
+ between basal and perturbed arrays; if there were multiple time points,
+ different cells, different concentrations, or different perturbing agents
+ within a single database submission, they were considered as different
+ experiments), and 2652 arrays.
+ After quality control, there were a total of 555 experiments remaining.
+ The full set of perturbing agents, number of experiments, and cells those
+ were carried out on is listed in table S0.
+ For a workflow schema, see figure 1A, points 1-3.
+\end_layout
+
+\begin_layout Standard
+We obtained z-scores (cf.
+ figure 1A/4), for which we performed a multiple linear regression (figure
+ 1A/5) with perturbation coefficients as described in figure 1B.
+ We could use the resulting matrix (figure 1A/6) to assign pathway scores
+ to gene expression data by a simple matrix multiplication.
+ When comparing the difference in assigned scores between basal and perturbed
+ conditions across all available perturbations, we found that our signatures
+ are indeed able to recover the pathway originally perturbed, even though
+ the experiments used in the model comprised a wide range of different experimen
+tal conditions (t-test of current pathway vs.
+ others, result shown in figure 1C).
+\end_layout
+
+\begin_layout Subsection
+Transcriptional footprints are different to pathway expression
+\end_layout
+
+\begin_layout Itemize
+definition of footprint: expression level of pathway response genes
+\end_layout
+
+\begin_layout Itemize
+should compare mutation assocs in TCGA here
+\end_layout
+
+\begin_layout Itemize
+if we get better mutation assocs than pathway expr, we are sorted for making
+ step to basal expression enrichment as well
+\end_layout
+
+\begin_layout Standard
+Next, we were interested in how our perturbation-responsive genes are related
+ to induction of pathway expression and other expressed modules associated
+ with a known function (represented by GO categories).
+\end_layout
+
+\begin_layout Standard
+For pathway-responsive genes, we found that pathway perturbations are mostly
+ connected to their response-target genes (figure 2A), as we would expect
+ because this is the effect we are modeling.
+ Apart from this primary effect, we would expect for some pathways to activate
+ other pathways on a post-translational level and thus also increase the
+ signature of target genes of the latter.
+ We detected the following overlaps between a perturbed pathway and a significan
+t induction of genes expressed responsive to another pathway: EGFR stimulations
+ triggered a strong expression of MAPK-responsive genes and a weaker expression
+ of PI3K-responsive genes.
+ Conversely, MAPK perturbation also showed a strong effect on EGFR-responsive
+ genes.
+ These are expected given that MAPK and PI3K are downstream of EGFR.
+ We found the same structure of hierarchical pathway activation between
+ NFkB stimulation and TNFa-responsive genes, where NFkB also weakly induces
+ JAK-STAT responsive genes (all shown in figure 1C).
+ Again, this is expected and known in literature.
+\end_layout
+
+\begin_layout Standard
+We also find that the following pathways are changing in expression upon
+ stimulation of the same pathway: NFkB (TNFa), JAK-STAT and Hypoxia show
+ a strong association between the pathway being perturbed and increased
+ expression of members of the same pathway, representing gene-regulatory
+ feedback loops.
+ In contrast, both EGFR and MAPK perturbations cause expression of p53 pathway
+ members, which can be explained by MAPK/EGFR activating cell-cycle-promoting
+ genes and p53 inhibiting them (GO categories connected to the respective
+ pathways, figure 2B).
+ MAPK also causes expression of the TGFb pathway.
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+details see --> (Chapnick et al.
+ 2011)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Similarly, activation of NFkB causes expression of the MAPK pathway.
+ Hypoxia causes expression of JAK-STAT and TGFb members, but not VEGF
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+extend explanation here, use GO associations in 2C
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Transcriptional footprints in basal expression
+\end_layout
+
+\begin_layout Standard
+if we can show
+\end_layout
+
+\begin_layout Itemize
+rationale for going from perturbed to basal exp
+\end_layout
+
+\begin_layout Itemize
+scores of GDSC, TCGA samples
+\end_layout
+
+\begin_layout Subsection
+Differential pathway impact of TP53 variants with implications in BRCA
+\end_layout
+
+\begin_layout Standard
+TP53 is the most abundantly mutated gene in the TCGA cohorts.
+ As a well-known tumor suppressor, it is responsible for G1/S transition
+ cell cycle arrest on DNA damage.
+ Recently, variants of TP53 have been shown to not only lose its original
+ function but also to activate expression of oncogenes in Li-Fraumeni syndrome
+ (Do et al.
+ 2012) and breast cancer cell lines (Zhu et al.
+ 2015).
+\end_layout
+
+\begin_layout Standard
+We were interested in whether mutations in TP53 can substitute for pathway-activ
+ating mutations in signaling proteins in terms of increasing the expression
+ of pathway-responsive genes.
+\end_layout
+
+\begin_layout Subsection
+Differential pathway impact of KRAS variants with implications in ***??
+\end_layout
+
+\begin_layout Itemize
+figure out which other mutated gene + variant we can get similar info from
+ (there are quite some sign assocs, check if they fit pathway activation
+ + in which cancer) 
+\end_layout
+
+\begin_layout Subsection
+Pan-cancer associations between pathway scores and cell line drug response
+\end_layout
+
+\begin_layout Itemize
+MAPK/EGFR+MEKi dominate associations
+\end_layout
+
+\begin_layout Itemize
+can stratify using scores only
+\end_layout
+
+\begin_layout Itemize
+performance similar to mutations
+\end_layout
+
+\begin_layout Itemize
+can stratify within mutated population (but not for TP53)
+\end_layout
+
+\begin_layout Standard
+The next question we tried to answer is how well our pathway-responsive
+ genes are able to explain drug sensitivity in cancer cell lines.
+ We took IC50 values from the GDSC project (Iorio2015, submitted) and calculated
+ statistical associations with our method, and GSEA using the same pathways
+ in Reactome (Croft et al.
+ 2011) or Gene Ontology (Gene Ontology Consortium 2004), both for a pan-cancer
+ and a tissue-specific condition.
+\end_layout
+
+\begin_layout Standard
+We found that for the pan-cancer setting, there were 161 significant association
+s (FDR<5%, conditioned on tissue of origin) for our method and 27 and 66
+ for Gene Ontology and Reactome pathways, respectively.
+ The top hit using our method was the associations between Nutlin-3a and
+ p53-responsive genes.
+ Nutlin-3a is an MDM2-inhibitor that in turn stabilizes TP53, where it has
+ also previously been shown that a mutation in TP53 is strongly associated
+ with increased resistance to Nutlin-3a (Garnett et al.
+ 2012).
+ This is thus a well-understood mechanism of sensitivity (presence) or resistanc
+e (absence of TP53 activity) to this drug that our method recovers but neither
+ GO or Reactome pathways do.
+ We also find strong association between different MEK inhibitors (Trametinib,
+ RDEA119, CI-1040, etc.) and MAPK/EGFR activation, but also a Raf (AZ628)
+ or TAK1 (7-Oxozeaonol) inhibitor.
+ These are all associations that the other methods miss or associate with
+ a different pathway.
+ We then went on to quantify how many of the associations found using either
+ GO or Reactome can be explained by pathway-response genes by conditioning
+ the associations on the strongest pathway-response association and verifying
+ that the pathway expression association is still significant after this
+ conditioning.
+ For Gene Ontology, there was no association that could not be explained
+ by pathway-response genes, and the number of significant associations using
+ Reactome pathways dropped to 18.
+\end_layout
+
+\begin_layout Subsection
+Tissue-specific associations of drug response
+\end_layout
+
+\begin_layout Itemize
+focus on clinical drugs
+\end_layout
+
+\begin_layout Itemize
+stratifications avail: clinical (x2) + experimental
+\end_layout
+
+\begin_layout Itemize
+significance of stratifications compared to tissues, pathway methods
+\end_layout
+
+\begin_layout Standard
+We performed the same kind of associations for each tissue separately, as
+ shown in figure 3B.
+ We found 75 significant associations for our method vs.
+ 36 for Reactome and 12 for GO (FDR<10%, corrected for each tissue separately).
+ We could show that the associations derived from our method are stronger
+ than the alternatives, and that the other methods add no additional information
+ over ours except for PI3K expression in BRCA when treating with rTRAIL
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+explanation of this?
+\end_layout
+
+\end_inset
+
+ (empty circles in middle and lower panel of figure 3B show a drop below
+ significance when conditioning on the best hit of our method).
+ Our strongest association was response to Trametinib where sensitivity
+ was positively correlated with expression of MAPK-responsive genes, explaining
+ a total of 54% of the total variance observed in the IC50s of BRCA drug
+ response (FDR 10-5, p 10-8, shown in figure 3C/top).
+ While this is expected due to the oncogene addiction paradigm, other strong
+ associations included TNFa-responsive genes in SCLC treated with PD-0325901
+ (a MEK inhibitor, for sensitivity) and FK866 (an inducer of apoptosis,
+ for resistance).
+ This indicates a potential dichotomy for drug efficacy for certain drugs
+ and tissues to pathway activation that can be inferred from its downstream
+ targets.
+\end_layout
+
+\begin_layout Standard
+Furthermore, we could show (figure 3D) that our method improves upon using
+ only mutations as biomarkers for drug response.
+ Using the examples of Trametinib in BRCA (associated with MAPK activity)
+ and PD-0325901 in SCLC (which is associated with both TNFa and MAPK activity),
+ we show that inferred pathway activity is not only equivalent in association
+ strength to MAPK mutations (a mutation in either MAP2K1, K-Ras, N-Ras or
+ B-Raf), but they can be used in combination to yield a better biomarker
+ than any single method.
+\end_layout
+
+\begin_layout Subsection
+Drug response improvement over other methods
+\end_layout
+
+\begin_layout Itemize
+GSEA, Reactome enrichment
+\end_layout
+
+\begin_layout Itemize
+conditioned association performance (figure in suppl)
+\end_layout
+
+\begin_layout Itemize
+will not do SPIA, pathifier, PARADIGM here because they need normals + we
+ don’t have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+find some associations that are new and follow up on them (+add to figure)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Implications for patient survival
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+missing
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Discussion
+\end_layout
+
+\begin_layout Standard
+The explanation of phenotypes in cancer, such as cell line drug response
+ or patient survival has largely been focussed on genomic mutations in recent
+ years, where gene expression signatures did not play a significant part
+ in biomarker discovery.
+ The latter have held an unfavorable reputation: they have been shown to
+ more strongly correlate with the lab they were derived in than the actual
+ phenotype, strongly depend on the experimental setup and exact conditions
+ they were created, or featured in high-profile papers that later had to
+ be retracted.
+\end_layout
+
+\begin_layout Standard
+We have achieved a significant progress to overcome these limitations by
+ assembling a large compendium of pathway-responsive gene signatures derived
+ from a wide range of different conditions.
+ We could confirm this heterogeneity in gene expression experiments, but
+ also found that consensus signatures are strongly correlated with pathway
+ perturbations and less with other conditions that they are confounded with.
+ The only other similar efforts, to the best of our knowledge, are the SPEED
+ database (Parikh et al.
+ 2010) and MCF10A breast cancer signatures (Gatza et al.
+ 2010).
+ Whereas the former used a smaller but still significant set of publicly
+ available experiments, they only analysis they did using their signatures
+ was to compute the overlap between genes present in their signatures and
+ Gene Ontology categories, and genes between their pathways.
+ In the latter article the authors experimentally derived pathway-response
+ signatures for a single condition (MCF10A cell line, one perturbation/time
+ point per experiment).
+ Not only are those signatures non-transferable to other cancer types, but
+ they likely suffer from the same drawbacks as expression signatures in
+ terms of general stability and reproducibility.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+missing: characterization of signatures
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In terms of drug associations, we have shown that our method outperforms
+ the associations obtained by using GSEA on either pathway expression or
+ GO modules, that strong tissue-specific associations are able to explain
+ a significant part of the overall variability in the response to some drugs,
+ and that pathway associations can be used to refine mutational biomarkers,
+ or act as biomarkers themselves when there is no known associated mutation
+ for a given drug (in the case of TNFa-related associations).
+ We expect that this method of deriving signatures for pathway activity
+ will also in other contexts be able to discover both oncogene addiction
+ footprints to support available mutational biomarkers, as well as provide
+ insights into pathway activation patterns that mediate sensitivity or resistanc
+e to a subset of drugs that other pathway-expression based methods are not
+ able to.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+missing: survival analysis
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Overall, we would argue that consensus pathway response signatures are a
+ better measure of pathway activity than pathway expression, irrespective
+ of whether the latter was derived from gene sets or directed paths.
+ We have shown its utility for cell line drug response and patient survival,
+ as well that they are able to refine our understanding of the impact of
+ mutations in both the general (figure to do) as well as the particular
+ case (figure 3D).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+as per Julio's comment: limitations,future directions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Methods
+\end_layout
+
+\begin_layout Subsection
+GDSC and TCGA data
+\end_layout
+
+\begin_layout Standard
+We used the GDSC data published in (Iorio2015, in revision), comprised of
+ molecular data for 1,001 cell lines and 265 anticancer drugs, specifically
+ microarray gene expression data and the IC50 values for each drug-cell
+ line combination.
+\end_layout
+
+\begin_layout Standard
+For TCGA data, we used the Firehose tool from the BROAD institute (http://gdac.br
+oadinstitute.org/) to download data labelled level 3 RNA-seq v2.
+ We extracted the raw counts from the text files for each gene, discarded
+ those that did not have a valid HGNC symbol, and averaged expression levels
+ where more than one row corresponded to a given gene.
+ We then performed a voom transformation (limma package, BioConductor) for
+ each TCGA study separately, to be able to use linear modeling techniques
+ with the count-based RNA-seq data.
+ The data used corresponds to 00 tissues and a total of 00000 tumor and
+ 0000 matched normal samples.
+\end_layout
+
+\begin_layout Standard
+Also from Firehose we downloaded clinical data for each TCGA patient in
+ the same cohorts as above.
+ We extracted the vital status and used known survival time or known time
+ of last follow-up as the survival time for the downstream analyses.
+ The overlap of TCGA data where we could obtain both mRNA expression levels
+ as well as survival times is 0000 distributed across 00 tissues.
+\end_layout
+
+\begin_layout Subsection
+A database and linear classifier of perturbation-responsive genes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+rework this section after merge from results
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Our method is dependent on a sufficiently large number publicly available
+ perturbation experiments that activate or inhibit one of the pathways we
+ were looking at.
+ The following conditions needed to be met in order for us to consider an
+ experiment: (1) the compound or factor used for perturbation was one of
+ our curated list of pathway-perturbing agents (for a list, see table S0);
+ (2) the perturbation lasted for less than 24 hours to capture genes that
+ belong to the primary response; (3) there was raw data available for at
+ least two control arrays and one perturbed array; (4) it was a single-channel
+ array; (5) we could process the arrays using available BioConductor packages;
+ (6) the array was not custom-made so we could use standard annotations.
+\end_layout
+
+\begin_layout Standard
+*
+\end_layout
+
+\begin_layout Standard
+We curated a list of known pathway activators and inhibitors for 00 pathways,
+ where the interaction between each compound and pathway is well established
+ in literature.
+ We then used those as query terms for public perturbation experiments in
+ the ArrayExpress database (Parkinson et al.
+ 2007).
+ We included all single-channel microarrays with at least duplicates in
+ the basal condition with raw data available that could be processed by
+ either the limma (Smyth 2005), oligo (Carvalho & Irizarry 2010), or affy
+ (Gautier et al.
+ 2004) BioConductor packages and for which there was a respective annotation
+ package available.
+ Multiple concentrations or time points in a series of arrays were considered
+ as individual experiments.
+\end_layout
+
+\begin_layout Standard
+We first calculated a probe-level for each full series of arrays, where
+ we performed quality control of the raw data using RLE and NUSE cutoffs
+ under 0.1 and kept all arrays below that threshold.
+ If after filtering less than two basal condition arrays remained, the whole
+ experiment was discarded.
+ For the remaining series, we normalized using the RMA algorithm and mapped
+ the probe identifiers to HGNC symbols.
+ For each HGNC symbol, we calculated a model based on mean and standard
+ deviation of the gene expression level, and computed the z-score as average
+ number of standard deviations that the expression level in the perturbed
+ array was shifted from the basal arrays.
+ We then performed LOESS smoothing for all z-scores in a given experiment
+ using our null model, as described in (Parikh et al.
+ 2010).
+ From the z-scores of all experiments and all pathways, we performed a multiple
+ linear regression with the pathway as input and the z-scores as response
+ variable, with a coefficients matrix as described in figure 1B.
+ We selected the top 100 genes according to their p-value for each pathway,
+ and took their fitted z-scores as coefficient.
+ This yielded a matrix with HGNC symbols x pathways, where each pathway
+ had 100 non-zero gene coefficients (supplied in table S0).
+\end_layout
+
+\begin_layout Standard
+Each column of the SPEED matrix corresponds to a plane in gene expression
+ space, in which each cell line or tumor sample is located.
+ If you follow its normal vector from the origin, the distance it travels
+ corresponds to the pathway score each sample is assigned.
+ In practice, this is achieved by a simple matrix multiplication between
+ the SPEED and the gene expression matrices.
+ We then scaled each score to have a mean of zero and standard deviation
+ of one, in order to factor out the difference in strength of gene expression
+ signatures and thus be able to compare the relative scores across pathways
+ and samples at the same time.
+ 
+\end_layout
+
+\begin_layout Subsection
+Pathway and Gene Ontology scores
+\end_layout
+
+\begin_layout Standard
+We matched our defined set of pathways to the publicly available pathway
+ databases Reactome (Croft et al.
+ 2011) and KEGG (Kanehisa & Goto 2000), and Gene Ontology (GO) (Gene Ontology
+ Consortium 2004) categories (for the detailed mapping, see table S0), to
+ obtain a uniform set across pathway resources that makes them comparable.
+ We calculated pathway scores as raw gene set enrichment (GSEA) scores that
+ we transformed into a normal distribution using a kernel density estimator
+ (R package sROC) and a normal transformation.
+ 
+\end_layout
+
+\begin_layout Subsection
+Integrating tumor and cell line data
+\end_layout
+
+\begin_layout Standard
+For integrated analyses that comprised both aspects of data that was only
+ available for cell lines or tumors respectively, we merged the two datasets
+ together using the ComBat method in the SVA package (Leek et al.
+ 2013).
+ We assigned a batch identifier to all GDSC cell lines, and one to every
+ TCGA project.
+ For each tissue in either GDSC or TCGA, we used a distinct covariate pointing
+ to the same cancer type, with the exception that we mapped all of COAD,
+ READ, and COADREAD of TCGA to COREAD of GDSC.
+ We assigned another covariate to indicate if the TCGA expression data stemmed
+ from a tumor (primary, recurrent, or metastatic) or a normal (matched or
+ adjacent tissue only, discarding blood).
+ We then performed batch correction for the whole of the two datasets together,
+ using the batch and covariate identifiers described.
+ As a control, we performed both drug and survival associations on the merged
+ set as well as the individual ones.
+ The associations obtained from the merged set were almost identical with
+ the ones obtained from the respective individual sets
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+this and MDS plots before and after merging should be shown somewhere in
+ the supplementary 
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Pathifier and SPIA scores
+\end_layout
+
+\begin_layout Standard
+Pathifier (Drier et al.
+ 2013) and SPIA (Tarca et al.
+ 2008) scores require the comparison with a normal condition in order to
+ compute their scores.
+ For this, we took the combined data set of the GDSC and TCGA, performed
+ batch correction using ComBat with the GDSC as one batch, TCGA is one batch
+ per project, and tissue as a covariate in either case.
+ In addition, we included whether the same is a tumor or normal in the TCGA
+ as an additional covariate.
+ We then computed the pathway scores for each method using an individual
+ cell line or tumor sample and using all non-cancerous tissue controls as
+ baseline using the BioConductor packages pathifier and SPIA.
+ For this, we used Reactome and KEGG pathways as described in the previous
+ section, respectively.
+ Sample-pathway combinations where scores could not be computed (000 of
+ 000, or 0.00% total) were imputed using the five nearest neighbors (R package
+ impute).
+\end_layout
+
+\begin_layout Subsection
+Co-clustering of tumors and cell lines
+\end_layout
+
+\begin_layout Standard
+Using the batch-corrected gene expression data that merged tumor and cell
+ line expression as described with the pathifier and SPIA scores, we also
+ performed non-negative matrix factorization (NMF) clustering using multiplicati
+ve updating derived from libNMF (Janecek et al.
+ 2011) for cluster numbers (k) between 2 and 10, with 00 repetitions using
+ different initial conditions each.
+ With those, we computed the cophenetic coefficient for each k, and chose
+ the local maxima as more suitable numbers for cluster analysis.
+ As the clustering was performed on data merged together between cell lines
+ and tumors, we can try and infer drug responses from clinically derived
+ subtypes.
+\end_layout
+
+\begin_layout Subsection
+Drug associations using GDSC cell lines
+\end_layout
+
+\begin_layout Standard
+We performed drug association using a linear model between 265 drug IC50s
+ and 11 inferred pathway scores (lm function, R stats package), doing a
+ total of 2915 comparisons for which we correct the p-values using the false
+ discovery rate.
+ For pan-cancer associations, we used the cancer type as a covariate in
+ order to discard the effect that different tissues have on the observed
+ drug response.
+ While this will also remove genuine differences in pathway activation between
+ different cancer types, we would not be able to distinguish between those
+ and other confounders that impact the sensitivity of a certain cell line
+ from a given tissue to a drug.
+ Our pan-cancer association are thus the same of intra-tissue differences
+ in drug response explained by inferred (our method, GO, or Reactome) pathway
+ scores.
+ For tissue-specific associations, we fit our linear model and correct p-values
+ for the false discovery rate for each cancer type separately.
+\end_layout
+
+\begin_layout Standard
+In order to distinguish between Reactome/GO associations that are genuinely
+ dependent on pathway expression and those that can be fully explained by
+ pathway-responsive genes, we condition each association for those two methods
+ by the score of our method that provides the strongest association with
+ a given drug.
+ Associations that fall under our threshold for significance (5% FDR for
+ pan-cancer and 10% FDR for tissue-specific associations) can be explained
+ by pathway-response genes and are likely caused by those rather than pathway
+ expression (because the former are higher up on the chain of causality,
+ cf.
+ figure 2B).
+ For selected tissue-specific hits, we show linear fits between drug response
+ and inferred pathway score using the same model that was used to derive
+ the associations (reported p-values in figure 3C are not FDR-corrected,
+ but they are in 3B).
+\end_layout
+
+\begin_layout Standard
+We also selected two of our strongest associations to investigate whether
+ they provide additional information of what is known by mutation data.
+ For two MEK inhibitors, we show the difference between wild-type and mutant
+ MAPK pathway (defined is a mutation in either MAP2K1, N-Ras, K-Ras, or
+ B-Raf) with a discretized pathway score (upper and lower quartile vs.
+ the rest), as well as the combination between the upper quartile of tissue-spec
+ific pathway scores and presence of a MAPK mutation.
+\end_layout
+
+\begin_layout Subsection
+Survival associations using TCGA data
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+missing
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
