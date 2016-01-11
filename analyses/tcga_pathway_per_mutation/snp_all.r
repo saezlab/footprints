@@ -8,7 +8,7 @@ tcga = import('data/tcga')
 
 subs2plots = function(subs, mut, scores) {
     message(subs)
-    if (subs == "pan") {
+    if (grepl("pan", subs)) {
         m = mut %>%
             group_by(hgnc) %>%
             filter(n() >= 200) %>%
@@ -35,7 +35,13 @@ subs2plots = function(subs, mut, scores) {
     }
 
     # associations
-    result = st$lm(scores ~ m) %>%
+    if (grepl("cov", pan)) {
+        study = tcga$barcode2study(rownames(scores))
+        assocs = st$lm(scores ~ study + m)
+    } else
+        assocs = st$lm(scores ~ m)
+
+    assocs %>%
         filter(term == "mTRUE") %>%
         select(-term) %>%
         mutate(adj.p = p.adjust(p.value, method="fdr"))
@@ -74,7 +80,7 @@ mut = tcga$mutations() %>%
 plots = mut$study %>%
     unique() %>%
     sort() %>%
-    c("pan", .) %>%
+    c("pan", "pan_cov", .) %>%
     lapply(function(s) subs2plots(s, mut, scores))
 
 pdf(OUTFILE, paper="a4r", width=26, height=20)

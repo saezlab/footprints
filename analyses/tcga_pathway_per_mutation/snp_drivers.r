@@ -8,7 +8,7 @@ tcga = import('data/tcga')
 
 subs2plots = function(subs, mut, scores) {
     message(subs)
-    if (subs == "pan") {
+    if (grepl("pan", subs)) {
         m = mut
         size = 0.5
     } else {
@@ -31,8 +31,13 @@ subs2plots = function(subs, mut, scores) {
         return(NULL)
     }
 
-   # associations
-    result = st$lm(scores ~ m) %>%
+    if (grepl("cov", pan)) {
+        study = tcga$barcode2study(rownames(scores))
+        assocs = st$lm(scores ~ study + m)
+    } else
+        assocs = st$lm(scores ~ m)
+
+    assocs %>%
         filter(term == "mTRUE") %>%
         select(-term) %>%
         mutate(adj.p = p.adjust(p.value, method="fdr"))
