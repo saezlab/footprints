@@ -72,8 +72,8 @@ result = scores %>%
 cur = filter(result, m == "TP53")
 lmax = max(abs(cur$statistic))
 p1 = cur %>%
-    mutate(label = ifelse(adj.p < 1e-3, "*", "")) %>%
-    mutate(label = ifelse(adj.p < 1e-10, "***", label)) %>%
+    mutate(label = ifelse(adj.p < 1e-5, "*", "")) %>%
+    mutate(label = ifelse(adj.p < 1e-15, "***", label)) %>%
     plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
 print(p1)
 ```
@@ -82,8 +82,8 @@ print(p1)
 cur = filter(result, m == "KRAS")
 lmax = max(abs(cur$statistic))
 p1 = cur %>%
-    mutate(label = ifelse(adj.p < 1e-3, "*", "")) %>%
-    mutate(label = ifelse(adj.p < 1e-10, "***", label)) %>%
+    mutate(label = ifelse(adj.p < 0.05, "*", "")) %>%
+    mutate(label = ifelse(adj.p < 1e-3, "***", label)) %>%
     plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
 print(p1)
 ```
