@@ -35,7 +35,7 @@ subs2plots = function(subs, cna, scores) {
     }
 
     # associations
-    if (grepl("cov", pan)) {
+    if (grepl("cov", subs)) {
         study = tcga$barcode2study(rownames(scores))
         assocs = st$lm(scores ~ study + m)
     } else
@@ -85,7 +85,7 @@ cna = io$read_table(CNAFILE, header=TRUE) %>%
 plots = cna$study %>%
     unique() %>%
     sort() %>%
-    c("pan", .) %>%
+    c("pan", "pan_cov", .) %>%
     lapply(function(s) subs2plots(s, cna, scores))
 
 pdf(OUTFILE, paper="a4r", width=26, height=20)

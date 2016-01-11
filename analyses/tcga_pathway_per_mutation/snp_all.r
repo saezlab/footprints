@@ -35,7 +35,7 @@ subs2plots = function(subs, mut, scores) {
     }
 
     # associations
-    if (grepl("cov", pan)) {
+    if (grepl("cov", subs)) {
         study = tcga$barcode2study(rownames(scores))
         assocs = st$lm(scores ~ study + m)
     } else

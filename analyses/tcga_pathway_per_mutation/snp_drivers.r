@@ -31,7 +31,7 @@ subs2plots = function(subs, mut, scores) {
         return(NULL)
     }
 
-    if (grepl("cov", pan)) {
+    if (grepl("cov", subs)) {
         study = tcga$barcode2study(rownames(scores))
         assocs = st$lm(scores ~ study + m)
     } else
@@ -77,7 +77,7 @@ mut = io$read_table(MUTFILE, header=TRUE) %>%
 plots = mut$study %>%
     unique() %>%
     sort() %>%
-    c("pan", .) %>%
+    c("pan", "pan_cov", .) %>%
     lapply(function(s) subs2plots(s, mut, scores))
 
 pdf(OUTFILE, paper="a4r", width=26, height=20)
