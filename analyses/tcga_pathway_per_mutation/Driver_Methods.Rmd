@@ -27,10 +27,15 @@ load_fun = function(x) {
 #' @param s  A score matrix, sample IDs x pathways
 #' @param m  A mutation matrix, sample IDs x genes
 #' @return   A data.frame with the results for all pathways and mutations
-lm_fun = function(s, m) {
+lm_fun = function(s, m, study_covar=TRUE) {
     ar$intersect(m, s, along=1)
     study = tcga$barcode2study(rownames(m))
-    st$lm(s ~ study + m) %>%
+    if (study_covar)
+        lm_result = st$lm(s ~ study + m)
+    else
+        lm_result = st$lm(s ~ m)
+
+    lm_result %>%
         filter(!grepl("study", term)) %>%
         select(-term) %>%
         mutate(adj.p = p.adjust(p.value, method="fdr"))
