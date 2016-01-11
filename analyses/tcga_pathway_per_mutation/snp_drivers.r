@@ -37,7 +37,7 @@ subs2plots = function(subs, mut, scores) {
     } else
         assocs = st$lm(scores ~ m)
 
-    assocs %>%
+    result = assocs %>%
         filter(term == "mTRUE") %>%
         select(-term) %>%
         mutate(adj.p = p.adjust(p.value, method="fdr"))
