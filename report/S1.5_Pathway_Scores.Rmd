@@ -1,9 +1,11 @@
 ---
-title: "aspmgd"
+title: "Pathway scores in Basal and Perturbed Condition"
 author: "Michael Schubert (schubert@ebi.ac.uk)"
 ---
 
 ```{r setup, include=FALSE}
+#TODO: heatmap + associations to perturb exps for all pathway methods
+
 library(dplyr)
 b = import('base')
 io = import('io')
