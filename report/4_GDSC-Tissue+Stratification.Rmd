@@ -1,5 +1,5 @@
 ---
-title: "LGG drug associations for perturbation-response genes"
+title: "Tissue-specific drug associations"
 author: "Michael Schubert (schubert@ebi.ac.uk)"
 ---
 
