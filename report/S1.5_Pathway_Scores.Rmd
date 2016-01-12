@@ -1,0 +1,47 @@
+---
+title: "aspmgd"
+author: "Michael Schubert (schubert@ebi.ac.uk)"
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+b = import('base')
+io = import('io')
+ar = import('array')
+st = import('stats')
+```
+
+# Experimental Perturbation to Pathway Scores
+
+```{r perburb, include=FALSE}
+# do heatmaps + associations here for all methods
+
+file2assocs = function(fname) {
+    # load data
+    data = io$load(fname)
+    index = data$index
+    scores = data$scores
+    sign = ifelse(index$effect == "activating", 1, -1)
+    pathway = sign * t(ar$mask(index$pathway)) + 0
+
+    # compute associations
+    st$lm(scores ~ pathway)
+}
+
+reactome = file2assocs("../scores/speed/gsea_reactome.RData") %>%
+    filter(p.value < 1e-4) %>%
+    transmute(from=pathway, to=scores, value=estimate)
+speed = file2assocs("../scores/speed/speed_matrix.RData") %>%
+    filter(p.value < 1e-4) %>%
+    transmute(from=pathway, to=scores, value=estimate)
+```
+
+# Correlation of Pathway Scores in Cell Lines
+
+```{r cor-gdsc, include=FALSE}
+```
+
+# Correlation of Pathway Scores in Tumors
+
+```{r cor-tcga, include=FALSE}
+```
