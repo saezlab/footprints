@@ -6,7 +6,7 @@ ar = import('array')
 plt = import('plot')
 tcga = import('data/tcga')
 
-MUTFILE = "mutations_annotated_pathwayactivities_v3_mikeformat.txt"
+MUTFILE = "../analyses/tcga_pathway_per_mutation/mutations_annotated_pathwayactivities_v3_mikeformat.txt"
 
 #TODO: %each>% || %>>% operator?
 
@@ -16,7 +16,7 @@ MUTFILE = "mutations_annotated_pathwayactivities_v3_mikeformat.txt"
 #' @param x  An identifier, like 'speed_matrix'
 #' @return   A matrix with samples as rows and genes and columns
 load_fun = function(x) {
-    re = io$file_path("../../scores/tcga", x, ext=".RData") %>%
+    re = io$file_path("../scores/tcga", x, ext=".RData") %>%
         io$load()
     rownames(re) = substr(rownames(re), 1, 16)
     re
@@ -41,19 +41,6 @@ lm_fun = function(s, m, study_covar=TRUE) {
         mutate(adj.p = p.adjust(p.value, method="fdr"))
 }
 
-#' Adds list element names to each data.frame in the list
-#'
-#' @param x    A list of data.frames
-#' @param col  The name of the column to be added
-#' @return     The data frame with an added name per list element
-add_name_col = function(x, col="name") {
-    stopifnot(is.list(x))
-    mapply(function(xi, nxi) {
-        xi[[col]] = nxi
-        xi
-    }, x, names(x), SIMPLIFY=FALSE, USE.NAMES=TRUE)
-}
-
 mut = io$read_table(MUTFILE, header=TRUE) %>%
     transmute(hgnc = GENE_NAME,
               sample = substr(Tumor_Sample_Barcode, 1, 16)) %>%
@@ -66,12 +53,12 @@ scores = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia') %>%
 
 result = scores %>%
     sapply(lm_fun, m=mut, simplify=FALSE, USE.NAMES=TRUE) %>%
-    add_name_col("method") %>%
+    df$add_name_col("method") %>%
     bind_rows()
 
 result_nocov = scores %>%
     sapply(lm_fun, m=mut, study_covar=FALSE, simplify=FALSE, USE.NAMES=TRUE) %>%
-    add_name_col("method") %>%
+    df$add_name_col("method") %>%
     bind_rows()
 ```
 

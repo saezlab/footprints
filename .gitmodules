@@ -1,6 +1,6 @@
-[submodule "ebits"]
+[submodule "util/ebits"]
 	path = util/ebits
-	url = git@github.com:saezlab/ebits.git
+	url = git@github.com:EBI-predocs/ebits.git
 [submodule "util/genesets/Enrichr"]
 	path = util/genesets/Enrichr
 	url = git@github.com:yokuyuki/Enrichr.git
