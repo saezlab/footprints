@@ -1,0 +1,36 @@
+---
+title: "Associations between pathway activation and patient survival"
+author: "Michael Schubert (schubert@ebi.ac.uk)"
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+b = import('base')
+io = import('io')
+ar = import('array')
+st = import('stats')
+util = import('../analyses/tcga_survival/util')
+
+scores = io$load('../scores/speed/speed_matrix.RData')
+```
+
+# Pan-cancer associations
+
+```{r pancan, include=FALSE}
+util$pancan(scores) %>%
+    plt$color$p_effect("adj.p", dir=-1) %>%
+    mutate(label = scores) %>%
+    plt$volcano(base.size=0.1) %>%
+    print()
+```
+
+# Cancer-specific associations
+
+```{r pancan, include=FALSE}
+util$tissue(scores) %>%
+    plt$color$p_effect("adj.p", dir=-1) %>%
+    mutate(label = paste(subset, scores, sep=":")) %>%
+    plt$volcano(p=0.1) + ggtitle(sum(clinical$adj.p < 0.1)) %>%
+    print()
+
+```
