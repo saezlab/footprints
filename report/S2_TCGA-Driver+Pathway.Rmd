@@ -92,3 +92,63 @@ p1 = cur %>%
     plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
 print(p1)
 ```
+
+## NRAS
+
+```{r nras, echo=FALSE, fig.width=4}
+cur = filter(result, m == "NRAS")
+lmax = max(abs(cur$statistic))
+p1 = cur %>%
+    mutate(label = ifelse(adj.p < 0.2, "*", "")) %>%
+    mutate(label = ifelse(adj.p < 0.1, "***", label)) %>%
+    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
+print(p1)
+```
+
+## EGFR
+
+```{r egfr, echo=FALSE, fig.width=4}
+cur = filter(result, m == "EGFR")
+lmax = max(abs(cur$statistic))
+p1 = cur %>%
+    mutate(label = ifelse(adj.p < 0.2, "*", "")) %>%
+    mutate(label = ifelse(adj.p < 0.1, "***", label)) %>%
+    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
+print(p1)
+```
+
+## PIK3CA
+
+```{r pik3ca, echo=FALSE, fig.width=4}
+cur = filter(result, m == "PIK3CA")
+lmax = max(abs(cur$statistic))
+p1 = cur %>%
+    mutate(label = ifelse(adj.p < 0.05, "*", "")) %>%
+    mutate(label = ifelse(adj.p < 1e-3, "***", label)) %>%
+    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
+print(p1)
+```
+
+## STK11
+
+```{r stk11, echo=FALSE, fig.width=4}
+cur = filter(result, m == "PIK3CA")
+lmax = max(abs(cur$statistic))
+p1 = cur %>%
+    mutate(label = ifelse(adj.p < 1e-3, "*", "")) %>%
+    mutate(label = ifelse(adj.p < 1e-5, "***", label)) %>%
+    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
+print(p1)
+```
+
+## VHL (without covariate)
+
+```{r vhl, echo=FALSE, fig.width=4}
+cur = filter(result_nocov, m == "VHL")
+lmax = max(abs(cur$statistic))
+p1 = cur %>%
+    mutate(label = ifelse(adj.p < 1e-5, "*", "")) %>%
+    mutate(label = ifelse(adj.p < 1e-20, "***", label)) %>%
+    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
+print(p1)
+```
