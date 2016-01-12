@@ -12,9 +12,9 @@ st = import('stats')
 df = import('data_frame')
 plt = import('plot')
 gdsc = import('data/gdsc')
-util = import('./util')
+util = import('../analyses/drug_assocs_followup/util')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/gdsc/speed_matrix.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../scores/gdsc/speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "Pancan_assocs.pdf"
 
 tissues = gdsc$tissues()
