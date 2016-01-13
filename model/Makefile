@@ -6,7 +6,7 @@ MODELS = $(MODEL_SCRIPTS:%.r=%.RData)
 
 .PHONY: models
 
-models: $(MODELS)
+all: $(MODELS)
 
 # use each model script to create a model file
 model_%.RData: model_%.r ../data/zscores.RData

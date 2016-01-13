@@ -16,7 +16,7 @@ index = zdata$index
 zscores = t(zdata$zscores) * index$sign
 
 # fit model to pathway perturbations
-pathway = ar$mask(index$pathway) + 0
+pathway = t(ar$mask(index$pathway)) + 0
 pathway["EGFR",] = pathway["EGFR",] + pathway["MAPK",] + pathway["PI3K",]
 pathway["TNFa",] = pathway["TNFa",] + pathway["NFkB",]
 

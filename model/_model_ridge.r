@@ -1,5 +1,4 @@
 # point of this file:
-# - use the dscores to create a linear model
 library(dplyr)
 b = import('base', attach_operators=FALSE)
 import('base/operators')
