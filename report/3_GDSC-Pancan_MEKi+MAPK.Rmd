@@ -66,7 +66,7 @@ mydf$mut = ar$map(mut, along=2, function(x) colnames(mut)[x][1])[mydf$values]
 mydf$mut[is.na(mydf$mut)] = "wt"
 #TODO: the above drops a 2nd mut if avail
 
-mydf$ind = factor(mydf$ind, levels=c("MAPK_all", "MAPK_wt", "MAPK_mut", "MAPK-_mut", "MAPK+_mut", "MAPK+", "MAPK_null", "MAPK-"))
+mydf$ind = factor(mydf$ind, levels=c("MAPK_all", "MAPK_wt", "MAPK_mut", "MAPK+_mut", "MAPK-_mut", "MAPK+", "MAPK_null", "MAPK-"))
 
 ggplot(mydf, aes(x=ind, y=resp)) +
     geom_violin() +
