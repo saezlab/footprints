@@ -46,12 +46,10 @@ pancan = list(
     "MAPK_null" = nst(path_null),
 
     # stratification by SPEED score, wild-type subset
-    "MAPK_wt" = nst(!has_mut),
-    "MAPK+_wt" = nst(!has_mut & (path_active | path_null)),
-    "MAPK-_wt" = nst(!has_mut & path_inactive),
+#    "MAPK+_wt" = nst(!has_mut & (path_active | path_null)),
+#    "MAPK-_wt" = nst(!has_mut & path_inactive),
 
     # stratification by SPEED score, mutated subset
-    "MAPK_mut" = nst(has_mut),
     "MAPK+_mut" = nst(has_mut & path_active),
     "MAPK-_mut" = nst(has_mut & (path_inactive | path_null))
 )
@@ -59,32 +57,33 @@ pancan = list(
 
 # Trametinib + MAPK
 
-## Overview
+```{r tram}
+mydf = stack(pancan)
+mydf$tissue = gdsc$tissues()[mydf$values]
+mydf$resp = gdsc$drug_response()[,'Trametinib'][mydf$values]
+mut = gdsc$mutated_genes()[,c("KRAS","NRAS","BRAF")]
+mydf$mut = ar$map(mut, along=2, function(x) colnames(mut)[x][1])[mydf$values]
+mydf$mut[is.na(mydf$mut)] = "wt"
+#TODO: the above drops a 2nd mut if avail
 
-```{r tram1, echo=FALSE}
-util$drug_range_box(drug, stratify=list(Pancan=pancan))
+mydf$ind = factor(mydf$ind, levels=c("MAPK_all", "MAPK_wt", "MAPK_mut", "MAPK-_mut", "MAPK+_mut", "MAPK+", "MAPK_null", "MAPK-"))
+
+ggplot(mydf, aes(x=ind, y=resp)) +
+    geom_violin() +
+    geom_boxplot(width=.5, outlier.shape=NA) +
+#    geom_boxplot(outlier.shape=NA) +
+#    geom_point(aes(colour=tissue, shape=mut), size=5, alpha=0.5, position=position_jitter(w=0.5))
+    theme_bw()
 ```
 
-## Stratification by mutation alone
+# Comparing associations to mutations
 
-```{r tram2, echo=FALSE, fig.width=4}
-util$drug_range_box(drug, stratify=list(Pancan=pancan[1:3]), plot_only=NULL)
-```
+<!--
 
-## Stratification by pathway score alone
+for a cutoff, e.g. 5% FDR show how many assocs we get for
+- mutations alone
+- speed along
+- both
 
-```{r tram3, echo=FALSE, fig.width=4}
-util$drug_range_box(drug, stratify=list(Pancan=pancan[4:6]), plot_only=NULL)
-```
-
-## Stratification of wild-type sub-population
-
-```{r tram4, echo=FALSE}
-util$drug_range_box(drug, stratify=list(Pancan=pancan[7:9]))
-```
-
-## Stratification of mutated sub-population
-
-```{r tram5, echo=FALSE}
-util$drug_range_box(drug, stratify=list(Pancan=pancan[10:12]))
-```
+maybe split by MEK/MAPK and everything
+-->
