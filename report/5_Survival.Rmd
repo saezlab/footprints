@@ -9,9 +9,21 @@ b = import('base')
 io = import('io')
 ar = import('array')
 st = import('stats')
+plt = import('plot')
 util = import('../analyses/tcga_survival/util')
 
-scores = io$load('../scores/speed/speed_matrix.RData')
+# We shouldn't need the index because we can regenerate from the barcode
+scores = io$load('../scores/tcga/speed_matrix.RData')
+
+
+#clinical = util$clinical
+#clinical = as.data.frame(clinical)
+#rownames(clinical) = clinical$barcode
+#rownames(scores) = substr(rownames(scores), 1, 12)
+#scores = scores[!duplicated(rownames(scores)),] #TODO: better way to do this?
+#xx = ar$intersect_list(list(scores=scores, clinical=clinical))
+##FIXME: this fails for dplyr df's --> workaround @ebits, fix later
+
 ```
 
 # Pan-cancer associations
@@ -26,11 +38,10 @@ util$pancan(scores) %>%
 
 # Cancer-specific associations
 
-```{r pancan, include=FALSE}
+```{r tissue, include=FALSE}
 util$tissue(scores) %>%
     plt$color$p_effect("adj.p", dir=-1) %>%
     mutate(label = paste(subset, scores, sep=":")) %>%
-    plt$volcano(p=0.1) + ggtitle(sum(clinical$adj.p < 0.1)) %>%
+    plt$volcano(p=0.1) %>% #+ ggtitle(sum(util$clinical$adj.p < 0.1)) %>%
     print()
-
 ```

@@ -23,7 +23,10 @@ clinical = tcga$clinical() %>%
                                      patient.days_to_last_followup),
               barcode = toupper(patient.bcr_patient_barcode),
               sex = as.factor(patient.gender)) %>%
-    filter(surv_days > 0) #FIXME:
+    filter(surv_days > 0) %>% # what is this?
+    distinct() %>%
+    group_by(barcode) %>%
+    filter(age_days == max(age_days))
 
 #' Do pan-cancer survival association using pathway scores and clinical data
 #'

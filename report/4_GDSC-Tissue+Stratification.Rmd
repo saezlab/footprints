@@ -35,7 +35,7 @@ assocs.tissue = st$lm(Ys_clinical ~ scores, subsets=tissues) %>%
 
 ```{r volcano, echo=FALSE}
 assocs.tissue %>%
-    mutate(label = paste(Yf, scores, sep=":")) %>%
+    mutate(label = paste(Ys_clinical, scores, sep=":")) %>%
     plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1, thresh=0.2) %>%
     plt$volcano(p=0.2)
 ```
@@ -58,7 +58,7 @@ util$drug_range_box("Docetaxel", stratify=stratify)
 ```{r range-esca_rap, echo=FALSE}
 cancer_type = names(tissues)[tissues == "ESCA"]
 path = scores[cancer_type, "EGFR"]
-stratify = list(LGG = list(
+stratify = list(ESCA = list(
     "ESCA_EGFR+" = names(path)[path > 0],
     "ESCA_EGFR-" = names(path)[path < 0]
 ))
@@ -76,5 +76,5 @@ stratify = list(SKCM = list(
     "SKCM_VEGF-" = names(path)[path < 0]
 ))
 
-util$drug_range_box("FH-535", stratify=stratify)
+util$drug_range_box("FH535", stratify=stratify)
 ```

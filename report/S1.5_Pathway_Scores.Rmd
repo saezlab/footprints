@@ -24,7 +24,7 @@ file2assocs = function(fname) {
     index = data$index
     scores = data$scores
     sign = ifelse(index$effect == "activating", 1, -1)
-    pathway = sign * t(ar$mask(index$pathway)) + 0
+    pathway = sign * ar$mask(index$pathway) + 0
 
     # compute associations
     st$lm(scores ~ pathway)

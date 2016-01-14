@@ -55,16 +55,21 @@ pancan = list(
 )
 ```
 
-# Trametinib + MAPK
+```{r nums, fig.height=3}
+sapply(pancan, length)
+```
+# Improvement over mutations alone
 
-```{r tram}
+#### Trametinib
+
+```{r tram, echo=FALSE, fig.height=3}
 mydf = stack(pancan)
 mydf$tissue = gdsc$tissues()[mydf$values]
 mydf$resp = gdsc$drug_response()[,'Trametinib'][mydf$values]
 mut = gdsc$mutated_genes()[,c("KRAS","NRAS","BRAF")]
 mydf$mut = ar$map(mut, along=2, function(x) colnames(mut)[x][1])[mydf$values]
 mydf$mut[is.na(mydf$mut)] = "wt"
-#TODO: the above drops a 2nd mut if avail
+#TODO: the above drops a 2nd mut if avail (same below)
 
 mydf$ind = factor(mydf$ind, levels=c("MAPK_all", "MAPK_wt", "MAPK_mut", "MAPK+_mut", "MAPK-_mut", "MAPK+", "MAPK_null", "MAPK-"))
 
@@ -75,6 +80,48 @@ ggplot(mydf, aes(x=ind, y=resp)) +
 #    geom_point(aes(colour=tissue, shape=mut), size=5, alpha=0.5, position=position_jitter(w=0.5))
     theme_bw()
 ```
+
+#### AZ628
+
+```{r az628, echo=FALSE, fig.height=3}
+mydf = stack(pancan)
+mydf$tissue = gdsc$tissues()[mydf$values]
+mydf$resp = gdsc$drug_response()[,'AZ628'][mydf$values]
+mut = gdsc$mutated_genes()[,c("KRAS","NRAS","BRAF")]
+mydf$mut = ar$map(mut, along=2, function(x) colnames(mut)[x][1])[mydf$values]
+mydf$mut[is.na(mydf$mut)] = "wt"
+
+mydf$ind = factor(mydf$ind, levels=c("MAPK_all", "MAPK_wt", "MAPK_mut", "MAPK+_mut", "MAPK-_mut", "MAPK+", "MAPK_null", "MAPK-"))
+
+ggplot(mydf, aes(x=ind, y=resp)) +
+    geom_violin() +
+    geom_boxplot(width=.5, outlier.shape=NA) +
+#    geom_boxplot(outlier.shape=NA) +
+#    geom_point(aes(colour=tissue, shape=mut), size=5, alpha=0.5, position=position_jitter(w=0.5))
+    theme_bw()
+```
+
+#### RDEA119
+
+```{r rdea, echo=FALSE, fig.height=3}
+mydf = stack(pancan)
+mydf$tissue = gdsc$tissues()[mydf$values]
+mydf$resp = gdsc$drug_response()[,'RDEA119'][mydf$values]
+mut = gdsc$mutated_genes()[,c("KRAS","NRAS","BRAF")]
+mydf$mut = ar$map(mut, along=2, function(x) colnames(mut)[x][1])[mydf$values]
+mydf$mut[is.na(mydf$mut)] = "wt"
+
+mydf$ind = factor(mydf$ind, levels=c("MAPK_all", "MAPK_wt", "MAPK_mut", "MAPK+_mut", "MAPK-_mut", "MAPK+", "MAPK_null", "MAPK-"))
+
+ggplot(mydf, aes(x=ind, y=resp)) +
+    geom_violin() +
+    geom_boxplot(width=.5, outlier.shape=NA) +
+#    geom_boxplot(outlier.shape=NA) +
+#    geom_point(aes(colour=tissue, shape=mut), size=5, alpha=0.5, position=position_jitter(w=0.5))
+    theme_bw()
+```
+
+
 
 # Comparing associations to mutations
 

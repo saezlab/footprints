@@ -8,6 +8,7 @@ b = import('base')
 io = import('io')
 st = import('stats')
 ar = import('array')
+df = import('data_frame')
 plt = import('plot')
 tcga = import('data/tcga')
 
