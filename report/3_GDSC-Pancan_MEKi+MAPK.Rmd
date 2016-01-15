@@ -4,6 +4,7 @@ author: "Michael Schubert (schubert@ebi.ac.uk)"
 ---
 
 ```{r code, include=FALSE}
+library(magrittr)
 library(dplyr)
 b = import('base')
 io = import('io')
@@ -153,12 +154,24 @@ ggplot(mydf, aes(x=ind, y=resp)) +
 
 # Comparing associations to mutations
 
-<!--
+```{r compare, echo=FALSE}
+load_fun = function(fname) {
+    io$file_path('../analyses/drug_assocs', fname, ext=".RData") %>%
+        io$load() %$%
+        assocs.pan %>%
+        filter(adj.p < 0.1) %>%
+        arrange(adj.p) %>%
+        mutate(num = 1:nrow(.),
+               method = fname)
+}
 
-for a cutoff, e.g. 5% FDR show how many assocs we get for
-- mutations alone
-- speed along
-- both
+methods = c("mutation", "speed_matrix", "gsea_reactome", "gsea_go")
 
-maybe split by MEK/MAPK and everything
--->
+resp = methods %>%
+    lapply(load_fun) %>%
+    bind_rows()
+
+ggplot(resp, aes(x=-log10(adj.p), y=log10(num), color=method)) +
+    geom_step() +
+    theme_bw()
+```
