@@ -29,6 +29,7 @@ ar$intersect(tissues, Ys, scores, mut, along=1)
 #' @param pathway    Our pathway descriptor, e.g. "MAPK"
 #' @param mutations  A character vector of which genes should be
 #'                   used as markers to compare to
+#' @param strat      For stratifications, look for subsets in "mut" or "wt"?
 gen_subsets = function(pathway, mutations, strat="mut") {
     nst = function(x) names(x[x])
 
@@ -43,19 +44,22 @@ gen_subsets = function(pathway, mutations, strat="mut") {
         # stratification by mutation
         "all" = nst(!is.na(path)),
         "wt" = nst(!has_mut),
-        "mut" = nst(has_mut),
-
-        # stratification by SPEED score
-        "path+" = nst(path_active),
-        "path-" = nst(path_inactive),
-        "path0" = nst(path_null)
+        "mut" = nst(has_mut)
     )
 
     if (strat == "wt") {
+        # stratification by SPEED score
+        re[["path+"]] = nst(path_active | path_null)
+        re[["path-"]] = nst(path_inactive)
+
         # stratification by SPEED score, wild-type subset
         re[["path+_wt"]] = nst(!has_mut & (path_active | path_null))
         re[["path-_wt"]] = nst(!has_mut & path_inactive)
     } else if (strat == "mut") {
+        # stratification by SPEED score
+        re[["path+"]] = nst(path_active)
+        re[["path-"]] = nst(path_inactive | path_null)
+
         # stratification by SPEED score, mutated subset
         re[["path+_mut"]] = nst(has_mut & path_active)
         re[["path-_mut"]] = nst(has_mut & (path_inactive | path_null))
