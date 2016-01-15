@@ -49,8 +49,8 @@ gen_subsets = function(pathway, mutations, strat="mut") {
 
     if (strat == "wt") {
         # stratification by SPEED score
-        re[["path+"]] = nst(path_active | path_null)
-        re[["path-"]] = nst(path_inactive)
+        re[["path+"]] = nst(path_active)
+        re[["path-"]] = nst(path_inactive | path_null)
 
         # stratification by SPEED score, wild-type subset
         re[["path+_wt"]] = nst(!has_mut & (path_active | path_null))
@@ -75,10 +75,17 @@ assemble_df = function(subs, drug) {
     mydf
 }
 
-print_df = function(mydf) {
+summary_df = function(mydf) {
     mydf %>%
         group_by(ind) %>%
-        summarize(n = n()) %>%
+        summarize(n = n()) %$%
+        setNames(n, ind) %>%
+        print()
+
+    mydf %>%
+        filter(ind %in% c("path+_wt", "path-_wt", "path+_mut", "path-_mut")) %>%
+        wilcox.test(resp ~ ind, data=.) %$%
+        p.value %>%
         print()
 }
 
@@ -100,7 +107,7 @@ mydf = assemble_df(MEKi_MAPK, "Trametinib") %>% na.omit()
 mydf$ind = factor(mydf$ind, levels=c("all", "wt", "mut",
                                      "path+_mut", "path-_mut",
                                      "path+", "path0", "path-"))
-print_df(mydf)
+summary_df(mydf)
 
 ggplot(mydf, aes(x=ind, y=resp)) +
     geom_violin() +
@@ -117,7 +124,7 @@ mydf = assemble_df(MEKi_MAPK, "AZ628") %>% na.omit()
 mydf$ind = factor(mydf$ind, levels=c("all", "wt", "mut",
                                      "path+_mut", "path-_mut",
                                      "path+", "path0", "path-"))
-print_df(mydf)
+summary_df(mydf)
 
 ggplot(mydf, aes(x=ind, y=resp)) +
     geom_violin() +
@@ -132,7 +139,7 @@ mydf = assemble_df(BRAFi_MAPK, "Dabrafenib") %>% na.omit()
 mydf$ind = factor(mydf$ind, levels=c("all", "wt", "mut",
                                      "path+_mut", "path-_mut",
                                      "path+", "path0", "path-"))
-print_df(mydf)
+summary_df(mydf)
 
 ggplot(mydf, aes(x=ind, y=resp)) +
     geom_violin() +
@@ -147,7 +154,7 @@ mydf = assemble_df(Nutlin_p53, "Nutlin-3a") %>% na.omit()
 mydf$ind = factor(mydf$ind, levels=c("all", "mut", "wt",
                                      "path+_wt", "path-_wt",
                                      "path+", "path0", "path-"))
-print_df(mydf)
+summary_df(mydf)
 
 ggplot(mydf, aes(x=ind, y=resp)) +
     geom_violin() +
