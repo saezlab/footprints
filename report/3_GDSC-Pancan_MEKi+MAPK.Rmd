@@ -70,27 +70,16 @@ assemble_df = function(subs, drug) {
     mydf
 }
 
+print_df = function(mydf) {
+    mydf %>%
+        group_by(ind) %>%
+        summarize(n = n()) %>%
+        print()
+}
+
 MEKi_MAPK = gen_subsets("MAPK", c("NRAS", "KRAS", "BRAF"))
 BRAFi_MAPK = gen_subsets("MAPK", "BRAF")
 Nutlin_p53 = gen_subsets("p53", "TP53", strat="wt")
-```
-
-#### MEK inhibitors and MAPK activity
-
-```{r nums1, echo=FALSE}
-sapply(MEKi_MAPK, length)
-```
-
-#### BRAF inhibitors and MAPK activity
-
-```{r nums2, echo=FALSE}
-sapply(BRAFi_MAPK, length)
-```
-
-#### Nutlin-3a and p53 activity
-
-```{r nums3, echo=FALSE}
-sapply(Nutlin_p53, length)
 ```
 
 # Improvement over mutations alone
@@ -106,6 +95,7 @@ mydf = assemble_df(MEKi_MAPK, "Trametinib") %>% na.omit()
 mydf$ind = factor(mydf$ind, levels=c("all", "wt", "mut",
                                      "path+_mut", "path-_mut",
                                      "path+", "path0", "path-"))
+print_df(mydf)
 
 ggplot(mydf, aes(x=ind, y=resp)) +
     geom_violin() +
@@ -122,6 +112,7 @@ mydf = assemble_df(MEKi_MAPK, "AZ628") %>% na.omit()
 mydf$ind = factor(mydf$ind, levels=c("all", "wt", "mut",
                                      "path+_mut", "path-_mut",
                                      "path+", "path0", "path-"))
+print_df(mydf)
 
 ggplot(mydf, aes(x=ind, y=resp)) +
     geom_violin() +
@@ -136,6 +127,7 @@ mydf = assemble_df(BRAFi_MAPK, "Dabrafenib") %>% na.omit()
 mydf$ind = factor(mydf$ind, levels=c("all", "wt", "mut",
                                      "path+_mut", "path-_mut",
                                      "path+", "path0", "path-"))
+print_df(mydf)
 
 ggplot(mydf, aes(x=ind, y=resp)) +
     geom_violin() +
@@ -150,6 +142,7 @@ mydf = assemble_df(Nutlin_p53, "Nutlin-3a") %>% na.omit()
 mydf$ind = factor(mydf$ind, levels=c("all", "mut", "wt",
                                      "path+_wt", "path-_wt",
                                      "path+", "path0", "path-"))
+print_df(mydf)
 
 ggplot(mydf, aes(x=ind, y=resp)) +
     geom_violin() +
