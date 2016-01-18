@@ -6,8 +6,7 @@ $(call ext_dep,../../scores/tcga,speed_matrix.RData)
 all: $(SCORES:../../scores/tcga/%.RData=heatmap/%.pdf) \
      $(SCORES:../../scores/tcga/%.RData=snp_all/%.pdf) \
      $(SCORES:../../scores/tcga/%.RData=snp_drivers/%.pdf) \
-     $(SCORES:../../scores/tcga/%.RData=cna_gistic/%.pdf) \
-	 Driver_Methods.pdf
+     $(SCORES:../../scores/tcga/%.RData=cna_gistic/%.pdf)
 
 %.pdf: %.r ../../scores/tcga/speed_matrix.RData
 	Rscript $^ $@
