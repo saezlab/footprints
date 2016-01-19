@@ -23,6 +23,7 @@ clinical = tcga$clinical() %>%
                                      patient.days_to_last_followup),
               barcode = toupper(patient.bcr_patient_barcode),
               sex = as.factor(patient.gender)) %>%
+    mutate(surv_months = surv_days/30.4) %>%
     filter(surv_days > 0) %>% # what is this?
     distinct() %>%
     group_by(barcode) %>%
@@ -45,7 +46,16 @@ pancan = function(scores, meta=clinical) {
 
     #TODO: add sex as covar; but: util tries to subset it, shouldn't
     pancan = st$coxph(surv_days + alive ~ study + age_days + scores,
-                      data=meta, min_pts=100) %>%
+                      data=meta, min_pts=100)
+
+    if (is.data.frame(scores) && all(sapply(scores, is.factor)))
+        pancan = pancan %>%
+            filter(grepl("^scores", term)) %>%
+            mutate(term = sub("scores", "", term)) %>%
+            mutate(scores = paste(scores, term, sep="_"),
+                   term = "scores")
+
+    pancan %>%
         filter(term == "scores") %>%
         select(scores, estimate, statistic, p.value, size) %>%
         mutate(adj.p = p.adjust(p.value, method="fdr"))
@@ -68,7 +78,16 @@ tissue = function(scores, meta=clinical) {
 
     #TODO: add sex + make it work w/ only one
     tissue = st$coxph(surv_days + alive ~ age_days + scores,
-                      subsets=meta$study, data=meta, min_pts=20) %>%
+                      subsets=meta$study, data=meta, min_pts=20)
+
+    if (is.data.frame(scores) && all(sapply(scores, is.factor)))
+        tissue = tissue %>%
+            filter(grepl("^scores", term)) %>%
+            mutate(term = sub("scores", "", term)) %>%
+            mutate(scores = paste(scores, term, sep="_"),
+                   term = "scores")
+
+    tissue %>%
         filter(term == "scores") %>%
         select(scores, subset, estimate, statistic, p.value, size) %>%
         group_by(subset) %>%

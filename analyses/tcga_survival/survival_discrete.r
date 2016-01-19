@@ -9,7 +9,7 @@ plt = import('plot')
 tcga = import('data/tcga')
 util = import('./util')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_linear.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "speed_linear.pdf"
 
 discretize_quartiles = function(x) {
@@ -18,27 +18,25 @@ discretize_quartiles = function(x) {
     re[x > unname(qq[4])] = 1
     re[x < unname(qq[2])] = -1
     if (sum(abs(re)) < 10)
-        rep(NA, length(x))
-    else
-        re
+        return(rep(NA, length(x)))
+
+    re = as.character(re)
+    re[re == "-1"] = "down"
+    re[re == "0"] = "unknown"
+    re[re == "1"] = "up"
+    re
 }
 
+#TODO: make sure this works with util if supplying discretized scores
+# and then use this instead of the code here (which is kind of crap)
 row2survFit = function(row, include_normal=FALSE) {
+    score = scores
+    clin = util$clinical
     if ("subset" %in% names(row))
-        study_filter = clinical$study == row['subset']
-    else
-        study_filter = rep(TRUE, nrow(clinical))
+        clin = filter(util$clinical, study == row['subset'])
 
-    clin = clinical[study_filter,]
-    pathway = as.factor(scores[study_filter, row['scores']])
-    stopifnot(levels(pathway) == c("-1", "0", "1"))
-    levels(pathway) = c("inactive", "normal", "active")
-
-    if (!include_normal)
-        pathway[pathway == "normal"] = NA
-
-    clin$surv_months = clin$surv_days / 30.4
-    clin$pathway = pathway
+    ar$intersect(score, clin$barcode, along=1)
+    clin$pathway = score[,sub("_.*$", "", row['scores'])]
 
     survfit(Surv(surv_months, alive) ~ pathway, data=clin) %>%
         ggsurv() +
@@ -50,7 +48,14 @@ row2survFit = function(row, include_normal=FALSE) {
 }
 
 scores = io$load(INFILE) %>%
-    ar$map(scores, along=1, subsets=clinical$study, discretize_quartiles)
+    ar$map(along=1, subsets=util$clinical$study, discretize_quartiles) %>%
+    as.data.frame() %>%
+    lapply(function(x) setNames(relevel(factor(x), "unknown"), rownames(.))) %>%
+    do.call(data.frame, .)
+
+# select primary tumors only, one sample per patient
+scores = scores[substr(rownames(scores), 14, 16) == "01A",]
+rownames(scores) = substr(rownames(scores), 1, 12)
 
 assocs.pan = util$pancan(scores)
 assocs.tissue = util$tissue(scores)
@@ -66,7 +71,7 @@ assocs.pan %>%
 
 assocs.pan %>%
     arrange(adj.p) %>%
-    filter(adj.p < 0.1) %>%
+#    filter(adj.p < 0.1) %>%
     head(5) %>%
     apply(1, row2survFit)
 
@@ -78,6 +83,6 @@ assocs.tissue %>%
 
 assocs.tissue %>%
     arrange(adj.p) %>%
-    filter(adj.p < 0.1) %>%
+#    filter(adj.p < 0.1) %>%
     head(15) %>%
     apply(1, row2survFit)
