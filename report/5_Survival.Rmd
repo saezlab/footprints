@@ -58,7 +58,7 @@ print(p1)
 
 # Cancer-specific associations
 
-```{r tissue, include=FALSE}
+```{r tissue, echo=FALSE}
 ##TODO: for all other methods ->@suppl
 p2 = assocs.tissue %>%
     plt$color$p_effect("adj.p", dir=-1) %>%
