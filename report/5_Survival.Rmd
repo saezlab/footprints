@@ -8,40 +8,61 @@ library(dplyr)
 b = import('base')
 io = import('io')
 ar = import('array')
+df = import('data_frame')
 st = import('stats')
 plt = import('plot')
 util = import('../analyses/tcga_survival/util')
 
-# We shouldn't need the index because we can regenerate from the barcode
-scores = io$load('../scores/tcga/speed_matrix.RData')
+#' Loads a specific TCGA scores file
+#' supplies path and extension, and cuts rownames at 16 chars
+#'
+#' @param x  An identifier, like 'speed_matrix'
+#' @return   A matrix with samples as rows and genes and columns
+load_fun = function(x) {
+    re = io$file_path("../scores/tcga", x, ext=".RData") %>%
+        io$load()
+    rownames(re) = substr(rownames(re), 1, 16)
+    re
+}
 
+scores = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia') %>%
+    sapply(load_fun, simplify=FALSE, USE.NAMES=TRUE)
 
-#clinical = util$clinical
-#clinical = as.data.frame(clinical)
-#rownames(clinical) = clinical$barcode
-#rownames(scores) = substr(rownames(scores), 1, 12)
-#scores = scores[!duplicated(rownames(scores)),] #TODO: better way to do this?
-#xx = ar$intersect_list(list(scores=scores, clinical=clinical))
-##FIXME: this fails for dplyr df's --> workaround @ebits, fix later
+assocs.pan = scores %>%
+    sapply(util$pancan, simplify=FALSE, USE.NAMES=FALSE) %>%
+    df$add_name_col("method") %>%
+    bind_rows()
 
+assocs.tissue = util$tissue(scores$speed_matrix)
 ```
 
 # Pan-cancer associations
 
 ```{r pancan, include=FALSE}
-util$pancan(scores) %>%
-    plt$color$p_effect("adj.p", dir=-1) %>%
-    mutate(label = scores) %>%
-    plt$volcano(base.size=0.1) %>%
-    print()
+##TODO: @suppl
+#assocs.pan %>%
+#    plt$color$p_effect("adj.p", dir=-1) %>%
+#    mutate(label = scores) %>%
+#    plt$volcano(base.size=0.1) %>%
+#    print()
+```
+
+```{r heatmap, echo=FALSE, fig.height=3}
+lmax = max(abs(assocs.pan$estimate)) #TODO: replace by statistic?
+p1 = assocs.pan %>%
+    mutate(label = ifelse(adj.p < 0.05, "*", "")) %>%
+    mutate(label = ifelse(adj.p < 1e-4, "***", label)) %>%
+    plt$matrix(estimate ~ method + scores, color="estimate", limits=c(-lmax,lmax))
+print(p1)
 ```
 
 # Cancer-specific associations
 
 ```{r tissue, include=FALSE}
-util$tissue(scores) %>%
+##TODO: for all other methods ->@suppl
+p2 = assocs.tissue %>%
     plt$color$p_effect("adj.p", dir=-1) %>%
     mutate(label = paste(subset, scores, sep=":")) %>%
-    plt$volcano(p=0.1) %>% #+ ggtitle(sum(util$clinical$adj.p < 0.1)) %>%
-    print()
+    plt$volcano(p=0.1) #+ ggtitle(sum(util$clinical$adj.p < 0.1)) %>%
+print(p2)
 ```

@@ -35,6 +35,10 @@ clinical = tcga$clinical() %>%
 #'                Must have the following fields: surv_days, alive, study, age_days
 #' @return        A data.frame with the associations
 pancan = function(scores, meta=clinical) {
+    # we need a score per patient to match clinical data
+    rownames(scores) = substr(rownames(scores), 1, 12)
+    scores = scores[!duplicated(rownames(scores)),] #TODO: better way to do this?
+
     ar$intersect(scores, meta$barcode, along=1)
     meta = as.list(meta)
     meta$scores = scores
@@ -43,7 +47,7 @@ pancan = function(scores, meta=clinical) {
     pancan = st$coxph(surv_days + alive ~ study + age_days + scores,
                       data=meta, min_pts=100) %>%
         filter(term == "scores") %>%
-        select(scores, estimate, p.value, size) %>%
+        select(scores, estimate, statistic, p.value, size) %>%
         mutate(adj.p = p.adjust(p.value, method="fdr"))
 }
 
@@ -54,6 +58,10 @@ pancan = function(scores, meta=clinical) {
 #'                Must have the following fields: surv_days, alive, study, age_days
 #' @return        A data.frame with the associations
 tissue = function(scores, meta=clinical) {
+    # we need a score per patient to match clinical data
+    rownames(scores) = substr(rownames(scores), 1, 12)
+    scores = scores[!duplicated(rownames(scores)),]
+
     ar$intersect(scores, meta$barcode, along=1)
     meta = as.list(meta)
     meta$scores = scores
@@ -62,7 +70,7 @@ tissue = function(scores, meta=clinical) {
     tissue = st$coxph(surv_days + alive ~ age_days + scores,
                       subsets=meta$study, data=meta, min_pts=20) %>%
         filter(term == "scores") %>%
-        select(scores, subset, estimate, p.value, size) %>%
+        select(scores, subset, estimate, statistic, p.value, size) %>%
         group_by(subset) %>%
             mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
         ungroup()

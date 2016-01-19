@@ -52,7 +52,6 @@ mut = io$read_table(MUTFILE, header=TRUE) %>%
               sample = substr(Tumor_Sample_Barcode, 1, 16)) %>%
     mutate(has_mut = 1) %>%
     ar$construct(has_mut ~ sample + hgnc, data=., fill=0, function(x) x[1])
-mut = mut[,c("TP53", "VHL", "KRAS", "NRAS", "EGFR", "PIK3CA")]
 
 scores = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia') %>%
     sapply(load_fun, simplify=FALSE, USE.NAMES=TRUE)
@@ -86,6 +85,30 @@ print(p1)
 
 ```{r kras, echo=FALSE, fig.width=4}
 cur = filter(result, m == "KRAS")
+lmax = max(abs(cur$statistic))
+p1 = cur %>%
+    mutate(label = ifelse(adj.p < 0.05, "*", "")) %>%
+    mutate(label = ifelse(adj.p < 1e-3, "***", label)) %>%
+    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
+print(p1)
+```
+
+## VHL
+
+```{r vhl, echo=FALSE, fig.width=4}
+cur = filter(result_nocov, m == "VHL")
+lmax = max(abs(cur$statistic))
+p1 = cur %>%
+    mutate(label = ifelse(adj.p < 1e-5, "*", "")) %>%
+    mutate(label = ifelse(adj.p < 1e-20, "***", label)) %>%
+    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
+print(p1)
+```
+
+## STK11
+
+```{r stk11, echo=FALSE, fig.width=4}
+cur = filter(result_nocov, m == "STK11")
 lmax = max(abs(cur$statistic))
 p1 = cur %>%
     mutate(label = ifelse(adj.p < 0.05, "*", "")) %>%
