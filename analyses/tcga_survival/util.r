@@ -15,16 +15,11 @@ tcga = import('data/tcga')
 #' Note that we could be filtering by no untreated patients (and tried this),
 #' but we think that a treatment that activates or inactivates pathways does
 #' impact both pathways and survival and should thus be considered.
-#'
-#' We also exclude kidney and low-grade glioma, because they give associations
-#' with all methods and all pathways (so something is likely wrong there,
-#' or the cancer is just very sensitive to those perturbations)
 clinical = tcga$clinical() %>%
 #    filter(patient.history_of_neoadjuvant_treatment == "no" &
 #           is.na(patient.radiations) &
 #           is.na(patient.follow_ups) &
 #           is.na(patient.drugs)) %>%
-#    filter(! study %in% c("KIRC", "KICH", "KIPAN", "LGG", "GBMLGG")) %>%
     transmute(study = toupper(admin.disease_code),
               age_days = - as.integer(patient.days_to_birth),
               alive = 1 - as.integer(is.na(patient.days_to_death)),

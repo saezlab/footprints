@@ -20,9 +20,9 @@ on.exit(dev.off)
 
 #    plt$color$p_effect("p.value", dir=-1) %>%
 util$pancan(scores) %>%
-    plt$color$p_effect("adj.p", dir=-1) %>%
+    plt$color$p_effect("adj.p", dir=-1, thresh=0.1) %>%
     mutate(label = scores) %>%
-    plt$volcano(base.size=0.1) %>%
+    plt$volcano(base.size=0.1, p=0.1) %>%
     print()
 
 #    plt$color$p_effect("p.value", dir=-1, thresh=0.1) %>%
