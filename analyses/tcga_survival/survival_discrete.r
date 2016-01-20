@@ -9,7 +9,7 @@ plt = import('plot')
 tcga = import('data/tcga')
 util = import('./util')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_fullmat.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "speed_linear.pdf"
 
 discretize_quartiles = function(x) {
@@ -17,8 +17,6 @@ discretize_quartiles = function(x) {
     re = rep(0, length(x))
     re[x > unname(qq[4])] = 1
     re[x < unname(qq[2])] = -1
-    if (sum(abs(re)) < 10)
-        return(rep(NA, length(x)))
 
     re = as.character(re)
     re[re == "-1"] = "down"
@@ -47,18 +45,29 @@ row2survFit = function(row, include_normal=FALSE) {
         print()
 }
 
-scores = io$load(INFILE) %>%
-    ar$map(along=1, subsets=util$clinical$study, discretize_quartiles) %>%
-    as.data.frame() %>%
-    lapply(function(x) setNames(relevel(factor(x), "unknown"), rownames(.))) %>%
-    do.call(data.frame, .)
+scores = io$load(INFILE)
+clinical = util$clinical
 
 # select primary tumors only, one sample per patient
 scores = scores[substr(rownames(scores), 14, 16) == "01A",]
 rownames(scores) = substr(rownames(scores), 1, 12)
 
-assocs.pan = util$pancan(scores)
-assocs.tissue = util$tissue(scores)
+ar$intersect(scores, clinical$barcode, along=1)
+nnas = colSums(!is.na(scores))
+if (any(nnas < 10)) {
+    warning("Dropping with less than 10 values: ",
+            paste(colnames(scores)[nnas >= 10], collapse=", "))
+    scores = scores[,nnas >= 10]
+}
+
+scores = scores %>%
+    ar$map(along=1, subsets=clinical$study, discretize_quartiles) %>%
+    as.data.frame() %>%
+    lapply(function(x) setNames(relevel(factor(x), "unknown"), rownames(.))) %>%
+    do.call(data.frame, .)
+
+assocs.pan = util$pancan(scores, clinical)
+assocs.tissue = util$tissue(scores, clinical)
 
 pdf(OUTFILE, paper="a4r", width=26, height=20)
 on.exit(dev.off)
@@ -69,20 +78,22 @@ assocs.pan %>%
     plt$volcano(base.size=0.1) %>%
     print()
 
-assocs.pan %>%
+fits = assocs.pan %>%
     arrange(adj.p) %>%
-#    filter(adj.p < 0.1) %>%
-    head(5) %>%
-    apply(1, row2survFit)
+    filter(adj.p < 0.1) %>%
+    head(5)
+if (nrow(fits) >= 1)
+    apply(fits, 1, row2survFit)
 
 assocs.tissue %>%
-    plt$color$p_effect("adj.p", dir=-1) %>%
+    plt$color$p_effect("adj.p", dir=-1, thresh=0.1) %>%
     mutate(label = paste(subset, scores, sep=":")) %>%
     plt$volcano(p=0.1) %>%
     print()
 
-assocs.tissue %>%
+fits = assocs.tissue %>%
     arrange(adj.p) %>%
-#    filter(adj.p < 0.1) %>%
-    head(15) %>%
-    apply(1, row2survFit)
+    filter(adj.p < 0.1) %>%
+    head(15)
+if (nrow(fits >= 1))
+    apply(fits, 1, row2survFit)

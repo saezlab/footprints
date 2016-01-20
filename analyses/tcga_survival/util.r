@@ -11,11 +11,15 @@ tcga = import('data/tcga')
 # -- all in covariate and subset tissue data
 
 #' A data.frame containing clinical data for all cancer cohorts
+#'
+#' Note that we could be filtering by no untreated patients (and tried this),
+#' but we think that a treatment that activates or inactivates pathways does
+#' impact both pathways and survival and should thus be considered.
 clinical = tcga$clinical() %>%
-    filter(patient.history_of_neoadjuvant_treatment == "no" &
-           is.na(patient.radiations) &
-           is.na(patient.follow_ups) &
-           is.na(patient.drugs)) %>%
+#    filter(patient.history_of_neoadjuvant_treatment == "no" &
+#           is.na(patient.radiations) &
+#           is.na(patient.follow_ups) &
+#           is.na(patient.drugs)) %>%
     transmute(study = toupper(admin.disease_code),
               age_days = - as.integer(patient.days_to_birth),
               alive = 1 - as.integer(is.na(patient.days_to_death)),
@@ -27,7 +31,8 @@ clinical = tcga$clinical() %>%
     filter(surv_days > 0) %>% # what is this?
     distinct() %>%
     group_by(barcode) %>%
-    filter(age_days == max(age_days))
+    filter(age_days == max(age_days)) %>%
+    ungroup()
 
 #' Do pan-cancer survival association using pathway scores and clinical data
 #'

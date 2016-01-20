@@ -18,14 +18,16 @@ rownames(scores) = substr(rownames(scores), 1, 12)
 pdf(OUTFILE, paper="a4r", width=26, height=20)
 on.exit(dev.off)
 
+#    plt$color$p_effect("p.value", dir=-1) %>%
 util$pancan(scores) %>%
-    plt$color$p_effect("adj.p", dir=-1) %>%
+    plt$color$p_effect("adj.p", dir=-1, thresh=0.1) %>%
     mutate(label = scores) %>%
-    plt$volcano(base.size=0.1) %>%
+    plt$volcano(base.size=0.1, p=0.1) %>%
     print()
 
+#    plt$color$p_effect("p.value", dir=-1, thresh=0.1) %>%
 util$tissue(scores) %>%
-    plt$color$p_effect("adj.p", dir=-1) %>%
+    plt$color$p_effect("adj.p", dir=-1, thresh=0.1) %>%
     mutate(label = paste(subset, scores, sep=":")) %>%
     plt$volcano(p=0.1) %>% #+ ggtitle(sum(clinical$adj.p < 0.1)) %>%
     print()
