@@ -1,5 +1,3 @@
-library(survival)
-library(GGally)
 library(dplyr)
 b = import('base')
 io = import('io')
