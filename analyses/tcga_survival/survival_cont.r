@@ -25,7 +25,7 @@ util$pancan(scores) %>%
     print()
 
 util$tissue(scores) %>%
-    plt$color$p_effect("adj.p", dir=-1) %>%
+    plt$color$p_effect("adj.p", dir=-1, thresh=0.1) %>%
     mutate(label = paste(subset, scores, sep=":")) %>%
     plt$volcano(p=0.1) %>% #+ ggtitle(sum(clinical$adj.p < 0.1)) %>%
     print()

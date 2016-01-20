@@ -86,7 +86,7 @@ if (nrow(fits) >= 1)
     apply(fits, 1, row2survFit)
 
 assocs.tissue %>%
-    plt$color$p_effect("adj.p", dir=-1) %>%
+    plt$color$p_effect("adj.p", dir=-1, thresh=0.1) %>%
     mutate(label = paste(subset, scores, sep=":")) %>%
     plt$volcano(p=0.1) %>%
     print()
