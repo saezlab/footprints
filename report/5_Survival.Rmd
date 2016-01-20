@@ -11,6 +11,7 @@ ar = import('array')
 df = import('data_frame')
 st = import('stats')
 plt = import('plot')
+tcga = import('data/tcga')
 surv = import('../analyses/tcga_survival/util')
 
 scores = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia') %>%
@@ -23,7 +24,10 @@ assocs.pan = scores %>%
 
 assocs.tissue = surv$tissue(scores$speed_matrix)
 
-discrete_scores = ar$map(scores$speed_matrix, along=1, surv$discretize_quartiles)
+clinical = surv$clinical
+scores = scores$speed_matrix
+ar$intersect(scores, clinical$barcode, along=1)
+discrete_scores = ar$map(scores, along=1, subsets=clinical$study, surv$discretize_quartiles)
 discrete_assocs = surv$tissue(discrete_scores)
 ```
 
