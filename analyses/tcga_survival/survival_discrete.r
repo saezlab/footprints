@@ -8,8 +8,8 @@ st = import('stats')
 plt = import('plot')
 tcga = import('data/tcga')
 util = import('./util')
-INFILE = "../../scores/tcga/pathifier.RData"
-#INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
+
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "speed_linear.pdf"
 
 discretize_quartiles = function(x) {
