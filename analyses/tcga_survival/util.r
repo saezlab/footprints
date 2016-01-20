@@ -120,24 +120,27 @@ load = function(id, file=NULL) {
 #'
 #' @param x  A numeric vector
 #' @return   A character vector
-discretize_quartiles = function(x) {
+discretize_quartiles = function(x, numeric=TRUE) {
     qq = quantile(x)
     re = rep(0, length(x))
     re[x > unname(qq[4])] = 1
     re[x < unname(qq[2])] = -1
 
-    re = as.character(re)
-    re[re == "-1"] = "down"
-    re[re == "0"] = "unknown"
-    re[re == "1"] = "up"
+    if (!numeric) {
+        re = as.character(re)
+        re[re == "-1"] = "down"
+        re[re == "0"] = "unknown"
+        re[re == "1"] = "up"
+    }
     re
 }
 
 #' Converts a row of the associations data.frame to a survival fit
 #'
-#' @param row             A data.frame row with the fields 'subset' and 'adj.p'
-#' @param include_normal  Include the "unknown" factor [not implemented]
-row2survFit = function(row, include_normal=FALSE) {
+#' @param row     A data.frame row with the fields 'subset' and 'adj.p'
+#' @param rename  A named vector which levels should have which names
+#'                The names must be (-1,0,1) and the values the names
+row2survFit = function(row, rename=c("-1"="down", "0"="unknown", "1"="up")) {
     score = scores
     clin = clinical
     if ("subset" %in% names(row))
@@ -145,6 +148,9 @@ row2survFit = function(row, include_normal=FALSE) {
 
     ar$intersect(score, clin$barcode, along=1)
     clin$pathway = score[,sub("_.*$", "", row['scores'])]
+
+    if (!is.null(rename))
+        clin$pathway = rename[as.character(clin$pathway)]
 
     survfit(Surv(surv_months, alive) ~ pathway, data=clin) %>%
         ggsurv() +

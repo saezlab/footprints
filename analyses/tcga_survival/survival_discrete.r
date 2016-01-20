@@ -27,10 +27,7 @@ if (any(nnas < 10)) {
 
 # discretize in quartiles ("down", "unknown"*2, "up")
 scores = scores %>%
-    ar$map(along=1, subsets=clinical$study, surv$discretize_quartiles) %>%
-    as.data.frame() %>%
-    lapply(function(x) setNames(relevel(factor(x), "unknown"), rownames(.))) %>%
-    do.call(data.frame, .)
+    ar$map(along=1, subsets=clinical$study, surv$discretize_quartiles)
 
 # calculate survival association using cox proportional hazards model
 assocs.pan = surv$pancan(scores, clinical)
