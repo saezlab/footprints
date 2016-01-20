@@ -17,10 +17,12 @@ util = import('../analyses/tcga_survival/util')
 #' supplies path and extension, and cuts rownames at 16 chars
 #'
 #' @param x  An identifier, like 'speed_matrix'
-#' @return   A matrix with samples as rows and genes and columns
+#' @return   A matrix with primary tumor (01A) samples as rows and genes and columns
+#'           This is mapped to TCGA patient IDs
 load_fun = function(x) {
     re = io$file_path("../scores/tcga", x, ext=".RData") %>%
         io$load()
+    re = re[substr(rownames(re), 14, 16) == "01A",]
     rownames(re) = substr(rownames(re), 1, 16)
     re
 }
@@ -48,11 +50,12 @@ assocs.tissue = util$tissue(scores$speed_matrix)
 ```
 
 ```{r heatmap, echo=FALSE, fig.height=3}
-lmax = max(abs(assocs.pan$estimate)) #TODO: replace by statistic?
+lmax = max(abs(assocs.pan$statistic), na.rm=TRUE)
 p1 = assocs.pan %>%
+    mutate(statistic = ifelse(adj.p < 0.2, statistic, NA)) %>%
     mutate(label = ifelse(adj.p < 0.05, "*", "")) %>%
     mutate(label = ifelse(adj.p < 1e-4, "***", label)) %>%
-    plt$matrix(estimate ~ method + scores, color="estimate", limits=c(-lmax,lmax))
+    plt$matrix(statistic ~ method + scores, color="statistic", limits=c(-lmax,lmax))
 print(p1)
 ```
 
