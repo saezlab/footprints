@@ -9,7 +9,7 @@ plt = import('plot')
 tcga = import('data/tcga')
 util = import('./util')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_fullmat.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "speed_linear.pdf"
 
 discretize_quartiles = function(x) {
@@ -17,8 +17,6 @@ discretize_quartiles = function(x) {
     re = rep(0, length(x))
     re[x > unname(qq[4])] = 1
     re[x < unname(qq[2])] = -1
-    if (sum(abs(re)) < 10)
-        return(rep(NA, length(x)))
 
     re = as.character(re)
     re[re == "-1"] = "down"
@@ -55,6 +53,12 @@ scores = scores[substr(rownames(scores), 14, 16) == "01A",]
 rownames(scores) = substr(rownames(scores), 1, 12)
 
 ar$intersect(scores, clinical$barcode, along=1)
+nnas = colSums(!is.na(scores))
+if (any(nnas < 10)) {
+    warning("Dropping with less than 10 values: ",
+            paste(colnames(scores)[nnas >= 10], collapse=", "))
+    scores = scores[,nnas >= 10]
+}
 
 scores = scores %>%
     ar$map(along=1, subsets=clinical$study, discretize_quartiles) %>%
