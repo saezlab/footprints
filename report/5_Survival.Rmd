@@ -27,8 +27,8 @@ assocs.tissue = surv$tissue(scores$speed_matrix)
 clinical = surv$clinical
 scores = scores$speed_matrix
 ar$intersect(scores, clinical$barcode, along=1)
-discrete_scores = ar$map(scores, along=1, subsets=clinical$study, surv$discretize_quartiles)
-discrete_assocs = surv$tissue(discrete_scores)
+scores = ar$map(scores, along=1, subsets=clinical$study, surv$discretize_quartiles)
+discrete_assocs = surv$tissue(scores)
 ```
 
 # Pan-cancer associations
@@ -67,6 +67,13 @@ print(p2)
 # Highlighted fits
 
 ```{r fit1, echo=FALSE, fig.width=7.5, fig.height=6}
-scores = discrete_scores
 surv$row2survFit(unlist(filter(discrete_assocs, scores=="TNFa" & subset=="KIRC")))
+```
+
+```{r fit2, echo=FALSE, fig.width=7.5, fig.height=6}
+surv$row2survFit(unlist(filter(discrete_assocs, scores=="JAK-STAT" & subset=="LGG")))
+```
+
+```{r fit3, echo=FALSE, fig.width=7.5, fig.height=6}
+surv$row2survFit(unlist(filter(discrete_assocs, scores=="Trail" & subset=="CESC")))
 ```
