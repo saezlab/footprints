@@ -7,51 +7,16 @@ ar = import('array')
 st = import('stats')
 plt = import('plot')
 tcga = import('data/tcga')
-util = import('./util')
+surv = import('./util')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_fullmat.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "speed_linear.pdf"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "speed_matrix.pdf"
 
-discretize_quartiles = function(x) {
-    qq = quantile(x)
-    re = rep(0, length(x))
-    re[x > unname(qq[4])] = 1
-    re[x < unname(qq[2])] = -1
+# load and select primary tumors only, one sample per patient
+scores = surv$load(file=INFILE)
+clinical = surv$clinical
 
-    re = as.character(re)
-    re[re == "-1"] = "down"
-    re[re == "0"] = "unknown"
-    re[re == "1"] = "up"
-    re
-}
-
-#TODO: make sure this works with util if supplying discretized scores
-# and then use this instead of the code here (which is kind of crap)
-row2survFit = function(row, include_normal=FALSE) {
-    score = scores
-    clin = util$clinical
-    if ("subset" %in% names(row))
-        clin = filter(util$clinical, study == row['subset'])
-
-    ar$intersect(score, clin$barcode, along=1)
-    clin$pathway = score[,sub("_.*$", "", row['scores'])]
-
-    survfit(Surv(surv_months, alive) ~ pathway, data=clin) %>%
-        ggsurv() +
-            xlim(0, 52) +
-            theme_bw() +
-            xlab("Survival (weeks)") +
-            ggtitle(paste(row['subset'], row['scores'], row['adj.p'])) %>%
-        print()
-}
-
-scores = io$load(INFILE)
-clinical = util$clinical
-
-# select primary tumors only, one sample per patient
-scores = scores[substr(rownames(scores), 14, 16) == "01A",]
-rownames(scores) = substr(rownames(scores), 1, 12)
-
+# make sure we have pathway scores and clinical on the same subset
 ar$intersect(scores, clinical$barcode, along=1)
 nnas = colSums(!is.na(scores))
 if (any(nnas < 10)) {
@@ -60,15 +25,18 @@ if (any(nnas < 10)) {
     scores = scores[,nnas >= 10]
 }
 
+# discretize in quartiles ("down", "unknown"*2, "up")
 scores = scores %>%
-    ar$map(along=1, subsets=clinical$study, discretize_quartiles) %>%
+    ar$map(along=1, subsets=clinical$study, surv$discretize_quartiles) %>%
     as.data.frame() %>%
     lapply(function(x) setNames(relevel(factor(x), "unknown"), rownames(.))) %>%
     do.call(data.frame, .)
 
-assocs.pan = util$pancan(scores, clinical)
-assocs.tissue = util$tissue(scores, clinical)
+# calculate survival association using cox proportional hazards model
+assocs.pan = surv$pancan(scores, clinical)
+assocs.tissue = surv$tissue(scores, clinical)
 
+# save the volcano plots in pdf
 pdf(OUTFILE, paper="a4r", width=26, height=20)
 on.exit(dev.off)
 
@@ -83,7 +51,7 @@ fits = assocs.pan %>%
     filter(adj.p < 0.1) %>%
     head(5)
 if (nrow(fits) >= 1)
-    apply(fits, 1, row2survFit)
+    apply(fits, 1, surv$row2survFit)
 
 assocs.tissue %>%
     plt$color$p_effect("adj.p", dir=-1, thresh=0.1) %>%
@@ -96,4 +64,4 @@ fits = assocs.tissue %>%
     filter(adj.p < 0.1) %>%
     head(15)
 if (nrow(fits >= 1))
-    apply(fits, 1, row2survFit)
+    apply(fits, 1, surv$row2survFit)

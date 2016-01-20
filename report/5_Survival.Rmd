@@ -11,31 +11,17 @@ ar = import('array')
 df = import('data_frame')
 st = import('stats')
 plt = import('plot')
-util = import('../analyses/tcga_survival/util')
-
-#' Loads a specific TCGA scores file
-#' supplies path and extension, and cuts rownames at 16 chars
-#'
-#' @param x  An identifier, like 'speed_matrix'
-#' @return   A matrix with primary tumor (01A) samples as rows and genes and columns
-#'           This is mapped to TCGA patient IDs
-load_fun = function(x) {
-    re = io$file_path("../scores/tcga", x, ext=".RData") %>%
-        io$load()
-    re = re[substr(rownames(re), 14, 16) == "01A",]
-    rownames(re) = substr(rownames(re), 1, 16)
-    re
-}
+surv = import('../analyses/tcga_survival/util')
 
 scores = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia') %>%
-    sapply(load_fun, simplify=FALSE, USE.NAMES=TRUE)
+    sapply(surv$load, simplify=FALSE, USE.NAMES=TRUE)
 
 assocs.pan = scores %>%
-    sapply(util$pancan, simplify=FALSE, USE.NAMES=FALSE) %>%
+    sapply(surv$pancan, simplify=FALSE, USE.NAMES=FALSE) %>%
     df$add_name_col("method") %>%
     bind_rows()
 
-assocs.tissue = util$tissue(scores$speed_matrix)
+assocs.tissue = surv$tissue(scores$speed_matrix)
 ```
 
 # Pan-cancer associations
@@ -54,7 +40,8 @@ lmax = max(abs(assocs.pan$statistic), na.rm=TRUE)
 p1 = assocs.pan %>%
     mutate(statistic = ifelse(adj.p < 0.2, statistic, NA)) %>%
     mutate(label = ifelse(adj.p < 0.05, "*", "")) %>%
-    mutate(label = ifelse(adj.p < 1e-4, "***", label)) %>%
+    mutate(label = ifelse(adj.p < 1e-5, "**", label)) %>%
+    mutate(label = ifelse(adj.p < 1e-10, "***", label)) %>%
     plt$matrix(statistic ~ method + scores, color="statistic", limits=c(-lmax,lmax))
 print(p1)
 ```
@@ -66,6 +53,6 @@ print(p1)
 p2 = assocs.tissue %>%
     plt$color$p_effect("adj.p", dir=-1, thresh=0.1) %>%
     mutate(label = paste(subset, scores, sep=":")) %>%
-    plt$volcano(p=0.1)
+    plt$volcano(p=0.1, base.size=0.1)
 print(p2)
 ```

@@ -1,5 +1,6 @@
 library(dplyr)
 b = import('base')
+io = import('io')
 ar = import('array')
 tcga = import('data/tcga')
 
@@ -98,4 +99,57 @@ tissue = function(scores, meta=clinical) {
         group_by(subset) %>%
             mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
         ungroup()
+}
+
+#' Loads a specific TCGA scores file
+#' supplies path and extension, and cuts rownames at 16 chars
+#'
+#' @param id  An identifier, like 'speed_matrix'
+#' @return    A matrix with primary tumor (01A) samples as rows and genes and columns
+#'            This is mapped to TCGA patient IDs
+load = function(id, file=NULL) {
+    if (is.null(file))
+        file = io$file_path("../../scores/tcga", id, ext=".RData")
+    re =  io$load(file)
+    re = re[substr(rownames(re), 14, 16) == "01A",]
+    rownames(re) = substr(rownames(re), 1, 12)
+    re
+}
+
+#' Discretizes a numeric vector in "down", "unknown"[x2], "up" characters
+#'
+#' @param x  A numeric vector
+#' @return   A character vector
+discretize_quartiles = function(x) {
+    qq = quantile(x)
+    re = rep(0, length(x))
+    re[x > unname(qq[4])] = 1
+    re[x < unname(qq[2])] = -1
+
+    re = as.character(re)
+    re[re == "-1"] = "down"
+    re[re == "0"] = "unknown"
+    re[re == "1"] = "up"
+    re
+}
+
+#' Converts a row of the associations data.frame to a survival fit
+#'
+#' @param row             A data.frame row with the fields 'subset' and 'adj.p'
+#' @param include_normal  Include the "unknown" factor [not implemented]
+row2survFit = function(row, include_normal=FALSE) {
+    score = scores
+    clin = clinical
+    if ("subset" %in% names(row))
+        clin = filter(clinical, study == row['subset'])
+
+    ar$intersect(score, clin$barcode, along=1)
+    clin$pathway = score[,sub("_.*$", "", row['scores'])]
+
+    survfit(Surv(surv_months, alive) ~ pathway, data=clin) %>%
+        ggsurv() +
+            xlim(0, 52) +
+            theme_bw() +
+            xlab("Survival (weeks)") +
+            ggtitle(paste(row['subset'], row['scores'], row['adj.p']))
 }
