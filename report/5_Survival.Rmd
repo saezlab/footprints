@@ -61,8 +61,8 @@ print(p1)
 ```{r tissue, echo=FALSE}
 ##TODO: for all other methods ->@suppl
 p2 = assocs.tissue %>%
-    plt$color$p_effect("adj.p", dir=-1) %>%
+    plt$color$p_effect("adj.p", dir=-1, thresh=0.1) %>%
     mutate(label = paste(subset, scores, sep=":")) %>%
-    plt$volcano(p=0.1) #+ ggtitle(sum(util$clinical$adj.p < 0.1)) %>%
+    plt$volcano(p=0.1)
 print(p2)
 ```
