@@ -11,4 +11,4 @@ paradigm_%_expr.txt: proteins.txt
 	Rscript preprocess_expr.r $* $@
 
 path_%.out: paradigm_%_expr.txt
-	$(call bsub_log,10240) paradigm -m 10 -c config.txt -p SuperPathway.txt -b $*
+	$(call bsub_log,10240) paradigm -m 10 -c config.txt -p SuperPathway.txt -b paradigm_$*
