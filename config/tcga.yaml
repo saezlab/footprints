@@ -1,0 +1,25 @@
+tissues:
+ - ACC
+ - BLCA
+ - BRCA
+ - CESC
+ - CHOL
+# - COADREAD exclude: merge of COAD and READ
+ - COAD
+ - DLBC
+ - ESCA
+# - GBMLGG exclude: merge between GBM and LGG
+ - GBM
+ - HNSC
+ - KICH
+# - KIPAN exclude: merge of different kidney cancers
+ - KIRC
+ - KIRP
+ - LAML
+ - LGG
+ - LIHC
+ - LUAD
+ - LUSC
+ - MESO
+ - OV
+ - PAAD
