@@ -20,4 +20,8 @@ expr = tcga$rna_seq(TISSUE) %>%
 
 expr = expr[,intersect(colnames(expr), proteins)]
 
-io$write_table(expr, file=OUTFILE, sep="\t")
+expr_df = cbind(id = rownames(expr),
+                as.data.frame(expr))
+rownames(expr_df) = 1:nrow(expr_df)
+
+io$write_table(expr_df, file=OUTFILE, sep="\t")
