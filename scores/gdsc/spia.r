@@ -26,8 +26,9 @@ expr = t(expr)
 samples = names(tissues) # COSMIC IDs
 
 # run spia in jobs and save
-result = hpc$Q(spia_per_sample, samples, const=list(tissues=tissues, expr=expr),
-    memory=8192, n_jobs=10) #%>%
+result = hpc$Q(spia_per_sample, sample=samples[1:10],
+               const=list(tissues=tissues, expr=expr),
+               memory=8192, n_jobs=1) #%>%
 #    ar$stack(along=1)
 
 #FIXME: this fails for all cell lines
