@@ -1,9 +1,11 @@
+.b = import('base')
 .io = import('io')
 
-files = list.files(module_file(), "\\.yaml$")
+files = list.files(module_file(), "\\.yaml$", full.names=TRUE) %>%
+    setNames(.b$grep("/([^/]+)\\.yaml", .))
 
-for (.file in files)
-    assign(sub("\\.yaml", "", .file), .io$read_yaml(.file))
+for (.i in seq_along(files))
+    assign(names(files)[.i], .io$read_yaml(files[.i]))
 
 if (is.null(module_name())) {
     query = commandArgs(TRUE)[1]
