@@ -1,7 +1,7 @@
 include ../../../Makefile.inc
 
 TISSUES = $(shell ../../../config/get.sh tcga/tissues)
-SAMPLES = $(TISSUES:%=%/.dirstamp)
+SAMPLES = $(TISSUES:%=expr/%/.dirstamp)
 
 all: $(SAMPLES)  #$(TISSUES:%=path_%.out)
 
@@ -10,7 +10,7 @@ expr: $(TISSUES:%=paradigm_%_expr.txt)
 proteins.txt:
 	grep ^protein < SuperPathway.txt | grep -v abstract | cut -f2 > $@
 
-# this could be improved by:
+# this could probably be improved by:
 # http://www.gnu.org/savannah-checkouts/gnu/make/manual/html_node/Prerequisite-Types.html
 $(SAMPLES): %/.dirstamp: preprocess_expr.r proteins.txt
 	mkdir -p $*

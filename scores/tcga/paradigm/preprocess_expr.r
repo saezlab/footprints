@@ -3,7 +3,8 @@ io = import('io')
 ar = import('array')
 tcga = import('data/tcga')
 
-TISSUE = commandArgs(TRUE)[1] %or% "COAD"
+EXPR = commandArgs(TRUE)[1] %or% "expr/COAD"
+TISSUE = sub("expr/", "", EXPR)
 
 ranks = function(x) {
     re = sort(x)
@@ -25,5 +26,5 @@ rownames(expr_df) = 1:nrow(expr_df)
 
 for (sample in 1:nrow(expr_df))
     io$write_table(expr_df[sample,,drop=FALSE],
-                   file = io$file_path(TISSUE, expr_df$id[sample], ext=".txt"),
+                   file = io$file_path(EXPR, expr_df$id[sample], ext=".txt"),
                    sep = "\t")
