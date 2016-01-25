@@ -25,4 +25,5 @@ $(SAMPLE_DIRS): %/.dirstamp: preprocess_expr.r proteins.txt
 	touch $*/.dirstamp
 
 $(PATHS): path/%.txt: expr/%.txt
+	mkdir -p $(dir $@)
 	$(call bsub,10240) -oo $@ paradigm -m 10 -c config.txt -p SuperPathway.txt -b expr/$*
