@@ -31,10 +31,8 @@ tissue2scores = function(tissue, genesets) {
 }
 
 # load pathway gene sets
-# COADREAD includes all COAD + additional READ
 genesets = io$load(INFILE)
-tissues = c("BLCA", "BRCA", "CESC", "ESCA", "HNSC", "COADREAD",
-            "KIRC", "LIHC", "LUAD", "LUSC", "PAAD")
+tissues = import('../../config')$tcga$tissues
 
 # run pathifier in jobs
 result = hpc$Q(tissue2scores, tissue=tissues,
