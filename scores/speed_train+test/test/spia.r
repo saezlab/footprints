@@ -7,8 +7,7 @@ record2pathway = function(rec, exp, lookup) {
     rownames(exp) = lookup$entrezgene[match(rownames(exp), lookup$hgnc_symbol)]
     exp = limma::avereps(exp[!is.na(rownames(exp)),])
 
-    result = spia$spia(exp[,rec$perturbed], exp[,rec$control], per_sample=FALSE,
-                       pathids=spia$speed2kegg, verbose=TRUE)
+    result = spia$spia(exp[,rec$perturbed], exp[,rec$control], pathids=spia$speed2kegg)
 
 #    # if per_sample=TRUE
 #    colnames(result) = spia$kegg2speed[colnames(result)]

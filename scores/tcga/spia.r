@@ -26,7 +26,7 @@ tissue2scores = function(tissue) {
     tumors = expr[,!is_normal]
     normals = expr[,is_normal]
 
-    spia$spia(tumors, normals, per_sample=TRUE, pathids=spia$speed2kegg, verbose=TRUE)
+    spia$spia_per_sample(tumors, normals, pathids=spia$speed2kegg)
 }
 
 # load pathway gene sets

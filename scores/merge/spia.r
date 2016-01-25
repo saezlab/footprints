@@ -21,7 +21,7 @@ tissue2scores = function(tissue, EXPR, spia, lookup) {
     tumors = e(t(io$h5load(EXPR, "/expr", index=which(tissues == tissue))))
     normals = e(t(io$h5load(EXPR, "/expr", index=which(tissues == paste0(tissue, "_N")))))
 
-    spia$spia(tumors, normals, per_sample=TRUE, pathids=spia$speed2kegg, verbose=TRUE)
+    spia$spia_per_sample(tumors, normals, pathids=spia$speed2kegg)
 }
 
 # load pathway gene sets and tissues
