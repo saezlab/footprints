@@ -4,7 +4,6 @@ ar = import('array')
 tcga = import('data/tcga')
 
 TISSUE = commandArgs(TRUE)[1] %or% "COAD"
-OUTFILE = commandArgs(TRUE)[2] %or% "paradigm_COAD_expr.txt"
 
 ranks = function(x) {
     re = sort(x)
@@ -24,4 +23,7 @@ expr_df = cbind(id = rownames(expr),
                 as.data.frame(expr))
 rownames(expr_df) = 1:nrow(expr_df)
 
-io$write_table(expr_df, file=OUTFILE, sep="\t")
+for (sample in 1:nrow(expr_df))
+    io$write_table(expr_df[sample,,drop=FALSE],
+                   file = io$file_path(TISSUE, expr_df$id[sample], ext=".txt"),
+                   sep = "\t")
