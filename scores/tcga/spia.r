@@ -30,9 +30,7 @@ tissue2scores = function(tissue) {
 }
 
 # load pathway gene sets
-# COADREAD includes all COAD + additional READ
-tissues = c("BLCA", "BRCA", "CESC", "ESCA", "HNSC", "COADREAD",
-            "KIRC", "LIHC", "LUAD", "LUSC", "PAAD")
+tissues = import('../../config')$tcga$tissues
 
 # run spia in jobs and save
 result = hpc$Q(tissue2scores, tissue=tissues,
