@@ -22,17 +22,17 @@ sample2scores = function(sample, expr, tissues, genesets) {
     pathifier = import_package('pathifier')
 
     sample_tissue = tissues[sample]
-	other_tissue = setdiff(names(tissues)[tissues == sample_tissue] sample)
+    other_tissue = setdiff(names(tissues)[tissues == sample_tissue], sample)
+    data = expr[,c(sample, other_tissue)]
 
     result = pathifier$quantify_pathways_deregulation(
-        data = expr,
-        allgenes = rownames(expr),
+        data = data,
+        allgenes = rownames(data),
         syms = genesets,
         pathwaynames = names(genesets),
-        normals = tissues != sample_tissue,
         attempts = 100,
-        min_exp = -Inf,
-        min_std = 0.01
+        min_exp = 4,
+        min_std = 0.4
     )
 }
 
