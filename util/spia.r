@@ -72,7 +72,18 @@ spia_per_sample = function(samples, controls, data=NULL, organism="hsa",
     b = import('base')
     ar = import('array')
 
-    sapply(colnames(samples), spia, controls=controls, data=data,
+# better:
+#    samples = ar$split(samples, along=-1)
+# this should work for both character vectors and 
+# just needs to support "last dimension" (-1) for splitting
+    if (is.null(data)) {
+        stopifnot(is.matrix(samples) && is.matrix(controls))
+        data = cbind(samples, controls)
+        samples = colnames(samples)
+        controls = colnames(controls)
+    }
+
+    sapply(samples, spia, controls=controls, data=data,
            simplify=FALSE, USE.NAMES=TRUE) %>%
         ar$stack(along=1)
 }
