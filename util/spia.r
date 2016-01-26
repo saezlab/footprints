@@ -15,13 +15,15 @@ spia = function(samples, controls, data=NULL, organism="hsa",
     b = import('base')
     dplyr = import_package('dplyr')
     limma = import_package('limma')
-    spia = import_package('SPIA')
+    spia_pkg = import_package('SPIA')
 
     if (is.null(data)) {
+        samples = as.matrix(samples)
+        controls = as.matrix(controls)
         data = cbind(samples, controls)
         types = c(rep("sample", ncol(samples)), rep("control", ncol(controls)))
     } else {
-        data = data[,c(samples controls), drop=FALSE]
+        data = data[,c(samples, controls), drop=FALSE]
         types = c(rep("sample", length(samples)), rep("control", length(controls)))
     }
 
@@ -38,7 +40,7 @@ spia = function(samples, controls, data=NULL, organism="hsa",
         dplyr$mutate(adj.p = p.adjust(p.value, method="fdr"))
 
     # calculate SPIA scores (relevant fields: Name [KEGG name], ID [KEGG ID], tA [score])
-    re = spia$spia(
+    re = spia_pkg$spia(
         de = setNames(result$fold_change, result$gene)[result$adj.p < p_filter],
         all = result$gene,
         organism = organism,
