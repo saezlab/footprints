@@ -2,44 +2,51 @@ b = import('base')
 io = import('io')
 ar = import('array')
 spia = import('../../util/spia')
+tcga = import('data/tcga')
+gdsc = import('data/gdsc')
 hpc = import('hpc')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/reactome.RData"
-EXPR = commandArgs(TRUE)[2] %or% "../../util/expr_cluster/corrected_expr.h5"
-OUTFILE = commandArgs(TRUE)[3] %or% "spia.RData"
+EXPR = commandArgs(TRUE)[1] %or% "../../util/expr_cluster/corrected_expr.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "spia.RData"
 
-tissue2scores = function(tissue, EXPR, spia, lookup) {
-    io = import('io')
+#' Calculates SPIA scores for one sample vs tissue-matched normals
+#'
+#' @param sample  A character ID of the sample to compute scores for
+#' @param expr    An expression matrix with [genes x samples]
+#' @param index   A data.frame with at least the fields `id`, `tissue`
+#'                (TCGA tissue identifier), and `type` (normal vs tumor)
+#' @param spia    A loaded `spia` module to keep the paths form master
+#'                (this should not be required with zmq `hpc` module)
+sample2scores = function(sample, expr, index, spia) {
+    library(dplyr)
 
-    # convert hgnc to entrez
-    e = function(data) {
-        rownames(data) = lookup$entrezgene[match(rownames(data), lookup$hgnc_symbol)]
-        limma::avereps(data[!is.na(rownames(data)),])
-    }
+    sample_tissue = filter(index, id==sample)$tissue
+    tissue_normals = index %>%
+        filter(tissue == sample_tissue & grepl("[nN]ormal", type))
 
-    tissues = io$h5load(EXPR, "/tissue")
-    tumors = e(t(io$h5load(EXPR, "/expr", index=which(tissues == tissue))))
-    normals = e(t(io$h5load(EXPR, "/expr", index=which(tissues == paste0(tissue, "_N")))))
-
-    spia$spia_per_sample(tumors, normals, pathids=spia$speed2kegg)
+    spia$spia(sample, tissue_normals$id, data=expr, pathids=spia$speed2kegg)
 }
 
 # load pathway gene sets and tissues
-EXPR = tools:::file_path_as_absolute(EXPR)
-genesets = io$load(INFILE)
-tissues = io$h5load(EXPR, "/tissue")
-tissues = sub("_N", "", unique(tissues[grepl("_N", tissues)]))
+data = io$load(EXPR)
+expr = data$expr
+index = data$index
+samples = filter(index, !grepl("[nN]ormal", type))$id
 
-# HGNC -> entrez gene lookup
+# map gene expression from HGNC to Entrez IDs
 lookup = biomaRt::useMart(biomart="ensembl", dataset="hsapiens_gene_ensembl") %>%
     biomaRt::getBM(attributes=c("hgnc_symbol", "entrezgene"),
-    filter="hgnc_symbol", values=io$h5names(EXPR, "/expr")[[2]], mart=.)
+    filter="hgnc_symbol", values=rownames(expr), mart=.)
+rownames(expr) = lookup$entrezgene[match(rownames(expr), lookup$hgnc_symbol)]
+expr = limma::avereps(expr[!is.na(rownames(expr)),])
 
 # run spia in jobs and save
-result = hpc$Q(tissue2scores, tissue=tissues,
-    const=list(EXPR=EXPR, spia=spia, lookup=lookup), memory=8192, n_jobs=length(tissues))
+result = hpc$Q(sample2scores, sample=samples,
+               const=list(expr=expr, index=index, spia=spia),
+               memory=8192, n_jobs=50) %>%
+    setNames(samples) %>%
+    ar$stack(along=1)
 
-result = ar$stack(result, along=1)
 colnames(result) = spia$kegg2speed[colnames(result)]
 
 save(result, file=OUTFILE)

@@ -14,13 +14,13 @@ all: $(SPEED_SCORES) pathifier.RData spia.RData #rppa.RData $(SETSCORES) $(SPEED
 rppa.RData: rppa.r
 	Rscript $<
 
-pathifier.RData: pathifier.r ../../util/genesets/reactome.RData ../../util/expr_cluster/corrected_expr.h5
+pathifier.RData: pathifier.r ../../util/genesets/reactome.RData ../../util/expr_cluster/corrected_expr.RData
 	Rscript $^ $@
 
-spia.RData: spia.r ../../util/genesets/reactome.RData ../../util/expr_cluster/corrected_expr.h5
+spia.RData: spia.r ../../util/expr_cluster/corrected_expr.RData
 	Rscript $^ $@
 
-speed_%.RData: speed.r ../../model/model_%.RData ../../util/expr_cluster/corrected_expr.h5
+speed_%.RData: speed.r ../../model/model_%.RData ../../util/expr_cluster/corrected_expr.RData
 	$(call bsub_log,4096) Rscript $< $(word 2,$^) $(word 3,$^) $@
 
 #%.RData: set_enrichment.r ../../util/genesets/%.RData ../../data/zscores.RData

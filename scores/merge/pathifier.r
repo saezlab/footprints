@@ -1,49 +1,58 @@
-tissue2scores = function(tissue, genesets, EXPR) {
-    io = import('io')
-    pathifier = import_package('pathifier')
-
-    tissues = io$h5load(EXPR, "/tissue")
-    tumors = t(io$h5load(EXPR, "/expr", index=which(tissues == tissue)))
-    normals = t(io$h5load(EXPR, "/expr", index=which(tissues == paste0(tissue, "_N"))))
-    data = cbind(tumors, normals)
-
-    result = pathifier$quantify_pathways_deregulation(
-        data = data,
-        allgenes = rownames(tumors),
-        syms = genesets,
-        pathwaynames = names(genesets),
-        normals = c(rep(FALSE, ncol(tumors)), rep(TRUE, ncol(normals))),
-        attempts = 100,
-        min_exp = -Inf,
-        min_std = 0.4
-    )
-
-    re = do.call(cbind, lapply(result$scores, c))
-    rownames(re) = colnames(data)
-    re
-}
-
+library(dplyr)
 b = import('base')
 io = import('io')
 ar = import('array')
 hpc = import('hpc')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/reactome.RData"
-EXPR = commandArgs(TRUE)[2] %or% "../../util/expr_cluster/corrected_expr.h5"
+EXPR = commandArgs(TRUE)[2] %or% "../../util/expr_cluster/corrected_expr.RData"
 OUTFILE = commandArgs(TRUE)[3] %or% "pathifier.RData"
 
-# load pathway gene sets
-genesets = io$load(INFILE)
+#' Calculates Pathifier scores for one sample vs tissue-matched normals
+#'
+#' @param sample    A character ID of the sample to compute scores for
+#' @param expr      An expression matrix with [genes x samples]
+#' @param index     A data.frame with at least the fields `id`, `tissue`
+#'                  (TCGA tissue identifier), and `type` (normal vs tumor)
+#' @param genesets  A list of character vectors corresponding to
+#'                  gene sets (e.g. pathways for pathway scores)
+sample2scores = function(sample, expr, index, genesets) {
+    library(dplyr)
+    io = import('io')
+    pathifier = import_package('pathifier')
 
-# get all tissues which have a normal
-tissues = io$h5load(EXPR, "/tissue")
-tissues = sub("_N", "", unique(tissues[grepl("_N", tissues)]))
+    sample_tissue = filter(index, id==sample)$tissue
+    tissue_normals = index %>%
+        filter(tissue == sample_tissue & grepl("[nN]ormal", type))
+
+	data = cbind(expr[,sample,drop=FALSE], expr[,tissue_normals$id])
+
+    result = pathifier$quantify_pathways_deregulation(
+        data = data,
+        allgenes = rownames(data),
+        syms = genesets,
+        pathwaynames = names(genesets),
+        normals = c(FALSE, rep(TRUE, nrow(tissue_normals))),
+        attempts = 100,
+        min_exp = -Inf,
+        min_std = 0.4
+    )
+}
+
+# load pathway gene sets and tissues
+genesets = io$load(INFILE)
+data = io$load(EXPR)
+expr = data$expr
+index = data$index
+
+samples = filter(index, !grepl("[nN]ormal", type))$id
 
 # run pathifier in jobs
-result = hpc$Q(tissue2scores, tissue=tissues,
-    const=list(EXPR=EXPR, genesets=genesets), memory=8192, n_jobs=length(tissues))
-
-result = ar$stack(result, along=1)
+result = hpc$Q(sample2scores, sample=samples,
+               const=list(expr=expr, index=index, genesets=genesets),
+               memory=8192, n_jobs=50) %>%
+    setNames(samples) %>%
+    ar$stack(along=1)
 
 # save results
 save(result, file=OUTFILE)

@@ -4,13 +4,13 @@ io = import('io')
 ar = import('array')
 tcga = import('data/tcga')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../model/model_linear.RData"
-EXPR = commandArgs(TRUE)[2] %or% "../../util/expr_cluster/corrected_expr.h5"
+INFILE = commandArgs(TRUE)[1] %or% "../../model/model_matrix.RData"
+EXPR = commandArgs(TRUE)[2] %or% "../../util/expr_cluster/corrected_expr.RData"
 OUTFILE = commandArgs(TRUE)[3] %or% "speed.RData"
 
 # load vectors
 vecs = io$load(INFILE)
-expr = t(io$h5load(EXPR, "/expr"))
+expr = io$load(EXPR)$expr
 ar$intersect(vecs, expr, along=1)
 
 scores = t(expr) %*% vecs %>%
