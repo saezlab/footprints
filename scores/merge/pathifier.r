@@ -4,6 +4,13 @@ io = import('io')
 ar = import('array')
 hpc = import('hpc')
 
+#FIXME:
+# it looks like pathifier is unable to calculated the score for individual
+# samples (as SPIA or paradigm do).
+# for this, we most likely have to move back to tissue-level model
+# building which requires a rewrite of this routine again
+# (status: deferred, want to get some GDSC-only approach working)
+
 INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/reactome.RData"
 EXPR = commandArgs(TRUE)[2] %or% "../../util/expr_cluster/corrected_expr.RData"
 OUTFILE = commandArgs(TRUE)[3] %or% "pathifier.RData"

@@ -43,9 +43,10 @@ expr = limma::avereps(expr[!is.na(rownames(expr)),])
 # run spia in jobs and save
 result = hpc$Q(sample2scores, sample=samples,
                const=list(expr=expr, index=index, spia=spia),
-               memory=8192, n_jobs=50) %>%
+               memory=8192, n_jobs=100) %>%
     setNames(samples) %>%
-    ar$stack(along=1)
+    ar$stack(along=1) %>%
+    ar$map(along=1, scale)
 
 colnames(result) = spia$kegg2speed[colnames(result)]
 
