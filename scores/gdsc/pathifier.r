@@ -44,12 +44,15 @@ expr = t(expr)
 
 samples = names(tissues) # COSMIC IDs
 
-# run pathifier in jobs
-result = hpc$Q(pathifier_per_sample, sample=samples[1:5],
-               const=list(tissues=tissues, genesets=genesets, expr=expr),
-               memory=8192, n_jobs=5) %>%
-    setNames(tissues) %>%
-    ar$stack(along=1)
+#TODO: remove this, update n_jobs
+samples = sample(samples, 20)
 
-# save results
-save(result, file=OUTFILE)
+# run pathifier in jobs
+result = hpc$Q(pathifier_per_sample, sample=samples,
+               const=list(tissues=tissues, genesets=genesets, expr=expr),
+               memory=8192, n_jobs=10) #%>%
+#    setNames(tissues) %>%
+#    ar$stack(along=1)
+#
+## save results
+#save(result, file=OUTFILE)

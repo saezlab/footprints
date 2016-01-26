@@ -25,13 +25,16 @@ expr = t(expr)
 
 samples = names(tissues) # COSMIC IDs
 
-# run spia in jobs and save
-result = hpc$Q(spia_per_sample, sample=samples[1:10],
-               const=list(tissues=tissues, expr=expr),
-               memory=8192, n_jobs=1) #%>%
-#    ar$stack(along=1)
+#FIXME: figure out why we don't get results for SPIA
+#  might need to get TCGA normals, but I'd like to avoid that in order to be fair
+#TODO: remove this, update n_jobs
+samples = sample(samples, 20)
 
-#FIXME: this fails for all cell lines
+# run spia in jobs and save
+result = hpc$Q(spia_per_sample, sample=samples,
+               const=list(tissues=tissues, expr=expr),
+               memory=8192, n_jobs=10) #%>%
+#    ar$stack(along=1)
 
 #colnames(result) = spia$kegg2speed[colnames(result)]
 
