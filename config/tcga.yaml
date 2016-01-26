@@ -23,3 +23,18 @@ tissues:
  - MESO
  - OV
  - PAAD
+
+# these are tisses that have normals in the tcga
+tissues_with_normals:
+ - BLCA
+ - BRCA
+ - CESC
+ - COAD
+ - COADREAD
+ - ESCA
+ - HNSC
+ - KIRC
+ - LIHC
+ - LUAD
+ - LUSC
+ - PAAD
