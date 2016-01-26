@@ -21,14 +21,16 @@ sample2scores = function(sample_tissue, expr, tissues, genesets) {
     io = import('io')
     pathifier = import_package('pathifier')
 
+    data = expr[, tissues==sample_tissue]
+
+    # run for our pathways with default settings
     result = pathifier$quantify_pathways_deregulation(
-        data = expr,
+        data = data,
         allgenes = rownames(expr),
         syms = genesets,
         pathwaynames = names(genesets),
-        normals = tissues != sample_tissue,
         attempts = 100,
-        min_exp = -Inf,
+        min_exp = 4,
         min_std = 0.4
     )
 
@@ -40,7 +42,7 @@ sample2scores = function(sample_tissue, expr, tissues, genesets) {
 # load pathway gene sets and tissues
 genesets = io$load(INFILE)
 expr = gdsc$basal_expression()
-tissues = gdsc$tissues()
+tissues = gdsc$tissues(minN=10)
 expr = t(expr) # this should work with along=-1
 ar$intersect(tissues, expr, along=1)
 expr = t(expr)
@@ -51,7 +53,6 @@ sample_tissues = unique(tissues)
 result = hpc$Q(sample2scores, sample_tissue=sample_tissues,
                const=list(expr=expr, tissues=tissues, genesets=genesets),
                memory=8192, n_jobs=length(sample_tissues)) %>%
-    setNames(samples) %>%
     ar$stack(along=1)
 
 # save results

@@ -20,7 +20,7 @@ gsea_%.RData: set_enrichment.r ../../util/genesets/%.RData
 	$(call bsub_log,1024) Rscript $^ $@
 
 spia.RData: spia.r
-	Rscript $< $@
+	Rscript $^ $@
 
 pathifier.RData: pathifier.r ../../util/genesets/reactome.RData
-	Rscript $< $@
+	Rscript $^ $@
