@@ -1,0 +1,19 @@
+# tissues where we have both normals and tumors on the TCGA side
+# and cell lines on the GDSC side
+tissues:
+ - BLCA
+ - BRCA
+ - CESC
+ - COREAD # COADREAD in TCGA
+ - GBM
+ - HNSC
+ - KIRC
+ - LAML
+ - LGG
+ - LIHC
+ - LUAD
+ - LUSC
+ - OV
+ - PAAD
+# - SKCM # somehow fails to cluster?
+# - THCA # somehow fails to cluster?

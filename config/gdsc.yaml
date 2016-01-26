@@ -1,0 +1,28 @@
+# all TCGA-equivalent tissues in the GDSC panel that
+# have at least 10 cell lines
+tissues:
+ - ALL
+ - BLCA
+ - BRCA
+ - CESC
+ - COREAD
+ - DLBC
+ - ESCA
+ - GBM
+ - HNSC
+ - KIRC
+ - LAML
+ - LCML
+ - LGG
+ - LIHC
+ - LUAD
+ - LUSC
+ - MESO
+ - MM
+ - NB
+ - OV
+ - PAAD
+ - SCLC
+ - SKCM
+ - STAD
+ - THCA

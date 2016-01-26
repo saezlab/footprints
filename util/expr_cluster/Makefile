@@ -1,6 +1,6 @@
 include ../../Makefile.inc
 
-TISSUES = BLCA BRCA CESC COREAD GBM HNSC KIRC LAML LGG LIHC LUAD LUSC OV PAAD #SKCM THCA fail?!
+TISSUES = $(shell ../../config/get.sh merge/tissues)
 
 all: corrected_expr.h5 speed_cluster.RData expr_cluster.RData
 

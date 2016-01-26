@@ -4,8 +4,8 @@ tissues:
  - BRCA
  - CESC
  - CHOL
-# - COADREAD exclude: merge of COAD and READ
- - COAD
+ - COADREAD # includes all COAD and additional READ
+# - COAD
  - DLBC
  - ESCA
 # - GBMLGG exclude: merge between GBM and LGG
