@@ -17,3 +17,18 @@ tissues:
  - PAAD
 # - SKCM # somehow fails to cluster?
 # - THCA # somehow fails to cluster?
+
+# these are all the tissues we have clustered expression (tumors and cell lines)
+# and normals for
+tissues_with_normals:
+ - BLCA
+ - BRCA
+ - CESC
+ - COREAD
+ - ESCA
+ - HNSC
+ - KIRC
+ - LIHC
+ - LUAD
+ - LUSC
+ - PAAD
