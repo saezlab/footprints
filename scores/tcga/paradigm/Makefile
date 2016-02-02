@@ -11,6 +11,7 @@ all: paths
 
 expr: $(SAMPLE_DIRS)
 
+# see: http://stackoverflow.com/questions/554742/reevaluate-makefile-variables
 paths: expr
 	$(MAKE) $(PATHS)
 

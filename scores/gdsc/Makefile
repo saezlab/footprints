@@ -24,3 +24,6 @@ spia.RData: spia.r
 
 pathifier.RData: pathifier.r ../../util/genesets/reactome.RData
 	Rscript $^ $@
+
+paradigm.RData: paradigm.r
+	Rscript $^ $@
