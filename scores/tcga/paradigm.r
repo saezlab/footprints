@@ -29,6 +29,7 @@ file2pathways = function(fname) {
 
 scores = lapply(files, file2pathways) %>%
     setNames(sub("\\.txt", "", basename(files))) %>%
-    ar$stack(along=1)
+    ar$stack(along=1) %>%
+    na.omit() # removes 5 samples of > 7000
 
 save(scores, file="paradigm.RData")
