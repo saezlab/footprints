@@ -14,7 +14,7 @@ plt = import('plot')
 tcga = import('data/tcga')
 surv = import('../analyses/tcga_survival/util')
 
-scores = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia') %>%
+scores = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia', 'paradigm') %>%
     sapply(surv$load, simplify=FALSE, USE.NAMES=TRUE)
 
 assocs.pan = scores %>%
@@ -49,7 +49,10 @@ p1 = assocs.pan %>%
     mutate(label = ifelse(adj.p < 0.05, "*", "")) %>%
     mutate(label = ifelse(adj.p < 1e-5, "**", label)) %>%
     mutate(label = ifelse(adj.p < 1e-10, "***", label)) %>%
-    plt$matrix(statistic ~ method + scores, color="statistic", limits=c(-lmax,lmax))
+    plt$matrix(statistic ~ method + scores,
+               color = "statistic",
+               limits = c(-lmax,lmax),
+               reverse_colors = TRUE)
 print(p1)
 ```
 
