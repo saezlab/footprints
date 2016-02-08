@@ -85,8 +85,13 @@ summary_df = function(mydf) {
     mydf %>%
         filter(ind %in% c("path+_wt", "path-_wt", "path+_mut", "path-_mut")) %>%
         wilcox.test(resp ~ ind, data=.) %$%
-        p.value %>%
-        print()
+        message(paste("p-value wilcox:" , as.character(.$p.value)))
+
+    mydf %>%
+        filter(ind %in% c("path+_wt", "path-_wt", "path+_mut", "path-_mut")) %>%
+        group_by(ind) %>%
+        summarize(median = median(resp)) %$%
+        message(paste("median difference (fold):", 10*(.$median[2] - .$median[1])))
 }
 
 MEKi_MAPK = gen_subsets("MAPK", c("NRAS", "KRAS", "BRAF"))
@@ -176,7 +181,8 @@ load_fun = function(fname) {
                method = fname)
 }
 
-methods = c("mutation", "speed_matrix", "gsea_reactome", "gsea_go")
+# paradigm not included because strongest pancan association 39% FDR
+methods = c("mutation", "speed_matrix", "gsea_reactome", "gsea_go", "spia", "pathifier")
 
 resp = methods %>%
     lapply(load_fun) %>%
