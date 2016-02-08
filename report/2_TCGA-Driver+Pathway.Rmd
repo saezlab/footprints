@@ -53,7 +53,7 @@ mut = io$read_table(MUTFILE, header=TRUE) %>%
     mutate(has_mut = 1) %>%
     ar$construct(has_mut ~ sample + hgnc, data=., fill=0, function(x) x[1])
 
-scores = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia') %>%
+scores = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia', 'paradigm') %>%
     sapply(load_fun, simplify=FALSE, USE.NAMES=TRUE)
 
 result = scores %>%
