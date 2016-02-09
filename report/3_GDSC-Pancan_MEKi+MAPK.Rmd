@@ -90,7 +90,7 @@ summary_df = function(mydf) {
     mydf %>%
         filter(ind %in% c("path+_wt", "path-_wt", "path+_mut", "path-_mut")) %>%
         wilcox.test(resp ~ ind, data=.) %$%
-        message(paste("p-value wilcox:" , as.character(.$p.value)))
+        message(paste("p-value wilcox:" , as.character(p.value)))
 
     # also report the ratio of medians, because the W statistic is hard
     # to interpret
@@ -98,7 +98,7 @@ summary_df = function(mydf) {
         filter(ind %in% c("path+_wt", "path-_wt", "path+_mut", "path-_mut")) %>%
         group_by(ind) %>%
         summarize(median = median(resp)) %$%
-        message(paste("median difference (fold):", 10^(.$median[2] - .$median[1])))
+        message(paste("median difference (fold):", 10^(median[2] - median[1])))
 }
 
 MEKi_MAPK = gen_subsets("MAPK", c("NRAS", "KRAS", "BRAF"))
