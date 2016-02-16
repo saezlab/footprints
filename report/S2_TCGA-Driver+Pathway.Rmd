@@ -69,7 +69,7 @@ result_nocov = scores %>%
 
 # What Pathway Methods can capture, within tissues
 
-```{r capture, echo=FALSE, fig.width=4}
+```{r capture, echo=FALSE}
 keep = result %>%
     group_by(m) %>%
     summarize(mlogp = -sum(log10(adj.p))) %>%
@@ -82,15 +82,18 @@ p = result %>%
     group_by(m, method) %>%
     summarize(mlogp = -sum(log10(adj.p))) %>%
     filter(m %in% keep) %>%
+    ungroup() %>%
+    mutate(m = b$refactor(m, -mlogp)) %>%
     ggplot(aes(x=m, y=mlogp, fill=method)) +
         geom_bar(stat="identity") +
         theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
         geom_hline(aes(yintercept=-log10(0.05) * n_methods), linetype="dotted")
+print(p)
 ```
 
 # What Pathway Methods can capture, between tissues
 
-```{r capture, echo=FALSE, fig.width=4}
+```{r capture_nocov, echo=FALSE}
 keep_nocov = result_nocov %>%
     group_by(m) %>%
     summarize(mlogp = -sum(log10(adj.p))) %>%
@@ -101,10 +104,13 @@ p = result_nocov %>%
     group_by(m, method) %>%
     summarize(mlogp = -sum(log10(adj.p))) %>%
     filter(m %in% keep_nocov) %>%
+    ungroup() %>%
+    mutate(m = b$refactor(m, -mlogp)) %>%
     ggplot(aes(x=m, y=mlogp, fill=method)) +
         geom_bar(stat="identity") +
         theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
         geom_hline(aes(yintercept=-log10(0.05) * n_methods), linetype="dotted")
+print(p)
 ```
 
 
