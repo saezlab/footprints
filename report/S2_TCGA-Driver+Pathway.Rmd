@@ -4,6 +4,7 @@ author: "Michael Schubert (schubert@ebi.ac.uk)"
 ---
 
 ```{r setup, include=FALSE}
+library(magrittr)
 b = import('base')
 io = import('io')
 st = import('stats')
@@ -13,8 +14,6 @@ plt = import('plot')
 tcga = import('data/tcga')
 
 MUTFILE = "../analyses/tcga_pathway_per_mutation/mutations_annotated_pathwayactivities_v3_mikeformat.txt"
-
-#TODO: %each>% || %>>% operator?
 
 #' Loads a specific TCGA scores file
 #' supplies path and extension, and cuts rownames at 16 chars
@@ -52,9 +51,9 @@ mut = io$read_table(MUTFILE, header=TRUE) %>%
               sample = substr(Tumor_Sample_Barcode, 1, 16)) %>%
     mutate(has_mut = 1) %>%
     ar$construct(has_mut ~ sample + hgnc, data=., fill=0, function(x) x[1])
-mut = mut[,c("TP53", "VHL", "KRAS", "NRAS", "EGFR", "PIK3CA")]
+#mut = mut[,c("TP53", "VHL", "KRAS", "NRAS", "EGFR", "PIK3CA", "STK11")]
 
-scores = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia') %>%
+scores = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia', 'pathifier') %>%
     sapply(load_fun, simplify=FALSE, USE.NAMES=TRUE)
 
 result = scores %>%
@@ -67,6 +66,47 @@ result_nocov = scores %>%
     df$add_name_col("method") %>%
     bind_rows()
 ```
+
+# What Pathway Methods can capture, within tissues
+
+```{r capture, echo=FALSE, fig.width=4}
+keep = result %>%
+    group_by(m) %>%
+    summarize(mlogp = -sum(log10(adj.p))) %>%
+    top_n(10, mlogp) %$%
+    m
+
+n_methods = length(unique(result$method))
+
+p = result %>%
+    group_by(m, method) %>%
+    summarize(mlogp = -sum(log10(adj.p))) %>%
+    filter(m %in% keep) %>%
+    ggplot(aes(x=m, y=mlogp, fill=method)) +
+        geom_bar(stat="identity") +
+        theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+        geom_hline(aes(yintercept=-log10(0.05) * n_methods), linetype="dotted")
+```
+
+# What Pathway Methods can capture, between tissues
+
+```{r capture, echo=FALSE, fig.width=4}
+keep_nocov = result_nocov %>%
+    group_by(m) %>%
+    summarize(mlogp = -sum(log10(adj.p))) %>%
+    top_n(10, mlogp) %$%
+    m
+
+p = result_nocov %>%
+    group_by(m, method) %>%
+    summarize(mlogp = -sum(log10(adj.p))) %>%
+    filter(m %in% keep_nocov) %>%
+    ggplot(aes(x=m, y=mlogp, fill=method)) +
+        geom_bar(stat="identity") +
+        theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+        geom_hline(aes(yintercept=-log10(0.05) * n_methods), linetype="dotted")
+```
+
 
 # Overview of number of driver mutations per cancer type
 
@@ -133,7 +173,7 @@ print(p1)
 ## STK11
 
 ```{r stk11, echo=FALSE, fig.width=4}
-cur = filter(result, m == "PIK3CA")
+cur = filter(result, m == "STK11")
 lmax = max(abs(cur$statistic))
 p1 = cur %>%
     mutate(label = ifelse(adj.p < 1e-3, "*", "")) %>%
