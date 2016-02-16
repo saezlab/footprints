@@ -12,52 +12,21 @@ ar = import('array')
 df = import('data_frame')
 plt = import('plot')
 tcga = import('data/tcga')
+util = import('./util_2')
 
 MUTFILE = "../analyses/tcga_pathway_per_mutation/mutations_annotated_pathwayactivities_v3_mikeformat.txt"
-
-#' Loads a specific TCGA scores file
-#' supplies path and extension, and cuts rownames at 16 chars
-#'
-#' @param x  An identifier, like 'speed_matrix'
-#' @return   A matrix with samples as rows and genes and columns
-load_fun = function(x) {
-    re = io$file_path("../scores/tcga", x, ext=".RData") %>%
-        io$load()
-    rownames(re) = substr(rownames(re), 1, 16)
-    re
-}
-
-#' Calculates pathway score associations per mutation
-#'
-#' @param s  A score matrix, sample IDs x pathways
-#' @param m  A mutation matrix, sample IDs x genes
-#' @return   A data.frame with the results for all pathways and mutations
-lm_fun = function(s, m, study_covar=TRUE) {
-    ar$intersect(m, s, along=1)
-    study = tcga$barcode2study(rownames(m))
-    if (study_covar)
-        lm_result = st$lm(s ~ study + m)
-    else
-        lm_result = st$lm(s ~ m)
-
-    lm_result %>%
-        filter(!grepl("study", term)) %>%
-        select(-term) %>%
-        mutate(adj.p = p.adjust(p.value, method="fdr"))
-}
 
 mut = io$read_table(MUTFILE, header=TRUE) %>%
     transmute(hgnc = GENE_NAME,
               sample = substr(Tumor_Sample_Barcode, 1, 16)) %>%
     mutate(has_mut = 1) %>%
     ar$construct(has_mut ~ sample + hgnc, data=., fill=0, function(x) x[1])
-#mut = mut[,c("TP53", "VHL", "KRAS", "NRAS", "EGFR", "PIK3CA", "STK11")]
 
-scores = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia', 'pathifier') %>%
-    sapply(load_fun, simplify=FALSE, USE.NAMES=TRUE)
+scores = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia', 'paradigm') %>%
+    sapply(util$load_fun, simplify=FALSE, USE.NAMES=TRUE)
 
 result = scores %>%
-    sapply(lm_fun, m=mut, simplify=FALSE, USE.NAMES=TRUE) %>%
+    sapply(util$lm_fun, m=mut, simplify=FALSE, USE.NAMES=TRUE) %>%
     df$add_name_col("method") %>%
     bind_rows()
 
@@ -73,129 +42,32 @@ result_nocov = scores %>%
 keep = result %>%
     group_by(m) %>%
     summarize(mlogp = -sum(log10(adj.p))) %>%
-    top_n(10, mlogp) %$%
+    arrange(-mlogp) %>%
+    top_n(15, mlogp) %$%
     m
 
-n_methods = length(unique(result$method))
+util$mutation_overview_plot(result, keep)
+```
 
-p = result %>%
-    group_by(m, method) %>%
-    summarize(mlogp = -sum(log10(adj.p))) %>%
-    filter(m %in% keep) %>%
-    ungroup() %>%
-    mutate(m = b$refactor(m, -mlogp)) %>%
-    ggplot(aes(x=m, y=mlogp, fill=method)) +
-        geom_bar(stat="identity") +
-        theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-        geom_hline(aes(yintercept=-log10(0.05) * n_methods), linetype="dotted")
-print(p)
+```{r detail, echo=FALSE, fig.width=15, fig.height=20}
+util$mutation_method_plots(result, keep, ncol=4, label_size=8)
 ```
 
 # What Pathway Methods can capture, between tissues
 
 ```{r capture_nocov, echo=FALSE}
-keep_nocov = result_nocov %>%
+keep = result_nocov %>%
     group_by(m) %>%
     summarize(mlogp = -sum(log10(adj.p))) %>%
-    top_n(10, mlogp) %$%
+    arrange(-mlogp) %>%
+    top_n(15, mlogp) %$%
     m
 
-p = result_nocov %>%
-    group_by(m, method) %>%
-    summarize(mlogp = -sum(log10(adj.p))) %>%
-    filter(m %in% keep_nocov) %>%
-    ungroup() %>%
-    mutate(m = b$refactor(m, -mlogp)) %>%
-    ggplot(aes(x=m, y=mlogp, fill=method)) +
-        geom_bar(stat="identity") +
-        theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-        geom_hline(aes(yintercept=-log10(0.05) * n_methods), linetype="dotted")
-print(p)
+util$mutation_overview_plot(result_nocov, keep)
+```
+
+```{r detail_nocov, echo=FALSE, fig.width=15, fig.height=20}
+util$mutation_method_plots(result_nocov, keep, ncol=4, label_size=8)
 ```
 
 
-# Overview of number of driver mutations per cancer type
-
-## TP53
-
-```{r tp53, echo=FALSE, fig.width=4}
-cur = filter(result, m == "TP53")
-lmax = max(abs(cur$statistic))
-p1 = cur %>%
-    mutate(label = ifelse(adj.p < 1e-5, "*", "")) %>%
-    mutate(label = ifelse(adj.p < 1e-15, "***", label)) %>%
-    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
-print(p1)
-```
-
-## KRAS
-
-```{r kras, echo=FALSE, fig.width=4}
-cur = filter(result, m == "KRAS")
-lmax = max(abs(cur$statistic))
-p1 = cur %>%
-    mutate(label = ifelse(adj.p < 0.05, "*", "")) %>%
-    mutate(label = ifelse(adj.p < 1e-3, "***", label)) %>%
-    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
-print(p1)
-```
-
-## NRAS
-
-```{r nras, echo=FALSE, fig.width=4}
-cur = filter(result, m == "NRAS")
-lmax = max(abs(cur$statistic))
-p1 = cur %>%
-    mutate(label = ifelse(adj.p < 0.2, "*", "")) %>%
-    mutate(label = ifelse(adj.p < 0.1, "***", label)) %>%
-    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
-print(p1)
-```
-
-## EGFR
-
-```{r egfr, echo=FALSE, fig.width=4}
-cur = filter(result, m == "EGFR")
-lmax = max(abs(cur$statistic))
-p1 = cur %>%
-    mutate(label = ifelse(adj.p < 0.2, "*", "")) %>%
-    mutate(label = ifelse(adj.p < 0.1, "***", label)) %>%
-    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
-print(p1)
-```
-
-## PIK3CA
-
-```{r pik3ca, echo=FALSE, fig.width=4}
-cur = filter(result, m == "PIK3CA")
-lmax = max(abs(cur$statistic))
-p1 = cur %>%
-    mutate(label = ifelse(adj.p < 0.05, "*", "")) %>%
-    mutate(label = ifelse(adj.p < 1e-3, "***", label)) %>%
-    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
-print(p1)
-```
-
-## STK11
-
-```{r stk11, echo=FALSE, fig.width=4}
-cur = filter(result, m == "STK11")
-lmax = max(abs(cur$statistic))
-p1 = cur %>%
-    mutate(label = ifelse(adj.p < 1e-3, "*", "")) %>%
-    mutate(label = ifelse(adj.p < 1e-5, "***", label)) %>%
-    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
-print(p1)
-```
-
-## VHL (without covariate)
-
-```{r vhl, echo=FALSE, fig.width=4}
-cur = filter(result_nocov, m == "VHL")
-lmax = max(abs(cur$statistic))
-p1 = cur %>%
-    mutate(label = ifelse(adj.p < 1e-5, "*", "")) %>%
-    mutate(label = ifelse(adj.p < 1e-20, "***", label)) %>%
-    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
-print(p1)
-```
