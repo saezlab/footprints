@@ -31,7 +31,7 @@ result = scores %>%
     bind_rows()
 
 result_nocov = scores %>%
-    sapply(lm_fun, m=mut, study_covar=FALSE, simplify=FALSE, USE.NAMES=TRUE) %>%
+    sapply(util$lm_fun, m=mut, study_covar=FALSE, simplify=FALSE, USE.NAMES=TRUE) %>%
     df$add_name_col("method") %>%
     bind_rows()
 ```
@@ -69,5 +69,3 @@ util$mutation_overview_plot(result_nocov, keep)
 ```{r detail_nocov, echo=FALSE, fig.width=15, fig.height=20}
 util$mutation_method_plots(result_nocov, keep, ncol=4, label_size=8)
 ```
-
-

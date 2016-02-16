@@ -66,7 +66,7 @@ mutation_method_plot = function(assoc_obj, gene) {
 mutation_overview_plot = function(assoc_obj, genes) {
     n_methods = length(unique(assoc_obj$method))
 
-    result %>%
+    assoc_obj %>%
         group_by(m, method) %>%
         summarize(mlogp = -sum(log10(adj.p))) %>%
         filter(m %in% genes) %>%
@@ -84,7 +84,7 @@ mutation_overview_plot = function(assoc_obj, genes) {
 #' @param genes      HGNC symbols of the gene (character vector)
 #' @param ...        Arguments passed to cowplot::plot_grid()
 mutation_method_plots = function(assoc_obj, genes, ...) {
-    plots = lapply(genes, function(x) mutation_method_plot(result, x))
+    plots = lapply(genes, function(x) mutation_method_plot(assoc_obj, x))
 #    for (i in seq(1, length(plots), ncol)) { # iterate every 2 for page breaks
 #        print(plot_grid(plotlist=plots[i:i+ncol], ncol=ncol, scale=scale))
 #        cat("\n")
