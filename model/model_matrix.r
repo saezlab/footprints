@@ -11,7 +11,7 @@ st = import('stats')
 #'
 #' @param zdata  A list with the zscore matrix and index object
 #' @return       The coefficients matrix [gene x pathway]
-zscore2model = function(zdata) {
+zscore2model = function(zdata, hpc_args=NULL) {
     index = zdata$index
     zscores = t(zdata$zscores) * index$sign
 
@@ -21,7 +21,7 @@ zscore2model = function(zdata) {
     pathway["TNFa",] = pathway["TNFa",] + pathway["NFkB",]
 
     mod = st$lm(zscores ~ 0 + pathway, data=index, min_pts=30, atomic="pathway",
-                hpc_args=list(n_jobs=10, memory=2048)) %>%
+                hpc_args=hpc_args) %>%
         transmute(gene = zscores,
                   pathway = sub("^pathway", "", term),
                   zscore = estimate,
@@ -45,7 +45,7 @@ if (is.null(module_name())) {
 
     # load speed data, index; filter for train set only
     zdata = io$load(ZDATA)
-    zfit = zscore2model(zdata)
+    zfit = zscore2model(zdata, hpc_args=list(n_jobs=10, memory=2048))
 
     # save resulting object
     save(zfit, file=OUTFILE)
