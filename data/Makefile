@@ -7,7 +7,7 @@ SCORES = $(YAML:new_index/%.yaml=scores/%.RData)
 
 .PHONY: scores normalize clean
 
-scores: zscores.RData
+all: zscores.RData
 
 expr: expr.RData
 
