@@ -1,0 +1,23 @@
+---
+id        : VEGF.E-GEOD-29368.1
+accession : E-GEOD-29368
+platform  : A-AFFY-44
+pathway   : VEGF
+cells     : fetal glial progenitor cells
+treatment : PDGFR neg vs pos
+effect    : activating
+hours     : 24 # steady state
+
+control   :
+    - GSM725973 1
+    - GSM725971 1
+    - GSM725968 1
+    - GSM725966 1
+    - GSM725964 1
+perturbed :
+    - GSM725972 1
+    - GSM725970 1
+    - GSM725969 1
+    - GSM725967 1
+    - GSM725965 1
+...
