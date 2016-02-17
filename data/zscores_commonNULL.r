@@ -1,3 +1,8 @@
+library(dplyr)
+b = import('base')
+io = import('io')
+ar = import('array')
+
 # for each contrast, compute z-scores
 expr2control = function(rec, emat) {
     control = emat[,rec$control, drop=FALSE]
@@ -15,24 +20,25 @@ control2model = function(rec, emat) {
     loess(sd_control ~ mean_control)
 }
 
-library(dplyr)
-b = import('base')
-io = import('io')
-ar = import('array')
+expr2zscores = function(data) {
+    records = data$records
+    expr = data$expr
 
-INFILE = commandArgs(TRUE)[1] %or% "expr.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "scores.RData"
+    controls = mapply(expr2control, r=records, emat=expr, SIMPLIFY=FALSE) %>%
+        ar$stack(along=2)
+    models = apply(controls, 2, control2model
 
-data = io$load(INFILE)
-records = data$records
-expr = data$expr
+    lapply(result, function(x) x$zscores) %>%
+        ar$stack(along=2)
+}
 
-controls = mapply(expr2control, r=records, emat=expr, SIMPLIFY=FALSE) %>%
-    ar$stack(along=2)
-models = apply(controls, 2, control2model
+if (is.null(module_name())) {
+    INFILE = commandArgs(TRUE)[1] %or% "expr.RData"
+    OUTFILE = commandArgs(TRUE)[2] %or% "scores.RData"
 
-zscores = lapply(result, function(x) x$zscores) %>%
-    ar$stack(along=2)
+    data = io$load(INFILE)
+    zscores = expr2zscores(data)
 
-# separate index file w/ metadata derived from yaml [preferred?]
-save(zscores, file=OUTFILE)
+    # separate index file w/ metadata derived from yaml [preferred?]
+    save(zscores, file=OUTFILE)
+}
