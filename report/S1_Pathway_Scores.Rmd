@@ -4,91 +4,76 @@ author: "Michael Schubert (schubert@ebi.ac.uk)"
 ---
 
 ```{r setup, include=FALSE}
-#TODO: heatmap + associations to perturb exps for all pathway methods
-
 library(dplyr)
 b = import('base')
 io = import('io')
 ar = import('array')
 st = import('stats')
-```
-
-# Experimental Perturbation to Pathway Scores
-
-```{r perburb, include=FALSE}
-# do heatmaps + associations here for all methods
-
-file2assocs = function(fname) {
-    # load data
-    data = io$load(fname)
-    index = data$index
-    scores = data$scores
-    sign = ifelse(index$effect == "activating", 1, -1)
-    pathway = sign * ar$mask(index$pathway) + 0
-
-    # compute associations
-    st$lm(scores ~ pathway)
-}
-
-reactome = file2assocs("../scores/speed/gsea_reactome.RData") %>%
-    filter(p.value < 1e-4) %>%
-    transmute(from=pathway, to=scores, value=estimate)
-speed = file2assocs("../scores/speed/speed_matrix.RData") %>%
-    filter(p.value < 1e-4) %>%
-    transmute(from=pathway, to=scores, value=estimate)
-```
-
-```{r check, echo=FALSE}
-library(dplyr)
-io = import('io')
-ar = import('array')
-st = import('stats')
 plt = import('plot')
-
-data = io$load("../../scores/speed/speed_matrix.RData")
-index = data$index
-scores = data$scores
-
-sign = ifelse(index$effect == "activating", 1, -1)
-pathway = sign * t(ar$mask(index$pathway)) + 0
-#pathway["EGFR",] = pathway["EGFR",] + pathway["MAPK",] + pathway["PI3K",]
-#pathway["TNFa",] = pathway["TNFa",] + pathway["NFkB",]
-
-result = st$lm(scores ~ pathway) %>%
-    mutate(mlogp = -log(p.value)) %>%
-    mutate(label = ifelse(p.value < 1e-5, "*", "")) %>%
-    mutate(label = ifelse(p.value < 1e-10, "***", label))
-
-plt$matrix(result, mlogp ~ scores + pathway, palette="RdBu", limits=c(-280,280)) +
-    xlab("Pathway perturbed") +
-    ylab("Assigned score") +
-    ggtitle("- log(p.value)") +
-    theme(axis.text.x = element_text(color="black", size=14),
-          axis.text.y = element_text(color="black", size=14))
-
-result$label = NULL
-
-plt$matrix(result, estimate ~ scores + pathway, palette="RdBu", limits=c(-4,4)) +
-    xlab("Pathway perturbed") +
-    ylab("Assigned score") +
-    ggtitle("Effect size") +
-    theme(axis.text.x = element_text(color="black", size=14),
-          axis.text.y = element_text(color="black", size=14))
-
-#TODO: figure out what 'statistic' is exactly and how to use it
-plt$matrix(result, statistic ~ scores + pathway, palette="RdBu") +
-    xlab("Pathway perturbed") +
-    ylab("Assigned score") +
-    ggtitle("statistic")
+util = import('./util_1')
 ```
 
-# Correlation of Pathway Scores in Cell Lines
+# Pathway scores upon Perturbation
+
+## Signaling Footprints
+
+```{r perturb_speed_matrix, echo=FALSE, fig.height=3, fig.width=8}
+util$perturb_score_plots('speed_matrix')
+```
+
+## Gene Ontology
+
+```{r perturb_go, echo=FALSE, fig.height=3, fig.width=8}
+util$perturb_score_plots('gsea_go')
+```
+
+## Reactome
+
+```{r perturb_reactome, echo=FALSE, fig.height=3, fig.width=8}
+util$perturb_score_plots('gsea_reactome')
+```
+
+## BioCarta
+
+```{r perturb_biocarta, echo=FALSE, fig.height=3, fig.width=8}
+util$perturb_score_plots('gsea_biocarta')
+```
+
+## SPIA
+
+```{r perturb_spia, echo=FALSE, fig.height=3, fig.width=8}
+#util$perturb_score_plots('spia')
+```
+
+## Pathifier
+
+```{r perturb_pathifier, echo=FALSE, fig.height=3, fig.width=8}
+util$perturb_score_plots('pathifier')
+```
+
+## PARADIGM
+
+```{r perturb_paradigm, echo=FALSE, fig.height=3, fig.width=8}
+#util$perturb_score_plots('paradigm')
+```
+
+# Correlation of Pathway Scores in basal Expression
 
 ```{r cor-gdsc, include=FALSE}
 ```
 
-# Correlation of Pathway Scores in Tumors
-
 ```{r cor-tcga, include=FALSE}
 ```
+
+## Signaling Footprints
+
+## Reactome
+
+## BioCarta
+
+## SPIA
+
+## Pathifier
+
+## PARADIGM
 
