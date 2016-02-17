@@ -76,26 +76,7 @@ if (is.null(module_name())) {
     data = sapply(records, subset_expr, simplify=FALSE, USE.NAMES=TRUE) %>%
         b$omit$null()
     records = sapply(data, function(x) x$record, simplify=FALSE, USE.NAMES=TRUE)
-### TEST SET TEST
-# sample a third all accessions for each pathway, designate test set
-set.seed(1829572)
-test = records %>%
-    lapply(function(x) x[c('pathway','accession')]) %>%
-    bind_rows() %>%
-    distinct() %>%
-    group_by(pathway) %>%
-    do(sample_frac(.,0.3)) %>%
-    ungroup()
-records = lapply(records, function(r) {
-    if (r$accession %in% test$accession)
-        r$exclusion = "test-set"
-    else
-        r$exclusion = NA
-    r
-})
-message("length train set: ", sum(sapply(records, function(x) is.na(x$exclusion))))
-message("length test set: ", sum(sapply(records, function(x) identical(x$exclusion, "test-set"))))
-### TEST SET TEST
+
     expr = sapply(data, function(x) x$expr, simplify=FALSE, USE.NAMES=TRUE)
     save(records, expr, file=OUTFILE)
 }
