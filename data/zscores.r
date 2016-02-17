@@ -1,4 +1,12 @@
-# for each contrast, compute z-scores
+library(dplyr)
+b = import('base')
+io = import('io')
+ar = import('array')
+
+#' Compute z-scores for one contrast
+#'
+#' @param rec   The experiment record (`data.frame`, from the yaml files)
+#' @param emat  The expression matrix [genes x experiments]
 expr2zscore = function(rec, emat) {
     message(rec$id)
 
@@ -16,28 +24,37 @@ expr2zscore = function(rec, emat) {
     logFC / predict(model, mean_perturbed)
 }
 
-library(dplyr)
-b = import('base')
-io = import('io')
-ar = import('array')
+#' Calculate Z-scores for all experiments
+#'
+#' @param data  A list with elements `records` and `expr`
+#' @return      The `zscores` and `index` objects
+data2zscores = function(data) {
+    records = data$records
+    expr = data$expr
 
-INFILE = commandArgs(TRUE)[1] %or% "expr.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "zscores.RData"
+    zscores = mapply(expr2zscore, rec=records, emat=expr, SIMPLIFY=FALSE) %>%
+        ar$stack(along=2)
 
-data = io$load(INFILE)
-records = data$records
-expr = data$expr
+    idx_remove = c("control", "perturbed")
+    sign_lookup = setNames(c(1,-1), c("activating","inhibiting"))
+    index = lapply(records, function(x) x[setdiff(names(x), idx_remove)]) %>%
+        bind_rows() %>%
+        mutate(sign = sapply(effect, function(x) sign_lookup[x]))
 
-zscores = mapply(expr2zscore, rec=records, emat=expr, SIMPLIFY=FALSE) %>%
-    ar$stack(along=2)
+    stopifnot(colnames(zscores) == index$id)
 
-idx_remove = c("control", "perturbed")
-sign_lookup = setNames(c(1,-1), c("activating","inhibiting"))
-index = lapply(records, function(x) x[setdiff(names(x), idx_remove)]) %>%
-    bind_rows() %>%
-    mutate(sign = sapply(effect, function(x) sign_lookup[x]))
+    list(zscores=zscores, index=index)
+}
 
-stopifnot(colnames(zscores) == index$id)
+if (is.null(module_name())) {
+    INFILE = commandArgs(TRUE)[1] %or% "expr.RData"
+    OUTFILE = commandArgs(TRUE)[2] %or% "zscores.RData"
 
-# separate index file w/ metadata derived from yaml [preferred?]
-save(zscores, index, file=OUTFILE)
+    data = io$load(INFILE)
+    result = data2zscores(data)
+
+    # separate index file w/ metadata derived from yaml [preferred?]
+    zscores = result$zscores
+    index = result$index
+    save(zscores, index, file=OUTFILE)
+}
