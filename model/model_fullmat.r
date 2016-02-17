@@ -16,7 +16,11 @@ zscore2model = function(zdata) {
 	zscores = t(zdata$zscores) * index$sign
 
 	# fit model to pathway perturbations
-	mod = st$lm(zscores ~ 0 + pathway, data=index, min_pts=100,
+	pathway = t(ar$mask(index$pathway)) + 0
+	pathway["EGFR",] = pathway["EGFR",] + pathway["MAPK",] + pathway["PI3K",]
+	pathway["TNFa",] = pathway["TNFa",] + pathway["NFkB",]
+
+	mod = st$lm(zscores ~ 0 + pathway, data=index, min_pts=30, atomic="pathway",
 				hpc_args=list(n_jobs=10, memory=2048)) %>%
 		transmute(gene = zscores,
 				  pathway = sub("^pathway", "", term),
@@ -29,20 +33,21 @@ zscore2model = function(zdata) {
 	zfit = ar$construct(zscore ~ gene + pathway, data=mod)
 	pval = ar$construct(p.adj ~ gene + pathway, data=mod)
 
-	# filter zfit to only include top 100 genes per pathway
-	zfit[apply(pval, 2, function(p) !b$min_mask(p, 100))] = 0
-
-	zfit
+    zfit
 }
 
-if (is.null(module_name())) {
-	ZDATA = commandArgs(TRUE)[1] %or% "../data/zscores.RData"
-	OUTFILE = commandArgs(TRUE)[2] %or% "model_linear.RData"
+## best x-val: 0.15, 1e-4 -> use which?
+#zfit[abs(zfit) < 1 | pval > 1e-3 | is.na(zfit)] = 0
+#print(colSums(zfit != 0))
 
-	# load speed data, index; filter for train set only
-	zdata = io$load(ZDATA)
+if (is.null(module_name())) {
+    ZDATA = commandArgs(TRUE)[1] %or% "../data/zscores.RData"
+    OUTFILE = commandArgs(TRUE)[2] %or% "model_linear.RData"
+
+    # load speed data, index; filter for train set only
+    zdata = io$load(ZDATA)
 	zfit = zscore2model(zdata)
 
-	# save resulting object
-	save(zfit, file=OUTFILE)
+    # save resulting object
+    save(zfit, file=OUTFILE)
 }

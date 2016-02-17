@@ -77,17 +77,3 @@ mutation_overview_plot = function(assoc_obj, genes) {
             theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
             geom_hline(aes(yintercept=-log10(0.05) * n_methods), linetype="dotted")
 }
-
-#' Plots matrices with mutation-pathway associations for different methods
-#'
-#' @param assoc_obj  Data.frame from a linear model (st$lm)
-#' @param genes      HGNC symbols of the gene (character vector)
-#' @param ...        Arguments passed to cowplot::plot_grid()
-mutation_method_plots = function(assoc_obj, genes, ...) {
-    plots = lapply(genes, function(x) mutation_method_plot(assoc_obj, x))
-#    for (i in seq(1, length(plots), ncol)) { # iterate every 2 for page breaks
-#        print(plot_grid(plotlist=plots[i:i+ncol], ncol=ncol, scale=scale))
-#        cat("\n")
-#    }
-    print(plot_grid(plotlist=plots, ...))
-}

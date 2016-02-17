@@ -67,5 +67,6 @@ util$mutation_overview_plot(result_nocov, keep)
 ```
 
 ```{r detail_nocov, echo=FALSE, fig.width=15, fig.height=20}
-util$mutation_method_plots(result_nocov, keep, ncol=4, label_size=8)
+plots = lapply(keep, function(x) util$mutation_method_plot(assoc_obj, x))
+plot_grid(plotlist=plots, ncol=4, label_size=8)
 ```
