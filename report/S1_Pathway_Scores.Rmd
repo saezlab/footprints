@@ -42,7 +42,7 @@ util$perturb_score_plots('gsea_biocarta')
 ## SPIA
 
 ```{r perturb_spia, echo=FALSE, fig.height=3, fig.width=8}
-#util$perturb_score_plots('spia')
+util$perturb_score_plots('spia')
 ```
 
 ## Pathifier
@@ -59,23 +59,46 @@ util$perturb_score_plots('pathifier')
 #util$perturb_score_plots('paradigm')
 ```
 
-# Correlation of Pathway Scores in basal Expression
-
-```{r cor-gdsc, include=FALSE}
-```
-
-```{r cor-tcga, include=FALSE}
-```
+# Correlation of Pathway Scores in Basal Expression
 
 ## Signaling Footprints
 
+```{r cor_speed_matrix, echo=FALSE, fig.height=3, fig.width=8}
+util$cor_plots('speed_matrix')
+```
+
+## Gene Ontology
+
+```{r cor_go, echo=FALSE, fig.height=3, fig.width=8}
+util$cor_plots('gsea_go')
+```
+
 ## Reactome
+
+```{r cor_reactome, echo=FALSE, fig.height=3, fig.width=8}
+util$cor_plots('gsea_reactome')
+```
 
 ## BioCarta
 
+```{r cor_speed_biocarta, echo=FALSE, fig.height=3, fig.width=8}
+util$cor_plots('gsea_biocarta')
+```
+
 ## SPIA
+
+```{r cor_spia, echo=FALSE, fig.height=3, fig.width=8}
+util$cor_plots('spia')
+```
 
 ## Pathifier
 
+```{r cor_pathifier, echo=FALSE, fig.height=3, fig.width=8}
+util$cor_plots('pathifier')
+```
+
 ## PARADIGM
 
+```{r cor_paradigm, echo=FALSE, fig.height=3, fig.width=8}
+util$cor_plots('paradigm')
+```

@@ -1,11 +1,17 @@
 library(dplyr)
 library(gridExtra)
+library(corrplot)
 b = import('base')
 io = import('io')
 ar = import('array')
 st = import('stats')
 plt = import('plot')
+tcga = import('data/tcga')
 
+#' Takes a method subset and plots the pathway associations and individual scores
+#'
+#' @param fid  A file identifer, e.g. 'speed_matrix' or 'gsea_reactome'
+#' @return     A ggplot matrix plot and heatmap in one line
 perturb_score_plots = function(fid) {
     data = io$file_path("../scores/speed", fid, ext=".RData") %>%
         io$load()
@@ -51,4 +57,23 @@ perturb_score_plots = function(fid) {
                             cellwidth = 0.3, silent=TRUE)
 
     grid.arrange(p1, p2$gtable, ncol=2)
+}
+
+cor_plots = function(fid) {
+    gdsc = io$file_path("../scores/gdsc", fid, ext=".RData") %>% io$load()
+    tcga_all = io$file_path("../scores/tcga", fid, ext=".RData") %>% io$load()
+
+	index = tcga$barcode2index(rownames(tcga_all)) %>%
+		filter(grepl("Primary|Normal", Sample.Definition), Vial == "A") %>%
+		mutate(type = ifelse(grepl("Normal", Sample.Definition), "normal", "tumor"))
+
+        cex.before = par("cex")
+        par(cex = 0.5)
+
+#        corrplot(cor(tcga_all[index$type == "normal",]), title="normal")
+#        corrplot(cor(tcga_all[index$type == "tumor",]), title="tumor")
+        corrplot(cor(tcga_all), title="tcga")
+        corrplot(cor(gdsc), title="cell line")
+
+        par(cex = cex.before)
 }
