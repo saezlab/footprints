@@ -10,7 +10,7 @@ $(call ext_dep,../../model,$(notdir $(MODELS)))
 $(call ext_dep,../../util/genesets,$(notdir $(SETS)))
 
 
-scores: $(SPEED_SCORES) $(SET_SCORES) pathifier.RData spia.RData
+all: $(SPEED_SCORES) $(SET_SCORES) pathifier.RData spia.RData
 
 # use each model to create scores object
 speed_%.RData: speed.r ../../model/model_%.RData

@@ -27,8 +27,6 @@ OUTFILE = commandArgs(TRUE)[2] %or% "spia.RData"
 
 # get index, expr data for test set
 speed = io$load(EXPR)
-index = speed$records
-expr = speed$expr
 
 # HGNC -> entrez gene lookup
 lookup = biomaRt::useMart(biomart="ensembl", dataset="hsapiens_gene_ensembl") %>%
@@ -38,9 +36,9 @@ lookup = biomaRt::useMart(biomart="ensembl", dataset="hsapiens_gene_ensembl") %>
 #    MoreArgs=list(lookup=lookup), SIMPLIFY=FALSE)
 
 result = hpc$Q(record2pathway,
-               rec = index, exp = expr,
+               rec = speed$records, exp = speed$expr,
                const = list(lookup = lookup),
-               memory=4096, n_jobs=10) %>%
+               memory=4096, n_jobs=10, fail_on_error=FALSE) %>%
     setNames(names(index))
 
 errors = sapply(result, function(r) class(r) == "try-error")
@@ -51,7 +49,7 @@ if (any(errors)) {
 scores = ar$stack(result, along=1)
 
 filter_index = function(x) x[! names(x) %in% c('control', 'perturbed', 'exclusion')]
-index = lapply(index, filter_index) %>%
-    bind_rows()
+index = lapply(speed$records[rownames(scores)], filter_index) %>%
+    do.call(bind_rows, .)
 
 save(scores, index, file=OUTFILE)
