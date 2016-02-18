@@ -50,7 +50,8 @@ util$mutation_overview_plot(result, keep)
 ```
 
 ```{r detail, echo=FALSE, fig.width=15, fig.height=20}
-util$mutation_method_plots(result, keep, ncol=4, label_size=8)
+plots = lapply(keep, function(x) util$mutation_method_plot(result, x))
+plot_grid(plotlist=plots, ncol=4, label_size=8)
 ```
 
 # What Pathway Methods can capture, between tissues
@@ -67,6 +68,6 @@ util$mutation_overview_plot(result_nocov, keep)
 ```
 
 ```{r detail_nocov, echo=FALSE, fig.width=15, fig.height=20}
-plots = lapply(keep, function(x) util$mutation_method_plot(assoc_obj, x))
+plots = lapply(keep, function(x) util$mutation_method_plot(result_nocov, x))
 plot_grid(plotlist=plots, ncol=4, label_size=8)
 ```

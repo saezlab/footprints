@@ -1,4 +1,5 @@
 library(dplyr)
+library(gridExtra)
 b = import('base')
 io = import('io')
 ar = import('array')
@@ -6,12 +7,6 @@ st = import('stats')
 plt = import('plot')
 
 perturb_score_plots = function(fid) {
-#	library(gridGraphics)
-	library(grid)
-    library(gridBase)
-#	library(gridExtra)
-    par(mfrow=c(1,2))
-
     data = io$file_path("../scores/speed", fid, ext=".RData") %>%
         io$load()
 
@@ -30,13 +25,6 @@ perturb_score_plots = function(fid) {
 		xlab("Pathway perturbed") +
 		ylab("Assigned score")
 
-    plot.new()
-    vps = baseViewports()
-    pushViewport(vps$figure)
-    vp1 = plotViewport(c(0,0,0,0))
-    print(p1, vp=vp1)
-    popViewport()
-
 	# and individual experiments
 	annot = data$index %>%
 		select(id, pathway, effect) %>%
@@ -52,14 +40,15 @@ perturb_score_plots = function(fid) {
 	rownames(annot) = annot$id
 	annot$id = NULL
 
-    plot.new()
-	pheatmap::pheatmap(scores,
-					   annotation = annot,
-					   scale = "column",
-					   cluster_cols = FALSE,
-					   show_colnames = FALSE,
-					   annotation_legend = FALSE,
-                       treeheight_row = 20,
-                       legend = FALSE,
-                       cellwidth = 0.3)
+	p2 = pheatmap::pheatmap(scores,
+                            annotation = annot,
+                            scale = "column",
+                            cluster_cols = FALSE,
+                            show_colnames = FALSE,
+                            annotation_legend = FALSE,
+                            treeheight_row = 20,
+                            legend = FALSE,
+                            cellwidth = 0.3, silent=TRUE)
+
+    grid.arrange(p1, p2$gtable, ncol=2)
 }
