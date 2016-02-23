@@ -1,3 +1,6 @@
 include ../../Makefile.inc
 
-SEEDS = $(shell bash -c 'echo $$RANDOM')
+all: model_resample.RData
+
+model_resample.RData: model_resample.r ../../data/zscores.RData
+	Rscript $^ $@
