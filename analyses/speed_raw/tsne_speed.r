@@ -1,4 +1,3 @@
-library(ggplot2)
 library(dplyr)
 library(bhtsneR)
 b = import('base')
@@ -14,7 +13,7 @@ index = data$index
 scores = data$scores
 
 stopifnot(rownames(scores) == index$id)
-dim2 = bhtsne(scores)
+dim2 = tsne(scores)
 
 index = index %>%
     mutate(x = dim2[,1],
