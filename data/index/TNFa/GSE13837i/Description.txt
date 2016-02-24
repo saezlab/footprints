@@ -1,5 +1,0 @@
-cell line	synovial fibroblasts, male, age 65, osteoarthritis
-modification	treated with TNFa 10 ng/ml
-effect	activating
-time	4 h
-comment	always compared to the 0 h timepoint

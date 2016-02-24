@@ -1,5 +1,0 @@
-cell line	HEK-HT (kidney)
-modification	Ras (G12V,Y40C) activation mutants
-effect	activating
-time	not specified
-comment	mutants said to be mostly activating PI3K

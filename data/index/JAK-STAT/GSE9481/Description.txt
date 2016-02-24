@@ -1,5 +1,0 @@
-cell line	side population of ovarian cancer
-modification	treated with 1000 U/ml IFNa
-effect	activating
-time	5 h
-comment	2 replicates

@@ -1,5 +1,0 @@
-cell line	primary hepatocytes
-modification	treated with 10 U/ml IFN-a
-effect	activating
-time	6 h
-comment	1 replicate

@@ -1,5 +1,0 @@
-cell line	pancreatic stellate cell line
-modification	treated with 1µM all-trans retinoid acid
-effect	activating
-time	0.5 h
-comment	3 replicates each, part of timeseries, timeresolved controls

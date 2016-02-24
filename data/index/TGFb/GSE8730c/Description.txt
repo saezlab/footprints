@@ -1,5 +1,0 @@
-cell line	pulp tissue
-modification	treated with TGF-beta1
-effect	activating
-time	5 h
-comment	1 replicate, part of timeseries

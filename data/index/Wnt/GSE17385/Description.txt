@@ -1,5 +1,0 @@
-cell line	Multiple myeloma line MM1.S
-modification	cells lentivirally infected with control shRNA or beta-catenin shRNA vectors
-effect	inhibiting
-time	not specified
-comment	inhibition

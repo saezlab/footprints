@@ -1,5 +1,0 @@
-cell line	HMVEC-L (Microvascular endothelial cells, lung)
-modification	treated with LPS 10 ng
-effect	activating
-time	4 h
-comment	4 replicates each

@@ -1,5 +1,0 @@
-cell line	Human monocyte-derived macrophages
-modification	with IL-1 (15 ng/ml)
-effect	activating
-time	4 h
-comment	5 replicates each

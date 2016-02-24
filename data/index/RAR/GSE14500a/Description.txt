@@ -1,5 +1,0 @@
-cell line	HL60 neutrophil progenitor cells
-modification	treated with 1µM all-trans retinoid acid
-effect	activating
-time	2 h
-comment	1 replicate each, part of timeseries, timerespective control

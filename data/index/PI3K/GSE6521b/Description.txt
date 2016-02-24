@@ -1,5 +1,0 @@
-cell line	MCF-7 breast cancer cells
-modification	Treatment with U0126 (MEK inhibitor) + HRG (heregulin ErbB3 Ligand)
-effect	activating
-time	0.75 h
-comment	besides PI3K also all non Raf Ras targets activated

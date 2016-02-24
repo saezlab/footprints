@@ -1,5 +1,0 @@
-cell line	MCF10A cells
-modification	transfected with MEK1
-effect	activating
-time	24 h
-comment	6 replicates each, mostly activates MAPKs

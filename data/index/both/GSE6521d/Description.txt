@@ -1,4 +1,0 @@
-cell line	MCF-7 breast cancer cells
-modification	Treatment with HRG (heregulin ErbB3 Ligand)
-effect	activating
-time	0.75 h

@@ -1,5 +1,0 @@
-cell line	human cervical epithelioid carcinoma cell line HeLa expressing tTA pBI-EGFP- IkBa Mut
-modification	treated with TNFa 25ng/ml and Doxycyline (2 mg/ml) to take IKB-inhibition away
-effect	activating
-time	1 h
-comment	mutant cell line

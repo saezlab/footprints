@@ -1,5 +1,0 @@
-cell line	LEC (Human dermal lymphatic endothelial cells)
-modification	treatment with VEGF-A165 (20 ng/ml)
-effect	activating
-time	4 h
-comment	timeseries (1, 4, 8, 24 h)

@@ -1,5 +1,0 @@
-cell line	HUVECs
-modification	treated with 100U IL-1b
-effect	activating
-time	4 h
-comment	1 replicate each

@@ -1,5 +1,0 @@
-cell line	primary blood cells
-modification	treated with LPS
-effect	activating
-time	4 h
-comment	1 replicate each, 4 donors

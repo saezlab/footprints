@@ -1,5 +1,0 @@
-cell line	MCF7 human breast cancer cells
-modification	Treatment with HRG
-effect	activating
-time	6 h
-comment	timeseries: 10,15,20,30,45,60,90 min, 2, 3, 4, 6...72 h

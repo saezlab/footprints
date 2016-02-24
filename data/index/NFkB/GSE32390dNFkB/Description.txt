@@ -1,5 +1,0 @@
-cell line	PBMCs
-modification	treated with 10 ng/ml LPS
-effect	activating
-time	2 h
-comment	1 replicate each

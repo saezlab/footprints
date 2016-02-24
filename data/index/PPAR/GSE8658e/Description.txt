@@ -1,5 +1,0 @@
-cell line	monocyte derived dendritic cells
-modification	treated with 1µM rosiglitazone, a PPARg agonist
-effect	activating
-time	6 h
-comment	1 replicate each, 6 donors

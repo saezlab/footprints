@@ -1,5 +1,0 @@
-cell line	SACHI (Multiple Myeloma Cell Line)
-modification	transfected with NIK
-time	undefined
-effect	activating
-comment	overexpression directly above NFkB

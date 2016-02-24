@@ -1,4 +1,0 @@
-cell line	monocyte-derived macrophages of 13 male healthy subjects
-modification	treated with LPS 10ng/ml
-effect	activating
-time	4 h

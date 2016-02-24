@@ -1,5 +1,0 @@
-cell line	HepG2 hepatocellular carcinoma cells
-modification	treated with IL-6
-effect	activating
-time	4 h
-comment	2 replicates, part of timeseries

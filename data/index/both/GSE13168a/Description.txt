@@ -1,5 +1,0 @@
-cell line	airway smooth muscle cells
-modification	treated with EGF
-effect	activating
-time	8 h
-comment	1 replicate each, contain control vector, 4 donors

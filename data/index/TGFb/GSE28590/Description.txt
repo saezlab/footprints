@@ -1,5 +1,0 @@
-cell line	HepG2 hepatoblastoma cells
-modification	treated with 3ng/ml TGF-beta
-effect	activating
-time	1.5 h
-comment	1 replicate each

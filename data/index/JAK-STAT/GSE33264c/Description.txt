@@ -1,5 +1,0 @@
-cell line	Calu-3 cells
-modification	treated with 500 U/ml IFNg
-effect	activating
-time	3 h
-comment	3 replicates each, part of timeseries with 2 treatment conditions

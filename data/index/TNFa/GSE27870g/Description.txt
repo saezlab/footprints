@@ -1,5 +1,0 @@
-cell line	HUVEC (human umbilical vein endothelial cells)
-modification	treatment with 10ng/ml TNFa
-effect	activating
-time	6 h
-comment	3 replicates each, part of timeseries (1, 1.5, 2, 3, 4, 5, 6 h)

@@ -1,5 +1,0 @@
-cell line	U2OS cells
-modification	treated with 5 GY X-Ray irradiation
-effect	activating
-time	4 h
-comment	3 replicates each, cells transfected with control sh RNA

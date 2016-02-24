@@ -1,5 +1,0 @@
-cell line	MCF-7 (human breast cancer)
-modification	treatment with 10 nm HRG= heregulin Erb3/4 Ligand
-effect	activating
-time	0.75 h
-comment	timeseries

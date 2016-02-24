@@ -1,5 +1,0 @@
-cell line	macrophages
-modification	treated with IFNa
-effect	activating
-time	unknown
-comment	3 replicates

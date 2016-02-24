@@ -1,5 +1,0 @@
-cell line	HMEC (human microvascular endothelial cells)
-modification	treated with IFN-gamma 1 ng/ml (respective timecontrol)
-effect	activating
-time	3 h
-comment	4 replicates each two different treatments

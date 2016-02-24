@@ -1,5 +1,0 @@
-cell line	mesenchymal stem cells
-modification	treated with Wnt3a
-effect	activating
-time	6 h
-comment	1 replicate each

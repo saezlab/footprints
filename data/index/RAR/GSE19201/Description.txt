@@ -1,5 +1,0 @@
-cell line	NB4 cells
-modification	treated with all-trans retinoid acid
-effect	activating
-time	4 h
-comment	1 replicate each

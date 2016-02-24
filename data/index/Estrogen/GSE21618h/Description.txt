@@ -1,5 +1,0 @@
-cell line	MCF-7 breast cancer cells
-modification	treated with tamoxifen
-effect	unknown
-time	6 h
-comment	1 replicate each, different treatments, part of timeseries

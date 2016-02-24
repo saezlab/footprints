@@ -1,5 +1,0 @@
-cell line	SKOV-3 ovarian cancer cell line
-modification	treated with IL-6
-effect	activating
-time	1 h
-comment	1 replicate, 2 different cell lines

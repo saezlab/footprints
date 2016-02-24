@@ -1,5 +1,0 @@
-cell line	4 lymphoid cell lines pooled
-modification	treated with 900 µM H2O2
-effect	activating
-time	4 h
-comment	1 replicate each, timerespective control

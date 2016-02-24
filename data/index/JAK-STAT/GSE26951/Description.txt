@@ -1,5 +1,0 @@
-cell line	bone marrow EPCs
-modification	treated with IFNa
-effect	activating
-time	6 h
-comment	5 replicates each

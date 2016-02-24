@@ -1,5 +1,0 @@
-cell line	human smooth muscle cells
-modification	treated with 3 µM 2-methoxyestradiol
-effect	activating
-time	4 h
-comment	3 replicates each

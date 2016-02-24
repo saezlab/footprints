@@ -1,5 +1,0 @@
-cell line	HMVECs
-modification	treated with 100pg/ml VEGF
-effect	activating
-time	4 h
-comment	1 replicate

@@ -1,5 +1,0 @@
-cell line	H460 cells
-modification	treated with 2µM GSI RO4929097
-effect	inhibiting
-time	6 h
-comment	4 replicates each, different cell lines, GSI= gamma secretase inhibitor

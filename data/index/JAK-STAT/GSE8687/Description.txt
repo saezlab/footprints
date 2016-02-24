@@ -1,4 +1,0 @@
-cell line	Sez-4
-modification	starved of IL-2 and activated with IL-2
-effect	activating
-time	4 h after stimulation (16 h IL-2 pre-starvation)

@@ -1,5 +1,0 @@
-cell line	HepG2 hepatocarcinoma cell line
-modification	treated with 20ng/ml IL-6
-effect	activating
-time	4 h
-comment	2 replicates, part of timeseries, 4h serum starvation before treatment

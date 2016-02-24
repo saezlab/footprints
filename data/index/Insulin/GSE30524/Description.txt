@@ -1,5 +1,0 @@
-cell line	RPMI 8266 cells
-modification	treated with 0.375µM picropodophyllin, IGF1R inhibitor
-effect	inhibiting
-time	6 h
-comment	1 replicate each

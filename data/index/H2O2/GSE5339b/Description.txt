@@ -1,5 +1,0 @@
-cell line	ATCC 16Lu ( human lung fibroblasts)
-modification	H2O2 treatment
-effect	activating
-time	4 h
-comment	timeseries 1, 4, 12, 24 h

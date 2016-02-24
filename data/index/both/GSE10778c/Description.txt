@@ -1,5 +1,0 @@
-cell line	human umbilical vein endothelial cells (HUVEC)
-modification	Treatment with EGF
-effect	activating
-time	2.5 h
-comment	timeseries 30 min, 1 h, 2.5 h 6 h / same with VEGF

@@ -1,5 +1,0 @@
-cell line	MCF-7 breast cancer cells
-modification	treated with 10nM estradiol
-effect	activating
-time	4 h
-comment	2-3 replicates each, contain control siRNA

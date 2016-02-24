@@ -1,5 +1,0 @@
-cell line	MCF-7 breast cancer cells
-modification	Treatment with U0126 (MEK inhibitor)
-effect	inhibiting
-time	1.5 h
-comment	no stimulation

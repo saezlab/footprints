@@ -1,5 +1,0 @@
-cell line	THP1 monocytic cell line
-modification	treated with  1 µg/ml LPS
-effect	activating
-time	1 h
-comment	5 replicates each

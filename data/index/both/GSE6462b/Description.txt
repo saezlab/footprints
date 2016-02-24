@@ -1,5 +1,0 @@
-cell line	MCF-7 (human breast cancer)
-modification	treatment with EGF (10nm)
-effect	activating
-time	1.5 h
-comment	timeseries

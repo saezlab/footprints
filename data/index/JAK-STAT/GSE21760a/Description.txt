@@ -1,5 +1,0 @@
-cell line	HeLa cells
-modification	treated with IFNg
-effect	activating
-time	2 h
-comment	1 replicate, part of timeseries

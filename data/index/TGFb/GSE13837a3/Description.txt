@@ -1,5 +1,0 @@
-cell line	primary synovial fibroblasts
-modification	treated with 10ng/ml TGF-beta
-effect	activating
-time	4 h
-comment	1 replicate each, part of timeseries, several patients

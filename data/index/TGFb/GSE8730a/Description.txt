@@ -1,5 +1,0 @@
-cell line	odontoblasts
-modification	treated with TGF-beta1
-effect	activating
-time	1 h
-comment	1 replicate

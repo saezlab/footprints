@@ -1,5 +1,0 @@
-cell line	HMEC (human microvascular endothelial cells)
-modification	treated with IL-6 50 U/ml  (respective timecontrol)
-effect	activating
-time	1 h
-comment	4 replicates each, two different treatments

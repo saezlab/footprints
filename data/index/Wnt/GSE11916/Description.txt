@@ -1,5 +1,0 @@
-cell line	Huh7 (hepatocellular carcinoma derived)
-modification	High TCF activity Huh7 cell line was compared to control Huh7 cell line (TCF the crucial transcription factor for Wnt)
-effect	activating
-time	not specified
-comment	constitutive activation

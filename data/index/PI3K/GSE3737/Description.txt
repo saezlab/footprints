@@ -1,5 +1,0 @@
-cell line	PC3 (prostate cancer cell)
-modification	treatment with arachidonic acid (AA) should activate PI3K
-effect	activating
-time	2 h
-comment	sveral microarrays! the ones taken from the same timeand microarray batch

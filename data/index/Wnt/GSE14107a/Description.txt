@@ -1,4 +1,0 @@
-cell line	parental PC9 (Lung adenocarcinoma cell line)
-modification	Wnt3a stimulation after serum starvation (0.2 %)
-effect	activating
-time	3 h

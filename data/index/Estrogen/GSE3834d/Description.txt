@@ -1,5 +1,0 @@
-cell line	T47-D cells
-modification	treated with 10 nM estradiol
-effect	activating
-time	1 h
-comment	2 replicates each, different cell lines, part of timeseries

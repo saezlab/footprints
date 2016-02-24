@@ -1,5 +1,0 @@
-cell line	MCF10A cells
-modification	PI3K activated mutants
-effect	activating
-time	not indicated
-comment	3 replicates each

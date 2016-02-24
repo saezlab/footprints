@@ -1,9 +1,9 @@
 include ../Makefile.inc
 
-YAML = $(shell find new_index -mindepth 2 -name "*.yaml")
+YAML = $(shell find index -mindepth 2 -name "*.yaml")
 ACCESSION = $(basename $(notdir $(YAML)))
 NORMALIZED = $(ACCESSION:%=normalized/%.RData)
-SCORES = $(YAML:new_index/%.yaml=scores/%.RData)
+SCORES = $(YAML:index/%.yaml=scores/%.RData)
 
 .PHONY: scores normalize clean
 
