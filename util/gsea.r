@@ -129,7 +129,7 @@ wGSEA = function(norm_express, signature, p=1, display=FALSE, returnRS=FALSE,
 #' @param transform  transform the resulting distribution from Uniform to Normal [T/F]
 #' @return           the resulting score
 normalizeCDF = function(ES, transform.normal=TRUE) {
-    CDF = kCDF(ES, xgrid=ES, adjust=1, na.rm=TRUE)
+    CDF = sROC::kCDF(ES, xgrid=ES, adjust=1, na.rm=TRUE)
     nep = CDF$Fhat[match(ES, CDF$x)]
     if (transform.normal)
        log(nep/(1-nep))
