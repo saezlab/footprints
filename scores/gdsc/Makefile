@@ -22,7 +22,7 @@ pathways_mapped/speed_%.RData: speed.r ../../model/model_%.RData
 	Rscript $< $(word 2,$^) $@
 
 pathways_mapped/gsea_%.RData: set_enrichment.r ../../util/genesets/mapped/%.RData
-	$(call bsub_log,1024) Rscript $^ $@
+	Rscript $^ $@
 
 pathways_mapped/spia.RData: spia.r
 	Rscript $^ $@ TRUE
@@ -35,7 +35,7 @@ pathways_mapped/paradigm.RData: paradigm.r
 
 # all pathways
 pathways_all/gsea_%.RData: set_enrichment.r ../../util/genesets/all/%.RData
-	$(call bsub_log,1024) Rscript $^ $@
+	Rscript $^ $@
 
 pathways_all/spia.RData: spia.r
 	Rscript $^ $@ FALSE
