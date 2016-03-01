@@ -1,6 +1,6 @@
 b = import('base')
 ar = import('array')
-er = import('./enrichr')
+er = import('../enrichr')
 
 BioCarta = list("H2O2" = "ARENRF2_PATHWAY",
 #          "IL-1" = "IL1R_PATHWAY",
@@ -32,8 +32,5 @@ lists = er$parse_gmt(INFILE)
 pathways = sapply(names(BioCarta), function(path) {
     unique(unlist(lists[BioCarta[[path]]]))
 })
-
-# if using the original pathways
-#pathways = [unique(unlist(reactome))]
 
 save(pathways, file=OUTFILE)

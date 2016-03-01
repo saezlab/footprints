@@ -1,6 +1,6 @@
 b = import('base')
 ar = import('array')
-er = import('./enrichr')
+er = import('../enrichr')
 
 reactome = list(#"H2O2" = "",
 #    "IL-1" = "Interleukin-1 signaling",
@@ -33,7 +33,7 @@ reactome = list(#"H2O2" = "",
     "Hypoxia" = "Cellular response to hypoxia"
 )
 
-INFILE = commandArgs(TRUE)[1] %or% "ReactomePathways.gmt"
+INFILE = commandArgs(TRUE)[1] %or% "../ReactomePathways.gmt"
 OUTFILE = commandArgs(TRUE)[2] %or% "reactome.RData"
 
 lists = er$parse_gmt(INFILE)
@@ -42,8 +42,5 @@ lists = er$parse_gmt(INFILE)
 pathways = sapply(names(reactome), function(path) {
     unique(unlist(lists[reactome[[path]]]))
 })
-
-# if using the original pathways
-#pathways = [unique(unlist(reactome))]
 
 save(pathways, file=OUTFILE)
