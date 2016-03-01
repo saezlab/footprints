@@ -42,5 +42,5 @@ tw = $(word $(1), $(subst /, ,$(subst ., ,$(subst _, ,$@))))
 grid = $(foreach x,$(1),$(foreach y,$(2),$(x)_$(y)))
 
 # Job submission with resources
-bsub = bsub -K -M $(1) -R "rusage[mem=$(1)]" -R "select[panfs_nobackup_research]"
+bsub = bsub -K -M $(1) -R "rusage[mem=$(1)]" -R "select[gpfs]"
 bsub_log = $(call bsub,$(1)) -oo $(addsuffix .log, $(basename $@))
