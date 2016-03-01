@@ -19,6 +19,19 @@ sample2scores = function(sample, expr, tissues, spia) {
     spia$spia(sample, other_tissue, data=expr, pathids=spia$speed2kegg)
 }
 
+#' Maps row names from HGNC symbols to Entrez Gene IDs
+#'
+#' @param  expr  The expression matrix (genes x samples)
+#' @return       An expression matrix with Entrez Gene IDs
+map_entrez = function(expr) {
+    # map gene expression from HGNC to Entrez IDs
+    lookup = biomaRt::useMart(biomart="ensembl", dataset="hsapiens_gene_ensembl") %>%
+        biomaRt::getBM(attributes=c("hgnc_symbol", "entrezgene"),
+        filter="hgnc_symbol", values=rownames(expr), mart=.)
+    rownames(expr) = lookup$entrezgene[match(rownames(expr), lookup$hgnc_symbol)]
+    expr = limma::avereps(expr[!is.na(rownames(expr)),])
+}
+
 if (is.null(module_name())) {
     OUTFILE = commandArgs(TRUE)[1] %or% "spia.RData"
 
@@ -27,14 +40,8 @@ if (is.null(module_name())) {
     tissues = gdsc$tissues(minN=10)
     expr = t(expr) # this should work with along=-1
     ar$intersect(tissues, expr, along=1)
-    expr = t(expr)
 
-    # map gene expression from HGNC to Entrez IDs
-    lookup = biomaRt::useMart(biomart="ensembl", dataset="hsapiens_gene_ensembl") %>%
-        biomaRt::getBM(attributes=c("hgnc_symbol", "entrezgene"),
-        filter="hgnc_symbol", values=rownames(expr), mart=.)
-    rownames(expr) = lookup$entrezgene[match(rownames(expr), lookup$hgnc_symbol)]
-    expr = limma::avereps(expr[!is.na(rownames(expr)),])
+    expr = map_entrez(t(expr))
 
     # run spia in jobs and save
     result = hpc$Q(sample2scores, sample=colnames(expr),
