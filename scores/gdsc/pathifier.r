@@ -4,6 +4,7 @@ io = import('io')
 ar = import('array')
 gdsc = import('data/gdsc')
 hpc = import('hpc')
+gsea = import('../../util/gsea')
 
 #' Calculates Pathifier scores for one tissue vs all others
 #'
@@ -39,14 +40,18 @@ sample2scores = function(sample_tissue, expr, tissues, genesets) {
 if (is.null(module_name())) {
     INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/reactome.RData"
     OUTFILE = commandArgs(TRUE)[2] %or% "pathifier.RData"
+    MIN_GENES = 5
+    MAX_GENES = 500
 
     # load pathway gene sets and tissues
-    genesets = io$load(INFILE)
     expr = gdsc$basal_expression()
     tissues = gdsc$tissues(minN=10)
     expr = t(expr) # this should work with along=-1
     ar$intersect(tissues, expr, along=1)
     expr = t(expr)
+
+    genesets = io$load(INFILE) %>%
+        gsea$filter_genesets(rownames(expr), MIN_GENES, MAX_GENES)
 
     sample_tissues = unique(tissues)
 

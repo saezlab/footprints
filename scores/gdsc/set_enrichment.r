@@ -11,16 +11,9 @@ MIN_GENES = 5
 MAX_GENES = 500
 
 # load gene list and expression
-genelist = io$load(INFILE)
 expr = gdsc$basal_expression()
-
-# filter gene list by number of genes
-num_overlap = sapply(genelist, function(x) length(intersect(rownames(expr), x)))
-discard = num_overlap < MIN_GENES | num_overlap > MAX_GENES
-if (any(discard)) {
-    warning("Discarding the following sets: ", paste(names(genelist)[discard], collapse=", "))
-    genelist = genelist[!discard]
-}
+genelist = io$load(INFILE) %>%
+    gsea$filter_genesets(rownames(expr), MIN_GENES, MAX_GENES)
 
 # perform GSEA
 result = hpc$Q(gsea$runGSEA, sigs=genelist,

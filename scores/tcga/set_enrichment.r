@@ -2,6 +2,7 @@ b = import('base')
 io = import('io')
 ar = import('array')
 tcga = import('data/tcga')
+gsea = import('../../util/gsea')
 hpc = import('hpc')
 
 #' Calculate GSEA score for one tissue and gene set
@@ -21,20 +22,13 @@ MIN_GENES = 5
 MAX_GENES = 500
 
 # load gene expression data, make sure same genes and drop duplicates
-genelist = io$load(INFILE)
 expr = lapply(tcga$tissues(), tcga$rna_seq)
 for (i in seq_along(expr)) {
     stopifnot(rownames(expr[[1]]) == rownames(expr[[i]]))
     expr[[i]] = expr[[i]][,!duplicated(colnames(expr[[i]]))]
 }
-
-# filter gene list by number of genes
-num_overlap = sapply(genelist, function(x) length(intersect(rownames(expr[[1]]), x)))
-discard = num_overlap < MIN_GENES | num_overlap > MAX_GENES
-if (any(discard)) {
-    warning("Discarding the following sets: ", paste(names(genelist)[discard], collapse=", "))
-    genelist = genelist[!discard]
-}
+genelist = io$load(INFILE) %>%
+    gsea$filter_genesets(rownames(expr[[1]]), MIN_GENES, MAX_GENES)
 
 # calc GSEA for each tissue and gene set pair
 result = hpc$Q(tissue2scores, genelist=genelist, tissue=names(expr),
