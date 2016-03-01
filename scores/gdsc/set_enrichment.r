@@ -14,7 +14,7 @@ expr = gdsc$basal_expression()
 # perform GSEA
 result = hpc$Q(gsea$runGSEA, sigs=genelist,
                const = list(expr=expr, transform.normal=TRUE),
-               memory = 2048, n_jobs = ceiling(length(genelist)/50)
+               memory = 2048, job_size = 50)
 
 result = setNames(result, names(genelist)) %>%
     ar$stack(along=2)
