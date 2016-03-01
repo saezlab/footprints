@@ -5,9 +5,6 @@ ar = import('array')
 gdsc = import('data/gdsc')
 hpc = import('hpc')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/reactome.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "pathifier.RData"
-
 #' Calculates Pathifier scores for one tissue vs all others
 #'
 #' @param sample    A character ID of the sample to compute scores for
@@ -39,21 +36,26 @@ sample2scores = function(sample_tissue, expr, tissues, genesets) {
 	re
 }
 
-# load pathway gene sets and tissues
-genesets = io$load(INFILE)
-expr = gdsc$basal_expression()
-tissues = gdsc$tissues(minN=10)
-expr = t(expr) # this should work with along=-1
-ar$intersect(tissues, expr, along=1)
-expr = t(expr)
+if (is.null(module_name())) {
+    INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/reactome.RData"
+    OUTFILE = commandArgs(TRUE)[2] %or% "pathifier.RData"
 
-sample_tissues = unique(tissues)
+    # load pathway gene sets and tissues
+    genesets = io$load(INFILE)
+    expr = gdsc$basal_expression()
+    tissues = gdsc$tissues(minN=10)
+    expr = t(expr) # this should work with along=-1
+    ar$intersect(tissues, expr, along=1)
+    expr = t(expr)
 
-# run pathifier in jobs
-result = hpc$Q(sample2scores, sample_tissue=sample_tissues,
-               const=list(expr=expr, tissues=tissues, genesets=genesets),
-               memory=8192, n_jobs=length(sample_tissues)) %>%
-    ar$stack(along=1)
+    sample_tissues = unique(tissues)
 
-# save results
-save(result, file=OUTFILE)
+    # run pathifier in jobs
+    result = hpc$Q(sample2scores, sample_tissue=sample_tissues,
+                   const=list(expr=expr, tissues=tissues, genesets=genesets),
+                   memory=8192, n_jobs=length(sample_tissues)) %>%
+        ar$stack(along=1)
+
+    # save results
+    save(result, file=OUTFILE)
+}
