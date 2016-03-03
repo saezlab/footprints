@@ -1,3 +1,5 @@
+.io = import('io')
+
 #' Calculates the SPIA scores given sample- and control experiments
 #'
 #' @param samples     Matrix of investigated experiments [genes x samples] or
@@ -87,6 +89,34 @@ spia_per_sample = function(samples, controls, data=NULL, organism="hsa",
            simplify=FALSE, USE.NAMES=TRUE) %>%
         ar$stack(along=1)
 }
+
+
+#' Maps row names from HGNC symbols to Entrez Gene IDs
+#'
+#' @param  expr  The expression matrix (genes x samples)
+#' @return       An expression matrix with Entrez Gene IDs
+map_entrez = function(expr) {
+    # map gene expression from HGNC to Entrez IDs
+    lookup = biomaRt::useMart(biomart="ensembl", dataset="hsapiens_gene_ensembl") %>%
+        biomaRt::getBM(attributes=c("hgnc_symbol", "entrezgene"),
+        filter="hgnc_symbol", values=rownames(expr), mart=.)
+    rownames(expr) = lookup$entrezgene[match(rownames(expr), lookup$hgnc_symbol)]
+    expr = limma::avereps(expr[!is.na(rownames(expr)),])
+}
+
+
+#' Returns all pathway IDs
+#'
+#' @param organism  The KEGG organism ID (default: "hsa" for human)
+#' @return          A character vector with pathway IDs for a given organism
+pathids = function(organism="hsa") {
+    fname = paste(system.file("extdata", package = "SPIA"),
+                  paste0("/", organism, "SPIA"), ".RData", sep = "")
+
+    paths = .io$load(fname)
+    setNames(names(paths), sapply(paths, function(x) x$title))
+}
+
 
 #' Mapping from SPEED to KEGG pathways
 speed2kegg = c(
