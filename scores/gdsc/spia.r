@@ -5,6 +5,9 @@ spia = import('../../util/spia')
 gdsc = import('data/gdsc')
 hpc = import('hpc')
 
+OUTFILE = commandArgs(TRUE)[1] %or% "spia.RData"
+FILTER = as.logical(commandArgs(TRUE)[2]) %or% TRUE
+
 #' Calculates SPIA scores for one sample vs all other tissues
 #'
 #' @param sample   A character ID of the sample to compute scores for
@@ -14,38 +17,39 @@ hpc = import('hpc')
 #'                 (this should not be required with zmq `hpc` module)
 #' @return         TODO
 sample2scores = function(sample, expr, tissues, spia, pathids=NULL) {
+	spia = import('../../util/spia')
     sample_tissue = tissues[sample]
     other_tissue = setdiff(names(tissues)[tissues == sample_tissue], sample)
     spia$spia(sample, other_tissue, data=expr, pathids=pathids)
 }
 
-if (is.null(module_name())) {
-    OUTFILE = commandArgs(TRUE)[1] %or% "spia.RData"
-    FILTER = as.logical(commandArgs(TRUE)[2]) %or% TRUE
+# load pathway gene sets and tissues
+expr = gdsc$basal_expression()
+tissues = gdsc$tissues(minN=10)
+expr = t(expr) # this should work with along=-1
+ar$intersect(tissues, expr, along=1)
 
-    # load pathway gene sets and tissues
-    expr = gdsc$basal_expression()
-    tissues = gdsc$tissues(minN=10)
-    expr = t(expr) # this should work with along=-1
-    ar$intersect(tissues, expr, along=1)
+expr = spia$map_entrez(t(expr))
 
-    expr = spia$map_entrez(t(expr))
+if (FILTER)
+    genesets = spia$speed2kegg
+else
+    genesets = spia$pathids("hsa")
 
-    if (FILTER)
-        pathids = spia$speed2kegg
-    else
-        pathids = NULL
+# make compatible to call with one set in above function
+for (i in seq_along(genesets))
+    genesets[[i]] = setNames(list(genesets[[i]]), names(genesets)[i])
 
-    # run spia in jobs and save
-    result = hpc$Q(sample2scores, sample=colnames(expr),
-                   const=list(expr=expr, tissues=tissues, spia=spia, pathids=pathids),
-                   memory=8192, job_size=20) %>%
-        setNames(colnames(expr)) %>%
-        ar$stack(along=1) %>%
-        ar$map(along=1, scale)
+# run spia in jobs and save
+result = hpc$Q(sample2scores, sample=colnames(expr), pathids=genesets,
+               const=list(expr=expr, tissues=tissues, expand_grid=TRUE),
+               memory=8192, job_size=20) %>%
+    setNames(colnames(expr))
 
-    if (FILTER)
-        colnames(result) = spia$kegg2speed[colnames(result)]
+result[sapply(result, class) == "try-error"] = NA
+result = ar$stack(result, along=2)
 
-    save(result, file=OUTFILE)
-}
+if (FILTER)
+    colnames(result) = spia$kegg2speed[colnames(result)]
+
+save(result, file=OUTFILE)
