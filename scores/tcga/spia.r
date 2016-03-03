@@ -8,6 +8,12 @@ tcga = import('data/tcga')
 OUTFILE = commandArgs(TRUE)[1] %or% "pathways_mapped/spia.RData"
 FILTER = as.logical(commandArgs(TRUE)[2]) %or% TRUE
 
+#' Calculates SPIA scores for all samples of 1 tissue vs all normals
+#'
+#' @param tissue   The tissue to calculate scores for
+#' @param expr     An expression matrix with [genes x samples]
+#' @param pathids  A list of character vectors corresponding to
+#'                 gene sets (e.g. pathways for pathway scores)
 tissue2scores = function(tissue, pathids, expr) {
     io = import('io')
     tcga = import('data/tcga')
@@ -36,10 +42,11 @@ if ("COADREAD" %in% tissues) {
     tissues = c(tissues, "COAD", "READ")
 }
 
-if (FILTER)
+if (FILTER) {
     genesets = spia$speed2kegg
-else
+} else {
     genesets = spia$pathids("hsa")
+}
 
 # make compatible to call with one set in above function
 for (i in seq_along(genesets))
@@ -48,8 +55,7 @@ for (i in seq_along(genesets))
 # run spia in jobs and save
 result = hpc$Q(tissue2scores, tissue=tissues, pathids=genesets,
                const = list(expr=expr), expand_grid=TRUE,
-               memory=8192, job_size=5, fail_on_error=FALSE) %>%
-    setNames(tissues)
+               memory=8192, job_size=5, fail_on_error=FALSE)
 
 result[sapply(result, class) == "try-error"] = NA
 result = ar$stack(result, along=2)

@@ -17,10 +17,11 @@ FILTER = as.logical(commandArgs(TRUE)[2]) %or% TRUE
 #'                 (this should not be required with zmq `hpc` module)
 #' @return         TODO
 sample2scores = function(sample, expr, tissues, spia, pathids=NULL) {
+#    b = import('base')
 	spia = import('../../util/spia')
     sample_tissue = tissues[sample]
     other_tissue = setdiff(names(tissues)[tissues == sample_tissue], sample)
-    spia$spia(sample, other_tissue, data=expr, pathids=pathids)
+    spia$spia(sample, other_tissue, data=expr, pathids=pathids) #%catch% NA #TODO: shld b cvd by f_o_e
 }
 
 # load pathway gene sets and tissues
@@ -31,10 +32,11 @@ ar$intersect(tissues, expr, along=1)
 
 expr = spia$map_entrez(t(expr))
 
-if (FILTER)
+if (FILTER) {
     genesets = spia$speed2kegg
-else
+} else {
     genesets = spia$pathids("hsa")
+}
 
 # make compatible to call with one set in above function
 for (i in seq_along(genesets))
@@ -42,9 +44,8 @@ for (i in seq_along(genesets))
 
 # run spia in jobs and save
 result = hpc$Q(sample2scores, sample=colnames(expr), pathids=genesets,
-               const=list(expr=expr, tissues=tissues, expand_grid=TRUE),
-               memory=8192, job_size=20) %>%
-    setNames(colnames(expr))
+               const=list(expr=expr, tissues=tissues), expand_grid=TRUE,
+               memory=8192, job_size=50, fail_on_error=FALSE)
 
 result[sapply(result, class) == "try-error"] = NA
 result = ar$stack(result, along=2)
