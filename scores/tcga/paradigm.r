@@ -1,5 +1,8 @@
 library(dplyr)
+b = import('base')
 ar = import('array')
+
+OUTFILE = commandArgs(TRUE)[1] %or% "pathways_mapped/paradigm.RData"
 
 pathways = c(
     p53 = "^response to DNA damage stimulus \\(abstract\\)",
@@ -32,4 +35,4 @@ scores = lapply(files, file2pathways) %>%
     ar$stack(along=1) %>%
     na.omit() # removes 5 samples of > 7000
 
-save(scores, file="paradigm.RData")
+save(scores, file=OUTFILE)

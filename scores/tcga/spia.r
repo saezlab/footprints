@@ -3,41 +3,61 @@ io = import('io')
 ar = import('array')
 hpc = import('hpc')
 spia = import('../../util/spia')
+tcga = import('data/tcga')
 
-OUTFILE = commandArgs(TRUE)[1] %or% "spia.RData"
-
-tissue2scores = function(tissue) {
+tissue2scores = function(tissue, pathids, expr) {
     io = import('io')
     tcga = import('data/tcga')
     spia = import('../../util/spia')
 
-    # convert hgnc to entrez
-    expr = tcga$rna_seq(tissue)
+    index = tcga$barcode2index(colnames(expr)) %>%
+        filter(Study.Abbreviation == tissue)
+    my_expr = expr[,index$Bio.ID]
+    is_normal = grepl("[Nn]ormal", index$Sample.Definition)
 
-    # HGNC -> entrez gene lookup
-    lookup = biomaRt::useMart(biomart="ensembl", dataset="hsapiens_gene_ensembl") %>%
-        biomaRt::getBM(attributes=c("hgnc_symbol", "entrezgene"),
-        filter="hgnc_symbol", values=rownames(expr), mart=.)
-
-    rownames(expr) = lookup$entrezgene[match(rownames(expr), lookup$hgnc_symbol)]
-    expr = limma::avereps(expr[!is.na(rownames(expr)),])
-
-    is_normal = grepl("[Nn]ormal", tcga$barcode2index(colnames(expr))$Sample.Definition)
-    tumors = expr[,!is_normal, drop=FALSE]
-    normals = expr[,is_normal, drop=FALSE]
+    tumors = my_expr[,!is_normal, drop=FALSE]
+    normals = my_expr[,is_normal, drop=FALSE]
 
     spia$spia_per_sample(tumors, normals, pathids=spia$speed2kegg)
 }
 
-# load pathway gene sets
-tissues = import('../../config')$tcga$tissues
+if (is.null(module_name())) {
+    OUTFILE = commandArgs(TRUE)[1] %or% "pathways_mapped/spia.RData"
+    FILTER = as.logical(commandArgs(TRUE)[2]) %or% TRUE
 
-# run spia in jobs and save
-result = hpc$Q(tissue2scores, tissue=tissues,
-    memory=8192, n_jobs=length(tissues)) %>%
-    setNames(tissues) %>%
-    ar$stack(along=1)
+    # load pathway gene sets
+    tissues = import('../../config')$tcga$tissues_with_normals
+    expr = lapply(tcga$tissues(), tcga$rna_seq) %>%
+        ar$stack(along=2) %>%
+        spia$map_entrez()
 
-colnames(result) = spia$kegg2speed[colnames(result)]
+    # handle COAD and READ separately
+    if ("COADREAD" %in% tissues) {
+        tissues = setdiff(tissues, "COADREAD")
+        tissues = c(tissues, "COAD", "READ")
+    }
 
-save(result, file=OUTFILE)
+    if (FILTER)
+        genesets = spia$speed2kegg
+    else
+        genesets = spia$pathids("hsa")
+
+    # make compatible to call with one set in above function
+    for (i in seq_along(genesets))
+        genesets[[i]] = setNames(list(genesets[[i]]), names(genesets)[i])
+
+    # run spia in jobs and save
+    result = hpc$Q(tissue2scores, tissue=tissues, pathids=genesets,
+				   const = list(expr=expr), expand_grid=TRUE,
+                   memory=8192, job_size=5, fail_on_error=FALSE) %>%
+        setNames(tissues) %>%
+        ar$stack(along=1)
+
+    result[sapply(result, class) == "try-error"] = NA
+    result = ar$stack(result, along=2)
+
+    if (FILTER)
+        colnames(result) = spia$kegg2speed[colnames(result)]
+
+    save(result, file=OUTFILE)
+}
