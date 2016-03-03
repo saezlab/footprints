@@ -19,19 +19,6 @@ sample2scores = function(sample, expr, tissues, spia, pathids=NULL) {
     spia$spia(sample, other_tissue, data=expr, pathids=pathids)
 }
 
-#' Maps row names from HGNC symbols to Entrez Gene IDs
-#'
-#' @param  expr  The expression matrix (genes x samples)
-#' @return       An expression matrix with Entrez Gene IDs
-map_entrez = function(expr) {
-    # map gene expression from HGNC to Entrez IDs
-    lookup = biomaRt::useMart(biomart="ensembl", dataset="hsapiens_gene_ensembl") %>%
-        biomaRt::getBM(attributes=c("hgnc_symbol", "entrezgene"),
-        filter="hgnc_symbol", values=rownames(expr), mart=.)
-    rownames(expr) = lookup$entrezgene[match(rownames(expr), lookup$hgnc_symbol)]
-    expr = limma::avereps(expr[!is.na(rownames(expr)),])
-}
-
 if (is.null(module_name())) {
     OUTFILE = commandArgs(TRUE)[1] %or% "spia.RData"
     FILTER = as.logical(commandArgs(TRUE)[2]) %or% TRUE
@@ -42,7 +29,7 @@ if (is.null(module_name())) {
     expr = t(expr) # this should work with along=-1
     ar$intersect(tissues, expr, along=1)
 
-    expr = map_entrez(t(expr))
+    expr = spia$map_entrez(t(expr))
 
     if (FILTER)
         pathids = spia$speed2kegg

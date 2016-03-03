@@ -1,5 +1,8 @@
 library(dplyr)
+b = import('base')
 ar = import('array')
+
+OUTFILE = commandArgs(TRUE)[1] %or% "pathways_mapped/paradigm.RData"
 
 pathways = c(
     p53 = "^response to DNA damage stimulus \\(abstract\\)",
@@ -31,4 +34,4 @@ scores = lapply(files, file2pathways) %>%
     setNames(sub("\\.txt", "", basename(files))) %>%
     ar$stack(along=1)
 
-save(scores, file="paradigm.RData")
+save(scores, file=OUTFILE)

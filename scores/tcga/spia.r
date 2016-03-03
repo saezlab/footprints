@@ -23,8 +23,8 @@ tissue2scores = function(tissue) {
     expr = limma::avereps(expr[!is.na(rownames(expr)),])
 
     is_normal = grepl("[Nn]ormal", tcga$barcode2index(colnames(expr))$Sample.Definition)
-    tumors = expr[,!is_normal]
-    normals = expr[,is_normal]
+    tumors = expr[,!is_normal, drop=FALSE]
+    normals = expr[,is_normal, drop=FALSE]
 
     spia$spia_per_sample(tumors, normals, pathids=spia$speed2kegg)
 }

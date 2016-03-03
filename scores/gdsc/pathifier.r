@@ -38,8 +38,8 @@ sample2scores = function(sample_tissue, expr, tissues, genesets) {
 }
 
 if (is.null(module_name())) {
-    INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/reactome.RData"
-    OUTFILE = commandArgs(TRUE)[2] %or% "pathifier.RData"
+    INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/mapped/reactome.RData"
+    OUTFILE = commandArgs(TRUE)[2] %or% "pathways_mapped/pathifier.RData"
     MIN_GENES = 5
     MAX_GENES = 500
 
@@ -53,13 +53,19 @@ if (is.null(module_name())) {
     genesets = io$load(INFILE) %>%
         gsea$filter_genesets(rownames(expr), MIN_GENES, MAX_GENES)
 
+    # make compatible to call with one set in above function
+    for (i in seq_along(genesets))
+        genesets[[i]] = setNames(list(genesets[[i]]), names(genesets)[i])
+
     sample_tissues = unique(tissues)
 
     # run pathifier in jobs
-    result = hpc$Q(sample2scores, sample_tissue=sample_tissues,
-                   const=list(expr=expr, tissues=tissues, genesets=genesets),
-                   memory=8192, n_jobs=length(sample_tissues)) %>%
-        ar$stack(along=1)
+    result = hpc$Q(sample2scores, sample_tissue=sample_tissues, genesets=genesets,
+                   const=list(expr=expr, tissues=tissues),
+                   memory=8192, job_size=50, fail_on_error=FALSE, expand_grid=TRUE)
+    
+    result[sapply(result, class) == "try-error"] = NA
+    result = ar$stack(result, along=2)
 
     # save results
     save(result, file=OUTFILE)
