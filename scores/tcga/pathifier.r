@@ -10,6 +10,12 @@ OUTFILE = commandArgs(TRUE)[2] %or% "pathways_mapped/pathifier.RData"
 MIN_GENES = 5
 MAX_GENES = 500
 
+#' Calculates Pathifier scores for one tissue vs all others
+#'
+#' @param tissue    The tissue to calculate scores for
+#' @param expr      An expression matrix with [genes x samples]
+#' @param genesets  A list of character vectors corresponding to
+#'                  gene sets (e.g. pathways for pathway scores)
 tissue2scores = function(tissue, genesets, expr) {
     library(dplyr)
     io = import('io')
