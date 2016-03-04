@@ -61,9 +61,9 @@ sample_tissues = unique(tissues)
 # run pathifier in jobs
 result = hpc$Q(sample2scores, sample_tissue=sample_tissues, genesets=genesets,
                const=list(expr=expr, tissues=tissues),
-               memory=8192, job_size=50, fail_on_error=FALSE, expand_grid=TRUE)
+               memory=8192, job_size=100, fail_on_error=FALSE, expand_grid=TRUE)
 
-result[sapply(result, class) == "try-error"] = NA
+result[sapply(result, class) == "try-error"] = NULL #TODO: should work with NA
 result = ar$stack(result, along=2)
 
 # save results
