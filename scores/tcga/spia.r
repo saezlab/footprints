@@ -1,38 +1,37 @@
 b = import('base')
 io = import('io')
 ar = import('array')
-hpc = import('hpc')
+df = import('data_frame')
 spia = import('../../util/spia')
 tcga = import('data/tcga')
 
 OUTFILE = commandArgs(TRUE)[1] %or% "pathways_mapped/spia.RData"
-FILTER = as.logical(commandArgs(TRUE)[2]) %or% TRUE
+FILTER = as.logical(commandArgs(TRUE)[2]) #%or% TRUE
 
-#' Calculates SPIA scores for all samples of 1 tissue vs all normals
+#' Calculates SPIA scores for a sample and pathway vs all tissue-normals
 #'
-#' @param tissue   The tissue to calculate scores for
+#' @param sample   A character ID of the sample to compute scores for
 #' @param expr     An expression matrix with [genes x samples]
 #' @param pathids  A list of character vectors corresponding to
 #'                 gene sets (e.g. pathways for pathway scores)
-tissue2scores = function(tissue, pathids, expr) {
-    io = import('io')
+sample2scores = function(sample, expr, tissues, pathids=NULL) {
+    library(magrittr)
     tcga = import('data/tcga')
     spia = import('../../util/spia')
 
-    index = tcga$barcode2index(colnames(expr)) %>%
-        filter(Study.Abbreviation == tissue)
-    my_expr = expr[,index$Bio.ID]
-    is_normal = grepl("[Nn]ormal", index$Sample.Definition)
+    sample_tissue = tcga$barcode2study(sample)
+    tissue_normals = tcga$barcode2index(colnames(expr)) %>%
+        filter(Study.Abbreviation == sample_tissue &
+               grepl("[Nn]ormal", Sample.Definition)) %$%
+        Bio.ID
 
-    tumors = my_expr[,!is_normal, drop=FALSE]
-    normals = my_expr[,is_normal, drop=FALSE]
-
-    spia$spia_per_sample(tumors, normals, pathids=spia$speed2kegg)
+    stopifnot(length(tissue_normals) > 0)
+    unname(spia$spia(sample, tissue_normals, data=expr, pathids=pathids))
 }
 
 # load pathway gene sets
 tissues = import('../../config')$tcga$tissues_with_normals
-expr = lapply(tcga$tissues(), tcga$rna_seq) %>%
+expr = lapply(tissues, tcga$rna_seq) %>%
     ar$stack(along=2) %>%
     spia$map_entrez()
 
@@ -43,22 +42,17 @@ if ("COADREAD" %in% tissues) {
 }
 
 if (FILTER) {
-    genesets = spia$speed2kegg
+    pathids = spia$speed2kegg
 } else {
-    genesets = spia$pathids("hsa")
+    pathids = spia$pathids("hsa")
 }
 
-# make compatible to call with one set in above function
-for (i in seq_along(genesets))
-    genesets[[i]] = setNames(list(genesets[[i]]), names(genesets)[i])
-
 # run spia in jobs and save
-result = hpc$Q(tissue2scores, tissue=tissues, pathids=genesets,
-               const = list(expr=expr), expand_grid=TRUE,
-               memory=8192, job_size=5, fail_on_error=FALSE)
+result = b$expand_grid(sample = colnames(expr), pathids = pathids) %>%
+    df$call(sample2scores, expr = expr, tissues = tissues,
+            hpc_args = list(memory=8192, job_size=500, fail_on_error=FALSE))
 
-result[sapply(result, class) == "try-error"] = NA
-result = ar$stack(result, along=2)
+result = ar$construct(result ~ sample + pathids, result)
 
 if (FILTER)
     colnames(result) = spia$kegg2speed[colnames(result)]
