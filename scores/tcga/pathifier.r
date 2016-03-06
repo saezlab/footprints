@@ -45,7 +45,7 @@ tissue2scores = function(tissue, genesets, expr) {
 
 # load pathway gene sets
 tissues = import('../../config')$tcga$tissues_with_normals
-expr = lapply(tcga$tissues(), tcga$rna_seq) %>%
+expr = lapply(tissues, tcga$rna_seq) %>%
     ar$stack(along=2)
 genesets = io$load(INFILE) %>%
     gsea$filter_genesets(rownames(expr), MIN_GENES, MAX_GENES)
@@ -63,9 +63,9 @@ for (i in seq_along(genesets))
 # run pathifier in jobs
 result = hpc$Q(tissue2scores, tissue=tissues, genesets=genesets,
                const = list(expr=expr), expand_grid=TRUE,
-               memory=8192, job_size=5, fail_on_error=FALSE)
+               memory=8192, job_size=25, fail_on_error=FALSE)
 
-result[sapply(result, class) == "try-error"] = NA
+result[sapply(result, class) == "try-error"] = NULL
 result = ar$stack(result, along=2)
 
 # save results

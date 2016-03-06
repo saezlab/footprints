@@ -50,7 +50,7 @@ if (FILTER) {
 # run spia in jobs and save
 result = b$expand_grid(sample = colnames(expr), pathids = pathids) %>%
     df$call(sample2scores, expr = expr, tissues = tissues,
-            hpc_args = list(memory=8192, job_size=500, fail_on_error=FALSE))
+            hpc_args = list(memory=8192, job_size=1000, fail_on_error=FALSE))
 
 result = ar$construct(result ~ sample + pathids, result)
 
