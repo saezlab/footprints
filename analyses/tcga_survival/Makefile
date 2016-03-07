@@ -1,16 +1,18 @@
-TCGA_SCORES = $(wildcard ../../scores/tcga/*.RData)
-SURV = $(TCGA_SCORES:../../scores/tcga/%.RData=%.pdf)
-CONT = $(SURV:%=cont_%)
-DISCR = $(SURV:%=discr_%)
+TCGA_SCORES = $(shell find ../../scores/tcga -name "*.RData")
+SURV = $(TCGA_SCORES:../../scores/tcga/pathways_%.RData=%.pdf)
+CONT = $(SURV:%=cont/%)
+DISCR = $(SURV:%=discr/%)
 
 include ../../Makefile.inc
-$(call ext_dep,../../scores/tcga,$(notdir $(CONT) $(DISCR)))
+#$(call ext_dep,../../scores/tcga,$(notdir $(CONT) $(DISCR)))
 
 
 all: $(CONT) $(DISCR)
 
-discr_%.pdf: survival_discrete.r ../../scores/tcga/%.RData
+discr/%.pdf: survival_discrete.r ../../scores/tcga/pathways_%.RData
+	@mkdir -p $(dir $@)
 	Rscript $^ $@
 
-cont_%.pdf: survival_cont.r ../../scores/tcga/%.RData
+cont/%.pdf: survival_cont.r ../../scores/tcga/pathways_%.RData
+	@mkdir -p $(dir $@)
 	Rscript $^ $@

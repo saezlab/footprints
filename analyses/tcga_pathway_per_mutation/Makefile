@@ -1,27 +1,33 @@
-SCORES = $(wildcard ../../scores/tcga/*.RData)
+SCORES = $(shell find ../../scores/tcga -name "*.RData")
+
+HEATMAPS = $(SCORES:../../scores/tcga/pathways_%.RData=heatmap/%.pdf)
+DRIVERS = $(SCORES:../../scores/tcga/pathways_%.RData=drivers/%.pdf)
+SNP_ALL = $(SCORES:../../scores/tcga/pathways_%.RData=snp_all/%.pdf)
+CNA = $(SCORES:../../scores/tcga/pathways_%.RData=cna/%.pdf)
 
 include ../../Makefile.inc
-$(call ext_dep,../../scores/tcga,speed_matrix.RData)
+#$(call ext_dep,../../scores/tcga,speed_matrix.RData)
 
-all: $(SCORES:../../scores/tcga/%.RData=heatmap/%.pdf) \
-     $(SCORES:../../scores/tcga/%.RData=snp_all/%.pdf) \
-     $(SCORES:../../scores/tcga/%.RData=snp_drivers/%.pdf) \
-     $(SCORES:../../scores/tcga/%.RData=cna_gistic/%.pdf)
+all: $(HEATMAPS) $(DRIVERS) $(SNP_ALL) $(CNA)
 
 %.pdf: %.r ../../scores/tcga/speed_matrix.RData
 	Rscript $^ $@
 
-heatmap/%.pdf: pancan_heatmap.r ../../scores/tcga/%.RData
+heatmap/%.pdf: pancan_heatmap.r ../../scores/tcga/pathways_%.RData
+	@mkdir -p $(dir $@)
 	Rscript $^ $@
 
-snp_all/%.pdf: snp_all.r ../../scores/tcga/%.RData
+snp_all/%.pdf: snp_all.r ../../scores/tcga/pathways_%.RData
+	@mkdir -p $(dir $@)
 	Rscript $^ $@
 
-snp_drivers/%.pdf: snp_drivers.r ../../scores/tcga/%.RData
+drivers/%.pdf: snp_drivers.r ../../scores/tcga/pathways_%.RData
+	@mkdir -p $(dir $@)
 	Rscript $^ $@
 
-cna_gistic/%.pdf: cna_gistic.r ../../scores/tcga/%.RData
+cna/%.pdf: cna_gistic.r ../../scores/tcga/pathways_%.RData
+	@mkdir -p $(dir $@)
 	Rscript $^ $@
 
-%.pdf: %.Rmd
-	Rscript -e "rmarkdown::render('$<', 'pdf_document', output_file='$@')"
+#%.pdf: %.Rmd
+#	Rscript -e "rmarkdown::render('$<', 'pdf_document', output_file='$@')"
