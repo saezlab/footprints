@@ -4,7 +4,10 @@ io = import('io')
 ar = import('array')
 gdsc = import('data/gdsc')
 
-zfits = io$load('model_resample.RData')
+INFILE = "resample_matrix.RData"
+OUTFILE = "score_matrix.RData"
+
+zfits = io$load(INFILE)
 expr = gdsc$basal_expression()
 
 # calculate scores for all models and assemble to matrix
@@ -16,4 +19,4 @@ z2scores = function(z, expr) {
 scores = lapply(zfits, function(x) z2scores(x, expr=expr)) %>%
     ar$stack(along=3)
 
-save(scores, file="score_resample.RData")
+save(scores, file=OUTFILE)

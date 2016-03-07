@@ -1,6 +1,14 @@
 include ../../Makefile.inc
 
-all: model_resample.RData
+all: stability_matrix.pdf stability_matrix_robust.pdf
 
-model_resample.RData: model_resample.r ../../data/zscores.RData
+.SECONDARY:
+
+resample_%.RData: model_resample.r ../../data/zscores.RData ../../model/model_%.r
+	Rscript $^ $@
+
+gdsc_%.RData: score_gdsc.r resample_%.RData
+	Rscript $^ $@
+
+stability_%.pdf: stability_plot.r gdsc_%.RData
 	Rscript $^ $@
