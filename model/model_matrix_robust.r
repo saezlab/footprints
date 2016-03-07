@@ -1,7 +1,8 @@
 # point of this file:
 # - use the zscores to create a linear model
 library(dplyr)
-b = import('base')
+b = import('base', attach_operators=FALSE)
+import('base/operators')
 io = import('io')
 
 #' Fits a linear model on Z-scores
@@ -21,18 +22,21 @@ zscore2model = function(zdata, hpc_args=NULL) {
     pathway["EGFR",] = pathway["EGFR",] + pathway["MAPK",] + pathway["PI3K",]
     pathway["TNFa",] = pathway["TNFa",] + pathway["NFkB",]
 
-    mod = st$lm(zscores ~ 0 + pathway, data=index, min_pts=30, atomic="pathway",
+#    mod = st$rlm(zscores ~ 0 + pathway, data=index, min_pts=30, atomic="pathway",
+    pathway = index$pathway
+
+    mod = st$rlm(zscores ~ 0 + pathway, min_pts=30, atomic="pathway",
                 hpc_args=hpc_args) %>%
         transmute(gene = zscores,
                   pathway = sub("^pathway", "", term),
                   zscore = estimate,
-                  p.value = p.value) %>%
+                  statistic = statistic) %>%
         group_by(gene) %>%
-        mutate(p.adj = p.adjust(p.value, method="fdr")) %>%
+        mutate(adj.stat = -log10(abs(statistic))) %>%
         ungroup()
 
     zfit = ar$construct(zscore ~ gene + pathway, data=mod)
-    pval = ar$construct(p.adj ~ gene + pathway, data=mod)
+    pval = ar$construct(adj.stat ~ gene + pathway, data=mod)
 
     # filter zfit to only include top 100 genes per pathway
     zfit[apply(pval, 2, function(p) !b$min_mask(p, 100))] = 0
@@ -42,7 +46,7 @@ zscore2model = function(zdata, hpc_args=NULL) {
 
 if (is.null(module_name())) {
     ZDATA = commandArgs(TRUE)[1] %or% "../data/zscores.RData"
-    OUTFILE = commandArgs(TRUE)[2] %or% "model_matrix.RData"
+    OUTFILE = commandArgs(TRUE)[2] %or% "model_matrix_robust.RData"
 
     # load speed data, index; filter for train set only
     zdata = io$load(ZDATA)
