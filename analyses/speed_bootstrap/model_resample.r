@@ -28,9 +28,9 @@ OUTFILE = commandArgs(TRUE)[3] %or% 'model_resample.RData'
 zdata = io$load(ZDATA)
 zfun = import_(sub("\\.r$", "", MODULE))$zscore2model
 
-result = hpc$Q(calc_resample, seed_offset = 1:1,
+result = hpc$Q(calc_resample, seed_offset = 1:1000,
                const = list(zdata=zdata, zfun = zfun),
-               n_jobs = 1, memory = 2048)
+               n_jobs = 1000, memory = 2048)
 #result = calc_resample(zdata, 0)
 
 # save model resulting from resample in model/ dir
