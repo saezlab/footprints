@@ -1,17 +1,18 @@
 # point of this file:
 # - use the zscores to create a linear model
 library(dplyr)
-b = import('base', attach_operators=FALSE)
-import('base/operators')
+b = import('base')
 io = import('io')
-ar = import('array')
-st = import('stats')
 
 #' Fits a linear model on Z-scores
 #'
 #' @param zdata  A list with the zscore matrix and index object
 #' @return       The coefficients matrix [gene x pathway]
 zscore2model = function(zdata, hpc_args=NULL) {
+    b = import('base')
+    ar = import('array')
+    st = import('stats')
+
     index = zdata$index
     zscores = t(zdata$zscores) * index$sign
 
@@ -41,7 +42,7 @@ zscore2model = function(zdata, hpc_args=NULL) {
 
 if (is.null(module_name())) {
     ZDATA = commandArgs(TRUE)[1] %or% "../data/zscores.RData"
-    OUTFILE = commandArgs(TRUE)[2] %or% "model_linear.RData"
+    OUTFILE = commandArgs(TRUE)[2] %or% "model_matrix.RData"
 
     # load speed data, index; filter for train set only
     zdata = io$load(ZDATA)
