@@ -13,6 +13,18 @@ plt = import('plot')
 util = import('./util_1')
 ```
 
+# Size of the Data Set
+
+```{r dataset_size, echo=FALSE}
+import('../analyses/speed_overview/plot_bars')$do_plot()
+```
+
+# Global Structure of Perturbation Experiments
+
+```{r global_structure, echo=FALSE}
+import('../analyses/speed_raw/plot')$do_plot()
+```
+
 # Pathway scores upon Perturbation
 
 ## Signaling Footprints
@@ -59,6 +71,18 @@ util$perturb_score_plots('pathifier')
 #util$perturb_score_plots('paradigm')
 ```
 
+# ROC curves for Recovery of Perturbations
+
+```{r perturb_all, echo=FALSE}
+import('../analyses/speed_raw/roc')$do_plot()
+```
+
+# Stability of Scores in Basal Expression
+
+```{r stability, echo=FALSE}
+import('../analyses/speed_bootstrap/stability_plot')$do_plot()
+```
+
 # Correlation of Pathway Scores in Basal Expression
 
 ## Signaling Footprints
@@ -93,8 +117,10 @@ util$cor_plots('spia')
 
 ## Pathifier
 
+*some error*
+
 ```{r cor_pathifier, echo=FALSE, fig.height=3, fig.width=8}
-util$cor_plots('pathifier')
+#util$cor_plots('pathifier')
 ```
 
 ## PARADIGM
