@@ -12,14 +12,12 @@ st = import('stats')
 df = import('data_frame')
 plt = import('plot')
 gdsc = import('data/gdsc')
-util = import('../analyses/drug_assocs_followup/util')
-
-INFILE = commandArgs(TRUE)[1] %or% "../scores/gdsc/speed_matrix.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "Pancan_assocs.pdf"
+util = import('./util_3')
+followup = import('../analyses/drug_assocs_followup/util')
 
 tissues = gdsc$tissues()
 Ys = gdsc$drug_response('IC50s')
-scores = io$load(INFILE)
+scores = io$load("../scores/gdsc/pathways_mapped/speed_matrix.RData")
 mut = gdsc$mutated_genes(intogen=TRUE)
 ar$intersect(tissues, Ys, scores, mut, along=1)
 
@@ -57,36 +55,80 @@ pancan = list(
 )
 ```
 
+# Volcano Plots
+
+## SPEED
+
+```{r volcano_speed_matrix, echo=FALSE}
+util$volcano("speed_matrix")
+```
+
+## GO
+
+```{r volcano_go, echo=FALSE}
+util$volcano("gsea_go")
+```
+
+## Reactome
+
+```{r volcano_reactome, echo=FALSE}
+util$volcano("gsea_reactome")
+```
+
+## BioCarta
+
+```{r volcano_biocarta, echo=FALSE}
+util$volcano("gsea_biocarta")
+```
+
+## SPIA
+
+```{r volcano_spia, echo=FALSE}
+util$volcano("spia")
+```
+
+## Pathifier
+
+```{r volcano_pathifier, echo=FALSE}
+#util$volcano("pathifier") #FIXME: not there yet, why?
+```
+
+## PARADIGM
+
+```{r volcano_paradigm, echo=FALSE}
+util$volcano("paradigm")
+```
+
 # Trametinib + MAPK
 
 ## Overview
 
 ```{r tram1, echo=FALSE}
-util$drug_range_box(drug, stratify=list(Pancan=pancan))
+followup$drug_range_box(drug, stratify=list(Pancan=pancan))
 ```
 
 ## Stratification by mutation alone
 
 ```{r tram2_2, echo=FALSE}
-util$drug_range_box(drug, stratify=list(Pancan=pancan[1:3]))
+followup$drug_range_box(drug, stratify=list(Pancan=pancan[1:3]))
 ```
 
 ## Stratification by pathway score alone
 
 ```{r tram3_2, echo=FALSE}
-util$drug_range_box(drug, stratify=list(Pancan=pancan[4:6]))
+followup$drug_range_box(drug, stratify=list(Pancan=pancan[4:6]))
 ```
 
 ## Stratification of wild-type sub-population
 
 ```{r tram4, echo=FALSE}
-util$drug_range_box(drug, stratify=list(Pancan=pancan[7:9]))
+followup$drug_range_box(drug, stratify=list(Pancan=pancan[7:9]))
 ```
 
 ## Stratification of mutated sub-population
 
 ```{r tram5, echo=FALSE}
-util$drug_range_box(drug, stratify=list(Pancan=pancan[10:12]))
+followup$drug_range_box(drug, stratify=list(Pancan=pancan[10:12]))
 ```
 
 # Nutlin-3a + p53
@@ -103,5 +145,5 @@ stratify = list(Pancan = list(
     "TP53-_mut" = nst(mut[,"TP53"] & p53 < quantile(p53)[3])
 ))
 
-util$drug_range_box("Nutlin-3a", stratify=stratify)
+followup$drug_range_box("Nutlin-3a", stratify=stratify)
 ```
