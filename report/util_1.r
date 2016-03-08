@@ -60,8 +60,8 @@ perturb_score_plots = function(fid) {
 }
 
 cor_plots = function(fid) {
-    gdsc = io$file_path("../scores/gdsc", fid, ext=".RData") %>% io$load()
-    tcga_all = io$file_path("../scores/tcga", fid, ext=".RData") %>% io$load()
+    gdsc = io$file_path("../scores/gdsc/pathways_mapped", fid, ext=".RData") %>% io$load()
+    tcga_all = io$file_path("../scores/tcga/pathways_mapped", fid, ext=".RData") %>% io$load()
 
 	index = tcga$barcode2index(rownames(tcga_all)) %>%
 		filter(grepl("Primary|Normal", Sample.Definition), Vial == "A") %>%
