@@ -4,6 +4,7 @@ author: "Michael Schubert (schubert@ebi.ac.uk)"
 ---
 
 ```{r code, include=FALSE}
+library(cowplot)
 library(dplyr)
 b = import('base')
 io = import('io')
@@ -15,44 +16,17 @@ gdsc = import('data/gdsc')
 util = import('./util_3')
 followup = import('../analyses/drug_assocs_followup/util')
 
+tt = theme(text = element_text(size = 8))
+
 tissues = gdsc$tissues()
 Ys = gdsc$drug_response('IC50s')
 scores = io$load("../scores/gdsc/pathways_mapped/speed_matrix.RData")
 mut = gdsc$mutated_genes(intogen=TRUE)
 ar$intersect(tissues, Ys, scores, mut, along=1)
 
-nst = function(x) names(x[x])
-
-# prepare stratifications of MAPK pathway
-drug = "Trametinib" # "(5Z)-7-Oxozeaenol", "RDEA119"
-
-mapk = scores[names(tissues), "MAPK"]
-has_mut = mut[,"BRAF"] | mut[,"KRAS"] | mut[,"NRAS"]
-path_active = mapk > quantile(mapk)[4] # top 25%
-path_inactive = mapk < quantile(mapk)[2] # bottom 25%
-path_null = mapk > quantile(mapk)[2] & mapk < quantile(mapk)[4] # rest
-
-pancan = list(
-    # stratification by mutation
-    "MAPK_all" = nst(!is.na(mapk)),
-    "MAPK_wt" = nst(!has_mut),
-    "MAPK_mut" = nst(has_mut),
-
-    # stratification by SPEED score
-    "MAPK+" = nst(path_active),
-    "MAPK-" = nst(path_inactive),
-    "MAPK_null" = nst(path_null),
-
-    # stratification by SPEED score, wild-type subset
-    "MAPK_wt" = nst(!has_mut),
-    "MAPK+_wt" = nst(!has_mut & (path_active | path_null)),
-    "MAPK-_wt" = nst(!has_mut & path_inactive),
-
-    # stratification by SPEED score, mutated subset
-    "MAPK_mut" = nst(has_mut),
-    "MAPK+_mut" = nst(has_mut & path_active),
-    "MAPK-_mut" = nst(has_mut & (path_inactive | path_null))
-)
+mapk_mut_pathway = util$mapk_mut_pathway(scores, mut, "MAPK", c("BRAF", "NRAS", "KRAS"))
+mapk_braf_pathway = util$mapk_mut_pathway(scores, mut, "MAPK", "BRAF")
+p53_mut_pathway = util$p53_mut_pathway(scores, mut, "p53", "TP53")
 ```
 
 # Volcano Plots
@@ -101,49 +75,56 @@ util$volcano("paradigm")
 
 # Trametinib + MAPK
 
-## Overview
+```{r tram_mapk, echo=FALSE}
+mut_only = followup$drug_range_box("Trametinib", stratify=list(Pancan=mapk_mut_pathway[1:3])) + tt
+speed_only = followup$drug_range_box("Trametinib", stratify=list(Pancan=mapk_mut_pathway[4:6])) + tt
+wt_speed = followup$drug_range_box("Trametinib", stratify=list(Pancan=mapk_mut_pathway[7:9])) + tt
+mut_speed = followup$drug_range_box("Trametinib", stratify=list(Pancan=mapk_mut_pathway[10:12])) + tt
 
-```{r tram1, echo=FALSE}
-followup$drug_range_box(drug, stratify=list(Pancan=pancan))
+plot_grid(mut_only, speed_only, wt_speed, mut_speed,
+    labels = c("KRAS or NRAS or BRAF mut", "MAPK pathway score",
+               "wt + pathway", "mut + pathway"),
+    label_size = 10, align = "h")
 ```
 
-## Stratification by mutation alone
+# AZ628 + MAPK
 
-```{r tram2_2, echo=FALSE}
-followup$drug_range_box(drug, stratify=list(Pancan=pancan[1:3]))
+```{r az_mapk, echo=FALSE}
+mut_only = followup$drug_range_box("AZ628", stratify=list(Pancan=mapk_mut_pathway[1:3])) + tt
+speed_only = followup$drug_range_box("AZ628", stratify=list(Pancan=mapk_mut_pathway[4:6])) + tt
+wt_speed = followup$drug_range_box("AZ628", stratify=list(Pancan=mapk_mut_pathway[7:9])) + tt
+mut_speed = followup$drug_range_box("AZ628", stratify=list(Pancan=mapk_mut_pathway[10:12])) + tt
+
+plot_grid(mut_only, speed_only, wt_speed, mut_speed,
+    labels = c("KRAS or NRAS or BRAF mut", "MAPK pathway score",
+               "wt + pathway", "mut + pathway"),
+    label_size = 10, align = "h")
 ```
 
-## Stratification by pathway score alone
+# Dabrafenib + MAPK / BRAF
 
-```{r tram3_2, echo=FALSE}
-followup$drug_range_box(drug, stratify=list(Pancan=pancan[4:6]))
-```
+```{r da_braf, echo=FALSE}
+mut_only = followup$drug_range_box("Dabrafenib", stratify=list(Pancan=mapk_braf_pathway[1:3])) + tt
+speed_only = followup$drug_range_box("Dabrafenib", stratify=list(Pancan=mapk_braf_pathway[4:6])) + tt
+wt_speed = followup$drug_range_box("Dabrafenib", stratify=list(Pancan=mapk_braf_pathway[7:9])) + tt
+mut_speed = followup$drug_range_box("Dabrafenib", stratify=list(Pancan=mapk_braf_pathway[10:12])) + tt
 
-## Stratification of wild-type sub-population
-
-```{r tram4, echo=FALSE}
-followup$drug_range_box(drug, stratify=list(Pancan=pancan[7:9]))
-```
-
-## Stratification of mutated sub-population
-
-```{r tram5, echo=FALSE}
-followup$drug_range_box(drug, stratify=list(Pancan=pancan[10:12]))
+plot_grid(mut_only, speed_only, wt_speed, mut_speed,
+    labels = c("BRAF mut", "MAPK pathway score",
+               "wt + pathway", "mut + pathway"),
+    label_size = 10, align = "h")
 ```
 
 # Nutlin-3a + p53
 
 ```{r p53, echo=FALSE}
-p53 = scores[names(tissues), "p53"]
-stratify = list(Pancan = list(
-    "p53+" = nst(p53 > quantile(p53)[4]), # top 25%
-    "p53-" = nst(p53 < quantile(p53)[2]), # bottom 25%
-    "p53_null" = nst(p53 > quantile(p53)[2] & p53 < quantile(p53)[4]), # bottom 25%
-    "TP53_wt" = nst(!mut[,"TP53"]),
-    "TP53_mut" = nst(mut[,"TP53"]),
-    "TP53+_mut" = nst(mut[,"TP53"] & p53 > quantile(p53)[3]),
-    "TP53-_mut" = nst(mut[,"TP53"] & p53 < quantile(p53)[3])
-))
+mut_only = followup$drug_range_box("Nutlin-3a", stratify=list(Pancan=p53_mut_pathway[1:3])) + tt
+speed_only = followup$drug_range_box("Nutlin-3a", stratify=list(Pancan=p53_mut_pathway[4:6])) + tt
+wt_speed = followup$drug_range_box("Nutlin-3a", stratify=list(Pancan=p53_mut_pathway[7:9])) + tt
+mut_speed = followup$drug_range_box("Nutlin-3a", stratify=list(Pancan=p53_mut_pathway[10:12])) + tt
 
-followup$drug_range_box("Nutlin-3a", stratify=stratify)
+plot_grid(mut_only, speed_only, wt_speed, mut_speed,
+    labels = c("TP53 mut", "p53 pathway score",
+               "wt + pathway", "mut + pathway"),
+    label_size = 10, align = "h")
 ```
