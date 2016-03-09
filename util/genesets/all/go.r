@@ -12,8 +12,8 @@ mapGO = biomaRt::getBM(attributes=c("hgnc_symbol", "go_id", "name_1006"), mart=m
 
 stacked = mapGO %>%
     filter(go_id != "") %>%
-    mutate(go=paste(go_id,name_1006)) %>%
-    select(hgnc_symbol,go_id)
+    mutate(go = paste(go_id,name_1006)) %>%
+    select(hgnc_symbol, go)
 
 genesets = unstack(stacked)
 
