@@ -31,13 +31,13 @@ mapk_mut_pathway = function(scores, mut, pathway="MAPK", genes=c("BRAF","KRAS","
 
         # stratification by SPEED score, wild-type subset
         "MAPK_wt" = nst(!has_mut),
-        "MAPK+_wt" = nst(!has_mut & (path_active | path_null)),
+        "MAPK+_wt" = nst(!has_mut & path_active),
         "MAPK-_wt" = nst(!has_mut & path_inactive),
 
         # stratification by SPEED score, mutated subset
         "MAPK_mut" = nst(has_mut),
         "MAPK+_mut" = nst(has_mut & path_active),
-        "MAPK-_mut" = nst(has_mut & (path_inactive | path_null))
+        "MAPK-_mut" = nst(has_mut & path_inactive)
     )
 }
 
@@ -61,12 +61,12 @@ p53_mut_pathway = function(scores, mut, pathway="p53", genes="TP53") {
 
         # stratification by SPEED score, wild-type subset
         "p53_wt" = nst(!has_mut),
-        "p53+_wt" = nst(!has_mut & (path_active | path_null)),
+        "p53+_wt" = nst(!has_mut & path_active),
         "p53-_wt" = nst(!has_mut & path_inactive),
 
         # stratification by SPEED score, mutated subset
         "p53_mut" = nst(has_mut),
         "p53+_mut" = nst(has_mut & path_active),
-        "p53-_mut" = nst(has_mut & (path_inactive | path_null))
+        "p53-_mut" = nst(has_mut & path_inactive)
     )
 }
