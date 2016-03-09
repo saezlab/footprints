@@ -13,7 +13,7 @@ config = c("speed_matrix", "gsea_go", "gsea_reactome", "spia", "pathifier")
 #'
 #' @param fid  Method ID descriptor ('speed_matrix', 'gsea_go', etc.)
 method2pr_df = function(fid) {
-	data = io$file_path("../../scores/speed", fid, ext=".RData") %>%
+	data = module_file(io$file_path("../../scores/speed", fid, ext=".RData")) %>%
         io$load()
 
 	index = data$index # bit duplication from report/util_1 (4 lines w/ 2 above)
@@ -30,13 +30,19 @@ method2pr_df = function(fid) {
         ungroup()
 }
 
-roc = lapply(config, method2pr_df) %>%
-    bind_rows()
+do_plot = function() {
+    roc = lapply(config, method2pr_df) %>%
+        bind_rows()
 
-pdf("roc.pdf", paper="a4r", width=11, height=8)
+    ggplot(roc, aes(x=FPR, y=TPR, color=method)) +
+        geom_step() +
+        facet_wrap(~pathway)
+}
 
-ggplot(roc, aes(x=FPR, y=TPR, color=method)) +
-    geom_step() +
-    facet_wrap(~pathway)
+if (is.null(module_name())) {
+    pdf("roc.pdf", paper="a4r", width=11, height=8)
 
-dev.off()
+    do_plot()
+
+    dev.off()
+}

@@ -13,6 +13,8 @@ library(dplyr)
 drug_tissue_volcano = function() {
 }
 
+#' Plots boxplots for a drug and different tissues
+#'
 #' @param drug        Name of the drug
 #' @param stratify    Either a character vector with tissues to highlight, or
 #'                    A nested list with each item a (names, for the x tick) list

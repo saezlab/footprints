@@ -10,63 +10,45 @@ volcano = function(fid) {
 #' Returns names of a logical vector where the elements are TRUE
 nst = function(x) names(x[x])
 
-#' prepare stratifications of MAPK pathway
-mapk_mut_pathway = function(scores, mut, pathway="MAPK", genes=c("BRAF","KRAS","NRAS")) {
-    path = scores[names(tissues), "MAPK"]
-    has_mut = apply(mut[,genes,drop=FALSE], 1, function(x) Reduce(`|`, x))
+#' Generates a stratification structure using pathway and mutations
+#'
+#' @param pathway    Our pathway descriptor, e.g. "MAPK"
+#' @param mutations  A character vector of which genes should be
+#'                   used as markers to compare to
+#' @param strat      For stratifications, look for subsets in "mut" or "wt"?
+stratify = function(scores, mut, pathway="MAPK", genes=c("BRAF","KRAS","NRAS")) {
+    path = scores[names(tissues), pathway]
+    has_mut = apply(mut[, genes, drop=FALSE], 1, any)
     path_active = path > quantile(path)[4] # top 25%
     path_inactive = path < quantile(path)[2] # bottom 25%
     path_null = path > quantile(path)[2] & path < quantile(path)[4] # rest
 
-    list(
+    re = list(
         # stratification by mutation
-        "MAPK_all" = nst(!is.na(path)),
-        "MAPK_wt" = nst(!has_mut),
-        "MAPK_mut" = nst(has_mut),
+        "GENE_all" = nst(!is.na(path)),
+        "GENE_wt" = nst(!has_mut),
+        "GENE_mut" = nst(has_mut),
 
         # stratification by SPEED score
-        "MAPK+" = nst(path_active),
-        "MAPK-" = nst(path_inactive),
-        "MAPK_null" = nst(path_null),
+        "PATH+" = nst(path_active),
+        "PATH-" = nst(path_inactive),
+        "PATH_null" = nst(path_null),
 
         # stratification by SPEED score, wild-type subset
-        "MAPK_wt" = nst(!has_mut),
-        "MAPK+_wt" = nst(!has_mut & path_active),
-        "MAPK-_wt" = nst(!has_mut & path_inactive),
+        "PATH_wt" = nst(!has_mut),
+        "PATH+_wt" = nst(!has_mut & path_active),
+        "PATH-_wt" = nst(!has_mut & path_inactive),
 
         # stratification by SPEED score, mutated subset
-        "MAPK_mut" = nst(has_mut),
-        "MAPK+_mut" = nst(has_mut & path_active),
-        "MAPK-_mut" = nst(has_mut & path_inactive)
+        "PATH_mut" = nst(has_mut),
+        "PATH+_mut" = nst(has_mut & path_active),
+        "PATH-_mut" = nst(has_mut & path_inactive)
     )
-}
 
-p53_mut_pathway = function(scores, mut, pathway="p53", genes="TP53") {
-    path = scores[names(tissues), "p53"]
-    has_mut = apply(mut[,genes,drop=FALSE], 1, function(x) Reduce(`|`, x))
-    path_active = path > quantile(path)[4] # top 25%
-    path_inactive = path < quantile(path)[2] # bottom 25%
-    path_null = path > quantile(path)[2] & path < quantile(path)[4] # rest
-
-    list(
-        # stratification by mutation
-        "TP53_all" = nst(!is.na(path)),
-        "TP53_wt" = nst(!has_mut),
-        "TP53_mut" = nst(has_mut),
-
-        # stratification by SPEED score
-        "p53+" = nst(path_active),
-        "p53-" = nst(path_inactive),
-        "p53_null" = nst(path_null),
-
-        # stratification by SPEED score, wild-type subset
-        "p53_wt" = nst(!has_mut),
-        "p53+_wt" = nst(!has_mut & path_active),
-        "p53-_wt" = nst(!has_mut & path_inactive),
-
-        # stratification by SPEED score, mutated subset
-        "p53_mut" = nst(has_mut),
-        "p53+_mut" = nst(has_mut & path_active),
-        "p53-_mut" = nst(has_mut & path_inactive)
-    )
+    names(re) = sub("PATH", pathway, names(re))
+    if (length(genes) == 1)
+        names(re) = sub("GENE", genes, names(re))
+    else
+        names(re) = sub("GENE", pathway, names(re))
+    re
 }

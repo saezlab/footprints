@@ -13,60 +13,14 @@ st = import('stats')
 df = import('data_frame')
 plt = import('plot')
 gdsc = import('data/gdsc')
-util = import('../analyses/drug_assocs_followup/util')
-
-INFILE = commandArgs(TRUE)[1] %or% "../scores/gdsc/speed_matrix.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "Pancan_assocs.pdf"
+util = import('./util_3')
 
 tissues = gdsc$tissues()
 Ys = gdsc$drug_response('IC50s')
-scores = io$load(INFILE)
+scores = io$load("../scores/gdsc/pathways_mapped/speed_matrix.RData")
 mut = gdsc$mutated_genes(intogen=TRUE)
 ar$intersect(tissues, Ys, scores, mut, along=1)
 
-#' Generates a stratification structure using pathway and mutations
-#'
-#' @param pathway    Our pathway descriptor, e.g. "MAPK"
-#' @param mutations  A character vector of which genes should be
-#'                   used as markers to compare to
-#' @param strat      For stratifications, look for subsets in "mut" or "wt"?
-gen_subsets = function(pathway, mutations, strat="mut") {
-    nst = function(x) names(x[x])
-
-    # prepare stratifications of MAPK pathway
-    path = scores[names(tissues), pathway]
-    has_mut = apply(mut[,mutations, drop=FALSE], 1, any)
-    path_active = path > quantile(path)[4] # top 25%
-    path_inactive = path < quantile(path)[2] # bottom 25%
-    path_null = path > quantile(path)[2] & path < quantile(path)[4] # rest
-
-    re = list(
-        # stratification by mutation
-        "all" = nst(!is.na(path)),
-        "wt" = nst(!has_mut),
-        "mut" = nst(has_mut)
-    )
-
-    if (strat == "wt") {
-        # stratification by SPEED score
-        re[["path+"]] = nst(path_active)
-        re[["path-"]] = nst(path_inactive | path_null)
-
-        # stratification by SPEED score, wild-type subset
-        re[["path+_wt"]] = nst(!has_mut & (path_active | path_null))
-        re[["path-_wt"]] = nst(!has_mut & path_inactive)
-    } else if (strat == "mut") {
-        # stratification by SPEED score
-        re[["path+"]] = nst(path_active)
-        re[["path-"]] = nst(path_inactive | path_null)
-
-        # stratification by SPEED score, mutated subset
-        re[["path+_mut"]] = nst(has_mut & path_active)
-        re[["path-_mut"]] = nst(has_mut & (path_inactive | path_null))
-    }
-
-    re
-}
 
 assemble_df = function(subs, drug) {
     mydf = stack(subs)
@@ -101,9 +55,9 @@ summary_df = function(mydf) {
         message(paste("median difference (fold):", 10^(median[2] - median[1])))
 }
 
-MEKi_MAPK = gen_subsets("MAPK", c("NRAS", "KRAS", "BRAF"))
-BRAFi_MAPK = gen_subsets("MAPK", "BRAF")
-Nutlin_p53 = gen_subsets("p53", "TP53", strat="wt")
+MEKi_MAPK = util$stratify(scores, mut, "MAPK", c("NRAS", "KRAS", "BRAF"))
+BRAFi_MAPK = util$stratify(scores, mut, "MAPK", "BRAF")
+Nutlin_p53 = util$stratify(scores, mut, "p53", "TP53")
 ```
 
 # Improvement over mutations alone
@@ -161,7 +115,7 @@ ggplot(mydf, aes(x=ind, y=resp)) +
 
 #### Nutlin-3a
 
-```{r vx, echo=FALSE, fig.height=3}
+```{r nutlin, echo=FALSE, fig.height=3}
 mydf = assemble_df(Nutlin_p53, "Nutlin-3a") %>% na.omit()
 mydf$ind = factor(mydf$ind, levels=c("all", "mut", "wt",
                                      "path+_wt", "path-_wt",

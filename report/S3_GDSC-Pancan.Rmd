@@ -24,9 +24,9 @@ scores = io$load("../scores/gdsc/pathways_mapped/speed_matrix.RData")
 mut = gdsc$mutated_genes(intogen=TRUE)
 ar$intersect(tissues, Ys, scores, mut, along=1)
 
-mapk_mut_pathway = util$mapk_mut_pathway(scores, mut, "MAPK", c("BRAF", "NRAS", "KRAS"))
-mapk_braf_pathway = util$mapk_mut_pathway(scores, mut, "MAPK", "BRAF")
-p53_mut_pathway = util$p53_mut_pathway(scores, mut, "p53", "TP53")
+mapk_mut_pathway = util$stratify(scores, mut, "MAPK", c("BRAF", "NRAS", "KRAS"))
+mapk_braf_pathway = util$stratify(scores, mut, "MAPK", "BRAF")
+p53_mut_pathway = util$stratify(scores, mut, "p53", "TP53")
 ```
 
 # Volcano Plots

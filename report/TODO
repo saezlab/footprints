@@ -1,1 +1,5 @@
 move the util_*.r scripts to the actual analyses/* scripts
+
+probably add the volcano plots that are conditioned (don't lose info + show gain)
+
+add volcanos for survival as well (maybe + top hits)

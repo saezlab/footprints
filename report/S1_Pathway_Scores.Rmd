@@ -11,18 +11,23 @@ ar = import('array')
 st = import('stats')
 plt = import('plot')
 util = import('./util_1')
+
+overview = import('../analyses/speed_overview/plot_bars')
+cluster = import('../analyses/speed_raw/plot')
+roc = import('../analyses/speed_raw/roc')
+stability = import('../analyses/speed_bootstrap/stability_plot')
 ```
 
 # Size of the Data Set
 
 ```{r dataset_size, echo=FALSE}
-import('../analyses/speed_overview/plot_bars')$do_plot()
+overview$do_plot()
 ```
 
 # Global Structure of Perturbation Experiments
 
 ```{r global_structure, echo=FALSE}
-import('../analyses/speed_raw/plot')$do_plot()
+cluster$do_plot()
 ```
 
 # Pathway scores upon Perturbation
@@ -74,13 +79,13 @@ util$perturb_score_plots('pathifier')
 # ROC curves for Recovery of Perturbations
 
 ```{r perturb_all, echo=FALSE}
-import('../analyses/speed_raw/roc')$do_plot()
+roc$do_plot()
 ```
 
 # Stability of Scores in Basal Expression
 
 ```{r stability, echo=FALSE}
-import('../analyses/speed_bootstrap/stability_plot')$do_plot()
+stability$do_plot('gdsc_matrix.RData')
 ```
 
 # Correlation of Pathway Scores in Basal Expression
