@@ -6,27 +6,14 @@ author: "Michael Schubert (schubert@ebi.ac.uk)"
 ```{r code, include=FALSE}
 library(cowplot)
 library(dplyr)
-b = import('base')
-io = import('io')
-ar = import('array')
-st = import('stats')
-df = import('data_frame')
-plt = import('plot')
-gdsc = import('data/gdsc')
 util = import('./util_3')
 followup = import('../analyses/drug_assocs_followup/util')
 
 tt = theme(text = element_text(size = 8))
 
-tissues = gdsc$tissues()
-Ys = gdsc$drug_response('IC50s')
-scores = io$load("../scores/gdsc/pathways_mapped/speed_matrix.RData")
-mut = gdsc$mutated_genes(intogen=TRUE)
-ar$intersect(tissues, Ys, scores, mut, along=1)
-
-mapk_mut_pathway = util$stratify(scores, mut, "MAPK", c("BRAF", "NRAS", "KRAS"))
-mapk_braf_pathway = util$stratify(scores, mut, "MAPK", "BRAF")
-p53_mut_pathway = util$stratify(scores, mut, "p53", "TP53")
+mapk_mut_pathway = util$stratify("MAPK", c("BRAF", "NRAS", "KRAS"))
+mapk_braf_pathway = util$stratify("MAPK", "BRAF")
+p53_mut_pathway = util$stratify("p53", "TP53")
 ```
 
 # Volcano Plots
@@ -75,7 +62,14 @@ util$volcano("paradigm")
 
 # Trametinib + MAPK
 
-```{r tram_mapk, echo=FALSE}
+### Linear Fit behind Associations
+```{r tram_mapk_fit, echo=FALSE, fig.width=5, fig.height=3}
+mydf = util$create_df("MAPK", c("KRAS","NRAS","BRAF"), "Trametinib")
+util$linear_fit(mydf)
+```
+
+###  Stratifications compared to the different tissues
+```{r tram_mapk_cmp, echo=FALSE}
 mut_only = followup$drug_range_box("Trametinib", stratify=list(Pancan=mapk_mut_pathway[1:3])) + tt
 speed_only = followup$drug_range_box("Trametinib", stratify=list(Pancan=mapk_mut_pathway[4:6])) + tt
 wt_speed = followup$drug_range_box("Trametinib", stratify=list(Pancan=mapk_mut_pathway[7:9])) + tt
@@ -85,6 +79,16 @@ plot_grid(mut_only, speed_only, wt_speed, mut_speed,
     labels = c("KRAS or NRAS or BRAF mut", "MAPK pathway score",
                "wt + pathway", "mut + pathway"),
     label_size = 10, align = "h")
+```
+
+### Number of Cell Lines in each Set
+```{r tram_mapk_nums, echo=FALSE}
+print(table(stack(mapk_mut_pathway)$ind))
+```
+
+### Statistics about the Stratifications
+```{r tram_mapk_stats, echo=FALSE}
+print(util$contrast_stats(mapk_mut_pathway, "Trametinib", "MAPK"))
 ```
 
 # AZ628 + MAPK

@@ -1,6 +1,18 @@
+library(magrittr)
+library(dplyr)
 io = import('io')
+ar = import('array')
+df = import('data_frame')
+gdsc = import('data/gdsc')
 vp = import('../analyses/drug_assocs/plot')
 
+tissues = gdsc$tissues()
+Ys = gdsc$drug_response('IC50s')
+scores = io$load("../scores/gdsc/pathways_mapped/speed_matrix.RData")
+mut = gdsc$mutated_genes(intogen=TRUE)
+ar$intersect(tissues, Ys, scores, mut, along=1)
+
+#' Volcano plots
 volcano = function(fid) {
     fp = io$file_path('assocs_mapped', fid, ext=".RData")
     assocs = vp$load_fun(fp)$assocs.pan
@@ -12,11 +24,10 @@ nst = function(x) names(x[x])
 
 #' Generates a stratification structure using pathway and mutations
 #'
-#' @param pathway    Our pathway descriptor, e.g. "MAPK"
-#' @param mutations  A character vector of which genes should be
-#'                   used as markers to compare to
-#' @param strat      For stratifications, look for subsets in "mut" or "wt"?
-stratify = function(scores, mut, pathway="MAPK", genes=c("BRAF","KRAS","NRAS")) {
+#' @param pathway  Our pathway descriptor, e.g. "MAPK"
+#' @param genes    A character vector of which genes should be
+#'                 used as markers to compare to
+stratify = function(pathway="MAPK", genes=c("BRAF","KRAS","NRAS")) {
     path = scores[names(tissues), pathway]
     has_mut = apply(mut[, genes, drop=FALSE], 1, any)
     path_active = path > quantile(path)[4] # top 25%
@@ -51,4 +62,64 @@ stratify = function(scores, mut, pathway="MAPK", genes=c("BRAF","KRAS","NRAS")) 
     else
         names(re) = sub("GENE", pathway, names(re))
     re
+}
+
+#' Wilcox test for difference in drug response between two conditions
+#'
+#' @param mydf  A data.frame with 
+#' @param c1    The reference condition
+#' @param c2    The sample condition
+#' @return      A list with the reference and sample condition,
+#'              p.value and fold change of median
+wilcox = function(mydf, c1, c2) {
+    mydf = na.omit(filter(mydf, ind %in% c(c1, c2)))
+    medians = mydf %>%
+        group_by(ind) %>%
+        summarize(median = median(resp)) %$%
+        median
+
+    list(
+        ref = c1,
+        sample = c2,
+        p.value = wilcox.test(resp ~ ind, data=mydf)$p.value,
+        median_folds = round(10^(abs(medians[2] - medians[1])))
+    )
+}
+
+#' Create a data.frame of drug responses
+create_df = function(pathway, mutation, drug) {
+    df$assemble(
+        tissue = tissues,
+        mut = apply(mut[, mutation, drop=FALSE], 1, any),
+        score = scores[,pathway],
+        resp = Ys[,drug]
+    ) %>% add_rownames("cosmic") %>% na.omit()
+}
+
+#' Plot of the linear fit
+linear_fit = function(mydf) {
+    mydf %>%
+        ggplot(aes(x=score, y=resp, color=tissue)) +
+        geom_point() +
+        stat_smooth(method="lm", se=FALSE) +
+        xlab("Pathway score") +
+        ylab("Drug response") + tt
+}
+
+#' Returns a summary stat df for different contrasts
+#'
+#' @param start    A stratification returned by `stratify()`
+#' @param pathway  A character referencing the pathway
+contrast_stats = function(strat, drug, pathway, gene=pathway) {
+    mydf = stack(strat)
+    mydf$tissue = tissues[mydf$values]
+    mydf$score = scores[,pathway][mydf$values]
+    mydf$resp = Ys[,drug][mydf$values]
+
+    as.data.frame(bind_rows(
+        wilcox(mydf, paste0(gene, "_wt"), paste0(gene, "_mut")),
+        wilcox(mydf, paste0(pathway, "+"), paste0(pathway, "-")),
+        wilcox(mydf, paste0(pathway, "+_wt"), paste0(pathway, "-_wt")),
+        wilcox(mydf, paste0(pathway, "+_mut"), paste0(pathway, "-_mut"))
+    ))
 }
