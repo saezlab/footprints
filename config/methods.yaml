@@ -1,0 +1,7 @@
+methods:
+    - speed_matrix
+    - gsea_go
+    - gsea_reactome
+    - spia
+    - pathifier
+#    - paradigm
