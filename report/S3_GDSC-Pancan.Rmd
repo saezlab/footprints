@@ -60,6 +60,7 @@ util$volcano("spia")
 util$volcano("paradigm")
 ```
 
+
 # Trametinib + MAPK
 
 ### Linear Fit behind Associations
@@ -91,9 +92,17 @@ print(table(stack(mapk_mut_pathway)$ind))
 print(util$contrast_stats(mapk_mut_pathway, "Trametinib", "MAPK"))
 ```
 
+
 # AZ628 + MAPK
 
-```{r az_mapk, echo=FALSE}
+### Linear Fit behind Associations
+```{r az_mapk_fit, echo=FALSE, fig.width=5, fig.height=3}
+mydf = util$create_df("MAPK", c("KRAS","NRAS","BRAF"), "AZ628")
+util$linear_fit(mydf)
+```
+
+###  Stratifications compared to the different tissues
+```{r az_mapk_cmp, echo=FALSE}
 mut_only = followup$drug_range_box("AZ628", stratify=list(Pancan=mapk_mut_pathway[1:3])) + tt
 speed_only = followup$drug_range_box("AZ628", stratify=list(Pancan=mapk_mut_pathway[4:6])) + tt
 wt_speed = followup$drug_range_box("AZ628", stratify=list(Pancan=mapk_mut_pathway[7:9])) + tt
@@ -105,9 +114,27 @@ plot_grid(mut_only, speed_only, wt_speed, mut_speed,
     label_size = 10, align = "h")
 ```
 
+### Number of Cell Lines in each Set
+```{r az_mapk_nums, echo=FALSE}
+print(table(stack(mapk_mut_pathway)$ind))
+```
+
+### Statistics about the Stratifications
+```{r az_mapk_stats, echo=FALSE}
+print(util$contrast_stats(mapk_mut_pathway, "AZ628", "MAPK"))
+```
+
+
 # Dabrafenib + MAPK / BRAF
 
-```{r da_braf, echo=FALSE}
+### Linear Fit behind Associations
+```{r da_braf_fit, echo=FALSE, fig.width=5, fig.height=3}
+mydf = util$create_df("MAPK", "BRAF", "Dabrafenib")
+util$linear_fit(mydf)
+```
+
+###  Stratifications compared to the different tissues
+```{r da_braf_cmp, echo=FALSE}
 mut_only = followup$drug_range_box("Dabrafenib", stratify=list(Pancan=mapk_braf_pathway[1:3])) + tt
 speed_only = followup$drug_range_box("Dabrafenib", stratify=list(Pancan=mapk_braf_pathway[4:6])) + tt
 wt_speed = followup$drug_range_box("Dabrafenib", stratify=list(Pancan=mapk_braf_pathway[7:9])) + tt
@@ -119,9 +146,27 @@ plot_grid(mut_only, speed_only, wt_speed, mut_speed,
     label_size = 10, align = "h")
 ```
 
+### Number of Cell Lines in each Set
+```{r da_braf_nums, echo=FALSE}
+print(table(stack(mapk_braf_pathway)$ind))
+```
+
+### Statistics about the Stratifications
+```{r da_braf_stats, echo=FALSE}
+print(util$contrast_stats(mapk_braf_pathway, "Dabrafenib", "MAPK"))
+```
+
+
 # Nutlin-3a + p53
 
-```{r p53, echo=FALSE}
+### Linear Fit behind Associations
+```{r p53_fit, echo=FALSE, fig.width=5, fig.height=3}
+mydf = util$create_df("p53", "TP53", "Nutlin-3a")
+util$linear_fit(mydf)
+```
+
+###  Stratifications compared to the different tissues
+```{r p53_cmp, echo=FALSE}
 mut_only = followup$drug_range_box("Nutlin-3a", stratify=list(Pancan=p53_mut_pathway[1:3])) + tt
 speed_only = followup$drug_range_box("Nutlin-3a", stratify=list(Pancan=p53_mut_pathway[4:6])) + tt
 wt_speed = followup$drug_range_box("Nutlin-3a", stratify=list(Pancan=p53_mut_pathway[7:9])) + tt
@@ -131,4 +176,14 @@ plot_grid(mut_only, speed_only, wt_speed, mut_speed,
     labels = c("TP53 mut", "p53 pathway score",
                "wt + pathway", "mut + pathway"),
     label_size = 10, align = "h")
+```
+
+### Number of Cell Lines in each Set
+```{r p53_nums, echo=FALSE}
+print(table(stack(p53_mut_pathway)$ind))
+```
+
+### Statistics about the Stratifications
+```{r p53_stats, echo=FALSE}
+print(util$contrast_stats(p53_mut_pathway, "Nutlin-3a", "p53", "TP53"))
 ```
