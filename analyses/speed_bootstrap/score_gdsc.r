@@ -1,11 +1,12 @@
 library(dplyr)
 library(reshape2)
+b = import('base')
 io = import('io')
 ar = import('array')
 gdsc = import('data/gdsc')
 
-INFILE = "resample_matrix.RData"
-OUTFILE = "score_matrix.RData"
+INFILE = commandArgs(TRUE)[1] %or% "resample_matrix.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "score_matrix.RData"
 
 zfits = io$load(INFILE)
 expr = gdsc$basal_expression()

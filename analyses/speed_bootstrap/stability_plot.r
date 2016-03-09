@@ -1,8 +1,14 @@
-do_plot = function() {
-    library(dplyr)
-    library(cowplot)
-    io = import('io')
-    scores = io$load('score_resample.RData')
+library(dplyr)
+library(cowplot)
+b = import('base')
+io = import('io')
+ar = import('array')
+
+do_plot = function(fname) {
+    scores = io$load(module_file(fname))
+
+    # require a 3d array here
+    stopifnot(length(dim(scores)) == 3)
         
     center = function(x) x - mean(x)
     var_mat = function(x) var(c(x))
@@ -28,9 +34,10 @@ do_plot = function() {
 }
 
 if (is.null(module_name())) {
-    pdf("stability.pdf")
+    INFILE = commandArgs(TRUE)[1] %or% 'gdsc_matrix.RData'
+    OUTFILE = commandArgs(TRUE)[2] %or% 'stability_matrix.pdf'
 
-    do_plot()
-
+    pdf(OUTFILE)
+    do_plot(INFILE)
     dev.off()
 }
