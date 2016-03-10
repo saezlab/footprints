@@ -99,8 +99,9 @@ create_df = function(pathway, mutation, drug) {
 #' Plot of the linear fit
 linear_fit = function(mydf) {
     mydf %>%
-        ggplot(aes(x=score, y=resp, color=tissue)) +
-        geom_point() +
+        ggplot(aes(x = score, y = resp, color = tissue)) +
+        geom_point(na.rm = TRUE) +
+        geom_point(shape = 1, colour = 'black', na.rm = TRUE) +
         stat_smooth(method="lm", se=FALSE) +
         xlab("Pathway score") +
         ylab("Drug response") + tt
