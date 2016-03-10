@@ -1,7 +1,22 @@
 ---
 title: "Pathway scores in Basal and Perturbed Condition"
 author: "Michael Schubert (schubert@ebi.ac.uk)"
+output:
+  pdf_document:
+      number_sections: yes
+      toc: yes
 ---
+
+# Methods
+
+## Volcano Plots
+
+... write about methods here ...
+
+## Individual Fits
+
+... write about methods here ...
+
 
 ```{r setup, include=FALSE}
 library(dplyr)
@@ -133,3 +148,8 @@ util$cor_plots('spia')
 ```{r cor_paradigm, echo=FALSE, fig.height=3, fig.width=8}
 util$cor_plots('paradigm')
 ```
+
+
+# Discussion
+
+... write some thoughts here ...

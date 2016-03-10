@@ -1,7 +1,22 @@
 ---
 title: "Pan-cancer improvements with mutations and MAPK scores"
 author: "Michael Schubert (schubert@ebi.ac.uk)"
+output: 
+  pdf_document: 
+    number_sections: yes
+    toc: yes
 ---
+
+# Methods
+
+## Volcano Plots
+
+... write about methods here ...
+
+## Individual Fits
+
+... write about methods here ...
+
 
 ```{r code, include=FALSE}
 library(cowplot)
@@ -16,27 +31,28 @@ mapk_braf_pathway = util$stratify("MAPK", "BRAF")
 p53_mut_pathway = util$stratify("p53", "TP53")
 ```
 
+
 # Volcano Plots
 
-## SPEED
+## Signaling Footprints (SPEED, speed_matrix)
 
 ```{r volcano_speed_matrix, echo=FALSE}
 util$volcano("speed_matrix")
 ```
 
-## GO
+## Gene Ontology (GSEA)
 
 ```{r volcano_go, echo=FALSE}
 util$volcano("gsea_go")
 ```
 
-## Reactome
+## Reactome (GSEA)
 
 ```{r volcano_reactome, echo=FALSE}
 util$volcano("gsea_reactome")
 ```
 
-## BioCarta
+## BioCarta (GSEA)
 
 ```{r volcano_biocarta, echo=FALSE}
 util$volcano("gsea_biocarta")
@@ -61,7 +77,9 @@ util$volcano("paradigm")
 ```
 
 
-# Trametinib + MAPK
+# Highlight of individual hits
+
+## Trametinib + MAPK
 
 ### Linear Fit behind Associations
 ```{r tram_mapk_fit, echo=FALSE, fig.width=5, fig.height=3}
@@ -93,7 +111,7 @@ print(util$contrast_stats(mapk_mut_pathway, "Trametinib", "MAPK"))
 ```
 
 
-# AZ628 + MAPK
+## AZ628 + MAPK
 
 ### Linear Fit behind Associations
 ```{r az_mapk_fit, echo=FALSE, fig.width=5, fig.height=3}
@@ -125,7 +143,7 @@ print(util$contrast_stats(mapk_mut_pathway, "AZ628", "MAPK"))
 ```
 
 
-# Dabrafenib + MAPK / BRAF
+## Dabrafenib + MAPK / BRAF
 
 ### Linear Fit behind Associations
 ```{r da_braf_fit, echo=FALSE, fig.width=5, fig.height=3}
@@ -157,7 +175,7 @@ print(util$contrast_stats(mapk_braf_pathway, "Dabrafenib", "MAPK"))
 ```
 
 
-# Nutlin-3a + p53
+## Nutlin-3a + p53
 
 ### Linear Fit behind Associations
 ```{r p53_fit, echo=FALSE, fig.width=5, fig.height=3}
@@ -187,3 +205,8 @@ print(table(stack(p53_mut_pathway)$ind))
 ```{r p53_stats, echo=FALSE}
 print(util$contrast_stats(p53_mut_pathway, "Nutlin-3a", "p53", "TP53"))
 ```
+
+
+# Discussion
+
+... write some thoughts here ...
