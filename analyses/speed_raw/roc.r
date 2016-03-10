@@ -5,7 +5,6 @@ b = import('base')
 io = import('io')
 ar = import('array')
 st = import('stats')
-plt = import('plot')
 #config = io$load('../../config')# FIXME:
 config = c("speed_matrix", "gsea_go", "gsea_reactome", "spia", "pathifier")
 
@@ -20,11 +19,12 @@ method2pr_df = function(fid) {
     sign = ifelse(index$effect == "activating", 1, -1)
 	scores = data$scores * sign # not sure if col+row-scale here, but we look per-pathway
 
-    df = data.frame(pathway=index$pathway, scores) %>%
+    df = data.frame(pathway=index$pathway, scores, check.names=FALSE) %>%
         melt(id="pathway") %>%
         mutate(perturbed = as.integer(variable==pathway),
                method = fid) %>%
         select(-variable) %>%
+        na.omit() %>%
         group_by(pathway) %>%
         do(st$roc(., "value", "perturbed")) %>%
         ungroup()
@@ -34,7 +34,10 @@ do_plot = function() {
     roc = lapply(config, method2pr_df) %>%
         bind_rows()
 
+    random_line = data.frame(x=c(0,1), y=c(0,1), method=roc$method[1])
+
     ggplot(roc, aes(x=FPR, y=TPR, color=method)) +
+        geom_line(aes(x=x, y=y), data=random_line, color="grey", linetype="dashed") +
         geom_step() +
         facet_wrap(~pathway)
 }
