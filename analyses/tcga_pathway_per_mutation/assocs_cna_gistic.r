@@ -6,7 +6,7 @@ ar = import('array')
 plt = import('plot')
 tcga = import('data/tcga')
 
-subs2plots = function(subs, cna, scores) {
+subs2assocs = function(subs, cna, scores) {
     message(subs)
     if (grepl("pan", subs)) {
         m = cna %>%
@@ -44,29 +44,12 @@ subs2plots = function(subs, cna, scores) {
     result = assocs %>%
         filter(term == "m") %>%
         select(-term) %>%
-        mutate(adj.p = p.adjust(p.value, method="fdr"))
-
-#    # matrix plot
-#    p1 = result %>%
-#        mutate(label = ifelse(adj.p < 0.01, "*", "")) %>%
-#        plt$cluster(estimate ~ scores + m) %>%
-#        filter(adj.p < 0.1) %>%
-#        plt$matrix(estimate ~ scores + m, color="estimate") +
-#            ggtitle(subs)
-#    print(p1)
-
-    # volcano plot
-    result %>%
-        mutate(label = paste(m, scores, sep=":")) %>%
-        plt$color$p_effect(pvalue="adj.p", thresh=0.1) %>%
-        plt$volcano(base.size=size, p=0.1) +
-            ggtitle(paste0(subs, " (", num_sample, " samples, ",
-                           length(altered), " CNAs in ",
-                           length(unique(altered)), " genes)"))
+        mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
+        mutate(label = paste(m, scores, sep=":"))
 }
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "cna_gistic.pdf"
+OUTFILE = commandArgs(TRUE)[2] %or% "cna_gistic.RData"
 CNAFILE = "cna.txt"
 
 scores = io$load(INFILE)
@@ -82,13 +65,10 @@ cna = io$read_table(CNAFILE, header=TRUE) %>%
     select(-gistic) %>%
     filter(!study %in% c("KICH","LAML")) # no alteration present n>=cutoff
 
-plots = cna$study %>%
+assocs = cna$study %>%
     unique() %>%
     sort() %>%
     c("pan", "pan_cov", .) %>%
-    lapply(function(s) subs2plots(s, cna, scores))
+    lapply(function(s) subs2assocs(s, cna, scores))
 
-pdf(OUTFILE, paper="a4r", width=26, height=20)
-for (plot in plots)
-    print(plot)
-dev.off()
+save(assocs, file=OUTFILE)
