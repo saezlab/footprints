@@ -41,9 +41,9 @@ result_nocov = scores %>%
 ```{r capture, echo=FALSE}
 keep = result %>%
     group_by(m) %>%
+    filter(any(-log10(adj.p) > 5)) %>%
     summarize(mlogp = -sum(log10(adj.p))) %>%
-    arrange(-mlogp) %>%
-    top_n(15, mlogp) %$%
+    arrange(-mlogp) %$%
     m
 
 util$mutation_overview_plot(result, keep)
@@ -59,9 +59,9 @@ plot_grid(plotlist=plots, ncol=4, label_size=8)
 ```{r capture_nocov, echo=FALSE}
 keep = result_nocov %>%
     group_by(m) %>%
+    filter(any(-log10(adj.p) > 10)) %>%
     summarize(mlogp = -sum(log10(adj.p))) %>%
-    arrange(-mlogp) %>%
-    top_n(15, mlogp) %$%
+    arrange(-mlogp) %$%
     m
 
 util$mutation_overview_plot(result_nocov, keep)
