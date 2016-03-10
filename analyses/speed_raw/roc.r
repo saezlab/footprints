@@ -32,14 +32,16 @@ method2pr_df = function(fid) {
 
 do_plot = function() {
     roc = lapply(config, method2pr_df) %>%
-        bind_rows()
+        bind_rows() %>%
+        na.omit()
 
     random_line = data.frame(x=c(0,1), y=c(0,1), method=roc$method[1])
 
     ggplot(roc, aes(x=FPR, y=TPR, color=method)) +
         geom_line(aes(x=x, y=y), data=random_line, color="grey", linetype="dashed") +
         geom_step() +
-        facet_wrap(~pathway)
+        facet_wrap(~pathway) +
+        theme(axis.text.x = element_text(angle = 45, hjust = 1))
 }
 
 if (is.null(module_name())) {
