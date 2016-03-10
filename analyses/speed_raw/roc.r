@@ -45,7 +45,7 @@ do_plot = function() {
 if (is.null(module_name())) {
     pdf("roc.pdf", paper="a4r", width=11, height=8)
 
-    do_plot()
+    print(do_plot())
 
     dev.off()
 }
