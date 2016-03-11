@@ -26,10 +26,10 @@ file2assocs = function(fname) {
 
 reactome = file2assocs("../scores/speed/gsea_reactome.RData") %>%
     filter(p.value < 1e-4) %>%
-    transmute(from=pathway, to=scores, value=estimate)
+    transmute(from=pathway, to=scores, value=-log10(p.value))
 speed = file2assocs("../scores/speed/speed_matrix.RData") %>%
     filter(p.value < 1e-4) %>%
-    transmute(from=pathway, to=scores, value=estimate)
+    transmute(from=pathway, to=scores, value=-log10(p.value))
 
 all_pathways = unique(c(speed$from, speed$to, reactome$from, reactome$to))
 color = setNames(brewer.pal(12, "Paired"), all_pathways)
