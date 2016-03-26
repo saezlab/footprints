@@ -63,7 +63,7 @@ for (i in seq_along(genesets))
 # run pathifier in jobs
 result = hpc$Q(tissue2scores, tissue=tissues, genesets=genesets,
                const = list(expr=expr), expand_grid=TRUE,
-               memory=8192, job_size=25, fail_on_error=FALSE)
+               memory=10240, job_size=25, fail_on_error=FALSE)
 
 result[sapply(result, class) == "try-error"] = NULL
 result = ar$stack(result, along=2)

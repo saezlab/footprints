@@ -19,7 +19,7 @@ genelist = io$load(INFILE) %>%
 # perform GSEA for each sample and signature
 result = hpc$Q(gsea$runGSEA, sigs=genelist,
                const = list(expr=expr, transform.normal=TRUE),
-               memory = 10240, job_size = 50)
+               memory = 20480, job_size = 50)
 
 # assemble results
 result = setNames(result, names(genelist)) %>%

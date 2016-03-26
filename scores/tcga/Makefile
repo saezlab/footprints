@@ -18,30 +18,30 @@ include ../../Makefile.inc
 all: $(SPEED_SCORES) $(SET_SCORES_MAPPED) $(SET_SCORES_ALL) $(SPIA) $(PATHIFIER) $(PARADIGM)
 
 # mapped pathways
-pathways_mapped/speed_%.RData: speed.r ../../model/model_%.RData
+pathways_mapped/speed_%.RData: speed.r ../../model/model_%.RData ../../config/tcga.yaml
 	Rscript $< $(word 2,$^) $@
 
-pathways_mapped/gsea_%.RData: set_enrichment.r ../../util/genesets/mapped/%.RData
-	Rscript $^ $@
+pathways_mapped/gsea_%.RData: set_enrichment.r ../../util/genesets/mapped/%.RData ../../config/tcga.yaml
+	Rscript $< $(word 2,$^) $@
 
-pathways_mapped/spia.RData: spia.r
-	Rscript $^ $@ TRUE
+pathways_mapped/spia.RData: spia.r ../../config/tcga.yaml
+	Rscript $< $@ TRUE
 
-pathways_mapped/pathifier.RData: pathifier.r ../../util/genesets/mapped/reactome.RData
-	Rscript $^ $@
+pathways_mapped/pathifier.RData: pathifier.r ../../util/genesets/mapped/reactome.RData ../../config/tcga.yaml
+	Rscript $< $(word 2,$^) $@
 
-pathways_mapped/paradigm.RData: paradigm.r
-	Rscript $^ $@
+pathways_mapped/paradigm.RData: paradigm.r ../../config/tcga.yaml
+	Rscript $< $@
 
 # all pathways
-pathways_all/gsea_%.RData: set_enrichment.r ../../util/genesets/all/%.RData
-	Rscript $^ $@
+pathways_all/gsea_%.RData: set_enrichment.r ../../util/genesets/all/%.RData ../../config/tcga.yaml
+	Rscript $< $(word 2,$^) $@
 
-pathways_all/spia.RData: spia.r
-	Rscript $^ $@ FALSE
+pathways_all/spia.RData: spia.r ../../config/tcga.yaml
+	Rscript $< $@ FALSE
 
-pathways_all/pathifier.RData: pathifier.r ../../util/genesets/all/reactome.RData
-	Rscript $^ $@
+pathways_all/pathifier.RData: pathifier.r ../../util/genesets/all/reactome.RData ../../config/tcga.yaml
+	Rscript $< $(word 2,$^) $@
 
 #paradigm.RData: paradigm.r
 #	Rscript $^ $@

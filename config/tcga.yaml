@@ -23,6 +23,17 @@ tissues:
  - MESO
  - OV
  - PAAD
+ - PCPG
+ - PRAD
+# - READ exclude: all in COADREAD
+ - SARC
+# - STES exclude: not in code tables at https://tcga-data.nci.nih.gov/datareports/codeTablesReport.htm
+ - TGCT
+ - THCA
+ - THYM
+ - UCEC
+ - UCS
+ - UVM
 
 # these are tisses that have normals in the tcga
 tissues_with_normals:
@@ -38,3 +49,9 @@ tissues_with_normals:
  - LUAD
  - LUSC
  - PAAD
+# - PCPG # 3 normals total
+ - PRAD
+# - SARC # 2 normals total
+ - THCA
+# - THYM # 2 normals total
+ - UCEC # 11 normals
