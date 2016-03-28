@@ -13,7 +13,7 @@ expr: expr/.dirstamp
 paths: expr
 	$(MAKE) $(PATHS)
 
-proteins.txt:
+proteins.txt: SuperPathway.txt
 	grep ^protein < SuperPathway.txt | grep -v abstract | cut -f2 > $@
 
 # this could probably be improved by:
@@ -23,6 +23,6 @@ expr/.dirstamp: preprocess_expr.r proteins.txt
 	Rscript preprocess_expr.r
 	touch $@
 
-$(PATHS): path/%.txt: expr/%.txt
+$(PATHS): path/%.txt: expr/%.txt config.txt SuperPathway.txt
 	mkdir -p $(dir $@)
 	$(call bsub,10240) -oo $@ paradigm -m 10 -c config.txt -p SuperPathway.txt -b expr/$*
