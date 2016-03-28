@@ -5,7 +5,7 @@ ar = import('array')
 st = import('stats')
 gdsc = import('data/gdsc')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/gdsc/speed_linear.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/gdsc/pathways_mapped/speed_linear.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "speed_linear.RData"
 
 # load required data
@@ -19,13 +19,13 @@ tissues = gdsc$tissues(minN=15)
 ar$intersect(scores, tissues, Ys, Ys_clinical, Ys_noexp, Ys_sensi, Ys_clin_sens, along=1)
 
 # tissues as covariate
-assocs.pan = st$lm(Ys ~ tissues + scores) %>%
+assocs.pan = st$lm(Ys ~ tissues + scores, hpc_args=list(job_size=2000)) %>%
     filter(term == "scores") %>%
     select(-term) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr"))
 
 # tissues as subsets
-assocs.tissue = function(Yf) st$lm(Yf ~ scores, subsets=tissues) %>%
+assocs.tissue = function(Yf) st$lm(Yf ~ scores, subsets=tissues, hpc_args=list(job_size=10000)) %>%
     filter(term == "scores") %>%
     select(-term) %>%
     group_by(subset) %>%
