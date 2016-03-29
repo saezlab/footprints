@@ -40,8 +40,8 @@ tissues_with_normals:
  - BLCA
  - BRCA
  - CESC
-# - COAD
- - COADREAD
+# - COAD all in COADREAD
+# - COADREAD no normals
  - ESCA
  - HNSC
  - KIRC

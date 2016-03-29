@@ -36,6 +36,8 @@ expr = lapply(tissues, tcga$rna_seq) %>%
     spia$map_entrez()
 
 # handle COAD and READ separately
+# we do, however, not have normals in the newest data release (stddata__2016_01_28)
+# there were 373 tumor + 51 normals in COADREAD in stddata__2015_08_21
 if ("COADREAD" %in% tissues) {
     tissues = setdiff(tissues, "COADREAD")
     tissues = c(tissues, "COAD", "READ")
