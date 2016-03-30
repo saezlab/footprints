@@ -15,7 +15,7 @@ $(GDSC_PLOTS): plots_%.pdf: plot.r assocs_%.RData
 	Rscript $^ $@
 
 $(GDSC_ASSOCS): assocs_%.RData: gdsc_assocs.r ../../scores/gdsc/pathways_%.RData
-	$(call bsub_log,4096) Rscript $^ $@
+	$(call bsub_log,10240) Rscript $^ $@
 
 mutation.RData: mutation.r
 	Rscript $^ $@
