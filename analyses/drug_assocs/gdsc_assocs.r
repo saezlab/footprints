@@ -36,10 +36,7 @@ pan_assocs = function(scores, Ys, scoresub, tissues) {
     st = import('stats')
 
     score = scores[, scoresub, drop=FALSE]
-
-    assocs.pan = st$lm(Ys ~ tissues + score, data=data) %>%
-        filter(term == "score") %>%
-        select(-term)
+    re = st$lm(Ys ~ tissues + score, data=data)
 }
 
 #' Tissues as subsets
@@ -58,8 +55,6 @@ tissue_assocs = function(scores, Ysubs, scoresub, ysub, tissues) {
         ar$intersect_list(along=1)
 
     re = st$lm(Yf ~ score, subsets=tissues, data=data) %>%
-        filter(term == "score") %>%
-        select(-term) %>%
         mutate(Ysub = ysub)
 }
 
@@ -67,12 +62,16 @@ assocs.pan = hpc$Q(pan_assocs, scoresub=colnames(scores),
                    const = list(scores=scores, Ys=Ys, tissues=tissues),
                    job_size = 100) %>%
     bind_rows() %>%
+    filter(term == "score") %>%
+    select(-term) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr"))
 
 assocs.tissue = hpc$Q(tissue_assocs, scoresub=colnames(scores), ysub=names(Ysubs),
                       const = list(scores=scores, Ysubs=Ysubs, tissues=tissues),
                       expand_grid=TRUE, job_size=100) %>%
     bind_rows() %>%
+    filter(term == "score") %>%
+    select(-term) %>%
     group_by(subset, Ysub) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
     ungroup()
