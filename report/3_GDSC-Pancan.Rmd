@@ -86,7 +86,7 @@ load_fun = function(fname) {
 }
 
 # paradigm not included because strongest pancan association 39% FDR
-methods = c("../mutation", "speed_matrix", "gsea_reactome", "gsea_go", "spia", "pathifier")
+methods = c("mutation", "speed_matrix", "gsea_reactome", "gsea_go", "spia", "pathifier")
 
 resp = methods %>%
     lapply(load_fun) %>%
