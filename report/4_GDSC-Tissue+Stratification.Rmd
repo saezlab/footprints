@@ -1,7 +1,4 @@
----
-title: "Tissue-specific drug associations"
-author: "Michael Schubert (schubert@ebi.ac.uk)"
----
+# Tissue-specific drug associations
 
 ```{r setup4, include=FALSE}
 library(dplyr)
@@ -22,7 +19,7 @@ tissues = gdsc$tissues()
 Ys_clinical = gdsc$drug_response('IC50s', min_tissue_measured=0, stage=2)
 ar$intersect(scores, tissues, Ys_clinical, along=1)
 
-# tissues as subsets
+## tissues as subsets
 assocs.tissue = st$lm(Ys_clinical ~ scores, subsets=tissues) %>%
     filter(term == "scores") %>%
     select(-term) %>%
@@ -31,7 +28,7 @@ assocs.tissue = st$lm(Ys_clinical ~ scores, subsets=tissues) %>%
     ungroup()
 ```
 
-# Volcano plot of drug response (clinical drugs)
+## Volcano plot of drug response (clinical drugs)
 
 ```{r volcano, echo=FALSE}
 assocs.tissue %>%
@@ -40,7 +37,7 @@ assocs.tissue %>%
     plt$volcano(p=0.2)
 ```
 
-# Stratification of LGG Docetaxel response by Trail activity
+## Stratification of LGG Docetaxel response by Trail activity
 
 ```{r range-lgg_trail, echo=FALSE}
 cancer_type = names(tissues)[tissues == "LGG"]
@@ -53,7 +50,7 @@ stratify = list(LGG = list(
 util$drug_range_box("Docetaxel", stratify=stratify)
 ```
 
-# Stratification of ESCA Rapamycin response by EGFR activity
+## Stratification of ESCA Rapamycin response by EGFR activity
 
 ```{r range-esca_rap, echo=FALSE}
 cancer_type = names(tissues)[tissues == "ESCA"]
@@ -66,7 +63,7 @@ stratify = list(ESCA = list(
 util$drug_range_box("Rapamycin", stratify=stratify)
 ```
 
-# Stratification of SKCM FH-535 response by VEGF activity
+## Stratification of SKCM FH-535 response by VEGF activity
 
 ```{r range-skcm_vegf, echo=FALSE}
 cancer_type = names(tissues)[tissues == "SKCM"]

@@ -1,7 +1,4 @@
----
-title: "Associations between pathway activation and patient survival"
-author: "Michael Schubert (schubert@ebi.ac.uk)"
----
+# Associations between pathway activation and patient survival
 
 ```{r setup5, include=FALSE}
 library(dplyr)
@@ -31,7 +28,7 @@ scores = ar$map(scores, along=1, subsets=clinical$study, surv$discretize_quartil
 discrete_assocs = surv$tissue(scores)
 ```
 
-# Pan-cancer associations
+## Pan-cancer associations
 
 ```{r pancan, include=FALSE}
 ##TODO: @suppl
@@ -56,10 +53,10 @@ p1 = assocs.pan %>%
 print(p1)
 ```
 
-# Cancer-specific associations
+## Cancer-specific associations
 
 ```{r tissue, echo=FALSE}
-##TODO: for all other methods ->@suppl
+#TODO: for all other methods ->@suppl
 p2 = assocs.tissue %>%
     plt$color$p_effect("adj.p", dir=-1, thresh=0.1) %>%
     mutate(label = paste(subset, scores, sep=":")) %>%
@@ -67,7 +64,7 @@ p2 = assocs.tissue %>%
 print(p2)
 ```
 
-# Highlighted fits
+## Highlighted fits
 
 ```{r fit1, echo=FALSE, fig.width=7.5, fig.height=6}
 surv$row2survFit(unlist(filter(discrete_assocs, scores=="TNFa" & subset=="KIRC")))

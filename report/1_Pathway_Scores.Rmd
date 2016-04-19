@@ -1,7 +1,4 @@
----
-title: "Perturbation experiments"
-author: "Michael Schubert (schubert@ebi.ac.uk)"
----
+# Perturbation experiments
 
 ```{r setup1, include=FALSE}
 library(circlize)
@@ -35,13 +32,13 @@ all_pathways = unique(c(speed$from, speed$to, reactome$from, reactome$to))
 color = setNames(brewer.pal(12, "Paired"), all_pathways)
 ```
 
-# Signaling Footprints (perturbation experiments)
+## Signaling Footprints (perturbation experiments)
 
 ```{r circle1, echo=FALSE, fig.width=4, fig.height=4}
 chordDiagram(speed, grid.col=color, grid.border="#dedede", self.link=1, link.border="#dedede")
 ```
 
-# Reactome
+## Reactome
 
 ```{r circle2, echo=FALSE, fig.width=4, fig.height=4}
 chordDiagram(reactome, grid.col=color, grid.border="#dedede", self.link=1, link.border="#dedede")

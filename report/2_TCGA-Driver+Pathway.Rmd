@@ -1,7 +1,4 @@
----
-title: "Comparison of different pathway methods in terms of TCGA mutation recall"
-author: "Michael Schubert (schubert@ebi.ac.uk)"
----
+# Comparison of different pathway methods in terms of TCGA mutation recall
 
 ```{r setup2, include=FALSE}
 b = import('base')
@@ -14,7 +11,7 @@ tcga = import('data/tcga')
 
 MUTFILE = "../analyses/tcga_pathway_per_mutation/mutations_annotated_pathwayactivities_v3_mikeformat.txt"
 
-#TODO: %each>% || %>>% operator?
+##TODO: %each>% || %>>% operator?
 
 #' Loads a specific TCGA scores file
 #' supplies path and extension, and cuts rownames at 16 chars
@@ -67,9 +64,9 @@ result_nocov = scores %>%
     bind_rows()
 ```
 
-# Overview of number of driver mutations per cancer type
+## Overview of number of driver mutations per cancer type
 
-## TP53
+### TP53
 
 ```{r tp53, echo=FALSE, fig.width=4}
 cur = filter(result, m == "TP53")
@@ -81,7 +78,7 @@ p1 = cur %>%
 print(p1)
 ```
 
-## KRAS
+### KRAS
 
 ```{r kras, echo=FALSE, fig.width=4}
 cur = filter(result, m == "KRAS")
@@ -93,7 +90,7 @@ p1 = cur %>%
 print(p1)
 ```
 
-## VHL
+### VHL
 
 ```{r vhl, echo=FALSE, fig.width=4}
 cur = filter(result_nocov, m == "VHL")
@@ -105,7 +102,7 @@ p1 = cur %>%
 print(p1)
 ```
 
-## STK11
+### STK11
 
 ```{r stk11, echo=FALSE, fig.width=4}
 cur = filter(result_nocov, m == "STK11")

@@ -1,7 +1,4 @@
----
-title: "Pan-cancer improvements with mutations and MAPK scores"
-author: "Michael Schubert (schubert@ebi.ac.uk)"
----
+# Pan-cancer improvements with mutations and MAPK scores
 
 ```{r setup3, include=FALSE}
 library(magrittr)
@@ -14,7 +11,7 @@ MEKi_levels = c("MAPK_all", "MAPK_wt", "MAPK_mut", "MAPK+_mut", "MAPK-_mut", "MA
 p53_levels = c("TP53_all", "TP53_mut", "TP53_wt", "p53+_wt", "p53-_wt", "p53+", "p53-")
 ```
 
-# Improvement over mutations alone
+## Improvement over mutations alone
 
 #### Trametinib
 
@@ -38,7 +35,7 @@ ggplot(mydf, aes(x=subset, y=resp)) +
 mydf = util$create_df("MAPK", c("NRAS", "KRAS", "BRAF"), "AZ628") %>%
     mutate(subset = factor(subset, levels=MEKi_levels))
 
-#summary_df(mydf)
+##summary_df(mydf)
 
 ggplot(mydf, aes(x=subset, y=resp)) +
     geom_violin() +
@@ -52,7 +49,7 @@ ggplot(mydf, aes(x=subset, y=resp)) +
 mydf = util$create_df("MAPK", "BRAF", "Dabrafenib") %>%
     mutate(subset = factor(subset, levels=MEKi_levels))
 
-#summary_df(mydf)
+##summary_df(mydf)
 
 ggplot(mydf, aes(x=subset, y=resp)) +
     geom_violin() +
@@ -60,7 +57,7 @@ ggplot(mydf, aes(x=subset, y=resp)) +
     theme_bw()
 ```
 
-#### Nutlin-3a
+##### Nutlin-3a
 
 ```{r nutlin, echo=FALSE, fig.height=3}
 mydf = util$create_df("p53", "TP53", "Nutlin-3a") %>%
@@ -75,7 +72,7 @@ ggplot(mydf, aes(x=subset, y=resp)) +
 ```
 
 
-# Comparing associations to mutations
+## Comparing associations to mutations
 
 ```{r compare, echo=FALSE}
 load_fun = function(fname) {
