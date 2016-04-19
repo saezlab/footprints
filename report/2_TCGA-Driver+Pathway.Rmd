@@ -22,7 +22,7 @@ MUTFILE = "../analyses/tcga_pathway_per_mutation/mutations_annotated_pathwayacti
 #' @param x  An identifier, like 'speed_matrix'
 #' @return   A matrix with samples as rows and genes and columns
 load_fun = function(x) {
-    re = io$file_path("../scores/tcga", x, ext=".RData") %>%
+    re = io$file_path("../scores/tcga/pathways_mapped", x, ext=".RData") %>%
         io$load()
     rownames(re) = substr(rownames(re), 1, 16)
     re

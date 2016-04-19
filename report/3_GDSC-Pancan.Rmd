@@ -10,9 +10,8 @@ b = import('base')
 io = import('io')
 util = import('./util_3')
 
-MEKi_MAPK = util$stratify(scores, mut, "MAPK", c("NRAS", "KRAS", "BRAF"))
-BRAFi_MAPK = util$stratify(scores, mut, "MAPK", "BRAF")
-Nutlin_p53 = util$stratify(scores, mut, "p53", "TP53")
+MEKi_levels = c("MAPK_all", "MAPK_wt", "MAPK_mut", "MAPK+_mut", "MAPK-_mut", "MAPK+", "MAPK-")
+p53_levels = c("TP53_all", "TP53_mut", "TP53_wt", "p53+_wt", "p53-_wt", "p53+", "p53-")
 ```
 
 # Improvement over mutations alone
@@ -20,13 +19,12 @@ Nutlin_p53 = util$stratify(scores, mut, "p53", "TP53")
 #### Trametinib
 
 ```{r tram, echo=FALSE, fig.height=3}
-mydf = assemble_df(MEKi_MAPK, "Trametinib") %>% na.omit()
-mydf$ind = factor(mydf$ind, levels=c("all", "wt", "mut",
-                                     "path+_mut", "path-_mut",
-                                     "path+", "path0", "path-"))
-summary_df(mydf)
+mydf = util$create_df("MAPK", c("NRAS", "KRAS", "BRAF"), "Trametinib") %>%
+    mutate(subset = factor(subset, levels=MEKi_levels))
 
-ggplot(mydf, aes(x=ind, y=resp)) +
+#summary_df(mydf)
+
+ggplot(mydf, aes(x=subset, y=resp)) +
     geom_violin() +
     geom_boxplot(width=.5, outlier.shape=NA) +
 #    geom_boxplot(outlier.shape=NA) +
@@ -37,13 +35,12 @@ ggplot(mydf, aes(x=ind, y=resp)) +
 #### AZ628
 
 ```{r az628, echo=FALSE, fig.height=3}
-mydf = assemble_df(MEKi_MAPK, "AZ628") %>% na.omit()
-mydf$ind = factor(mydf$ind, levels=c("all", "wt", "mut",
-                                     "path+_mut", "path-_mut",
-                                     "path+", "path0", "path-"))
-summary_df(mydf)
+mydf = util$create_df("MAPK", c("NRAS", "KRAS", "BRAF"), "AZ628") %>%
+    mutate(subset = factor(subset, levels=MEKi_levels))
 
-ggplot(mydf, aes(x=ind, y=resp)) +
+#summary_df(mydf)
+
+ggplot(mydf, aes(x=subset, y=resp)) +
     geom_violin() +
     geom_boxplot(width=.5, outlier.shape=NA) +
     theme_bw()
@@ -52,13 +49,12 @@ ggplot(mydf, aes(x=ind, y=resp)) +
 #### Dabrafenib
 
 ```{r dabraf, echo=FALSE, fig.height=3}
-mydf = assemble_df(BRAFi_MAPK, "Dabrafenib") %>% na.omit()
-mydf$ind = factor(mydf$ind, levels=c("all", "wt", "mut",
-                                     "path+_mut", "path-_mut",
-                                     "path+", "path0", "path-"))
-summary_df(mydf)
+mydf = util$create_df("MAPK", "BRAF", "Dabrafenib") %>%
+    mutate(subset = factor(subset, levels=MEKi_levels))
 
-ggplot(mydf, aes(x=ind, y=resp)) +
+#summary_df(mydf)
+
+ggplot(mydf, aes(x=subset, y=resp)) +
     geom_violin() +
     geom_boxplot(width=.5, outlier.shape=NA) +
     theme_bw()
@@ -67,13 +63,12 @@ ggplot(mydf, aes(x=ind, y=resp)) +
 #### Nutlin-3a
 
 ```{r nutlin, echo=FALSE, fig.height=3}
-mydf = assemble_df(Nutlin_p53, "Nutlin-3a") %>% na.omit()
-mydf$ind = factor(mydf$ind, levels=c("all", "mut", "wt",
-                                     "path+_wt", "path-_wt",
-                                     "path+", "path0", "path-"))
-summary_df(mydf)
+mydf = util$create_df("p53", "TP53", "Nutlin-3a") %>%
+    mutate(subset = factor(subset, levels=p53_levels))
 
-ggplot(mydf, aes(x=ind, y=resp)) +
+#summary_df(mydf)
+
+ggplot(mydf, aes(x=subset, y=resp)) +
     geom_violin() +
     geom_boxplot(width=.5, outlier.shape=NA) +
     theme_bw()
@@ -84,7 +79,7 @@ ggplot(mydf, aes(x=ind, y=resp)) +
 
 ```{r compare, echo=FALSE}
 load_fun = function(fname) {
-    io$file_path('../analyses/drug_assocs', fname, ext=".RData") %>%
+    io$file_path('../analyses/drug_assocs/assocs_mapped', fname, ext=".RData") %>%
         io$load() %$%
         assocs.pan %>%
         filter(adj.p < 0.1) %>%
@@ -94,7 +89,7 @@ load_fun = function(fname) {
 }
 
 # paradigm not included because strongest pancan association 39% FDR
-methods = c("mutation", "speed_matrix", "gsea_reactome", "gsea_go", "spia", "pathifier")
+methods = c("../mutation", "speed_matrix", "gsea_reactome", "gsea_go", "spia", "pathifier")
 
 resp = methods %>%
     lapply(load_fun) %>%

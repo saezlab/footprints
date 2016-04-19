@@ -111,7 +111,7 @@ tissue = function(scores, meta=clinical) {
 #'            This is mapped to TCGA patient IDs
 load = function(id, file=NULL) {
     if (is.null(file))
-        file = module_file(io$file_path("../../scores/tcga", id, ext=".RData"))
+        file = module_file(io$file_path("../../scores/tcga/pathways_mapped", id, ext=".RData"))
     re =  io$load(file)
     re = re[substr(rownames(re), 14, 16) == "01A",]
     rownames(re) = substr(rownames(re), 1, 12)

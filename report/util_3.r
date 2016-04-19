@@ -27,6 +27,7 @@ nst = function(x) names(x[x])
 #' @param pathway  Our pathway descriptor, e.g. "MAPK"
 #' @param genes    A character vector of which genes should be
 #'                 used as markers to compare to
+#' @return         A list of subsets each with a character of COSMIC IDs
 stratify = function(pathway="MAPK", genes=c("BRAF","KRAS","NRAS")) {
     path = scores[names(tissues), pathway]
     has_mut = apply(mut[, genes, drop=FALSE], 1, any)
@@ -46,12 +47,10 @@ stratify = function(pathway="MAPK", genes=c("BRAF","KRAS","NRAS")) {
         "PATH_null" = nst(path_null),
 
         # stratification by SPEED score, wild-type subset
-        "PATH_wt" = nst(!has_mut),
         "PATH+_wt" = nst(!has_mut & path_active),
         "PATH-_wt" = nst(!has_mut & path_inactive),
 
         # stratification by SPEED score, mutated subset
-        "PATH_mut" = nst(has_mut),
         "PATH+_mut" = nst(has_mut & path_active),
         "PATH-_mut" = nst(has_mut & path_inactive)
     )
@@ -87,13 +86,25 @@ wilcox = function(mydf, c1, c2) {
 }
 
 #' Create a data.frame of drug responses
+#'
+#' @param pathway   The pathway scores
+#' @param mutation  Character vector of mutated genes
+#' @param drug      Drug name for which to get response IC50
+#' @return          A data.frame with COSMIC IDs, subset, drug resp, etc.
 create_df = function(pathway, mutation, drug) {
+    strat = stratify(pathway, mutation) %>%
+        stack() %>%
+        transmute(cosmic=values, subset=ind)
+
     df$assemble(
         tissue = tissues,
         mut = apply(mut[, mutation, drop=FALSE], 1, any),
         score = scores[,pathway],
         resp = Ys[,drug]
-    ) %>% add_rownames("cosmic") %>% na.omit()
+    ) %>%
+        add_rownames("cosmic") %>%
+        inner_join(strat, by="cosmic") %>%
+        na.omit()
 }
 
 #' Plot of the linear fit

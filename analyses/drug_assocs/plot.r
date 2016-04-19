@@ -10,7 +10,7 @@ load_fun = function(fid) {
 plot_pancan = function(assocs.pan, ...) {
     # volcano plot for pan-cancer
     assocs.pan %>%
-        mutate(label = paste(Ys, scores, sep=":")) %>%
+        mutate(label = paste(Ys, score, sep=":")) %>%
         plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1) %>%
         plt$volcano(base.size=0.2, ...)
 }
@@ -21,14 +21,14 @@ plot_matrix = function(assocs.pan) {
         mutate(lp = -log(adj.p),
                label = ifelse(adj.p < 1e-2, '*', ''),
                estimate = ifelse(adj.p < 0.1, estimate, NA)) %>%
-        plt$cluster(lp ~ scores + Ys, size=c(Inf,20)) %>%
-        plt$matrix(estimate ~ scores + Ys)
+        plt$cluster(lp ~ score + Ys, size=c(Inf,20)) %>%
+        plt$matrix(estimate ~ score + Ys)
 }
 
 plot_tissue = function(data) {
     # volcano plot for tissue subsets
     tissue_plot = function(assocs.tissue, name) assocs.tissue %>%
-        mutate(label = paste(subset, Yf, scores, sep=":")) %>%
+        mutate(label = paste(subset, Yf, score, sep=":")) %>%
         plt$color$p_effect(pvalue="adj.p",
                            effect="estimate",
                            dir=-1,
@@ -42,7 +42,7 @@ plot_tissue = function(data) {
         message(tissue) # if one fails easier to debug
         p = data$assocs.tissue_noexp %>%
             filter(subset == tissue) %>%
-            mutate(label = paste(Yf, scores, sep=":")) %>%
+            mutate(label = paste(Yf, score, sep=":")) %>%
             plt$color$p_effect(pvalue="adj.p",
                                effect="estimate",
                                dir=-1,

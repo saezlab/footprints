@@ -14,7 +14,7 @@ plt = import('plot')
 gdsc = import('data/gdsc')
 util = import('../analyses/drug_assocs_followup/util')
 
-INFILE = commandArgs(TRUE)[1] %or% "../scores/gdsc/speed_matrix.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../scores/gdsc/pathways_mapped/speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "LGG_assocs.pdf"
 
 scores = io$load(INFILE)
