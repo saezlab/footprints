@@ -71,19 +71,18 @@ stratify = function(pathway="MAPK", genes=c("BRAF","KRAS","NRAS")) {
 #' @return      A list with the reference and sample condition,
 #'              p.value and fold change of median
 wilcox = function(mydf, c1, c2) {
-    mydf = na.omit(filter(mydf, ind %in% c(c1, c2)))
+    mydf = na.omit(filter(mydf, subset %in% c(c1, c2)))
     medians = mydf %>%
-        group_by(ind) %>%
+        group_by(subset) %>%
         summarize(median = median(resp)) %$%
         median
 
-#    list(
-#        ref = c1,
-#        sample = c2,
-#        p.value = wilcox.test(resp ~ ind, data=mydf)$p.value,
-#        median_folds = round(10^(abs(medians[2] - medians[1])))
-#    )
-    list() #TODO:
+    list(
+        ref = c1,
+        sample = c2,
+        p.value = wilcox.test(resp ~ subset, data=mydf)$p.value,
+        median_folds = round(10^(abs(medians[2] - medians[1])))
+    )
 }
 
 #' Create a data.frame of drug responses
@@ -124,10 +123,11 @@ linear_fit = function(mydf) {
 #' @param start    A stratification returned by `stratify()`
 #' @param pathway  A character referencing the pathway
 contrast_stats = function(strat, drug, pathway, gene=pathway) {
-    mydf = stack(strat)
-    mydf$tissue = tissues[mydf$values]
-    mydf$score = scores[,pathway][mydf$values]
-    mydf$resp = Ys[,drug][mydf$values]
+    mydf = stack(strat) %>%
+        transmute(cosmic=values, subset=ind)
+    mydf$tissue = tissues[mydf$cosmic]
+    mydf$score = scores[,pathway][mydf$cosmic]
+    mydf$resp = Ys[,drug][mydf$cosmic]
 
     as.data.frame(bind_rows(
         wilcox(mydf, paste0(gene, "_wt"), paste0(gene, "_mut")),

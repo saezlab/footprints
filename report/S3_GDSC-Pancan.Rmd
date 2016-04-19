@@ -164,7 +164,7 @@ print(table(stack(mapk_braf_pathway)$ind))
 
 #### Statistics about the Stratifications
 ```{r da_braf_stats, echo=FALSE}
-print(util$contrast_stats(mapk_braf_pathway, "Dabrafenib", "MAPK"))
+print(util$contrast_stats(mapk_braf_pathway, "Dabrafenib", "MAPK", "BRAF"))
 ```
 
 
