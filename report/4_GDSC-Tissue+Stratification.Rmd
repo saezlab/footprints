@@ -3,7 +3,7 @@ title: "Tissue-specific drug associations"
 author: "Michael Schubert (schubert@ebi.ac.uk)"
 ---
 
-```{r code, include=FALSE}
+```{r setup4, include=FALSE}
 library(dplyr)
 b = import('base')
 io = import('io')

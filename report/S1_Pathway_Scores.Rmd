@@ -1,19 +1,12 @@
----
-title: "Pathway scores in Basal and Perturbed Condition"
-author: "Michael Schubert (schubert@ebi.ac.uk)"
-output:
-  pdf_document:
-      number_sections: yes
-      toc: yes
----
+# Pathway scores in Basal and Perturbed Condition
 
-# Methods
+## Methods
 
-## Volcano Plots
+### Volcano Plots
 
 ... write about methods here ...
 
-## Individual Fits
+### Individual Fits
 
 ... write about methods here ...
 
@@ -33,57 +26,57 @@ roc = import('../analyses/speed_raw/roc')
 stability = import('../analyses/speed_bootstrap/stability_plot')
 ```
 
-# Size of the Data Set
+## Size of the Data Set
 
 ```{r dataset_size, echo=FALSE}
 overview$do_plot()
 ```
 
-# Global Structure of Perturbation Experiments
+## Global Structure of Perturbation Experiments
 
 ```{r global_structure, echo=FALSE}
 cluster$do_plot()
 ```
 
-# Pathway scores upon Perturbation
+## Pathway scores upon Perturbation
 
-## Signaling Footprints
+### Signaling Footprints
 
 ```{r perturb_speed_matrix, echo=FALSE, fig.height=3, fig.width=8}
 util$perturb_score_plots('speed_matrix')
 ```
 
-## Gene Ontology
+### Gene Ontology
 
 ```{r perturb_go, echo=FALSE, fig.height=3, fig.width=8}
 util$perturb_score_plots('gsea_go')
 ```
 
-## Reactome
+### Reactome
 
 ```{r perturb_reactome, echo=FALSE, fig.height=3, fig.width=8}
 util$perturb_score_plots('gsea_reactome')
 ```
 
-## BioCarta
+### BioCarta
 
 ```{r perturb_biocarta, echo=FALSE, fig.height=3, fig.width=8}
 util$perturb_score_plots('gsea_biocarta')
 ```
 
-## SPIA
+### SPIA
 
 ```{r perturb_spia, echo=FALSE, fig.height=3, fig.width=8}
 util$perturb_score_plots('spia')
 ```
 
-## Pathifier
+### Pathifier
 
 ```{r perturb_pathifier, echo=FALSE, fig.height=3, fig.width=8}
 util$perturb_score_plots('pathifier')
 ```
 
-## PARADIGM
+### PARADIGM
 
 *not implemented*
 
@@ -91,51 +84,51 @@ util$perturb_score_plots('pathifier')
 #util$perturb_score_plots('paradigm')
 ```
 
-# ROC curves for Recovery of Perturbations
+## ROC curves for Recovery of Perturbations
 
 ```{r perturb_all, echo=FALSE}
 roc$do_plot()
 ```
 
-# Stability of Scores in Basal Expression
+## Stability of Scores in Basal Expression
 
 ```{r stability, echo=FALSE}
 stability$do_plot('gdsc_matrix.RData')
 ```
 
-# Correlation of Pathway Scores in Basal Expression
+## Correlation of Pathway Scores in Basal Expression
 
-## Signaling Footprints
+### Signaling Footprints
 
 ```{r cor_speed_matrix, echo=FALSE, fig.height=3, fig.width=8}
 util$cor_plots('speed_matrix')
 ```
 
-## Gene Ontology
+### Gene Ontology
 
 ```{r cor_go, echo=FALSE, fig.height=3, fig.width=8}
 util$cor_plots('gsea_go')
 ```
 
-## Reactome
+### Reactome
 
 ```{r cor_reactome, echo=FALSE, fig.height=3, fig.width=8}
 util$cor_plots('gsea_reactome')
 ```
 
-## BioCarta
+### BioCarta
 
 ```{r cor_speed_biocarta, echo=FALSE, fig.height=3, fig.width=8}
 util$cor_plots('gsea_biocarta')
 ```
 
-## SPIA
+### SPIA
 
 ```{r cor_spia, echo=FALSE, fig.height=3, fig.width=8}
 util$cor_plots('spia')
 ```
 
-## Pathifier
+### Pathifier
 
 *some error*
 
@@ -143,13 +136,13 @@ util$cor_plots('spia')
 #util$cor_plots('pathifier')
 ```
 
-## PARADIGM
+### PARADIGM
 
 ```{r cor_paradigm, echo=FALSE, fig.height=3, fig.width=8}
 util$cor_plots('paradigm')
 ```
 
 
-# Discussion
+## Discussion
 
 ... write some thoughts here ...

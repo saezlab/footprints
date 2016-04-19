@@ -1,24 +1,17 @@
----
-title: "Comparison of different pathway methods in terms of TCGA mutation recall"
-author: "Michael Schubert (schubert@ebi.ac.uk)"
-output:
-  pdf_document:
-      number_sections: yes
-      toc: yes
----
+# Comparison of different pathway methods in terms of TCGA mutation recall
 
-# Methods
+## Methods
 
-## first subheading
+### first subheading
 
 ... write about methods here ...
 
-## 2nd
+### 2nd
 
 ... write about methods here ...
 
 
-```{r setup, include=FALSE}
+```{r setup2, include=FALSE}
 library(magrittr)
 b = import('base')
 io = import('io')
@@ -51,7 +44,7 @@ result_nocov = scores %>%
     bind_rows()
 ```
 
-# What Pathway Methods can capture, within tissues
+## What Pathway Methods can capture, within tissues
 
 ```{r capture, echo=FALSE}
 keep = result %>%
@@ -69,7 +62,7 @@ plots = lapply(keep, function(x) util$mutation_method_plot(result, x))
 plot_grid(plotlist=plots, ncol=4, label_size=8)
 ```
 
-# What Pathway Methods can capture, between tissues
+## What Pathway Methods can capture, between tissues
 
 ```{r capture_nocov, echo=FALSE}
 keep = result_nocov %>%
@@ -88,6 +81,6 @@ plot_grid(plotlist=plots, ncol=4, label_size=8)
 ```
 
 
-# Discussion
+## Discussion
 
 ... write some thoughts here ...

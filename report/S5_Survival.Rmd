@@ -1,9 +1,6 @@
----
-title: "Associations between different pathway pathway methods and patient survival"
-author: "Michael Schubert (schubert@ebi.ac.uk)"
----
+# Associations between different pathway pathway methods and patient survival
 
-```{r setup, include=FALSE}
+```{r setup5, include=FALSE}
 library(dplyr)
 b = import('base')
 io = import('io')
@@ -12,7 +9,7 @@ st = import('stats')
 util = import('../analyses/tcga_survival/util')
 ```
 
-# Pan-cancer associations
+## Pan-cancer associations
 
 ```{r pancan, include=FALSE}
 #TODO: conditional/comparison of the different methods

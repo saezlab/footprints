@@ -77,12 +77,13 @@ wilcox = function(mydf, c1, c2) {
         summarize(median = median(resp)) %$%
         median
 
-    list(
-        ref = c1,
-        sample = c2,
-        p.value = wilcox.test(resp ~ ind, data=mydf)$p.value,
-        median_folds = round(10^(abs(medians[2] - medians[1])))
-    )
+#    list(
+#        ref = c1,
+#        sample = c2,
+#        p.value = wilcox.test(resp ~ ind, data=mydf)$p.value,
+#        median_folds = round(10^(abs(medians[2] - medians[1])))
+#    )
+    list() #TODO:
 }
 
 #' Create a data.frame of drug responses

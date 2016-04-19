@@ -1,0 +1,22 @@
+---  
+title: Supplementary Material
+author: Michael Schubert (schubert@ebi.ac.uk)
+output:
+    pdf_document:
+        toc: yes
+---
+
+```{r child = "S1_Pathway_Scores.Rmd"}
+```
+
+```{r child = "S2_TCGA-Driver+Pathway.Rmd"}
+```
+
+```{r child = "S3_GDSC-Pancan.Rmd"}
+```
+
+```{r child = "S4_GDSC-Tissue+Stratification.Rmd"}
+```
+
+```{r child = "S5_Survival.Rmd"}
+```

@@ -1,9 +1,6 @@
----
-title: "Comparison of different pathway methods for tissue-specific drug associations"
-author: "Michael Schubert (schubert@ebi.ac.uk)"
----
+# Comparison of different pathway methods for tissue-specific drug associations
 
-```{r code, include=FALSE}
+```{r setup4, include=FALSE}
 library(dplyr)
 b = import('base')
 io = import('io')

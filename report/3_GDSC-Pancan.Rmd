@@ -3,7 +3,7 @@ title: "Pan-cancer improvements with mutations and MAPK scores"
 author: "Michael Schubert (schubert@ebi.ac.uk)"
 ---
 
-```{r code, include=FALSE}
+```{r setup3, include=FALSE}
 library(magrittr)
 library(dplyr)
 b = import('base')

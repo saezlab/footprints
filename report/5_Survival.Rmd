@@ -3,7 +3,7 @@ title: "Associations between pathway activation and patient survival"
 author: "Michael Schubert (schubert@ebi.ac.uk)"
 ---
 
-```{r setup, include=FALSE}
+```{r setup5, include=FALSE}
 library(dplyr)
 b = import('base')
 io = import('io')

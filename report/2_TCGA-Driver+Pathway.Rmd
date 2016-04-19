@@ -3,7 +3,7 @@ title: "Comparison of different pathway methods in terms of TCGA mutation recall
 author: "Michael Schubert (schubert@ebi.ac.uk)"
 ---
 
-```{r setup, include=FALSE}
+```{r setup2, include=FALSE}
 b = import('base')
 io = import('io')
 st = import('stats')
