@@ -32,65 +32,14 @@ all_pathways = unique(c(speed$from, speed$to, reactome$from, reactome$to))
 color = setNames(brewer.pal(12, "Paired"), all_pathways)
 ```
 
-## Associations
-
-### Signaling Footprints (perturbation experiments)
+## Signaling Footprints (perturbation experiments)
 
 ```{r circle1, echo=FALSE, fig.width=4, fig.height=4}
 chordDiagram(speed, grid.col=color, grid.border="#dedede", self.link=1, link.border="#dedede")
 ```
 
-### Reactome
+## Reactome
 
 ```{r circle2, echo=FALSE, fig.width=4, fig.height=4}
 chordDiagram(reactome, grid.col=color, grid.border="#dedede", self.link=1, link.border="#dedede")
-```
-
-# Experiment number
-
-```{r circle3, echo=FALSE, fig.width=4, fig.height=4}
-fname = "../scores/speed/speed_matrix.RData"
-
-data = io$load(fname)
-index = data$index
-scores = data$scores
-sign = ifelse(index$effect == "activating", 1, -1)
-pathway = sign * ar$mask(index$pathway) + 0
-
-s1 = scores * sign
-s2 = apply(s1, 1, function(x) colnames(s1)[which(x == max(x))])
-stopifnot(length(s2) == nrow(s1)) # make sure we don't have ties
-
-mydf = data.frame(path = index$pathway, highest = s2, match = 1) %>%
-    group_by(path, highest) %>%
-    summarize(n = sum(match))
-
-chordDiagram(mydf, grid.col=color, grid.border="#dedede", self.link=1, link.border="#dedede")
-```
-
-```{r circle4, echo=FALSE, fig.width=4, fig.height=4}
-fname = "../scores/speed/gsea_reactome.RData"
-
-data = io$load(fname)
-index = data$index
-scores = data$scores
-sign = ifelse(index$effect == "activating", 1, -1)
-pathway = sign * ar$mask(index$pathway) + 0
-
-s1 = scores * sign
-s2 = apply(s1, 1, function(x) colnames(s1)[which(x == max(x))])
-
-if (is.list(s2)) {
-    len = sapply(s2, length)
-    s2[len != 1] = NA
-    s2 = unlist(s2)
-}
-
-mydf = data.frame(path = index$pathway, highest = s2, match = 1) %>%
-    na.omit() %>%
-    filter(path != "Wnt" & highest != "Wnt") %>% #FIXME:
-    group_by(path, highest) %>%
-    summarize(n = sum(match))
-
-chordDiagram(mydf, grid.col=color, grid.border="#dedede", self.link=1, link.border="#dedede")
 ```
