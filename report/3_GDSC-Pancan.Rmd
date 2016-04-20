@@ -8,6 +8,7 @@ io = import('io')
 util = import('./util_3')
 
 MEKi_levels = c("MAPK_all", "MAPK_wt", "MAPK_mut", "MAPK+_mut", "MAPK-_mut", "MAPK+", "MAPK-")
+BRAFi_levels = c("MAPK_all", "BRAF_wt", "BRAF_mut", "MAPK+_mut", "MAPK-_mut", "MAPK+", "MAPK-")
 p53_levels = c("TP53_all", "TP53_mut", "TP53_wt", "p53+_wt", "p53-_wt", "p53+", "p53-")
 ```
 
@@ -17,9 +18,13 @@ p53_levels = c("TP53_all", "TP53_mut", "TP53_wt", "p53+_wt", "p53-_wt", "p53+", 
 
 ```{r tram, echo=FALSE, fig.height=3}
 mydf = util$create_df("MAPK", c("NRAS", "KRAS", "BRAF"), "Trametinib") %>%
-    mutate(subset = factor(subset, levels=MEKi_levels))
+    mutate(subset = factor(subset, levels=MEKi_levels)) %>%
+    na.omit()
 
-#summary_df(mydf)
+table(mydf$subset)
+
+util$stratify("MAPK", c("BRAF", "NRAS", "KRAS")) %>%
+    util$contrast_stats("Trametinib", "MAPK")
 
 ggplot(mydf, aes(x=subset, y=resp)) +
     geom_violin() +
@@ -33,9 +38,13 @@ ggplot(mydf, aes(x=subset, y=resp)) +
 
 ```{r az628, echo=FALSE, fig.height=3}
 mydf = util$create_df("MAPK", c("NRAS", "KRAS", "BRAF"), "AZ628") %>%
-    mutate(subset = factor(subset, levels=MEKi_levels))
+    mutate(subset = factor(subset, levels=MEKi_levels)) %>%
+    na.omit()
 
-##summary_df(mydf)
+table(mydf$subset)
+
+util$stratify("MAPK", c("BRAF", "NRAS", "KRAS")) %>%
+    util$contrast_stats("AZ628", "MAPK")
 
 ggplot(mydf, aes(x=subset, y=resp)) +
     geom_violin() +
@@ -47,9 +56,13 @@ ggplot(mydf, aes(x=subset, y=resp)) +
 
 ```{r dabraf, echo=FALSE, fig.height=3}
 mydf = util$create_df("MAPK", "BRAF", "Dabrafenib") %>%
-    mutate(subset = factor(subset, levels=MEKi_levels))
+    mutate(subset = factor(subset, levels=BRAFi_levels)) %>%
+    na.omit()
 
-##summary_df(mydf)
+table(mydf$subset)
+
+util$stratify("MAPK", "BRAF") %>%
+    util$contrast_stats("Dabrafenib", "MAPK", "BRAF")
 
 ggplot(mydf, aes(x=subset, y=resp)) +
     geom_violin() +
@@ -61,9 +74,13 @@ ggplot(mydf, aes(x=subset, y=resp)) +
 
 ```{r nutlin, echo=FALSE, fig.height=3}
 mydf = util$create_df("p53", "TP53", "Nutlin-3a") %>%
-    mutate(subset = factor(subset, levels=p53_levels))
+    mutate(subset = factor(subset, levels=p53_levels)) %>%
+    na.omit()
 
-#summary_df(mydf)
+table(mydf$subset)
+
+util$stratify("p53", "TP53") %>%
+    util$contrast_stats("Nutlin-3a", "p53", "TP53")
 
 ggplot(mydf, aes(x=subset, y=resp)) +
     geom_violin() +

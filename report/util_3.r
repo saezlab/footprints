@@ -24,6 +24,9 @@ nst = function(x) names(x[x])
 
 #' Generates a stratification structure using pathway and mutations
 #'
+#' For this, we always take the top and bottom quartiles of the pathway
+#' score, either among all cell lines or the mutated (/wt) subset
+#'
 #' @param pathway  Our pathway descriptor, e.g. "MAPK"
 #' @param genes    A character vector of which genes should be
 #'                 used as markers to compare to
@@ -47,12 +50,12 @@ stratify = function(pathway="MAPK", genes=c("BRAF","KRAS","NRAS")) {
         "PATH_null" = nst(path_null),
 
         # stratification by SPEED score, wild-type subset
-        "PATH+_wt" = nst(!has_mut & path_active),
-        "PATH-_wt" = nst(!has_mut & path_inactive),
+        "PATH+_wt" = nst(!has_mut & path > quantile(path[!has_mut])[4]),
+        "PATH-_wt" = nst(!has_mut & path < quantile(path[!has_mut])[2]),
 
         # stratification by SPEED score, mutated subset
-        "PATH+_mut" = nst(has_mut & path_active),
-        "PATH-_mut" = nst(has_mut & path_inactive)
+        "PATH+_mut" = nst(has_mut & path > quantile(path[has_mut])[4]),
+        "PATH-_mut" = nst(has_mut & path < quantile(path[has_mut])[2])
     )
 
     names(re) = sub("PATH", pathway, names(re))
@@ -81,7 +84,8 @@ wilcox = function(mydf, c1, c2) {
         ref = c1,
         sample = c2,
         p.value = wilcox.test(resp ~ subset, data=mydf)$p.value,
-        median_folds = round(10^(abs(medians[2] - medians[1])))
+        median_folds = round(10^(abs(medians[2] - medians[1]))),
+        n = nrow(mydf)
     )
 }
 
