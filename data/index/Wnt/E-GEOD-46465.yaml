@@ -1,0 +1,40 @@
+---
+id        : Wnt.E-GEOD-46465.1
+accession : E-GEOD-46465
+platform  : A-AFFY-141
+pathway   : Wnt
+cells     : FACS-isolated LS174T cells
+treatment : dominant negative TCF4 GFP expression
+effect    : inhibiting
+hours     : 888 # unkown
+
+control   :
+    - GSM1130666 1
+    - GSM1130667 1
+    - GSM1130668 1
+perturbed :
+    - GSM1130669 1
+    - GSM1130670 1
+    - GSM1130671 1
+
+---
+id        : Wnt.E-GEOD-46465.2
+accession : E-GEOD-46465
+platform  : A-AFFY-141
+pathway   : Wnt
+cells     : FACS-isolated HepG2 cells:w
+treatment : dominant negative TCF4 GFP expression
+effect    : inhibiting
+hours     : 888 # unkown
+
+control   :
+    - GSM1130672 1
+    - GSM1130673 1
+    - GSM1130674 1
+    - GSM1130675 1
+perturbed :
+    - GSM1130676 1
+    - GSM1130677 1
+    - GSM1130678 1
+    - GSM1130679 1
+...

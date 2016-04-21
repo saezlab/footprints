@@ -1,0 +1,38 @@
+---
+id        : Wnt.E-GEOD-18560.1
+accession : E-GEOD-18560
+platform  : A-AFFY-44
+pathway   : Wnt
+cells     : Ls174T w/ shRNA against β-catenin construct
+treatment : Doxycyclin induction
+effect    : inhibiting
+hours     : 72
+
+control   :
+    - GSM461942 1
+    - GSM461947 1
+    - GSM461949 1
+perturbed :
+    - GSM461946 1
+    - GSM461948 1
+    - GSM461950 1
+
+---
+id        : Wnt.E-GEOD-18560.2
+accession : E-GEOD-18560
+platform  : A-AFFY-44
+pathway   : Wnt
+cells     : Ls174T w/ shRNA against dominant-negative Tcf4
+treatment : Doxycyclin induction
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM461944 1
+    - GSM461951 1
+    - GSM461953 1
+perturbed :
+    - GSM461943 1
+    - GSM461945 1
+    - GSM461952 1
+...

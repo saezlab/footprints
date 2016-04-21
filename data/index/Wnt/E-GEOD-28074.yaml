@@ -1,0 +1,153 @@
+---
+id        : Wnt.E-GEOD-28074.1
+accession : E-GEOD-28074
+platform  : A-GEOD-13303
+pathway   : Wnt
+cells     : human mesenchymal stem cells
+treatment : BMP6, 8 hours
+effect    : activating
+hours     : 8
+
+control   :
+    - GSM694210 1
+    - GSM694223 1
+perturbed :
+    - GSM694224 1
+    - GSM694211 1
+
+---
+id        : Wnt.E-GEOD-28074.2
+accession : E-GEOD-28074
+platform  : A-GEOD-13303
+pathway   : Wnt
+cells     : human mesenchymal stem cells
+treatment : BMP6, 8 hours
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM694228 1
+    - GSM694215 1
+perturbed :
+    - GSM694212 1
+    - GSM694225 1
+
+---
+id        : Wnt.E-GEOD-28074.3
+accession : E-GEOD-28074
+platform  : A-GEOD-13303
+pathway   : Wnt
+cells     : human mesenchymal stem cells
+treatment : BMP6, 24 hours
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM694228 1
+    - GSM694215 1
+perturbed :
+    - GSM694216 1
+    - GSM694229 1
+
+---
+id        : Wnt.E-GEOD-28074.4
+accession : E-GEOD-28074
+platform  : A-GEOD-13303
+pathway   : Wnt
+cells     : human mesenchymal stem cells
+treatment : BMP6, 8 hours
+effect    : activating
+hours     : 96
+
+control   :
+    - GSM694219 1
+    - GSM694232 1
+perturbed :
+    - GSM694213 1
+    - GSM694226 1
+
+---
+id        : Wnt.E-GEOD-28074.5
+accession : E-GEOD-28074
+platform  : A-GEOD-13303
+pathway   : Wnt
+cells     : human mesenchymal stem cells
+treatment : BMP6, 24 hours
+effect    : activating
+hours     : 96
+
+control   :
+    - GSM694219 1
+    - GSM694232 1
+perturbed :
+    - GSM694212 1
+    - GSM694225 1
+
+---
+id        : Wnt.E-GEOD-28074.6
+accession : E-GEOD-28074
+platform  : A-GEOD-13303
+pathway   : Wnt
+cells     : human mesenchymal stem cells
+treatment : BMP6, 96 hours
+effect    : activating
+hours     : 96
+
+control   :
+    - GSM694219 1
+    - GSM694232 1
+perturbed :
+    - GSM694220 1
+    - GSM694233 1
+
+---
+id        : Wnt.E-GEOD-28074.7
+accession : E-GEOD-28074
+platform  : A-GEOD-13303
+pathway   : Wnt
+cells     : human mesenchymal stem cells
+treatment : BMP6, 8 hours
+effect    : activating
+hours     : 240
+
+control   :
+    - GSM694222 1
+    - GSM694235 1
+perturbed :
+    - GSM694214 1
+    - GSM694227 1
+
+---
+id        : Wnt.E-GEOD-28074.8
+accession : E-GEOD-28074
+platform  : A-GEOD-13303
+pathway   : Wnt
+cells     : human mesenchymal stem cells
+treatment : BMP6, 24 hours
+effect    : activating
+hours     : 240
+
+control   :
+    - GSM694222 1
+    - GSM694235 1
+perturbed :
+    - GSM694218 1
+    - GSM694231 1
+
+---
+id        : Wnt.E-GEOD-28074.9
+accession : E-GEOD-28074
+platform  : A-GEOD-13303
+pathway   : Wnt
+cells     : human mesenchymal stem cells
+treatment : BMP6, 96 hours
+effect    : activating
+hours     : 240
+
+control   :
+    - GSM694222 1
+    - GSM694235 1
+perturbed :
+    - GSM694221 1
+    - GSM694234 1
+...

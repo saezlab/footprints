@@ -1,0 +1,50 @@
+---
+id        : Wnt.E-GEOD-29181.1
+accession : E-GEOD-29181
+platform  : A-GEOD-13232
+pathway   : Wnt
+cells     : T-ALL Jurkat cells
+treatment : TCF12/HEB shRNA
+effect    : inhibiting
+hours     : 72
+
+control   :
+    - GSM722132 1
+    - GSM722133 1
+    - GSM722134 1
+    - GSM722135 1
+    - GSM722156 1
+    - GSM722157 1
+    - GSM722158 1
+    - GSM722159 1
+perturbed :
+    - GSM722140 1
+    - GSM722141 1
+    - GSM722142 1
+    - GSM722143 1
+
+---
+id        : Wnt.E-GEOD-29181.2
+accession : E-GEOD-29181
+platform  : A-GEOD-13232
+pathway   : Wnt
+cells     : T-ALL Jurkat cells
+treatment : TCF3/E2A shRNA
+effect    : inhibiting
+hours     : 72
+
+control   :
+    - GSM722132 1
+    - GSM722133 1
+    - GSM722134 1
+    - GSM722135 1
+    - GSM722156 1
+    - GSM722157 1
+    - GSM722158 1
+    - GSM722159 1
+perturbed :
+    - GSM722144 1
+    - GSM722145 1
+    - GSM722146 1
+    - GSM722147 1
+...
