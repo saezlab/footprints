@@ -1,0 +1,19 @@
+---
+id        : Wnt.E-GEOD-40960.1
+accession : E-GEOD-40960
+platform  : A-AFFY-44
+pathway   : Wnt
+cells     : HMVEC-D
+treatment : 5 ng/ml human recombinant BMP9
+effect    : activating
+hours     : 24
+
+control   :
+    - GSM1005596 1
+    - GSM1005597 1
+    - GSM1005598 1
+perturbed :
+    - GSM1005599 1
+    - GSM1005600 1
+    - GSM1005601 1
+...

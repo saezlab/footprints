@@ -1,0 +1,68 @@
+---
+id        : Wnt.E-GEOD-14107.1
+accession : E-GEOD-14107
+platform  : A-AFFY-37
+pathway   : Wnt
+cells     : Parental PC9
+treatment : wnt3A
+effect    : activating
+hours     : 3
+
+control   :
+    - GSE14107GSM354009
+    - GSE14107GSM354010
+perturbed :
+    - GSE14107GSM354011
+    - GSE14107GSM354012
+
+---
+id        : Wnt.E-GEOD-14107.2
+accession : E-GEOD-14107
+platform  : A-AFFY-37
+pathway   : Wnt
+cells     : Pc9-BrM3
+treatment : wnt3A
+effect    : activating
+hours     : 3
+
+control   :
+    - GSE14107GSM354013
+    - GSE14107GSM354014
+perturbed :
+    - GSE14107GSM354015
+    - GSE14107GSM354016
+
+---
+id        : Wnt.E-GEOD-14107.3
+accession : E-GEOD-14107
+platform  : A-AFFY-37
+pathway   : Wnt
+cells     : parental H2030
+treatment : wnt3A
+effect    : activating
+hours     : 3
+
+control   :
+    - GSE14107GSM354017
+    - GSE14107GSM354018
+perturbed :
+    - GSE14107GSM354019
+    - GSE14107GSM354020
+
+---
+id        : Wnt.E-GEOD-14107.4
+accession : E-GEOD-14107
+platform  : A-AFFY-37
+pathway   : Wnt
+cells     : H2030-BrM3
+treatment : wnt3A
+effect    : activating
+hours     : 3
+
+control   :
+    - GSE14107GSM354021
+    - GSE14107GSM354022
+perturbed :
+    - GSE14107GSM354023
+    - GSE14107GSM354024
+...

@@ -1,0 +1,36 @@
+---
+id        : Wnt.E-GEOD-38893.1
+accession : E-GEOD-38893
+platform  : A-AFFY-141
+pathway   : Wnt
+cells     : MDA-MB-468 cells stably infected with scrambled shRNA
+treatment : Wnt3A condition medium
+effect    : activating
+hours     : 8
+
+control   :
+    - GSM951573 1
+    - GSM951579 1
+perturbed :
+    - GSM951576 1
+    - GSM951582 1
+
+---
+id        : Wnt.E-GEOD-38893.2
+accession : E-GEOD-38893
+platform  : A-AFFY-141
+pathway   : Wnt
+cells     : MDA-MB-468 cells in Wnt3C condition medium
+treatment : TCF knockdown
+effect    : inhibiting
+hours     : 8
+
+control   :
+    - GSM951573 1
+    - GSM951579 1
+perturbed :
+    - GSM951577 1
+    - GSM951578 1
+    - GSM951583 1
+    - GSM951584 1
+...

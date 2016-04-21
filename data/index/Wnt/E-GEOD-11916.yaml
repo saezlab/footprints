@@ -1,0 +1,19 @@
+---
+id        : Wnt.E-GEOD-11916.1
+accession : E-GEOD-11916
+platform  : A-AFFY-44
+pathway   : Wnt
+cells     : Huh7 Cells with PCI-Neo stable integration into genome
+treatment : Huh7 stably expressing S33Y beta-catenin
+effect    : activating
+hours     : 888 # unknown
+
+control   :
+    - GSE11916GSM301104
+    - GSE11916GSM301105
+    - GSE11916GSM301106
+perturbed :
+    - GSE11916GSM301119
+    - GSE11916GSM301132
+    - GSE11916GSM301133
+...

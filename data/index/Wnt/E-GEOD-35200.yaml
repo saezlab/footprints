@@ -1,0 +1,160 @@
+---
+id        : Wnt.E-GEOD-35200.1
+accession : E-GEOD-35200
+platform  : A-AFFY-113
+pathway   : Wnt
+cells     : HL-60 AML cell line
+treatment : GSK3B knockdown
+effect    : activating
+hours     : 96
+
+control   :
+    - GSM863392 1
+    - GSM863393 1
+    - GSM863394 1
+perturbed :
+    - GSM863395 1
+    - GSM863396 1
+    - GSM863397 1
+    - GSM863398 1
+
+---
+id        : Wnt.E-GEOD-35200.2
+accession : E-GEOD-35200
+platform  : A-AFFY-113
+pathway   : Wnt
+cells     : HL-60 AML cell line
+treatment : GSK3A knockdown
+effect    : activating
+hours     : 96
+
+control   :
+    - GSM863392 1
+    - GSM863393 1
+    - GSM863394 1
+perturbed :
+    - GSM863399 1
+    - GSM863400 1
+    - GSM863401 1
+    - GSM863402 1
+
+---
+id        : Wnt.E-GEOD-35200.3
+accession : E-GEOD-35200
+platform  : A-AFFY-113
+pathway   : Wnt
+cells     : THP-1 AML cell line
+treatment : GSK3B knockdown
+effect    : activating
+hours     : 96
+
+control   :
+    - GSM863403 1
+    - GSM863404 1
+    - GSM863405 1
+perturbed :
+    - GSM863406 1
+    - GSM863407 1
+    - GSM863408 1
+    - GSM863409 1
+
+---
+id        : Wnt.E-GEOD-35200.4
+accession : E-GEOD-35200
+platform  : A-AFFY-113
+pathway   : Wnt
+cells     : THP-1 AML cell line
+treatment : GSK3A knockdown
+effect    : activating
+hours     : 96
+
+control   :
+    - GSM863403 1
+    - GSM863404 1
+    - GSM863405 1
+perturbed :
+    - GSM863410 1
+    - GSM863411 1
+    - GSM863412 1
+    - GSM863413 1
+
+---
+id        : Wnt.E-GEOD-35200.5
+accession : E-GEOD-35200
+platform  : A-AFFY-113
+pathway   : Wnt
+cells     : MOLM-14 AML cell line
+treatment : GSK3B knockdown
+effect    : activating
+hours     : 96
+
+control   :
+    - GSM863414 1
+    - GSM863415 1
+    - GSM863416 1
+perturbed :
+    - GSM863417 1
+    - GSM863418 1
+    - GSM863419 1
+    - GSM863420 1
+
+---
+id        : Wnt.E-GEOD-35200.6
+accession : E-GEOD-35200
+platform  : A-AFFY-113
+pathway   : Wnt
+cells     : MOLM-14 AML cell line
+treatment : GSK3A knockdown
+effect    : activating
+hours     : 96
+
+control   :
+    - GSM863414 1
+    - GSM863415 1
+    - GSM863416 1
+perturbed :
+    - GSM863421 1
+    - GSM863422 1
+    - GSM863423 1
+    - GSM863424 1
+
+---
+id        : Wnt.E-GEOD-35200.7
+accession : E-GEOD-35200
+platform  : A-AFFY-113
+pathway   : Wnt
+cells     : U937 AML cell line
+treatment : GSK3B knockdown
+effect    : activating
+hours     : 96
+
+control   :
+    - GSM863425 1
+    - GSM863426 1
+    - GSM863427 1
+perturbed :
+    - GSM863428 1
+    - GSM863429 1
+    - GSM863430 1
+    - GSM863431 1
+
+---
+id        : Wnt.E-GEOD-35200.8
+accession : E-GEOD-35200
+platform  : A-AFFY-113
+pathway   : Wnt
+cells     : U937 AML cell line
+treatment : GSK3A knockdown
+effect    : activating
+hours     : 96
+
+control   :
+    - GSM863425 1
+    - GSM863426 1
+    - GSM863427 1
+perturbed :
+    - GSM863432 1
+    - GSM863433 1
+    - GSM863434 1
+    - GSM863435 1
+...
