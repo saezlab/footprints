@@ -17,7 +17,7 @@ subs2assocs = function(subs, mut, scores) {
     } else {
         size = 5
         drivers = unique(gdsc$drivers(subs)$HGNC)
-        m = filter(mut, study==subs & Hugo_Symbol %in% drivers)
+        m = filter(mut, Study==subs & Hugo_Symbol %in% drivers)
     }
 
     num_sample = length(unique(m$sample))
