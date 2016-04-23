@@ -69,6 +69,6 @@ assocs = cna$study %>%
     unique() %>%
     sort() %>%
     c("pan", "pan_cov", .) %>%
-    lapply(function(s) subs2assocs(s, cna, scores))
+    sapply(function(s) subs2assocs(s, cna, scores), simplify=FALSE, USE.NAMES=TRUE)
 
 save(assocs, file=OUTFILE)
