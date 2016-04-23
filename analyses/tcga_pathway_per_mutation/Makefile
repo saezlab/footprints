@@ -4,11 +4,15 @@ DRIVER_ASSOCS = $(TCGA_SCORES:../../scores/tcga/pathways_%.RData=assocs_driver_%
 SNP_ASSOCS = $(TCGA_SCORES:../../scores/tcga/pathways_%.RData=assocs_snp_%.RData)
 CNA_ASSOCS = $(TCGA_SCORES:../../scores/tcga/pathways_%.RData=assocs_cna_%.RData)
 
-DRIVER_PLOTS = $(SCORES:../../scores/tcga/pathways_%.RData=drivers/%.pdf)
-SNP_PLOTS = $(SCORES:../../scores/tcga/pathways_%.RData=snp_all/%.pdf)
-CNA_PLOTS = $(SCORES:../../scores/tcga/pathways_%.RData=cna/%.pdf)
+DRIVER_PLOTS = $(DRIVER_ASSOCS:assocs_%.RData=plot_%.pdf)
+SNP_PLOTS = $(SNP_ASSOCS:assocs_%.RData=plot_%.pdf)
+CNA_PLOTS = $(CNA_ASSOCS:assocs_%.RData=plot_%.pdf)
 
-HEATMAPS = $(SCORES:../../scores/tcga/pathways_%.RData=heatmap/%.pdf)
+#DRIVER_PLOTS = $(TCGA_SCORES:../../scores/tcga/pathways_%.RData=plot_driver_%.pdf)
+#SNP_PLOTS = $(TCGA_SCORES:../../scores/tcga/pathways_%.RData=plot_snp_%.pdf)
+#CNA_PLOTS = $(TCGA_SCORES:../../scores/tcga/pathways_%.RData=plot_cna_%.pdf)
+
+HEATMAPS = $(TCGA_SCORES:../../scores/tcga/pathways_%.RData=heatmap/%.pdf)
 
 include ../../Makefile.inc
 #$(call ext_dep,../../scores/tcga,speed_matrix.RData)
@@ -16,19 +20,34 @@ include ../../Makefile.inc
 all: assocs
 
 
-assocs: $(DRIVER_ASSOCS) $(SNP_ASSOCS) $(CNA_ASSOCS)
+FILTER_OUT = $(foreach v,$(2),$(if $(findstring $(1),$(v)),,$(v)))
+ASSOCS = $(call FILTER_OUT,_all,$(DRIVER_ASSOCS) $(SNP_ASSOCS) $(CNA_ASSOCS))
+
+assocs: $(ASSOCS)
 
 $(DRIVER_ASSOCS): assocs_driver_%.RData: assocs_drivers.r ../../scores/tcga/pathways_%.RData
-	Rscript $^ $@
+	@mkdir -p $(dir $@)
+	$(call bsub_log,4096) Rscript $^ $@
 
 $(SNP_ASSOCS): assocs_snp_%.RData: assocs_snp.r ../../scores/tcga/pathways_%.RData
-	Rscript $^ $@
+	@mkdir -p $(dir $@)
+	$(call bsub_log,4096) Rscript $^ $@
 
 $(CNA_ASSOCS): assocs_cna_%.RData: assocs_cna_gistic.r ../../scores/tcga/pathways_%.RData
-	Rscript $^ $@
+	@mkdir -p $(dir $@)
+	$(call bsub_log,4096) Rscript $^ $@
 
 
 plots: $(DRIVER_PLOTS) $(SNP_PLOTS) $(CNA_PLOTS)
+
+$(DRIVER_PLOTS): plot_%.pdf: plot_drivers.r
+	Rscript $^ $@
+
+$(SNP_PLOTS): plot_%.pdf: plot_snp.r
+	Rscript $^ $@
+
+$(CNA_PLOTS): plot_%.pdf: plot_cna.r
+	Rscript $^ $@
 
 
 #all: $(HEATMAPS) $(DRIVERS) $(SNP_ALL) $(CNA)
