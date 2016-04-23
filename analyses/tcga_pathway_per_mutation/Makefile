@@ -1,11 +1,9 @@
 TCGA_SCORES = $(shell find ../../scores/tcga -name "*.RData")
 
 DRIVER_ASSOCS = $(TCGA_SCORES:../../scores/tcga/pathways_%.RData=assocs_driver_%.RData)
-SNP_ASSOCS = $(TCGA_SCORES:../../scores/tcga/pathways_%.RData=assocs_snp_%.RData)
 CNA_ASSOCS = $(TCGA_SCORES:../../scores/tcga/pathways_%.RData=assocs_cna_%.RData)
 
 DRIVER_PLOTS = $(DRIVER_ASSOCS:assocs_%.RData=plot_%.pdf)
-SNP_PLOTS = $(SNP_ASSOCS:assocs_%.RData=plot_%.pdf)
 CNA_PLOTS = $(CNA_ASSOCS:assocs_%.RData=plot_%.pdf)
 
 #DRIVER_PLOTS = $(TCGA_SCORES:../../scores/tcga/pathways_%.RData=plot_driver_%.pdf)
@@ -21,15 +19,11 @@ all: assocs
 
 
 FILTER_OUT = $(foreach v,$(2),$(if $(findstring $(1),$(v)),,$(v)))
-ASSOCS = $(call FILTER_OUT,_all,$(DRIVER_ASSOCS) $(SNP_ASSOCS) $(CNA_ASSOCS))
+ASSOCS = $(call FILTER_OUT,_all,$(DRIVER_ASSOCS) $(CNA_ASSOCS))
 
 assocs: $(ASSOCS)
 
 $(DRIVER_ASSOCS): assocs_driver_%.RData: assocs_drivers.r ../../scores/tcga/pathways_%.RData
-	@mkdir -p $(dir $@)
-	$(call bsub_log,4096) Rscript $^ $@
-
-$(SNP_ASSOCS): assocs_snp_%.RData: assocs_snp.r ../../scores/tcga/pathways_%.RData
 	@mkdir -p $(dir $@)
 	$(call bsub_log,4096) Rscript $^ $@
 
@@ -41,9 +35,6 @@ $(CNA_ASSOCS): assocs_cna_%.RData: assocs_cna_gistic.r ../../scores/tcga/pathway
 plots: $(DRIVER_PLOTS) $(SNP_PLOTS) $(CNA_PLOTS)
 
 $(DRIVER_PLOTS): plot_%.pdf: plot_drivers.r
-	Rscript $^ $@
-
-$(SNP_PLOTS): plot_%.pdf: plot_snp.r
 	Rscript $^ $@
 
 $(CNA_PLOTS): plot_%.pdf: plot_cna.r
