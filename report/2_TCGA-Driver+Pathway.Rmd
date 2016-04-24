@@ -33,54 +33,32 @@ scores = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia', 'par
 
 assocs_cov = assoc_df(scores, "pan_cov")
 assocs_nocov = assoc_df(scores, "pan")
+
+alph = function(x) rev(gtools::mixedsort(unique(x)))
+
+assoc2plot = function(mut, assocs, p0=0.2, p1=0.05, p2=1e-3) {
+    p1 = filter(assocs, m == mut) %>%
+#        filter(adj.p <= p0) %>%
+        mutate(label = ifelse(adj.p < p1, "*", "")) %>%
+        mutate(label = ifelse(adj.p < p2, "***", label)) %>%
+        mutate(scores = factor(scores, levels=alph(scores)),
+               method = factor(method, levels=alph(method))) %>%
+        plt$matrix(statistic ~ scores + method,
+                   color="estimate", symmetric=TRUE, reverse_colors=TRUE) +
+        xlab("") + ylab("")
+}
 ```
 
 ## Overview of number of driver mutations per cancer type
 
-### TP53
-
-```{r tp53, echo=FALSE, fig.width=3.5}
-cur = filter(assocs_cov, m == "TP53")
-lmax = max(abs(cur$statistic))
-p1 = cur %>%
-    mutate(label = ifelse(adj.p < 1e-5, "*", "")) %>%
-    mutate(label = ifelse(adj.p < 1e-15, "***", label)) %>%
-    plt$matrix(statistic ~ scores + method, color="estimate", limits=c(-lmax,lmax))
-print(p1)
-```
-
-### KRAS
-
-```{r kras, echo=FALSE, fig.width=3.5}
-cur = filter(assocs_cov, m == "KRAS")
-lmax = max(abs(cur$statistic))
-p1 = cur %>%
-    mutate(label = ifelse(adj.p < 0.05, "*", "")) %>%
-    mutate(label = ifelse(adj.p < 1e-3, "***", label)) %>%
-    plt$matrix(statistic ~ scores + method, color="estimate", limits=c(-lmax,lmax))
-print(p1)
-```
-
-### VHL
-
-```{r vhl, echo=FALSE, fig.width=3.5}
-cur = filter(assocs_nocov, m == "VHL")
-lmax = max(abs(cur$statistic))
-p1 = cur %>%
-    mutate(label = ifelse(adj.p < 1e-5, "*", "")) %>%
-    mutate(label = ifelse(adj.p < 1e-20, "***", label)) %>%
-    plt$matrix(statistic ~ scores + method, color="estimate", limits=c(-lmax,lmax))
-print(p1)
-```
-
-### STK11
-
-```{r stk11, echo=FALSE, fig.width=3.5}
-cur = filter(assocs_cov, m == "STK11")
-lmax = max(abs(cur$statistic))
-p1 = cur %>%
-    mutate(label = ifelse(adj.p < 0.05, "*", "")) %>%
-    mutate(label = ifelse(adj.p < 1e-3, "***", label)) %>%
-    plt$matrix(statistic ~ scores + method, color="estimate", limits=c(-lmax,lmax))
-print(p1)
+```{r method_compare, echo=FALSE, fig.width=7, fig.height=8.5}
+plot_grid(
+    assoc2plot("TP53", assocs_cov, 0.2, 1e-5, 1e-15),
+    assoc2plot("KRAS", assocs_cov, 0.2, 0.05, 1e-3),
+    assoc2plot("VHL", assocs_cov, 0.2, 1e-5, 1e-20),
+    assoc2plot("STK11", assocs_cov, 0.2, 0.05, 1e-3),
+    labels = c("TP53", "KRAS", "VHL", "STK11")
+) +
+    theme(axis.text = element_text(size=7),
+          axis.title = element_text(size=9, face="bold"))
 ```
