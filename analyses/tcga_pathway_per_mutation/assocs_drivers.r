@@ -38,8 +38,9 @@ subs2assocs = function(subs, mut, scores) {
     result = assocs %>%
         filter(term == "mTRUE") %>%
         select(-term) %>%
-        mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
-        mutate(label = paste(m, scores, sep=":"))
+        mutate(adj.p = p.adjust(p.value, method="fdr"),
+               label = paste(m, scores, sep=":"),
+               subset = subs)
 }
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/pathways_mapped/speed_matrix.RData"
@@ -59,10 +60,7 @@ mut = tcga$mutations() %>%
 
 print(table(mut$Study))
 
-assocs = mut$Study %>%
-    unique() %>%
-    sort() %>%
-    c("pan", "pan_cov", .) %>%
-    sapply(function(subs) subs2assocs(subs, mut, scores), simplify=FALSE, USE.NAMES=TRUE)
+methods = c("pan", "pan_cov", sort(unique(mut$Study)))
+assocs = bind_rows(lapply(methods, function(x) subs2assocs(x, mut, scores)))
 
 save(assocs, file=OUTFILE)
