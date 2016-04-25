@@ -9,55 +9,20 @@ ar = import('array')
 df = import('data_frame')
 plt = import('plot')
 tcga = import('data/tcga')
+util = import('./util_2')
 
 ##TODO: %each>% || %>>% operator?
-
-#' Loads a specific TCGA scores file
-#'
-#' supplies path and extension, and cuts rownames at 16 chars
-#'
-#' @param x       An identifier, like 'speed_matrix'
-#' @param filter  Which subset of the mutation associations to use
-#' @return        A matrix with samples as rows and genes and columns
-assoc_df = function(x, filter="pan_cov") {
-    load_fun = function(x) {
-        io$file_path("../analyses/tcga_pathway_per_mutation/assocs_driver_mapped", x, ext=".RData") %>%
-            io$load() %>%
-            filter(subset == filter) %>%
-            mutate(method = x)
-    }
-    re = bind_rows(lapply(x, load_fun))
-}
-
-scores = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia', 'paradigm')
-
-assocs_cov = assoc_df(scores, "pan_cov")
-assocs_nocov = assoc_df(scores, "pan")
-
-alph = function(x) rev(gtools::mixedsort(unique(x)))
-
-assoc2plot = function(mut, assocs, p0=0.2, p1=0.05, p2=1e-3) {
-    p1 = filter(assocs, m == mut) %>%
-#        filter(adj.p <= p0) %>%
-        mutate(label = ifelse(adj.p < p1, "*", "")) %>%
-        mutate(label = ifelse(adj.p < p2, "***", label)) %>%
-        mutate(scores = factor(scores, levels=alph(scores)),
-               method = factor(method, levels=alph(method))) %>%
-        plt$matrix(statistic ~ scores + method,
-                   color="estimate", symmetric=TRUE, reverse_colors=TRUE) +
-        xlab("") + ylab("")
-}
 ```
 
 ## Overview of number of driver mutations per cancer type
 
 ```{r method_compare, echo=FALSE, fig.width=7, fig.height=8.5}
 plot_grid(
-    assoc2plot("TP53", assocs_cov, 0.2, 1e-5, 1e-15),
-    assoc2plot("KRAS", assocs_cov, 0.2, 0.05, 1e-3),
-    assoc2plot("VHL", assocs_cov, 0.2, 1e-5, 1e-20),
-    assoc2plot("STK11", assocs_cov, 0.2, 0.05, 1e-3),
-    labels = c("TP53", "KRAS", "VHL", "STK11")
+    util$mutation_method_plot("TP53", util$assocs_cov, 0.2, 1e-5, 1e-15),
+    util$mutation_method_plot("KRAS", util$assocs_cov, 0.2, 0.05, 1e-3),
+    util$mutation_method_plot("STK11", util$assocs_cov, 0.2, 0.05, 1e-3),
+    util$mutation_method_plot("VHL", util$assocs_nocov, 0.2, 1e-5, 1e-20),
+    labels = c("TP53", "KRAS", "STK11", "VHL")
 ) +
     theme(axis.text = element_text(size=7),
           axis.title = element_text(size=9, face="bold"))

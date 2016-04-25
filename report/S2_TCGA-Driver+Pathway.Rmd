@@ -21,62 +21,41 @@ df = import('data_frame')
 plt = import('plot')
 tcga = import('data/tcga')
 util = import('./util_2')
-
-MUTFILE = "../analyses/tcga_pathway_per_mutation/mutations_annotated_pathwayactivities_v3_mikeformat.txt"
-
-mut = io$read_table(MUTFILE, header=TRUE) %>%
-    transmute(hgnc = GENE_NAME,
-              sample = substr(Tumor_Sample_Barcode, 1, 16)) %>%
-    mutate(has_mut = 1) %>%
-    ar$construct(has_mut ~ sample + hgnc, data=., fill=0, function(x) x[1])
-
-scores = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia', 'paradigm') %>%
-    sapply(util$load_fun, simplify=FALSE, USE.NAMES=TRUE)
-
-result = scores %>%
-    sapply(util$lm_fun, m=mut, simplify=FALSE, USE.NAMES=TRUE) %>%
-    df$add_name_col("method") %>%
-    bind_rows()
-
-result_nocov = scores %>%
-    sapply(util$lm_fun, m=mut, study_covar=FALSE, simplify=FALSE, USE.NAMES=TRUE) %>%
-    df$add_name_col("method") %>%
-    bind_rows()
 ```
 
 ## What Pathway Methods can capture, within tissues
 
 ```{r capture, echo=FALSE}
-keep = result %>%
+keep = util$assocs_cov %>%
     group_by(m) %>%
-    filter(any(-log10(adj.p) > 5)) %>%
+    filter(any(-log10(adj.p) > 8)) %>%
     summarize(mlogp = -sum(log10(adj.p))) %>%
     arrange(-mlogp) %$%
     m
 
-util$mutation_overview_plot(result, keep)
+util$mutation_overview_plot(util$assocs_cov, keep)
 ```
 
-```{r detail, echo=FALSE, fig.width=15, fig.height=10}
-plots = lapply(keep, function(x) util$mutation_method_plot(result, x))
+```{r detail, echo=FALSE, fig.width=8, fig.height=10}
+plots = lapply(keep, function(x) util$mutation_method_plot(x, util$assocs_cov))
 plot_grid(plotlist=plots, ncol=4, label_size=8)
 ```
 
 ## What Pathway Methods can capture, between tissues
 
 ```{r capture_nocov, echo=FALSE}
-keep = result_nocov %>%
+keep = util$assocs_nocov %>%
     group_by(m) %>%
-    filter(any(-log10(adj.p) > 10)) %>%
+    filter(any(-log10(adj.p) > 15)) %>%
     summarize(mlogp = -sum(log10(adj.p))) %>%
     arrange(-mlogp) %$%
     m
 
-util$mutation_overview_plot(result_nocov, keep)
+util$mutation_overview_plot(util$assocs_nocov, keep)
 ```
 
-```{r detail_nocov, echo=FALSE, fig.width=15, fig.height=15}
-plots = lapply(keep, function(x) util$mutation_method_plot(result_nocov, x))
+```{r detail_nocov, echo=FALSE, fig.width=8, fig.height=10}
+plots = lapply(keep, function(x) util$mutation_method_plot(x, util$assocs_nocov))
 plot_grid(plotlist=plots, ncol=4, label_size=8)
 ```
 
