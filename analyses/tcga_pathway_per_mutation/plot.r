@@ -13,15 +13,18 @@ subsets = c("pan_cov", "pan", setdiff(sort(unique(assocs$subset)), c("pan_cov", 
 pdf(OUTFILE, paper="a4r", width=26, height=20)
 
 for (subs in subsets) {
-    if (grepl("pan", subs))
+    if (grepl("pan", subs)) {
         pt_size = 0.5
-    else
+        label_top = 40
+    } else {
         pt_size = 5
+        label_top = 20
+    }
 
     p1 = assocs %>%
         filter(subset == subs) %>%
         plt$color$p_effect(pvalue="adj.p", thresh=0.1) %>%
-        plt$volcano(base.size=pt_size, p=0.1) +
+        plt$volcano(base.size=pt_size, p=0.1, label_top=label_top) +
             ggtitle(subs)
 
     print (p1)
