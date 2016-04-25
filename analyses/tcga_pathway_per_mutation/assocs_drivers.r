@@ -12,11 +12,9 @@ subs2assocs = function(subs, mut, scores) {
 
     message(subs)
     if (grepl("pan", subs)) {
-        size = 0.5
         drivers = unique(gdsc$drivers()$HGNC)
         m = filter(mut, Hugo_Symbol %in% drivers)
     } else {
-        size = 5
         drivers = unique(gdsc$drivers(subs)$HGNC)
         m = filter(mut, Study==subs & Hugo_Symbol %in% drivers)
     }

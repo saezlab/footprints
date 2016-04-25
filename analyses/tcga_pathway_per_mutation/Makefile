@@ -15,13 +15,12 @@ HEATMAPS = $(TCGA_SCORES:../../scores/tcga/pathways_%.RData=heatmap/%.pdf)
 include ../../Makefile.inc
 #$(call ext_dep,../../scores/tcga,speed_matrix.RData)
 
-all: assocs
+all: plots
 
-
+# use this to no compute the _all associations, takes a bit long (and not main paper)
 FILTER_OUT = $(foreach v,$(2),$(if $(findstring $(1),$(v)),,$(v)))
-ASSOCS = $(call FILTER_OUT,_all,$(DRIVER_ASSOCS) $(CNA_ASSOCS))
 
-assocs: $(ASSOCS)
+assocs: $(call FILTER_OUT,_all,$(ASSOCS))
 
 $(DRIVER_ASSOCS): assocs_driver_%.RData: assocs_drivers.r ../../scores/tcga/pathways_%.RData
 	@mkdir -p $(dir $@)
@@ -32,12 +31,10 @@ $(CNA_ASSOCS): assocs_cna_%.RData: assocs_cna_gistic.r ../../scores/tcga/pathway
 	$(call bsub_log,4096) Rscript $^ $@
 
 
-plots: $(DRIVER_PLOTS) $(SNP_PLOTS) $(CNA_PLOTS)
+plots: $(call FILTER_OUT,_all,$(DRIVER_PLOTS) $(SNP_PLOTS) $(CNA_PLOTS))
 
-$(DRIVER_PLOTS): plot_%.pdf: plot_drivers.r
-	Rscript $^ $@
-
-$(CNA_PLOTS): plot_%.pdf: plot_cna.r
+$(DRIVER_PLOTS) $(CNA_PLOTS): plot_%.pdf: plot.r assocs_%.RData
+	@mkdir -p $(dir $@)
 	Rscript $^ $@
 
 
