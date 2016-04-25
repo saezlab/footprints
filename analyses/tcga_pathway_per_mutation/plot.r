@@ -18,11 +18,13 @@ for (subs in subsets) {
     else
         pt_size = 5
 
-    assocs %>%
+    p1 = assocs %>%
         filter(subset == subs) %>%
         plt$color$p_effect(pvalue="adj.p", thresh=0.1) %>%
         plt$volcano(base.size=pt_size, p=0.1) +
             ggtitle(subs)
+
+    print (p1)
 }
 
 dev.off()
