@@ -3,9 +3,8 @@ include ../Makefile.inc
 YAML = $(shell find index -mindepth 2 -name "*.yaml")
 ACCESSION = $(basename $(notdir $(YAML)))
 NORMALIZED = $(ACCESSION:%=normalized/%.RData)
-SCORES = $(YAML:index/%.yaml=scores/%.RData)
 
-.PHONY: scores normalize clean
+.PHONY: normalize clean
 
 all: zscores.RData zscores_commonNULL.RData
 
@@ -14,7 +13,7 @@ expr: expr.RData
 normalize: $(NORMALIZED)
 
 clean:
-	rm -f $(SCORES) $(NORMALIZED) $(NORMALIZED:%.RData=%.log)
+	rm -f $(NORMALIZED) $(NORMALIZED:%.RData=%.log)
 
 expr.RData: expr.r $(NORMALIZED)
 	Rscript $^
