@@ -17,22 +17,22 @@ perturbed :
     - GSM647154 1
     - GSM647155 1
 
----
-id        : Wnt.E-GEOD-26351.2
-accession : E-GEOD-26351
-platform  : A-AFFY-44
-pathway   : Wnt
-cells     : D34 cells in erythroid differentiation medium
-treatment : 25ng/ul rhBMP4
-effect    : activating
-hours     : 2
-
-control   :
-    - GSM647150 1
-    - GSM647151 1
-    - GSM647152 1
-perturbed :
-    - GSM647156 1
-    - GSM647157 1
-    - GSM647158 1
+#---
+#id        : Wnt.E-GEOD-26351.2
+#accession : E-GEOD-26351
+#platform  : A-AFFY-44
+#pathway   : Wnt
+#cells     : D34 cells in erythroid differentiation medium
+#treatment : 25ng/ul rhBMP4
+#effect    : activating
+#hours     : 2
+#
+#control   :
+#    - GSM647150 1
+#    - GSM647151 1
+#    - GSM647152 1
+#perturbed :
+#    - GSM647156 1
+#    - GSM647157 1
+#    - GSM647158 1
 ...
