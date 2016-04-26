@@ -7,7 +7,7 @@ SCORES = $(YAML:index/%.yaml=scores/%.RData)
 
 .PHONY: scores normalize clean
 
-all: zscores.RData
+all: zscores.RData zscores_commonNULL.RData
 
 expr: expr.RData
 
@@ -20,6 +20,9 @@ expr.RData: expr.r $(NORMALIZED)
 	Rscript $^
 
 zscores.RData: zscores.r expr.RData
+	Rscript $^ $@
+
+zscores_commonNULL.RData: zscores_commonNULL.r expr.RData
 	Rscript $^ $@
 
 normalized/%.RData: normalize_data.r
