@@ -1,0 +1,21 @@
+Sample ID	Treatment	Cycles	Response	Mutation	Cytogenetics
+CLL1	FC	3	NR (PD)	UM	Normal
+CLL2	FC	6	NR (SD)	M	13q−(78%)
+CLL3	FC	1	RE (PR)	M	13q−(61%),17p−(73%)
+CLL4	FC	3	RE (PR)	M	13q−(87%)
+CLL5	FC	6	RE (PR)	M	13q−(35%)
+CLL6	FC	6	RE (PR)	UM	13q−(94%)
+CLL7	FC	1	NR (SD)	UM	12+(26%)
+CLL8	FC	6	NR (SD)	UM	Normal
+CLL9	FC	3	NR (SD)	UM	11q−(10%), 12+(47%)
+CLL10	FC	1	NR (SD)	M	13q−(88%)
+CLL11	FCR	6	RE (PR)	M	13q−(48%), 12+(8%)
+CLL12	FCR	6	RE (PR)	ND	13q−(53%), 12+(15%)
+CLL13	FCR	1	NR (PD)	UM	13q−(72%), 11q−(8%)
+CLL14	FCR	6	RE (PR)	UM	11q−(39%)
+CLL15	FCR	6	RE (PR)	UM	Normal
+CLL16	FCR	6	NR (SD)	UM	13q−(64%), 11q−(40%)
+CLL17	FCR	2	NR (SD)	UM	11q−(88%)
+CLL18	FCR	1	NR (SD)	UM	NA
+CLL19	FCR	2	RE (PR)	ND	12+(21%)
+CLL20	FCR	6	NR (SD)	M	13q−(79%),17p−(59%), 11q−(23%)
