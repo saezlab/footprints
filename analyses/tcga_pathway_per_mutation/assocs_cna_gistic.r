@@ -44,8 +44,9 @@ subs2assocs = function(subs, cna, scores) {
     result = assocs %>%
         filter(term == "m") %>%
         select(-term) %>%
-        mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
-        mutate(label = paste(m, scores, sep=":"))
+        mutate(adj.p = p.adjust(p.value, method="fdr"),
+               label = paste(m, scores, sep=":"),
+               subset = subs)
 }
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
@@ -65,10 +66,7 @@ cna = io$read_table(CNAFILE, header=TRUE) %>%
     select(-gistic) %>%
     filter(!study %in% c("KICH","LAML")) # no alteration present n>=cutoff
 
-assocs = cna$study %>%
-    unique() %>%
-    sort() %>%
-    c("pan", "pan_cov", .) %>%
-    lapply(function(s) subs2assocs(s, cna, scores))
+methods = c("pan", "pan_cov", sort(unique(cna$study)))
+assocs = bind_rows(lapply(methods, function(x) subs2assocs(x, cna, scores)))
 
 save(assocs, file=OUTFILE)

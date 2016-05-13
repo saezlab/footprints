@@ -122,8 +122,8 @@ load = function(id, file=NULL) {
 #'
 #' @param x  A numeric vector
 #' @return   A character vector
-discretize_quartiles = function(x, numeric=TRUE) {
-    qq = quantile(x)
+discretize_quartiles = function(x, numeric=TRUE, na.rm=TRUE) {
+    qq = quantile(x, na.rm=na.rm)
     re = rep(0, length(x))
     re[x > unname(qq[4])] = 1
     re[x < unname(qq[2])] = -1

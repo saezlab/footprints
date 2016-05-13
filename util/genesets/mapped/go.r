@@ -5,7 +5,7 @@ b = import('base')
 
 OUTFILE = commandArgs(TRUE)[1] %or% "go.RData"
 
-GO = list("H2O2" = "GO:0042542", # response to hydrogen peroxide
+GO = list(#"H2O2" = "GO:0042542", # response to hydrogen peroxide
 #    "IL-1" = "GO:0070498", # interleukin-1-mediated signalling pathway
     "JAK-STAT" = "GO:0007259", # JAK-STAT signal transduction
     "MAPK" = "GO:0000165", # MAPK cascade

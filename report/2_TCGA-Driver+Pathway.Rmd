@@ -1,6 +1,7 @@
 # Comparison of different pathway methods in terms of TCGA mutation recall
 
 ```{r setup2, include=FALSE}
+library(dplyr)
 b = import('base')
 io = import('io')
 st = import('stats')
@@ -8,108 +9,21 @@ ar = import('array')
 df = import('data_frame')
 plt = import('plot')
 tcga = import('data/tcga')
-
-MUTFILE = "../analyses/tcga_pathway_per_mutation/mutations_annotated_pathwayactivities_v3_mikeformat.txt"
+util = import('./util_2')
 
 ##TODO: %each>% || %>>% operator?
-
-#' Loads a specific TCGA scores file
-#' supplies path and extension, and cuts rownames at 16 chars
-#'
-#' @param x  An identifier, like 'speed_matrix'
-#' @return   A matrix with samples as rows and genes and columns
-load_fun = function(x) {
-    re = io$file_path("../scores/tcga/pathways_mapped", x, ext=".RData") %>%
-        io$load()
-    rownames(re) = substr(rownames(re), 1, 16)
-    re
-}
-
-#' Calculates pathway score associations per mutation
-#'
-#' @param s  A score matrix, sample IDs x pathways
-#' @param m  A mutation matrix, sample IDs x genes
-#' @return   A data.frame with the results for all pathways and mutations
-lm_fun = function(s, m, study_covar=TRUE) {
-    ar$intersect(m, s, along=1)
-    study = tcga$barcode2study(rownames(m))
-    if (study_covar)
-        lm_result = st$lm(s ~ study + m)
-    else
-        lm_result = st$lm(s ~ m)
-
-    lm_result %>%
-        filter(!grepl("study", term)) %>%
-        select(-term) %>%
-        mutate(adj.p = p.adjust(p.value, method="fdr"))
-}
-
-mut = io$read_table(MUTFILE, header=TRUE) %>%
-    transmute(hgnc = GENE_NAME,
-              sample = substr(Tumor_Sample_Barcode, 1, 16)) %>%
-    mutate(has_mut = 1) %>%
-    ar$construct(has_mut ~ sample + hgnc, data=., fill=0, function(x) x[1])
-
-scores = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia', 'paradigm') %>%
-    sapply(load_fun, simplify=FALSE, USE.NAMES=TRUE)
-
-result = scores %>%
-    sapply(lm_fun, m=mut, simplify=FALSE, USE.NAMES=TRUE) %>%
-    df$add_name_col("method") %>%
-    bind_rows()
-
-result_nocov = scores %>%
-    sapply(lm_fun, m=mut, study_covar=FALSE, simplify=FALSE, USE.NAMES=TRUE) %>%
-    df$add_name_col("method") %>%
-    bind_rows()
 ```
 
 ## Overview of number of driver mutations per cancer type
 
-### TP53
-
-```{r tp53, echo=FALSE, fig.width=4}
-cur = filter(result, m == "TP53")
-lmax = max(abs(cur$statistic))
-p1 = cur %>%
-    mutate(label = ifelse(adj.p < 1e-5, "*", "")) %>%
-    mutate(label = ifelse(adj.p < 1e-15, "***", label)) %>%
-    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
-print(p1)
-```
-
-### KRAS
-
-```{r kras, echo=FALSE, fig.width=4}
-cur = filter(result, m == "KRAS")
-lmax = max(abs(cur$statistic))
-p1 = cur %>%
-    mutate(label = ifelse(adj.p < 0.05, "*", "")) %>%
-    mutate(label = ifelse(adj.p < 1e-3, "***", label)) %>%
-    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
-print(p1)
-```
-
-### VHL
-
-```{r vhl, echo=FALSE, fig.width=4}
-cur = filter(result_nocov, m == "VHL")
-lmax = max(abs(cur$statistic))
-p1 = cur %>%
-    mutate(label = ifelse(adj.p < 1e-5, "*", "")) %>%
-    mutate(label = ifelse(adj.p < 1e-20, "***", label)) %>%
-    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
-print(p1)
-```
-
-### STK11
-
-```{r stk11, echo=FALSE, fig.width=4}
-cur = filter(result_nocov, m == "STK11")
-lmax = max(abs(cur$statistic))
-p1 = cur %>%
-    mutate(label = ifelse(adj.p < 0.05, "*", "")) %>%
-    mutate(label = ifelse(adj.p < 1e-3, "***", label)) %>%
-    plt$matrix(statistic ~ s + method, color="estimate", limits=c(-lmax,lmax))
-print(p1)
+```{r method_compare, echo=FALSE, fig.width=7, fig.height=8.5}
+plot_grid(
+    util$mutation_method_plot("TP53", util$assocs_cov, 0.2, 1e-5, 1e-15),
+    util$mutation_method_plot("KRAS", util$assocs_cov, 0.2, 0.05, 1e-3),
+    util$mutation_method_plot("STK11", util$assocs_cov, 0.2, 0.05, 1e-3),
+    util$mutation_method_plot("VHL", util$assocs_nocov, 0.2, 1e-5, 1e-20),
+    labels = c("TP53", "KRAS", "STK11", "VHL")
+) +
+    theme(axis.text = element_text(size=7),
+          axis.title = element_text(size=9, face="bold"))
 ```

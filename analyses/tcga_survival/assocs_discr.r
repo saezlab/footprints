@@ -7,7 +7,7 @@ plt = import('plot')
 tcga = import('data/tcga')
 surv = import('./util')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/pathways_mapped/speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "speed_matrix.RData"
 
 # load and select primary tumors only, one sample per patient
@@ -28,7 +28,7 @@ scores = scores %>%
     ar$map(along=1, subsets=clinical$study, surv$discretize_quartiles)
 
 # calculate survival association using cox proportional hazards model
-pan = surv$pancan(scores, clinical)
+pan_cov = surv$pancan(scores, clinical)
 tissue = surv$tissue(scores, clinical)
 
-save(pan, tissue, file=OUTFILE)
+save(pan_cov, tissue, file=OUTFILE)

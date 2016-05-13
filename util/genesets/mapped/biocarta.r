@@ -2,7 +2,7 @@ b = import('base')
 ar = import('array')
 er = import('../enrichr')
 
-BioCarta = list("H2O2" = "ARENRF2_PATHWAY",
+BioCarta = list(#"H2O2" = "ARENRF2_PATHWAY",
 #          "IL-1" = "IL1R_PATHWAY",
           "JAK-STAT" = "STAT3_PATHWAY",
           "MAPK" = "MAPK_PATHWAY",
@@ -12,7 +12,7 @@ BioCarta = list("H2O2" = "ARENRF2_PATHWAY",
           "TGFb" = "TGFB_PATHWAY",
           "TNFa" = c("TNFR1_PATHWAY", "TNFR2_PATHWAY"),
           "VEGF" = "VEGF_PATHWAY",
-          "Wnt" = "WNT_PATHWAY",
+#          "Wnt" = "WNT_PATHWAY",
 #          "Insulin" = "IGF1_PATHWAY",
           "Hypoxia" = "P53HYPOXIA_PATHWAY",
 #          "RAR" = "RARRXR_PATHWAY",

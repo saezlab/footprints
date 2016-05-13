@@ -36,7 +36,7 @@ data2zscores = function(data) {
         ar$stack(along=2)
 
     idx_remove = c("control", "perturbed")
-    sign_lookup = setNames(c(1,-1), c("activating","inhibiting"))
+    sign_lookup = setNames(c(1,-1), c("activating", "inhibiting"))
     index = lapply(records, function(x) x[setdiff(names(x), idx_remove)]) %>%
         bind_rows() %>%
         mutate(sign = sapply(effect, function(x) sign_lookup[x]))

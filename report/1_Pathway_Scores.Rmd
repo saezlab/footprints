@@ -29,7 +29,7 @@ speed = file2assocs("../scores/speed/speed_matrix.RData") %>%
     transmute(from=pathway, to=scores, value=-log10(p.value))
 
 all_pathways = unique(c(speed$from, speed$to, reactome$from, reactome$to))
-color = setNames(brewer.pal(12, "Paired"), all_pathways)
+color = setNames(c(brewer.pal(12, "Paired"), "#fefefe"), all_pathways)
 ```
 
 ## Signaling Footprints (perturbation experiments)

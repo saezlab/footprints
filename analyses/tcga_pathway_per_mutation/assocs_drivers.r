@@ -5,62 +5,60 @@ st = import('stats')
 ar = import('array')
 plt = import('plot')
 tcga = import('data/tcga')
+gdsc = import('data/gdsc')
 
 subs2assocs = function(subs, mut, scores) {
+    gdsc = import('data/gdsc')
+
     message(subs)
     if (grepl("pan", subs)) {
-        m = mut
-        size = 0.5
+        drivers = unique(gdsc$drivers()$HGNC)
+        m = filter(mut, Hugo_Symbol %in% drivers)
     } else {
-        m = filter(mut, study==subs) %>%
-            group_by(hgnc) %>%
-            filter(n() >= 5) %>%
-            ungroup()
-        size = 5
+        drivers = unique(gdsc$drivers(subs)$HGNC)
+        m = filter(mut, Study==subs & Hugo_Symbol %in% drivers)
     }
 
     num_sample = length(unique(m$sample))
     altered = m$hgnc
     m$mut = 1
-    m = ar$construct(mut ~ sample + hgnc,
+    m = ar$construct(mut ~ Tumor_Sample_Barcode + Hugo_Symbol,
                      data=m, fun.aggregate = length) > 0
     ar$intersect(m, scores)
-
-    if (nrow(m) == 0) {
-        warning("no overlap between mutations and scores for ", subs)
-        return(NULL)
-    }
 
     if (grepl("cov", subs)) {
         study = tcga$barcode2study(rownames(scores))
         assocs = st$lm(scores ~ study + m)
-    } else
+    } else {
         assocs = st$lm(scores ~ m)
+    }
 
     result = assocs %>%
         filter(term == "mTRUE") %>%
         select(-term) %>%
-        mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
-        mutate(label = paste(m, scores, sep=":"))
+        mutate(adj.p = p.adjust(p.value, method="fdr"),
+               label = paste(m, scores, sep=":"),
+               subset = subs)
 }
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/pathways_mapped/speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "snp_drivers.pdf"
-MUTFILE = "mutations_annotated_pathwayactivities_v3_mikeformat.txt"
+
+studies = import('../../config')$tcga$tissues
+driver_studies = unique(gdsc$drivers()$tissue)
 
 scores = io$load(INFILE)
 rownames(scores) = substr(rownames(scores), 1, 16)
 
-mut = io$read_table(MUTFILE, header=TRUE) %>%
-    transmute(hgnc = GENE_NAME,
-              sample = substr(Tumor_Sample_Barcode, 1, 16),
-              study = tcga$barcode2study(Tumor_Sample_Barcode)) %>%
-    filter(!is.na(study) & study != "READ")
+# AAChange is not avail in eg. BRCA (and others)
+mut = tcga$mutations() %>%
+    filter(Study %in% studies & Study %in% driver_studies) %>%
+    mutate(Tumor_Sample_Barcode = substr(Tumor_Sample_Barcode, 1, 16)) %>%
+    filter(Tumor_Sample_Barcode %in% rownames(scores) & Variant_Classification != "Silent")
 
-assocs = mut$study %>%
-    unique() %>%
-    sort() %>%
-    c("pan", "pan_cov", .) %>%
-    lapply(function(s) subs2assocs(s, mut, scores))
+print(table(mut$Study))
+
+methods = c("pan", "pan_cov", sort(unique(mut$Study)))
+assocs = bind_rows(lapply(methods, function(x) subs2assocs(x, mut, scores)))
 
 save(assocs, file=OUTFILE)
