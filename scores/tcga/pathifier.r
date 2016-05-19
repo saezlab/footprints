@@ -7,8 +7,16 @@ hpc = import('hpc')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/mapped/reactome.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "pathways_mapped/pathifier.RData"
-MIN_GENES = 5
-MAX_GENES = 500
+
+if (grepl("mapped", OUTFILE)) {
+    MIN_GENES = 1
+    MAX_GENES = Inf
+    job_size = 1
+} else {
+    MIN_GENES = 5
+    MAX_GENES = 500
+    job_size = 25
+}
 
 #' Calculates Pathifier scores for one tissue vs all others
 #'
@@ -63,7 +71,7 @@ for (i in seq_along(genesets))
 # run pathifier in jobs
 result = hpc$Q(tissue2scores, tissue=tissues, genesets=genesets,
                const = list(expr=expr), expand_grid=TRUE,
-               memory=10240, job_size=25, fail_on_error=FALSE)
+               memory=10240, job_size=job_size, fail_on_error=FALSE)
 
 result[sapply(result, class) == "try-error"] = NULL
 result = ar$stack(result, along=2)
