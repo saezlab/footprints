@@ -33,7 +33,7 @@ io = import('io')
 ar = import('array')
 hpc = import('hpc')
 
-GENESETS = commandArgs(TRUE)[1] %or% "../../util/genesets/reactome.RData"
+GENESETS = commandArgs(TRUE)[1] %or% "../../util/genesets/mapped/reactome.RData"
 EXPR = commandArgs(TRUE)[2] %or% '../../data/expr.RData'
 OUTFILE = commandArgs(TRUE)[3] %or% "pathifier.RData"
 
