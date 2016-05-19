@@ -85,7 +85,7 @@ tissue = function(scores, meta=clinical) {
     meta$scores = scores
 
     #TODO: add sex + make it work w/ only one
-    tissue = st$coxph(surv_days + alive ~ age_days + scores,
+    tissue = st$coxph(surv_days + alive ~ sex + age_days + scores,
                       subsets=meta$study, data=meta, min_pts=20)
 
     if (is.data.frame(scores) && all(sapply(scores, is.factor)))
@@ -104,18 +104,32 @@ tissue = function(scores, meta=clinical) {
 }
 
 #' Loads a specific TCGA scores file
+#'
 #' supplies path and extension, and cuts rownames at 16 chars
 #'
 #' @param id  An identifier, like 'speed_matrix'
 #' @return    A matrix with primary tumor (01A) samples as rows and genes and columns
 #'            This is mapped to TCGA patient IDs
-load = function(id, file=NULL) {
+load_scores = function(id, file=NULL) {
     if (is.null(file))
         file = module_file(io$file_path("../../scores/tcga/pathways_mapped", id, ext=".RData"))
     re =  io$load(file)
     re = re[substr(rownames(re), 14, 16) == "01A",]
     rownames(re) = substr(rownames(re), 1, 12)
     re
+}
+
+#' Loads a specific survival association file
+#'
+#' supplies path and extension, and cuts rownames at 16 chars
+#'
+#' @param id  An identifier, like 'speed_matrix'
+#' @return    A matrix with primary tumor (01A) samples as rows and genes and columns
+#'            This is mapped to TCGA patient IDs
+load_assocs = function(id, file=NULL) {
+    if (is.null(file))
+        file = module_file(io$file_path("assocs_cont_mapped", id, ext=".RData"))
+    io$load(file)
 }
 
 #' Discretizes a numeric vector in "down", "unknown"[x2], "up" characters

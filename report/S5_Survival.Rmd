@@ -9,7 +9,7 @@ st = import('stats')
 plt = import('plot')
 util = import('../analyses/tcga_survival/util')
 
-assocs = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia') %>% #, 'paradigm') %>%
+assocs = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia', 'paradigm') %>%
     sapply(util$load_assocs, simplify=FALSE, USE.NAMES=TRUE)
 
 volcano_pan = function(id, n=15) {
@@ -71,13 +71,11 @@ volcano_pan("spia")
 volcano_pan("pathifier")
 ```
 
-<!--
 ### PARADIGM
 
 ```{r svolcano_paradigm, echo=FALSE}
-#volcano_pan("paradigm")
+volcano_pan("paradigm")
 ```
--->
 
 ## Tissue-specific associations
 
@@ -111,10 +109,8 @@ volcano_tissue("spia")
 volcano_tissue("pathifier")
 ```
 
-<!--
 ### PARADIGM
 
 ```{r stvolcano_paradigm, echo=FALSE}
-#volcano_tissue("paradigm")
+volcano_tissue("paradigm")
 ```
--->

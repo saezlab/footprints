@@ -1,10 +1,10 @@
 TCGA_SCORES = $(shell find ../../scores/tcga -name "*.RData")
 
 CONT_ASSOCS = $(TCGA_SCORES:../../scores/tcga/pathways_%.RData=assocs_cont_%.RData)
-DISCR_ASSOCS = $(TCGA_SCORES:../../scores/tcga/pathways_%.RData=assocs_discr_%.RData)
+DISCR_ASSOCS = #$(TCGA_SCORES:../../scores/tcga/pathways_%.RData=assocs_discr_%.RData)
 
 CONT_PLOTS = $(CONT_ASSOCS:assocs_%.RData=plot_%.pdf)
-DISCR_PLOTS = $(DISCR_ASSOCS:assocs_%.RData=plot_%.pdf)
+DISCR_PLOTS = #$(DISCR_ASSOCS:assocs_%.RData=plot_%.pdf)
 
 FILTER_OUT = $(foreach v,$(2),$(if $(findstring $(1),$(v)),,$(v)))
 ASSOCS = 

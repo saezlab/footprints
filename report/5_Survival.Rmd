@@ -12,7 +12,7 @@ tcga = import('data/tcga')
 surv = import('../analyses/tcga_survival/util')
 
 scores = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia', 'paradigm') %>%
-    sapply(surv$load, simplify=FALSE, USE.NAMES=TRUE)
+    sapply(surv$load_scores, simplify=FALSE, USE.NAMES=TRUE)
 
 assocs.pan = scores %>%
     sapply(surv$pancan, simplify=FALSE, USE.NAMES=FALSE) %>%

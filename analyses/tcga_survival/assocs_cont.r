@@ -11,7 +11,7 @@ INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/pathways_mapped/speed_matr
 OUTFILE = commandArgs(TRUE)[2] %or% "cont_speed_matrix.RData"
 
 # load scores, only select primary tumors & map to patient IDs
-scores = surv$load(file=INFILE)
+scores = surv$load_scores(file=INFILE)
 
 pan_cov = surv$pancan(scores)
 tissue = surv$tissue(scores)
