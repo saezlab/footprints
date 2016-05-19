@@ -17,7 +17,7 @@ util = import('./util_2')
 ```{r capture, echo=FALSE}
 keep = util$assocs_cov %>%
     group_by(m) %>%
-    filter(any(-log10(adj.p) > 8)) %>%
+    filter(any(-log10(adj.p) > 5)) %>%
     summarize(mlogp = -sum(log10(adj.p))) %>%
     arrange(-mlogp) %$%
     m
@@ -28,8 +28,15 @@ util$mutation_overview_plot(util$assocs_cov, keep)
 ## Comparison of methods for individual mutations
 
 ```{r detail, echo=FALSE, fig.width=8, fig.height=10}
-plots = lapply(keep, function(x) util$mutation_method_plot(x, util$assocs_cov))
-plot_grid(plotlist=plots, ncol=4, label_size=8)
+tt = theme(text = element_text(size=8),
+           axis.text.x = element_text(size=7),
+           axis.text.y = element_text(size=7),
+           axis.title.x = element_text(size=7),
+           axis.title.y = element_text(size=7),
+           legend.key.width = unit(0.5, "line"))
+
+plots = lapply(keep, function(x) util$mutation_method_plot(x, util$assocs_cov) + ggtitle(x) + tt)
+plot_grid(plotlist=plots, ncol=4, label_size=4)
 ```
 
 ## Discussion

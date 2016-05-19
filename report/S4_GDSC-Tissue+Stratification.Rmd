@@ -1,4 +1,4 @@
-# Tissue-specific associations drug associations
+# Tissue-specific associations with drug response
 
 ```{r setup4, include=FALSE}
 library(dplyr)

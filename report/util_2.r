@@ -39,13 +39,14 @@ alph = function(x) rev(gtools::mixedsort(unique(x)))
 #' @return           ggplot object
 mutation_method_plot = function(mut, assocs, p0=0.2, p1=0.05, p2=1e-3) {
     p1 = filter(assocs, m == mut) %>%
+        mutate(Wald = statistic) %>%
 #        mutate(statistic = ifelse(adj.p < p0, statistic, NA)) %>%
-        mutate(label = ifelse(adj.p < p1, "*", "")) %>%
-        mutate(label = ifelse(adj.p < p2, "***", label)) %>%
+        mutate(label = ifelse(adj.p < p1, "·", "")) %>%
+        mutate(label = ifelse(adj.p < p2, "*", label)) %>%
         mutate(scores = factor(scores, levels=alph(scores)),
                method = factor(method, levels=alph(method))) %>%
-        plt$matrix(statistic ~ scores + method,
-                   color="statistic", symmetric=TRUE, reverse_colors=TRUE) +
+        plt$matrix(Wald ~ scores + method, text_size=4,
+                   color="Wald", symmetric=TRUE, reverse_colors=TRUE) +
         xlab("") + ylab("")
 }
 
@@ -66,5 +67,7 @@ mutation_overview_plot = function(assoc_obj, genes) {
         ggplot(aes(x=m, y=mlogp, fill=method)) +
             geom_bar(stat="identity") +
             theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-            geom_hline(aes(yintercept=-log10(0.05) * n_methods), linetype="dotted")
+            geom_hline(aes(yintercept=-log10(0.05) * n_methods), linetype="dotted") +
+            xlab("Mutated gene") +
+            ylab("- log (p-value)")
 }
