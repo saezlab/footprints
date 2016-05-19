@@ -80,7 +80,9 @@ drug_range_box = function(drug, stratify=NULL, min_n=5, tissues=.tissues,
 
     if (plot_range)
         p = p + geom_rect(data=rect, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),
-                          fill="plum2", alpha=0.1, inherit.aes=FALSE)
+                          fill="plum2", alpha=0.1, inherit.aes=FALSE) +
+        geom_abline(intercept=minc, slope=0, linetype="dotted") +
+        geom_abline(intercept=maxc, slope=0, linetype="dotted")
 
     p +
         geom_boxplot(na.rm=TRUE) +
@@ -88,10 +90,7 @@ drug_range_box = function(drug, stratify=NULL, min_n=5, tissues=.tissues,
         xlab("Cancer type") +
         ylab("IC50 [log uM]") +
         theme_bw() +
-        theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
-        geom_boxplot(na.rm=TRUE) +
-        geom_abline(intercept=minc, slope=0, linetype="dotted") +
-        geom_abline(intercept=maxc, slope=0, linetype="dotted")
+        theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
 }
 
 drug_fit = function() {

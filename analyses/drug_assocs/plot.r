@@ -7,12 +7,12 @@ load_fun = function(fid) {
     io$load(module_file(fid))
 }
 
-plot_pancan = function(assocs.pan, ...) {
+plot_pancan = function(assocs.pan, base.size=0.2, p=0.05, ...) {
     # volcano plot for pan-cancer
     assocs.pan %>%
         mutate(label = paste(Ys, score, sep=":")) %>%
-        plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1) %>%
-        plt$volcano(base.size=0.2, ...)
+        plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=p, dir=-1) %>%
+        plt$volcano(base.size=base.size, p=p, ...)
 }
 
 plot_matrix = function(assocs.pan) {
