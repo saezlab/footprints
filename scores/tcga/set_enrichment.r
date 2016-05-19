@@ -7,8 +7,15 @@ hpc = import('hpc')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/mapped/go.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "pathways_mapped/gsea_go.RData"
-MIN_GENES = 5
-MAX_GENES = 500
+
+# only filter when we didn't select manually
+if (grepl("mapped", OUTFILE)) {
+    MIN_GENES = 1
+    MAX_GENES = Inf
+} else {
+    MIN_GENES = 5
+    MAX_GENES = 500
+}
 
 # load gene expression data, make sure same genes and drop duplicates
 expr = lapply(tcga$tissues(), tcga$rna_seq) %>%
