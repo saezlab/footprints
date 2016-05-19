@@ -1,16 +1,5 @@
 # Pathway scores in Basal and Perturbed Condition
 
-## Methods
-
-### Volcano Plots
-
-... write about methods here ...
-
-### Individual Fits
-
-... write about methods here ...
-
-
 ```{r setup, include=FALSE}
 library(dplyr)
 b = import('base')
@@ -38,7 +27,36 @@ overview$do_plot()
 cluster$do_plot()
 ```
 
-## Pathway scores upon Perturbation
+## Pathway scores of different methods assigned to perturbations
+
+Below are comparisons of the associations between input experiments and a
+higher pathway score (left), as well as the scores assigned to each individual
+perturbation experiment in our database (right).
+
+We calculate linear associations using the *lm* function in R between a
+pathway coefficients matrix (of the shape experiments x pathways, with the
+value 1 where a pathway was activated, -1 where a pathway was
+inhibited, and 0 otherwise; here, no cross-talk was modelled
+explicitly) and the pathway scores obtained by using the different
+methods. We then plot the result of the associations as a
+heatmap where the perturbed pathway and the obtained pathway score are on the
+axes, and the colour (blue for positive and red for negative correlation)
+indicates the Wald statistic between them. We annotate combinations where
+the p-value is below 10^-5^ with `*` and where it is 10^-10^ with `***`.
+
+As a method for inspection of the pathway scores of the individual
+experiments, We plot a heatmap using the R package *pheatmap*
+with the pathways scores in rows, experiments in columns, and the
+colour indicates the relative activation (scores scaled within experiments
+across pathways) of each
+pathway. In order to make activations and inhibitions more
+comparable, we take the negative pathway score for each inhibition
+and annotate the columns separately indicating which pathway was
+perturbed, and which kind of perturbation it was and we ordered the pathway in
+the following order: EGFR, H2O2, Hypoxia, JAK-STAT, MAPK, NFkB, PI3K,
+TGFb, TNFa, Trail, VEGF, p53).
+
+
 
 ### Signaling Footprints
 
@@ -84,7 +102,7 @@ util$perturb_score_plots('pathifier')
 #util$perturb_score_plots('paradigm')
 ```
 
-## ROC curves for Recovery of Perturbations
+## Consensus signature corresponds more closely to perturbations than pathway methods
 
 consensus not perfect, GEX sig confounded, will not be 100% with simple model (only when overfitted)
 
@@ -99,6 +117,16 @@ stability$do_plot('gdsc_matrix.RData')
 ```
 
 ## Correlation of Pathway Scores in Basal Expression
+
+Using basal gene expression, we calculated the
+Pearson correlation across all samples and tissues, and plotted the correlation
+matrix between each pathway combination using the R package *corplot* for
+GDSC and TCGA data separately.
+
+Below are the correlation for TCGA primary tumour data (left) and GDSC cell lines (right) for
+perturbation-response genes in basal expression. Sign indicated by colour of
+the points (positive correlation blue, negative correlation red), strength by
+colour shade and size of the point.
 
 ### Signaling Footprints
 

@@ -1,16 +1,5 @@
 # Pan-cancer improvements with mutations and MAPK scores
 
-## Methods
-
-### Volcano Plots
-
-... write about methods here ...
-
-### Individual Fits
-
-... write about methods here ...
-
-
 ```{r setup3, include=FALSE}
 library(cowplot)
 library(dplyr)
@@ -24,8 +13,7 @@ mapk_braf_pathway = util$stratify("MAPK", "BRAF")
 p53_mut_pathway = util$stratify("p53", "TP53")
 ```
 
-
-## Volcano Plots
+## Associations between pathway scores and drug response
 
 ### Signaling Footprints (SPEED, speed_matrix)
 
@@ -60,7 +48,7 @@ util$volcano("spia")
 ### Pathifier
 
 ```{r volcano_pathifier, echo=FALSE}
-##util$volcano("pathifier") #FIXME: not there yet, why?
+util$volcano("pathifier")
 ```
 
 ### PARADIGM
@@ -70,7 +58,7 @@ util$volcano("paradigm")
 ```
 
 
-## Highlight of individual hits
+## Highlight of individual hits for Footprint method
 
 ### Trametinib + MAPK
 

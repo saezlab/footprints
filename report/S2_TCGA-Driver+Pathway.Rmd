@@ -1,16 +1,5 @@
 # Comparison of different pathway methods in terms of TCGA mutation recall
 
-## Methods
-
-### first subheading
-
-... write about methods here ...
-
-### 2nd
-
-... write about methods here ...
-
-
 ```{r setup2, include=FALSE}
 library(magrittr)
 b = import('base')
@@ -23,7 +12,7 @@ tcga = import('data/tcga')
 util = import('./util_2')
 ```
 
-## What Pathway Methods can capture, within tissues
+## Mutations affecting pathway scores for all methods
 
 ```{r capture, echo=FALSE}
 keep = util$assocs_cov %>%
@@ -36,29 +25,12 @@ keep = util$assocs_cov %>%
 util$mutation_overview_plot(util$assocs_cov, keep)
 ```
 
+## Comparison of methods for individual mutations
+
 ```{r detail, echo=FALSE, fig.width=8, fig.height=10}
 plots = lapply(keep, function(x) util$mutation_method_plot(x, util$assocs_cov))
 plot_grid(plotlist=plots, ncol=4, label_size=8)
 ```
-
-## What Pathway Methods can capture, between tissues
-
-```{r capture_nocov, echo=FALSE}
-keep = util$assocs_nocov %>%
-    group_by(m) %>%
-    filter(any(-log10(adj.p) > 15)) %>%
-    summarize(mlogp = -sum(log10(adj.p))) %>%
-    arrange(-mlogp) %$%
-    m
-
-util$mutation_overview_plot(util$assocs_nocov, keep)
-```
-
-```{r detail_nocov, echo=FALSE, fig.width=8, fig.height=10}
-plots = lapply(keep, function(x) util$mutation_method_plot(x, util$assocs_nocov))
-plot_grid(plotlist=plots, ncol=4, label_size=8)
-```
-
 
 ## Discussion
 

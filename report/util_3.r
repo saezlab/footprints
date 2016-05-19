@@ -12,11 +12,33 @@ scores = io$load("../scores/gdsc/pathways_mapped/speed_matrix.RData")
 mut = gdsc$mutated_genes(intogen=TRUE)
 ar$intersect(tissues, Ys, scores, mut, along=1)
 
-#' Volcano plots
-volcano = function(fid) {
+#' Volcano plots and table of top associations
+#'
+#' @param fid  File ID
+#' @param n    How many associations to list
+volcano = function(fid, n=15) {
     fp = io$file_path('assocs_mapped', fid, ext=".RData")
-    assocs = vp$load_fun(fp)$assocs.pan
-    vp$plot_pancan(assocs, text.size=2)
+    assocs = vp$load_fun(fp)$assocs.pan %>%
+        arrange(p.value) %>%
+        select(-std.error)
+    print(vp$plot_pancan(assocs, text.size=2))
+    print(head(as.data.frame(assocs), n), digits=3)
+}
+
+#' Volcano plots and table of top associations
+#'
+#' @param fid  File ID
+#' @param n    How many associations to list
+volcano_tissue = function(fid, n=15) {
+    fp = io$file_path('assocs_mapped', fid, ext=".RData")
+    assocs = vp$load_fun(fp)$assocs.tissue %>%
+        filter(Ysub == "clinical") %>%
+        mutate(Ys = ifelse(nchar(Yf) <= 13, Yf, paste0(substr(Yf, 1, 12), ">"))) %>%
+        arrange(p.value) %>%
+        select(-std.error, -Ysub, -Yf) %>%
+        select(Ys, everything())
+    print(vp$plot_pancan(assocs, p=0.1, text.size=2, base.size=5))
+    print(head(as.data.frame(assocs), n), digits=3)
 }
 
 #' Returns names of a logical vector where the elements are TRUE
@@ -37,6 +59,8 @@ stratify = function(pathway="MAPK", genes=c("BRAF","KRAS","NRAS")) {
     path_active = path > quantile(path)[4] # top 25%
     path_inactive = path < quantile(path)[2] # bottom 25%
     path_null = path > quantile(path)[2] & path < quantile(path)[4] # rest
+    path_mut_null = has_mut & path > quantile(path[has_mut])[2] & path < quantile(path[has_mut])[2]
+    path_wt_null = !has_mut & path > quantile(path[!has_mut])[2] & path < quantile(path[!has_mut])[2]
 
     re = list(
         # stratification by mutation
@@ -52,10 +76,12 @@ stratify = function(pathway="MAPK", genes=c("BRAF","KRAS","NRAS")) {
         # stratification by SPEED score, wild-type subset
         "PATH+_wt" = nst(!has_mut & path > quantile(path[!has_mut])[4]),
         "PATH-_wt" = nst(!has_mut & path < quantile(path[!has_mut])[2]),
+        "PATH_null_wt" = nst(path_wt_null),
 
         # stratification by SPEED score, mutated subset
         "PATH+_mut" = nst(has_mut & path > quantile(path[has_mut])[4]),
-        "PATH-_mut" = nst(has_mut & path < quantile(path[has_mut])[2])
+        "PATH-_mut" = nst(has_mut & path < quantile(path[has_mut])[2]),
+        "PATH_null_mut" = nst(path_mut_null)
     )
 
     names(re) = sub("PATH", pathway, names(re))
