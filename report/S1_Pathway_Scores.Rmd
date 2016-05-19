@@ -27,6 +27,13 @@ overview$do_plot()
 cluster$do_plot()
 ```
 
+## Statistical significance of signature genes
+
+```{r sig_sign, echo=FALSE}
+#TODO: add the worst (mean?) FDR for the signature genes
+# like this, we can put a lower bound on the significance
+```
+
 ## Pathway scores of different methods assigned to perturbations
 
 Below are comparisons of the associations between input experiments and a

@@ -1,4 +1,4 @@
-# Associations between different pathway pathway methods and patient survival
+# Associations with patient survival
 
 ```{r setup5, include=FALSE}
 library(dplyr)
@@ -6,11 +6,115 @@ b = import('base')
 io = import('io')
 ar = import('array')
 st = import('stats')
+plt = import('plot')
 util = import('../analyses/tcga_survival/util')
+
+assocs = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia') %>% #, 'paradigm') %>%
+    sapply(util$load_assocs, simplify=FALSE, USE.NAMES=TRUE)
+
+volcano_pan = function(id, n=15) {
+    assoc = assocs[[id]]$pan_cov %>%
+        arrange(p.value)
+
+    assoc %>%
+        mutate(label = scores) %>%
+        plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.05, dir=-1) %>%
+        plt$volcano(base.size=5e-3, text.size=2) %>%
+        print()
+
+    print(head(as.data.frame(assoc), n), digits=3)
+}
+
+volcano_tissue = function(id, n=15) {
+    assoc = assocs[[id]]$tissue %>%
+        arrange(p.value)
+
+    assoc %>%
+        mutate(label = paste(scores, subset, sep=":")) %>%
+        plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.1, dir=-1) %>%
+        plt$volcano(base.size=0.05, text.size=2, p=0.1) %>%
+        print()
+
+    print(head(as.data.frame(assoc), n), digits=3)
+}
 ```
 
 ## Pan-cancer associations
 
-```{r pancan, include=FALSE}
-#TODO: conditional/comparison of the different methods
+### Footprints
+
+```{r svolcano_speed_matrix, echo=FALSE}
+volcano_pan("speed_matrix")
 ```
+
+### Gene Ontology (GSEA)
+
+```{r svolcano_go, echo=FALSE}
+volcano_pan("gsea_go")
+```
+
+### Reactome (GSEA)
+
+```{r svolcano_reactome, echo=FALSE}
+volcano_pan("gsea_reactome")
+```
+
+### SPIA
+
+```{r svolcano_spia, echo=FALSE}
+volcano_pan("spia")
+```
+
+### Pathifier
+
+```{r svolcano_pathifier, echo=FALSE}
+volcano_pan("pathifier")
+```
+
+<!--
+### PARADIGM
+
+```{r svolcano_paradigm, echo=FALSE}
+#volcano_pan("paradigm")
+```
+-->
+
+## Tissue-specific associations
+
+### Footprints
+
+```{r stvolcano_speed_matrix, echo=FALSE}
+volcano_tissue("speed_matrix")
+```
+
+### Gene Ontology (GSEA)
+
+```{r stvolcano_go, echo=FALSE}
+volcano_tissue("gsea_go")
+```
+
+### Reactome (GSEA)
+
+```{r stvolcano_reactome, echo=FALSE}
+volcano_tissue("gsea_reactome")
+```
+
+### SPIA
+
+```{r stvolcano_spia, echo=FALSE}
+volcano_tissue("spia")
+```
+
+### Pathifier
+
+```{r stvolcano_pathifier, echo=FALSE}
+volcano_tissue("pathifier")
+```
+
+<!--
+### PARADIGM
+
+```{r stvolcano_paradigm, echo=FALSE}
+#volcano_tissue("paradigm")
+```
+-->

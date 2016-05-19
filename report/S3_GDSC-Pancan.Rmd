@@ -1,4 +1,4 @@
-# Pan-cancer improvements with mutations and MAPK scores
+# Pan-cancer associations with drug response
 
 ```{r setup3, include=FALSE}
 library(cowplot)
@@ -58,7 +58,7 @@ util$volcano("paradigm")
 ```
 
 
-## Highlight of individual hits for Footprint method
+## Improvement of mutation biomarkers using pathway scores
 
 ### Trametinib + MAPK
 
