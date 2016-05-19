@@ -7,8 +7,17 @@ hpc = import('hpc')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/mapped/go.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "pathways_mapped/gsea_go.RData"
-MIN_GENES = 5
-MAX_GENES = 500
+
+# only filter when we didn't select manually
+if (grepl("mapped", OUTFILE)) {
+    MIN_GENES = 1
+    MAX_GENES = Inf
+    job_size = 1
+} else {
+    MIN_GENES = 5
+    MAX_GENES = 500
+    job_size = 50
+}
 
 # load gene list and expression
 expr = gdsc$basal_expression()
@@ -18,7 +27,7 @@ genelist = io$load(INFILE) %>%
 # perform GSEA for each sample and signature
 result = hpc$Q(gsea$runGSEA, sigs=genelist,
                const = list(expr=expr, transform.normal=TRUE),
-               memory = 4096, job_size = 50)
+               memory = 4096, job_size = job_size)
 
 # assemble results
 result = setNames(result, names(genelist)) %>%

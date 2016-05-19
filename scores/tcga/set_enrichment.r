@@ -12,9 +12,11 @@ OUTFILE = commandArgs(TRUE)[2] %or% "pathways_mapped/gsea_go.RData"
 if (grepl("mapped", OUTFILE)) {
     MIN_GENES = 1
     MAX_GENES = Inf
+    job_size = 1
 } else {
     MIN_GENES = 5
     MAX_GENES = 500
+    job_size = 50
 }
 
 # load gene expression data, make sure same genes and drop duplicates
@@ -26,7 +28,7 @@ genelist = io$load(INFILE) %>%
 # perform GSEA for each sample and signature
 result = hpc$Q(gsea$runGSEA, sigs=genelist,
                const = list(expr=expr, transform.normal=TRUE),
-               memory = 20480, job_size = 50)
+               memory = 20480, job_size = job_size)
 
 # assemble results
 result = setNames(result, names(genelist)) %>%
