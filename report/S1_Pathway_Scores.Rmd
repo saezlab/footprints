@@ -17,13 +17,13 @@ stability = import('../analyses/speed_bootstrap/stability_plot')
 
 ## Size of the Data Set
 
-```{r dataset_size, echo=FALSE}
+```{r dataset_size, echo=FALSE, fig.cap='Size of perturbation-response datasets'}
 overview$do_plot()
 ```
 
 ## Global Structure of Perturbation Experiments
 
-```{r global_structure, echo=FALSE}
+```{r global_structure, echo=FALSE, fig.cap='Clustering of input experiments'}
 cluster$do_plot()
 ```
 
@@ -67,37 +67,37 @@ TGFb, TNFa, Trail, VEGF, p53).
 
 ### Signaling Footprints
 
-```{r perturb_speed_matrix, echo=FALSE, fig.height=3, fig.width=8}
+```{r perturb_speed_matrix, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Footprint recall'}
 util$perturb_score_plots('speed_matrix')
 ```
 
 ### Gene Ontology
 
-```{r perturb_go, echo=FALSE, fig.height=3, fig.width=8}
+```{r perturb_go, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Gene Ontology recall'}
 util$perturb_score_plots('gsea_go')
 ```
 
 ### Reactome
 
-```{r perturb_reactome, echo=FALSE, fig.height=3, fig.width=8}
+```{r perturb_reactome, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Reactome recall'}
 util$perturb_score_plots('gsea_reactome')
 ```
 
 ### BioCarta
 
-```{r perturb_biocarta, echo=FALSE, fig.height=3, fig.width=8}
+```{r perturb_biocarta, echo=FALSE, fig.height=3, fig.width=8, fig.cap='BioCarta recall'}
 util$perturb_score_plots('gsea_biocarta')
 ```
 
 ### SPIA
 
-```{r perturb_spia, echo=FALSE, fig.height=3, fig.width=8}
+```{r perturb_spia, echo=FALSE, fig.height=3, fig.width=8, fig.cap='SPIA recall'}
 util$perturb_score_plots('spia')
 ```
 
 ### Pathifier
 
-```{r perturb_pathifier, echo=FALSE, fig.height=3, fig.width=8}
+```{r perturb_pathifier, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Pathifier recall'}
 util$perturb_score_plots('pathifier')
 ```
 
@@ -105,7 +105,7 @@ util$perturb_score_plots('pathifier')
 
 *not implemented*
 
-```{r perturb_paradigm, echo=FALSE, fig.height=3, fig.width=8}
+```{r perturb_paradigm, echo=FALSE, fig.height=3, fig.width=8, fig.cap='PARADIGM recall'}
 #util$perturb_score_plots('paradigm')
 ```
 
@@ -113,13 +113,13 @@ util$perturb_score_plots('pathifier')
 
 consensus not perfect, GEX sig confounded, will not be 100% with simple model (only when overfitted)
 
-```{r perturb_all, echo=FALSE}
+```{r perturb_all, echo=FALSE, fig.cap='ROC curves for input experiments'}
 roc$do_plot()
 ```
 
 ## Stability of Scores in Basal Expression
 
-```{r stability, echo=FALSE}
+```{r stability, echo=FALSE, fig.cap='Stability in basal gene expression'}
 stability$do_plot('gdsc_matrix.RData')
 ```
 
@@ -137,43 +137,43 @@ colour shade and size of the point.
 
 ### Signaling Footprints
 
-```{r cor_speed_matrix, echo=FALSE, fig.height=3, fig.width=8}
+```{r cor_speed_matrix, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Correlation of Footprint scores'}
 util$cor_plots('speed_matrix')
 ```
 
 ### Gene Ontology
 
-```{r cor_go, echo=FALSE, fig.height=3, fig.width=8}
+```{r cor_go, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Correlation of Gene Ontology scores'}
 util$cor_plots('gsea_go')
 ```
 
 ### Reactome
 
-```{r cor_reactome, echo=FALSE, fig.height=3, fig.width=8}
+```{r cor_reactome, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Correlation of Reactome scores'}
 util$cor_plots('gsea_reactome')
 ```
 
 ### BioCarta
 
-```{r cor_speed_biocarta, echo=FALSE, fig.height=3, fig.width=8}
+```{r cor_speed_biocarta, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Correlation of BioCarta scores'}
 util$cor_plots('gsea_biocarta')
 ```
 
 ### SPIA
 
-```{r cor_spia, echo=FALSE, fig.height=3, fig.width=8}
+```{r cor_spia, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Correlation of SPIA scores'}
 util$cor_plots('spia')
 ```
 
 ### Pathifier
 
-```{r cor_pathifier, echo=FALSE, fig.height=3, fig.width=8}
+```{r cor_pathifier, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Correlation of Pathifier scores'}
 util$cor_plots('pathifier')
 ```
 
 ### PARADIGM
 
-```{r cor_paradigm, echo=FALSE, fig.height=3, fig.width=8}
+```{r cor_paradigm, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Correlation of PARADIGM scores'}
 util$cor_plots('paradigm')
 ```
 

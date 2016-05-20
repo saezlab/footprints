@@ -17,42 +17,44 @@ followup = import('../analyses/drug_assocs_followup/util')
 
 ### Signaling Footprints (SPEED, speed_matrix)
 
-```{r tvolcano_speed_matrix, echo=FALSE}
+```{r tvolcano_speed_matrix, echo=FALSE, fig.cap='Footprints drug associations'}
 util$volcano_tissue("speed_matrix")
 ```
 
 ### Gene Ontology (GSEA)
 
-```{r tvolcano_go, echo=FALSE}
+```{r tvolcano_go, echo=FALSE, fig.cap='Gene Ontology drug associations'}
 util$volcano_tissue("gsea_go")
 ```
 
 ### Reactome (GSEA)
 
-```{r tvolcano_reactome, echo=FALSE}
+```{r tvolcano_reactome, echo=FALSE, fig.cap='Reactome drug associations'}
 util$volcano_tissue("gsea_reactome")
 ```
 
 ### BioCarta (GSEA)
 
-```{r tvolcano_biocarta, echo=FALSE}
+```{r tvolcano_biocarta, echo=FALSE, fig.cap='BioCarta drug associations'}
 util$volcano_tissue("gsea_biocarta")
 ```
 
 ### SPIA
 
-```{r tvolcano_spia, echo=FALSE}
+```{r tvolcano_spia, echo=FALSE, fig.cap='SPIA drug associations'}
 util$volcano_tissue("spia")
 ```
 
 ### Pathifier
 
-```{r tvolcano_pathifier, echo=FALSE}
+```{r tvolcano_pathifier, echo=FALSE, fig.cap='Pathifier drug associations'}
 util$volcano_tissue("pathifier")
 ```
 
 ### PARADIGM
 
-```{r tvolcano_paradigm, echo=FALSE}
+```{r tvolcano_paradigm, echo=FALSE, fig.cap='PARADIGM drug associations'}
 util$volcano_tissue("paradigm")
 ```
+
+## Discussion

@@ -14,7 +14,7 @@ util = import('./util_2')
 
 ## Mutations affecting pathway scores for all methods
 
-```{r capture, echo=FALSE}
+```{r capture, echo=FALSE, fig.cap='Overall association strength'}
 keep = util$assocs_cov %>%
     group_by(m) %>%
     filter(any(-log10(adj.p) > 5)) %>%
@@ -27,7 +27,7 @@ util$mutation_overview_plot(util$assocs_cov, keep)
 
 ## Comparison of methods for individual mutations
 
-```{r detail, echo=FALSE, fig.width=8, fig.height=10}
+```{r detail, echo=FALSE, fig.width=8, fig.height=10, fig.cap='Comparison across methods'}
 tt = theme(text = element_text(size=8),
            axis.text.x = element_text(size=7),
            axis.text.y = element_text(size=7),

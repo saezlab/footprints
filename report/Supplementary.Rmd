@@ -1,9 +1,13 @@
 ---  
 title: Supplementary Material
 author: Michael Schubert (schubert@ebi.ac.uk)
+knit: "bookdown::render_book"
 output:
     pdf_document:
         toc: yes
+        number_sections: yes
+    bookdown::pdf_book:
+        keep_tex: yes
 ---
 
 ```{r child = "S1_Pathway_Scores.Rmd"}
@@ -14,10 +18,9 @@ output:
 
 ```{r child = "S3_GDSC-Pancan.Rmd"}
 ```
-<!--
+
 ```{r child = "S4_GDSC-Tissue+Stratification.Rmd"}
 ```
 
 ```{r child = "S5_Survival.Rmd"}
 ```
--->
