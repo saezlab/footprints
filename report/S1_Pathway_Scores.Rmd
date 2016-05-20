@@ -63,51 +63,34 @@ perturbed, and which kind of perturbation it was and we ordered the pathway in
 the following order: EGFR, H2O2, Hypoxia, JAK-STAT, MAPK, NFkB, PI3K,
 TGFb, TNFa, Trail, VEGF, p53).
 
-
-
-### Signaling Footprints
-
-```{r perturb_speed_matrix, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Footprint recall'}
+```{r perturb_speed_matrix, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Footprint'}
 util$perturb_score_plots('speed_matrix')
 ```
 
-### Gene Ontology
-
-```{r perturb_go, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Gene Ontology recall'}
+```{r perturb_go, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Gene Ontology'}
 util$perturb_score_plots('gsea_go')
 ```
 
-### Reactome
-
-```{r perturb_reactome, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Reactome recall'}
+```{r perturb_reactome, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Reactome'}
 util$perturb_score_plots('gsea_reactome')
 ```
 
-### BioCarta
-
-```{r perturb_biocarta, echo=FALSE, fig.height=3, fig.width=8, fig.cap='BioCarta recall'}
+```{r perturb_biocarta, echo=FALSE, fig.height=3, fig.width=8, fig.cap='BioCarta'}
 util$perturb_score_plots('gsea_biocarta')
 ```
 
-### SPIA
-
-```{r perturb_spia, echo=FALSE, fig.height=3, fig.width=8, fig.cap='SPIA recall'}
+```{r perturb_spia, echo=FALSE, fig.height=3, fig.width=8, fig.cap='SPIA'}
 util$perturb_score_plots('spia')
 ```
 
-### Pathifier
-
-```{r perturb_pathifier, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Pathifier recall'}
+```{r perturb_pathifier, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Pathifier'}
 util$perturb_score_plots('pathifier')
 ```
 
-### PARADIGM
-
-*not implemented*
-
-```{r perturb_paradigm, echo=FALSE, fig.height=3, fig.width=8, fig.cap='PARADIGM recall'}
+```{r perturb_paradigm, echo=FALSE, fig.height=3, fig.width=8, fig.cap='PARADIGM'}
 #util$perturb_score_plots('paradigm')
 ```
+
 
 ## Consensus signature corresponds more closely to perturbations than pathway methods
 
@@ -135,43 +118,29 @@ perturbation-response genes in basal expression. Sign indicated by colour of
 the points (positive correlation blue, negative correlation red), strength by
 colour shade and size of the point.
 
-### Signaling Footprints
-
 ```{r cor_speed_matrix, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Correlation of Footprint scores'}
 util$cor_plots('speed_matrix')
 ```
-
-### Gene Ontology
 
 ```{r cor_go, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Correlation of Gene Ontology scores'}
 util$cor_plots('gsea_go')
 ```
 
-### Reactome
-
 ```{r cor_reactome, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Correlation of Reactome scores'}
 util$cor_plots('gsea_reactome')
 ```
-
-### BioCarta
 
 ```{r cor_speed_biocarta, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Correlation of BioCarta scores'}
 util$cor_plots('gsea_biocarta')
 ```
 
-### SPIA
-
 ```{r cor_spia, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Correlation of SPIA scores'}
 util$cor_plots('spia')
 ```
 
-### Pathifier
-
 ```{r cor_pathifier, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Correlation of Pathifier scores'}
 util$cor_plots('pathifier')
 ```
-
-### PARADIGM
 
 ```{r cor_paradigm, echo=FALSE, fig.height=3, fig.width=8, fig.cap='Correlation of PARADIGM scores'}
 util$cor_plots('paradigm')

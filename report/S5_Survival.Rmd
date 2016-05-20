@@ -41,76 +41,52 @@ volcano_tissue = function(id, n=15) {
 
 ## Pan-cancer associations
 
-### Footprints
-
-```{r svolcano_speed_matrix, echo=FALSE, fig.cap='Footprints survival associations'}
+```{r svolcano_speed_matrix, echo=FALSE, fig.cap='Footprints'}
 volcano_pan("speed_matrix")
 ```
 
-### Gene Ontology (GSEA)
-
-```{r svolcano_go, echo=FALSE, fig.cap='Gene Ontology survival associations'}
+```{r svolcano_go, echo=FALSE, fig.cap='Gene Ontology'}
 volcano_pan("gsea_go")
 ```
 
-### Reactome (GSEA)
-
-```{r svolcano_reactome, echo=FALSE, fig.cap='Reactome survival associations'}
+```{r svolcano_reactome, echo=FALSE, fig.cap='Reactome'}
 volcano_pan("gsea_reactome")
 ```
 
-### SPIA
-
-```{r svolcano_spia, echo=FALSE, fig.cap='SPIA survival associations'}
+```{r svolcano_spia, echo=FALSE, fig.cap='SPIA'}
 volcano_pan("spia")
 ```
 
-### Pathifier
-
-```{r svolcano_pathifier, echo=FALSE, fig.cap='Pathifier survival associations'}
+```{r svolcano_pathifier, echo=FALSE, fig.cap='Pathifier'}
 volcano_pan("pathifier")
 ```
 
-### PARADIGM
-
-```{r svolcano_paradigm, echo=FALSE, fig.cap='PARADIGM survival associations'}
+```{r svolcano_paradigm, echo=FALSE, fig.cap='PARADIGM'}
 volcano_pan("paradigm")
 ```
 
 ## Tissue-specific associations
 
-### Footprints
-
-```{r stvolcano_speed_matrix, echo=FALSE, fig.cap='Footprints survival associations'}
+```{r stvolcano_speed_matrix, echo=FALSE, fig.cap='Footprints'}
 volcano_tissue("speed_matrix")
 ```
 
-### Gene Ontology (GSEA)
-
-```{r stvolcano_go, echo=FALSE, fig.cap='Gene Ontology survival associations'}
+```{r stvolcano_go, echo=FALSE, fig.cap='Gene Ontology'}
 volcano_tissue("gsea_go")
 ```
 
-### Reactome (GSEA)
-
-```{r stvolcano_reactome, echo=FALSE, fig.cap='Reactome survival associations'}
+```{r stvolcano_reactome, echo=FALSE, fig.cap='Reactome'}
 volcano_tissue("gsea_reactome")
 ```
 
-### SPIA
-
-```{r stvolcano_spia, echo=FALSE, fig.cap='SPIA survival associations'}
+```{r stvolcano_spia, echo=FALSE, fig.cap='SPIA'}
 volcano_tissue("spia")
 ```
 
-### Pathifier
-
-```{r stvolcano_pathifier, echo=FALSE, fig.cap='Pathifier survival associations'}
+```{r stvolcano_pathifier, echo=FALSE, fig.cap='Pathifier'}
 volcano_tissue("pathifier")
 ```
 
-### PARADIGM
-
-```{r stvolcano_paradigm, echo=FALSE, fig.cap='PARADIGM survival associations'}
+```{r stvolcano_paradigm, echo=FALSE, fig.cap='PARADIGM'}
 volcano_tissue("paradigm")
 ```
