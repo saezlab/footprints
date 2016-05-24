@@ -26,12 +26,10 @@ zscore2model = function(zdata, hpc_args=NULL) {
 				  pathway = sub("^pathway", "", term),
 				  zscore = estimate,
 				  p.value = p.value) %>%
-		group_by(gene) %>%
-		mutate(p.adj = p.adjust(p.value, method="fdr")) %>%
-		ungroup()
+		mutate(adj.p = p.adjust(p.value, method="fdr"))
 
 	zfit = ar$construct(zscore ~ gene + pathway, data=mod)
-	pval = ar$construct(p.adj ~ gene + pathway, data=mod)
+	pval = ar$construct(p.value ~ gene + pathway, data=mod)
 
     model = zfit
     model[apply(pval, 2, function(p) !b$min_mask(p, 100))] = 0
