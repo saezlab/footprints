@@ -12,7 +12,7 @@ INFILE = commandArgs(TRUE)[1] %or% "../../model/model_linear.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "scores_linear.RData"
 
 # load zscores
-zfit = io$load(INFILE)
+zfit = io$load(INFILE)$model
 
 # load sanger data
 #tissues = gdsc$getTissues(minN=5)

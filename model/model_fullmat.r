@@ -33,7 +33,9 @@ zscore2model = function(zdata, hpc_args=NULL) {
 	zfit = ar$construct(zscore ~ gene + pathway, data=mod)
 	pval = ar$construct(p.adj ~ gene + pathway, data=mod)
 
-    zfit
+    model = zfit
+    model[apply(pval, 2, function(p) !b$min_mask(p, 100))] = 0
+    list(zfit=zfit, pval=pval, model=model)
 }
 
 ## best x-val: 0.15, 1e-4 -> use which?
@@ -46,8 +48,8 @@ if (is.null(module_name())) {
 
     # load speed data, index; filter for train set only
     zdata = io$load(ZDATA)
-    zfit = zscore2model(zdata, hpc_args=list(n_jobs=10, memory=2048))
+    result = zscore2model(zdata, hpc_args=list(n_jobs=10, memory=2048))
 
     # save resulting object
-    save(zfit, file=OUTFILE)
+    save(result, file=OUTFILE)
 }

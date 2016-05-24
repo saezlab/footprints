@@ -39,9 +39,10 @@ zscore2model = function(zdata, hpc_args=NULL) {
     pval = ar$construct(adj.stat ~ gene + pathway, data=mod)
 
     # filter zfit to only include top 100 genes per pathway
-    zfit[apply(pval, 2, function(p) !b$min_mask(p, 100))] = 0
+    model = zfit
+    model[apply(pval, 2, function(p) !b$min_mask(p, 100))] = 0
 
-    zfit
+    list(zfit=zfit, pval=pval, model=model)
 }
 
 if (is.null(module_name())) {
@@ -50,8 +51,8 @@ if (is.null(module_name())) {
 
     # load speed data, index; filter for train set only
     zdata = io$load(ZDATA)
-    zfit = zscore2model(zdata, hpc_args=list(n_jobs=20, memory=2048))
+    result = zscore2model(zdata, hpc_args=list(n_jobs=20, memory=2048))
 
     # save resulting object
-    save(zfit, file=OUTFILE)
+    save(result, file=OUTFILE)
 }

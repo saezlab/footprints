@@ -8,7 +8,7 @@ INFILE = commandArgs(TRUE)[1] %or% "../../model/model_linear.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "speed_linear.RData"
 
 # load vectors
-vecs = io$load(INFILE)
+vecs = io$load(INFILE)$model
 
 # possible questions here:
 #  using all tumor data, is pathway activity associated with survival outcome?

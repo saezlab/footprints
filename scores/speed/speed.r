@@ -7,7 +7,7 @@ INFILE = commandArgs(TRUE)[1] %or% "../../model/model_linear.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "speed_linear.RData"
 
 # load vectors
-vecs = io$load(INFILE)
+vecs = io$load(INFILE)$model
 
 # calculate scores from expr and speed vectors
 speed = io$load('../../data/expr.RData')
