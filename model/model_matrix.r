@@ -38,7 +38,7 @@ zscore2model = function(zdata, hpc_args=NULL) {
     model = zfit
     model[apply(pval, 2, function(p) !b$min_mask(p, 100))] = 0
 
-    list(zfit=zfit, pval=pval, model=model)
+    list(assocs=mod, model=model)
 }
 
 if (is.null(module_name())) {
