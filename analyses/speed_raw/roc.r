@@ -30,11 +30,7 @@ method2pr_df = function(fid) {
         ungroup()
 }
 
-do_plot = function() {
-    roc = lapply(config, method2pr_df) %>%
-        bind_rows() %>%
-        na.omit()
-
+do_plot = function(roc) {
     random_line = data.frame(x=c(0,1), y=c(0,1), method=roc$method[1])
 
     ggplot(roc, aes(x=FPR, y=TPR, color=method)) +
@@ -44,10 +40,19 @@ do_plot = function() {
         theme(axis.text.x = element_text(angle = 45, hjust = 1))
 }
 
+roc = lapply(config, method2pr_df) %>%
+    bind_rows() %>%
+    na.omit()
+
+auc = roc %>%
+    group_by(method, pathway) %>%
+    arrange(value) %>%
+    summarize(auc = st$roc_auc(value, perturbed==1))
+
 if (is.null(module_name())) {
     pdf("roc.pdf", paper="a4r", width=11, height=8)
 
-    print(do_plot())
+    print(do_plot(roc))
 
     dev.off()
 }
