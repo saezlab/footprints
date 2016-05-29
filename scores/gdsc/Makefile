@@ -7,15 +7,13 @@ SETS_ALL = $(wildcard ../../util/genesets/all/*.RData)
 SET_SCORES_MAPPED = $(SETS_MAPPED:../../util/genesets/mapped/%=pathways_mapped/gsea_%)
 SET_SCORES_ALL = $(SETS_ALL:../../util/genesets/all/%=pathways_all/gsea_%)
 
-SPIA = pathways_mapped/spia.RData pathways_all/spia.RData
-PATHIFIER = pathways_mapped/pathifier.RData pathways_all/pathifier.RData
-PARADIGM = pathways_mapped/paradigm.RData
-
 include ../../Makefile.inc
 #$(call ext_dep,../../model,$(notdir $(MODELS)))
 #$(call ext_dep,../../util/genesets,$(notdir $(SETS)))
 
-all: $(SPEED_SCORES) $(SET_SCORES_MAPPED) $(SET_SCORES_ALL) $(SPIA) $(PATHIFIER) $(PARADIGM)
+all: mapped $(SET_SCORES_ALL) pathways_all/pathifier.RData pathways_all/spia.RData
+
+mapped: $(SPEED_SCORES) $(SET_SCORES_MAPPED) pathways_mapped/pathifier.RData pathways_mapped/spia.RData pathways_mapped/paradigm.RData
 
 # mapped pathways
 pathways_mapped/speed_%.RData: speed.r ../../model/model_%.RData
@@ -41,6 +39,9 @@ pathways_all/spia.RData: spia.r
 	Rscript $^ $@ FALSE
 
 pathways_all/pathifier.RData: pathifier.r ../../util/genesets/all/reactome.RData
+	Rscript $^ $@
+
+pathways_all/mutation.RData: mutation.r
 	Rscript $^ $@
 
 #paradigm.RData: paradigm.r
