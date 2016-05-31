@@ -30,7 +30,7 @@ discrete_assocs = surv$tissue(scores)
 
 \subsection{Pan-cancer associations}
 
-\begin{figure}
+\begin{figure}[H]
 <<pancan, echo=FALSE>>=
 assocs.pan %>%
     plt$color$p_effect("adj.p", dir=-1) %>%
@@ -43,7 +43,7 @@ assocs.pan %>%
 \end{figure}
 
 
-\begin{figure}
+\begin{figure}[H]
 <<heatmap, echo=FALSE, fig.height=3>>=
 lmax = max(abs(assocs.pan$statistic), na.rm=TRUE)
 p1 = assocs.pan %>%
@@ -63,7 +63,7 @@ print(p1)
 
 \subsection{Cancer-specific associations}
 
-\begin{figure}
+\begin{figure}[H]
 <<tissue, echo=FALSE>>=
 #TODO: for all other methods ->@suppl
 p2 = assocs.tissue %>%
@@ -79,7 +79,7 @@ print(p2)
 
 \subsection{Highlighted fits}
 
-\begin{figure}
+\begin{figure}[H]
 <<fit1, echo=FALSE, fig.width=7.5, fig.height=6>>=
 surv$row2survFit(unlist(filter(discrete_assocs, scores=="TNFa" & subset=="KIRC")))
 @
@@ -87,7 +87,7 @@ surv$row2survFit(unlist(filter(discrete_assocs, scores=="TNFa" & subset=="KIRC")
 \label{fig:fit-kirc}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 <<fit2, echo=FALSE, fig.width=7.5, fig.height=6>>=
 surv$row2survFit(unlist(filter(discrete_assocs, scores=="JAK-STAT" & subset=="LGG")))
 @
@@ -95,7 +95,7 @@ surv$row2survFit(unlist(filter(discrete_assocs, scores=="JAK-STAT" & subset=="LG
 \label{fig:fit-lgg}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 <<fit3, echo=FALSE, fig.width=7.5, fig.height=6>>=
 surv$row2survFit(unlist(filter(discrete_assocs, scores=="Trail" & subset=="CESC")))
 @

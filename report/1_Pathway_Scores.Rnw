@@ -35,7 +35,7 @@ color = setNames(c(brewer.pal(12, "Paired"), "#fefefe"), all_pathways)
 
 \subsection{Signaling Footprints (perturbation experiments)}
 
-\begin{figure}
+\begin{figure}[H]
 <<circle1, echo=FALSE>>=
 chordDiagram(speed,
              grid.col=color,
@@ -49,7 +49,7 @@ chordDiagram(speed,
 
 \subsection{Reactome}
 
-\begin{figure}
+\begin{figure}[H]
 <<circle2, echo=FALSE>>=
 chordDiagram(reactome,
              grid.col=color,

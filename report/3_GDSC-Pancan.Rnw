@@ -16,7 +16,7 @@ p53_levels = c("TP53_all", "TP53_mut", "TP53_wt", "p53+_wt", "p53-_wt", "p53+", 
 
 \subsubsection{Trametinib}
 
-\begin{figure}
+\begin{figure}[H]
 <<tram, echo=FALSE, fig.height=3>>=
 mydf = util$create_df("MAPK", c("NRAS", "KRAS", "BRAF"), "Trametinib") %>%
     mutate(subset = factor(subset, levels=MEKi_levels)) %>%
@@ -41,7 +41,7 @@ ggplot(mydf, aes(x=subset, y=resp)) +
 
 \subsubsection{AZ628}
 
-\begin{figure}
+\begin{figure}[H]
 <<az628, echo=FALSE, fig.height=3>>=
 mydf = util$create_df("MAPK", c("NRAS", "KRAS", "BRAF"), "AZ628") %>%
     mutate(subset = factor(subset, levels=MEKi_levels)) %>%
@@ -64,7 +64,7 @@ ggplot(mydf, aes(x=subset, y=resp)) +
 
 \subsubsection{Dabrafenib}
 
-\begin{figure}
+\begin{figure}[H]
 <<dabraf, echo=FALSE, fig.height=3>>=
 mydf = util$create_df("MAPK", "BRAF", "Dabrafenib") %>%
     mutate(subset = factor(subset, levels=BRAFi_levels)) %>%
@@ -86,7 +86,7 @@ ggplot(mydf, aes(x=subset, y=resp)) +
 
 \subsubsection{Nutlin-3a}
 
-\begin{figure}
+\begin{figure}[H]
 <<nutlin, echo=FALSE, fig.height=3>>=
 mydf = util$create_df("p53", "TP53", "Nutlin-3a") %>%
     mutate(subset = factor(subset, levels=p53_levels)) %>%
@@ -109,7 +109,7 @@ ggplot(mydf, aes(x=subset, y=resp)) +
 
 \subsection{Comparing associations to mutations}
 
-\begin{figure}
+\begin{figure}[H]
 <<compare, echo=FALSE>>=
 load_fun = function(fname) {
     io$file_path('../analyses/drug_assocs/assocs_mapped', fname, ext=".RData") %>%

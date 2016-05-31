@@ -31,7 +31,7 @@ assocs.tissue = st$lm(Ys_clinical ~ scores, subsets=tissues) %>%
 
 \subsection{Volcano plot of drug response (clinical drugs)}
 
-\begin{figure}
+\begin{figure}[H]
 <<volcano, echo=FALSE>>=
 assocs.tissue %>%
     mutate(label = paste(Ys_clinical, scores, sep=":")) %>%
@@ -45,7 +45,7 @@ assocs.tissue %>%
 
 \subsection{Stratification of LGG Docetaxel response by Trail activity}
 
-\begin{figure}
+\begin{figure}[H]
 <<range-lgg_trail, echo=FALSE>>=
 cancer_type = names(tissues)[tissues == "LGG"]
 path = scores[cancer_type, "Trail"]
@@ -63,7 +63,7 @@ util$drug_range_box("Docetaxel", stratify=stratify)
 
 \subsection{Stratification of ESCA Rapamycin response by EGFR activity}
 
-\begin{figure}
+\begin{figure}[H]
 <<range-esca_rap, echo=FALSE>>=
 cancer_type = names(tissues)[tissues == "ESCA"]
 path = scores[cancer_type, "EGFR"]
@@ -81,7 +81,7 @@ util$drug_range_box("Rapamycin", stratify=stratify)
 
 \subsection{Stratification of SKCM FH535 response by VEGF activity}
 
-\begin{figure}
+\begin{figure}[H]
 <<r range-skcm_vegf, echo=FALSE>>=
 cancer_type = names(tissues)[tissues == "SKCM"]
 path = scores[cancer_type, "VEGF"]
