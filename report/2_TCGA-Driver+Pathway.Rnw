@@ -1,7 +1,3 @@
-\documentclass{article}
-
-\begin{document}
-
 \section{Comparison of different pathway methods in terms of TCGA mutation recall}
 
 <<setup, include=FALSE>>=
@@ -30,5 +26,3 @@ plot_grid(
     theme(axis.text = element_text(size=7),
           axis.title = element_text(size=9, face="bold"))
 @
-
-\end{document}

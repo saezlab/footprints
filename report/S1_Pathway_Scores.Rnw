@@ -1,7 +1,3 @@
-\documentclass{article}
-
-\begin{document}
-
 \section{Pathway scores in Basal and Perturbed Condition}
 
 <<setup, include=FALSE>>=
@@ -250,5 +246,3 @@ util$cor_plots('paradigm')
 \subsection{Discussion}
 
 ... write some thoughts here ...
-
-\end{document}

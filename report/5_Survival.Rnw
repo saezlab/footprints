@@ -1,7 +1,3 @@
-\documentclass{article}
-
-\begin{document}
-
 \section{Associations between pathway activation and patient survival}
 
 <<setup5, include=FALSE>>=
@@ -81,5 +77,3 @@ surv$row2survFit(unlist(filter(discrete_assocs, scores=="JAK-STAT" & subset=="LG
 <<fit3, echo=FALSE, fig.width=7.5, fig.height=6>>=
 surv$row2survFit(unlist(filter(discrete_assocs, scores=="Trail" & subset=="CESC")))
 @
-
-\end{document}

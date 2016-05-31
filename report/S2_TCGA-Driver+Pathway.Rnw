@@ -1,7 +1,3 @@
-\documentclass{article}
-
-\begin{document}
-
 \section{Associations with known driver mutations}
 
 <<setup2, include=FALSE>>=
@@ -46,5 +42,3 @@ plot_grid(plotlist=plots, ncol=4, label_size=4)
 \subsection{Discussion}
 
 ... write some thoughts here ...
-
-\end{document}

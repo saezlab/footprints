@@ -1,7 +1,3 @@
-\documentclass{article}
-
-\begin{document}
-
 \section{Pan-cancer associations with drug response}
 
 <<setup3, include=FALSE>>=
@@ -173,5 +169,3 @@ plot_grid(mut_only, speed_only, wt_speed, mut_speed,
 \subsection{Discussion}
 
 ... write some thoughts here ...
-
-\end{document}

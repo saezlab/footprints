@@ -1,7 +1,3 @@
-\documentclass{article}
-
-\begin{document}
-
 \section{Tissue-specific drug associations}
 
 <<setup4, include=FALSE>>=
@@ -79,5 +75,3 @@ stratify = list(SKCM = list(
 
 util$drug_range_box("FH535", stratify=stratify)
 @
-
-\end{document}

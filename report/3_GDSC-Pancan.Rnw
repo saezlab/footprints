@@ -1,7 +1,3 @@
-\documentclass{article}
-
-\begin{document}
-
 \section{Pan-cancer improvements with mutations and MAPK scores}
 
 <<setup3, include=FALSE>>=
@@ -117,5 +113,3 @@ ggplot(resp, aes(x=-log10(adj.p), y=log10(num), color=method)) +
     geom_step() +
     theme_bw()
 @
-
-\end{document}

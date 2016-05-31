@@ -1,7 +1,3 @@
-\documentclass{article}
-
-\begin{document}
-
 \section{Associations with patient survival}
 
 <<setup5, include=FALSE>>=
@@ -94,5 +90,3 @@ volcano_tissue("pathifier")
 <<stvolcano_paradigm, echo=FALSE, fig.cap='PARADIGM'>>=
 volcano_tissue("paradigm")
 @
-
-\end{document}

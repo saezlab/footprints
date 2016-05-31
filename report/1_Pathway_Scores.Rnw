@@ -1,7 +1,3 @@
-\documentclass{article}
-
-\begin{document}
-
 \section{Perturbation experiments}
 
 <<setup, include=FALSE>>=
@@ -48,5 +44,3 @@ chordDiagram(speed, grid.col=color, grid.border="#dedede", self.link=1, link.bor
 <<circle2, echo=FALSE>>=
 chordDiagram(reactome, grid.col=color, grid.border="#dedede", self.link=1, link.border="#dedede")
 @
-
-\end{document}
