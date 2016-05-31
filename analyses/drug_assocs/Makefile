@@ -1,4 +1,4 @@
-# this only works if scores target was run before
+#FIXME: this only works if scores target was run before
 GDSC_SCORES = $(shell find ../../scores/gdsc -name "*.RData")
 GDSC_ASSOCS = $(GDSC_SCORES:../../scores/gdsc/pathways_%.RData=assocs_%.RData)
 GDSC_PLOTS = $(GDSC_ASSOCS:assocs_%.RData=plots_%.pdf)

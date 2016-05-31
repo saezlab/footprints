@@ -12,7 +12,7 @@ OUTFILE = commandArgs(TRUE)[2] %or% "speed_matrix.RData"
 #' Load required data
 data = list(
     scores = io$load(INFILE),
-    response = gdsc$drug_response('IC50s'),
+    drug = gdsc$drug_response('IC50s'),
     clinical = gdsc$drug_response('IC50s', min_tissue_measured=0, stage=2),
     noexp = gdsc$drug_response('IC50s', min_tissue_measured=0, median_top=10, stage=1),
     sensi = gdsc$drug_response('IC50s', min_tissue_measured=5, median_top=10),
@@ -25,23 +25,22 @@ data = list(
 #'
 #' @param data      A list with: tissue, MSI, scores
 #' @return          A data.frame with the association results
-assocs.pan = st$lm(response ~ tissues + MSI + scores, data=data, min_pts=50,
-                   hpc_args = list(job_size = 5000)) %>%
+assocs.pan = st$lm(drug ~ tissues + MSI + scores, data=data, min_pts=50,
+                   hpc_args = list(job_size = 1e4)) %>%
     filter(term == "scores") %>%
-    mutate(subset = tissue) %>%
-    select(-term, subset) %>%
+    select(-term) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr"))
 
 #' Tissues as subsets
 #'
-#' @param resp_sub  A character string of which `response` to subset
+#' @param resp_sub  A character string of which `drug` to subset
 #' @param data      A list with: tissue, MSI, scores
 #' @return          A data.frame with the association results
 tissue_assocs = function(resp_sub, data) {
     st = import('stats')
-    data$response = data[[resp_sub]]
-    re = st$lm(response ~ MSI + scores, subsets=data$tissues, data=data, min_pts=10,
-               hpc_args = list(job_size = 5000)) %>%
+    data$drug = data[[resp_sub]]
+    re = st$lm(drug ~ MSI + scores, subsets=data$tissues, data=data, min_pts=10,
+               hpc_args = list(job_size = 1e4)) %>%
         mutate(tissue = subset, subset=resp_sub)
 }
 
