@@ -16,7 +16,8 @@ data = list(
     noexp = gdsc$drug_response('IC50s', min_tissue_measured=0, median_top=10, stage=1),
     sensi = gdsc$drug_response('IC50s', min_tissue_measured=5, median_top=10),
     clin_sens = gdsc$drug_response('IC50s', min_tissue_measured=0, stage=2, median_top=10),
-    tissues = gdsc$tissues(minN=15)
+    tissues = gdsc$tissues(minN=15),
+    MSI = gdsc$MASTER_LIST['MMR'] == "MSI-H"
 ) %>% ar$intersect_list(along=1)
 
 scores = data$scores
@@ -36,7 +37,7 @@ pan_assocs = function(scores, Ys, scoresub, tissues) {
     st = import('stats')
 
     score = scores[, scoresub, drop=FALSE]
-    re = st$lm(Ys ~ tissues + score, data=data)
+    re = st$lm(Ys ~ tissues + MSI + score, data=data)
 }
 
 #' Tissues as subsets
@@ -54,7 +55,7 @@ tissue_assocs = function(scores, Ysubs, scoresub, ysub, tissues) {
     data = list(Yf = Ysubs[[ysub]], score = scores[,scoresub,drop=FALSE]) %>%
         ar$intersect_list(along=1)
 
-    re = st$lm(Yf ~ score, subsets=tissues, data=data) %>%
+    re = st$lm(Yf ~ MSI + score, subsets=tissues, data=data) %>%
         mutate(Ysub = ysub)
 }
 

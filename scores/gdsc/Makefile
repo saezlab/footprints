@@ -8,10 +8,10 @@ SET_SCORES_MAPPED = $(SETS_MAPPED:../../util/genesets/mapped/%=pathways_mapped/g
 SET_SCORES_ALL = $(SETS_ALL:../../util/genesets/all/%=pathways_all/gsea_%)
 
 include ../../Makefile.inc
-#$(call ext_dep,../../model,$(notdir $(MODELS)))
-#$(call ext_dep,../../util/genesets,$(notdir $(SETS)))
+$(call ext_dep,../../model,$(notdir $(MODELS)))
+$(call ext_dep,../../util/genesets,$(notdir $(SETS)))
 
-all: mapped $(SET_SCORES_ALL) pathways_all/pathifier.RData pathways_all/spia.RData
+all: mapped $(SET_SCORES_ALL) pathways_all/pathifier.RData pathways_all/spia.RData pathways_all/mutation.RData
 
 mapped: $(SPEED_SCORES) $(SET_SCORES_MAPPED) pathways_mapped/pathifier.RData pathways_mapped/spia.RData pathways_mapped/paradigm.RData
 
