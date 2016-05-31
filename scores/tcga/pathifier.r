@@ -7,6 +7,7 @@ hpc = import('hpc')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/mapped/reactome.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "pathways_mapped/pathifier.RData"
+tissues = import('../../config')$tcga$tissues_with_normals
 
 if (grepl("mapped", OUTFILE)) {
     MIN_GENES = 1
@@ -52,7 +53,6 @@ tissue2scores = function(tissue, genesets, expr) {
 }
 
 # load pathway gene sets
-tissues = import('../../config')$tcga$tissues_with_normals
 expr = lapply(tissues, tcga$rna_seq) %>%
     ar$stack(along=2)
 genesets = io$load(INFILE) %>%

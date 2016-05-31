@@ -35,7 +35,7 @@ gsva = function(set, expr, sigs, ...) {
 }
 
 # perform GSEA for each sample and signature
-result = hpc$Q(gsva, set = names(genesets)[1:2],
+result = hpc$Q(gsva, set = names(genesets),
                const = list(expr=expr, sigs=genesets),
                memory = 4096, job_size = job_size) %>%
     ar$stack(along=1) %>% t()

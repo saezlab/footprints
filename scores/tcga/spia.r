@@ -7,6 +7,7 @@ tcga = import('data/tcga')
 
 OUTFILE = commandArgs(TRUE)[1] %or% "pathways_mapped/spia.RData"
 FILTER = as.logical(commandArgs(TRUE)[2]) #%or% TRUE
+tissues = import('../../config')$tcga$tissues_with_normals
 
 #' Calculates SPIA scores for a sample and pathway vs all tissue-normals
 #'
@@ -30,7 +31,6 @@ sample2scores = function(sample, expr, tissues, pathids=NULL) {
 }
 
 # load pathway gene sets
-tissues = import('../../config')$tcga$tissues_with_normals
 expr = lapply(tissues, tcga$rna_seq) %>%
     ar$stack(along=2) %>%
     spia$map_entrez()
