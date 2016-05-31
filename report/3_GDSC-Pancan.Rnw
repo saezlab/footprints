@@ -16,6 +16,7 @@ p53_levels = c("TP53_all", "TP53_mut", "TP53_wt", "p53+_wt", "p53-_wt", "p53+", 
 
 \subsubsection{Trametinib}
 
+\begin{figure}
 <<tram, echo=FALSE, fig.height=3>>=
 mydf = util$create_df("MAPK", c("NRAS", "KRAS", "BRAF"), "Trametinib") %>%
     mutate(subset = factor(subset, levels=MEKi_levels)) %>%
@@ -33,9 +34,14 @@ ggplot(mydf, aes(x=subset, y=resp)) +
 #    geom_point(aes(colour=tissue, shape=mut), size=5, alpha=0.5, position=position_jitter(w=0.5))
     theme_bw()
 @
+\caption{Trametinib}
+\label{fig:strat-trametinib}
+\end{figure}
+
 
 \subsubsection{AZ628}
 
+\begin{figure}
 <<az628, echo=FALSE, fig.height=3>>=
 mydf = util$create_df("MAPK", c("NRAS", "KRAS", "BRAF"), "AZ628") %>%
     mutate(subset = factor(subset, levels=MEKi_levels)) %>%
@@ -51,9 +57,14 @@ ggplot(mydf, aes(x=subset, y=resp)) +
     geom_boxplot(width=.5, outlier.shape=NA) +
     theme_bw()
 @
+\caption{AZ628}
+\label{fig:strat-az628}
+\end{figure}
+
 
 \subsubsection{Dabrafenib}
 
+\begin{figure}
 <<dabraf, echo=FALSE, fig.height=3>>=
 mydf = util$create_df("MAPK", "BRAF", "Dabrafenib") %>%
     mutate(subset = factor(subset, levels=BRAFi_levels)) %>%
@@ -69,9 +80,13 @@ ggplot(mydf, aes(x=subset, y=resp)) +
     geom_boxplot(width=.5, outlier.shape=NA) +
     theme_bw()
 @
+\caption{Dabrafenib}
+\label{fig:strat-dabrafenib}
+\end{figure}
 
 \subsubsection{Nutlin-3a}
 
+\begin{figure}
 <<nutlin, echo=FALSE, fig.height=3>>=
 mydf = util$create_df("p53", "TP53", "Nutlin-3a") %>%
     mutate(subset = factor(subset, levels=p53_levels)) %>%
@@ -87,10 +102,14 @@ ggplot(mydf, aes(x=subset, y=resp)) +
     geom_boxplot(width=.5, outlier.shape=NA) +
     theme_bw()
 @
+\caption{Nutlin-3a}
+\label{fig:strat-nutlin3a}
+\end{figure}
 
 
 \subsection{Comparing associations to mutations}
 
+\begin{figure}
 <<compare, echo=FALSE>>=
 load_fun = function(fname) {
     io$file_path('../analyses/drug_assocs/assocs_mapped', fname, ext=".RData") %>%
@@ -113,3 +132,6 @@ ggplot(resp, aes(x=-log10(adj.p), y=log10(num), color=method)) +
     geom_step() +
     theme_bw()
 @
+\caption{Number and strength of associations}
+\label{fig:strength-stepwise}
+\end{figure}

@@ -1,0 +1,24 @@
+\documentclass{article}
+
+\input{config}
+
+\title{Generated Figures}
+\author{Michael Schubert (schubert@ebi.ac.uk)}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\Sexpr{knit_child('1_Pathway_Scores.Rnw')}
+
+\Sexpr{knit_child('2_TCGA-Driver+Pathway.Rnw')}
+
+\Sexpr{knit_child('3_GDSC-Pancan.Rnw')}
+
+\Sexpr{knit_child('4_GDSC-Tissue+Stratification.Rnw')}
+
+\Sexpr{knit_child('5_Survival.Rnw')}
+
+\end{document}

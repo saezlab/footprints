@@ -28,17 +28,24 @@ assocs.tissue = st$lm(Ys_clinical ~ scores, subsets=tissues) %>%
     ungroup()
 @
 
+
 \subsection{Volcano plot of drug response (clinical drugs)}
 
+\begin{figure}
 <<volcano, echo=FALSE>>=
 assocs.tissue %>%
     mutate(label = paste(Ys_clinical, scores, sep=":")) %>%
     plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1, thresh=0.2) %>%
     plt$volcano(p=0.2)
 @
+\caption{Volcano plot of associations with clinical compounds}
+\label{fig:volcano-clinical}
+\end{figure}
+
 
 \subsection{Stratification of LGG Docetaxel response by Trail activity}
 
+\begin{figure}
 <<range-lgg_trail, echo=FALSE>>=
 cancer_type = names(tissues)[tissues == "LGG"]
 path = scores[cancer_type, "Trail"]
@@ -49,9 +56,14 @@ stratify = list(LGG = list(
 
 util$drug_range_box("Docetaxel", stratify=stratify)
 @
+\caption{Docetaxel}
+\label{fig:strat-docetaxel}
+\end{figure}
+
 
 \subsection{Stratification of ESCA Rapamycin response by EGFR activity}
 
+\begin{figure}
 <<range-esca_rap, echo=FALSE>>=
 cancer_type = names(tissues)[tissues == "ESCA"]
 path = scores[cancer_type, "EGFR"]
@@ -62,9 +74,14 @@ stratify = list(ESCA = list(
 
 util$drug_range_box("Rapamycin", stratify=stratify)
 @
+\caption{Rapamycin}
+\label{fig:strat-rapamycin}
+\end{figure}
 
-\subsection{Stratification of SKCM FH-535 response by VEGF activity}
 
+\subsection{Stratification of SKCM FH535 response by VEGF activity}
+
+\begin{figure}
 <<r range-skcm_vegf, echo=FALSE>>=
 cancer_type = names(tissues)[tissues == "SKCM"]
 path = scores[cancer_type, "VEGF"]
@@ -75,3 +92,6 @@ stratify = list(SKCM = list(
 
 util$drug_range_box("FH535", stratify=stratify)
 @
+\caption{FH535}
+\label{fig:strat-fh535}
+\end{figure}

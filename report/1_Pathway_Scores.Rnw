@@ -35,12 +35,28 @@ color = setNames(c(brewer.pal(12, "Paired"), "#fefefe"), all_pathways)
 
 \subsection{Signaling Footprints (perturbation experiments)}
 
+\begin{figure}
 <<circle1, echo=FALSE>>=
-chordDiagram(speed, grid.col=color, grid.border="#dedede", self.link=1, link.border="#dedede")
+chordDiagram(speed,
+             grid.col=color,
+             grid.border="#dedede",
+             self.link=1,
+             link.border="#dedede")
 @
+\caption{Perturbation-response genes}
+\label{fig:circle-speed}
+\end{figure}
 
 \subsection{Reactome}
 
+\begin{figure}
 <<circle2, echo=FALSE>>=
-chordDiagram(reactome, grid.col=color, grid.border="#dedede", self.link=1, link.border="#dedede")
+chordDiagram(reactome,
+             grid.col=color,
+             grid.border="#dedede",
+             self.link=1,
+             link.border="#dedede")
 @
+\caption{Reactome}
+\label{fig:circle-reactome}
+\end{figure}

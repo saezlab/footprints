@@ -15,6 +15,7 @@ util = import('./util_2')
 
 \subsection{Overview of number of driver mutations per cancer type}
 
+\begin{figure}
 <<method_compare, echo=FALSE, fig.width=7, fig.height=8.5>>=
 plot_grid(
     util$mutation_method_plot("TP53", util$assocs_cov, 0.2, 1e-5, 1e-15),
@@ -26,3 +27,6 @@ plot_grid(
     theme(axis.text = element_text(size=7),
           axis.title = element_text(size=9, face="bold"))
 @
+\caption{Comparison of mutation associations across methods}
+\label{fig:mut-heatmaps}
+\end{figure}
