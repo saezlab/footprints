@@ -1,21 +1,21 @@
-LATEXMK = latexmk -xelatex -c
+LATEXMK = latexmk -xelatex #-c # no pdf created with -c
 RNWs = $(sort $(wildcard *.Rnw))
 
-FIGS = $(patsubst %.Rnw, %.tex, $(filter-out S_%, $(RNWs)))
-SUPP = $(patsubst %.Rnw, %.tex, $(filter S_%, $(RNWs)))
+FIGS = $(filter-out S_%, $(RNWs))
+SUPP = $(filter S_%, $(RNWs))
 
-include ../Makefile.inc
+#include ../Makefile.inc
 
-.INTERMEDIATE:
+#.INTERMEDIATE:
 
 
 all: Figures.pdf Supplementary.pdf
 
 
-Figures.pdf: Figures.tex $(FIGS)
+Figures.pdf: Figures.tex config.tex $(FIGS)
 	$(LATEXMK) Figures
 
-Supplementary.pdf: Supplementary.tex $(SUPP)
+Supplementary.pdf: Supplementary.tex config.tex $(SUPP)
 	$(LATEXMK) Supplementary
 
 

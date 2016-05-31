@@ -1,6 +1,6 @@
 \section{Pathway scores in Basal and Perturbed Condition}
 
-<<setup, include=FALSE>>=
+<<setup1, include=FALSE>>=
 library(dplyr)
 b = import('base')
 io = import('io')
