@@ -1,8 +1,9 @@
 MODEL_SCRIPTS = $(wildcard ../../model/model_*.r)
 MODELS = $(MODEL_SCRIPTS:%.r=%.RData)
-SETS = $(wildcard ../../util/genesets/*.RData)
+SETS = $(wildcard ../../util/genesets/mapped/*.RData)
 SPEED_SCORES = $(MODELS:../../model/model_%=speed_%)
-SET_SCORES = $(SETS:../../util/genesets/%=gsea_%)
+SET_SCORES = $(SETS:../../util/genesets/mapped/%=gsea_%)
+GSVA_SCORES = $(SETS:../../util/genesets/mapped/%=gsva_%)
 
 include ../../Makefile.inc
 #$(call ext_dep,../../data,expr.RData)
@@ -10,13 +11,16 @@ include ../../Makefile.inc
 #$(call ext_dep,../../util/genesets,$(notdir $(SETS)))
 
 
-all: $(SPEED_SCORES) $(SET_SCORES) pathifier.RData spia.RData
+all: $(SPEED_SCORES) $(SET_SCORES) $(GSVA_SCORES) pathifier.RData spia.RData
 
 # use each model to create scores object
 speed_%.RData: speed.r ../../model/model_%.RData
 	$(call bsub_log,4096) Rscript $^ $@
 
 gsea_%.RData: set_enrichment.r ../../util/genesets/mapped/%.RData ../../data/expr.RData
+	$(call bsub_log,4096) Rscript $^ $@
+
+gsva_%.RData: gsva.r ../../util/genesets/mapped/%.RData ../../data/expr.RData
 	$(call bsub_log,4096) Rscript $^ $@
 
 pathifier.RData: pathifier.r ../../util/genesets/mapped/reactome.RData  ../../data/expr.RData
