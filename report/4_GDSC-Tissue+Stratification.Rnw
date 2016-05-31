@@ -1,6 +1,10 @@
-# Tissue-specific drug associations
+\documentclass{article}
 
-```{r setup4, include=FALSE}
+\begin{document}
+
+\section{Tissue-specific drug associations}
+
+<<setup4, include=FALSE>>=
 library(dplyr)
 b = import('base')
 io = import('io')
@@ -26,20 +30,20 @@ assocs.tissue = st$lm(Ys_clinical ~ scores, subsets=tissues) %>%
     group_by(subset) %>%
         mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
     ungroup()
-```
+@
 
-## Volcano plot of drug response (clinical drugs)
+\subsection{Volcano plot of drug response (clinical drugs)}
 
-```{r volcano, echo=FALSE}
+<<volcano, echo=FALSE>>=
 assocs.tissue %>%
     mutate(label = paste(Ys_clinical, scores, sep=":")) %>%
     plt$color$p_effect(pvalue="adj.p", effect="estimate", dir=-1, thresh=0.2) %>%
     plt$volcano(p=0.2)
-```
+@
 
-## Stratification of LGG Docetaxel response by Trail activity
+\subsection{Stratification of LGG Docetaxel response by Trail activity}
 
-```{r range-lgg_trail, echo=FALSE}
+<<range-lgg_trail, echo=FALSE>>=
 cancer_type = names(tissues)[tissues == "LGG"]
 path = scores[cancer_type, "Trail"]
 stratify = list(LGG = list(
@@ -48,11 +52,11 @@ stratify = list(LGG = list(
 ))
 
 util$drug_range_box("Docetaxel", stratify=stratify)
-```
+@
 
-## Stratification of ESCA Rapamycin response by EGFR activity
+\subsection{Stratification of ESCA Rapamycin response by EGFR activity}
 
-```{r range-esca_rap, echo=FALSE}
+<<range-esca_rap, echo=FALSE>>=
 cancer_type = names(tissues)[tissues == "ESCA"]
 path = scores[cancer_type, "EGFR"]
 stratify = list(ESCA = list(
@@ -61,11 +65,11 @@ stratify = list(ESCA = list(
 ))
 
 util$drug_range_box("Rapamycin", stratify=stratify)
-```
+@
 
-## Stratification of SKCM FH-535 response by VEGF activity
+\subsection{Stratification of SKCM FH-535 response by VEGF activity}
 
-```{r range-skcm_vegf, echo=FALSE}
+<<r range-skcm_vegf, echo=FALSE>>=
 cancer_type = names(tissues)[tissues == "SKCM"]
 path = scores[cancer_type, "VEGF"]
 stratify = list(SKCM = list(
@@ -74,4 +78,6 @@ stratify = list(SKCM = list(
 ))
 
 util$drug_range_box("FH535", stratify=stratify)
-```
+@
+
+\end{document}

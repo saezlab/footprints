@@ -1,6 +1,10 @@
-# Associations with patient survival
+\documentclass{article}
 
-```{r setup5, include=FALSE}
+\begin{document}
+
+\section{Associations with patient survival}
+
+<<setup5, include=FALSE>>=
 library(dplyr)
 b = import('base')
 io = import('io')
@@ -22,7 +26,7 @@ volcano_pan = function(id, n=15) {
         plt$volcano(base.size=5e-3, text.size=2) %>%
         print()
 
-    print(head(as.data.frame(assoc), n), digits=3)
+    kable(head(as.data.frame(assoc), n), digits=3, booktabs=TRUE)
 }
 
 volcano_tissue = function(id, n=15) {
@@ -35,58 +39,60 @@ volcano_tissue = function(id, n=15) {
         plt$volcano(base.size=0.05, text.size=2, p=0.1) %>%
         print()
 
-    print(head(as.data.frame(assoc), n), digits=3)
+    kable(head(as.data.frame(assoc), n), digits=3, booktabs=TRUE)
 }
-```
+@
 
-## Pan-cancer associations
+\subsection{Pan-cancer associations}
 
-```{r svolcano_speed_matrix, echo=FALSE, fig.cap='Footprints'}
+<<svolcano_speed_matrix, echo=FALSE, fig.cap='Footprints'>>=
 volcano_pan("speed_matrix")
-```
+@
 
-```{r svolcano_go, echo=FALSE, fig.cap='Gene Ontology'}
+<<svolcano_go, echo=FALSE, fig.cap='Gene Ontology'>>=
 volcano_pan("gsea_go")
-```
+@
 
-```{r svolcano_reactome, echo=FALSE, fig.cap='Reactome'}
+<<svolcano_reactome, echo=FALSE, fig.cap='Reactome'>>=
 volcano_pan("gsea_reactome")
-```
+@
 
-```{r svolcano_spia, echo=FALSE, fig.cap='SPIA'}
+<<svolcano_spia, echo=FALSE, fig.cap='SPIA'>>=
 volcano_pan("spia")
-```
+@
 
-```{r svolcano_pathifier, echo=FALSE, fig.cap='Pathifier'}
+<<svolcano_pathifier, echo=FALSE, fig.cap='Pathifier'>>=
 volcano_pan("pathifier")
-```
+@
 
-```{r svolcano_paradigm, echo=FALSE, fig.cap='PARADIGM'}
+<<svolcano_paradigm, echo=FALSE, fig.cap='PARADIGM'>>=
 volcano_pan("paradigm")
-```
+@
 
-## Tissue-specific associations
+\subsection{Tissue-specific associations}
 
-```{r stvolcano_speed_matrix, echo=FALSE, fig.cap='Footprints'}
+<<stvolcano_speed_matrix, echo=FALSE, fig.cap='Footprints'>>=
 volcano_tissue("speed_matrix")
-```
+@
 
-```{r stvolcano_go, echo=FALSE, fig.cap='Gene Ontology'}
+<<stvolcano_go, echo=FALSE, fig.cap='Gene Ontology'>>=
 volcano_tissue("gsea_go")
-```
+@
 
-```{r stvolcano_reactome, echo=FALSE, fig.cap='Reactome'}
+<<stvolcano_reactome, echo=FALSE, fig.cap='Reactome'>>=
 volcano_tissue("gsea_reactome")
-```
+@
 
-```{r stvolcano_spia, echo=FALSE, fig.cap='SPIA'}
+<<stvolcano_spia, echo=FALSE, fig.cap='SPIA'>>=
 volcano_tissue("spia")
-```
+@
 
-```{r stvolcano_pathifier, echo=FALSE, fig.cap='Pathifier'}
+<<stvolcano_pathifier, echo=FALSE, fig.cap='Pathifier'>>=
 volcano_tissue("pathifier")
-```
+@
 
-```{r stvolcano_paradigm, echo=FALSE, fig.cap='PARADIGM'}
+<<stvolcano_paradigm, echo=FALSE, fig.cap='PARADIGM'>>=
 volcano_tissue("paradigm")
-```
+@
+
+\end{document}

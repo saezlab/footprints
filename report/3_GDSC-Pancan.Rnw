@@ -1,6 +1,10 @@
-# Pan-cancer improvements with mutations and MAPK scores
+\documentclass{article}
 
-```{r setup3, include=FALSE}
+\begin{document}
+
+\section{Pan-cancer improvements with mutations and MAPK scores}
+
+<<setup3, include=FALSE>>=
 library(magrittr)
 library(dplyr)
 b = import('base')
@@ -10,13 +14,13 @@ util = import('./util_3')
 MEKi_levels = c("MAPK_all", "MAPK_wt", "MAPK_mut", "MAPK+_mut", "MAPK-_mut", "MAPK+", "MAPK-")
 BRAFi_levels = c("MAPK_all", "BRAF_wt", "BRAF_mut", "MAPK+_mut", "MAPK-_mut", "MAPK+", "MAPK-")
 p53_levels = c("TP53_all", "TP53_mut", "TP53_wt", "p53+_wt", "p53-_wt", "p53+", "p53-")
-```
+@
 
-## Improvement over mutations alone
+\subsection{Improvement over mutations alone}
 
-#### Trametinib
+\subsubsection{Trametinib}
 
-```{r tram, echo=FALSE, fig.height=3}
+<<tram, echo=FALSE, fig.height=3>>=
 mydf = util$create_df("MAPK", c("NRAS", "KRAS", "BRAF"), "Trametinib") %>%
     mutate(subset = factor(subset, levels=MEKi_levels)) %>%
     na.omit()
@@ -32,11 +36,11 @@ ggplot(mydf, aes(x=subset, y=resp)) +
 #    geom_boxplot(outlier.shape=NA) +
 #    geom_point(aes(colour=tissue, shape=mut), size=5, alpha=0.5, position=position_jitter(w=0.5))
     theme_bw()
-```
+@
 
-#### AZ628
+\subsubsection{AZ628}
 
-```{r az628, echo=FALSE, fig.height=3}
+<<az628, echo=FALSE, fig.height=3>>=
 mydf = util$create_df("MAPK", c("NRAS", "KRAS", "BRAF"), "AZ628") %>%
     mutate(subset = factor(subset, levels=MEKi_levels)) %>%
     na.omit()
@@ -50,11 +54,11 @@ ggplot(mydf, aes(x=subset, y=resp)) +
     geom_violin() +
     geom_boxplot(width=.5, outlier.shape=NA) +
     theme_bw()
-```
+@
 
-#### Dabrafenib
+\subsubsection{Dabrafenib}
 
-```{r dabraf, echo=FALSE, fig.height=3}
+<<dabraf, echo=FALSE, fig.height=3>>=
 mydf = util$create_df("MAPK", "BRAF", "Dabrafenib") %>%
     mutate(subset = factor(subset, levels=BRAFi_levels)) %>%
     na.omit()
@@ -68,11 +72,11 @@ ggplot(mydf, aes(x=subset, y=resp)) +
     geom_violin() +
     geom_boxplot(width=.5, outlier.shape=NA) +
     theme_bw()
-```
+@
 
-##### Nutlin-3a
+\subsubsection{Nutlin-3a}
 
-```{r nutlin, echo=FALSE, fig.height=3}
+<<nutlin, echo=FALSE, fig.height=3>>=
 mydf = util$create_df("p53", "TP53", "Nutlin-3a") %>%
     mutate(subset = factor(subset, levels=p53_levels)) %>%
     na.omit()
@@ -86,12 +90,12 @@ ggplot(mydf, aes(x=subset, y=resp)) +
     geom_violin() +
     geom_boxplot(width=.5, outlier.shape=NA) +
     theme_bw()
-```
+@
 
 
-## Comparing associations to mutations
+\subsection{Comparing associations to mutations}
 
-```{r compare, echo=FALSE}
+<<compare, echo=FALSE>>=
 load_fun = function(fname) {
     io$file_path('../analyses/drug_assocs/assocs_mapped', fname, ext=".RData") %>%
         io$load() %$%
@@ -112,4 +116,6 @@ resp = methods %>%
 ggplot(resp, aes(x=-log10(adj.p), y=log10(num), color=method)) +
     geom_step() +
     theme_bw()
-```
+@
+
+\end{document}

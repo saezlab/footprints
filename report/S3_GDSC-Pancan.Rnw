@@ -1,6 +1,10 @@
-# Pan-cancer associations with drug response
+\documentclass{article}
 
-```{r setup3, include=FALSE}
+\begin{document}
+
+\section{Pan-cancer associations with drug response}
+
+<<setup3, include=FALSE>>=
 library(cowplot)
 library(dplyr)
 util = import('./util_3')
@@ -11,49 +15,49 @@ tt = theme(text = element_text(size = 8))
 mapk_mut_pathway = util$stratify("MAPK", c("BRAF", "NRAS", "KRAS"))
 mapk_braf_pathway = util$stratify("MAPK", "BRAF")
 p53_mut_pathway = util$stratify("p53", "TP53")
-```
+@
 
-## Associations between pathway scores and drug response
+\subsection{Associations between pathway scores and drug response}
 
-```{r volcano_speed_matrix, echo=FALSE, fig.cap='Footprints'}
+<<volcano_speed_matrix, echo=FALSE, fig.cap='Footprints'>>=
 util$volcano("speed_matrix")
-```
+@
 
-```{r volcano_go, echo=FALSE, fig.cap='Gene Ontology'}
+<<volcano_go, echo=FALSE, fig.cap='Gene Ontology'>>=
 util$volcano("gsea_go")
-```
+@
 
-```{r volcano_reactome, echo=FALSE, fig.cap='Reactome'}
+<<volcano_reactome, echo=FALSE, fig.cap='Reactome'>>=
 util$volcano("gsea_reactome")
-```
+@
 
-```{r volcano_biocarta, echo=FALSE, fig.cap='BioCarta'}
+<<volcano_biocarta, echo=FALSE, fig.cap='BioCarta'>>=
 util$volcano("gsea_biocarta")
-```
+@
 
-```{r volcano_spia, echo=FALSE, fig.cap='SPIA'}
+<<volcano_spia, echo=FALSE, fig.cap='SPIA'>>=
 util$volcano("spia")
-```
+@
 
-```{r volcano_pathifier, echo=FALSE, fig.cap='Pathifier'}
+<<volcano_pathifier, echo=FALSE, fig.cap='Pathifier'>>=
 util$volcano("pathifier")
-```
+@
 
-```{r volcano_paradigm, echo=FALSE, fig.cap='PARADIGM'}
+<<volcano_paradigm, echo=FALSE, fig.cap='PARADIGM'>>=
 util$volcano("paradigm")
-```
+@
 
 
-## Improvement of mutation biomarkers using pathway scores
+\subsection{Improvement of mutation biomarkers using pathway scores}
 
-### Trametinib + MAPK
+\subsubsection{Trametinib + MAPK}
 
-```{r tram_mapk_fit, echo=FALSE, fig.width=5, fig.height=3, fig.cap='Linear fit behind association'}
+<<tram_mapk_fit, echo=FALSE, fig.width=5, fig.height=3, fig.cap='Linear fit behind association'>>=
 mydf = util$create_df("MAPK", c("KRAS","NRAS","BRAF"), "Trametinib")
 util$linear_fit(mydf)
-```
+@
 
-```{r tram_mapk_cmp, echo=FALSE, fig.cap='Stratifications compared to the different tissues'}
+<<tram_mapk_cmp, echo=FALSE, fig.cap='Stratifications compared to the different tissues'>>=
 mut_only = followup$drug_range_box("Trametinib", stratify=list(Pancan=mapk_mut_pathway[1:3])) + tt
 speed_only = followup$drug_range_box("Trametinib", stratify=list(Pancan=mapk_mut_pathway[4:6])) + tt
 wt_speed = followup$drug_range_box("Trametinib", stratify=list(Pancan=mapk_mut_pathway[7:9])) + tt
@@ -63,27 +67,27 @@ plot_grid(mut_only, speed_only, wt_speed, mut_speed,
     labels = c("KRAS or NRAS or BRAF mut", "MAPK pathway score",
                "wt + pathway", "mut + pathway"),
     label_size = 10, align = "h")
-```
+@
 
-```{r tram_mapk_nums, echo=FALSE}
-knitr::kable(table(stack(mapk_mut_pathway)$ind),
-             caption="Number of cell lines in each set")
-```
+<<tram_mapk_nums, echo=FALSE>>=
+#knitr::kable(table(stack(mapk_mut_pathway)$ind),
+#             caption="Number of cell lines in each set")
+@
 
-```{r tram_mapk_stats, echo=FALSE}
-knitr::kable(util$contrast_stats(mapk_mut_pathway, "Trametinib", "MAPK"),
-             caption="Statistics about the stratifications")
-```
+<<tram_mapk_stats, echo=FALSE>>=
+#knitr::kable(util$contrast_stats(mapk_mut_pathway, "Trametinib", "MAPK"),
+#             booktabs=TRUE, caption="Statistics about the stratifications")
+@
 
 
-### AZ628 + MAPK
+\subsubsection{AZ628 + MAPK}
 
-```{r az_mapk_fit, echo=FALSE, fig.width=5, fig.height=3, fig.cap='Linear fit behind association'}
+<<az_mapk_fit, echo=FALSE, fig.width=5, fig.height=3, fig.cap='Linear fit behind association'>>=
 mydf = util$create_df("MAPK", c("KRAS","NRAS","BRAF"), "AZ628")
 util$linear_fit(mydf)
-```
+@
 
-```{r az_mapk_cmp, echo=FALSE, fig.cap='Stratifications compared to the different tissues'}
+<<az_mapk_cmp, echo=FALSE, fig.cap='Stratifications compared to the different tissues'>>=
 mut_only = followup$drug_range_box("AZ628", stratify=list(Pancan=mapk_mut_pathway[1:3])) + tt
 speed_only = followup$drug_range_box("AZ628", stratify=list(Pancan=mapk_mut_pathway[4:6])) + tt
 wt_speed = followup$drug_range_box("AZ628", stratify=list(Pancan=mapk_mut_pathway[7:9])) + tt
@@ -93,27 +97,27 @@ plot_grid(mut_only, speed_only, wt_speed, mut_speed,
     labels = c("KRAS or NRAS or BRAF mut", "MAPK pathway score",
                "wt + pathway", "mut + pathway"),
     label_size = 10, align = "h")
-```
+@
 
-```{r az_mapk_nums, echo=FALSE}
-knitr::kable(table(stack(mapk_mut_pathway)$ind),
-             caption="Number of cell lines in each set")
-```
+<<az_mapk_nums, echo=FALSE>>=
+#knitr::kable(table(stack(mapk_mut_pathway)$ind),
+#             caption="Number of cell lines in each set")
+@
 
-```{r az_mapk_stats, echo=FALSE}
-knitr::kable(util$contrast_stats(mapk_mut_pathway, "AZ628", "MAPK"),
-             caption="Statistics about the stratifications")
-```
+<<az_mapk_stats, echo=FALSE>>=
+#knitr::kable(util$contrast_stats(mapk_mut_pathway, "AZ628", "MAPK"),
+#             booktabs=TRUE, caption="Statistics about the stratifications")
+@
 
 
-### Dabrafenib + MAPK / BRAF
+\subsubsection{Dabrafenib + MAPK / BRAF}
 
-```{r da_braf_fit, echo=FALSE, fig.width=5, fig.height=3, fig.cap='Linear fit behind association'}
+<<da_braf_fit, echo=FALSE, fig.width=5, fig.height=3, fig.cap='Linear fit behind association'>>=
 mydf = util$create_df("MAPK", "BRAF", "Dabrafenib")
 util$linear_fit(mydf)
-```
+@
 
-```{r da_braf_cmp, echo=FALSE, fig.cap='Stratifications compared to the different tissues'}
+<<da_braf_cmp, echo=FALSE, fig.cap='Stratifications compared to the different tissues'>>=
 mut_only = followup$drug_range_box("Dabrafenib", stratify=list(Pancan=mapk_braf_pathway[1:3])) + tt
 speed_only = followup$drug_range_box("Dabrafenib", stratify=list(Pancan=mapk_braf_pathway[4:6])) + tt
 wt_speed = followup$drug_range_box("Dabrafenib", stratify=list(Pancan=mapk_braf_pathway[7:9])) + tt
@@ -123,27 +127,27 @@ plot_grid(mut_only, speed_only, wt_speed, mut_speed,
     labels = c("BRAF mut", "MAPK pathway score",
                "wt + pathway", "mut + pathway"),
     label_size = 10, align = "h")
-```
+@
 
-```{r da_braf_nums, echo=FALSE}
-knitr::kable(table(stack(mapk_braf_pathway)$ind),
-             caption="Number of cell lines in each set")
-```
+<<da_braf_nums, echo=FALSE>>=
+#knitr::kable(table(stack(mapk_braf_pathway)$ind),
+#             caption="Number of cell lines in each set")
+@
 
-```{r da_braf_stats, echo=FALSE}
-knitr::kable(util$contrast_stats(mapk_braf_pathway, "Dabrafenib", "MAPK", "BRAF"),
-             caption="Statistics about the stratifications")
-```
+<<da_braf_stats, echo=FALSE>>=
+#knitr::kable(util$contrast_stats(mapk_braf_pathway, "Dabrafenib", "MAPK", "BRAF"),
+#             booktabs=TRUE, caption="Statistics about the stratifications")
+@
 
 
-### Nutlin-3a + p53
+\subsubsection{Nutlin-3a + p53}
 
-```{r p53_fit, echo=FALSE, fig.width=5, fig.height=3, fig.cap='Linear fit behind association'}
+<<p53_fit, echo=FALSE, fig.width=5, fig.height=3, fig.cap='Linear fit behind association'>>=
 mydf = util$create_df("p53", "TP53", "Nutlin-3a")
 util$linear_fit(mydf)
-```
+@
 
-```{r p53_cmp, echo=FALSE, fig.cap='Stratifications compared to the different tissues'}
+<<p53_cmp, echo=FALSE, fig.cap='Stratifications compared to the different tissues'>>=
 mut_only = followup$drug_range_box("Nutlin-3a", stratify=list(Pancan=p53_mut_pathway[1:3])) + tt
 speed_only = followup$drug_range_box("Nutlin-3a", stratify=list(Pancan=p53_mut_pathway[4:6])) + tt
 wt_speed = followup$drug_range_box("Nutlin-3a", stratify=list(Pancan=p53_mut_pathway[7:9])) + tt
@@ -153,19 +157,21 @@ plot_grid(mut_only, speed_only, wt_speed, mut_speed,
     labels = c("TP53 mut", "p53 pathway score",
                "wt + pathway", "mut + pathway"),
     label_size = 10, align = "h")
-```
+@
 
-```{r p53_nums, echo=FALSE}
-knitr::kable(table(stack(p53_mut_pathway)$ind),
-             caption="Number of cell lines in each set")
-```
+<<p53_nums, echo=FALSE>>=
+#knitr::kable(table(stack(p53_mut_pathway)$ind),
+#             caption="Number of cell lines in each set")
+@
 
-```{r p53_stats, echo=FALSE}
-knitr::kable(util$contrast_stats(p53_mut_pathway, "Nutlin-3a", "p53", "TP53"),
-             caption="Statistics about the stratifications")
-```
+<<p53_stats, echo=FALSE>>=
+#knitr::kable(util$contrast_stats(p53_mut_pathway, "Nutlin-3a", "p53", "TP53"),
+#             booktabs=TRUE, caption="Statistics about the stratifications")
+@
 
 
-## Discussion
+\subsection{Discussion}
 
 ... write some thoughts here ...
+
+\end{document}

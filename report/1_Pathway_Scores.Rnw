@@ -1,6 +1,10 @@
-# Perturbation experiments
+\documentclass{article}
 
-```{r setup1, include=FALSE}
+\begin{document}
+
+\section{Perturbation experiments}
+
+<<setup, include=FALSE>>=
 library(circlize)
 library(RColorBrewer)
 library(dplyr)
@@ -30,16 +34,19 @@ speed = file2assocs("../scores/speed/speed_matrix.RData") %>%
 
 all_pathways = unique(c(speed$from, speed$to, reactome$from, reactome$to))
 color = setNames(c(brewer.pal(12, "Paired"), "#fefefe"), all_pathways)
-```
+@
 
-## Signaling Footprints (perturbation experiments)
 
-```{r circle1, echo=FALSE, fig.width=4, fig.height=4}
+\subsection{Signaling Footprints (perturbation experiments)}
+
+<<circle1, echo=FALSE>>=
 chordDiagram(speed, grid.col=color, grid.border="#dedede", self.link=1, link.border="#dedede")
-```
+@
 
-## Reactome
+\subsection{Reactome}
 
-```{r circle2, echo=FALSE, fig.width=4, fig.height=4}
+<<circle2, echo=FALSE>>=
 chordDiagram(reactome, grid.col=color, grid.border="#dedede", self.link=1, link.border="#dedede")
-```
+@
+
+\end{document}

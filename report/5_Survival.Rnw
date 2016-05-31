@@ -1,6 +1,10 @@
-# Associations between pathway activation and patient survival
+\documentclass{article}
 
-```{r setup5, include=FALSE}
+\begin{document}
+
+\section{Associations between pathway activation and patient survival}
+
+<<setup5, include=FALSE>>=
 library(dplyr)
 b = import('base')
 io = import('io')
@@ -26,20 +30,20 @@ scores = scores$speed_matrix
 ar$intersect(scores, clinical$barcode, along=1)
 scores = ar$map(scores, along=1, subsets=clinical$study, surv$discretize_quartiles)
 discrete_assocs = surv$tissue(scores)
-```
+@
 
-## Pan-cancer associations
+\subsection{Pan-cancer associations}
 
-```{r pancan, include=FALSE}
+<<pancan, include=FALSE>>=
 ##TODO: @suppl
 #assocs.pan %>%
 #    plt$color$p_effect("adj.p", dir=-1) %>%
 #    mutate(label = scores) %>%
 #    plt$volcano(base.size=0.1) %>%
 #    print()
-```
+@
 
-```{r heatmap, echo=FALSE, fig.height=3}
+<<heatmap, echo=FALSE, fig.height=3>>=
 lmax = max(abs(assocs.pan$statistic), na.rm=TRUE)
 p1 = assocs.pan %>%
     mutate(statistic = ifelse(adj.p < 0.2, statistic, NA)) %>%
@@ -51,29 +55,31 @@ p1 = assocs.pan %>%
                limits = c(-lmax,lmax),
                reverse_colors = TRUE)
 print(p1)
-```
+@
 
-## Cancer-specific associations
+\subsection{Cancer-specific associations}
 
-```{r tissue, echo=FALSE}
+<<tissue, echo=FALSE>>=
 #TODO: for all other methods ->@suppl
 p2 = assocs.tissue %>%
     plt$color$p_effect("adj.p", dir=-1, thresh=0.1) %>%
     mutate(label = paste(subset, scores, sep=":")) %>%
     plt$volcano(p=0.1, base.size=0.1)
 print(p2)
-```
+@
 
-## Highlighted fits
+\subsection{Highlighted fits}
 
-```{r fit1, echo=FALSE, fig.width=7.5, fig.height=6}
+<<fit1, echo=FALSE, fig.width=7.5, fig.height=6>>=
 surv$row2survFit(unlist(filter(discrete_assocs, scores=="TNFa" & subset=="KIRC")))
-```
+@
 
-```{r fit2, echo=FALSE, fig.width=7.5, fig.height=6}
+<<fit2, echo=FALSE, fig.width=7.5, fig.height=6>>=
 surv$row2survFit(unlist(filter(discrete_assocs, scores=="JAK-STAT" & subset=="LGG")))
-```
+@
 
-```{r fit3, echo=FALSE, fig.width=7.5, fig.height=6}
+<<fit3, echo=FALSE, fig.width=7.5, fig.height=6>>=
 surv$row2survFit(unlist(filter(discrete_assocs, scores=="Trail" & subset=="CESC")))
-```
+@
+
+\end{document}
