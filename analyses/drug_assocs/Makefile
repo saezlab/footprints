@@ -8,7 +8,10 @@ $(call ext_dep,../../scores/gdsc,$(notdir $(GSCORES)))
 $(call ext_dep,../../scores/ccle,$(notdir $(CSCORES)))
 
 
-all: drug_ranges.pdf $(GDSC_PLOTS) assocs_all/mutation.RData drug_ranges.pdf
+all: mapped $(GDSC_PLOTS)
+
+mapped: $(filter assocs_mapped/%,$(GDSC_PLOTS)) assocs_all/mutation.RData drug_ranges.pdf
+
 
 # use each model script to create a model file
 $(GDSC_PLOTS): plots_%.pdf: plot.r assocs_%.RData
