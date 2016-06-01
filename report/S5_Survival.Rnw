@@ -9,84 +9,59 @@ st = import('stats')
 plt = import('plot')
 util = import('../analyses/tcga_survival/util')
 
-assocs = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia', 'paradigm') %>%
-    sapply(util$load_assocs, simplify=FALSE, USE.NAMES=TRUE)
+lnapply = function(x, fun, ...) base::sapply(x, fun, ..., simplify=FALSE, USE.NAMES=TRUE)
+
+methods = c('speed_matrix', 'gsea_reactome', 'gsea_go', 'pathifier', 'spia', 'paradigm')
+assocs = lnapply(methods, util$load_assocs)
 
 volcano_pan = function(id, n=15) {
     assoc = assocs[[id]]$pan_cov %>%
         arrange(p.value)
 
-    assoc %>%
+    volcano = assoc %>%
         mutate(label = scores) %>%
         plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.05, dir=-1) %>%
-        plt$volcano(base.size=5e-3, text.size=2) %>%
-        print()
+        plt$volcano(base.size=5e-3, text.size=2)
 
-    kable(head(as.data.frame(assoc), n), digits=3, booktabs=TRUE)
+#    kable(head(as.data.frame(assoc), n), digits=3, booktabs=TRUE)
+    list(assocs=assoc, volcano=volcano)
 }
 
 volcano_tissue = function(id, n=15) {
     assoc = assocs[[id]]$tissue %>%
         arrange(p.value)
 
-    assoc %>%
+    volcano = assoc %>%
         mutate(label = paste(scores, subset, sep=":")) %>%
         plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.1, dir=-1) %>%
-        plt$volcano(base.size=0.05, text.size=2, p=0.1) %>%
-        print()
+        plt$volcano(base.size=0.05, text.size=2, p=0.1)
 
-    kable(head(as.data.frame(assoc), n), digits=3, booktabs=TRUE)
+#    kable(head(as.data.frame(assoc), n), digits=3, booktabs=TRUE)
+    list(assocs=assoc, volcano=volcano)
 }
 @
 
 \subsection{Pan-cancer associations}
 
-<<svolcano_speed_matrix, echo=FALSE, fig.cap='Footprints'>>=
-volcano_pan("speed_matrix")
+\begin{figure}[H]
+<<surv_volcano_pancan, echo=FALSE>>=
+pancan = lnapply(methods, volcano_pan)
+pvolcanos = lnapply(pancan, function(x) x$volcano)
+plot_grid(plotlist=pvolcanos, labels=names(pvolcanos), ncol=2, align="hv")
 @
+\caption{}
+\label{fig:volcano-pancan}
+\end{figure}
 
-<<svolcano_go, echo=FALSE, fig.cap='Gene Ontology'>>=
-volcano_pan("gsea_go")
-@
-
-<<svolcano_reactome, echo=FALSE, fig.cap='Reactome'>>=
-volcano_pan("gsea_reactome")
-@
-
-<<svolcano_spia, echo=FALSE, fig.cap='SPIA'>>=
-volcano_pan("spia")
-@
-
-<<svolcano_pathifier, echo=FALSE, fig.cap='Pathifier'>>=
-volcano_pan("pathifier")
-@
-
-<<svolcano_paradigm, echo=FALSE, fig.cap='PARADIGM'>>=
-volcano_pan("paradigm")
-@
 
 \subsection{Tissue-specific associations}
 
-<<stvolcano_speed_matrix, echo=FALSE, fig.cap='Footprints'>>=
-volcano_tissue("speed_matrix")
+\begin{figure}[H]
+<<surv_volcano_tissue, echo=FALSE>>=
+tissue = lnapply(methods, volcano_tissue)
+tvolcanos = lnapply(pancan, function(x) x$volcano)
+plot_grid(plotlist=tvolcanos, labels=names(tvolcanos), ncol=2, align="hv")
 @
-
-<<stvolcano_go, echo=FALSE, fig.cap='Gene Ontology'>>=
-volcano_tissue("gsea_go")
-@
-
-<<stvolcano_reactome, echo=FALSE, fig.cap='Reactome'>>=
-volcano_tissue("gsea_reactome")
-@
-
-<<stvolcano_spia, echo=FALSE, fig.cap='SPIA'>>=
-volcano_tissue("spia")
-@
-
-<<stvolcano_pathifier, echo=FALSE, fig.cap='Pathifier'>>=
-volcano_tissue("pathifier")
-@
-
-<<stvolcano_paradigm, echo=FALSE, fig.cap='PARADIGM'>>=
-volcano_tissue("paradigm")
-@
+\caption{}
+\label{fig:volcano-tissue}
+\end{figure}
