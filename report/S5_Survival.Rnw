@@ -5,6 +5,7 @@ library(dplyr)
 b = import('base')
 io = import('io')
 ar = import('array')
+df = import('data_frame')
 st = import('stats')
 plt = import('plot')
 util = import('../analyses/tcga_survival/util')
@@ -13,41 +14,19 @@ lnapply = function(x, fun, ...) base::sapply(x, fun, ..., simplify=FALSE, USE.NA
 
 methods = c('speed_matrix', 'gsea_reactome', 'gsea_go', 'pathifier', 'spia', 'paradigm')
 assocs = lnapply(methods, util$load_assocs)
-
-volcano_pan = function(id, n=15) {
-    assoc = assocs[[id]]$pan_cov %>%
-        arrange(p.value)
-
-    volcano = assoc %>%
-        mutate(label = scores) %>%
-        plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.05, dir=-1) %>%
-        plt$volcano(base.size=5e-3, text.size=2)
-
-#    kable(head(as.data.frame(assoc), n), digits=3, booktabs=TRUE)
-    list(assocs=assoc, volcano=volcano)
-}
-
-volcano_tissue = function(id, n=15) {
-    assoc = assocs[[id]]$tissue %>%
-        arrange(p.value)
-
-    volcano = assoc %>%
-        mutate(label = paste(scores, subset, sep=":")) %>%
-        plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.1, dir=-1) %>%
-        plt$volcano(base.size=0.05, text.size=2, p=0.1)
-
-#    kable(head(as.data.frame(assoc), n), digits=3, booktabs=TRUE)
-    list(assocs=assoc, volcano=volcano)
-}
 @
 
 \subsection{Pan-cancer associations}
 
 \begin{figure}[H]
-<<surv_volcano_pancan, echo=FALSE>>=
-pancan = lnapply(methods, volcano_pan)
-pvolcanos = lnapply(pancan, function(x) x$volcano)
-plot_grid(plotlist=pvolcanos, labels=names(pvolcanos), ncol=2, align="hv")
+<<surv_volcano_pancan, echo=FALSE, fig.width=8, fig.height=12>>=
+assocs %>%
+    lnapply(function(x) x$pan_cov) %>%
+    df$add_name_col(col="method", bind=TRUE) %>%
+    mutate(label = scores) %>%
+    plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.05, dir=-1) %>%
+    plt$volcano(base.size=5e-3, text.size=2) +
+        facet_wrap(~method, ncol=2, scales="free_x")
 @
 \caption{}
 \label{fig:volcano-pancan}
@@ -57,10 +36,14 @@ plot_grid(plotlist=pvolcanos, labels=names(pvolcanos), ncol=2, align="hv")
 \subsection{Tissue-specific associations}
 
 \begin{figure}[H]
-<<surv_volcano_tissue, echo=FALSE>>=
-tissue = lnapply(methods, volcano_tissue)
-tvolcanos = lnapply(pancan, function(x) x$volcano)
-plot_grid(plotlist=tvolcanos, labels=names(tvolcanos), ncol=2, align="hv")
+<<surv_volcano_tissue, echo=FALSE, fig.width=8, fig.height=12>>=
+assocs %>%
+    lnapply(function(x) x$tissue) %>%
+    df$add_name_col(col="method", bind=TRUE) %>%
+    mutate(label = paste(scores, subset, sep=":")) %>%
+    plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.1, dir=-1) %>%
+    plt$volcano(base.size=0.05, text.size=2, p=0.1) +
+        facet_wrap(~method, ncol=2, scales="free_x")
 @
 \caption{}
 \label{fig:volcano-tissue}
