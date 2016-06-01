@@ -39,7 +39,7 @@ result = hpc$Q(record2pathway,
                rec = speed$records, exp = speed$expr,
                const = list(lookup = lookup),
                memory=4096, n_jobs=10, fail_on_error=FALSE) %>%
-    setNames(names(index))
+    setNames(names(speed$records))
 
 errors = sapply(result, function(r) class(r) == "try-error")
 if (any(errors)) {

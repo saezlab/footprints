@@ -48,7 +48,7 @@ expr = speed$expr
 result = hpc$Q(record2pathway,
                rec = index, exp = expr,
                const = list(genesets=genesets),
-               memory=1024, n_jobs=50) %>%
+               memory=1024, n_jobs=50, fail_on_error=FALSE) %>%
     setNames(names(index))
 
 errors = sapply(result, function(r) class(r) == "try-error")
