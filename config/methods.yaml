@@ -1,7 +1,23 @@
-methods:
+ids:
     - speed_matrix
     - gsea_go
     - gsea_reactome
     - spia
     - pathifier
-#    - paradigm
+    - paradigm
+
+names:
+    - Perturbation-response genes
+    - Gene Ontology (GSVA)
+    - Reactome (GSVA)
+    - Signaling Pathway Impact Analysis
+    - Pathifier
+    - PARADIGM
+
+short:
+    - PRGs
+    - Gene Ontology
+    - Reactome
+    - SPIA
+    - Pathifier
+    - PARAGIM
