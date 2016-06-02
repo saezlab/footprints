@@ -18,10 +18,10 @@ util = import('./util_2')
 \begin{figure}[H]
 <<method_compare, echo=FALSE, fig.width=7, fig.height=8.5>>=
 plot_grid(
-    util$mutation_method_plot("TP53", util$assocs_cov, 0.2, 1e-5, 1e-15),
-    util$mutation_method_plot("KRAS", util$assocs_cov, 0.2, 0.05, 1e-3),
-    util$mutation_method_plot("STK11", util$assocs_cov, 0.2, 0.05, 1e-3),
-    util$mutation_method_plot("VHL", util$assocs_nocov, 0.2, 1e-5, 1e-20),
+    util$mutation_method_plot("TP53", util$assocs_cov, 0.2, 1e-5, 1e-15, 10),
+    util$mutation_method_plot("KRAS", util$assocs_cov, 0.2, 0.05, 1e-3, 10),
+    util$mutation_method_plot("STK11", util$assocs_cov, 0.2, 0.05, 1e-3, 10),
+    util$mutation_method_plot("VHL", util$assocs_nocov, 0.2, 1e-5, 1e-20, 10),
     labels = c("TP53", "KRAS", "STK11", "VHL")
 ) +
     theme(axis.text = element_text(size=7),

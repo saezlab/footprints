@@ -1,7 +1,7 @@
 ids:
     - speed_matrix
-    - gsea_go
-    - gsea_reactome
+    - gsva_go
+    - gsva_reactome
     - spia
     - pathifier
     - paradigm
@@ -20,4 +20,4 @@ short:
     - Reactome
     - SPIA
     - Pathifier
-    - PARAGIM
+    - PARADIGM

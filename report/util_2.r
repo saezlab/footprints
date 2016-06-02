@@ -7,6 +7,7 @@ ar = import('array')
 df = import('data_frame')
 plt = import('plot')
 tcga = import('data/tcga')
+config = import('../config')
 
 #' Loads a specific TCGA scores file
 #'
@@ -25,27 +26,25 @@ assoc_df = function(x, filter="pan_cov") {
     re = bind_rows(lapply(x, load_fun))
 }
 
-scores = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia', 'paradigm')
+scores = c('gsva_reactome', 'gsva_go', 'speed_matrix', 'pathifier', 'spia', 'paradigm')
 
 assocs_cov = assoc_df(scores, "pan_cov")
 assocs_nocov = assoc_df(scores, "pan")
-
-alph = function(x) rev(gtools::mixedsort(unique(x)))
 
 #' Plots a matrix with mutation-pathway associations for different methods
 #'
 #' @param assoc_obj  Data.frame from a linear model (st$lm)
 #' @param gene       HGNC symbol of the gene (eg. TP53)
 #' @return           ggplot object
-mutation_method_plot = function(mut, assocs, p0=0.2, p1=0.05, p2=1e-3) {
+mutation_method_plot = function(mut, assocs, p0=0.2, p1=0.05, p2=1e-3, ts=4) {
     p1 = filter(assocs, m == mut) %>%
         mutate(Wald = statistic) %>%
 #        mutate(statistic = ifelse(adj.p < p0, statistic, NA)) %>%
         mutate(label = ifelse(adj.p < p1, "·", "")) %>%
         mutate(label = ifelse(adj.p < p2, "*", label)) %>%
-        mutate(scores = factor(scores, levels=alph(scores)),
-               method = factor(method, levels=alph(method))) %>%
-        plt$matrix(Wald ~ scores + method, text_size=4,
+        mutate(scores = config$pathways(scores),
+               method = config$id2short(method)) %>%
+        plt$matrix(Wald ~ scores + method, text_size=ts,
                    color="Wald", symmetric=TRUE, reverse_colors=TRUE) +
         xlab("") + ylab("")
 }

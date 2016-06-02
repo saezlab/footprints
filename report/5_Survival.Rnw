@@ -10,8 +10,9 @@ st = import('stats')
 plt = import('plot')
 tcga = import('data/tcga')
 surv = import('../analyses/tcga_survival/util')
+config = import('../config')
 
-scores = c('gsea_reactome', 'gsea_go', 'speed_matrix', 'pathifier', 'spia', 'paradigm') %>%
+scores = c('gsva_reactome', 'gsva_go', 'speed_matrix', 'pathifier', 'spia', 'paradigm') %>%
     sapply(surv$load_scores, simplify=FALSE, USE.NAMES=TRUE)
 
 assocs.pan = scores %>%
@@ -47,14 +48,19 @@ assocs.pan %>%
 <<heatmap, echo=FALSE, fig.height=3>>=
 lmax = max(abs(assocs.pan$statistic), na.rm=TRUE)
 p1 = assocs.pan %>%
-    mutate(statistic = ifelse(adj.p < 0.2, statistic, NA)) %>%
-    mutate(label = ifelse(adj.p < 0.05, "*", "")) %>%
-    mutate(label = ifelse(adj.p < 1e-5, "**", label)) %>%
-    mutate(label = ifelse(adj.p < 1e-10, "***", label)) %>%
+    mutate(statistic = ifelse(adj.p < 0.2, statistic, NA),
+           scores = config$pathways(scores),
+           method = config$id2short(method, rev=TRUE)) %>%
+    mutate(label = ifelse(adj.p < 0.05, ".", "")) %>%
+    mutate(label = ifelse(adj.p < 1e-10, "*", label)) %>%
     plt$matrix(statistic ~ method + scores,
                color = "statistic",
                limits = c(-lmax,lmax),
-               reverse_colors = TRUE)
+               reverse_colors = TRUE,
+               text_size = 12) +
+        coord_fixed() +
+        xlab("Pathway") +
+        ylab("Method")
 print(p1)
 @
 \caption{}
