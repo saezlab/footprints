@@ -10,9 +10,9 @@ load_fun = function(fname, name) {
 }
 
 do_plot = function() {    
-    df = bind_rows(load_fun('tsne_fc.RData', "fold change"),
-                   load_fun('tsne_fullmat.RData', "no filter"),
-                   load_fun('tsne_top100.RData', "top 100 genes"))
+    df = bind_rows(load_fun('tsne_fc.RData', "Fold change"),
+#                   load_fun('tsne_fullmat.RData', "no filter"),
+                   load_fun('tsne_top100.RData', "Top 100 z-score"))
 
     ggplot(df, aes(x=x, y=y, color=pathway)) +
         geom_point() +
