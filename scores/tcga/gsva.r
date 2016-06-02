@@ -32,7 +32,8 @@ genesets = io$load(INFILE) %>%
 #' @param sigs    The list of signatures
 #' @return        Result for GSVA(expr[,sample], sigs[set])
 gsva = function(set, expr, sigs, ...) {
-    GSVA::gsva(expr=expr, gset.idx.list=sigs[set], parallel.sz=1, ...)$es.obs
+    #FIXME: this is taking too long (expr matrix too big))
+    GSVA::gsva(expr=expr, gset.idx.list=sigs[set], parallel.sz=0, ...)$es.obs
 }
 
 # perform GSEA for each sample and signature
