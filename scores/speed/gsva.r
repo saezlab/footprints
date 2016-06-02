@@ -48,4 +48,4 @@ filter_index = function(x) x[! names(x) %in% c('control', 'perturbed', 'exclusio
 index = lapply(index, filter_index) %>%
     bind_rows()
 
-save(scores, file=OUTFILE)
+save(scores, index, file=OUTFILE)
