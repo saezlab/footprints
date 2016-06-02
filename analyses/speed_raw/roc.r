@@ -36,6 +36,7 @@ do_plot = function(roc) {
     ggplot(roc, aes(x=FPR, y=TPR, color=method)) +
         geom_line(aes(x=x, y=y), data=random_line, color="grey", linetype="dashed") +
         geom_step() +
+        coord_fixed() +
         facet_wrap(~pathway) +
         theme(axis.text.x = element_text(angle = 45, hjust = 1))
 }
