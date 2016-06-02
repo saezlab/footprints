@@ -10,15 +10,18 @@ $(call ext_dep,../../scores/ccle,$(notdir $(CSCORES)))
 
 all: mapped $(GDSC_PLOTS)
 
-mapped: $(filter assocs_mapped/%,$(GDSC_PLOTS)) assocs_all/mutation.RData drug_ranges.pdf
+mapped: $(filter plots_mapped/%,$(GDSC_PLOTS)) plots_all/mutation.pdf drug_ranges.pdf
 
 
 # use each model script to create a model file
 $(GDSC_PLOTS): plots_%.pdf: plot.r assocs_%.RData
 	Rscript $^ $@
 
-$(GDSC_ASSOCS): assocs_%.RData: gdsc_assocs.r ../../scores/gdsc/pathways_%.RData
-	$(call bsub_log,20480) Rscript $^ $@
+$(filter assocs_mapped/%,$(GDSC_ASSOCS)): assocs_%.RData: gdsc_assocs.r ../../scores/gdsc/pathways_%.RData
+	$(call bsub_log,4096) Rscript $^ $@
+
+$(filter assocs_all/%,$(GDSC_ASSOCS)): assocs_%.RData: gdsc_assocs.r ../../scores/gdsc/pathways_%.RData
+	$(call bsub_log,37960) Rscript $^ $@
 
 drug_ranges.pdf: drug_ranges.r
 	Rscript $^ $@
