@@ -17,7 +17,8 @@ calc_resample = function(zdata, zfun, seed_offset) {
     colnames(zscores) = 1:ncol(zscores)
 
     # calculate the model the same way we do with speed_matrix
-    zfun(zdata=list(index=index, zscores=zscores))
+    re = zfun(zdata=list(index=index, zscores=zscores))
+    re$model[rowSums(model != 0) != 0,]
 }
 
 ZDATA = commandArgs(TRUE)[1] %or% '../../data/zscores.RData'
@@ -31,7 +32,6 @@ zfun = import_(sub("\\.r$", "", MODULE))$zscore2model
 result = hpc$Q(calc_resample, seed_offset = 1:1000,
                const = list(zdata=zdata, zfun = zfun),
                n_jobs = 1000, memory = 4096)
-#result = calc_resample(zdata, 0)
 
 # save model resulting from resample in model/ dir
 save(result, file=OUTFILE)
