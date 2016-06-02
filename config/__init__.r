@@ -17,3 +17,23 @@ if (is.null(module_name())) {
 
     cat(paste0(paste(var, collapse="\n"), "\n"))
 }
+
+alph = function(x) rev(gtools::mixedsort(unique(x)))
+
+id2name = function(ids, drop=TRUE) {
+    idx = match(ids, methods$ids)
+    fac = factor(methods$names[idx], levels=methods$names)
+    if (drop)
+        droplevels(fac)
+    else
+        factor
+}
+
+id2short = function(ids, drop=TRUE) {
+    idx = match(ids, methods$ids)
+    fac = factor(methods$short[idx], levels=methods$short)
+    if (drop)
+        droplevels(fac)
+    else
+        factor
+}
