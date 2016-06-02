@@ -27,7 +27,7 @@ pathways_mapped/gsea_%.RData: set_enrichment.r ../../util/genesets/mapped/%.RDat
 	Rscript $< $(word 2,$^) $@
 
 pathways_mapped/gsva_%.RData: gsva.r ../../util/genesets/mapped/%.RData ../../config/tcga.yaml
-	Rscript $^ $(word 2,$^) $@
+	Rscript $< $(word 2,$^) $@
 
 pathways_mapped/spia.RData: spia.r ../../config/tcga.yaml
 	Rscript $< $@ TRUE
@@ -43,7 +43,7 @@ pathways_all/gsea_%.RData: set_enrichment.r ../../util/genesets/all/%.RData ../.
 	Rscript $< $(word 2,$^) $@
 
 pathways_all/gsva_%.RData: gsva.r ../../util/genesets/all/%.RData ../../config/tcga.yaml
-	Rscript $^ $(word 2,$^) $@
+	Rscript $< $(word 2,$^) $@
 
 pathways_all/spia.RData: spia.r ../../config/tcga.yaml
 	Rscript $< $@ FALSE
