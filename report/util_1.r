@@ -10,9 +10,10 @@ tcga = import('data/tcga')
 
 #' Takes a method subset and plots the pathway associations and individual scores
 #'
-#' @param fid  A file identifer, e.g. 'speed_matrix' or 'gsea_reactome'
-#' @return     A ggplot matrix plot and heatmap in one line
-perturb_score_plots = function(fid) {
+#' @param fid    A file identifer, e.g. 'speed_matrix' or 'gsea_reactome'
+#' @param title  Title of the plot
+#' @return       A ggplot matrix plot and heatmap in one line
+perturb_score_plots = function(fid, title=NULL) {
     data = io$file_path("../scores/speed", fid, ext=".RData") %>%
         io$load()
 
@@ -24,12 +25,14 @@ perturb_score_plots = function(fid) {
 	# the associations per pathway
 	result = st$lm(scores ~ pathway) %>%
 		mutate(mlogp = -log(p.value)) %>%
-		mutate(label = ifelse(p.value < 1e-5, "*", "")) %>%
-		mutate(label = ifelse(p.value < 1e-10, "***", label))
+		mutate(label = ifelse(p.value < 1e-5, "·", "")) %>%
+		mutate(label = ifelse(p.value < 1e-10, "*", label))
 
-	p1 = plt$matrix(result, statistic ~ scores + pathway, palette="RdBu", symmetric=TRUE) +
+	p1 = plt$matrix(result, statistic ~ scores + pathway, palette="RdBu", symmetric=TRUE, text_size=7) +
+        theme(axis.text = element_text(size = 10)) +
 		xlab("Pathway perturbed") +
 		ylab("Assigned score")
+        coord_fixed()
 
 	# and individual experiments
 	annot = data$index %>%
@@ -56,7 +59,7 @@ perturb_score_plots = function(fid) {
                             legend = FALSE,
                             cellwidth = 0.3, silent=TRUE)
 
-    grid.arrange(p1, p2$gtable, ncol=2)
+    grid.arrange(p1, p2$gtable, ncol=2, top=title)
 }
 
 cor_plots = function(fid) {
@@ -67,13 +70,10 @@ cor_plots = function(fid) {
 		filter(grepl("Primary|Normal", Sample.Definition), Vial == "A") %>%
 		mutate(type = ifelse(grepl("Normal", Sample.Definition), "normal", "tumor"))
 
-        cex.before = par("cex")
-        par(cex = 0.5)
-
+        par(mfrow=c(1, 2))
 #        corrplot(cor(tcga_all[index$type == "normal",]), title="normal")
 #        corrplot(cor(tcga_all[index$type == "tumor",]), title="tumor")
         corrplot(cor(tcga_all), title="tcga")
         corrplot(cor(gdsc), title="cell line")
-
-        par(cex = cex.before)
+        par(mfrow=c(1, 1))
 }
