@@ -7,29 +7,28 @@ load_fun = function(fid) {
     io$load(module_file(fid))
 }
 
-plot_pancan = function(assocs.pan, base.size=0.2, p=0.05, ...) {
-    # volcano plot for pan-cancer
+#' volcano plot for pan-cancer
+plot_pancan = function(assocs, base.size=0.2, p=0.05, ...) {
     assocs.pan %>%
-        mutate(label = paste(Ys, score, sep=":")) %>%
+        mutate(label = paste(drug, scores, sep=":")) %>%
         plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=p, dir=-1) %>%
         plt$volcano(base.size=base.size, p=p, ...)
 }
 
-plot_matrix = function(assocs.pan) {
-    # matrix plot for pan-cancer
-    assocs.pan %>%
+#' matrix plot for pan-cancer
+plot_matrix = function(assocs) {
+    assocs %>%
         mutate(lp = -log(adj.p),
                label = ifelse(adj.p < 1e-2, '*', ''),
                estimate = ifelse(adj.p < 0.1, estimate, NA)) %>%
-        plt$cluster(lp ~ score + Ys, size=c(Inf,20)) %>%
-        plt$matrix(estimate ~ score + Ys)
+        plt$cluster(lp ~ scores + drug, size=c(Inf,20)) %>%
+        plt$matrix(estimate ~ scores + drug)
 }
 
-plot_tissue = function(assocs.tissue, name) {
-    # volcano plot for tissue subsets
-    assocs.tissue %>%
-        filter(subset == name) %>%
-        mutate(label = paste(tissue, drug, score, sep=":")) %>%
+#' tissue-specific volcano plot
+plot_tissue = function(assocs, name) {
+    assocs %>%
+        mutate(label = paste(tissue, drug, scores, sep=":")) %>%
         plt$color$p_effect(pvalue="adj.p",
                            effect="estimate",
                            dir=-1,
@@ -38,8 +37,8 @@ plot_tissue = function(assocs.tissue, name) {
 }
 
 if (is.null(module_name())) {
-    INFILE = commandArgs(TRUE)[1] %or% "speed_matrix.RData"
-    OUTFILE = commandArgs(TRUE)[2] %or% "speed_matrix.pdf"
+    INFILE = commandArgs(TRUE)[1] %or% "assocs_mapped/speed_matrix.RData"
+    OUTFILE = commandArgs(TRUE)[2] %or% "assocs_mapped/speed_matrix.pdf"
 
     # load data
     data = io$load(INFILE)
@@ -49,9 +48,9 @@ if (is.null(module_name())) {
 
     print(plot_pancan(data$assocs.pan))
 
-    print(plot_tissue(filter(data, subset=="clinical"), "clinical"))
-    print(plot_tissue(filter(data, subset=="noexp"), "no experimental"))
-    print(plot_tissue(filter(data, subset=="sensi"), "sensitive"))
+    print(plot_tissue(filter(data$assocs.tissue, subset=="clinical"), "clinical"))
+    print(plot_tissue(filter(data$assocs.tissue, subset=="noexp"), "no experimental"))
+    print(plot_tissue(filter(data$assocs.tissue, subset=="sensi"), "sensitive"))
 
     dev.off()
 }
