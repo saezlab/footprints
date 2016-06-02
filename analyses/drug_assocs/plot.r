@@ -3,19 +3,28 @@ b = import('base')
 io = import('io')
 plt = import('plot')
 
+#' File loading helper for association objects
 load_fun = function(fid) {
     io$load(module_file(fid))
 }
 
-#' volcano plot for pan-cancer
+#' Volcano plot for pan-cancer
+#'
+#' @param assocs     data.frame of associations
+#' @param base.size  scaling factor for point size
+#' @param p          p-value cutoff for significance
+#' @return           ggplot2 volcano object
 plot_pancan = function(assocs, base.size=0.2, p=0.05, ...) {
-    assocs.pan %>%
+    assocs %>%
         mutate(label = paste(drug, scores, sep=":")) %>%
         plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=p, dir=-1) %>%
         plt$volcano(base.size=base.size, p=p, ...)
 }
 
-#' matrix plot for pan-cancer
+#' Matrix plot for pan-cancer
+#'
+#' @param assocs  data.frame of associations
+#' @return        ggplot2 matrix object
 plot_matrix = function(assocs) {
     assocs %>%
         mutate(lp = -log(adj.p),
@@ -25,7 +34,11 @@ plot_matrix = function(assocs) {
         plt$matrix(estimate ~ scores + drug)
 }
 
-#' tissue-specific volcano plot
+#' Tissue-specific volcano plot
+#'
+#' @param assocs  data.frame of associations
+#' @param name    title of the plot
+#' @return        ggplot2 volcano object
 plot_tissue = function(assocs, name) {
     assocs %>%
         mutate(label = paste(tissue, drug, scores, sep=":")) %>%
