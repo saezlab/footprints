@@ -36,7 +36,7 @@ table_mut_path = function(path, mut, drug, strat="mut") {
 
 \begin{figure}[H]
 <<tram, echo=FALSE, fig.height=3>>=
-cmp_mut_path("MAPK", c("NRAS", "KRAS", "BRAF"), "Trametinib", "mut")
+util$cmp_mut_path("MAPK", c("NRAS", "KRAS", "BRAF"), "Trametinib", "mut")
 @
 \caption{Trametinib}
 \label{fig:strat-trametinib}
@@ -44,7 +44,7 @@ cmp_mut_path("MAPK", c("NRAS", "KRAS", "BRAF"), "Trametinib", "mut")
 
 \begin{figure}[H]
 <<az628, echo=FALSE, fig.height=3>>=
-cmp_mut_path("MAPK", c("NRAS", "KRAS", "BRAF"), "AZ628", "mut")
+util$cmp_mut_path("MAPK", c("NRAS", "KRAS", "BRAF"), "AZ628", "mut")
 @
 \caption{AZ628}
 \label{fig:strat-az628}
@@ -52,7 +52,7 @@ cmp_mut_path("MAPK", c("NRAS", "KRAS", "BRAF"), "AZ628", "mut")
 
 \begin{figure}[H]
 <<dabraf, echo=FALSE, fig.height=3>>=
-cmp_mut_path("MAPK", "BRAF", "Dabrafenib", "mut")
+util$cmp_mut_path("MAPK", "BRAF", "Dabrafenib", "mut")
 @
 \caption{Dabrafenib}
 \label{fig:strat-dabrafenib}
@@ -60,7 +60,7 @@ cmp_mut_path("MAPK", "BRAF", "Dabrafenib", "mut")
 
 \begin{figure}[H]
 <<nutlin, echo=FALSE, fig.height=3>>=
-cmp_mut_path("p53", "TP53", "Nutlin-3a", "wt")
+util$cmp_mut_path("p53", "TP53", "Nutlin-3a", "wt")
 @
 \caption{Nutlin-3a}
 \label{fig:strat-nutlin3a}
