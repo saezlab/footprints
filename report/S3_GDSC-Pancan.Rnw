@@ -1,49 +1,85 @@
-\section{Pan-cancer associations with drug response}
+\section{Drug response on the GDSC panel}
+
+\subsection{Pan-cancer associations}
 
 <<setup3, include=FALSE>>=
 library(cowplot)
 library(dplyr)
+library(dplyr)
+b = import('base')
+io = import('io')
+ar = import('array')
+st = import('stats')
+df = import('data_frame')
+plt = import('plot')
+gdsc = import('data/gdsc')
 util = import('./util_3')
 followup = import('../analyses/drug_assocs_followup/util')
-
-tt = theme(text = element_text(size = 8))
 
 mapk_mut_pathway = util$stratify("MAPK", c("BRAF", "NRAS", "KRAS"))
 mapk_braf_pathway = util$stratify("MAPK", "BRAF")
 p53_mut_pathway = util$stratify("p53", "TP53")
 @
 
-\subsection{Associations between pathway scores and drug response}
-
-<<volcano_speed_matrix, echo=FALSE, fig.cap='Footprints'>>=
+<<volcano_speed_matrix, echo=FALSE>>=
 util$volcano("speed_matrix")
 @
 
-<<volcano_go, echo=FALSE, fig.cap='Gene Ontology'>>=
+<<volcano_go, echo=FALSE>>=
 util$volcano("gsea_go")
 @
 
-<<volcano_reactome, echo=FALSE, fig.cap='Reactome'>>=
+<<volcano_reactome, echo=FALSE>>=
 util$volcano("gsea_reactome")
 @
 
-<<volcano_biocarta, echo=FALSE, fig.cap='BioCarta'>>=
+<<volcano_biocarta, echo=FALSE>>=
 util$volcano("gsea_biocarta")
 @
 
-<<volcano_spia, echo=FALSE, fig.cap='SPIA'>>=
+<<volcano_spia, echo=FALSE>>=
 util$volcano("spia")
 @
 
-<<volcano_pathifier, echo=FALSE, fig.cap='Pathifier'>>=
+<<volcano_pathifier, echo=FALSE>>=
 util$volcano("pathifier")
 @
 
-<<volcano_paradigm, echo=FALSE, fig.cap='PARADIGM'>>=
+<<volcano_paradigm, echo=FALSE>>=
 util$volcano("paradigm")
 @
 
 
+\subsection{Tissue-specific associations}
+
+<<tvolcano_speed_matrix, echo=FALSE, fig.cap='Footprints'>>=
+util$volcano_tissue("speed_matrix")
+@
+
+<<tvolcano_go, echo=FALSE, fig.cap='Gene Ontology'>>=
+util$volcano_tissue("gsva_go")
+@
+
+<<tvolcano_reactome, echo=FALSE, fig.cap='Reactome'>>=
+util$volcano_tissue("gsva_reactome")
+@
+
+<<tvolcano_biocarta, echo=FALSE, fig.cap='BioCarta'>>=
+util$volcano_tissue("gsva_biocarta")
+@
+
+<<tvolcano_spia, echo=FALSE, fig.cap='SPIA'>>=
+util$volcano_tissue("spia")
+@
+
+<<tvolcano_pathifier, echo=FALSE, fig.cap='Pathifier'>>=
+util$volcano_tissue("pathifier")
+@
+
+<<tvolcano_paradigm, echo=FALSE, fig.cap='PARADIGM'>>=
+util$volcano_tissue("paradigm")
+@
+
 \subsection{Discussion}
 
-... write some thoughts here ...
+.. write some thoughts here ..
