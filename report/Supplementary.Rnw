@@ -11,14 +11,14 @@
 
 \tableofcontents
 
-\Sexpr{knit_child('S1_Pathway_Scores.Rnw')}
+%\Sexpr{knit_child('S1_Pathway_Scores.Rnw')} %DONE
 
-\Sexpr{knit_child('S2_TCGA-Driver+Pathway.Rnw')}
+%\Sexpr{knit_child('S2_TCGA-Driver+Pathway.Rnw')} %DONE
 
-\Sexpr{knit_child('S3_GDSC-Pancan.Rnw')}
+%\Sexpr{knit_child('S3_GDSC-Pancan.Rnw')} %TODO
 
-\Sexpr{knit_child('S4_GDSC-Tissue+Stratification.Rnw')}
+\Sexpr{knit_child('S4_GDSC-Tissue+Stratification.Rnw')} %TODO
 
-\Sexpr{knit_child('S5_Survival.Rnw')}
+%\Sexpr{knit_child('S5_Survival.Rnw')} %DONE
 
 \end{document}
