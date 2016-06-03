@@ -12,8 +12,7 @@ tcga = import('data/tcga')
 surv = import('../analyses/tcga_survival/util')
 config = import('../config')
 
-scores = c('gsva_reactome', 'gsva_go', 'speed_matrix', 'pathifier', 'spia', 'paradigm') %>%
-    sapply(surv$load_scores, simplify=FALSE, USE.NAMES=TRUE)
+scores = b$lnapply(config$methods$ids, surv$load_scores)
 
 assocs.pan = scores %>%
     sapply(surv$pancan, simplify=FALSE, USE.NAMES=FALSE) %>%
@@ -34,10 +33,10 @@ discrete_assocs = surv$tissue(scores)
 \begin{figure}[H]
 <<pancan, echo=FALSE>>=
 assocs.pan %>%
+    filter(method == "speed_matrix") %>%
     plt$color$p_effect("adj.p", dir=-1) %>%
     mutate(label = scores) %>%
-    plt$volcano(base.size=0.1) %>%
-    print()
+    plt$volcano(base.size=0.1)
 @
 \caption{}
 \label{fig:volcano-pancan}
@@ -71,12 +70,10 @@ print(p1)
 
 \begin{figure}[H]
 <<tissue, echo=FALSE>>=
-#TODO: for all other methods ->@suppl
-p2 = assocs.tissue %>%
+assocs.tissue %>%
     plt$color$p_effect("adj.p", dir=-1, thresh=0.1) %>%
     mutate(label = paste(subset, scores, sep=":")) %>%
     plt$volcano(p=0.1, base.size=0.1)
-print(p2)
 @
 \caption{}
 \label{fig:volcano-tissue}

@@ -4,14 +4,21 @@
 library(dplyr)
 b = import('base')
 io = import('io')
-st = import('stats')
-ar = import('array')
-df = import('data_frame')
 plt = import('plot')
-tcga = import('data/tcga')
 util = import('./util_2')
 ##TODO: %each>% || %>>% operator?
 @
+
+
+\subsection{Associations between driver mutations/CNA and pathways}
+
+\begin{figure}[H]
+<<mut_cna_volcao, echo=FALSE>>=
+@
+\caption{Associatons for drivers/copy number alterations}
+\label{fig:mut-heatmaps}
+\end{figure}
+
 
 \subsection{Overview of number of driver mutations per cancer type}
 

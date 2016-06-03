@@ -71,25 +71,18 @@ stratify = function(pathway="MAPK", genes=c("BRAF","KRAS","NRAS")) {
         # stratification by SPEED score
         "PATH+" = nst(path_active),
         "PATH-" = nst(path_inactive),
-        "PATH_null" = nst(path_null),
+        "PATH0" = nst(path_null),
 
         # stratification by SPEED score, wild-type subset
         "PATH+_wt" = nst(!has_mut & path > quantile(path[!has_mut])[4]),
         "PATH-_wt" = nst(!has_mut & path < quantile(path[!has_mut])[2]),
-        "PATH_null_wt" = nst(path_wt_null),
+        "PATH0_wt" = nst(path_wt_null),
 
         # stratification by SPEED score, mutated subset
         "PATH+_mut" = nst(has_mut & path > quantile(path[has_mut])[4]),
         "PATH-_mut" = nst(has_mut & path < quantile(path[has_mut])[2]),
-        "PATH_null_mut" = nst(path_mut_null)
+        "PATH0_mut" = nst(path_mut_null)
     )
-
-    names(re) = sub("PATH", pathway, names(re))
-    if (length(genes) == 1)
-        names(re) = sub("GENE", genes, names(re))
-    else
-        names(re) = sub("GENE", pathway, names(re))
-    re
 }
 
 #' Wilcox test for difference in drug response between two conditions
@@ -113,28 +106,6 @@ wilcox = function(mydf, c1, c2) {
         median_folds = round(10^(abs(medians[2] - medians[1]))),
         n = nrow(mydf)
     )
-}
-
-#' Create a data.frame of drug responses
-#'
-#' @param pathway   The pathway scores
-#' @param mutation  Character vector of mutated genes
-#' @param drug      Drug name for which to get response IC50
-#' @return          A data.frame with COSMIC IDs, subset, drug resp, etc.
-create_df = function(pathway, mutation, drug) {
-    strat = stratify(pathway, mutation) %>%
-        stack() %>%
-        transmute(cosmic=values, subset=ind)
-
-    df$assemble(
-        tissue = tissues,
-        mut = apply(mut[, mutation, drop=FALSE], 1, any),
-        score = scores[,pathway],
-        resp = Ys[,drug]
-    ) %>%
-        add_rownames("cosmic") %>%
-        inner_join(strat, by="cosmic") %>%
-        na.omit()
 }
 
 #' Plot of the linear fit
@@ -165,4 +136,58 @@ contrast_stats = function(strat, drug, pathway, gene=pathway) {
         wilcox(mydf, paste0(pathway, "+_wt"), paste0(pathway, "-_wt")),
         wilcox(mydf, paste0(pathway, "+_mut"), paste0(pathway, "-_mut"))
     ))
+}
+
+#' Create a data.frame of drug responses
+#'
+#' @param pathway   The pathway scores
+#' @param mutation  Character vector of mutated genes
+#' @param drug      Drug name for which to get response IC50
+#' @return          A data.frame with COSMIC IDs, subset, drug resp, etc.
+create_df = function(pathway, mutation, drug) {
+    strat = stratify(pathway, mutation) %>%
+        stack() %>%
+        transmute(cosmic=values, subset=ind)
+
+    df$assemble(
+        tissue = tissues,
+        mut = apply(mut[, mutation, drop=FALSE], 1, any),
+        score = scores[,pathway],
+        resp = Ys[,drug]
+    ) %>%
+        add_rownames("cosmic") %>%
+        inner_join(strat, by="cosmic") %>%
+        na.omit()
+}
+
+#' Sub-stratifies the mut/wt sub-population using the (higher) pathway score
+#'
+#' @param path   Character string for pathway
+#' @param mut    Character vector of genes whose mutations count in
+#' @param drug   Character string of the drug
+#' @param strat  Which sub-population should be stratified - "mut" (default) or "wt"
+#' @return       A ggplot2 object with violin/boxplots
+cmp_mut_path = function(path, mut, drug, strat="mut") {
+    if (strat == "mut")
+        levels = c("GENE_all", "GENE_wt", "GENE_mut", "PATH+_mut", "PATH-_mut", "PATH+", "PATH0", "PATH-")
+    else if (strat == "wt")
+        levels = c("GENE_all", "GENE_mut", "GENE_wt", "PATH+_wt", "PATH-_wt", "PATH+", "PATH0", "PATH-")
+    else
+        stop("need 'mut' or 'wt' for stratification")
+
+    mydf = util$create_df(path, mut, drug) %>%
+        mutate(subset = factor(subset, levels=levels)) %>%
+        na.omit() # remove those subsets were we don't assign a level
+
+    # rename GENE and PATH to what we actually look at
+    levels(mydf$subset) = sub("PATH", path, levels(mydf$subset))
+    levels(mydf$subset) = sub("GENE", ifelse(length(mut)==1, mut, path), levels(mydf$subset))
+
+    ggplot(mydf, aes(x=subset, y=resp)) +
+        geom_violin() +
+        geom_boxplot(width=.5, outlier.shape=NA) +
+        theme_bw() +
+        xlab("") +
+        ylab("Drug response [log uM]") #+
+#        theme(axis.text.x = element_text(angle=45, hjust=1)) # makes them unevenly high
 }

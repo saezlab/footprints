@@ -6,111 +6,8 @@ library(dplyr)
 b = import('base')
 io = import('io')
 util = import('./util_3')
+config = import('../config')
 
-MEKi_levels = c("MAPK_all", "MAPK_wt", "MAPK_mut", "MAPK+_mut", "MAPK-_mut", "MAPK+", "MAPK-")
-BRAFi_levels = c("MAPK_all", "BRAF_wt", "BRAF_mut", "MAPK+_mut", "MAPK-_mut", "MAPK+", "MAPK-")
-p53_levels = c("TP53_all", "TP53_mut", "TP53_wt", "p53+_wt", "p53-_wt", "p53+", "p53-")
-@
-
-\subsection{Improvement over mutations alone}
-
-\subsubsection{Trametinib}
-
-\begin{figure}[H]
-<<tram, echo=FALSE, fig.height=3>>=
-mydf = util$create_df("MAPK", c("NRAS", "KRAS", "BRAF"), "Trametinib") %>%
-    mutate(subset = factor(subset, levels=MEKi_levels)) %>%
-    na.omit()
-
-table(mydf$subset)
-
-util$stratify("MAPK", c("BRAF", "NRAS", "KRAS")) %>%
-    util$contrast_stats("Trametinib", "MAPK")
-
-ggplot(mydf, aes(x=subset, y=resp)) +
-    geom_violin() +
-    geom_boxplot(width=.5, outlier.shape=NA) +
-#    geom_boxplot(outlier.shape=NA) +
-#    geom_point(aes(colour=tissue, shape=mut), size=5, alpha=0.5, position=position_jitter(w=0.5))
-    theme_bw()
-@
-\caption{Trametinib}
-\label{fig:strat-trametinib}
-\end{figure}
-
-
-\subsubsection{AZ628}
-
-\begin{figure}[H]
-<<az628, echo=FALSE, fig.height=3>>=
-mydf = util$create_df("MAPK", c("NRAS", "KRAS", "BRAF"), "AZ628") %>%
-    mutate(subset = factor(subset, levels=MEKi_levels)) %>%
-    na.omit()
-
-table(mydf$subset)
-
-util$stratify("MAPK", c("BRAF", "NRAS", "KRAS")) %>%
-    util$contrast_stats("AZ628", "MAPK")
-
-ggplot(mydf, aes(x=subset, y=resp)) +
-    geom_violin() +
-    geom_boxplot(width=.5, outlier.shape=NA) +
-    theme_bw()
-@
-\caption{AZ628}
-\label{fig:strat-az628}
-\end{figure}
-
-
-\subsubsection{Dabrafenib}
-
-\begin{figure}[H]
-<<dabraf, echo=FALSE, fig.height=3>>=
-mydf = util$create_df("MAPK", "BRAF", "Dabrafenib") %>%
-    mutate(subset = factor(subset, levels=BRAFi_levels)) %>%
-    na.omit()
-
-table(mydf$subset)
-
-util$stratify("MAPK", "BRAF") %>%
-    util$contrast_stats("Dabrafenib", "MAPK", "BRAF")
-
-ggplot(mydf, aes(x=subset, y=resp)) +
-    geom_violin() +
-    geom_boxplot(width=.5, outlier.shape=NA) +
-    theme_bw()
-@
-\caption{Dabrafenib}
-\label{fig:strat-dabrafenib}
-\end{figure}
-
-\subsubsection{Nutlin-3a}
-
-\begin{figure}[H]
-<<nutlin, echo=FALSE, fig.height=3>>=
-mydf = util$create_df("p53", "TP53", "Nutlin-3a") %>%
-    mutate(subset = factor(subset, levels=p53_levels)) %>%
-    na.omit()
-
-table(mydf$subset)
-
-util$stratify("p53", "TP53") %>%
-    util$contrast_stats("Nutlin-3a", "p53", "TP53")
-
-ggplot(mydf, aes(x=subset, y=resp)) +
-    geom_violin() +
-    geom_boxplot(width=.5, outlier.shape=NA) +
-    theme_bw()
-@
-\caption{Nutlin-3a}
-\label{fig:strat-nutlin3a}
-\end{figure}
-
-
-\subsection{Comparing associations to mutations}
-
-\begin{figure}[H]
-<<compare, echo=FALSE>>=
 load_fun = function(fname) {
     io$file_path('../analyses/drug_assocs/assocs_mapped', fname, ext=".RData") %>%
         io$load() %$%
@@ -121,10 +18,66 @@ load_fun = function(fname) {
                method = fname)
 }
 
-# paradigm not included because strongest pancan association 39% FDR
-methods = c("mutation", "speed_matrix", "gsea_reactome", "gsea_go", "spia", "pathifier")
+#MEKi_levels = c("MAPK_all", "MAPK_wt", "MAPK_mut", "MAPK+_mut", "MAPK-_mut", "MAPK+", "MAPK-")
+#BRAFi_levels = c("MAPK_all", "BRAF_wt", "BRAF_mut", "MAPK+_mut", "MAPK-_mut", "MAPK+", "MAPK-")
+#p53_levels = c("TP53_all", "TP53_mut", "TP53_wt", "p53+_wt", "p53-_wt", "p53+", "p53-")
 
-resp = methods %>%
+table_mut_path = function(path, mut, drug, strat="mut") {
+    mydf = util$create_df(path, mut, drug) %>%
+        mutate(subset = factor(subset),
+               pathway = path,
+               mutation = ifelse(length(mut)==1, mut, path)) %>%
+        na.omit()
+
+#   table(mydf$subset)
+#    util$stratify(path, mut) %>%
+#        util$contrast_stats(drug, path)
+
+}
+@
+
+\subsection{Improvement over mutations alone}
+
+\begin{figure}[H]
+<<tram, echo=FALSE, fig.height=3>>=
+cmp_mut_path("MAPK", c("NRAS", "KRAS", "BRAF"), "Trametinib", "mut")
+@
+\caption{Trametinib}
+\label{fig:strat-trametinib}
+\end{figure}
+
+\begin{figure}[H]
+<<az628, echo=FALSE, fig.height=3>>=
+cmp_mut_path("MAPK", c("NRAS", "KRAS", "BRAF"), "AZ628", "mut")
+@
+\caption{AZ628}
+\label{fig:strat-az628}
+\end{figure}
+
+\begin{figure}[H]
+<<dabraf, echo=FALSE, fig.height=3>>=
+cmp_mut_path("MAPK", "BRAF", "Dabrafenib", "mut")
+@
+\caption{Dabrafenib}
+\label{fig:strat-dabrafenib}
+\end{figure}
+
+\begin{figure}[H]
+<<nutlin, echo=FALSE, fig.height=3>>=
+cmp_mut_path("p53", "TP53", "Nutlin-3a", "wt")
+@
+\caption{Nutlin-3a}
+\label{fig:strat-nutlin3a}
+\end{figure}
+
+
+\subsection{Comparing associations to mutations}
+
+\begin{figure}[H]
+<<compare, echo=FALSE>>=
+resp = config$methods$ids %>%
+    setdiff("paradigm") %>% # lowest FDR=39%
+    c("mutation") %>% # compare mutations as well
     lapply(load_fun) %>%
     bind_rows()
 
