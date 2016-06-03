@@ -18,10 +18,6 @@ load_fun = function(fname) {
                method = fname)
 }
 
-#MEKi_levels = c("MAPK_all", "MAPK_wt", "MAPK_mut", "MAPK+_mut", "MAPK-_mut", "MAPK+", "MAPK-")
-#BRAFi_levels = c("MAPK_all", "BRAF_wt", "BRAF_mut", "MAPK+_mut", "MAPK-_mut", "MAPK+", "MAPK-")
-#p53_levels = c("TP53_all", "TP53_mut", "TP53_wt", "p53+_wt", "p53-_wt", "p53+", "p53-")
-
 table_mut_path = function(path, mut, drug, strat="mut") {
     mydf = util$create_df(path, mut, drug) %>%
         mutate(subset = factor(subset),

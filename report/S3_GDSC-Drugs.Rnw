@@ -1,48 +1,49 @@
-\section{Associations with patient survival}
+\section{Drug response in the GDSC panel}
 
-<<setup5, include=FALSE>>=
+<<setup3, include=FALSE>>=
 library(dplyr)
 b = import('base')
 io = import('io')
 ar = import('array')
-df = import('data_frame')
 st = import('stats')
+df = import('data_frame')
 plt = import('plot')
-util = import('../analyses/tcga_survival/util')
+gdsc = import('data/gdsc')
+util = import('./util_3')
 config = import('../config')
 
-assocs = b$lnapply(config$methods$ids, util$load_assocs)
+assocs = b$lnapply(config$methods$ids, util$vp$load_fun)
 @
 
 \subsection{Pan-cancer associations}
 
 \begin{figure}[H]
-<<surv_volcano_pancan, echo=FALSE, fig.width=8, fig.height=12>>=
+<<drug_volcano_pancan, echo=FALSE, fig.width=8, fig.height=12>>=
 assocs %>%
-    b$lnapply(function(x) x$pan_cov) %>%
+    b$lnapply(function(x) x$assocs.pan) %>%
     df$add_name_col(col="method", bind=TRUE) %>%
     mutate(label = scores) %>%
     plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.05, dir=-1) %>%
-    plt$volcano(base.size=5e-3, text.size=2) +
+    plt$volcano(base.size=1, text.size=2, p=0.05) +
         facet_wrap(~method, ncol=2, scales="free_x")
 @
 \caption{}
-\label{fig::urv-volcano-pancan}
+\label{fig:drug-volcano-pancan}
 \end{figure}
 
 
 \subsection{Tissue-specific associations}
 
 \begin{figure}[H]
-<<surv_volcano_tissue, echo=FALSE, fig.width=8, fig.height=12>>=
+<<drug_volcano_tissue, echo=FALSE, fig.width=8, fig.height=12>>=
 assocs %>%
-    b$lnapply(function(x) x$tissue) %>%
+    b$lnapply(function(x) x$assocs.tissue) %>%
     df$add_name_col(col="method", bind=TRUE) %>%
     mutate(label = paste(scores, subset, sep=":")) %>%
     plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.1, dir=-1) %>%
-    plt$volcano(base.size=0.05, text.size=2, p=0.1) +
+    plt$volcano(base.size=5, text.size=2, p=0.1) +
         facet_wrap(~method, ncol=2, scales="free_x")
 @
 \caption{}
-\label{fig:surv-volcano-tissue}
+\label{fig:drug-volcano-tissue}
 \end{figure}
