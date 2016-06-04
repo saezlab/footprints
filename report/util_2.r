@@ -21,8 +21,12 @@ load_fun = function(dir, id) {
         df$add_name_col("method", bind=TRUE)
 }
 
-mut_assocs = load_fun("assocs_driver_mapped", config$methods$ids)
-cna_assocs = load_fun("assocs_cna_mapped", config$methods$ids)
+mut_assocs = load_fun("assocs_driver_mapped", config$methods$ids) %>%
+    filter(subset == "pan_cov") %>%
+    select(-subset)
+cna_assocs = load_fun("assocs_cna_mapped", config$methods$ids) %>%
+    filter(subset == "pan_cov") %>%
+    select(-subset)
 
 #' Plots a matrix with mutation-pathway associations for different methods
 #'

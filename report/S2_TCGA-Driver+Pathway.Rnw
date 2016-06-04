@@ -16,14 +16,14 @@ util = import('./util_2')
 
 \begin{figure}[H]
 <<capture, echo=FALSE>>=
-keep = util$assocs_cov %>%
+keep = util$mut_assocs %>%
     group_by(m) %>%
     filter(any(-log10(adj.p) > 5)) %>%
     summarize(mlogp = -sum(log10(adj.p))) %>%
     arrange(-mlogp) %$%
     m
 
-util$mutation_overview_plot(util$assocs_cov, keep)
+util$mutation_overview_plot(util$mut_assocs, keep)
 @
 \caption{Mutation associations across pathway methods}
 \label{fig:mut-overall}
@@ -41,7 +41,7 @@ tt = theme(text = element_text(size=8),
            axis.title.y = element_text(size=7),
            legend.key.width = unit(0.5, "line"))
 
-plots = lapply(keep, function(x) util$mutation_method_plot(x, util$assocs_cov) + ggtitle(x) + tt)
+plots = lapply(keep, function(x) util$mutation_method_plot(x, util$mut_assocs) + ggtitle(x) + tt)
 plot_grid(plotlist=plots, ncol=4, label_size=4)
 @
 \caption{Method comparison for specific mutations}
