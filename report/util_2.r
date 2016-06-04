@@ -1,11 +1,28 @@
 library(magrittr)
 library(cowplot)
 b = import('base')
+io = import('io')
+df = import('data_frame')
 plt = import('plot')
-loader = import('../analyses/tcga_pathway_per_mutation/loader')
+config = import('../config')
 
-mut_assocs = loader$
-cna_assocs = loader$
+#' Function to load data from the TCGA mutation associations
+#'
+#' @param dir  The subdir in the mutation folder
+#' @param id   Identifier of the method
+#' @return     data.frame with the association results
+load_fun = function(dir, id) {
+    fn = function(dir, id)
+        paste0(id, ".RData") %>%
+        module_file("../analyses/tcga_pathway_per_mutation/", dir, .) %>%
+            io$load()
+
+    b$lnapply(id, function(id) fn(dir, id)) %>%
+        df$add_name_col("method", bind=TRUE)
+}
+
+mut_assocs = load_fun("assocs_driver_mapped", config$methods$ids)
+cna_assocs = load_fun("assocs_cna_mapped", config$methods$ids)
 
 #' Plots a matrix with mutation-pathway associations for different methods
 #'
