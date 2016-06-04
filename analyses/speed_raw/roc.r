@@ -5,15 +5,13 @@ b = import('base')
 io = import('io')
 ar = import('array')
 st = import('stats')
-#config = io$load('../../config')# FIXME:
-config = c("speed_matrix", "gsea_go", "gsea_reactome", "spia", "pathifier")
+config = import('../../config')
 
 #' Return a data.frame with precision-recall curves
 #'
 #' @param fid  Method ID descriptor ('speed_matrix', 'gsea_go', etc.)
 method2pr_df = function(fid) {
-	data = module_file(io$file_path("../../scores/speed", fid, ext=".RData")) %>%
-        io$load()
+	data = io$load(module_file("../../scores/speed", paste0(fid, ".RData"), mustWork = TRUE))
 
 	index = data$index # bit duplication from report/util_1 (4 lines w/ 2 above)
     sign = ifelse(index$effect == "activating", 1, -1)
@@ -41,14 +39,18 @@ do_plot = function(roc) {
         theme(axis.text.x = element_text(angle = 45, hjust = 1))
 }
 
-roc = lapply(config, method2pr_df) %>%
+roc = config$methods$ids %>%
+    setdiff("paradigm") %>% # we don't have this for the input exps
+    lapply(method2pr_df) %>%
     bind_rows() %>%
     na.omit()
 
 auc = roc %>%
+    mutate(method = config$id2short(method)) %>%
     group_by(method, pathway) %>%
     arrange(value) %>%
-    summarize(auc = st$roc_auc(value, perturbed==1))
+    summarize(auc = st$roc_auc(value, perturbed==1)) %>%
+    tidyr::spread(method, auc)
 
 if (is.null(module_name())) {
     pdf("roc.pdf", paper="a4r", width=11, height=8)
