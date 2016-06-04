@@ -1,35 +1,11 @@
 library(magrittr)
 library(cowplot)
 b = import('base')
-io = import('io')
-st = import('stats')
-ar = import('array')
-df = import('data_frame')
 plt = import('plot')
-tcga = import('data/tcga')
-config = import('../config')
+loader = import('../analyses/tcga_pathway_per_mutation/loader')
 
-#' Loads a specific TCGA scores file
-#'
-#' supplies path and extension, and cuts rownames at 16 chars
-#'
-#' @param x       An identifier, like 'speed_matrix'
-#' @param filter  Which subset of the mutation associations to use
-#' @return        A matrix with samples as rows and genes and columns
-assoc_df = function(x, filter="pan_cov") {
-    load_fun = function(x) {
-        io$file_path("../analyses/tcga_pathway_per_mutation/assocs_driver_mapped", x, ext=".RData") %>%
-            io$load() %>%
-            filter(subset == filter) %>%
-            mutate(method = x)
-    }
-    re = bind_rows(lapply(x, load_fun))
-}
-
-scores = c('gsva_reactome', 'gsva_go', 'speed_matrix', 'pathifier', 'spia', 'paradigm')
-
-assocs_cov = assoc_df(scores, "pan_cov")
-assocs_nocov = assoc_df(scores, "pan")
+mut_assocs = loader$
+cna_assocs = loader$
 
 #' Plots a matrix with mutation-pathway associations for different methods
 #'
