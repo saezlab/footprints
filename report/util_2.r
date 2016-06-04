@@ -42,7 +42,7 @@ mutation_method_plot = function(mut, assocs, p0=0.2, p1=0.05, p2=1e-3, ts=4) {
 #        mutate(statistic = ifelse(adj.p < p0, statistic, NA)) %>%
         mutate(label = ifelse(adj.p < p1, "·", "")) %>%
         mutate(label = ifelse(adj.p < p2, "*", label)) %>%
-        mutate(scores = config$pathways(scores),
+        mutate(scores = config$pathways(scores, rev=TRUE),
                method = config$id2short(method)) %>%
         plt$matrix(Wald ~ scores + method, text_size=ts,
                    color="Wald", symmetric=TRUE, reverse_colors=TRUE) +
@@ -62,7 +62,8 @@ mutation_overview_plot = function(assoc_obj, genes) {
         summarize(mlogp = -sum(log10(adj.p))) %>%
         filter(m %in% genes) %>%
         ungroup() %>%
-        mutate(m = b$refactor(m, -mlogp)) %>%
+        mutate(m = b$refactor(m, -mlogp),
+               method = config$id2short(method)) %>%
         ggplot(aes(x=m, y=mlogp, fill=method)) +
             geom_bar(stat="identity") +
             theme(axis.text.x = element_text(angle = 45, hjust = 1)) +

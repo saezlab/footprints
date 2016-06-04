@@ -22,10 +22,12 @@ assocs = b$lnapply(config$methods$ids, util$vp$load_fun)
 assocs %>%
     b$lnapply(function(x) x$assocs.pan) %>%
     df$add_name_col(col="method", bind=TRUE) %>%
-    mutate(label = scores) %>%
+    mutate(label = paste(drug, scores, sep=":"),
+           method = config$id2short(method)) %>%
     plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.05, dir=-1) %>%
-    plt$volcano(base.size=1, text.size=2, p=0.05) +
-        facet_wrap(~method, ncol=2, scales="free_x")
+    plt$volcano(base.size=0.1, text.size=2, p=0.05) +
+        facet_wrap(~method, ncol=2, scales="free_x") +
+        config$facet_theme
 @
 \caption{}
 \label{fig:drug-volcano-pancan}
@@ -39,10 +41,13 @@ assocs %>%
 assocs %>%
     b$lnapply(function(x) x$assocs.tissue) %>%
     df$add_name_col(col="method", bind=TRUE) %>%
-    mutate(label = paste(scores, subset, sep=":")) %>%
+    filter(subset == "clinical") %>%
+    mutate(label = paste(drug, scores, tissue, sep=":"),
+           method = config$id2short(method)) %>%
     plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.1, dir=-1) %>%
-    plt$volcano(base.size=5, text.size=2, p=0.1) +
-        facet_wrap(~method, ncol=2, scales="free_x")
+    plt$volcano(base.size=1, text.size=2, p=0.1) +
+        facet_wrap(~method, ncol=2, scales="free_x") +
+        config$facet_theme
 @
 \caption{}
 \label{fig:drug-volcano-tissue}

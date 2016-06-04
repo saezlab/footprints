@@ -1,3 +1,4 @@
+library(ggplot2)
 .b = import('base')
 .io = import('io')
 
@@ -46,3 +47,8 @@ id2short = function(ids, drop=TRUE, rev=FALSE) {
     else
         factor
 }
+
+facet_theme = theme(panel.grid.major = element_blank(),
+					panel.grid.minor = element_blank(),
+					strip.background = element_blank(),
+					panel.border = element_blank())

@@ -7,6 +7,7 @@ ar = import('array')
 st = import('stats')
 plt = import('plot')
 tcga = import('data/tcga')
+config = import('../config')
 
 #' Takes a method subset and plots the pathway associations and individual scores
 #'
@@ -26,7 +27,9 @@ perturb_score_plots = function(fid, title=NULL) {
 	result = st$lm(scores ~ pathway) %>%
 		mutate(mlogp = -log(p.value)) %>%
 		mutate(label = ifelse(p.value < 1e-5, "·", "")) %>%
-		mutate(label = ifelse(p.value < 1e-10, "*", label))
+		mutate(label = ifelse(p.value < 1e-10, "*", label)) %>%
+        mutate(pathway = config$pathways(pathway),
+               scores = config$pathways(scores, rev=TRUE))
 
 	p1 = plt$matrix(result, statistic ~ scores + pathway, palette="RdBu", symmetric=TRUE, text_size=7) +
         theme(axis.text = element_text(size = 10)) +
@@ -36,6 +39,7 @@ perturb_score_plots = function(fid, title=NULL) {
 
 	# and individual experiments
 	annot = data$index %>%
+        arrange(pathway) %>%
 		select(id, pathway, effect) %>%
 		arrange(pathway, effect) %>%
 		as.data.frame()

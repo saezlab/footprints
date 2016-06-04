@@ -8,6 +8,7 @@ ar = import('array')
 st = import('stats')
 plt = import('plot')
 util = import('./util_1')
+config = import('../config')
 @
 
 \subsection{Size of the data set}
@@ -153,12 +154,23 @@ tab:Significance-of-signature. The comparison here serves to show that my
 model corresponds better to perturbations.
 
 \begin{figure}[H]
-<<perturb_all, echo=FALSE>>=
-roc$do_plot(roc$roc)
+<<roc_curves, echo=FALSE>>=
+roc = import('../analyses/speed_raw/roc')
+roc$roc %>%
+    mutate(method = config$id2short(method)) %>%
+    roc$do_plot() + config$facet_theme
 @
 \caption{ROC curves for different pathway methods}
 \label{fig:roc}
 \end{figure}
+
+\begin{table}[H]
+\centering
+\caption{AUC under the ROC curve}
+<<roc_auc, echo=FALSE>>=
+kable(roc$auc, digits=2, booktabs=TRUE)
+@
+\end{table}
 
 
 The standard non-parametric (i.e., only based on order rather than value) of
@@ -209,7 +221,10 @@ experiments are low, cf. figure fig:ROC).
 \centering
 \scalebox{.7}{
 <<stability, echo=FALSE, fig.width=5, fig.height=5>>=
-import('../analyses/speed_bootstrap/stability_plot')$do_plot('gdsc_matrix.RData')
+stab = import('../analyses/speed_bootstrap/stability_plot')
+stab$file2df('gdsc_matrix.RData') %>%
+    mutate(pathway = config$pathways(pathway, rev=TRUE)) %>%
+    stab$do_plot()
 @
 }
 \caption{Stability of scores when bootstrapping input experiments}
