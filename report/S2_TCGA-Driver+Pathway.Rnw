@@ -12,40 +12,23 @@ tcga = import('data/tcga')
 util = import('./util_2')
 @
 
-\subsection{Mutations affecting pathway scores for all methods}
+\subsection{Overview of number of driver mutations per cancer type (cont.)}
 
 \begin{figure}[H]
-<<capture, echo=FALSE>>=
-keep = util$assocs_cov %>%
-    group_by(m) %>%
-    filter(any(-log10(adj.p) > 5)) %>%
-    summarize(mlogp = -sum(log10(adj.p))) %>%
-    arrange(-mlogp) %$%
-    m
-
-util$mutation_overview_plot(util$assocs_cov, keep)
+<<method_compare, echo=FALSE, fig.width=7, fig.height=8.5>>=
+#TODO: add well-known mut/cna that are not in main fig
+#plot_grid(
+#    util$mutation_method_plot("TP53", util$mut_cov, 0.2, 1e-5, 1e-15, 10),
+#    util$mutation_method_plot("KRAS", util$mut_cov, 0.2, 0.05, 1e-3, 10),
+#    util$mutation_method_plot("EGFR+", util$cna_cov, 0.2, 1e-3, 1e-7, 10),
+#    util$mutation_method_plot("VHL", util$mut_nocov, 0.2, 1e-5, 1e-20, 10),
+#    labels = c("TP53", "KRAS", "EGFR+", "VHL")
+#) +
+#    theme(axis.text = element_text(size=7),
+#          axis.title = element_text(size=9, face="bold"))
 @
-\caption{Mutation associations across pathway methods}
-\label{fig:mut-overall}
-\end{figure}
-
-
-\subsection{Comparison of methods for individual mutations}
-
-\begin{figure}[H]
-<<detail, echo=FALSE, fig.width=8, fig.height=10>>=
-tt = theme(text = element_text(size=8),
-           axis.text.x = element_text(size=7),
-           axis.text.y = element_text(size=7),
-           axis.title.x = element_text(size=7),
-           axis.title.y = element_text(size=7),
-           legend.key.width = unit(0.5, "line"))
-
-plots = lapply(keep, function(x) util$mutation_method_plot(x, util$assocs_cov) + ggtitle(x) + tt)
-plot_grid(plotlist=plots, ncol=4, label_size=4)
-@
-\caption{Method comparison for specific mutations}
-\label{fig:mut-detail}
+\caption{Comparison of mutation associations across methods}
+\label{fig:mut-heatmaps}
 \end{figure}
 
 

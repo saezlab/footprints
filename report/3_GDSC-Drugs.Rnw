@@ -8,35 +8,15 @@ io = import('io')
 util = import('./util_3')
 config = import('../config')
 
-load_fun = function(fname) {
-    io$file_path('../analyses/drug_assocs/assocs_mapped', fname, ext=".RData") %>%
-        io$load() %$%
-        assocs.pan %>%
-        filter(adj.p < 0.1) %>%
-        arrange(adj.p) %>%
-        mutate(num = 1:nrow(.),
-               method = fname)
-}
-
-table_mut_path = function(path, mut, drug, strat="mut") {
-    mydf = util$create_df(path, mut, drug) %>%
-        mutate(subset = factor(subset),
-               pathway = path,
-               mutation = ifelse(length(mut)==1, mut, path)) %>%
-        na.omit()
-
-#   table(mydf$subset)
-#    util$stratify(path, mut) %>%
-#        util$contrast_stats(drug, path)
-
-}
+mapk_mut = c("NRAS", "KRAS", "BRAF")
 @
 
 \subsection{Improvement over mutations alone}
 
 \begin{figure}[H]
 <<tram, echo=FALSE, fig.height=3>>=
-util$cmp_mut_path("MAPK", c("NRAS", "KRAS", "BRAF"), "Trametinib", "mut")
+strat_tram = util$cmp_mut_path("MAPK", mapk_mut, "Trametinib", "mut")
+util$plot_mut_path(strat_tram)
 @
 \caption{Trametinib}
 \label{fig:strat-trametinib}
@@ -44,7 +24,8 @@ util$cmp_mut_path("MAPK", c("NRAS", "KRAS", "BRAF"), "Trametinib", "mut")
 
 \begin{figure}[H]
 <<az628, echo=FALSE, fig.height=3>>=
-util$cmp_mut_path("MAPK", c("NRAS", "KRAS", "BRAF"), "AZ628", "mut")
+strat_az628 = util$cmp_mut_path("MAPK", mapk_mut, "AZ628", "mut")
+util$plot_mut_path(strat_az628)
 @
 \caption{AZ628}
 \label{fig:strat-az628}
@@ -52,7 +33,8 @@ util$cmp_mut_path("MAPK", c("NRAS", "KRAS", "BRAF"), "AZ628", "mut")
 
 \begin{figure}[H]
 <<dabraf, echo=FALSE, fig.height=3>>=
-util$cmp_mut_path("MAPK", "BRAF", "Dabrafenib", "mut")
+strat_dabraf = util$cmp_mut_path("MAPK", "BRAF", "Dabrafenib", "mut")
+util$plot_mut_path(strat_dabraf)
 @
 \caption{Dabrafenib}
 \label{fig:strat-dabrafenib}
@@ -60,7 +42,8 @@ util$cmp_mut_path("MAPK", "BRAF", "Dabrafenib", "mut")
 
 \begin{figure}[H]
 <<nutlin, echo=FALSE, fig.height=3>>=
-util$cmp_mut_path("p53", "TP53", "Nutlin-3a", "wt")
+strat_p53 = util$cmp_mut_path("p53", "TP53", "Nutlin-3a", "wt")
+util$plot_mut_path(strat_p53)
 @
 \caption{Nutlin-3a}
 \label{fig:strat-nutlin3a}
@@ -74,7 +57,7 @@ util$cmp_mut_path("p53", "TP53", "Nutlin-3a", "wt")
 resp = config$methods$ids %>%
     setdiff("paradigm") %>% # lowest FDR=39%
     c("mutation") %>% # compare mutations as well
-    lapply(load_fun) %>%
+    lapply(util$load_fun) %>%
     bind_rows()
 
 ggplot(resp, aes(x=-log10(adj.p), y=log10(num), color=method)) +

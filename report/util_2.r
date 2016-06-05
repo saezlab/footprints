@@ -2,34 +2,36 @@ library(magrittr)
 library(cowplot)
 b = import('base')
 io = import('io')
-st = import('stats')
-ar = import('array')
 df = import('data_frame')
 plt = import('plot')
-tcga = import('data/tcga')
 config = import('../config')
 
-#' Loads a specific TCGA scores file
+#' Function to load data from the TCGA mutation associations
 #'
-#' supplies path and extension, and cuts rownames at 16 chars
-#'
-#' @param x       An identifier, like 'speed_matrix'
-#' @param filter  Which subset of the mutation associations to use
-#' @return        A matrix with samples as rows and genes and columns
-assoc_df = function(x, filter="pan_cov") {
-    load_fun = function(x) {
-        io$file_path("../analyses/tcga_pathway_per_mutation/assocs_driver_mapped", x, ext=".RData") %>%
-            io$load() %>%
-            filter(subset == filter) %>%
-            mutate(method = x)
-    }
-    re = bind_rows(lapply(x, load_fun))
+#' @param dir  The subdir in the mutation folder
+#' @param id   Identifier of the method
+#' @return     data.frame with the association results
+load_fun = function(dir, id) {
+    fn = function(dir, id)
+        paste0(id, ".RData") %>%
+        module_file("../analyses/tcga_pathway_per_mutation/", dir, .) %>%
+            io$load()
+
+    b$lnapply(id, function(id) fn(dir, id)) %>%
+        df$add_name_col("method", bind=TRUE)
 }
 
-scores = c('gsva_reactome', 'gsva_go', 'speed_matrix', 'pathifier', 'spia', 'paradigm')
-
-assocs_cov = assoc_df(scores, "pan_cov")
-assocs_nocov = assoc_df(scores, "pan")
+mut_assocs = load_fun("assocs_driver_mapped", config$methods$ids)
+mut_cov = mut_assocs %>%
+    filter(subset == "pan_cov") %>%
+    select(-subset)
+mut_nocov = mut_assocs %>%
+    filter(subset == "pan") %>%
+    select(-subset)
+cna_assocs = load_fun("assocs_cna_mapped", config$methods$ids)
+cna_cov = cna_assocs %>%
+    filter(subset == "pan_cov") %>%
+    select(-subset)
 
 #' Plots a matrix with mutation-pathway associations for different methods
 #'

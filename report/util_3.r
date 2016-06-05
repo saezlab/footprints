@@ -12,6 +12,20 @@ scores = io$load("../scores/gdsc/pathways_mapped/speed_matrix.RData")
 mut = gdsc$mutated_genes(intogen=TRUE)
 ar$intersect(tissues, Ys, scores, mut, along=1)
 
+#' Loads drug associations with mapped pathways given method id
+#'
+#' @param fname  Method ID
+#' @return       Associations data.frame
+load_fun = function(fname) {
+    io$file_path('../analyses/drug_assocs/assocs_mapped', fname, ext=".RData") %>%
+        io$load() %$%
+        assocs.pan %>%
+        filter(adj.p < 0.1) %>%
+        arrange(adj.p) %>%
+        mutate(num = 1:nrow(.),
+               method = fname)
+}
+
 #' Returns names of a logical vector where the elements are TRUE
 nst = function(x) names(x[x])
 
@@ -109,36 +123,14 @@ contrast_stats = function(strat, drug, pathway, gene=pathway) {
     ))
 }
 
-#' Create a data.frame of drug responses
-#'
-#' @param pathway   The pathway scores
-#' @param mutation  Character vector of mutated genes
-#' @param drug      Drug name for which to get response IC50
-#' @return          A data.frame with COSMIC IDs, subset, drug resp, etc.
-create_df = function(pathway, mutation, drug) {
-    strat = stratify(pathway, mutation) %>%
-        stack() %>%
-        transmute(cosmic=values, subset=ind)
-
-    df$assemble(
-        tissue = tissues,
-        mut = apply(mut[, mutation, drop=FALSE], 1, any),
-        score = scores[,pathway],
-        resp = Ys[,drug]
-    ) %>%
-        add_rownames("cosmic") %>%
-        inner_join(strat, by="cosmic") %>%
-        na.omit()
-}
-
 #' Sub-stratifies the mut/wt sub-population using the (higher) pathway score
 #'
-#' @param path   Character string for pathway
-#' @param mut    Character vector of genes whose mutations count in
-#' @param drug   Character string of the drug
-#' @param strat  Which sub-population should be stratified - "mut" (default) or "wt"
-#' @return       A ggplot2 object with violin/boxplots
-cmp_mut_path = function(path, mut, drug, strat="mut") {
+#' @param path      Character string for pathway
+#' @param mutation  Character vector of genes whose mutations count in
+#' @param drug      Character string of the drug
+#' @param strat     Which sub-pop should be stratified - "mut" (default) or "wt"
+#' @return          A ggplot2 object with violin/boxplots
+cmp_mut_path = function(path, mutation, drug, strat="mut") {
     if (strat == "mut")
         levels = c("GENE_all", "GENE_wt", "GENE_mut", "PATH+_mut", "PATH-_mut", "PATH+", "PATH0", "PATH-")
     else if (strat == "wt")
@@ -146,14 +138,28 @@ cmp_mut_path = function(path, mut, drug, strat="mut") {
     else
         stop("need 'mut' or 'wt' for stratification")
 
-    mydf = util$create_df(path, mut, drug) %>%
+    strat = stratify(path, mutation) %>%
+        stack() %>%
+        transmute(cosmic=values, subset=ind)
+
+    mydf = df$assemble(
+        tissue = tissues,
+        mut = apply(mut[, mutation, drop=FALSE], 1, any),
+        score = scores[,path],
+        resp = Ys[,drug]
+    ) %>%
+        add_rownames("cosmic") %>%
+        inner_join(strat, by="cosmic") %>%
         mutate(subset = factor(subset, levels=levels)) %>%
         na.omit() # remove those subsets were we don't assign a level
 
     # rename GENE and PATH to what we actually look at
     levels(mydf$subset) = sub("PATH", path, levels(mydf$subset))
-    levels(mydf$subset) = sub("GENE", ifelse(length(mut)==1, mut, path), levels(mydf$subset))
+    levels(mydf$subset) = sub("GENE", ifelse(length(mutation)==1, mutation, path), levels(mydf$subset))
+    mydf
+}
 
+plot_mut_path = function(mydf) {
     ggplot(mydf, aes(x=subset, y=resp)) +
         geom_violin() +
         geom_boxplot(width=.5, outlier.shape=NA) +
@@ -161,4 +167,24 @@ cmp_mut_path = function(path, mut, drug, strat="mut") {
         xlab("") +
         ylab("Drug response [log uM]") #+
 #        theme(axis.text.x = element_text(angle=45, hjust=1)) # makes them unevenly high
+}
+
+#' Creates a stratification stats summary table
+#'
+#' @param path
+#' @param mut
+#' @param drug
+#' @param strat
+#' @return
+table_mut_path = function(path, mut, drug, strat="mut") {
+    mydf = util$create_df(path, mut, drug) %>%
+        mutate(subset = factor(subset),
+               pathway = path,
+               mutation = ifelse(length(mut)==1, mut, path)) %>%
+        na.omit()
+
+#   table(mydf$subset)
+#    util$stratify(path, mut) %>%
+#        util$contrast_stats(drug, path)
+
 }
