@@ -21,10 +21,15 @@ load_fun = function(dir, id) {
         df$add_name_col("method", bind=TRUE)
 }
 
-mut_assocs = load_fun("assocs_driver_mapped", config$methods$ids) %>%
+mut_assocs = load_fun("assocs_driver_mapped", config$methods$ids)
+mut_cov = mut_assocs %>%
     filter(subset == "pan_cov") %>%
     select(-subset)
-cna_assocs = load_fun("assocs_cna_mapped", config$methods$ids) %>%
+mut_nocov = mut_assocs %>%
+    filter(subset == "pan") %>%
+    select(-subset)
+cna_assocs = load_fun("assocs_cna_mapped", config$methods$ids)
+cna_cov = cna_assocs %>%
     filter(subset == "pan_cov") %>%
     select(-subset)
 
