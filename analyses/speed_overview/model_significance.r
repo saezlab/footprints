@@ -10,5 +10,8 @@ summary = function() {
 }
 
 if (is.null(module_name())) {
-	print(summary())
+    pdf("model_significance.pdf")
+    on.exit(dev.off)
+
+    knitr::kable(summary(), booktabs=TRUE)
 }
