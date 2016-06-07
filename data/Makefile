@@ -1,6 +1,6 @@
 include ../Makefile.inc
 
-YAML = $(shell find index -mindepth 2 -name "*.yaml")
+YAML = $(shell find ../index -mindepth 2 -name "*.yaml")
 ACCESSION = $(basename $(notdir $(YAML)))
 NORMALIZED = $(ACCESSION:%=normalized/%.RData)
 

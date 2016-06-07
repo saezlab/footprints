@@ -22,35 +22,35 @@ pathways_mapped/speed_%.RData: speed.r ../../model/model_%.RData
 	Rscript $< $(word 2,$^) $@
 
 pathways_mapped/gsea_%.RData: set_enrichment.r ../../util/genesets/mapped/%.RData
-	Rscript $^ $@
+	$(call bsub_log,4096) Rscript $^ $@
 
 pathways_mapped/gsva_%.RData: gsva.r ../../util/genesets/mapped/%.RData
-	Rscript $^ $@
+	$(call bsub_log,4096) Rscript $^ $@
 
 pathways_mapped/spia.RData: spia.r
-	Rscript $^ $@ TRUE
+	$(call bsub_log,4096) Rscript $^ $@ TRUE
 
 pathways_mapped/pathifier.RData: pathifier.r ../../util/genesets/mapped/reactome.RData
-	Rscript $^ $@
+	$(call bsub_log,4096) Rscript $^ $@
 
 pathways_mapped/paradigm.RData: paradigm.r
-	Rscript $^ $@
+	$(call bsub_log,4096) Rscript $^ $@
 
 # all pathways
 pathways_all/gsea_%.RData: set_enrichment.r ../../util/genesets/all/%.RData
-	Rscript $^ $@
+	$(call bsub_log,4096) Rscript $^ $@
 
 pathways_all/gsva_%.RData: gsva.r ../../util/genesets/all/%.RData
-	Rscript $^ $@
+	$(call bsub_log,4096) Rscript $^ $@
 
 pathways_all/spia.RData: spia.r
-	Rscript $^ $@ FALSE
+	$(call bsub_log,4096) Rscript $^ $@ FALSE
 
 pathways_all/pathifier.RData: pathifier.r ../../util/genesets/all/reactome.RData
-	Rscript $^ $@
+	$(call bsub_log,4096) Rscript $^ $@
 
 pathways_all/mutation.RData: mutation.r
 	Rscript $^ $@
 
 #paradigm.RData: paradigm.r
-#	Rscript $^ $@
+#	$(call bsub_log,4096) Rscript $^ $@

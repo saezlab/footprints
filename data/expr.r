@@ -47,7 +47,7 @@ if (is.null(module_name())) {
     ar = import('array')
 
     EXPR = commandArgs(TRUE) %or% list.files("normalized", "\\.RData", full.names=TRUE)
-    YAML = list.files("index", "[0-9]+\\.yaml$", recursive=TRUE, full.names=TRUE)
+    YAML = list.files("../index", "[0-9]+\\.yaml$", recursive=TRUE, full.names=TRUE)
     OUTFILE = "expr.RData"
 
     # load all index files
