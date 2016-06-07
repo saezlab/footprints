@@ -34,7 +34,7 @@ pathways_mapped/pathifier.RData: pathifier.r ../../util/genesets/mapped/reactome
 	$(call bsub_log,4096) Rscript $^ $@
 
 pathways_mapped/paradigm.RData: paradigm.r
-	$(call bsub_log,4096) Rscript $^ $@
+	Rscript $^ $@
 
 # all pathways
 pathways_all/gsea_%.RData: set_enrichment.r ../../util/genesets/all/%.RData
