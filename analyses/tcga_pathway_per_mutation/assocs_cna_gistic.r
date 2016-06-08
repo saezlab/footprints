@@ -5,6 +5,7 @@ st = import('stats')
 ar = import('array')
 plt = import('plot')
 tcga = import('data/tcga')
+gdsc = import('data/gdsc')
 
 subs2assocs = function(subs, cna, scores) {
     message(subs)
@@ -22,10 +23,8 @@ subs2assocs = function(subs, cna, scores) {
         size = 0.5
     }
 
-    num_sample = length(unique(m$sample))
-    altered = m$hgnc
-    m$altered = 1
-    m = ar$construct(altered ~ sample + hgnc, data=m,
+    num_sample = length(unique(m$barcode))
+    m = ar$construct(gistic ~ barcode + hgnc, data=m,
                      fun.aggregate = mean, fill=0)
     ar$intersect(m, scores)
 
@@ -49,22 +48,17 @@ subs2assocs = function(subs, cna, scores) {
                subset = subs)
 }
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/pathways_mapped/speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "cna_gistic.RData"
-CNAFILE = "cna.txt"
 
 scores = io$load(INFILE)
 rownames(scores) = substr(rownames(scores), 1, 15)
-gistic_lookup = setNames(c("+", "-"), c(2, -2))
-
-cna = io$read_table(CNAFILE, header=TRUE) %>%
-    transmute(hgnc = GENE_NAME,
-              sample = substr(Tumor_Sample_Barcode, 1, 15), # NO PORTION
-              study = study,
-              gistic = sapply(CNA_gistic, function(x) gistic_lookup[as.character(x)])) %>%
-    mutate(hgnc = paste0(hgnc, gistic)) %>%
-    select(-gistic) %>%
-    filter(!study %in% c("KICH","LAML")) # no alteration present n>=cutoff
+cna = tcga$cna() %>%
+    select(barcode, hgnc, gistic) %>%
+    mutate(barcode = substr(barcode, 1, 15)) %>%
+    filter(barcode %in% rownames(scores) & hgnc %in% gdsc$drivers()$HGNC) %>%
+    unique() %>%
+    mutate(study = tcga$barcode2study(barcode))
 
 methods = c("pan", "pan_cov", sort(unique(cna$study)))
 assocs = bind_rows(lapply(methods, function(x) subs2assocs(x, cna, scores)))
