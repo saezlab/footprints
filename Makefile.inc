@@ -42,6 +42,10 @@ tw = $(word $(1), $(subst /, ,$(subst ., ,$(subst _, ,$@))))
 grid = $(foreach x,$(1),$(foreach y,$(2),$(x)_$(y)))
 
 # Job submission with resources
-bsub = bsub -K -M $(1) -R "rusage[mem=$(1)]"
-# -R "select[gpfs]"
-bsub_log = $(call bsub,$(1)) -oo $(addsuffix .log, $(basename $@))
+bsub_email = bsub -K -M $(1) -R "rusage[mem=$(1)]"
+bsub_log = $(call bsub_email,$(1)) -oo $(addsuffix .log, $(basename $@))
+bsub_nolog = $(call bsub_email,$(1)) -oo /dev/null
+
+# Filter strings by a substring they contain
+contains = $(foreach v,$(2),$(if $(findstring $(1),$(v)),,$(v)))
+contains_not = $(foreach v,$(2),$(if $(findstring $(1),$(v)),$(v),))
