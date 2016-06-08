@@ -17,6 +17,7 @@ mapped: $(filter plots_mapped/%,$(GDSC_PLOTS)) plots_all/mutation.pdf drug_range
 $(GDSC_PLOTS): plots_%.pdf: plot.r assocs_%.RData
 	Rscript $^ $@
 
+# only difference here is memory
 $(filter assocs_mapped/%,$(GDSC_ASSOCS)): assocs_%.RData: gdsc_assocs.r ../../scores/gdsc/pathways_%.RData
 	$(call bsub_log,4096) Rscript $^ $@
 

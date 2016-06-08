@@ -20,5 +20,5 @@ plots/%.pdf: plot.r assocs/%.RData
 gene_variants.RData: gene_variants.r ../tcga_pathway_per_mutation/mutations_annotated_pathwayactivities_v3_mikeformat.txt
 	Rscript $^ $@
 
-%.pdf: %.Rmd util.r
+%.pdf: %.Rmd
 	Rscript -e "rmarkdown::render('$<', 'pdf_document', output_file='$@')"
