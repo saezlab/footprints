@@ -47,5 +47,5 @@ bsub_log = $(call bsub_email,$(1)) -oo $(addsuffix .log, $(basename $@))
 bsub_nolog = $(call bsub_email,$(1)) -oo /dev/null
 
 # Filter strings by a substring they contain
-contains = $(foreach v,$(2),$(if $(findstring $(1),$(v)),,$(v)))
-contains_not = $(foreach v,$(2),$(if $(findstring $(1),$(v)),$(v),))
+contains = $(foreach v,$(2),$(if $(findstring $(1),$(v)),$(v),))
+contains_not = $(foreach v,$(2),$(if $(findstring $(1),$(v)),,$(v)))
