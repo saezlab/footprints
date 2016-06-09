@@ -7,7 +7,7 @@ hpc = import('hpc')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/mapped/reactome.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "pathways_mapped/pathifier.RData"
-tissues = import('../../config')$tcga$tissues_with_normals
+TISSUES = import('../../config')$tcga$tissues_with_normals
 
 if (grepl("mapped", OUTFILE)) {
     MIN_GENES = 1
@@ -53,23 +53,17 @@ tissue2scores = function(tissue, genesets, expr) {
 }
 
 # load pathway gene sets
-expr = lapply(tissues, tcga$rna_seq) %>%
+expr = lapply(TISSUES, tcga$rna_seq) %>%
     ar$stack(along=2)
 genesets = io$load(INFILE) %>%
     gsea$filter_genesets(rownames(expr), MIN_GENES, MAX_GENES)
-
-# handle COAD and READ separately
-if ("COADREAD" %in% tissues) {
-    tissues = setdiff(tissues, "COADREAD")
-    tissues = c(tissues, "COAD", "READ")
-}
 
 # make compatible to call with one set in above function
 for (i in seq_along(genesets))
     genesets[[i]] = setNames(list(genesets[[i]]), names(genesets)[i])
 
 # run pathifier in jobs
-result = hpc$Q(tissue2scores, tissue=tissues, genesets=genesets,
+result = hpc$Q(tissue2scores, tissue=TISSUES, genesets=genesets,
                const = list(expr=expr), expand_grid=TRUE,
                memory=10240, job_size=job_size, fail_on_error=FALSE)
 
