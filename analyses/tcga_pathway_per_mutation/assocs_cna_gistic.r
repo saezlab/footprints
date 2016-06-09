@@ -9,22 +9,23 @@ gdsc = import('data/gdsc')
 
 subs2assocs = function(subs, cna, scores) {
     message(subs)
-    study = tcga$barcode2study(rownames(scores))
+    study = tcga$barcode2study(rownames(cna))
 
     if (grepl("pan", subs)) {
-        m = ar$filter(cna, along=2, function(x) sum(x!=0) > 50, subsets=study)
+        m = ar$filter(cna, along=1, function(x) sum(x!=0) > 50, subsets=study)
         size = 0.1
     } else {
-        m = ar$filter(cna, along=2, function(x) sum(x!=0) > 5, subsets=study)
+        m = ar$filter(cna, along=1, function(x) sum(x!=0) > 5, subsets=study)
         size = 0.5
     }
-
-    ar$intersect(m, scores)
 
     if (nrow(m) == 0) {
         warning("no overlap between CNA and scores for ", subs)
         return(NULL)
     }
+
+    ar$intersect(scores, m, along=1)
+    study = tcga$barcode2study(rownames(m))
 
     # associations
     if (grepl("cov", subs)) {
