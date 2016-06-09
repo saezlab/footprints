@@ -12,10 +12,10 @@ subs2assocs = function(subs, cna, scores) {
     study = tcga$barcode2study(rownames(cna))
 
     if (grepl("pan", subs)) {
-        m = ar$filter(cna, along=1, function(x) sum(x!=0) > 50, subsets=study)
+        m = ar$filter(cna, along=1, function(x) sum(x!=0, na.rm=TRUE) > 50, subsets=study)
         size = 0.1
     } else {
-        m = ar$filter(cna, along=1, function(x) sum(x!=0) > 5, subsets=study)
+        m = ar$filter(cna, along=1, function(x) sum(x!=0, na.rm=TRUE) > 5, subsets=study)
         size = 0.5
     }
 

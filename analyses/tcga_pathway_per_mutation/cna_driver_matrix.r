@@ -14,4 +14,8 @@ cnat = tcga$cna_thresholded() %>%
 #FIXME: this loses 500/10k cases because no CNAs in drivers
 cna_mat = ar$construct(gistic ~ barcode + hgnc, cnat, fill=0, fun.aggregate=mean)
 
+# compare sure amp/del to those without change, ignore small changes
+cna_mat = cna_mat / 2
+cna_mat[cna_mat!=0 & cna_mat!=1] = NA
+
 save(cna_mat, file="cna_driver_matrix.RData")
