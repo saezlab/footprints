@@ -11,7 +11,8 @@ GSVA_SCORES_ALL = $(SETS_ALL:../../util/genesets/all/%=pathways_all/gsva_%)
 
 include ../../Makefile.inc
 $(call ext_dep,../../model,$(notdir $(MODELS)))
-$(call ext_dep,../../util/genesets,$(notdir $(SETS)))
+$(call ext_dep,../../util/genesets/mapped,$(notdir $(SETS_MAPPED)))
+$(call ext_dep,../../util/genesets/all,$(notdir $(SETS_ALL)))
 
 all: mapped $(SET_SCORES_ALL) $(GSVA_SCORES_ALL) pathways_all/pathifier.RData pathways_all/spia.RData pathways_all/mutation.RData
 

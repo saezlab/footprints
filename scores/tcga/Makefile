@@ -10,8 +10,9 @@ GSVA_SCORES_MAPPED = $(SETS_MAPPED:../../util/genesets/mapped/%=pathways_mapped/
 GSVA_SCORES_ALL = $(SETS_ALL:../../util/genesets/all/%=pathways_all/gsva_%)
 
 include ../../Makefile.inc
-#$(call ext_dep,../../model,$(notdir $(MODELS)))
-#$(call ext_dep,../../util/genesets,$(notdir $(SETS)))
+$(call ext_dep,../../model,$(notdir $(MODELS)))
+$(call ext_dep,../../util/genesets/mapped,$(notdir $(SETS_MAPPED)))
+$(call ext_dep,../../util/genesets/all,$(notdir $(SETS_ALL)))
 
 
 all: mapped $(SPEED_SCORES) $(SET_SCORES_ALL) $(GSVA_SCORES_ALL) pathways_all/pathifier.RData pathways_all/spia.RData pathways_mapped/paradigm.RData
@@ -49,7 +50,7 @@ pathways_all/spia.RData: spia.r ../../config/tcga.yaml
 	$(call bsub_log,40960) Rscript $< $@ FALSE
 
 pathways_all/pathifier.RData: pathifier.r ../../util/genesets/all/reactome.RData ../../config/tcga.yaml
-	$(call bsub_log,20480) Rscript $< $(word 2,$^) $@
+	$(call bsub_log,40960) Rscript $< $(word 2,$^) $@
 
 #paradigm.RData: paradigm.r
 #	Rscript $^ $@

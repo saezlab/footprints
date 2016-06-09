@@ -6,9 +6,9 @@ SET_SCORES = $(SETS:../../util/genesets/mapped/%=gsea_%)
 GSVA_SCORES = $(SETS:../../util/genesets/mapped/%=gsva_%)
 
 include ../../Makefile.inc
-#$(call ext_dep,../../data,expr.RData)
-#$(call ext_dep,../../model,$(notdir $(MODELS)))
-#$(call ext_dep,../../util/genesets,$(notdir $(SETS)))
+$(call ext_dep,../../data,expr.RData)
+$(call ext_dep,../../model,$(notdir $(MODELS)))
+$(call ext_dep,../../util/genesets/mapped,$(notdir $(SETS)))
 
 
 all: mapped
