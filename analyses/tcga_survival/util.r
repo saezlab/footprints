@@ -85,7 +85,7 @@ tissue = function(scores, meta=clinical) {
     meta$scores = scores
 
     #TODO: add sex + make it work w/ only one
-    tissue = st$coxph(surv_days + alive ~ sex + age_days + scores,
+    tissue = st$coxph(surv_days + alive ~ age_days + scores,
                       subsets=meta$study, data=meta, min_pts=20)
 
     if (is.data.frame(scores) && all(sapply(scores, is.factor)))

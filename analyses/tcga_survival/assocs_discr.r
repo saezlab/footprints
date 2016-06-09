@@ -5,14 +5,14 @@ ar = import('array')
 st = import('stats')
 plt = import('plot')
 tcga = import('data/tcga')
-surv = import('./util')
+util = import('./util')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/pathways_mapped/speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "speed_matrix.RData"
 
 # load and select primary tumors only, one sample per patient
-scores = surv$load(file=INFILE)
-clinical = surv$clinical
+scores = io$load(file=INFILE)
+clinical = util$clinical
 
 # make sure we have pathway scores and clinical on the same subset
 ar$intersect(scores, clinical$barcode, along=1)
@@ -25,10 +25,10 @@ if (any(nnas < 10)) {
 
 # discretize in quartiles ("down", "unknown"*2, "up")
 scores = scores %>%
-    ar$map(along=1, subsets=clinical$study, surv$discretize_quartiles)
+    ar$map(along=1, subsets=clinical$study, util$discretize_quartiles)
 
 # calculate survival association using cox proportional hazards model
-pan_cov = surv$pancan(scores, clinical)
-tissue = surv$tissue(scores, clinical)
+pan_cov = util$pancan(scores, clinical)
+tissue = util$tissue(scores, clinical)
 
 save(pan_cov, tissue, file=OUTFILE)

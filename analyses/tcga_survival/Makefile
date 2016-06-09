@@ -1,10 +1,10 @@
 TCGA_SCORES = $(shell find ../../scores/tcga -name "*.RData")
 
 CONT_ASSOCS = $(TCGA_SCORES:../../scores/tcga/pathways_%.RData=assocs_cont_%.RData)
-DISCR_ASSOCS = $(TCGA_SCORES:../../scores/tcga/pathways_%.RData=assocs_discr_%.RData)
+DISCR_ASSOCS = #$(TCGA_SCORES:../../scores/tcga/pathways_%.RData=assocs_discr_%.RData) #discrete currently failing
 
 CONT_PLOTS = $(CONT_ASSOCS:assocs_%.RData=plot_%.pdf)
-DISCR_PLOTS = $(DISCR_ASSOCS:assocs_%.RData=plot_%.pdf)
+DISCR_PLOTS = #$(DISCR_ASSOCS:assocs_%.RData=plot_%.pdf)
 
 include ../../Makefile.inc
 $(call ext_dep,../../scores/tcga,$(notdir $(CONT) $(DISCR)))
