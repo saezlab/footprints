@@ -18,13 +18,16 @@ mapped: $(call contains,_mapped,$(DRIVER_PLOTS) $(SNP_PLOTS) $(CNA_PLOTS))
 
 $(DRIVER_ASSOCS): assocs_driver_%.RData: assocs_drivers.r ../../scores/tcga/pathways_%.RData
 	@mkdir -p $(dir $@)
-	$(call bsub_log,4096) Rscript $^ $@
+	$(call bsub_log,10240) Rscript $^ $@
 
 $(CNA_ASSOCS): assocs_cna_%.RData: assocs_cna_gistic.r ../../scores/tcga/pathways_%.RData
 	@mkdir -p $(dir $@)
-	$(call bsub_log,4096) Rscript $^ $@
+	$(call bsub_log,10240) Rscript $^ $@
 
 
 $(DRIVER_PLOTS) $(CNA_PLOTS): plot_%.pdf: plot.r assocs_%.RData
 	@mkdir -p $(dir $@)
 	Rscript $^ $@
+
+cna_driver_matrix.RData: cna_driver_matrix.r
+	Rscript $^
