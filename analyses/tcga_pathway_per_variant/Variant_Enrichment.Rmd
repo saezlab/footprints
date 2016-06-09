@@ -25,7 +25,7 @@ FET = function(TP, FN, FP, TN) {
 Test for enrichment of mutated genes of a certain cancer type
 compared to other cancer types.
 
-```{r freqs, echo=FALSE}
+```{r freq_genes, echo=FALSE}
 genes = vars %>%
     select(id, study, hgnc, n_gene, n_gene_per_study) %>%
     mutate(n = n_distinct(id)) %>%
@@ -38,7 +38,11 @@ genes = vars %>%
                                 n - n_gene, n_gene - n_gene_per_study)$odds.ratio)) %>%
     do(mutate(., p.value = FET(n_gene_per_study, n_study - n_gene_per_study,
                                n - n_gene, n_gene - n_gene_per_study)$p.value)) %>%
-    select(-n)
+    select(-n) %>%
+    mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
+    arrange(adj.p)
+
+head(as.data.frame(genes), 50)
 
 ```
 
@@ -47,8 +51,8 @@ genes = vars %>%
 Test for enrichment of variant frequency in one cancer type
 compared to others.
 
-```{r freqs, echo=FALSE}
-genes = vars %>%
+```{r freq_vars, echo=FALSE}
+gvars = vars %>%
     select(id, study, label, n_var, n_var_per_study) %>%
     mutate(n = n_distinct(id)) %>%
     group_by(study) %>%
@@ -61,5 +65,9 @@ genes = vars %>%
     do(mutate(., p.value = FET(n_var_per_study, n_study - n_var_per_study,
                                n - n_var, n_var - n_var_per_study)$p.value)) %>%
     select(-n) %>%
-    filter(label != "other")
+    filter(label != "other") %>%
+    mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
+    arrange(adj.p)
+
+head(as.data.frame(gvars), 50)
 ```

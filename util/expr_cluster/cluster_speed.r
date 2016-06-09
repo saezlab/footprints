@@ -13,7 +13,7 @@ tissue2clusters = function(expr) {
     # create ar$mask for tcga and gdsc separately
     lapply(n, function(n) {
         df = clust %>% filter(k == n)
-        re = setNames(df$cluster, df$sample) %>% ar$mask() + 0
+        re = t(setNames(df$cluster, df$sample) %>% ar$mask() + 0)
         colnames(re) = paste0("k", n, "_", colnames(re))
         re
     })

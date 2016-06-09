@@ -1,5 +1,6 @@
 ### general
 *.xls[x]
+*.odt
 *#
 *.DS_Store
 *.log

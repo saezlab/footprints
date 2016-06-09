@@ -1,0 +1,68 @@
+---
+title: "SKCM drug associations for perturbation-response genes"
+author: "Michael Schubert (schubert@ebi.ac.uk)"
+---
+
+```{r code, include=FALSE}
+library(dplyr)
+b = import('base')
+io = import('io')
+st = import('stats')
+ar = import('array')
+plt = import('plot')
+tcga = import('data/tcga')
+
+#mut = tcga$mutations() %>%
+#    filter(study == "BRCA") %>%
+#    mutate(patient = substr(Tumor_Sample_Barcode, 1, 15)) %>%
+#    group_by(patient) %>%
+#    summarize(TP53 = "TP53" %in% Hugo_Symbol,
+#              PIK3CA = "PIK3CA" %in% Hugo_Symbol)
+
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "snp_drivers.pdf"
+MUTFILE = "mutations_annotated_pathwayactivities_v3_mikeformat.txt"
+
+scores = io$load(INFILE)
+rownames(scores) = substr(rownames(scores), 1, 16)
+
+mut = io$read_table(MUTFILE, header=TRUE) %>%
+    transmute(hgnc = GENE_NAME,
+              sample = substr(Tumor_Sample_Barcode, 1, 16),
+              study = tcga$barcode2study(Tumor_Sample_Barcode)) %>%
+    filter(study == "BRCA")
+
+m = filter(mut, study=="BRCA") %>%
+    group_by(hgnc) %>%
+    filter(n() >= 5) %>%
+    ungroup()
+num_sample = length(unique(m$sample))
+altered = m$hgnc
+m$mut = 1
+m = ar$construct(mut ~ sample + hgnc,
+                 data=m, fun.aggregate = length) > 0 + 0
+ar$intersect(m, scores)
+
+m = as.data.frame(m[,c("TP53","PIK3CA")])
+m$both = m$TP53 & m$PIK3CA
+m$only_TP53 = m$TP53 & !m$PIK3CA
+m$only_PIK3CA = !m$TP53 & m$PIK3CA
+m$neither = !m$TP53 & !m$PIK3CA
+m = as.matrix(m)
+
+# associations
+result = st$lm(scores ~ m) %>% arrange(p.value) %>%
+    filter(term == "mTRUE") %>%
+    select(-term) %>%
+    mutate(adj.p = p.adjust(p.value, method="fdr"))
+
+# volcano plot
+result %>%
+    mutate(label = paste(m, scores, sep=":")) %>%
+    plt$color$p_effect(pvalue="adj.p", thresh=0.1) %>%
+    plt$volcano(base.size=size, p=0.1) +
+        ggtitle(paste0(subs, " (", num_sample, " samples, ",
+                       length(altered), " SNVs in ",
+                       length(unique(altered)), " genes)"))
+
+```

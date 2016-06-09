@@ -16,7 +16,7 @@ st = import('stats')
 gdsc = import('data/gdsc')
 
 args = commandArgs(TRUE)
-OUTFILE = args[1] %or% 'model_ontopof_mut_NULL_1000rep_alldrugs.RData'
+OUTFILE = args[1] %or% 'model_vs_mut_NULL_1000rep_alldrugs.RData'
 
 dset = list(
     speed = "../../scores/gdsc/speed_linear.RData",
@@ -28,7 +28,7 @@ dset = list(
 
 dset$tissues = gdsc$tissues(minN=10)
 dset$mut = gdsc$mutated_genes(intogen=TRUE) + 0
-dset$drugs = gdsc$drug_response('AUC')
+dset$drugs = gdsc$drug_response('IC50')
 
 dset = ar$intersect_list(dset, along=1)
 
@@ -37,11 +37,13 @@ dset$tissues = NULL
 drugs = dset$drugs
 dset$drugs = NULL
 
-mut = list(mut=dset$mut)
-dset$mut = NULL
+#mut = list(mut=dset$mut)
+#dset$mut = NULL
 
-result = st$ml(drugs ~ mut + dset, subsets = tissues, xval=10, aggr=list(mlr::mse, mlr::mae, mlr::rmse),
-               train_args = list("regr.glmnet"), shuffle_labels=TRUE, rep=1000, atomic_class=NULL,
+Qsquared = ...
+
+result = st$ml(drugs ~ dset, subsets = tissues, xval=10, aggr=list(mlr::mse, mlr::mae, mlr::rmse),
+               train_args = list("regr.glmnet"), atomic_class=NULL,
                hpc_args = list(n_jobs=200, memory=512)) # 200 jobs, 3 hrs per job
 
 #@NEW mut + dset:
