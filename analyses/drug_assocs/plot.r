@@ -4,8 +4,8 @@ io = import('io')
 plt = import('plot')
 
 #' File loading helper for association objects
-load_fun = function(fid) {
-    io$load(module_file(fid))
+load_fun = function(fid, type="mapped") {
+    io$load(module_file(paste0("assocs_", type), paste0(fid, ".RData")))
 }
 
 #' Volcano plot for pan-cancer
