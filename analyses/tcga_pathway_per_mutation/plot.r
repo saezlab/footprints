@@ -14,10 +14,10 @@ pdf(OUTFILE, paper="a4r", width=26, height=20)
 
 for (subs in subsets) {
     if (grepl("pan", subs)) {
-        pt_size = 0.5
+        pt_size = 0.3
         label_top = 40
     } else {
-        pt_size = 5
+        pt_size = 0.5
         label_top = 20
     }
 
