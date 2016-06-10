@@ -59,14 +59,18 @@ util$plot_mut_path(strats[[4]])
 \caption{Stratification statistics}
 \small{
 <<strat_table, echo=FALSE>>=
-df$add_name_col(strats, "treatment", bind=TRUE) %>%
+path_lookup = setNames(c("active", "inactive", "average"), c("+", "-", "0"))
+tab = df$add_name_col(strats, "treatment", bind=TRUE) %>%
     group_by(treatment, subset) %>%
     summarize(n = n_distinct(cosmic)) %>%
     ungroup() %>%
     transmute(Treatment = treatment,
-              Subset = subset,
-              `Number of cell lines` = n) %>%
-    arrange(Treatment, -`Number of cell lines`) %>%
+              Mutation = b$grep("_(mut|wt)", subset),
+              Pathway = path_lookup[b$grep("([+-0])", subset)],
+              `Number of cell lines` = n)
+
+tab[is.na(tab)] = " "
+arrange(tab, Treatment, Mutation, Pathway) %>%
     kable(digits=2, booktabs=TRUE)
 @
 }
