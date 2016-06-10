@@ -24,7 +24,10 @@ venn = function() {
     pdf("/dev/null")
 
     #par(mfrow=c(3,4))
-    plots = lapply(seq_along(pathways), function(i) grid.arrange(gTree(children=plt$vennDiagramFromList(pathways[[i]])), top=textGrob(names(pathways)[i], gp=gpar(fontsize=30,font=8))))
+    plots = lapply(seq_along(pathways), function(i)
+            grid.arrange(gTree(children = plt$vennDiagramFromList(pathways[[i]], categories=c("","",""))),
+                         top = textGrob(names(pathways)[i],
+                         gp = gpar(fontsize=30,font=8))))
 
     dev.off()
 
