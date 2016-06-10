@@ -76,6 +76,24 @@ arrange(tab, Treatment, Mutation, Pathway) %>%
 }
 \end{table}
 
+\begin{table}[H]
+\centering
+\caption{Stratification statistics}
+\small{
+<<strat_table_test, echo=FALSE>>=
+b$lnapply(strats, util$contrast_stats) %>%
+    df$add_name_col("treatment", bind=TRUE) %>%
+    transmute(Treatment = treatment,
+              Reference = ref,
+              Comparison = sample,
+              `p-value` = p.value,
+              `FC (medians)` = median_folds,
+              `Number of cell lines` = n) %>%
+    kable(digits=50, booktabs=TRUE)
+@
+}
+\end{table}
+
 
 \subsection{Comparing associations to mutations}
 

@@ -1,5 +1,6 @@
 library(magrittr)
 library(dplyr)
+b = import('base')
 io = import('io')
 ar = import('array')
 df = import('data_frame')
@@ -78,7 +79,12 @@ stratify = function(pathway="MAPK", genes=c("BRAF","KRAS","NRAS")) {
 #' @return      A list with the reference and sample condition,
 #'              p.value and fold change of median
 wilcox = function(mydf, c1, c2) {
-    mydf = na.omit(filter(mydf, subset %in% c(c1, c2)))
+    mydf = filter(mydf, subset %in% c(c1, c2)) %>%
+        select(cosmic, resp, subset) %>%
+        na.omit()
+
+    stopifnot(sum(duplicated(mydf$cosmic)) == 0)
+
     medians = mydf %>%
         group_by(subset) %>%
         summarize(median = median(resp)) %$%
@@ -108,13 +114,9 @@ linear_fit = function(mydf) {
 #'
 #' @param start    A stratification returned by `stratify()`
 #' @param pathway  A character referencing the pathway
-contrast_stats = function(strat, drug, pathway, gene=pathway) {
-    mydf = stack(strat) %>%
-        transmute(cosmic=values, subset=ind)
-    mydf$tissue = tissues[mydf$cosmic]
-    mydf$score = scores[,pathway][mydf$cosmic]
-    mydf$resp = Ys[,drug][mydf$cosmic]
-
+contrast_stats = function(mydf) {
+    gene = as.character(na.omit(unique(b$grep("^([a-zA-Z0-9]+)_wt$", mydf$subset))))
+    pathway = as.character(na.omit(unique(b$grep("^([a-zA-Z0-9]+)\\+", mydf$subset))))
     as.data.frame(bind_rows(
         wilcox(mydf, paste0(gene, "_wt"), paste0(gene, "_mut")),
         wilcox(mydf, paste0(pathway, "+"), paste0(pathway, "-")),
