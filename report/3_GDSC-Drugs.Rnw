@@ -5,18 +5,25 @@ library(magrittr)
 library(dplyr)
 b = import('base')
 io = import('io')
+df = import('data_frame')
 util = import('./util_3')
 config = import('../config')
 
 mapk_mut = c("NRAS", "KRAS", "BRAF")
+
+strats = list(
+    `MAPK + Trametinib` = util$cmp_mut_path("MAPK", mapk_mut, "Trametinib", "mut"),
+    `MAPK + AZ628` = util$cmp_mut_path("MAPK", mapk_mut, "AZ628", "mut"),
+    `BRAF + Dabrafenib` = util$cmp_mut_path("MAPK", "BRAF", "Dabrafenib", "mut"),
+    `p53 + Nutlin-3a` = util$cmp_mut_path("p53", "TP53", "Nutlin-3a", "wt")
+)
 @
 
 \subsection{Improvement over mutations alone}
 
 \begin{figure}[H]
 <<tram, echo=FALSE, fig.height=3>>=
-strat_tram = util$cmp_mut_path("MAPK", mapk_mut, "Trametinib", "mut")
-util$plot_mut_path(strat_tram)
+util$plot_mut_path(strats[[1]])
 @
 \caption{Trametinib}
 \label{fig:strat-trametinib}
@@ -24,8 +31,7 @@ util$plot_mut_path(strat_tram)
 
 \begin{figure}[H]
 <<az628, echo=FALSE, fig.height=3>>=
-strat_az628 = util$cmp_mut_path("MAPK", mapk_mut, "AZ628", "mut")
-util$plot_mut_path(strat_az628)
+util$plot_mut_path(strats[[2]])
 @
 \caption{AZ628}
 \label{fig:strat-az628}
@@ -33,8 +39,7 @@ util$plot_mut_path(strat_az628)
 
 \begin{figure}[H]
 <<dabraf, echo=FALSE, fig.height=3>>=
-strat_dabraf = util$cmp_mut_path("MAPK", "BRAF", "Dabrafenib", "mut")
-util$plot_mut_path(strat_dabraf)
+util$plot_mut_path(strats[[3]])
 @
 \caption{Dabrafenib}
 \label{fig:strat-dabrafenib}
@@ -42,12 +47,30 @@ util$plot_mut_path(strat_dabraf)
 
 \begin{figure}[H]
 <<nutlin, echo=FALSE, fig.height=3>>=
-strat_p53 = util$cmp_mut_path("p53", "TP53", "Nutlin-3a", "wt")
-util$plot_mut_path(strat_p53)
+util$plot_mut_path(strats[[4]])
 @
 \caption{Nutlin-3a}
 \label{fig:strat-nutlin3a}
 \end{figure}
+
+
+\begin{table}[H]
+\centering
+\caption{Stratification statistics}
+\small{
+<<strat_table, echo=FALSE>>=
+df$add_name_col(strats, "treatment", bind=TRUE) %>%
+    group_by(treatment, subset) %>%
+    summarize(n = n_distinct(cosmic)) %>%
+    ungroup() %>%
+    transmute(Treatment = treatment,
+              Subset = subset,
+              `Number of cell lines` = n) %>%
+    arrange(Treatment, -`Number of cell lines`) %>%
+    kable(digits=2, booktabs=TRUE)
+@
+}
+\end{table}
 
 
 \subsection{Comparing associations to mutations}
