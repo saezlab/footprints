@@ -14,7 +14,8 @@ util = import('./util_2')
 
 \begin{figure}[H]
 <<mut_cna_volcao, echo=FALSE>>=
-list(mut=util$mut_cov, cna=util$cna_assocs) %>%
+list(mut = filter(util$mut_cov, method == "speed_matrix"),
+     cna = filter(util$cna_cov, method == "speed_matrix")) %>%
     df$add_name_col("type", bind=TRUE) %>%
     plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.05, dir=-1) %>%
     plt$volcano(base.size=0.1, text.size=2, p=0.05)

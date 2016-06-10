@@ -15,7 +15,7 @@ subs2assocs = function(subs, cna, scores) {
         m = ar$filter(cna, along=1, function(x) sum(x!=0, na.rm=TRUE) > 50, subsets=study)
         size = 0.1
     } else {
-        m = ar$filter(cna, along=1, function(x) sum(x!=0, na.rm=TRUE) > 5, subsets=study)
+        m = ar$filter(cna[study==subs,], along=1, function(x) sum(x!=0, na.rm=TRUE) > 5)
         size = 0.5
     }
 
