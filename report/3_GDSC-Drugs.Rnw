@@ -87,8 +87,7 @@ b$lnapply(strats, util$contrast_stats) %>%
               Reference = ref,
               Comparison = sample,
               `p-value` = p.value,
-              `FC (medians)` = median_folds,
-              `Number of cell lines` = n) %>%
+              `FC (medians)` = median_folds) %>%
     kable(digits=50, booktabs=TRUE)
 @
 }
