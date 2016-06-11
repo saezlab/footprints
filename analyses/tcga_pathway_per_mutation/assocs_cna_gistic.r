@@ -45,9 +45,9 @@ INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/pathways_mapped/speed_matr
 CNAFILE = commandArgs(TRUE)[2] %or% "cna_driver_matrix.RData"
 OUTFILE = commandArgs(TRUE)[3] %or% "cna_gistic.RData"
 
-scores = io$load(INFILE)
+studies = import('../../config')$tcga$tissues_with_normals
+scores = tcga$map_id(io$load(INFILE), along=1, id_type="specimen", subset="primary")
 cna = io$load(CNAFILE)
-studies = unique(tcga$barcode2study(rownames(cna)))
 
 methods = c("pan", "pan_cov", sort(studies))
 assocs = bind_rows(lapply(methods, function(x) subs2assocs(x, cna, scores)))
