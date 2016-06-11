@@ -97,7 +97,7 @@ b$lnapply(strats, util$contrast_stats) %>%
 \subsection{Comparing associations to mutations}
 
 \begin{figure}[H]
-<<compare, echo=FALSE>>=
+<<compare, echo=FALSE, fig.height=5.2>>=
 resp = config$methods$ids %>%
     setdiff("paradigm") %>% # lowest FDR=39%
     c("mutation") %>% # compare mutations as well
@@ -105,9 +105,12 @@ resp = config$methods$ids %>%
     bind_rows() %>%
     mutate(method = config$id2short(method))
 
-ggplot(resp, aes(x=-log10(adj.p), y=log10(num), color=method)) +
-    geom_step() +
-    theme_bw()
+ggplot(resp, aes(x=-log10(adj.p), y=num, color=method)) +
+    geom_step(size=2) +
+    theme_bw() +
+    scale_y_log10() +
+    xlab("- log FDR") +
+    ylab("Number of associations")
 @
 \caption{Number and strength of associations}
 \label{fig:strength-stepwise}

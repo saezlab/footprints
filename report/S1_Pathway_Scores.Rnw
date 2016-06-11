@@ -158,7 +158,7 @@ model corresponds better to perturbations.
 roc = import('../analyses/speed_raw/roc')
 roc$roc %>%
     mutate(method = config$id2short(method)) %>%
-    roc$do_plot() + config$facet_theme
+    roc$do_plot(width=1.1) + config$facet_theme
 @
 \caption{ROC curves for different pathway methods}
 \label{fig:roc}
