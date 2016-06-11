@@ -102,7 +102,8 @@ resp = config$methods$ids %>%
     setdiff("paradigm") %>% # lowest FDR=39%
     c("mutation") %>% # compare mutations as well
     lapply(util$load_fun) %>%
-    bind_rows()
+    bind_rows() %>%
+    mutate(method = config$id2short(method))
 
 ggplot(resp, aes(x=-log10(adj.p), y=log10(num), color=method)) +
     geom_step() +

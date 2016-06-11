@@ -31,8 +31,9 @@ pathways = function(ids, rev=FALSE) {
 }
 
 id2name = function(ids, drop=TRUE, rev=FALSE) {
-    idx = match(ids, methods$ids)
-    fac = factor(methods$names[idx], levels=.rev(methods$names, rev=rev))
+    idx = match(ids, c(methods$ids, "mutation"))
+    name = c(methods$names, "Mutations")
+    fac = factor(name[idx], levels=.rev(name, rev=rev))
     if (drop)
         droplevels(fac)
     else
@@ -40,8 +41,9 @@ id2name = function(ids, drop=TRUE, rev=FALSE) {
 }
 
 id2short = function(ids, drop=TRUE, rev=FALSE) {
-    idx = match(ids, methods$ids)
-    fac = factor(methods$short[idx], levels=.rev(methods$short, rev=rev))
+    idx = match(ids, c(methods$ids, "mutation"))
+    short = c(methods$short, "Mutations")
+    fac = factor(short[idx], levels=.rev(short, rev=rev))
     if (drop)
         droplevels(fac)
     else
