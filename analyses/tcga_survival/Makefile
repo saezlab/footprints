@@ -17,13 +17,13 @@ all: $(CONT_PLOTS) $(DISCR_PLOTS)
 mapped: $(call contains,_mapped,$(DISCR_PLOTS) $(CONT_PLOTS))
 
 
-$(CONT_ASSOCS): assocs_cont_%.RData: assocs_cont.r ../../scores/tcga/pathways_%.RData
+$(CONT_ASSOCS): assocs_cont_%.RData: assocs_cont.r util.r ../../scores/tcga/pathways_%.RData
 	@mkdir -p $(dir $@)
-	$(call bsub_log,4096) Rscript $^ $@
+	$(call bsub_log,4096) Rscript $< $(word 3,$^) $@
 
-$(DISCR_ASSOCS): assocs_discr_%.RData: assocs_discr.r ../../scores/tcga/pathways_%.RData
+$(DISCR_ASSOCS): assocs_discr_%.RData: assocs_discr.r util.r ../../scores/tcga/pathways_%.RData
 	@mkdir -p $(dir $@)
-	$(call bsub_log,4096) Rscript $^ $@
+	$(call bsub_log,4096) Rscript $< $(word 3,$^) $@
 
 
 $(CONT_PLOTS) $(DISCR_PLOTS): plot_%.pdf: plot.r assocs_%.RData

@@ -44,7 +44,6 @@ clinical = tcga$clinical() %>%
 #'                Must have the following fields: surv_days, alive, study, age_days
 #' @return        A data.frame with the associations
 pancan = function(scores, meta=clinical) {
-    scores = tcga$map_id(scores, along=1, id_type="patient", subset="primary")
     ar$intersect(scores, meta$barcode, along=1)
     meta = as.list(meta)
     meta$scores = scores
@@ -73,7 +72,6 @@ pancan = function(scores, meta=clinical) {
 #'                Must have the following fields: surv_days, alive, study, age_days
 #' @return        A data.frame with the associations
 tissue = function(scores, meta=clinical) {
-    scores = tcga$map_id(scores, along=1, id_type="patient", subset="primary")
     ar$intersect(scores, meta$barcode, along=1)
     meta = as.list(meta)
     meta$scores = scores
@@ -107,10 +105,7 @@ tissue = function(scores, meta=clinical) {
 load_scores = function(id, file=NULL) {
     if (is.null(file))
         file = module_file(io$file_path("../../scores/tcga/pathways_mapped", id, ext=".RData"))
-    re =  io$load(file)
-    re = re[substr(rownames(re), 14, 16) == "01A",]
-    rownames(re) = substr(rownames(re), 1, 12)
-    re
+    tcga$map_id(io$load(file), id_type="patient", subset="primary")
 }
 
 #' Loads a specific survival association file
