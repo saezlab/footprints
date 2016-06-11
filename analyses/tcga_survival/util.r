@@ -105,7 +105,7 @@ tissue = function(scores, meta=clinical) {
 load_scores = function(id, file=NULL) {
     if (is.null(file))
         file = module_file(io$file_path("../../scores/tcga/pathways_mapped", id, ext=".RData"))
-    tcga$map_id(io$load(file), id_type="patient", subset="primary")
+    tcga$map_id(io$load(file), along=1, id_type="patient", subset="primary")
 }
 
 #' Loads a specific survival association file
