@@ -4,7 +4,7 @@ b = import('base')
 io = import('io')
 ar = import('array')
 
-do_plot = function(fname) {
+file2df = function(fname) {
     scores = io$load(module_file(fname))
 
     # require a 3d array here
@@ -21,8 +21,10 @@ do_plot = function(fname) {
 
     stability = var_bootstraps_given_clines / var_clines_given_bootstraps
 
-    sdf = data.frame(pathway = names(stability), score = stability)
+    data.frame(pathway = names(stability), score = stability)
+}
 
+do_plot = function(sdf) {
     ggplot(sdf, aes(x=pathway, y=score)) +
         geom_bar(stat="identity") +
         coord_flip() +
@@ -38,6 +40,6 @@ if (is.null(module_name())) {
     OUTFILE = commandArgs(TRUE)[2] %or% 'stability_matrix.pdf'
 
     pdf(OUTFILE)
-    do_plot(INFILE)
+    do_plot(file2df(INFILE))
     dev.off()
 }
