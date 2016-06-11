@@ -44,7 +44,7 @@ clinical = tcga$clinical() %>%
 #'                Must have the following fields: surv_days, alive, study, age_days
 #' @return        A data.frame with the associations
 pancan = function(scores, meta=clinical) {
-    scores = tcga$only_primary(scores, along=1)
+    scores = tcga$map_id(scores, along=1, id_type="patient", subset="primary")
     ar$intersect(scores, meta$barcode, along=1)
     meta = as.list(meta)
     meta$scores = scores
@@ -73,7 +73,7 @@ pancan = function(scores, meta=clinical) {
 #'                Must have the following fields: surv_days, alive, study, age_days
 #' @return        A data.frame with the associations
 tissue = function(scores, meta=clinical) {
-    scores = tcga$only_primary(scores, along=1)
+    scores = tcga$map_id(scores, along=1, id_type="patient", subset="primary")
     ar$intersect(scores, meta$barcode, along=1)
     meta = as.list(meta)
     meta$scores = scores
