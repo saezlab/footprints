@@ -18,7 +18,7 @@ calc_resample = function(zdata, zfun, seed_offset) {
 
     # calculate the model the same way we do with speed_matrix
     re = zfun(zdata=list(index=index, zscores=zscores))
-    re$model[rowSums(model != 0) != 0,]
+    re$model[rowSums(re$model != 0) != 0,]
 }
 
 ZDATA = commandArgs(TRUE)[1] %or% '../../data/zscores.RData'
