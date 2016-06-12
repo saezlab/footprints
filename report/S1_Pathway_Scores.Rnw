@@ -15,7 +15,10 @@ config = import('../config')
 
 \begin{figure}[H]
 <<dataset_size, echo=FALSE>>=
-import('../analyses/speed_overview/plot_bars')$do_plot()
+bars = import('../analyses/speed_overview/plot_bars')
+bars$create_df() %>%
+    mutate(variable = config$id2short(variable)) %>%
+    bars$do_plot()
 @
 \caption{Comparison of dataset size between SPEED, Gatza2014, and ours}
 \label{fig:dataset_size}
@@ -51,7 +54,7 @@ kable(import('../analyses/speed_overview/model_significance')$summary(),
 <<genesets, echo=FALSE, fig.width=19, fig.height=15>>=
 import('../analyses/speed_overview/geneset_overlap')$venn()
 @
-\caption{Difference in gene sets between Footprints and Gene Ontology/Reactome}
+\caption{Difference in gene sets between Perturbation-response genes and Gene Ontology/Reactome}
 \label{fig:genesets}
 \end{figure}
 
@@ -85,7 +88,7 @@ the following order: EGFR, H2O2, Hypoxia, JAK-STAT, MAPK, NFkB, PI3K,
 TGFb, TNFa, Trail, VEGF, p53).
 
 \begin{figure}[H]
-\subfloat[Footprints]{
+\subfloat[Perturbation-response genes]{
 <<perturb_speed, echo=FALSE, fig.width=8, fig.height=3>>=
 util$perturb_score_plots('speed_matrix')
 @
@@ -158,7 +161,7 @@ model corresponds better to perturbations.
 roc = import('../analyses/speed_raw/roc')
 roc$roc %>%
     mutate(method = config$id2short(method)) %>%
-    roc$do_plot(width=1.1) + config$facet_theme
+    roc$do_plot(width=1.05) + config$facet_theme
 @
 \caption{ROC curves for different pathway methods}
 \label{fig:roc}
@@ -285,7 +288,7 @@ the points (positive correlation blue, negative correlation red), strength by
 colour shade and size of the point.
 
 \begin{figure}[H]
-\subfloat[Footprints]{
+\subfloat[Perturbation-response genes]{
 <<cor_speed_matrix, echo=FALSE, fig.height=3, fig.width=8>>=
 util$cor_plots('speed_matrix')
 @

@@ -21,3 +21,17 @@ short:
     - SPIA
     - Pathifier
     - PARADIGM
+
+additional_name_mapping:
+    - ids:
+        - mutation
+        - speed1
+        - gatza
+    - short:
+        - Mutations
+        - SPEED
+        - Gatza (2014)
+    - names:
+        - Mutations
+        - SPEED
+        - Gatza et al. (2014)
