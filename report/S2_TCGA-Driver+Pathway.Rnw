@@ -63,7 +63,7 @@ util$mut_grid("KRAS_amp", "ERBB2_amp", "MYC_amp", "FGFR1_amp", nrow=1)
 
 \subfloat[Cell-cycle related]{
 <<method_compare2, echo=FALSE, fig.width=15, fig.height=5>>=
-util$mut_grid("CDK12_amp", "CDKN2A_amp", "CDKN1B_amp", "EIF4A2_amp", nrow=1)
+util$mut_grid("CDK12_amp", "CDKN2A_del", "CDKN1B_amp", "EIF4A2_amp", nrow=1)
 @
 }
 
