@@ -31,9 +31,8 @@ pathways = function(ids, rev=FALSE) {
 }
 
 id2name = function(ids, drop=TRUE, rev=FALSE) {
-    idx = match(ids, c(methods$ids, methods$additional_name_mapping$ids))
-    name = c(methods$names, methods$additional_name_mapping$names)
-    fac = factor(name[idx], levels=.rev(name, rev=rev))
+    idx = match(ids, methods$ids)
+    fac = factor(methods$names[idx], levels=.rev(methods$names, rev=rev))
     if (drop)
         droplevels(fac)
     else
@@ -41,9 +40,8 @@ id2name = function(ids, drop=TRUE, rev=FALSE) {
 }
 
 id2short = function(ids, drop=TRUE, rev=FALSE) {
-    idx = match(ids, c(methods$ids, methods$additional_name_mapping$ids))
-    short = c(methods$short, methods$additional_name_mapping$short)
-    fac = factor(short[idx], levels=.rev(short, rev=rev))
+    idx = match(ids, methods$ids)
+    fac = factor(methods$short[idx], levels=.rev(methods$short, rev=rev))
     if (drop)
         droplevels(fac)
     else

@@ -12,7 +12,7 @@ gdsc = import('data/gdsc')
 util = import('./util_3')
 config = import('../config')
 
-assocs = b$lnapply(config$methods$ids, util$vp$load_fun)
+assocs = b$lnapply(config$methods$analysis_set, util$vp$load_fun)
 @
 
 \subsection{Pan-cancer associations}

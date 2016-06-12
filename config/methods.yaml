@@ -1,3 +1,11 @@
+analysis_set:
+    - speed_matrix
+    - gsva_go
+    - gsva_reactome
+    - spia
+    - pathifier
+    - paradigm
+
 ids:
     - speed_matrix
     - gsva_go
@@ -5,6 +13,9 @@ ids:
     - spia
     - pathifier
     - paradigm
+    - mutation
+    - speed1
+    - gatza
 
 names:
     - Perturbation-response genes
@@ -13,6 +24,9 @@ names:
     - Signaling Pathway Impact Analysis
     - Pathifier
     - PARADIGM
+    - Mutations
+    - SPEED
+    - Gatza et al. (2014)
 
 short:
     - PRGs
@@ -21,17 +35,6 @@ short:
     - SPIA
     - Pathifier
     - PARADIGM
-
-additional_name_mapping:
-    - ids:
-        - mutation
-        - speed1
-        - gatza
-    - short:
-        - Mutations
-        - SPEED
-        - Gatza (2014)
-    - names:
-        - Mutations
-        - SPEED
-        - Gatza et al. (2014)
+    - Mutations
+    - SPEED
+    - Gatza (2014)

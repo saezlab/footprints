@@ -12,7 +12,7 @@ tcga = import('data/tcga')
 surv = import('../analyses/tcga_survival/util')
 config = import('../config')
 
-scores = b$lnapply(config$methods$ids, surv$load_scores)
+scores = b$lnapply(config$methods$analysis_set, surv$load_scores)
 
 assocs.pan = scores %>%
     sapply(surv$pancan, simplify=FALSE, USE.NAMES=FALSE) %>%

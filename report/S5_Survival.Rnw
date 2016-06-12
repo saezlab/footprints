@@ -11,7 +11,7 @@ plt = import('plot')
 util = import('../analyses/tcga_survival/util')
 config = import('../config')
 
-assocs = b$lnapply(config$methods$ids, util$load_assocs)
+assocs = b$lnapply(config$methods$analysis_set, util$load_assocs)
 @
 
 \subsection{Pan-cancer associations}

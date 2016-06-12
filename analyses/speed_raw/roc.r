@@ -39,7 +39,7 @@ do_plot = function(roc, width=1) {
         theme(axis.text.x = element_text(angle = 45, hjust = 1))
 }
 
-roc = config$methods$ids %>%
+roc = config$methods$analysis_set %>%
     setdiff("paradigm") %>% # we don't have this for the input exps
     lapply(method2pr_df) %>%
     bind_rows() %>%
