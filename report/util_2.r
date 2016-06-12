@@ -73,3 +73,25 @@ mutation_overview_plot = function(assoc_obj, genes) {
             xlab("Mutated gene") +
             ylab("- log (p-value)")
 }
+
+#' Plots a matrix for associations of mutation/CNA and different methods
+#'
+#' @param n1,n2,n3,n4  Names of the aberration
+#' @return             A cowplot arranged grid
+mut_grid = function(n1, n2, n3, n4, ...) {
+    name2obj = function(n) { # ifelse fails here and returns list
+        if (grepl("_amp|_del", n))
+            cna_cov
+        else
+            mut_cov
+    }
+    plot_grid(
+        mutation_method_plot(n1, name2obj(n1), 0.2, 0.05, 1e-3, 10),
+        mutation_method_plot(n2, name2obj(n2), 0.2, 0.05, 1e-3, 10),
+        mutation_method_plot(n3, name2obj(n3), 0.2, 0.05, 1e-3, 10),
+        mutation_method_plot(n4, name2obj(n4), 0.2, 0.05, 1e-3, 10),
+        labels = c(n1, n2, n3, n4), ...
+    ) +
+      theme(axis.text = element_text(size=7),
+            axis.title = element_text(size=9, face="bold"))
+}

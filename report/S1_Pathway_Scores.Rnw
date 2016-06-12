@@ -223,7 +223,7 @@ experiments are low, cf. figure fig:ROC).
 \begin{figure}[H]
 \centering
 \scalebox{.7}{
-<<stability, echo=FALSE, fig.width=5, fig.height=5>>=
+<<stability, echo=FALSE, fig.width=5, fig.height=4.5>>=
 stab = import('../analyses/speed_bootstrap/stability_plot')
 stab$file2df('gdsc_matrix.RData') %>%
     mutate(pathway = config$pathways(pathway, rev=TRUE)) %>%

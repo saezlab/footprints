@@ -10,69 +10,51 @@ df = import('data_frame')
 plt = import('plot')
 tcga = import('data/tcga')
 util = import('./util_2')
-@
 
-\subsection{Overview of number of driver mutations per cancer type (cont.)}
-
-\begin{figure}[H]
-<<method_compare, echo=FALSE, fig.width=15, fig.height=5>>=
-# to get an idea of what to look at in more detail
-#TODO: print table which give assocs with any, then highlight
 cov_keep = bind_rows(util$mut_cov, util$cna_cov) %>%
     group_by(m) %>%
-    filter(any(-log10(adj.p) > 5))
-
-#TODO: add well-known mut/cna that are not in main fig
-#TODO: use 1 line w/ 4 items and a certain topic (e.g. PI3K signaling) as subfigs
-plot_grid(
-    util$mutation_method_plot("CDK12_amp", util$cna_cov, 0.2, 0.05, 1e-3, 10),
-    util$mutation_method_plot("KRAS_amp", util$cna_cov, 0.2, 0.05, 1e-3, 10),
-    util$mutation_method_plot("MYD88", util$mut_cov, 0.2, 0.05, 1e-3, 10),
-    util$mutation_method_plot("CDKN1B_amp", util$cna_cov, 0.2, 0.05, 1e-3, 10),
-    labels = c("CDK12_amp", "KRAS_amp", "MYD88", "CDKN1B_amp"), nrow=1
-) +
-  theme(axis.text = element_text(size=7),
-          axis.title = element_text(size=9, face="bold"))
+    filter(any(-log10(adj.p) > 5)) %>%
+    top_n(1, -adj.p) %>%
+    ungroup() %>%
+    select(m, adj.p) %>%
+    arrange(adj.p) %$%
+    setNames(adj.p, m)
 @
-\caption{Comparison of mutation associations across methods}
-\label{fig:mut-heatmaps}
-\end{figure}
 
+\subsection{Volcano plots for different methods}
+
+%TODO: mut, cna facet_wrap
+
+\subsection{Comparison of different methods}
+
+\begin{figure}[H]
+\subfloat[RTK/MAPK related]{
+<<method_compare, echo=FALSE, fig.width=15, fig.height=5>>=
+util$mut_grid("KRAS_amp", "ERBB2_amp", "MYC_amp", "FGFR1_amp", nrow=1)
+@
+}
+
+\subfloat[Cell-cycle related]{
 <<method_compare2, echo=FALSE, fig.width=15, fig.height=5>>=
-plot_grid(
-    util$mutation_method_plot("CDKN2A_del", util$cna_cov, 0.2, 0.05, 1e-3, 10),
-    util$mutation_method_plot("ERBB2_amp", util$cna_cov, 0.2, 0.05, 1e-3, 10),
-    util$mutation_method_plot("EIF4A2_amp", util$cna_cov, 0.2, 0.05, 1e-3, 10),
-    util$mutation_method_plot("EIF4G1_amp", util$cna_cov, 0.2, 0.05, 1e-3, 10),
-    labels = c("CDKN2A_del", "ERBB2_amp", "EIF4A2_amp", "EIF4G1_amp"), nrow=1
-) +
-  theme(axis.text = element_text(size=7),
-        axis.title = element_text(size=9, face="bold"))
+util$mut_grid("CDK12_amp", "CDKN2A_amp", "CDKN1B_amp", "EIF4A2_amp", nrow=1)
 @
+}
 
+\subfloat[PI3K signaling]{
 <<method_compare3, echo=FALSE, fig.width=15, fig.height=5>>=
-plot_grid(
-    util$mutation_method_plot("MYC_amp", util$cna_cov, 0.2, 0.05, 1e-3, 10),
-    util$mutation_method_plot("FGFR1_amp", util$cna_cov, 0.2, 0.05, 1e-3, 10),
-    util$mutation_method_plot("NOTCH2_amp", util$cna_cov, 0.2, 0.05, 1e-3, 10),
-    util$mutation_method_plot("PIK3C2B_amp", util$cna_cov, 0.2, 0.05, 1e-3, 10),
-    labels = c("MYC_amp", "FGFR1_amp", "NOTCH2_amp", "PIK3C2B_amp"), nrow=1
-) +
-    theme(axis.text = element_text(size=7),
-          axis.title = element_text(size=9, face="bold"))
+util$mut_grid("PTEN_del", "PIK3CA_amp", "PIK3CB_amp", "PIK3C2B_amp", nrow=1)
 @
+}
 
+\subfloat[Uncategorized]{
 <<method_compare4, echo=FALSE, fig.width=15, fig.height=5>>=
-plot_grid(
-    util$mutation_method_plot("PTEN_del", util$cna_cov, 0.2, 0.05, 1e-3, 10),
-    util$mutation_method_plot("PIK3CA_amp", util$cna_cov, 0.2, 0.05, 1e-3, 10),
-    util$mutation_method_plot("PIK3CB_amp", util$cna_cov, 0.2, 0.05, 1e-3, 10),
-    util$mutation_method_plot("CTNNB1", util$mut_cov, 0.2, 0.05, 1e-3, 10),
-    labels = c("PTEN_del", "PIK3CA_amp", "PIK3CB_amp", "CTNNB1"), nrow=1
-) +
-    theme(axis.text = element_text(size=7),
-          axis.title = element_text(size=9, face="bold"))
+util$mut_grid("CTNNB1", "NOTCH2_amp", "GATA3_amp", "CASP8_amp", nrow=1)
 @
+}
+
+\caption{Comparison of mutation associations across methods}
+\label{fig:method-compare}
+\end{figure}
 
 
 \subsection{Discussion}
