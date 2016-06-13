@@ -161,7 +161,10 @@ model corresponds better to perturbations.
 roc = import('../analyses/speed_raw/roc')
 roc$roc %>%
     mutate(method = config$id2short(method)) %>%
-    roc$do_plot(width=1.05) + config$facet_theme
+    roc$do_plot(width=1.05) +
+        config$facet_theme +
+        xlab("False positive rate (FPR)") +
+        ylab("True positive rate (FPR)")
 @
 \caption{ROC curves for different pathway methods}
 \label{fig:roc}
