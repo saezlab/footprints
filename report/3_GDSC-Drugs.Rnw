@@ -98,7 +98,7 @@ b$lnapply(strats, util$contrast_stats) %>%
 
 \begin{figure}[H]
 <<compare, echo=FALSE, fig.height=5.2>>=
-resp = config$methods$ids %>%
+resp = config$methods$analysis_set %>%
     setdiff("paradigm") %>% # lowest FDR=39%
     c("mutation") %>% # compare mutations as well
     lapply(util$load_fun) %>%

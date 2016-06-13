@@ -14,10 +14,12 @@ util = import('./util_2')
 
 \begin{figure}[H]
 <<mut_cna_volcao, echo=FALSE>>=
-list(mut = filter(util$mut_cov, method == "speed_matrix"),
-     cna = filter(util$cna_cov, method == "speed_matrix")) %>%
+list(cna = filter(util$cna_nocov, method == "speed_matrix"),
+     mut = filter(util$mut_nocov, method == "speed_matrix")) %>%
     df$add_name_col("type", bind=TRUE) %>%
     plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.05, dir=-1) %>%
+    mutate(color = ifelse(type=="cna" & adj.p < 0.05 & estimate > 0, "#44045745", color),
+           color = ifelse(type=="cna" & adj.p < 0.05 & estimate < 0, "#c8e01e78", color)) %>%
     plt$volcano(base.size=0.1, text.size=2, p=0.05)
 @
 \caption{Associatons for drivers/copy number alterations}

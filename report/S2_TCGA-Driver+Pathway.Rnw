@@ -56,7 +56,7 @@ plt$symmetrise_scale(p)
 
 \begin{figure}[H]
 \subfloat[RTK/MAPK related]{
-<<method_compare, echo=FALSE, fig.width=15, fig.height=5>>=
+<<method_compare1, echo=FALSE, fig.width=15, fig.height=5>>=
 util$mut_grid("KRAS_amp", "ERBB2_amp", "MYC_amp", "FGFR1_amp", nrow=1)
 @
 }

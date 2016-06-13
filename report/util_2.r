@@ -32,6 +32,9 @@ cna_assocs = load_fun("assocs_cna_mapped", config$methods$analysis_set)
 cna_cov = cna_assocs %>%
     filter(subset == "pan_cov") %>%
     select(-subset)
+cna_nocov = cna_assocs %>%
+    filter(subset == "pan") %>%
+    select(-subset)
 
 #' Plots a matrix with mutation-pathway associations for different methods
 #'
