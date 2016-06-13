@@ -2,6 +2,7 @@
 
 <<setup2, include=FALSE>>=
 library(dplyr)
+library(magrittr)
 b = import('base')
 io = import('io')
 df = import('data_frame')
@@ -14,13 +15,20 @@ util = import('./util_2')
 
 \begin{figure}[H]
 <<mut_cna_volcao, echo=FALSE>>=
+within = list(cna = filter(util$cna_cov, method == "speed_matrix"),
+              mut = filter(util$mut_cov, method == "speed_matrix")) %>%
+    df$add_name_col("type", bind=TRUE) %>%
+    filter(adj.p < 0.05) %>%
+    select(scores, m)
+
 list(cna = filter(util$cna_nocov, method == "speed_matrix"),
      mut = filter(util$mut_nocov, method == "speed_matrix")) %>%
     df$add_name_col("type", bind=TRUE) %>%
+    mutate(circle = df$contains(., within)) %>%
     plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.05, dir=-1) %>%
     mutate(color = ifelse(type=="cna" & adj.p < 0.05 & estimate > 0, "#44045745", color),
            color = ifelse(type=="cna" & adj.p < 0.05 & estimate < 0, "#c8e01e78", color)) %>%
-    plt$volcano(base.size=0.1, text.size=2, p=0.05)
+    plt$volcano(base.size=0.1, text.size=2, p=0.05, label_top=Inf)
 @
 \caption{Associatons for drivers/copy number alterations}
 \label{fig:mut-heatmaps}
