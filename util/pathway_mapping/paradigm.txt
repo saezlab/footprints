@@ -1,0 +1,12 @@
+Pathway	PARADIGM node
+p53	response to DNA damage stimulus (abstract)
+JAK-STAT	STAT1-3-5-active
+Hypoxia	response to hypoxia (abstract)
+VEGF	platelet-derived growth factor receptor activity (abstract)
+Trail	induction of apoptosis (abstract)
+H2O2	response to hydrogen peroxide (abstract)
+EGFR	epidermal growth factor receptor activity (abstract)
+MAPK	MEK1-2-active
+PI3K	PIK3CA
+TNFa	tumor necrosis factor receptor activity (abstract)
+TGFb	SMAD1-5-8-active

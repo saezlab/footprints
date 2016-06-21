@@ -1,0 +1,28 @@
+Pathway	Reactome name
+IL-1	Interleukin-1 signaling
+JAK-STAT	Signaling by Interleukins
+JAK-STAT	Interferon Signaling
+JAK-STAT	Signalling to STAT3
+MAPK	Signalling to ERKs
+EGFR	Signaling by EGFR
+EGFR	Signaling by EGFR in Cancer
+PI3K	PI3K Cascade
+PI3K	Constitutive Signaling by Aberrant PI3K in Cancer
+PI3K	PI3K/AKT Signaling in Cancer
+PI3K	PI3K/AKT activation
+TGFb	Signaling by TGF-beta Receptor Complex
+TNFa	TNF signaling
+VEGF	Signaling by VEGF
+Wnt	Signaling by Wnt
+Wnt	Signaling by WNT in cancer
+Insulin	Signaling by Insulin receptor
+RAR	Signaling by Retinoic Acid
+p53	Transcriptional Regulation by TP53
+Trail	TRAIL  signaling
+notch	Signaling by NOTCH
+NFkB	TAK1 activates NFkB by phosphorylation and activation of IKKs complex
+NFkB	RIP-mediated NFkB activation via ZBP1
+PPAR	PPARA activates gene expression
+PPAR	Activation of PPARGC1A (PGC-1alpha) by phosphorylation
+SHH	Signaling by Hedgehog
+Hypoxia	Cellular response to hypoxia
