@@ -23,6 +23,8 @@ cov_keep = bind_rows(util$mut_cov, util$cna_cov) %>%
 
 \subsection{Volcano plots for different methods}
 
+%TODO: combine this as with main fig?
+
 \begin{figure}[H]
 <<pathway_mut_volcano, echo=FALSE, fig.width=8, fig.height=12>>=
 p = util$mut_cov %>%
@@ -33,7 +35,7 @@ p = util$mut_cov %>%
         config$facet_theme
 plt$symmetrise_scale(p)
 @
-\caption{}
+\caption{Mutations}
 \label{fig:drug-volcano-pancan}
 \end{figure}
 
@@ -47,7 +49,7 @@ p = util$cna_cov %>%
         config$facet_theme
 plt$symmetrise_scale(p)
 @
-\caption{}
+\caption{CNAs}
 \label{fig:drug-volcano-tissue}
 \end{figure}
 
@@ -82,8 +84,3 @@ util$mut_grid("CTNNB1", "NOTCH2_amp", "GATA3_amp", "CASP8_amp", nrow=1)
 \caption{Comparison of mutation associations across methods}
 \label{fig:drug-compare-matrix}
 \end{figure}
-
-
-\subsection{Discussion}
-
-... write some thoughts here ...
