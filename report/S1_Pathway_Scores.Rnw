@@ -209,15 +209,16 @@ util$perturb_score_plots('speed_matrix')
 util$perturb_score_plots('gsva_go')
 @
 }
-\end{figure}
-\begin{figure}[H]
-\ContinuedFloat
 
 \subfloat[Reactome]{
 <<perturb_reactome, echo=FALSE, fig.width=8, fig.height=3>>=
 util$perturb_score_plots('gsva_reactome')
 @
 }
+\phantomcaption
+\end{figure}
+\begin{figure}[H]
+\ContinuedFloat
 
 \subfloat[BioCarta]{
 <<perturb_biocarta, echo=FALSE, fig.width=8, fig.height=3>>=
@@ -425,6 +426,7 @@ util$cor_plots('gsva_reactome')
 util$cor_plots('gsva_biocarta')
 @
 }
+\phantomcaption
 \end{figure}
 \begin{figure}[H]
 \ContinuedFloat
