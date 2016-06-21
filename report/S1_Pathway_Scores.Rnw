@@ -25,15 +25,15 @@ bars$create_df() %>%
 \end{figure}
 
 
-\subsection{Global Structure of perturbation experiments}
-
-\begin{figure}[H]
-<<global_structure, echo=FALSE, fig.width=10>>=
-import('../analyses/speed_raw/plot')$do_plot()
-@
-\caption{Clustering of fold changes (left) and top 100 genes (right)}
-\label{fig:clust}
-\end{figure}
+%\subsection{Global Structure of perturbation experiments}
+%
+%\begin{figure}[H]
+%<<global_structure, echo=FALSE, fig.width=10>>=
+%import('../analyses/speed_raw/plot')$do_plot()
+%@
+%\caption{Clustering of fold changes (left) and top 100 genes (right)}
+%\label{fig:clust}
+%\end{figure}
 
 
 \subsection{Statistical significance of signature genes}
@@ -156,19 +156,19 @@ significance of this model analytically, with results shown in table
 tab:Significance-of-signature. The comparison here serves to show that my
 model corresponds better to perturbations.
 
-\begin{figure}[H]
-<<roc_curves, echo=FALSE>>=
-roc = import('../analyses/speed_raw/roc')
-roc$roc %>%
-    mutate(method = config$id2short(method)) %>%
-    roc$do_plot(width=1.05) +
-        config$facet_theme +
-        xlab("False positive rate (FPR)") +
-        ylab("True positive rate (FPR)")
-@
-\caption{ROC curves for different pathway methods}
-\label{fig:roc}
-\end{figure}
+%\begin{figure}[H]
+%<<roc_curves, echo=FALSE>>=
+%roc = import('../analyses/speed_raw/roc')
+%roc$roc %>%
+%    mutate(method = config$id2short(method)) %>%
+%    roc$do_plot(width=1.05) +
+%        config$facet_theme +
+%        xlab("False positive rate (FPR)") +
+%        ylab("True positive rate (FPR)")
+%@
+%\caption{ROC curves for different pathway methods}
+%\label{fig:roc}
+%\end{figure}
 
 \begin{table}[H]
 \centering
@@ -214,7 +214,7 @@ selection (i.e, the biological context outweighs the exact selection of
 perturbation input). For most pathways (TNFa, NFkB, MAPK, JAK-STAT, Hypoxia,
 and EGFR) the variance of the input experiments as only a negligible influence
 (smaller than 10\%) on the final scores. For p53, TGFb, and PI3K selection of
-the input experiments still accounts for under 20% of the observed variance of
+the input experiments still accounts for under 20\% of the observed variance of
 basal pathway scores. For Trail and VEGF, it is about twice as large as the
 variance of the input experiments. This can either point to the pathway not
 being particularly well defined (if the experiments are also not well recovered
@@ -223,19 +223,19 @@ number of input experiments is too small to guarantee a stable signature (like
 for Trail, where the signature performs well but the overall number of
 experiments are low, cf. figure fig:ROC).
 
-\begin{figure}[H]
-\centering
-\scalebox{.7}{
-<<stability, echo=FALSE, fig.width=5, fig.height=4.5>>=
-stab = import('../analyses/speed_bootstrap/stability_plot')
-stab$file2df('gdsc_matrix.RData') %>%
-    mutate(pathway = config$pathways(pathway, rev=TRUE)) %>%
-    stab$do_plot()
-@
-}
-\caption{Stability of scores when bootstrapping input experiments}
-\label{fig:stability}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\scalebox{.7}{
+%<<stability, echo=FALSE, fig.width=5, fig.height=4.5>>=
+%stab = import('../analyses/speed_bootstrap/stability_plot')
+%stab$file2df('gdsc_matrix.RData') %>%
+%    mutate(pathway = config$pathways(pathway, rev=TRUE)) %>%
+%    stab$do_plot()
+%@
+%}
+%\caption{Stability of scores when bootstrapping input experiments}
+%\label{fig:stability}
+%\end{figure}
 
 
 \subsection{Correlation of Pathway Scores in Basal Expression}
