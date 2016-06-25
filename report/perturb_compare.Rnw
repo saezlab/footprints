@@ -1,4 +1,5 @@
 <<setup_perturb_compare, include=FALSE>>=
+b = import('base')
 util = import('./util_1')
 @
 

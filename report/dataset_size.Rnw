@@ -1,7 +1,9 @@
 \begin{figure}[H]
 <<dataset_size, echo=FALSE>>=
 library(dplyr)
+config = import('../config')
 bars = import('../analyses/speed_overview/plot_bars')
+
 bars$create_df() %>%
     mutate(variable = config$id2short(variable)) %>%
     bars$do_plot()
