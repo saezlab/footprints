@@ -10,28 +10,77 @@ df = import('data_frame')
 plt = import('plot')
 tcga = import('data/tcga')
 util = import('./util_2')
+
+cov_keep = bind_rows(util$mut_cov, util$cna_cov) %>%
+    group_by(m) %>%
+    filter(any(-log10(adj.p) > 5)) %>%
+    top_n(1, -adj.p) %>%
+    ungroup() %>%
+    select(m, adj.p) %>%
+    arrange(adj.p) %$%
+    setNames(adj.p, m)
 @
 
-\subsection{Overview of number of driver mutations per cancer type (cont.)}
+\subsection{Volcano plots for different methods}
+
+%TODO: combine this as with main fig?
 
 \begin{figure}[H]
-<<method_compare, echo=FALSE, fig.width=7, fig.height=8.5>>=
-#TODO: add well-known mut/cna that are not in main fig
-#plot_grid(
-#    util$mutation_method_plot("TP53", util$mut_cov, 0.2, 1e-5, 1e-15, 10),
-#    util$mutation_method_plot("KRAS", util$mut_cov, 0.2, 0.05, 1e-3, 10),
-#    util$mutation_method_plot("EGFR+", util$cna_cov, 0.2, 1e-3, 1e-7, 10),
-#    util$mutation_method_plot("VHL", util$mut_nocov, 0.2, 1e-5, 1e-20, 10),
-#    labels = c("TP53", "KRAS", "EGFR+", "VHL")
-#) +
-#    theme(axis.text = element_text(size=7),
-#          axis.title = element_text(size=9, face="bold"))
+<<pathway_mut_volcano, echo=FALSE, fig.width=8, fig.height=12>>=
+p = util$mut_cov %>%
+    mutate(method = config$id2short(method)) %>%
+    plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.05, dir=-1) %>%
+    plt$volcano(base.size=0.1, text.size=2, p=0.05, ceil=1e-20) +
+        facet_wrap(~method, ncol=2, scales="free_x") +
+        config$facet_theme
+plt$symmetrise_scale(p)
 @
-\caption{Comparison of mutation associations across methods}
-\label{fig:mut-heatmaps}
+\caption{Mutations}
+\label{fig:drug-volcano-pancan}
+\end{figure}
+
+\begin{figure}[H]
+<<pathway_cna_volcano, echo=FALSE, fig.width=8, fig.height=12>>=
+p = util$cna_cov %>%
+    mutate(method = config$id2short(method)) %>%
+    plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.05, dir=-1) %>%
+    plt$volcano(base.size=0.1, text.size=2, p=0.05, ceil=1e-30) +
+        facet_wrap(~method, ncol=2, scales="free_x") +
+        config$facet_theme
+plt$symmetrise_scale(p)
+@
+\caption{CNAs}
+\label{fig:drug-volcano-tissue}
 \end{figure}
 
 
-\subsection{Discussion}
+\subsection{Comparison of different methods}
 
-... write some thoughts here ...
+\begin{figure}[H]
+\subfloat[RTK/MAPK related]{
+<<method_compare1, echo=FALSE, fig.width=15, fig.height=5>>=
+util$mut_grid("KRAS_amp", "ERBB2_amp", "MYC_amp", "FGFR1_amp", nrow=1)
+@
+}
+
+\subfloat[Cell-cycle related]{
+<<method_compare2, echo=FALSE, fig.width=15, fig.height=5>>=
+util$mut_grid("CDK12_amp", "CDKN2A_del", "CDKN1B_amp", "EIF4A2_amp", nrow=1)
+@
+}
+
+\subfloat[PI3K signaling]{
+<<method_compare3, echo=FALSE, fig.width=15, fig.height=5>>=
+util$mut_grid("PTEN_del", "PIK3CA_amp", "PIK3CB_amp", "PIK3C2B_amp", nrow=1)
+@
+}
+
+\subfloat[Uncategorized]{
+<<method_compare4, echo=FALSE, fig.width=15, fig.height=5>>=
+util$mut_grid("CTNNB1", "NOTCH2_amp", "GATA3_amp", "CASP8_amp", nrow=1)
+@
+}
+
+\caption{Comparison of mutation associations across methods}
+\label{fig:drug-compare-matrix}
+\end{figure}

@@ -1,5 +1,6 @@
 library(magrittr)
 library(dplyr)
+b = import('base')
 io = import('io')
 ar = import('array')
 df = import('data_frame')
@@ -78,7 +79,12 @@ stratify = function(pathway="MAPK", genes=c("BRAF","KRAS","NRAS")) {
 #' @return      A list with the reference and sample condition,
 #'              p.value and fold change of median
 wilcox = function(mydf, c1, c2) {
-    mydf = na.omit(filter(mydf, subset %in% c(c1, c2)))
+    mydf = filter(mydf, subset %in% c(c1, c2)) %>%
+        select(cosmic, resp, subset) %>%
+        na.omit()
+
+    stopifnot(sum(duplicated(mydf$cosmic)) == 0)
+
     medians = mydf %>%
         group_by(subset) %>%
         summarize(median = median(resp)) %$%
@@ -108,13 +114,9 @@ linear_fit = function(mydf) {
 #'
 #' @param start    A stratification returned by `stratify()`
 #' @param pathway  A character referencing the pathway
-contrast_stats = function(strat, drug, pathway, gene=pathway) {
-    mydf = stack(strat) %>%
-        transmute(cosmic=values, subset=ind)
-    mydf$tissue = tissues[mydf$cosmic]
-    mydf$score = scores[,pathway][mydf$cosmic]
-    mydf$resp = Ys[,drug][mydf$cosmic]
-
+contrast_stats = function(mydf) {
+    gene = as.character(na.omit(unique(b$grep("^([a-zA-Z0-9]+)_wt$", mydf$subset))))
+    pathway = as.character(na.omit(unique(b$grep("^([a-zA-Z0-9]+)\\+", mydf$subset))))
     as.data.frame(bind_rows(
         wilcox(mydf, paste0(gene, "_wt"), paste0(gene, "_mut")),
         wilcox(mydf, paste0(pathway, "+"), paste0(pathway, "-")),
@@ -149,42 +151,25 @@ cmp_mut_path = function(path, mutation, drug, strat="mut") {
         resp = Ys[,drug]
     ) %>%
         add_rownames("cosmic") %>%
-        inner_join(strat, by="cosmic") %>%
-        mutate(subset = factor(subset, levels=levels)) %>%
-        na.omit() # remove those subsets were we don't assign a level
+        inner_join(strat, by="cosmic")
 
     # rename GENE and PATH to what we actually look at
-    levels(mydf$subset) = sub("PATH", path, levels(mydf$subset))
-    levels(mydf$subset) = sub("GENE", ifelse(length(mutation)==1, mutation, path), levels(mydf$subset))
+    mydf$label = mydf$subset
+    mydf$subset = as.character(mydf$subset)
+    mydf$subset = sub("PATH", path, mydf$subset)
+    mydf$subset = sub("GENE", ifelse(length(mutation)==1, mutation, path), mydf$subset)
+    mydf$label = factor(mydf$label, levels=levels)
+    levels(mydf$label) = sub("PATH", path, levels(mydf$label))
+    levels(mydf$label) = sub("GENE", ifelse(length(mutation)==1, mutation, path), levels(mydf$label))
     mydf
 }
 
 plot_mut_path = function(mydf) {
-    ggplot(mydf, aes(x=subset, y=resp)) +
+    ggplot(na.omit(mydf), aes(x=label, y=resp)) +
         geom_violin() +
         geom_boxplot(width=.5, outlier.shape=NA) +
         theme_bw() +
         xlab("") +
         ylab("Drug response [log uM]") #+
 #        theme(axis.text.x = element_text(angle=45, hjust=1)) # makes them unevenly high
-}
-
-#' Creates a stratification stats summary table
-#'
-#' @param path
-#' @param mut
-#' @param drug
-#' @param strat
-#' @return
-table_mut_path = function(path, mut, drug, strat="mut") {
-    mydf = util$create_df(path, mut, drug) %>%
-        mutate(subset = factor(subset),
-               pathway = path,
-               mutation = ifelse(length(mut)==1, mut, path)) %>%
-        na.omit()
-
-#   table(mydf$subset)
-#    util$stratify(path, mut) %>%
-#        util$contrast_stats(drug, path)
-
 }

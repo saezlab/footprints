@@ -5,18 +5,25 @@ library(magrittr)
 library(dplyr)
 b = import('base')
 io = import('io')
+df = import('data_frame')
 util = import('./util_3')
 config = import('../config')
 
 mapk_mut = c("NRAS", "KRAS", "BRAF")
+
+strats = list(
+    `MAPK + Trametinib` = util$cmp_mut_path("MAPK", mapk_mut, "Trametinib", "mut"),
+    `MAPK + AZ628` = util$cmp_mut_path("MAPK", mapk_mut, "AZ628", "mut"),
+    `BRAF + Dabrafenib` = util$cmp_mut_path("MAPK", "BRAF", "Dabrafenib", "mut"),
+    `p53 + Nutlin-3a` = util$cmp_mut_path("p53", "TP53", "Nutlin-3a", "wt")
+)
 @
 
 \subsection{Improvement over mutations alone}
 
 \begin{figure}[H]
 <<tram, echo=FALSE, fig.height=3>>=
-strat_tram = util$cmp_mut_path("MAPK", mapk_mut, "Trametinib", "mut")
-util$plot_mut_path(strat_tram)
+util$plot_mut_path(strats[[1]])
 @
 \caption{Trametinib}
 \label{fig:strat-trametinib}
@@ -24,8 +31,7 @@ util$plot_mut_path(strat_tram)
 
 \begin{figure}[H]
 <<az628, echo=FALSE, fig.height=3>>=
-strat_az628 = util$cmp_mut_path("MAPK", mapk_mut, "AZ628", "mut")
-util$plot_mut_path(strat_az628)
+util$plot_mut_path(strats[[2]])
 @
 \caption{AZ628}
 \label{fig:strat-az628}
@@ -33,8 +39,7 @@ util$plot_mut_path(strat_az628)
 
 \begin{figure}[H]
 <<dabraf, echo=FALSE, fig.height=3>>=
-strat_dabraf = util$cmp_mut_path("MAPK", "BRAF", "Dabrafenib", "mut")
-util$plot_mut_path(strat_dabraf)
+util$plot_mut_path(strats[[3]])
 @
 \caption{Dabrafenib}
 \label{fig:strat-dabrafenib}
@@ -42,27 +47,70 @@ util$plot_mut_path(strat_dabraf)
 
 \begin{figure}[H]
 <<nutlin, echo=FALSE, fig.height=3>>=
-strat_p53 = util$cmp_mut_path("p53", "TP53", "Nutlin-3a", "wt")
-util$plot_mut_path(strat_p53)
+util$plot_mut_path(strats[[4]])
 @
 \caption{Nutlin-3a}
 \label{fig:strat-nutlin3a}
 \end{figure}
 
 
+\begin{table}[H]
+\centering
+\caption{Stratification statistics}
+\small{
+<<strat_table, echo=FALSE>>=
+path_lookup = setNames(c("active", "inactive", "average"), c("+", "-", "0"))
+tab = df$add_name_col(strats, "treatment", bind=TRUE) %>%
+    group_by(treatment, subset) %>%
+    summarize(n = n_distinct(cosmic)) %>%
+    ungroup() %>%
+    transmute(Treatment = treatment,
+              Mutation = b$grep("_(mut|wt)", subset),
+              Pathway = path_lookup[b$grep("([+-0])", subset)],
+              `Number of cell lines` = n)
+
+tab[is.na(tab)] = " "
+arrange(tab, Treatment, Mutation, Pathway) %>%
+    kable(digits=2, booktabs=TRUE)
+@
+}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Stratification statistics}
+\small{
+<<strat_table_test, echo=FALSE>>=
+b$lnapply(strats, util$contrast_stats) %>%
+    df$add_name_col("treatment", bind=TRUE) %>%
+    transmute(Treatment = treatment,
+              Reference = ref,
+              Comparison = sample,
+              `p-value` = p.value,
+              `FC (medians)` = median_folds) %>%
+    kable(digits=50, booktabs=TRUE)
+@
+}
+\end{table}
+
+
 \subsection{Comparing associations to mutations}
 
 \begin{figure}[H]
-<<compare, echo=FALSE>>=
-resp = config$methods$ids %>%
+<<compare, echo=FALSE, fig.height=5.2>>=
+resp = config$methods$analysis_set %>%
     setdiff("paradigm") %>% # lowest FDR=39%
     c("mutation") %>% # compare mutations as well
     lapply(util$load_fun) %>%
-    bind_rows()
+    bind_rows() %>%
+    mutate(method = config$id2short(method))
 
-ggplot(resp, aes(x=-log10(adj.p), y=log10(num), color=method)) +
-    geom_step() +
-    theme_bw()
+ggplot(resp, aes(x=-log10(adj.p), y=num, color=method)) +
+    geom_step(size=2) +
+    theme_bw() +
+    scale_y_log10() +
+    xlab("- log FDR") +
+    ylab("Number of associations")
 @
 \caption{Number and strength of associations}
 \label{fig:strength-stepwise}

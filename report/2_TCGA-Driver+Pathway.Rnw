@@ -2,6 +2,7 @@
 
 <<setup2, include=FALSE>>=
 library(dplyr)
+library(magrittr)
 b = import('base')
 io = import('io')
 df = import('data_frame')
@@ -13,11 +14,21 @@ util = import('./util_2')
 \subsection{Associations between driver mutations/CNA and pathways}
 
 \begin{figure}[H]
-<<mut_cna_volcao, echo=FALSE>>=
-list(mut=util$mut_cov, cna=util$cna_assocs) %>%
+<<mut_cna_volcao, echo=FALSE, fig.width=5, fig.height=8>>=
+within = list(cna = filter(util$cna_cov, method == "speed_matrix"),
+              mut = filter(util$mut_cov, method == "speed_matrix")) %>%
     df$add_name_col("type", bind=TRUE) %>%
+    filter(adj.p < 0.05) %>%
+    select(scores, m)
+
+list(cna = filter(util$cna_nocov, method == "speed_matrix"),
+     mut = filter(util$mut_nocov, method == "speed_matrix")) %>%
+    df$add_name_col("type", bind=TRUE) %>%
+    mutate(circle = df$contains(., within)) %>%
     plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.05, dir=-1) %>%
-    plt$volcano(base.size=0.1, text.size=2, p=0.05)
+    mutate(color = ifelse(type=="cna" & adj.p < 0.05 & estimate > 0, "#44045745", color),
+           color = ifelse(type=="cna" & adj.p < 0.05 & estimate < 0, "#c8e01e78", color)) %>%
+    plt$volcano(base.size=0.1, text.size=2, p=0.05, label_top=Inf, xlim=c(-0.8,0.8))
 @
 \caption{Associatons for drivers/copy number alterations}
 \label{fig:mut-heatmaps}
@@ -31,9 +42,9 @@ list(mut=util$mut_cov, cna=util$cna_assocs) %>%
 plot_grid(
     util$mutation_method_plot("TP53", util$mut_cov, 0.2, 1e-5, 1e-15, 10),
     util$mutation_method_plot("KRAS", util$mut_cov, 0.2, 0.05, 1e-3, 10),
-    util$mutation_method_plot("EGFR+", util$cna_cov, 0.2, 1e-3, 1e-7, 10),
+    util$mutation_method_plot("EGFR_amp", util$cna_cov, 0.2, 1e-3, 1e-7, 10),
     util$mutation_method_plot("VHL", util$mut_nocov, 0.2, 1e-5, 1e-20, 10),
-    labels = c("TP53", "KRAS", "EGFR+", "VHL")
+    labels = c("TP53", "KRAS", "EGFR_amp", "VHL")
 ) +
     theme(axis.text = element_text(size=7),
           axis.title = element_text(size=9, face="bold"))

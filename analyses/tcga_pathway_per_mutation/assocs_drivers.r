@@ -44,17 +44,15 @@ subs2assocs = function(subs, mut, scores) {
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/pathways_mapped/speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "snp_drivers.pdf"
 
-studies = import('../../config')$tcga$tissues
+studies = import('../../config')$tcga$tissues_with_normals
 driver_studies = unique(gdsc$drivers()$tissue)
-
-scores = io$load(INFILE)
-rownames(scores) = substr(rownames(scores), 1, 16)
+scores = tcga$map_id(io$load(INFILE), along=1, id_type="specimen", subset="primary")
 
 # AAChange is not avail in eg. BRCA (and others)
-mut = tcga$mutations() %>%
-    filter(Study %in% studies & Study %in% driver_studies) %>%
-    mutate(Tumor_Sample_Barcode = substr(Tumor_Sample_Barcode, 1, 16)) %>%
-    filter(Tumor_Sample_Barcode %in% rownames(scores) & Variant_Classification != "Silent")
+mut = tcga$mutations(id_type="specimen", subset="primary") %>%
+    filter(Study %in% intersect(studies, driver_studies) &
+           Tumor_Sample_Barcode %in% rownames(scores) &
+           Variant_Classification != "Silent")
 
 print(table(mut$Study))
 

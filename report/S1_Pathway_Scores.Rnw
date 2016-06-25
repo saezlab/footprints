@@ -15,22 +15,25 @@ config = import('../config')
 
 \begin{figure}[H]
 <<dataset_size, echo=FALSE>>=
-import('../analyses/speed_overview/plot_bars')$do_plot()
+bars = import('../analyses/speed_overview/plot_bars')
+bars$create_df() %>%
+    mutate(variable = config$id2short(variable)) %>%
+    bars$do_plot()
 @
 \caption{Comparison of dataset size between SPEED, Gatza2014, and ours}
 \label{fig:dataset_size}
 \end{figure}
 
 
-\subsection{Global Structure of perturbation experiments}
-
-\begin{figure}[H]
-<<global_structure, echo=FALSE, fig.width=10>>=
-import('../analyses/speed_raw/plot')$do_plot()
-@
-\caption{Clustering of fold changes (left) and top 100 genes (right)}
-\label{fig:clust}
-\end{figure}
+%\subsection{Global Structure of perturbation experiments}
+%
+%\begin{figure}[H]
+%<<global_structure, echo=FALSE, fig.width=10>>=
+%import('../analyses/speed_raw/plot')$do_plot()
+%@
+%\caption{Clustering of fold changes (left) and top 100 genes (right)}
+%\label{fig:clust}
+%\end{figure}
 
 
 \subsection{Statistical significance of signature genes}
@@ -45,13 +48,123 @@ kable(import('../analyses/speed_overview/model_significance')$summary(),
 \end{table}
 
 
-\subsection{Pathway scores of different methods assigned to perturbations}
+\subsection{Gene sets used for different pathway methods}
+
+%TODO: generate from config [need to fix list levels first]
+%\begin{table}[H]
+%\centering
+%\caption{Pathway mapping for Gene Ontology}
+%<<path_go, echo=FALSE>>=
+%kable(roc$auc, digits=2, booktabs=TRUE)
+%@
+%\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Pathway mapping for Gene Ontology}
+\begin{tabular}{ccc}
+\hline
+\multirow{2}{*}{Pathway} & \multicolumn{2}{c}{Gene Ontology}\tabularnewline
+\cline{2-3}
+ & ID & Name\tabularnewline
+\hline
+EGFR & GO:0007259 & ERBB signaling pathway\tabularnewline
+Hypoxia & GO:0071456 & cellular response to hypoxia\tabularnewline
+JAK-STAT & GO:0007259 & JAK-STAT signal transduction\tabularnewline
+MAPK & GO:0000165 & MAPK cascade\tabularnewline
+NFkB & GO:0038061 & NIK/NF-kappaB signaling\tabularnewline
+p53 & GO:0030330 & DNA damage response, signal transduction by p53 class mediator\tabularnewline
+PI3K & GO:0014065 & phosphatidylinositol 3-kinase signaling\tabularnewline
+TNFa & GO:0033209 & tumor necrosis factor-mediated signaling pathway\tabularnewline
+TGFb & GO:0007179 & transforming growth factor beta receptor signaling pathway\tabularnewline
+Trail & GO:0036462 & TRAIL-activated apoptotic signaling pathway\tabularnewline
+VEGF & GO:0038084 & vascular endothelial growth factor signaling pathway\tabularnewline
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Pathway mapping for Reactome and Pathifier}
+\begin{tabular}{cc}
+\hline
+\multirow{1}{*}{Pathway} & Name\tabularnewline
+\hline
+\multirow{2}{*}{EGFR} & Signaling by EGFR\tabularnewline
+ & Signaling by EGFR in Cancer\tabularnewline
+Hypoxia & Cellular response to hypoxia\tabularnewline
+\multirow{3}{*}{JAK-STAT} & Signaling by Interleukins\tabularnewline
+ & Interferon Signaling\tabularnewline
+ & Signalling to STAT3\tabularnewline
+MAPK & Signalling to ERKs\tabularnewline
+\multirow{2}{*}{NFkB} & TAK1 activates NFkB:w: by phosphorylation and activation of IKKs complex\tabularnewline
+ & RIP-mediated NFkB activation via ZBP1\tabularnewline
+p53 & Transcriptional Regulation by TP53\tabularnewline
+\multirow{4}{*}{PI3K} & PI3K Cascade\tabularnewline
+ & Constitutive Signaling by Aberrant PI3K in Cancer\tabularnewline
+ & PI3K/AKT Signaling in Cancer\tabularnewline
+ & PI3K/AKT activation\tabularnewline
+TNFa & TNF signaling\tabularnewline
+TGFb & Signaling by TGF-beta Receptor Complex\tabularnewline
+Trail & TRAIL signaling\tabularnewline
+VEGF & Signaling by VEGF\tabularnewline
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Pathway mapping for SPIA}
+\begin{tabular}{ccc}
+\hline
+\multirow{2}{*}{Pathway} & \multicolumn{2}{c}{SPIA}\tabularnewline
+\cline{2-3}
+ & ID & Name\tabularnewline
+\hline
+EGFR & 04012 & ErbB signaling pathway\tabularnewline
+Hypoxia & - & -\tabularnewline
+JAK-STAT & 04630 & Jak-STAT signaling pathway\tabularnewline
+MAPK & 04010 & MAPK signaling pathway\tabularnewline
+NFkB & 04064 & NF-kappa B signaling pathway\tabularnewline
+p53 & - & -\tabularnewline
+PI3K & 04150 & mTOR signaling pathway\tabularnewline
+TNFa & - & -\tabularnewline
+TGFb & 04350 & TGF-beta signaling pathway\tabularnewline
+Trail & 04210 & Apoptosis\tabularnewline
+VEGF & 04370 & VEGF signaling pathway\tabularnewline
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Pathway mapping for PARADIGM}
+\begin{tabular}{cc}
+\hline
+\multirow{2}{*}{Pathway} & \multirow{2}{*}{PARADIGM}\tabularnewline
+ & \tabularnewline
+\hline
+EGFR & epidermal growth factor receptor activity (abstract)\tabularnewline
+Hypoxia & response to hypoxia (abstract)\tabularnewline
+JAK-STAT & STAT-1-3-5-active\tabularnewline
+\multirow{1}{*}{MAPK} & MEK-1-2-active\tabularnewline
+NFkB & NFkB Complex (complex)\tabularnewline
+p53 & response to DNA damage stimulus (abstract)\tabularnewline
+PI3K & PIK3CA\tabularnewline
+TNFa & tumor necrosis factor receptor activity (abstract)\tabularnewline
+TGFb & SMAD1-5-8-active\tabularnewline
+Trail & induction of apoptosis (abstract)\tabularnewline
+VEGF & platelet-derived growth factor receptor activity (abstract)\tabularnewline
+\hline
+\end{tabular}
+\end{table}
+
 
 \begin{figure}[H]
 <<genesets, echo=FALSE, fig.width=19, fig.height=15>>=
 import('../analyses/speed_overview/geneset_overlap')$venn()
 @
-\caption{Difference in gene sets between Footprints and Gene Ontology/Reactome}
+\caption{Difference in gene sets between Perturbation-response genes and Gene Ontology/Reactome}
 \label{fig:genesets}
 \end{figure}
 
@@ -85,7 +198,7 @@ the following order: EGFR, H2O2, Hypoxia, JAK-STAT, MAPK, NFkB, PI3K,
 TGFb, TNFa, Trail, VEGF, p53).
 
 \begin{figure}[H]
-\subfloat[Footprints]{
+\subfloat[Perturbation-response genes]{
 <<perturb_speed, echo=FALSE, fig.width=8, fig.height=3>>=
 util$perturb_score_plots('speed_matrix')
 @
@@ -96,15 +209,16 @@ util$perturb_score_plots('speed_matrix')
 util$perturb_score_plots('gsva_go')
 @
 }
-\end{figure}
-\begin{figure}[H]
-\ContinuedFloat
 
 \subfloat[Reactome]{
 <<perturb_reactome, echo=FALSE, fig.width=8, fig.height=3>>=
 util$perturb_score_plots('gsva_reactome')
 @
 }
+\phantomcaption
+\end{figure}
+\begin{figure}[H]
+\ContinuedFloat
 
 \subfloat[BioCarta]{
 <<perturb_biocarta, echo=FALSE, fig.width=8, fig.height=3>>=
@@ -136,7 +250,7 @@ util$perturb_score_plots('pathifier')
 
 \subsection{Consensus signature corresponds more closely to perturbations than pathway methods}
 
-TODO: consensus not perfect, GEX sig confounded, will not be 100\% with simple model (only when overfitted)
+%TODO: consensus not perfect, GEX sig confounded, will not be 100\% with simple model (only when overfitted)
 
 While the previous section focussed on pathway activation in relative terms
 (whether, given a pathway perturbation, the score assigned to any one pathway
@@ -153,21 +267,25 @@ significance of this model analytically, with results shown in table
 tab:Significance-of-signature. The comparison here serves to show that my
 model corresponds better to perturbations.
 
-\begin{figure}[H]
-<<roc_curves, echo=FALSE>>=
-roc = import('../analyses/speed_raw/roc')
-roc$roc %>%
-    mutate(method = config$id2short(method)) %>%
-    roc$do_plot() + config$facet_theme
-@
-\caption{ROC curves for different pathway methods}
-\label{fig:roc}
-\end{figure}
+%\begin{figure}[H]
+%<<roc_curves, echo=FALSE>>=
+%roc = import('../analyses/speed_raw/roc')
+%roc$roc %>%
+%    mutate(method = config$id2short(method)) %>%
+%    roc$do_plot(width=1.05) +
+%        config$facet_theme +
+%        xlab("False positive rate (FPR)") +
+%        ylab("True positive rate (FPR)")
+%@
+%\caption{ROC curves for different pathway methods}
+%\label{fig:roc}
+%\end{figure}
 
 \begin{table}[H]
 \centering
 \caption{AUC under the ROC curve}
 <<roc_auc, echo=FALSE>>=
+roc = import('../analyses/speed_raw/roc')
 kable(roc$auc, digits=2, booktabs=TRUE)
 @
 \end{table}
@@ -208,7 +326,7 @@ selection (i.e, the biological context outweighs the exact selection of
 perturbation input). For most pathways (TNFa, NFkB, MAPK, JAK-STAT, Hypoxia,
 and EGFR) the variance of the input experiments as only a negligible influence
 (smaller than 10\%) on the final scores. For p53, TGFb, and PI3K selection of
-the input experiments still accounts for under 20% of the observed variance of
+the input experiments still accounts for under 20\% of the observed variance of
 basal pathway scores. For Trail and VEGF, it is about twice as large as the
 variance of the input experiments. This can either point to the pathway not
 being particularly well defined (if the experiments are also not well recovered
@@ -217,19 +335,19 @@ number of input experiments is too small to guarantee a stable signature (like
 for Trail, where the signature performs well but the overall number of
 experiments are low, cf. figure fig:ROC).
 
-\begin{figure}[H]
-\centering
-\scalebox{.7}{
-<<stability, echo=FALSE, fig.width=5, fig.height=5>>=
-stab = import('../analyses/speed_bootstrap/stability_plot')
-stab$file2df('gdsc_matrix.RData') %>%
-    mutate(pathway = config$pathways(pathway, rev=TRUE)) %>%
-    stab$do_plot()
-@
-}
-\caption{Stability of scores when bootstrapping input experiments}
-\label{fig:stability}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\scalebox{.7}{
+%<<stability, echo=FALSE, fig.width=5, fig.height=4.5>>=
+%stab = import('../analyses/speed_bootstrap/stability_plot')
+%stab$file2df('gdsc_matrix.RData') %>%
+%    mutate(pathway = config$pathways(pathway, rev=TRUE)) %>%
+%    stab$do_plot()
+%@
+%}
+%\caption{Stability of scores when bootstrapping input experiments}
+%\label{fig:stability}
+%\end{figure}
 
 
 \subsection{Correlation of Pathway Scores in Basal Expression}
@@ -285,7 +403,7 @@ the points (positive correlation blue, negative correlation red), strength by
 colour shade and size of the point.
 
 \begin{figure}[H]
-\subfloat[Footprints]{
+\subfloat[Perturbation-response genes]{
 <<cor_speed_matrix, echo=FALSE, fig.height=3, fig.width=8>>=
 util$cor_plots('speed_matrix')
 @
@@ -308,6 +426,7 @@ util$cor_plots('gsva_reactome')
 util$cor_plots('gsva_biocarta')
 @
 }
+\phantomcaption
 \end{figure}
 \begin{figure}[H]
 \ContinuedFloat
@@ -333,7 +452,3 @@ util$cor_plots('paradigm')
 \caption{Correlation of pathway scores in basal expression of the TCGA (left) and GDSC (right)}
 \label{fig:cor}
 \end{figure}
-
-\subsection{Discussion}
-
-... write some thoughts here ...

@@ -7,32 +7,32 @@ index = io$load('../../data/zscores.RData')$index # the ones we actually use (pa
 gatza2014 = io$read_table('../../util/genesets/ng.3073-S2_info.txt', header=TRUE)
 
 speed1 = list(
-    pathways = 11,
-    experiments = 69,
-    contrasts = 215,
-    arrays = 572
+    Pathways = 11,
+    Datasets = 69,
+    Experiments = 215,
+    Arrays = 572
 )
 
 speed2 = list(
-    pathways = 19,
-    experiments = 202,
-    contrasts = 653,
-    arrays = 1940
+    Pathways = 19,
+    Datasets = 202,
+    Experiments = 653,
+    Arrays = 1940
 )
 
 speed_matrix = lapply(list(
-    pathways = unique(index$pathway),
-    experiments = unique(index$accession),
-    contrasts = index$id,
-    arrays = unique(unlist(lapply(records, function(x) c(x$control, x$perturbed))))
+    Pathways = unique(index$pathway),
+    Datasets = unique(index$accession),
+    Experiments = index$id,
+    Arrays = unique(unlist(lapply(records, function(x) c(x$control, x$perturbed))))
 ), length)
 
 gatza = list(
-    pathways = nrow(gatza2014),
-    experiments = length(unique(unlist(stringr::str_match_all(gatza2014$References, "[0-9]+")))),
-    contrasts = nrow(gatza2014),
-    arrays = NA # uh, manually?
+    Pathways = nrow(gatza2014),
+    Datasets = length(unique(unlist(stringr::str_match_all(gatza2014$References, "[0-9]+")))),
+    Experiments = nrow(gatza2014),
+    Arrays = NA # uh, manually?
 )
 
-df = cbind(num=names(speed1), speed1, speed2, speed_matrix, gatza)
+df = cbind(measure=names(speed1), speed1, speed2, speed_matrix, gatza)
 io$write_table(df, file="numbers.txt", sep="\t")

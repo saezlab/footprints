@@ -4,3 +4,6 @@
 [submodule "util/genesets/Enrichr"]
 	path = util/genesets/Enrichr
 	url = git@github.com:yokuyuki/Enrichr.git
+[submodule "util/data"]
+	path = util/data
+	url = git@github.com:mschubert/data.git

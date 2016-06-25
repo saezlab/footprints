@@ -28,18 +28,18 @@ method2pr_df = function(fid) {
         ungroup()
 }
 
-do_plot = function(roc) {
+do_plot = function(roc, width=1) {
     random_line = data.frame(x=c(0,1), y=c(0,1), method=roc$method[1])
 
     ggplot(roc, aes(x=FPR, y=TPR, color=method)) +
-        geom_line(aes(x=x, y=y), data=random_line, color="grey", linetype="dashed") +
-        geom_step() +
+        geom_line(aes(x=x, y=y), data=random_line, color="grey", linetype="dashed", size=width) +
+        geom_step(size=width) +
         coord_fixed() +
         facet_wrap(~pathway) +
         theme(axis.text.x = element_text(angle = 45, hjust = 1))
 }
 
-roc = config$methods$ids %>%
+roc = config$methods$analysis_set %>%
     setdiff("paradigm") %>% # we don't have this for the input exps
     lapply(method2pr_df) %>%
     bind_rows() %>%
