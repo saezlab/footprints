@@ -1,0 +1,26 @@
+<<setup_steps, include=FALSE>>=
+library(magrittr)
+library(dplyr)
+util = import('./util_3')
+config = import('../config')
+@
+
+\begin{figure}[H]
+<<compare, echo=FALSE, fig.height=5.2>>=
+resp = config$methods$analysis_set %>%
+    setdiff("paradigm") %>% # lowest FDR=39%
+    c("mutation") %>% # compare mutations as well
+    lapply(util$load_fun) %>%
+    bind_rows() %>%
+    mutate(method = config$id2short(method))
+
+ggplot(resp, aes(x=-log10(adj.p), y=num, color=method)) +
+    geom_step(size=2) +
+    theme_bw() +
+    scale_y_log10() +
+    xlab("- log FDR") +
+    ylab("Number of associations")
+@
+\caption{Number and strength of associations}
+\label{fig:strength-stepwise}
+\end{figure}

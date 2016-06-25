@@ -1,6 +1,4 @@
-\section{Associations with known driver mutations}
-
-<<setup2, include=FALSE>>=
+<<setup_cna_mut_volcanos, include=FALSE>>=
 library(magrittr)
 b = import('base')
 io = import('io')
@@ -49,34 +47,4 @@ plt$symmetrise_scale(p)
 @
 \caption{CNAs}
 \label{fig:drug-volcano-tissue}
-\end{figure}
-
-
-\begin{figure}[H]
-\subfloat[RTK/MAPK related]{
-<<method_compare1, echo=FALSE, fig.width=15, fig.height=5>>=
-util$mut_grid("KRAS_amp", "ERBB2_amp", "MYC_amp", "FGFR1_amp", nrow=1)
-@
-}
-
-\subfloat[Cell-cycle related]{
-<<method_compare2, echo=FALSE, fig.width=15, fig.height=5>>=
-util$mut_grid("CDK12_amp", "CDKN2A_del", "CDKN1B_amp", "EIF4A2_amp", nrow=1)
-@
-}
-
-\subfloat[PI3K signaling]{
-<<method_compare3, echo=FALSE, fig.width=15, fig.height=5>>=
-util$mut_grid("PTEN_del", "PIK3CA_amp", "PIK3CB_amp", "PIK3C2B_amp", nrow=1)
-@
-}
-
-\subfloat[Uncategorized]{
-<<method_compare4, echo=FALSE, fig.width=15, fig.height=5>>=
-util$mut_grid("CTNNB1", "NOTCH2_amp", "GATA3_amp", "CASP8_amp", nrow=1)
-@
-}
-
-\caption{Comparison of mutation associations across methods}
-\label{fig:drug-compare-matrix}
 \end{figure}

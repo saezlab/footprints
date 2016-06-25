@@ -1,6 +1,4 @@
-\section{Pan-cancer improvements with mutations and MAPK scores}
-
-<<setup3, include=FALSE>>=
+<<setup_drug_over_mut, include=FALSE>>=
 library(magrittr)
 library(dplyr)
 b = import('base')
@@ -18,8 +16,6 @@ strats = list(
     `p53 + Nutlin-3a` = util$cmp_mut_path("p53", "TP53", "Nutlin-3a", "wt")
 )
 @
-
-\subsection{Improvement over mutations alone}
 
 \begin{figure}[H]
 <<tram, echo=FALSE, fig.height=3>>=
@@ -92,26 +88,3 @@ b$lnapply(strats, util$contrast_stats) %>%
 @
 }
 \end{table}
-
-
-\subsection{Comparing associations to mutations}
-
-\begin{figure}[H]
-<<compare, echo=FALSE, fig.height=5.2>>=
-resp = config$methods$analysis_set %>%
-    setdiff("paradigm") %>% # lowest FDR=39%
-    c("mutation") %>% # compare mutations as well
-    lapply(util$load_fun) %>%
-    bind_rows() %>%
-    mutate(method = config$id2short(method))
-
-ggplot(resp, aes(x=-log10(adj.p), y=num, color=method)) +
-    geom_step(size=2) +
-    theme_bw() +
-    scale_y_log10() +
-    xlab("- log FDR") +
-    ylab("Number of associations")
-@
-\caption{Number and strength of associations}
-\label{fig:strength-stepwise}
-\end{figure}

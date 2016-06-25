@@ -1,6 +1,4 @@
-\section{Perturbation experiments}
-
-<<setup1, include=FALSE>>=
+<<setup_circle, include=FALSE>>=
 library(circlize)
 library(RColorBrewer)
 library(dplyr)
@@ -33,8 +31,6 @@ color = setNames(c(brewer.pal(12, "Paired"), "#fefefe"), all_pathways)
 @
 
 
-\subsection{Signaling Footprints (perturbation experiments)}
-
 \begin{figure}[H]
 <<circle1, echo=FALSE>>=
 chordDiagram(speed,
@@ -46,8 +42,6 @@ chordDiagram(speed,
 \caption{Perturbation-response genes}
 \label{fig:circle-speed}
 \end{figure}
-
-\subsection{Reactome}
 
 \begin{figure}[H]
 <<circle2, echo=FALSE>>=

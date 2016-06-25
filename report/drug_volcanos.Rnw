@@ -1,5 +1,3 @@
-\section{Drug response in the GDSC panel}
-
 <<setup3, include=FALSE>>=
 library(dplyr)
 b = import('base')
