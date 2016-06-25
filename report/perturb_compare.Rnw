@@ -1,0 +1,53 @@
+<<setup_perturb_compare, include=FALSE>>=
+util = import('./util_1')
+@
+
+\begin{figure}[H]
+\subfloat[Perturbation-response genes]{
+<<perturb_speed, echo=FALSE, fig.width=8, fig.height=3>>=
+util$perturb_score_plots('speed_matrix')
+@
+}
+
+\subfloat[Gene Ontology]{
+<<perturb_go, echo=FALSE, fig.width=8, fig.height=3>>=
+util$perturb_score_plots('gsva_go')
+@
+}
+
+\subfloat[Reactome]{
+<<perturb_reactome, echo=FALSE, fig.width=8, fig.height=3>>=
+util$perturb_score_plots('gsva_reactome')
+@
+}
+\phantomcaption
+\end{figure}
+\begin{figure}[H]
+\ContinuedFloat
+
+\subfloat[BioCarta]{
+<<perturb_biocarta, echo=FALSE, fig.width=8, fig.height=3>>=
+util$perturb_score_plots('gsva_biocarta')
+@
+}
+
+\subfloat[SPIA]{
+<<perturb_spia, echo=FALSE, fig.width=8, fig.height=3>>=
+util$perturb_score_plots('spia')
+@
+}
+
+\subfloat[Pathifier]{
+<<perturb_pathifier, echo=FALSE, fig.width=8, fig.height=3>>=
+util$perturb_score_plots('pathifier')
+@
+}
+
+%\subfloat[PARADIGM]{
+%<<perturb_paradigm, echo=FALSE, fig.width=8, fig.height=3>>=
+%util$perturb_score_plots('paradigm')
+%@
+%}
+\caption{Pathway methods}
+\label{fig:perturb_simple}
+\end{figure}

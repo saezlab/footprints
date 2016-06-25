@@ -1,0 +1,54 @@
+<<setup_basal_cor, include=FALSE>>=
+util = import('./util_1')
+@
+
+\begin{figure}[H]
+\subfloat[Perturbation-response genes]{
+<<cor_speed_matrix, echo=FALSE, fig.height=3, fig.width=8>>=
+util$cor_plots('speed_matrix')
+@
+}
+
+\subfloat[Gene Ontology]{
+<<cor_go, echo=FALSE, fig.height=3, fig.width=8>>=
+util$cor_plots('gsva_go')
+@
+}
+
+\subfloat[Reactome]{
+<<cor_reactome, echo=FALSE, fig.height=3, fig.width=8>>=
+util$cor_plots('gsva_reactome')
+@
+}
+
+\subfloat[BioCarta]{
+<<cor_speed_biocarta, echo=FALSE, fig.height=3, fig.width=8>>=
+util$cor_plots('gsva_biocarta')
+@
+}
+\phantomcaption
+\end{figure}
+\begin{figure}[H]
+\ContinuedFloat
+
+\subfloat[SPIA]{
+<<cor_spia, echo=FALSE, fig.height=3, fig.width=8>>=
+util$cor_plots('spia')
+@
+}
+
+\subfloat[Pathifier]{
+<<cor_pathifier, echo=FALSE, fig.height=3, fig.width=8>>=
+util$cor_plots('pathifier')
+@
+}
+
+\subfloat[PARADIGM]{
+<<cor_paradigm, echo=FALSE, fig.height=3, fig.width=8>>=
+util$cor_plots('paradigm')
+@
+}
+
+\caption{Correlation of pathway scores in basal expression of the TCGA (left) and GDSC (right)}
+\label{fig:cor}
+\end{figure}

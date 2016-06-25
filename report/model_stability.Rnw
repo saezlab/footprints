@@ -1,0 +1,14 @@
+\begin{figure}[H]
+\centering
+\scalebox{.7}{
+<<stability, echo=FALSE, fig.width=5, fig.height=4.5>>=
+library(dplyr)
+stab = import('../analyses/speed_bootstrap/stability_plot')
+stab$file2df('gdsc_matrix.RData') %>%
+    mutate(pathway = config$pathways(pathway, rev=TRUE)) %>%
+    stab$do_plot()
+@
+}
+\caption{Stability of scores when bootstrapping input experiments}
+\label{fig:stability}
+\end{figure}

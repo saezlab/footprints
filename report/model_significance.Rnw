@@ -1,0 +1,7 @@
+\begin{figure}[H]
+<<sig_sign, echo=FALSE>>=
+import('../analyses/speed_overview/model_significance')$plot()
+@
+\caption{Significance of the top 100 signature genes}
+\label{fig:gene_significance}
+\end{figure}

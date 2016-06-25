@@ -1,0 +1,11 @@
+\begin{figure}[H]
+<<dataset_size, echo=FALSE>>=
+library(dplyr)
+bars = import('../analyses/speed_overview/plot_bars')
+bars$create_df() %>%
+    mutate(variable = config$id2short(variable)) %>%
+    bars$do_plot()
+@
+\caption{Comparison of dataset size between SPEED, Gatza2014, and ours}
+\label{fig:dataset_size}
+\end{figure}
