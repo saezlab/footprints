@@ -34,7 +34,7 @@ assocs = b$lnapply(config$methods$analysis_set, util$load_assocs)
 %\end{figure}
 
 
-\subsection{Tissue-specific associations}
+%\subsection{Tissue-specific associations}
 
 \begin{figure}[H]
 <<surv_volcano_tissue, echo=FALSE, fig.width=8, fig.height=12>>=

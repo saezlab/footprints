@@ -15,8 +15,6 @@ config = import('../config')
 assocs = b$lnapply(config$methods$analysis_set, util$vp$load_fun)
 @
 
-\subsection{Pan-cancer associations}
-
 \begin{figure}[H]
 <<drug_volcano_pancan, echo=FALSE, fig.width=8, fig.height=12>>=
 p = assocs %>%
@@ -34,8 +32,6 @@ plt$symmetrise_scale(p)
 \label{fig:drug-volcano-pancan}
 \end{figure}
 
-
-\subsection{Tissue-specific associations}
 
 \begin{figure}[H]
 <<drug_volcano_tissue, echo=FALSE, fig.width=8, fig.height=12>>=

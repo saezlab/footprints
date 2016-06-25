@@ -21,8 +21,6 @@ cov_keep = bind_rows(util$mut_cov, util$cna_cov) %>%
     setNames(adj.p, m)
 @
 
-\subsection{Volcano plots for different methods}
-
 %TODO: combine this as with main fig?
 
 \begin{figure}[H]
@@ -53,8 +51,6 @@ plt$symmetrise_scale(p)
 \label{fig:drug-volcano-tissue}
 \end{figure}
 
-
-\subsection{Comparison of different methods}
 
 \begin{figure}[H]
 \subfloat[RTK/MAPK related]{
