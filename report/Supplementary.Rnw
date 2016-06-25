@@ -130,14 +130,22 @@ perturbation-response genes in basal expression. Sign indicated by colour of
 the points (positive correlation blue, negative correlation red), strength by
 colour shade and size of the point.
 
-% separate figures & tables, or anything else in sections?
+\section{Supplementary tables}
 
-\Sexpr{knit_child('S1_Pathway_Scores.Rnw')}
+\Sexpr{knit_child('pathway_mapping.Rnw')}
 
-\Sexpr{knit_child('S2_TCGA-Driver+Pathway.Rnw')}
+%\Sexpr{knit_child('roc_auc.Rnw')}
 
-\Sexpr{knit_child('S3_GDSC-Drugs.Rnw')}
+\section{Supplementary figures}
 
-\Sexpr{knit_child('S5_Survival.Rnw')}
+\Sexpr{knit_child('dataset_size.Rnw')}
+
+\Sexpr{knit_child('model_significance.Rnw')}
+
+\Sexpr{knit_child('gene_venn.Rnw')}
+
+\Sexpr{knit_child('perturb_compare.Rnw')}
+
+\Sexpr{knit_child('basal_correlation.Rnw')}
 
 \end{document}
