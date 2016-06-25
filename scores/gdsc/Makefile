@@ -39,16 +39,16 @@ pathways_mapped/paradigm.RData: paradigm.r
 
 # all pathways
 pathways_all/gsea_%.RData: set_enrichment.r ../../util/genesets/all/%.RData
-	$(call bsub_log,4096) Rscript $^ $@
+	$(call bsub_log,40960) Rscript $^ $@
 
 pathways_all/gsva_%.RData: gsva.r ../../util/genesets/all/%.RData
-	$(call bsub_log,4096) Rscript $^ $@
+	$(call bsub_log,40960) Rscript $^ $@
 
 pathways_all/spia.RData: spia.r
-	$(call bsub_log,4096) Rscript $^ $@ FALSE
+	$(call bsub_log,40960) Rscript $^ $@ FALSE
 
 pathways_all/pathifier.RData: pathifier.r ../../util/genesets/all/reactome.RData
-	$(call bsub_log,4096) Rscript $^ $@
+	$(call bsub_log,40960) Rscript $^ $@
 
 pathways_all/mutation.RData: mutation.r
 	Rscript $^ $@
