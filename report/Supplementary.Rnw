@@ -142,6 +142,8 @@ colour shade and size of the point.
 
 \Sexpr{knit_child('model_significance.Rnw')}
 
+\Sexpr{knit_child('signature_overlap.Rnw')}
+
 \Sexpr{knit_child('gene_venn.Rnw')}
 
 \Sexpr{knit_child('perturb_compare.Rnw')}

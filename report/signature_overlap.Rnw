@@ -1,0 +1,7 @@
+\begin{figure}[H]
+<<sig_overlap, echo=FALSE>>=
+import('../analyses/speed_overview/signature_overlap')$overlap()
+@
+\caption{Overlap of signature genes for different pathways}
+\label{fig:sig-overlap}
+\end{figure}
