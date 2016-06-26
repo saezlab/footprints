@@ -16,7 +16,7 @@ overlap = function() {
         length(intersect(df$gene[df$pathway==p1], df$gene[df$pathway == p2]))
 
     mat = matrix(NA, nrow=length(pathways), ncol=length(pathways),
-        dimnames=list(pathways, pathways))
+        dimnames=list(rev(pathways), pathways))
     for (p1 in pathways)
         for (p2 in pathways)
             mat[p1, p2] = p2num(p1, p2)

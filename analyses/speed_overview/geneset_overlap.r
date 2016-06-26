@@ -19,7 +19,7 @@ venn = function() {
 
     # do: Venn diagram for the overlap for all pathways
     pathways = b$list$transpose(list('Gene Ontology'=go, Reactome=reactome, 'Perturbation-response'=speed))
-    pathways = pathways[sort(names(pathways))]
+    pathways = pathways[gtools::mixedsort(names(pathways))]
 
     pdf("/dev/null")
 
