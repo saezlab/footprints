@@ -1,0 +1,26 @@
+<<setup_roc, include=FALSE>>=
+library(dplyr)
+roc = import('../analyses/speed_raw/roc')
+config = import('../config')
+@
+
+\begin{figure}[H]
+<<roc_curves, echo=FALSE>>=
+roc$roc %>%
+    mutate(method = config$id2short(method)) %>%
+    roc$do_plot(width=1.05) +
+        config$facet_theme +
+        xlab("False positive rate (FPR)") +
+        ylab("True positive rate (FPR)")
+@
+\caption{ROC curves for different pathway methods}
+\label{fig:roc}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{AUC under the ROC curve}
+<<roc_auc, echo=FALSE>>=
+kable(roc$auc, digits=2, booktabs=TRUE)
+@
+\end{table}

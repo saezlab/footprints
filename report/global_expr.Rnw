@@ -1,0 +1,7 @@
+\begin{figure}[H]
+<<global_structure, echo=FALSE, fig.width=10>>=
+import('../analyses/speed_raw/plot')$do_plot()
+@
+\caption{Clustering of fold changes (left) and top 100 genes (right)}
+\label{fig:clust}
+\end{figure}
