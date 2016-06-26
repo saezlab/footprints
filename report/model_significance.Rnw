@@ -1,7 +1,21 @@
 \begin{figure}[H]
+
+\subfloat[by p-value]{
+\scalebox{.7}{
 <<sig_sign, echo=FALSE>>=
-import('../analyses/speed_overview/model_significance')$plot()
+import('../analyses/speed_overview/model_significance')$plot_pval()
 @
-\caption{Significance of the top 100 signature genes}
+}
+}
+
+\subfloat[by z-score]{
+\scalebox{.7}{
+<<sig_zscore, echo=FALSE>>=
+import('../analyses/speed_overview/model_significance')$plot_zscore()
+@
+}
+}
+
+\caption{Distribution of the top 100 genes used in the model}
 \label{fig:gene_significance}
 \end{figure}
