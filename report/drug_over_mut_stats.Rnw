@@ -1,0 +1,57 @@
+<<setup_drug_over_mut_stats, include=FALSE>>=
+library(magrittr)
+library(dplyr)
+b = import('base')
+io = import('io')
+df = import('data_frame')
+util = import('./util_3')
+config = import('../config')
+
+mapk_mut = c("NRAS", "KRAS", "BRAF")
+
+strats = list(
+    `MAPK + Trametinib` = util$cmp_mut_path("MAPK", mapk_mut, "Trametinib", "mut"),
+    `MAPK + AZ628` = util$cmp_mut_path("MAPK", mapk_mut, "AZ628", "mut"),
+    `BRAF + Dabrafenib` = util$cmp_mut_path("MAPK", "BRAF", "Dabrafenib", "mut"),
+    `p53 + Nutlin-3a` = util$cmp_mut_path("p53", "TP53", "Nutlin-3a", "wt")
+)
+@
+
+\begin{table}[H]
+\centering
+\caption{Stratification statistics}
+\small{
+<<strat_table, echo=FALSE>>=
+path_lookup = setNames(c("active", "inactive", "average"), c("+", "-", "0"))
+tab = df$add_name_col(strats, "treatment", bind=TRUE) %>%
+    group_by(treatment, subset) %>%
+    summarize(n = n_distinct(cosmic)) %>%
+    ungroup() %>%
+    transmute(Treatment = treatment,
+              Mutation = b$grep("_(mut|wt)", subset),
+              Pathway = path_lookup[b$grep("([+-0])", subset)],
+              `Number of cell lines` = n)
+
+tab[is.na(tab)] = " "
+arrange(tab, Treatment, Mutation, Pathway) %>%
+    kable(digits=2, booktabs=TRUE)
+@
+}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Stratification statistics}
+\small{
+<<strat_table_test, echo=FALSE>>=
+b$lnapply(strats, util$contrast_stats) %>%
+    df$add_name_col("treatment", bind=TRUE) %>%
+    transmute(Treatment = treatment,
+              Reference = ref,
+              Comparison = sample,
+              `p-value` = p.value,
+              `FC (medians)` = median_folds) %>%
+    kable(digits=50, booktabs=TRUE)
+@
+}
+\end{table}

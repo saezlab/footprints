@@ -136,6 +136,8 @@ colour shade and size of the point.
 
 %\Sexpr{knit_child('roc_auc.Rnw')}
 
+\Sexpr{knit_child('drug_over_mut_stats.Rnw')}
+
 \section{Supplementary figures}
 
 \Sexpr{knit_child('dataset_size.Rnw')}
