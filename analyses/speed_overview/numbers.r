@@ -4,7 +4,7 @@ io = import('io')
 
 records = io$load('../../data/expr.RData')$records
 index = io$load('../../data/zscores.RData')$index # the ones we actually use (pass qc, etc)
-gatza2014 = io$read_table('../../util/genesets/ng.3073-S2_info.txt', header=TRUE)
+gatza2009 = io$read_table('../../util/genesets/ng.3073-S2_info.txt', header=TRUE)
 
 speed1 = list(
     Pathways = 11,
@@ -13,12 +13,12 @@ speed1 = list(
     Arrays = 572
 )
 
-speed2 = list(
-    Pathways = 19,
-    Datasets = 202,
-    Experiments = 653,
-    Arrays = 1940
-)
+#speed2 = list(
+#    Pathways = 19,
+#    Datasets = 202,
+#    Experiments = 653,
+#    Arrays = 1940
+#)
 
 speed_matrix = lapply(list(
     Pathways = unique(index$pathway),
@@ -28,10 +28,10 @@ speed_matrix = lapply(list(
 ), length)
 
 gatza = list(
-    Pathways = nrow(gatza2014),
-    Datasets = length(unique(unlist(stringr::str_match_all(gatza2014$References, "[0-9]+")))),
-    Experiments = nrow(gatza2014),
-    Arrays = NA # uh, manually?
+    Pathways = 18, #nrow(gatza2009), # too many duplicates/non-signaling -> use 2009 exps
+    Datasets = 1, #length(unique(unlist(stringr::str_match_all(gatza2009$References, "[0-9]+")))),
+    Experiments = 18, # nrow(gatza2009),
+    Arrays = 287 # by summing up numbers in supp fig. 4
 )
 
 df = cbind(measure=names(speed1), speed1, speed2, speed_matrix, gatza)

@@ -1,91 +1,103 @@
-pathways:
-    - ids:
-        - a
-    - names:
-        - a
+#pathways:
+# - ids:
+#  - a
+# - names:
+#  - a
 
 go:
-    - H2O2:     GO:0042542  # response to hydrogen peroxide
-    - IL-1:     GO:0070498  # interleukin-1-mediated signalling pathway
-    - JAK-STAT: GO:0007259  # JAK-STAT signal transduction
-    - MAPK:     GO:0000165	# MAPK cascade
-    - EGFR:     GO:0038127	# ERBB signaling pathway
-    - TLR:      GO:0002224  # toll-like receptor signaling pathway
-    - PI3K:     GO:0014065  # phosphatidylinositol 3-kinase signaling
-    - TGFb:     GO:0007179  # transforming growth factor beta receptor signaling pathway
-    - TNFa:     GO:0033209  # tumor necrosis factor-mediated signaling pathway
-    - VEGF:     GO:0038084  # vascular endothelial growth factor signaling pathway
-    - Wnt:      GO:0016055  # Wnt signaling pathway
-    - Insulin:  GO:0008286  # insulin receptor signaling pathway
-    - Hypoxia:  GO:0071456  # cellular response to hypoxia
-    - RAR:      GO:0048384  # retinoic acid receptor signaling pathway
-    - p53:      GO:0030330  # DNA damage response, signal transduction by p53 class mediator
-    - Estrogen: GO:0030520  # intracellular estrogen receptor signaling pathway
-    - Trail:    GO:0036462  # TRAIL-activated apoptotic signaling pathway
-    - notch:    GO:0007219  # Notch signaling pathway
-    - NFkB:     GO:0038061	# NIK/NF-kappaB signaling
-    - PPAR:     GO:0035357  # peroxisome proliferator activated receptor signaling pathway
+ - H2O2     : GO:0042542   # response to hydrogen peroxide
+ - IL-1     : GO:0070498   # interleukin-1-mediated signalling pathway
+ - JAK-STAT : GO:0007259   # JAK-STAT signal transduction
+ - MAPK     : GO:0000165   # MAPK cascade
+ - EGFR     : GO:0038127   # ERBB signaling pathway
+ - TLR      : GO:0002224   # toll-like receptor signaling pathway
+ - PI3K     : GO:0014065   # phosphatidylinositol 3-kinase signaling
+ - TGFb     : GO:0007179   # transforming growth factor beta receptor signaling pathway
+ - TNFa     : GO:0033209   # tumor necrosis factor-mediated signaling pathway
+ - VEGF     : GO:0038084   # vascular endothelial growth factor signaling pathway
+ - Wnt      : GO:0016055   # Wnt signaling pathway
+ - Insulin  : GO:0008286   # insulin receptor signaling pathway
+ - Hypoxia  : GO:0071456   # cellular response to hypoxia
+ - RAR      : GO:0048384   # retinoic acid receptor signaling pathway
+ - p53      : GO:0030330   # DNA damage response, signal transduction by p53 class mediator
+ - Estrogen : GO:0030520   # intracellular estrogen receptor signaling pathway
+ - Trail    : GO:0036462   # TRAIL-activated apoptotic signaling pathway
+ - notch    : GO:0007219   # Notch signaling pathway
+ - NFkB     : GO:0038061   # NIK/NF-kappaB signaling
+ - PPAR     : GO:0035357   # peroxisome proliferator activated receptor signaling pathway
 
 paradigm:
-    - p53:      response to DNA damage stimulus (abstract)
-    - JAK-STAT: STAT1-3-5-active
-    - Hypoxia:  response to hypoxia (abstract)
-    - VEGF:     platelet-derived growth factor receptor activity (abstract)
-    - Trail:    induction of apoptosis (abstract)
-    - H2O2:     response to hydrogen peroxide (abstract)
-    - EGFR:     epidermal growth factor receptor activity (abstract)
-    - MAPK:     MEK1-2-active
-    - PI3K:     PIK3CA
-    - TNFa:     tumor necrosis factor receptor activity (abstract)
-    - TGFb:     SMAD1-5-8-active
+ - p53:      response to DNA damage stimulus (abstract)
+ - JAK-STAT: STAT1-3-5-active
+ - Hypoxia:  response to hypoxia (abstract)
+ - VEGF:     platelet-derived growth factor receptor activity (abstract)
+ - Trail:    induction of apoptosis (abstract)
+ - H2O2:     response to hydrogen peroxide (abstract)
+ - EGFR:     epidermal growth factor receptor activity (abstract)
+ - MAPK:     MEK1-2-active
+ - PI3K:     PIK3CA
+ - TNFa:     tumor necrosis factor receptor activity (abstract)
+ - TGFb:     SMAD1-5-8-active
 
 reactome:
-    - IL-1:     Interleukin-1 signaling
-    - JAK-STAT:
-        - Signaling by Interleukins
-        - Interferon Signaling
-        - Signalling to STAT3
-    - MAPK:     Signalling to ERKs
-    - EGFR:
-        - Signaling by EGFR
-        - Signaling by EGFR in Cancer
-    - PI3K:
-        - PI3K Cascade
-        - Constitutive Signaling by Aberrant PI3K in Cancer
-        - PI3K/AKT Signaling in Cancer
-        - PI3K/AKT activation
-    - TGFb:     Signaling by TGF-beta Receptor Complex
-    - TNFa:     TNF signaling
-    - VEGF:     Signaling by VEGF
-    - Wnt:
-        - Signaling by Wnt
-        - Signaling by WNT in cancer
-    - Insulin:  Signaling by Insulin receptor
+ - IL-1:
+   - Interleukin-1 signaling
+ - JAK-STAT:
+   - Signaling by Interleukins
+   - Interferon Signaling
+   - Signalling to STAT3
+ - MAPK:
+   - Signalling to ERKs
+ - EGFR:
+   - Signaling by EGFR
+   - Signaling by EGFR in Cancer
+ - PI3K:
+   - PI3K Cascade
+   - Constitutive Signaling by Aberrant PI3K in Cancer
+   - PI3K/AKT Signaling in Cancer
+   - PI3K/AKT activation
+ - TGFb:
+   - Signaling by TGF-beta Receptor Complex
+ - TNFa:
+   - TNF signaling
+ - VEGF:
+   - Signaling by VEGF
+ - Wnt:
+   - Signaling by Wnt
+   - Signaling by WNT in cancer
+ - Insulin:
+   - Signaling by Insulin receptor
 
 spia:
-    - RAR:      Signaling by Retinoic Acid
-    - p53:      Transcriptional Regulation by TP53
-    - Trail:    TRAIL  signaling
-    - notch:    Signaling by NOTCH
-    - NFkB:
-        - TAK1 activates NFkB by phosphorylation and activation of IKKs complex
-        - RIP-mediated NFkB activation via ZBP1
-    - PPAR:
-        - PPARA activates gene expression
-        - Activation of PPARGC1A (PGC-1alpha) by phosphorylation
-    - SHH:      Signaling by Hedgehog
-    - Hypoxia:  Cellular response to hypoxia
+ - RAR:
+   - Signaling by Retinoic Acid
+ - p53:
+   - Transcriptional Regulation by TP53
+ - Trail:
+   - TRAIL  signaling
+ - notch:
+   - Signaling by NOTCH
+ - NFkB:
+   - TAK1 activates NFkB by phosphorylation and activation of IKKs complex
+   - RIP-mediated NFkB activation via ZBP1
+ - PPAR:
+   - PPARA activates gene expression
+   - Activation of PPARGC1A (PGC-1alpha) by phosphorylation
+ - SHH:
+   - Signaling by Hedgehog
+ - Hypoxia:
+   - Cellular response to hypoxia
 
 kegg:
-    - MAPK:     04010	# MAPK signaling pathway
-    - EGFR:     04012	# ErbB signaling pathway
-    - PPAR:     03320	# PPAR signaling pathway
-    - PI3K:     04150	# mTOR signaling pathway
-    - Wnt:      04310	# Wnt signaling pathway
-    - Notch:    04330	# Notch signaling pathway
-    - Insulin:  04910	# Insulin signaling pathway
-    - NFkB:     04064	# NF-kappa B signaling pathway
-    - VEGF:     04370	# VEGF signaling pathway
-    - JAK-STAT: 04630	# Jak-STAT signaling pathway
-    - TGFb:     04350	# TGF-beta signaling pathway
-    - Trail:    04210	# Apoptosis
+ - MAPK:     04010	# MAPK signaling pathway
+ - EGFR:     04012	# ErbB signaling pathway
+ - PPAR:     03320	# PPAR signaling pathway
+ - PI3K:     04150	# mTOR signaling pathway
+ - Wnt:      04310	# Wnt signaling pathway
+ - Notch:    04330	# Notch signaling pathway
+ - Insulin:  04910	# Insulin signaling pathway
+ - NFkB:     04064	# NF-kappa B signaling pathway
+ - VEGF:     04370	# VEGF signaling pathway
+ - JAK-STAT: 04630	# Jak-STAT signaling pathway
+ - TGFb:     04350	# TGF-beta signaling pathway
+ - Trail:    04210	# Apoptosis
