@@ -150,4 +150,10 @@ colour shade and size of the point.
 
 \Sexpr{knit_child('basal_correlation.Rnw')}
 
+%\Sexpr{knit_child('.Rnw')} TODO: mut+cna volcanos
+
+\Sexpr{knit_child('drug_volcanos.Rnw')}
+
+\Sexpr{knit_child('survival_tissue_volcanos.Rnw')}
+
 \end{document}
