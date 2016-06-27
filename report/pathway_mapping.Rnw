@@ -39,7 +39,7 @@ VEGF & GO:0038084 & vascular endothelial growth factor signaling pathway\tabular
 \caption{Pathway mapping for Reactome and Pathifier}
 \begin{tabular}{cc}
 \hline
-\multirow{1}{*}{Pathway} & Name\tabularnewline
+Pathway & Name\tabularnewline
 \hline
 \multirow{2}{*}{EGFR} & Signaling by EGFR\tabularnewline
  & Signaling by EGFR in Cancer\tabularnewline
