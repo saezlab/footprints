@@ -21,7 +21,7 @@ strats = list(
 \centering
 \caption{Stratification statistics}
 \small{
-<<strat_table, echo=FALSE>>=
+<<strat_table, echo=FALSE, warning=FALSE>>=
 path_lookup = setNames(c("active", "inactive", "average"), c("+", "-", "0"))
 tab = df$add_name_col(strats, "treatment", bind=TRUE) %>%
     group_by(treatment, subset) %>%

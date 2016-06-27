@@ -92,8 +92,7 @@ VEGF & 04370 & VEGF signaling pathway\tabularnewline
 \caption{Pathway mapping for PARADIGM}
 \begin{tabular}{cc}
 \hline
-\multirow{2}{*}{Pathway} & \multirow{2}{*}{PARADIGM}\tabularnewline
- & \tabularnewline
+Pathway & PARADIGM\tabularnewline
 \hline
 EGFR & epidermal growth factor receptor activity (abstract)\tabularnewline
 Hypoxia & response to hypoxia (abstract)\tabularnewline
