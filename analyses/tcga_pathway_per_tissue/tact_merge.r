@@ -9,7 +9,7 @@ st = import('stats')
 gdsc = import('data/gdsc')
 tcga = import('data/tcga')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/merge/speed_linear.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/merge/speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "tact_merge.pdf"
 
 #TODO: use merged expression, include cell lines here

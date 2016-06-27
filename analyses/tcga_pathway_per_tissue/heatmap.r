@@ -5,7 +5,7 @@ ar = import('array')
 plt = import('plot')
 tcga = import('data/tcga')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/pathways_mapped/speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "heatmap_speed_matrix.pdf"
 
 scores = io$load(INFILE)

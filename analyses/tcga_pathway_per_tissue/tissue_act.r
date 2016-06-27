@@ -9,7 +9,7 @@ df = import('data_frame')
 st = import('stats')
 tcga = import('data/tcga')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/pathways_mapped/speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "box+cor/speed_matrix.pdf"
 
 # create simple data.frame with barcode, type, and study; same for scores
