@@ -2,6 +2,14 @@
 <<sig_overlap, echo=FALSE, fig.width=4.5, fig.heigth=4.5>>=
 import('../analyses/speed_overview/signature_overlap')$overlap()
 @
-\caption{Overlap of signature genes for different pathways}
+\caption{Overlap of signature genes for different pathways. For the 100 genes
+    we selected for each individual pathway, this shows how many of those
+        signature genes are present in another pathway as well. The overlap is
+        generally minimal, with the highest numbers between TNFa and NFkB (18)
+        and EGFR and MAPK (9). As both of these pathway pairs have one
+        component that is directly upstream of the other, this is to be
+        exptected. This also shows that the response genes are specific to
+        their perturbation and not a common phenotype like stress response
+        because of any perturbation.}
 \label{fig:sig-overlap}
 \end{figure}

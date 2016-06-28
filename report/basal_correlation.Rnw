@@ -49,6 +49,20 @@ util$cor_plots('paradigm')
 @
 }
 
-\caption{Correlation of pathway scores in basal expression of the TCGA (left) and GDSC (right)}
+\caption{Correlation of pathway scores in basal expression of primar tumors in
+    the TCGA (left) and cell lines in the GDSC (right). Perturbation-response
+        genes show similar correlation in basal correlation to cross-activation
+        in the perturbation experiments. Gene Ontology, Reactome and Biocarta
+        show a higher correlation overall, hinting at the fact that
+        transcription of related pathways is less heterogeneous than the
+        post-translational activity they mediate. In general, correlations
+        within tumors vs. cell lines look similar. We derived SPIA, Pathifier
+        and PARADIGM scores compared to tissue-matched normals in tumors and
+        other cancer cell lines of the same tissue, making those correlations
+        less comparable between the two panels for each method. Apart from
+        that, Pathifier shows very high correlation if computing scores against
+normals, suggesting that this method may not be suitable to differentiate
+between pathways using TCGA normals. PARADIGM shows almost no correlation
+across the board.}
 \label{fig:cor}
 \end{figure}

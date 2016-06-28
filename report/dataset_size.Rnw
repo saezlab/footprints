@@ -10,6 +10,20 @@ bars$create_df() %>%
     mutate(variable = config$id2short(variable)) %>%
     bars$do_plot()
 @
-\caption{Comparison of dataset size between SPEED, Gatza2014, and ours}
+\caption{Comparison of dataset size between SPEED, Gatza (2009), and ours.
+    Gatza et al. derived 18 pathway signatures using only the MCF-10A cell line
+        (thus also 18 experiments), and a total of 287 arrays. In 2014, they
+        included additional signatures from other sources to a total of 53, but
+        some are redundant, others not pathways, and all still limited to
+        breast cancer. SPEED (Parikh et al. 2009) assembled consensus
+        signatures for for 11 pathways using 69 GEO submissions, 215 different
+        conditions and 572 arrays. Our data set consists of 11 pathways, 217
+        GEO submissions, 568 different experiments and a total of 2687 arrays.
+        This means we use more evidence per pathway and cover a broader set of
+        experimental conditions, but also reflects the imposed limitation of
+        only considering experiments if there are at least two unperturbed
+        arrays available in order to estimate the basal variability. In
+        addition, all our expression values are derived from raw data and not
+        preprocessed data that we can not reproduce.}
 \label{fig:dataset_size}
 \end{figure}

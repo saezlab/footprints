@@ -12,7 +12,8 @@
 
 \begin{table}[H]
 \centering
-\caption{Pathway mapping for Gene Ontology}
+\caption{Pathway mapping for Gene Ontology. GO categories (ID and name) shown
+    for the 11 pathways we investigate.}
 \begin{tabular}{ccc}
 \hline
 \multirow{2}{*}{Pathway} & \multicolumn{2}{c}{Gene Ontology}\tabularnewline
@@ -36,7 +37,10 @@ VEGF & GO:0038084 & vascular endothelial growth factor signaling pathway\tabular
 
 \begin{table}[H]
 \centering
-\caption{Pathway mapping for Reactome and Pathifier}
+\caption{Pathway mapping for Reactome and Pathifier. Listed are reactome
+    pathway names that were used either for GSVA pathway scores or Pathifier
+        scores using the respective R packages. If more than one pathway is
+        listed all of them were used in the gene set.}
 \begin{tabular}{cc}
 \hline
 Pathway & Name\tabularnewline
@@ -65,7 +69,8 @@ VEGF & Signaling by VEGF\tabularnewline
 
 \begin{table}[H]
 \centering
-\caption{Pathway mapping for SPIA}
+\caption{Pathway mapping for SPIA. KEGG pathway IDs and names that SPIA relies
+on are listed (this is part of the SPIA R package).}
 \begin{tabular}{ccc}
 \hline
 \multirow{2}{*}{Pathway} & \multicolumn{2}{c}{SPIA}\tabularnewline
@@ -89,7 +94,12 @@ VEGF & 04370 & VEGF signaling pathway\tabularnewline
 
 \begin{table}[H]
 \centering
-\caption{Pathway mapping for PARADIGM}
+\caption{Pathway mapping for PARADIGM. This method is different as it performs
+inference on a signaling network instead of providing pathways itself. We used
+the network the TCGA is using in their
+analyses\footnote{https://tcga-data.nci.nih.gov/docs/publications/coadread_2012/}.
+This network has activity nodes for pathways and important processes that we
+used here, as listed.}
 \begin{tabular}{cc}
 \hline
 Pathway & PARADIGM\tabularnewline
@@ -97,7 +107,7 @@ Pathway & PARADIGM\tabularnewline
 EGFR & epidermal growth factor receptor activity (abstract)\tabularnewline
 Hypoxia & response to hypoxia (abstract)\tabularnewline
 JAK-STAT & STAT-1-3-5-active\tabularnewline
-\multirow{1}{*}{MAPK} & MEK-1-2-active\tabularnewline
+MAPK & MEK-1-2-active\tabularnewline
 NFkB & NFkB Complex (complex)\tabularnewline
 p53 & response to DNA damage stimulus (abstract)\tabularnewline
 PI3K & PIK3CA\tabularnewline

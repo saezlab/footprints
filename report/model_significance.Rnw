@@ -1,14 +1,19 @@
 \begin{figure}[H]
 
-\subfloat[by p-value]{
-\scalebox{.7}{
+\subfloat[Distribution of FDR-correctd p-values for signature genes (double
+        log). Genes (horizonal axis) are ordered by significance. Dashed line
+at 5\% FDR, dotted line at $10^{-10}$]{ \scalebox{.7}{
 <<sig_sign, echo=FALSE>>=
 import('../analyses/speed_overview/model_significance')$plot_pval()
 @
 }
 }
 
-\subfloat[by z-score]{
+\subfloat[Distribution of z-scores of the top 100 significant genes (different
+        order compared to a). Signature genes are comprised of both up- and
+downregulated genes for most of the pathways. In no pathway there a single or a
+few z-scores are high enough to overshadow the rest of the signature,
+    indicating that the model is numerically stable.]{
 \scalebox{.7}{
 <<sig_zscore, echo=FALSE>>=
 import('../analyses/speed_overview/model_significance')$plot_zscore()
@@ -16,6 +21,6 @@ import('../analyses/speed_overview/model_significance')$plot_zscore()
 }
 }
 
-\caption{Distribution of the top 100 genes used in the model}
-\label{fig:gene_significance}
+\caption{Distribution of the top 100 genes used in the model, as outcome for
+    the multiple regression of all pathways} \label{fig:gene_significance}
 \end{figure}

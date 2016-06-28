@@ -6,6 +6,10 @@ venn = import('../analyses/speed_overview/geneset_overlap')
 <<genesets, echo=FALSE, fig.width=19, fig.height=15>>=
 venn$venn()
 @
-\caption{Difference in gene sets between Perturbation-response genes and Gene Ontology/Reactome}
+\caption{Difference in gene sets between Perturbation-response genes and Gene
+    Ontology/Reactome. Perturbation-response genes are different to pathway
+        members and gene annotations, with between 0 and 4 genes in common.
+        However, pathway annotation is quite different from gene annotations
+        here as well.}
 \label{fig:genesets}
 \end{figure}
