@@ -3,7 +3,7 @@ b = import('base')
 util = import('./util_1')
 @
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \subfloat[Perturbation-response genes]{
 <<perturb_speed, echo=FALSE, fig.width=8, fig.height=3>>=
 util$perturb_score_plots('speed_matrix')
@@ -29,7 +29,7 @@ util$perturb_score_plots('gsva_biocarta')
 }
 \phantomcaption
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \ContinuedFloat
 
 \subfloat[SPIA]{

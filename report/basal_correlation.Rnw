@@ -2,7 +2,7 @@
 util = import('./util_1')
 @
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \subfloat[Perturbation-response genes]{
 <<cor_speed_matrix, echo=FALSE, fig.height=3, fig.width=8>>=
 util$cor_plots('speed_matrix')
@@ -28,7 +28,7 @@ util$cor_plots('gsva_biocarta')
 }
 \phantomcaption
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \ContinuedFloat
 
 \subfloat[SPIA]{
