@@ -22,6 +22,10 @@ p = assocs %>%
         config$facet_theme
 plt$symmetrise_scale(p)
 @
-\caption{}
+\caption{Volcano plots for tissue-specific survival associations, legend as in
+previous figures. All methods show strongest associations with KIRC and LGG.
+    Pathway-response genes only method to separate associations into classical
+oncogenic and tumor suppressor pathways, calling into question the meaning of
+associations obtained by other methods.}
 \label{fig:surv-volcano-tissue}
 \end{figure}
