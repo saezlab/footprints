@@ -26,7 +26,7 @@ data = list(
 #' @param data      A list with: tissue, MSI, scores
 #' @return          A data.frame with the association results
 assocs.pan = st$lm(drug ~ tissues + MSI + scores, data=data, min_pts=50,
-                   hpc_args = list(job_size = 1e4)) %>%
+                   hpc_args = list(job_size=1e4, n_jobs=200, memory=20480)) %>%
     filter(term == "scores") %>%
     select(-term) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr"))
@@ -39,9 +39,12 @@ assocs.pan = st$lm(drug ~ tissues + MSI + scores, data=data, min_pts=50,
 tissue_assocs = function(resp_sub, data) {
     st = import('stats')
     data$drug = data[[resp_sub]]
+    gc() # something is not properly cleaned up here
     re = st$lm(drug ~ MSI + scores, subsets=data$tissues, data=data, min_pts=10,
-               hpc_args = list(job_size = 1e4)) %>%
+               hpc_args = list(job_size=1e4, n_jobs=300, memory=20480)) %>%
         mutate(tissue = subset, subset=resp_sub)
+    gc() # something is not properly cleaned up here
+    re
 }
 
 assocs.tissue = sapply(c('clinical', 'noexp', 'sensi'), tissue_assocs, data=data, simplify=FALSE) %>%
