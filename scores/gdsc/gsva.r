@@ -31,13 +31,13 @@ genesets = io$load(INFILE) %>%
 #' @param sigs    The list of signatures
 #' @return        Result for GSVA(expr[,sample], sigs[set])
 gsva = function(set, expr, sigs, ...) {
-    GSVA::gsva(expr=expr, gset.idx.list=sigs[set], parallel.sz=1, ...)$es.obs
+    GSVA::gsva(expr=expr, gset.idx.list=sigs[set], parallel.sz=0, ...)$es.obs
 }
 
 # perform GSEA for each sample and signature
 result = hpc$Q(gsva, set = names(genesets),
                const = list(expr=expr, sigs=genesets),
-               memory = 4096, job_size = job_size) %>%
+               memory = 10240, job_size = job_size) %>%
     ar$stack(along=1) %>% t()
 
 save(result, file=OUTFILE)
