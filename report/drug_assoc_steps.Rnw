@@ -14,6 +14,12 @@ resp = config$methods$analysis_set %>%
     bind_rows() %>%
     mutate(method = config$id2short(method))
 
+# resp %>%
+#    filter(method %in% c("PRGs", "Mutations")) %>%
+#    group_by(drug) %>%
+#    top_n(1, -adj.p) %$%
+#    table(method)
+
 ggplot(resp, aes(x=-log10(adj.p), y=num, color=method)) +
     geom_step(size=2) +
     theme_bw() +
