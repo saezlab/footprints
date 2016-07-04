@@ -1,0 +1,35 @@
+<<setup_tp53, include=FALSE>>=
+io = import('io')
+ar = import('array')
+df = import('data_frame')
+st = import('stats')
+tcga = import('data/tcga')
+util = import('./util_2')
+
+# define the genes we're interested in
+genes_mut = c("TP53")
+genes_cna = c("TP53_del", "TP53_amp", "MYC_amp", "RAD21_amp", "NDRG1_amp", "PABPC1_amp", "GATA3_amp", "SOX17_amp")
+
+# load tcga scores for p53
+p53 = io$load('../scores/tcga/pathways_mapped/speed_matrix.RData')[,'p53',drop=FALSE]
+
+# load mutation status for the genes
+path = '../analyses/tcga_pathway_per_mutation'
+mut = io$load(file.path(path, 'mut_driver_matrix.RData'))[,genes_mut,drop=FALSE]
+cna = io$load(file.path(path, 'cna_driver_matrix.RData'))[,genes_cna,drop=FALSE]
+data = ar$stack(list(mut, cna), along=2)
+
+TP53 = data[,"TP53"]
+TP53_del = data[,"TP53_del"]
+TP53_amp = data[,"TP53_amp"]
+others = data[,!grepl("TP53", colnames(data))]
+
+ar$intersect(p53, TP53, TP53_del, TP53_amp, data, others, along=1)
+study = tcga$barcode2study(rownames(others))
+
+# all still significant after regressing out TP53 mods
+assocs = st$lm(p53 ~ study + TP53 + TP53_del + TP53_amp + others) %>%
+	filter(term == "others") %>%
+	select(-term, -p53) %>%
+	mutate(adj.p = p.adjust(p.value, method="fdr"))
+@
