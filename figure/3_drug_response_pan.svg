@@ -1512,9 +1512,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="663.25718"
-     inkscape:cy="619.71869"
+     inkscape:zoom="0.70000001"
+     inkscape:cx="303.45614"
+     inkscape:cy="552.60176"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -1531,7 +1531,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1840,11 +1840,6 @@
          d="m 194.62809,395.39683 c 0,-4.33913 3.55075,-7.88992 7.88987,-7.88992 4.33918,0 7.88992,3.55079 7.88992,7.88992 0,4.33913 -3.55074,7.88992 -7.88992,7.88992 -4.33912,0 -7.88987,-3.55079 -7.88987,-7.88992" />
       <path
          inkscape:connector-curvature="0"
-         id="path16079-0"
-         style="fill:#e10000;fill-opacity:0.47099998;fill-rule:nonzero;stroke:none"
-         d="m 199.95117,287.62725 c 0,-4.33913 3.55074,-7.89601 7.89599,-7.89601 4.33918,0 7.88992,3.55687 7.88992,7.89601 0,4.33915 -3.55074,7.8899 -7.88992,7.8899 -4.34525,0 -7.89599,-3.55075 -7.89599,-7.8899" />
-      <path
-         inkscape:connector-curvature="0"
          id="path16081-6"
          style="fill:#e10000;fill-opacity:0.47099998;fill-rule:nonzero;stroke:none"
          d="m 188.44329,372.76607 c 0,-4.33911 3.55074,-7.88992 7.88992,-7.88992 4.34521,0 7.896,3.5508 7.896,7.88992 0,4.33913 -3.55079,7.89601 -7.896,7.89601 -4.33918,0 -7.88992,-3.55688 -7.88992,-7.89601" />
@@ -1973,11 +1968,6 @@
          id="path16131-2"
          style="fill:#c8c8c8;fill-opacity:0.47099998;fill-rule:nonzero;stroke:none"
          d="m 186.26758,385.98515 c 0,-4.34525 3.55079,-7.89599 7.88991,-7.89599 4.34526,0 7.896,3.55074 7.896,7.89599 0,4.33918 -3.55074,7.88992 -7.896,7.88992 -4.33912,0 -7.88991,-3.55074 -7.88991,-7.88992" />
-      <path
-         inkscape:connector-curvature="0"
-         id="path16133-8"
-         style="fill:#e10000;fill-opacity:0.47099998;fill-rule:nonzero;stroke:none"
-         d="m 195.8076,286.47219 c 0,-4.32693 3.53854,-7.86545 7.86546,-7.86545 4.32692,0 7.86545,3.53852 7.86545,7.86545 0,4.32691 -3.53853,7.86544 -7.86545,7.86544 -4.32692,0 -7.86546,-3.53852 -7.86546,-7.86544" />
       <path
          inkscape:connector-curvature="0"
          id="path16135-0"
@@ -3811,12 +3801,12 @@
       <text
          sodipodi:linespacing="125%"
          id="text38219-9"
-         y="14.450806"
-         x="151.62126"
+         y="11.925425"
+         x="65.192688"
          style="font-style:normal;font-weight:normal;font-size:9.4821167px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          xml:space="preserve"><tspan
-           y="14.450806"
-           x="151.62126"
+           y="11.925425"
+           x="65.192688"
            id="tspan38221-0"
            sodipodi:role="line">Nutlin-3a: p53 (p&lt;10-24)</tspan></text>
       <path
@@ -3894,32 +3884,6 @@
            id="tspan38249-2"
            sodipodi:role="line">AZ628: MAPK</tspan></text>
       <text
-         sodipodi:linespacing="125%"
-         id="text38251-0"
-         y="255.8257"
-         x="186.31503"
-         style="font-style:normal;font-weight:normal;font-size:9.4821167px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           y="255.8257"
-           x="186.31503"
-           id="tspan38253-4"
-           sodipodi:role="line">T0901317: H2O2</tspan></text>
-      <text
-         sodipodi:linespacing="125%"
-         id="text38255-4"
-         y="273.53473"
-         x="267.98709"
-         style="font-style:normal;font-weight:normal;font-size:9.4821167px;line-height:125%;font-family:Sans;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           id="tspan10206"
-           y="273.53473"
-           x="267.98709"
-           sodipodi:role="line">GSK429286A:</tspan><tspan
-           id="tspan10210"
-           y="285.38739"
-           x="267.98709"
-           sodipodi:role="line">H2O2</tspan></text>
-      <text
          transform="matrix(0,-1,1,0,0,0)"
          sodipodi:linespacing="125%"
          id="text38259-3"
@@ -3952,17 +3916,6 @@
          inkscape:connector-curvature="0"
          id="path38269-5"
          d="m 97.989396,198.34231 5.869894,5.41836"
-         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.26428235px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
-      <path
-         inkscape:connector-curvature="0"
-         id="path38271-7"
-         d="m 196.87438,260.65338 4.06375,18.51271"
-         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.26428235px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         sodipodi:nodetypes="cc" />
-      <path
-         inkscape:connector-curvature="0"
-         id="path38273-7"
-         d="m 217.64472,275.55385 -4.06375,5.41834"
          style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.26428235px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <text
          sodipodi:linespacing="125%"
@@ -4066,7 +4019,7 @@
          id="tspan129668-3-9-9"
          x="287.3793"
          y="261.69159"
-         style="font-size:24.31782341px">c</tspan></text>
+         style="font-size:24.31782341px">d</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:25px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -25993,13 +25946,13 @@
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12.15891171px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="6.798614"
-       y="29.007772"
+       y="29.328367"
        id="text129666-4"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan129668-6"
          x="6.798614"
-         y="29.007772"
+         y="29.328367"
          style="font-size:24.31782341px">a</tspan></text>
     <flowRoot
        xml:space="preserve"
@@ -31843,29 +31796,23 @@
          id="tspan129668-3-0-2"
          x="447.7659"
          y="29.328367"
-         style="font-size:24.31782341px">b</tspan></text>
+         style="font-size:24.31782341px">c</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text38219-9-5"
-       y="403.54956"
-       x="127.12924"
+       y="437.38095"
+       x="161.41496"
        style="font-style:normal;font-weight:normal;font-size:9.4821167px;line-height:125%;font-family:Sans;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
-         y="403.54956"
-         x="129.91489"
-         id="tspan38221-0-4"
-         sodipodi:role="line"
-         style="font-size:8.75px">regression slope: pathway </tspan><tspan
-         y="414.48706"
-         x="127.12924"
-         sodipodi:role="line"
-         id="tspan130481"
-         style="font-size:8.75px">standard deviations</tspan><tspan
-         y="425.42456"
-         x="127.12924"
+         y="437.38095"
+         x="161.41496"
          sodipodi:role="line"
          id="tspan130479"
-         style="font-size:8.75px">per 10-fold sensitivity</tspan></text>
+         style="font-size:9.375px">Δ log<tspan
+   style="font-size:9.375px;baseline-shift:sub"
+   id="tspan24780">10</tspan> IC<tspan
+   style="font-size:9.375px;baseline-shift:sub"
+   id="tspan24782">50</tspan> / Δ pathway score</tspan></text>
     <g
        id="g131725"
        transform="translate(12.857142,6.7239645)">
@@ -33993,5 +33940,17 @@
          y="377.2818"><tspan
            style="font-size:8.75px"
            id="tspan56414-4">FC 5, p 0.017</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:12.15891171px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="227.55688"
+       y="29.328367"
+       id="text129666-6-5-8-5"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan129668-3-0-2-3"
+         x="227.55688"
+         y="29.328367"
+         style="font-size:24.31782341px">b</tspan></text>
   </g>
 </svg>

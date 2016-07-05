@@ -6210,9 +6210,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.9899495"
-     inkscape:cx="286.84895"
-     inkscape:cy="763.97334"
+     inkscape:zoom="1.4"
+     inkscape:cx="366.69652"
+     inkscape:cy="769.21165"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -20512,7 +20512,7 @@
              id="tspan94200"
              sodipodi:role="line"
              y="-8.3699999"
-             x="137.21788">Pathway standard deviations</tspan>
+             x="137.21788">Δ normalized pathway score</tspan>
         </text>
       </g>
       <g
