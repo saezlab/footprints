@@ -1,0 +1,37 @@
+<<setup_targets, include=FALSE>>=
+library(dplyr)
+b = import('base')
+gdsc = import('data/gdsc')
+util = import('./util_3')
+config = import('../config')
+
+resp = c("speed_matrix", "mutation") %>%
+    lapply(util$load_fun) %>%
+    bind_rows() %>%
+    mutate(method = config$id2short(method))
+
+# how many drugs have lower FDR for mutations and PRGs
+tab = resp %>%
+    group_by(drug) %>%
+    top_n(1, -adj.p) %>%
+    select(drug, method)
+tab = tab[!b$duplicated(tab$drug),]
+table(tab$method)
+
+targets = gdsc$drug$targets() %>%
+    select(-id) %>%
+    distinct() %>%
+    inner_join(tab, by="drug") %>%
+    select(-drug, -synonyms, -brand_name, -target)
+
+
+do_test = function(col) {
+    fisher.test(targets[,"method"], targets[,col], alternative="two.sided") %>%
+        broom::tidy() %>%
+        mutate(type = col)
+}
+tt = setdiff(colnames(targets), "method")
+result = bind_rows(lapply(tt, do_test)) %>%
+    filter(estimate != Inf) %>%
+    mutate(adj.p = p.adjust(p.value, method="fdr"))
+@
