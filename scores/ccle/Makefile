@@ -7,7 +7,7 @@ $(call ext_dep,../../model,$(notdir $(MODELS)))
 
 .PHONY: scores
 
-scores: $(SPEED_SCORES) $(SET_SCORES)
+all: $(SPEED_SCORES) $(SET_SCORES)
 
 # use each model to create scores object
 speed_%.RData: speed.r ../../model/model_%.RData
