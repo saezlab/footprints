@@ -1,0 +1,36 @@
+<<setup_tp53, include=FALSE>>=
+io = import('io')
+ar = import('array')
+df = import('data_frame')
+st = import('stats')
+tcga = import('data/tcga')
+util = import('./util_2')
+
+# define the genes we're interested in
+genes_mut = c("PIK3CA", "BRAF", "KRAS", "NRAS")
+genes_cna = c("EGFR_amp", "KRAS_amp", "ERBB2_amp")
+
+# load tcga scores for p53
+mapk = io$load('../scores/tcga/pathways_mapped/speed_matrix.RData')[,'MAPK',drop=FALSE]
+
+# load mutation status for the genes
+path = '../analyses/tcga_pathway_per_mutation'
+mut = io$load(file.path(path, 'mut_driver_matrix.RData'))[,genes_mut,drop=FALSE]
+cna = io$load(file.path(path, 'cna_driver_matrix.RData'))[,genes_cna,drop=FALSE]
+data = ar$stack(list(mut, cna), along=2)
+
+ar$intersect(mapk, data, along=1)
+study = tcga$barcode2study(rownames(data))
+
+PIK3CA = data[,"PIK3CA"]
+BRAF = data[,"BRAF"]
+KRAS = data[,"KRAS"]
+NRAS = data[,"NRAS"]
+EGFR_amp = data[,"EGFR_amp"]
+KRAS_amp = data[,"KRAS_amp"]
+ERBB2_amp = data[,"ERBB2_amp"]
+
+
+# all still significant after regressing out TP53 mods
+assocs = st$lm(mapk ~ study + BRAF + KRAS + NRAS + EGFR_amp + KRAS_amp + ERBB2_amp + PIK3CA)
+@
