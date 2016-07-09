@@ -20,22 +20,25 @@ strats = list(
 \begin{table}[H]
 \centering
 \caption{Stratification statistics: subsets and numbers for figure 4c. Shown is
-the combination between a mutation/pathway and the number of cell lines in each
-subset. Subsets are defined by: (1) Whether a mutation is present (mut) or not (wt),
-or disregarding mutational status (blank). (2) Whether the pathway score is in the
-top (active) or bottom quartile (inactive), or neither (blank) of the subset
-defined by mutations.}
+    the combination between a mutation/pathway, the number of cell lines, and
+        median drug response in each subset. Subsets are defined by: (1)
+        Whether a mutation is present (mut) or not (wt), or disregarding
+        mutational status (blank). (2) Whether the pathway score is in the top
+        (active) or bottom quartile (inactive), or neither (blank) of the
+        subset defined by mutations.}
 \small{
 <<strat_table, echo=FALSE, warning=FALSE>>=
 path_lookup = setNames(c("active", "inactive", "average"), c("+", "-", "0"))
 tab = df$add_name_col(strats, "treatment", bind=TRUE) %>%
     group_by(treatment, subset) %>%
-    summarize(n = n_distinct(cosmic)) %>%
+    summarize(n = n_distinct(cosmic),
+              median = median(resp, na.rm=TRUE)) %>%
     ungroup() %>%
     transmute(Treatment = treatment,
               Mutation = b$grep("_(mut|wt)", subset),
               Pathway = path_lookup[b$grep("([+-0])", subset)],
-              `Number of cell lines` = n)
+              `Number of cell lines` = n,
+              `Median DR [log uM]` = median)
 
 tab[is.na(tab)] = " "
 arrange(tab, Treatment, Mutation, Pathway) %>%
