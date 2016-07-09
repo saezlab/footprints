@@ -27,7 +27,8 @@ others = data[,!grepl("TP53", colnames(data))]
 ar$intersect(p53, TP53, TP53_del, TP53_amp, data, others, along=1)
 study = tcga$barcode2study(rownames(others))
 
-# all still significant after regressing out TP53 mods
+# all TP53 mods are required as covariates to reach
+# p>0.4 for MYC, RAD21, NDRG1, and PABPC1
 assocs = st$lm(p53 ~ study + TP53 + TP53_del + TP53_amp + others) %>%
 	filter(term == "others") %>%
 	select(-term, -p53) %>%
