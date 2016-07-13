@@ -25,5 +25,5 @@ assocs$pan_cov %>%
 assocs$tissue %>%
     plt$color$p_effect("adj.p", dir=-1, thresh=0.1) %>%
     mutate(label = paste(subset, scores, sep=":")) %>%
-    plt$volcano(p=0.1) %>% #+ ggtitle(sum(clinical$adj.p < 0.1)) %>%
+    plt$volcano(p=0.1, label_top=35) %>% #+ ggtitle(sum(clinical$adj.p < 0.1)) %>%
     print()
