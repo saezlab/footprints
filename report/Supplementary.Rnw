@@ -37,7 +37,9 @@
 
 \Sexpr{knit_child('basal_correlation.Rnw')}
 
-%\Sexpr{knit_child('.Rnw')} TODO: mut+cna volcanos
+\Sexpr{knit_child('mut_volcanos.Rnw')}
+
+\Sexpr{knit_child('cna_volcanos.Rnw')}
 
 \Sexpr{knit_child('drug_volcanos.Rnw')}
 
