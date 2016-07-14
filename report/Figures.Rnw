@@ -11,12 +11,14 @@
 
 \tableofcontents
 
-\Sexpr{knit_child('1_Pathway_Scores.Rnw')} %DONE: potentially remove circle plots from Fig 1
+\Sexpr{knit_child('global_expr.Rnw')}
 
-\Sexpr{knit_child('2_TCGA-Driver+Pathway.Rnw')} %TODO: mut+cna volcano
+\Sexpr{knit_child('drug_assoc_steps.Rnw')}
 
-\Sexpr{knit_child('3_GDSC-Drugs.Rnw')} %DONE
+\Sexpr{knit_child('drug_over_mut.Rnw')}
 
-\Sexpr{knit_child('5_Survival.Rnw')} %DONE, more or less
+\Sexpr{knit_child('survival_pancan.Rnw')}
+
+\Sexpr{knit_child('survival_fits.Rnw')}
 
 \end{document}
