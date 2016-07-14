@@ -22,7 +22,7 @@ $(filter assocs_mapped/%,$(GDSC_ASSOCS)): assocs_%.RData: gdsc_assocs.r ../../sc
 	$(call bsub_log,4096) Rscript $^ $@
 
 $(filter assocs_all/%,$(GDSC_ASSOCS)): assocs_%.RData: gdsc_assocs.r ../../scores/gdsc/pathways_%.RData
-	$(call bsub_log,37960) Rscript $^ $@
+	$(call bsub_log,110000) Rscript $^ $@
 
 drug_ranges.pdf: drug_ranges.r
 	Rscript $^ $@

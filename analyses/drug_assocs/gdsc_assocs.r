@@ -47,7 +47,8 @@ tissue_assocs = function(resp_sub, data) {
     re
 }
 
-assocs.tissue = sapply(c('clinical', 'noexp', 'sensi'), tissue_assocs, data=data, simplify=FALSE) %>%
+# sensi @GO: long vectors not supported w/ send_common_data
+assocs.tissue = sapply(c('clinical', 'noexp'), tissue_assocs, data=data, simplify=FALSE) %>%
     bind_rows() %>%
     filter(term == "scores") %>%
     select(-term) %>%
