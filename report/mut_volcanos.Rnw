@@ -26,6 +26,10 @@ p = util$mut_cov %>%
         config$facet_theme
 plt$symmetrise_scale(p)
 @
-\caption{}
+\caption{Volcano plot for pan-cancer associations between pathway scores and
+    mutated driver genes. Effect size is standard deviations of pathway scores.
+P-values FDR-corrected. Associations corrected for cancer type. PRGs provide
+stronger associations and those that we are obtain are more in line with
+literature knowledge of signaling pathways.}
 \label{fig:mut-volcano-pancan}
 \end{figure}

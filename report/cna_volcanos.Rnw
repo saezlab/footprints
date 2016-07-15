@@ -26,6 +26,10 @@ p = util$cna_cov %>%
         config$facet_theme
 plt$symmetrise_scale(p)
 @
-\caption{}
+\caption{Volcano plots for pan-cancer associations between pathway scores and
+    GISTIC-filtered gene amplifications and deletion. Effect size is standard
+        deviations of pathway scores. P-values FDR-corrected. Cancer type
+        regressed out. Associations by PRGs are more in line with established
+        literature knowledge.}
 \label{fig:cna-volcano-pancan}
 \end{figure}

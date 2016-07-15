@@ -1,7 +1,8 @@
 \begin{figure}[H]
-<<global_structure, echo=FALSE, fig.width=10>>=
-import('../analyses/speed_raw/plot')$do_plot()
+<<global_structure, echo=FALSE, fig.width=9>>=
+config = import('../config')
+import('../analyses/speed_raw/plot')$do_plot() + config$facet_theme
 @
-\caption{Clustering of fold changes (left) and top 100 genes (right)}
+\caption{Clustering of individual signatures (left) and consensus model (right)}
 \label{fig:clust}
 \end{figure}
