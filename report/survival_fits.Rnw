@@ -27,25 +27,19 @@ discrete_assocs = surv$tissue(scores)
 @
 
 \begin{figure}[H]
-<<fit1, echo=FALSE, fig.width=7.5, fig.height=6>>=
-surv$row2survFit(unlist(filter(discrete_assocs, scores=="TNFa" & subset=="KIRC")))
-@
-\caption{}
-\label{fig:fit-kirc}
-\end{figure}
+<<fits, echo=FALSE, warning=FALSE, fig.width=3.5, fig.height=7>>=
+do_fit = function(tissue, path)
+    surv$row2survFit(unlist(filter(discrete_assocs, scores==path & subset==tissue)))
 
-\begin{figure}[H]
-<<fit2, echo=FALSE, fig.width=7.5, fig.height=6>>=
-surv$row2survFit(unlist(filter(discrete_assocs, scores=="JAK-STAT" & subset=="LGG")))
+plot_grid(
+    do_fit("KIRC", "TNFa") + xlab("") + ylab("") + ylim(0.25, 1),
+    do_fit("LGG", "JAK-STAT") + xlab("") + ylab("Fraction") + ylim(0.25, 1),
+    do_fit("ACC", "p53") + ylab("") + ylim(0.25, 1),
+#    labels = c("TNFa (KIRC)", "JAK-STAT (LGG)", "Trail (CESC)"),
+    ncol = 1,
+    align = "v"
+)
 @
 \caption{}
-\label{fig:fit-lgg}
-\end{figure}
-
-\begin{figure}[H]
-<<fit3, echo=FALSE, fig.width=7.5, fig.height=6>>=
-surv$row2survFit(unlist(filter(discrete_assocs, scores=="Trail" & subset=="CESC")))
-@
-\caption{}
-\label{fig:fit-cesc}
+\label{fig:fits}
 \end{figure}
