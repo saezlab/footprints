@@ -29,13 +29,15 @@ discrete_assocs = surv$tissue(scores)
 \begin{figure}[H]
 <<fits, echo=FALSE, warning=FALSE, fig.width=3.5, fig.height=7>>=
 do_fit = function(tissue, path)
-    surv$row2survFit(unlist(filter(discrete_assocs, scores==path & subset==tissue)))
+    discrete_assocs %>%
+        filter(scores==path & subset==tissue) %>%
+        unlist() %>%
+        surv$row2survFit()
 
 plot_grid(
     do_fit("KIRC", "TNFa") + xlab("") + ylab("") + ylim(0.25, 1),
     do_fit("LGG", "JAK-STAT") + xlab("") + ylab("Fraction") + ylim(0.25, 1),
     do_fit("ACC", "p53") + ylab("") + ylim(0.25, 1),
-#    labels = c("TNFa (KIRC)", "JAK-STAT (LGG)", "Trail (CESC)"),
     ncol = 1,
     align = "v"
 )

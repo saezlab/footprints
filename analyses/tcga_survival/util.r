@@ -133,9 +133,9 @@ discretize_quartiles = function(x, numeric=TRUE, na.rm=TRUE) {
 
     if (!numeric) {
         re = as.character(re)
-        re[re == "-1"] = "down"
-        re[re == "0"] = "unknown"
-        re[re == "1"] = "up"
+        re[re == "-1"] = "bottom quartile"
+        re[re == "0"] = "middle"
+        re[re == "1"] = "top quartile"
     }
     re
 }
@@ -145,7 +145,7 @@ discretize_quartiles = function(x, numeric=TRUE, na.rm=TRUE) {
 #' @param row     A data.frame row with the fields 'subset' and 'adj.p'
 #' @param rename  A named vector which levels should have which names
 #'                The names must be (-1,0,1) and the values the names
-row2survFit = function(row, rename=c("-1"="down", "0"="unknown", "1"="up")) {
+row2survFit = function(row, rename=c("-1"="bottom quartile", "0"="middle", "1"="top quartile")) {
     score = scores
     clin = clinical
     if ("subset" %in% names(row))
@@ -155,7 +155,7 @@ row2survFit = function(row, rename=c("-1"="down", "0"="unknown", "1"="up")) {
     clin$pathway = score[,sub("_.*$", "", row['scores'])]
 
     if (!is.null(rename))
-        clin$pathway = rename[as.character(clin$pathway)]
+        clin$pathway = factor(rename[as.character(clin$pathway)], levels=rename)
 
     survfit(Surv(surv_months, alive) ~ pathway, data=clin) %>%
         ggsurv() +
