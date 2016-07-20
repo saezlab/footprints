@@ -35,24 +35,24 @@ plt$symmetrise_scale(p)
 \end{figure}
 
 
-\begin{figure}[H]
-<<drug_volcano_tissue, echo=FALSE, fig.width=8, fig.height=12>>=
-p = assocs %>%
-    b$lnapply(function(x) x$assocs.tissue) %>%
-    df$add_name_col(col="method", bind=TRUE) %>%
-    filter(subset == "clinical") %>%
-    mutate(label = paste(drug, scores, tissue, sep=":"),
-           method = config$id2short(method)) %>%
-    plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.1, dir=-1) %>%
-    plt$volcano(base.size=1, text.size=2, p=0.1, label_top=60, repel=TRUE) +
-        facet_wrap(~method, ncol=2, scales="free_x") +
-        config$facet_theme
-plt$symmetrise_scale(p)
-@
-\caption{Cancer-specific volcano plots, legend as in previous figure. Again,
-    top hits for pathway-response genes are in line with the oncogene addiction
-pardigm, other methods are not. Pathifier provides highly significant
-associations for Cetuximab and Trametinib for all pathways, calling into
-question the meaning of these associations.}
-\label{fig:drug-volcano-tissue}
-\end{figure}
+%\begin{figure}[H]
+%<<drug_volcano_tissue, echo=FALSE, fig.width=8, fig.height=12>>=
+%p = assocs %>%
+%    b$lnapply(function(x) x$assocs.tissue) %>%
+%    df$add_name_col(col="method", bind=TRUE) %>%
+%    filter(subset == "clinical") %>%
+%    mutate(label = paste(drug, scores, tissue, sep=":"),
+%           method = config$id2short(method)) %>%
+%    plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.1, dir=-1) %>%
+%    plt$volcano(base.size=1, text.size=2, p=0.1, label_top=60, repel=TRUE) +
+%        facet_wrap(~method, ncol=2, scales="free_x") +
+%        config$facet_theme
+%plt$symmetrise_scale(p)
+%@
+%\caption{Cancer-specific volcano plots, legend as in previous figure. Again,
+%    top hits for pathway-response genes are in line with the oncogene addiction
+%pardigm, other methods are not. Pathifier provides highly significant
+%associations for Cetuximab and Trametinib for all pathways, calling into
+%question the meaning of these associations.}
+%\label{fig:drug-volcano-tissue}
+%\end{figure}
