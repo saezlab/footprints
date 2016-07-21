@@ -2,10 +2,10 @@
 
 \input{config}
 
-\title{Supplementary Material for Perturbation-response genes reveal signaling
-    footprints in cancer gene expression}
-\author{Michael Schubert, Bertram Klinger, Martina Klüneman, Mathew J
-    Garnett, Nils Blüthge, Julio Saez-Rodriguez
+\title{Supplementary Material for "Perturbation-response genes reveal signaling
+    footprints in cancer gene expression"}
+\author{Michael Schubert, Bertram Klinger, Martina KlÃ¼ünemn, Mathew J
+    Garnett, Nils BlÃ¼ügen, Julio Saez-Rodriguez}
 
 \begin{document}
 
