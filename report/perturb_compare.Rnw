@@ -22,21 +22,21 @@ util$perturb_score_plots('gsva_reactome')
 @
 }
 
-\subfloat[BioCarta]{
-<<perturb_biocarta, echo=FALSE, fig.width=8, fig.height=3>>=
-util$perturb_score_plots('gsva_biocarta')
-@
-}
-\phantomcaption
-\end{figure}
-\begin{figure}[!htbp]
-\ContinuedFloat
+%\subfloat[BioCarta]{
+%<<perturb_biocarta, echo=FALSE, fig.width=8, fig.height=3>>=
+%util$perturb_score_plots('gsva_biocarta')
+%@
+%}
 
 \subfloat[SPIA]{
 <<perturb_spia, echo=FALSE, fig.width=8, fig.height=3>>=
 util$perturb_score_plots('spia')
 @
 }
+\phantomcaption
+\end{figure}
+\begin{figure}[!htbp]
+\ContinuedFloat
 
 \subfloat[Pathifier]{
 <<perturb_pathifier, echo=FALSE, fig.width=8, fig.height=3>>=
@@ -53,8 +53,12 @@ util$perturb_score_plots('pathifier')
     their statistics (left). Right: perturbation experiments on horizontal
         axis, ordered alphabetically as indicated by color bar for pathways.
         Effect of a perturbatin on the corresponding pathway is activating
-        (teal) or inhibiting (orange). Total magnitude of pathway activation
-        scaled for each experiment. Left: statistical associations between
+        (teal) or inhibiting (orange). Cells in the heatmap correspond to
+        relative pathway activation according to pathway scores for different
+        methods. Pathway inhibitions shown in the activating direction
+        (negative inhibition). White cells indicate experiments where we could
+        not derive pathway scores (Pathifier).
+        Left: statistical associations between
         perturbed pathway and change in scores for all pathway scores given any
         perturbation. Significance indicated with a dot for $FDR<10^{-5}$ and a
         star for $FDR<10^{-10}$, color grading by Wald statistic.
@@ -64,7 +68,7 @@ util$perturb_score_plots('pathifier')
         performed on the same set of experiments as was used to create the
         model, these associations only quantify the amount of cross-activation
 and heterogeneity in the response, the significance of the model itself is
-shwon in figure 2. It does, however, show that competing pathway methods are
+shown in figure 2. It does, however, show that competing pathway methods are
 for the most part unable to recover perturbed pathways or associate with a
     different perturbation than the one applied. This highlights that methods
         based on pathway mapping should only interpreted as either only

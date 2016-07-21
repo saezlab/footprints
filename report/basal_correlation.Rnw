@@ -21,21 +21,21 @@ util$cor_plots('gsva_reactome')
 @
 }
 
-\subfloat[BioCarta]{
-<<cor_speed_biocarta, echo=FALSE, fig.height=3, fig.width=8>>=
-util$cor_plots('gsva_biocarta')
-@
-}
-\phantomcaption
-\end{figure}
-\begin{figure}[!htbp]
-\ContinuedFloat
+%\subfloat[BioCarta]{
+%<<cor_speed_biocarta, echo=FALSE, fig.height=3, fig.width=8>>=
+%util$cor_plots('gsva_biocarta')
+%@
+%}
 
 \subfloat[SPIA]{
 <<cor_spia, echo=FALSE, fig.height=3, fig.width=8>>=
 util$cor_plots('spia')
 @
 }
+\phantomcaption
+\end{figure}
+\begin{figure}[!htbp]
+\ContinuedFloat
 
 \subfloat[Pathifier]{
 <<cor_pathifier, echo=FALSE, fig.height=3, fig.width=8>>=
@@ -49,20 +49,23 @@ util$cor_plots('paradigm')
 @
 }
 
-\caption{Correlation of pathway scores in basal expression of primar tumors in
+\caption{Correlation of pathway scores in basal expression of primary tumors in
     the TCGA (left) and cell lines in the GDSC (right). Perturbation-response
         genes show similar correlation in basal correlation to cross-activation
         in the perturbation experiments. Gene Ontology, Reactome and Biocarta
         show a higher correlation overall, hinting at the fact that
         transcription of related pathways is less heterogeneous than the
-        post-translational activity they mediate. In general, correlations
-        within tumors vs. cell lines look similar. We derived SPIA, Pathifier
-        and PARADIGM scores compared to tissue-matched normals in tumors and
-        other cancer cell lines of the same tissue, making those correlations
-        less comparable between the two panels for each method. Apart from
-        that, Pathifier shows very high correlation if computing scores against
-normals, suggesting that this method may not be suitable to differentiate
-between pathways using TCGA normals. PARADIGM shows almost no correlation
-across the board.}
+        post-translational activity they mediate. For those methods,
+        correlations within tumors vs. cell lines look similar. SPIA and
+            Pathifier are less comparable between TCGA and GDSC because these
+            methods require comparison to a reference condition (Tumor normals
+                    in the TCGA) that we could only provide by comparing each
+            cell line in the GDSC to the rest of cell lines in that tissue.
+            This makes those correlations less comparable between the two
+            panels for each method. Apart from that, Pathifier shows very high
+            correlation if computing scores against normals, suggesting that
+            this method may not be suitable to differentiate between pathways
+            using TCGA normals. PARADIGM shows almost no correlation between
+            pathways.}
 \label{fig:cor}
 \end{figure}

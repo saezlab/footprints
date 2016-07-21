@@ -10,7 +10,7 @@ bars$create_df() %>%
     mutate(variable = config$id2short(variable)) %>%
     bars$do_plot()
 @
-\caption{Comparison of dataset size between SPEED, Gatza (2009), and ours.
+\caption{Comparison of dataset size between SPEED, Gatza (2009), and PRGs.
     Gatza et al. derived 18 pathway signatures using only the MCF-10A cell line
         (thus also 18 experiments), and a total of 287 arrays. In 2014, they
         included additional signatures from other sources to a total of 53, but

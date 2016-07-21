@@ -2,8 +2,10 @@
 
 \input{config}
 
-\title{Supplementary Material}
-\author{Michael Schubert (schubert@ebi.ac.uk)}
+\title{Supplementary Material for Perturbation-response genes reveal signaling
+    footprints in cancer gene expression}
+\author{Michael Schubert, Bertram Klinger, Martina Klüneman, Mathew J
+    Garnett, Nils Blüthge, Julio Saez-Rodriguez
 
 \begin{document}
 
@@ -11,7 +13,9 @@
 
 \tableofcontents
 
-%\section{Supplementary notes}
+\section{Supplementary notes}
+
+\Sexpr{knit_child('note_signatures.Rnw')}
 
 %\Sexpr{knit_child('suppl_notes.Rnw')}
 
