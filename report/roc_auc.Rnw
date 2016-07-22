@@ -6,7 +6,9 @@ config = import('../config')
 
 \begin{table}[H]
 \centering
-\caption{AUC under the ROC curve}
+\caption{Area under the ROC curve for perturbation experiments. Pathway
+    scores derived by different pathway methods, known pathway perturbations
+        are True Positives. }
 <<roc_auc, echo=FALSE>>=
 kable(roc$auc, digits=2, booktabs=TRUE)
 @
