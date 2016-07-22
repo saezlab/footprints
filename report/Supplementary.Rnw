@@ -4,8 +4,12 @@
 
 \title{Supplementary Material for "Perturbation-response genes reveal signaling
     footprints in cancer gene expression"}
-\author{Michael Schubert, Bertram Klinger, Martina KlÃ¼ünemn, Mathew J
-    Garnett, Nils BlÃ¼ügen, Julio Saez-Rodriguez}
+\author{Michael Schubert
+    \and Bertram Klinger
+    \and Martina Kl{\"u}nemann
+    \and Mathew J Garnett
+    \and Nils Bl{\"u}thgen
+    \and Julio Saez-Rodriguez}
 
 \begin{document}
 
@@ -23,7 +27,9 @@
 
 \Sexpr{knit_child('pathway_mapping.Rnw')}
 
-%\Sexpr{knit_child('roc_auc.Rnw')}
+%\Sexpr{knit_child('roc_auc.Rnw')} %TODO: ROC stats??!
+
+\Sexpr{knit_child('mut_cna_table.Rnw')}
 
 \Sexpr{knit_child('drug_over_mut_stats.Rnw')}
 

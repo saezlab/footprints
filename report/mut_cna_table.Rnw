@@ -1,0 +1,44 @@
+<<setup_mut_cna_table, include=FALSE>>=
+library(dplyr)
+library(magrittr)
+ar = import('array')
+df = import('data_frame')
+util = import('./util_2')
+
+mut = util$mut_cov %>%
+	group_by(m) %>%
+    filter(any(adj.p < 1e-5) & method == "speed_matrix") %>%
+    ungroup()
+
+use_amp = c("EGFR_amp", "KRAS_amp", "ERBB2_amp", "BRAF_amp",
+            "TP53_del",
+            "PIK3CA_amp", "PIK3CB_amp")
+
+cna = util$cna_cov %>%
+	group_by(m) %>%
+    filter(m %in% use_amp & method == "speed_matrix") %>%
+    ungroup()
+
+tab = bind_rows(mut, cna) %>%
+    ar$construct(adj.p ~ m + scores, ., fun.aggregate=sum) %>%
+    as.data.frame()
+@
+
+\begin{table}[H]
+\centering
+\caption{Mutation/copy number associations with pathway scores obtained by
+    PRGs. Associations using TCGA data corrected for cancer type. Mutated
+        genes included in table if FDR<$10^{-5}$. Copy number alterations
+        included if there is a corresponding mutation, either in the same gene
+        or related (e.g. ERBB2 amplifications for EGFR amplifications).
+}
+\small{
+<<mut_cna_table, echo=FALSE>>=
+kable(tab[,1:6], digits=50, booktabs=TRUE)
+@
+\smallskip
+<<mut_cna_table2, echo=FALSE>>=
+kable(tab[,7:ncol(tab)], digits=50, booktabs=TRUE)
+@
+}
+\end{table}
