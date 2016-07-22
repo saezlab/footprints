@@ -26,11 +26,12 @@ tab = bind_rows(mut, cna) %>%
 
 \begin{table}[H]
 \centering
-\caption{Mutation/copy number associations with pathway scores obtained by
-    PRGs. Associations using TCGA data corrected for cancer type. Mutated
-        genes included in table if FDR<$10^{-5}$. Copy number alterations
-        included if there is a corresponding mutation, either in the same gene
-        or related (e.g. ERBB2 amplifications for EGFR amplifications).
+\caption{FDR-adjusted p-values for mutation/copy number associations with
+    pathway scores obtained by PRGs. Associations using TCGA data corrected for
+        cancer type. Mutated genes included in table if FDR<$10^{-5}$. Copy
+        number alterations included if there is a corresponding mutation,
+    either in the same gene or related (e.g. ERBB2 amplifications for EGFR
+            amplifications).
 }
 \small{
 <<mut_cna_table, echo=FALSE>>=
