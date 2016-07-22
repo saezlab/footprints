@@ -4,21 +4,27 @@ util = import('./util_1')
 
 \begin{figure}[!htbp]
 \subfloat[Perturbation-response genes]{
+\scalebox{0.8}{
 <<cor_speed_matrix, echo=FALSE, fig.height=3, fig.width=8>>=
 util$cor_plots('speed_matrix')
 @
 }
+}
 
 \subfloat[Gene Ontology]{
+\scalebox{0.8}{
 <<cor_go, echo=FALSE, fig.height=3, fig.width=8>>=
 util$cor_plots('gsva_go')
 @
 }
+}
 
 \subfloat[Reactome]{
+\scalebox{0.8}{
 <<cor_reactome, echo=FALSE, fig.height=3, fig.width=8>>=
 util$cor_plots('gsva_reactome')
 @
+}
 }
 
 %\subfloat[BioCarta]{
@@ -28,9 +34,11 @@ util$cor_plots('gsva_reactome')
 %}
 
 \subfloat[SPIA]{
+\scalebox{0.8}{
 <<cor_spia, echo=FALSE, fig.height=3, fig.width=8>>=
 util$cor_plots('spia')
 @
+}
 }
 \phantomcaption
 \end{figure}
@@ -38,15 +46,19 @@ util$cor_plots('spia')
 \ContinuedFloat
 
 \subfloat[Pathifier]{
+\scalebox{0.8}{
 <<cor_pathifier, echo=FALSE, fig.height=3, fig.width=8>>=
 util$cor_plots('pathifier')
 @
 }
+}
 
 \subfloat[PARADIGM]{
+\scalebox{0.8}{
 <<cor_paradigm, echo=FALSE, fig.height=3, fig.width=8>>=
 util$cor_plots('paradigm')
 @
+}
 }
 
 \caption{Correlation of pathway scores in basal expression of primary tumors in

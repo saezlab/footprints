@@ -5,22 +5,26 @@ util = import('./util_1')
 
 \begin{figure}[!htbp]
 \subfloat[Perturbation-response genes]{
-<<perturb_speed, echo=FALSE, fig.width=8, fig.height=3>>=
+<<perturb_speed, echo=FALSE, fig.width=7, fig.height=2.5>>=
 util$perturb_score_plots('speed_matrix')
 @
 }
 
 \subfloat[Gene Ontology]{
-<<perturb_go, echo=FALSE, fig.width=8, fig.height=3>>=
+<<perturb_go, echo=FALSE, fig.width=6.5, fig.height=2.5>>=
 util$perturb_score_plots('gsva_go')
 @
 }
 
 \subfloat[Reactome]{
-<<perturb_reactome, echo=FALSE, fig.width=8, fig.height=3>>=
+<<perturb_reactome, echo=FALSE, fig.width=6.5, fig.height=2.5>>=
 util$perturb_score_plots('gsva_reactome')
 @
 }
+\phantomcaption
+\end{figure}
+\begin{figure}[!htbp]
+\ContinuedFloat
 
 %\subfloat[BioCarta]{
 %<<perturb_biocarta, echo=FALSE, fig.width=8, fig.height=3>>=
@@ -29,17 +33,13 @@ util$perturb_score_plots('gsva_reactome')
 %}
 
 \subfloat[SPIA]{
-<<perturb_spia, echo=FALSE, fig.width=8, fig.height=3>>=
+<<perturb_spia, echo=FALSE, fig.width=6.5, fig.height=2.5>>=
 util$perturb_score_plots('spia')
 @
 }
-\phantomcaption
-\end{figure}
-\begin{figure}[!htbp]
-\ContinuedFloat
 
 \subfloat[Pathifier]{
-<<perturb_pathifier, echo=FALSE, fig.width=8, fig.height=3>>=
+<<perturb_pathifier, echo=FALSE, fig.width=6.5, fig.height=2.5>>=
 util$perturb_score_plots('pathifier')
 @
 }

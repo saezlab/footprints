@@ -2,7 +2,7 @@
 
 \subfloat[Distribution of FDR-correctd p-values for signature genes (double
         log). Genes (horizonal axis) are ordered by significance. Dashed line
-at 5\% FDR, dotted line at $10^{-10}$]{ \scalebox{.7}{
+at 5\% FDR, dotted line at $10^{-10}$]{ \scalebox{.55}{
 <<sig_sign, echo=FALSE>>=
 import('../analyses/speed_overview/model_significance')$plot_pval()
 @
@@ -14,7 +14,7 @@ import('../analyses/speed_overview/model_significance')$plot_pval()
 downregulated genes for most of the pathways. In no pathway there a single or a
 few z-scores are high enough to overshadow the rest of the signature,
     indicating that the model is numerically stable.]{
-\scalebox{.7}{
+\scalebox{.55}{
 <<sig_zscore, echo=FALSE>>=
 import('../analyses/speed_overview/model_significance')$plot_zscore()
 @

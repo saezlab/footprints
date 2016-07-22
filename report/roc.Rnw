@@ -16,11 +16,3 @@ roc$roc %>%
 \caption{ROC curves for different pathway methods}
 \label{fig:roc}
 \end{figure}
-
-\begin{table}[H]
-\centering
-\caption{AUC under the ROC curve}
-<<roc_auc, echo=FALSE>>=
-kable(roc$auc, digits=2, booktabs=TRUE)
-@
-\end{table}

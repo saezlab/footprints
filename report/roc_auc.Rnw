@@ -1,0 +1,13 @@
+<<setup_roc_auc, include=FALSE>>=
+library(dplyr)
+roc = import('../analyses/speed_raw/roc')
+config = import('../config')
+@
+
+\begin{table}[H]
+\centering
+\caption{AUC under the ROC curve}
+<<roc_auc, echo=FALSE>>=
+kable(roc$auc, digits=2, booktabs=TRUE)
+@
+\end{table}
