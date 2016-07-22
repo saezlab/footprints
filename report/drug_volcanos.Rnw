@@ -14,7 +14,7 @@ assocs = b$lnapply(config$methods$analysis_set, util$vp$load_fun)
 @
 
 \begin{figure}[H]
-<<drug_volcano_pancan, echo=FALSE, fig.width=8, fig.height=12>>=
+<<drug_volcano_pancan, echo=FALSE, fig.width=6.5, fig.height=8.5>>=
 p = assocs %>%
     b$lnapply(function(x) x$assocs.pan) %>%
     df$add_name_col(col="method", bind=TRUE) %>%
@@ -36,7 +36,7 @@ plt$symmetrise_scale(p)
 
 
 %\begin{figure}[H]
-%<<drug_volcano_tissue, echo=FALSE, fig.width=8, fig.height=12>>=
+%<<drug_volcano_tissue, echo=FALSE, fig.width=6.5, fig.height=8.5>>=
 %p = assocs %>%
 %    b$lnapply(function(x) x$assocs.tissue) %>%
 %    df$add_name_col(col="method", bind=TRUE) %>%
