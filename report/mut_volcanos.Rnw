@@ -12,7 +12,7 @@ config = import('../config')
 @
 
 \begin{figure}[H]
-<<mut_volcano_pancan, echo=FALSE, fig.width=8, fig.height=12>>=
+<<mut_volcano_pancan, echo=FALSE, fig.width=6.5, fig.height=8.5>>=
 #within = util$mut_cov %>%
 #    filter(adj.p < 0.05) %>%
 #    select(scores, m)

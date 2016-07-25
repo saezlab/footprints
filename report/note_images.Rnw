@@ -1,0 +1,8 @@
+\subsection{Image sources for Fig. 1b}
+
+Images published under Creative Commons
+BY-SA\footnote{\url{https://creativecommons.org/licenses/}} have been reused as parts
+of the workflow in Fig. 1b, for the microarray
+schema\footnote{\url{https://commons.wikimedia.org/wiki/File:DNA\_microarray.svg}},
+the z-score distribution\footnote{\url{https://commons.wikimedia.org/wiki/File:Boxplot\_vs\_PDF.svg}},
+and matrix multiplication\footnote{\url{https://commons.wikimedia.org/wiki/File:Matrix\_multiplication\_diagram\_2.svg}}.

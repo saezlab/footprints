@@ -6,13 +6,14 @@ df = import('data_frame')
 util = import('./util_2')
 
 mut = util$mut_cov %>%
+    filter(method == "speed_matrix") %>%
 	group_by(m) %>%
-    filter(any(adj.p < 1e-5) & method == "speed_matrix") %>%
+    filter(any(adj.p < 1e-5)) %>%
     ungroup()
 
 use_amp = c("EGFR_amp", "KRAS_amp", "ERBB2_amp", "BRAF_amp",
             "TP53_del",
-            "PIK3CA_amp", "PIK3CB_amp")
+            "PIK3CA_amp", "PIK3CB_amp", "PTEN_del")
 
 cna = util$cna_cov %>%
 	group_by(m) %>%

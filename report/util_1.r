@@ -31,8 +31,8 @@ perturb_score_plots = function(fid, title=NULL) {
         mutate(pathway = config$pathways(pathway),
                scores = config$pathways(scores, rev=TRUE))
 
-	p1 = plt$matrix(result, statistic ~ scores + pathway, palette="RdBu", symmetric=TRUE, text_size=7) +
-        theme(axis.text = element_text(size = 10)) +
+	p1 = plt$matrix(result, statistic ~ scores + pathway, palette="RdBu", symmetric=TRUE, text_size=6) +
+        theme(axis.text = element_text(size = 8)) +
 		xlab("Pathway perturbed") +
 		ylab("Assigned score")
         coord_fixed()

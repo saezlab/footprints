@@ -18,7 +18,11 @@
 
 \tableofcontents
 
+\newpage
+
 \section{Supplementary notes}
+
+\Sexpr{knit_child('note_images.Rnw')}
 
 \Sexpr{knit_child('note_signatures.Rnw')}
 
@@ -33,6 +37,12 @@
 \Sexpr{knit_child('mut_cna_table.Rnw')}
 
 \Sexpr{knit_child('drug_over_mut_stats.Rnw')}
+
+\begin{table}[H]
+\centering
+\caption{Coefficients matrix of the fitted PRG model, provided as a
+    separate file. HGNC gene names in rows, pathways in columns.}
+\end{table}
 
 \section{Supplementary figures}
 
