@@ -12,7 +12,6 @@ st = import('stats')
 df = import('data_frame')
 plt = import('plot')
 gdsc = import('data/gdsc')
-util = import('./util')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/gdsc/speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "SKCM_assocs.pdf"
@@ -67,7 +66,7 @@ stratify = list(SKCM = list(
     "SKCM_VEGF-" = names(skcm_vegf)[skcm_vegf < 0]
 ))
 
-util$drug_range_box("FH535", stratify=stratify)
+gdsc$plot$drug_range_box("FH535", stratify=stratify)
 ```
 
 Box plot of the measured (range indicated in color) and inferred IC50s

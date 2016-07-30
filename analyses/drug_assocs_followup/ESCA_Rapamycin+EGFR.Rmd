@@ -12,7 +12,6 @@ st = import('stats')
 df = import('data_frame')
 plt = import('plot')
 gdsc = import('data/gdsc')
-util = import('./util')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/gdsc/speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "ESCA_assocs.pdf"
@@ -64,7 +63,7 @@ stratify = list(ESCA = list(
     "ESCA_EGFR-" = names(esca_egfr)[esca_egfr < 0]
 ))
 
-util$drug_range_box("Rapamycin", stratify=stratify)
+gdsc$plot$drug_range_box("Rapamycin", stratify=stratify)
 ```
 
 Box plot of the measured (range indicated in color) and inferred IC50s

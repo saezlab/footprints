@@ -12,7 +12,6 @@ st = import('stats')
 df = import('data_frame')
 plt = import('plot')
 gdsc = import('data/gdsc')
-util = import('./util')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../scores/gdsc/speed_matrix.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "LGG_assocs.pdf"
@@ -43,7 +42,7 @@ stratify = list(LGG = list(
     "LGG_Trail-" = names(lgg_trail)[lgg_trail < 0]
 ))
 
-util$drug_range_box("Docetaxel", stratify=stratify)
+gdsc$plot$drug_range_box("Docetaxel", stratify=stratify)
 ```
 
 <!--
