@@ -24,6 +24,8 @@
 
 \Sexpr{knit_child('note_images.Rnw')}
 
+\Sexpr{knit_child('note_searchterms.Rnw')}
+
 \Sexpr{knit_child('note_signatures.Rnw')}
 
 %\Sexpr{knit_child('suppl_notes.Rnw')}

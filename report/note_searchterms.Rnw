@@ -1,0 +1,62 @@
+\subsection{Database search terms for perturbations}
+
+\begin{itemize}
+
+\item EGFR: (egf* OR "growth factor" OR TGF*α OR epiregulin OR heregulin OR
+        neuregulin OR epigen OR betacellulin OR amphiregulin OR iressa OR
+        gefitinib OR cetuximab OR erlotinib OR lapatinib OR AG1478 OR
+        trastuzumab OR herceptin) organism:sapiens samplecount:[4 TO 10000]
+raw:true exptype:"Transcription profiling"
+
+\item Hypoxia: (hypoxia* OR HIF1 OR HIF-1) organism:sapiens samplecount:[4 TO
+10000] raw:true exptype:"Transcription profiling"
+
+\item JAK-STAT: (ifn* OR interferon OR JAK OR STAT OR prolaktin OR EPO OR IL-2
+        OR IL2 OR IL-3 OR IL3 OR IL-6 OR IL6 OR IL-10 OR IL10 OR IL-13 OR IL13)
+organism:sapiens samplecount:[4 TO 10000] raw:true exptype:"Transcription
+profiling"
+
+\item MAPK: (b-raf OR braf OR raf* OR mek* OR erk* OR PD*0325901 OR CI*1040 OR
+        PLX* OR U0126 OR AZD6244 OR GSK1120212 OR *metinib OR PD*325901)
+organism:sapiens samplecount:[4 TO 10000] raw:true exptype:"Transcription
+profiling"
+
+\item NFkB: (LPS OR sa:lps OR tlr OR sa:lipopolysaccharide OR pam3c* OR zymosan
+        OR parthenolide OR sa:11-7082 OR CAY10512 OR sa:*salicyl*)
+organism:sapiens samplecount:[4 TO 10000] raw:true exptype:"Transcription
+profiling"
+
+\item p53: (sa:*p53 OR sa:mdm2 OR sa:nutlin* OR sa:*radiation OR sa:*radiated
+        OR sa:"dna damage" OR sa:ddr OR sa:*rubicin OR sa:*platin OR
+        sa:docetaxel OR sa:gamma) organism:sapiens samplecount:[4 TO 10000]
+raw:true exptype:"Transcription profiling"
+
+\item PI3K: (SF1126 OR LY294002 OR TGR*1202 OR SAR2454* OR GSK1059615 OR
+        80*6946 OR Perifosine OR Idelalisib OR PI3K OR PIK3* OR PTEN OR BEZ235
+        OR RP6530 OR GDC*941 OR INK1117 ) organism:sapiens samplecount:[4 TO
+10000] raw:true exptype:"Transcription profiling"
+
+\item TGFb: (tgf OR "tgf-*" OR "bmp*" OR "SMAD*" "transforming growth factor"
+        OR "A 83-01" OR "A-83-01" OR "A83-01" OR "D 4476" OR "D4476" OR
+        "D-4476" OR  "GW 788388" OR "GW788388" OR "GW-788388" OR "LY 364947" OR
+        "LY-364947" OR "LY364947" OR "R 268712" OR "R-268712" OR "R268712" OR
+        RepSox OR "SB 431542" OR "SB-431542" OR "SB431542" OR "SB 505124" OR
+        "SB-505124" OR "SB505124" OR "SB 525334" OR "SB-525334" OR "SB525334"
+        OR "SD 208" OR "SD208" OR "SD-208") organism:sapiens samplecount:[4 TO
+10000] raw:true exptype:"Transcription profiling"
+
+\item TNFa: (tnf* OR "necrosis factor") organism:sapiens samplecount:[4 TO
+10000] raw:true exptype:"Transcription profiling"
+
+\item Trail: (rtrail OR trail* OR fas OR fasl) organism:sapiens samplecount:[4
+TO 10000] raw:true exptype:"Transcription profiling" array:(A-AFFY-33 OR
+        A-AFFY-44 OR A-AFFY-37 OR A-AFFY-141) OR (Genasense OR ABT-737 OR
+            ABT-199 OR obatoclax OR GX15-070 OR casp8 OR caspase)
+        organism:sapiens samplecount:[4 TO 10000] raw:true
+        exptype:"Transcription profiling"
+
+\item VEGF: (VEGF* OR sunitinib OR nexavar OR sutent OR pazopanib OR everolimus
+        OR afinitor OR votrient OR Bevacizumab OR sorafenib OR itraconazole OR
+        PDGF* OR PGF OR FIGF OR Withaferin) organism:sapiens samplecount:[4 TO
+        10000] raw:true exptype:"Transcription profiling"
+\end{itemize}
