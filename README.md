@@ -17,11 +17,14 @@ mutations in primary tumors, (ii) drug response in cell lines, and (iii)
 survival in cancer patients, making them more suitable to assess the activity
 status of signaling pathways.
 
-The corresponding article for this project is available on bioRxiv:
+The corresponding article for this project is available on
+[bioRxiv](http://biorxiv.org/content/early/2016/07/25/065672)
+([pdf](http://biorxiv.org/content/early/2016/07/25/065672.full.pdf)).
 
 ```
 @article {Schubert-PRGs,
-	author = {Schubert, Michael and Klinger, Bertram and Kl{\"u}nemann, Martina and Garnett, Mathew J and Bl{\"u}thgen, Nils and Saez-Rodriguez, Julio},
+	author = {Schubert, Michael and Klinger, Bertram and Kl{\"u}nemann, Martina and 
+              Garnett, Mathew J and Bl{\"u}thgen, Nils and Saez-Rodriguez, Julio},
 	title = {Perturbation-response genes reveal signaling footprints in cancer gene expression},
 	year = {2016},
 	doi = {10.1101/065672},
