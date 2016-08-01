@@ -124,22 +124,22 @@ Overview of the approach
 
 <img src=https://drive.google.com/uc?id=0B3ZCahnIbtHtWUdFNUQ4bHFPc0E width=50%>
 
-A. Reasoning about pathway activation. Most pathway approaches make use of
+**A.** Reasoning about pathway activation. Most pathway approaches make use of
 either the set (top panel) or network (middle panel) of signaling molecules to
 make statements about a possible activation, while our approach considered the
 genes affected by perturbing them.
-B. Workflow of data curation and model building. (1) Finding and curation of
+**B.** Workflow of data curation and model building. (1) Finding and curation of
 208 publicly available experiment series in the ArrayExpress database, (2)
-    Extracting 556 perturbation experiments from series' raw data, (3)
-    Performing QC metrics and discarding failures, (4) Computing z-scores per
-    experiment, (5) Using a multiple linear regression to fit genes responsive
-    to all pathways simultaneously obtaining the z-coefficients matrix, (6)
-    Assigning pathway scores using the coefficients matrix and basal expression
-    data. See methods section for details. Image credit Supplementary Note 1.
-    C. Structure of the perturbation-response model. For the multiple linear
-    regression, we set the coefficients or perturbed pathways to 1 if a pathway
-    was perturbed, 0 otherwise. In addition, EGFR perturbation also had MAPK
-    and PI3K coefficients set, and TNFa had NFkB set.
+Extracting 556 perturbation experiments from series' raw data, (3)
+Performing QC metrics and discarding failures, (4) Computing z-scores per
+experiment, (5) Using a multiple linear regression to fit genes responsive
+to all pathways simultaneously obtaining the z-coefficients matrix, (6)
+Assigning pathway scores using the coefficients matrix and basal expression
+data. See methods section for details. Image credit Supplementary Note 1.
+**C.** Structure of the perturbation-response model. For the multiple linear
+regression, we set the coefficients or perturbed pathways to 1 if a pathway
+was perturbed, 0 otherwise. In addition, EGFR perturbation also had MAPK
+and PI3K coefficients set, and TNFa had NFkB set.
 
 Recall of perturbations ([analyses/speed_raw](analyses/speed_raw))
 -------------------------------------------------------
