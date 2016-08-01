@@ -119,27 +119,143 @@ We took the GDSC data from
 computing pathway scores for each cell line (for SPIA and Pathifier compared to
 all other cell lines of the same TCGA label).
 
+Overview of the approach
+------------------------
+
+<img src=https://drive.google.com/uc?id=0B3ZCahnIbtHtWUdFNUQ4bHFPc0E width=50%>
+
+A. Reasoning about pathway activation. Most pathway approaches make use of
+either the set (top panel) or network (middle panel) of signaling molecules to
+make statements about a possible activation, while our approach considered the
+genes affected by perturbing them.
+B. Workflow of data curation and model building. (1) Finding and curation of
+208 publicly available experiment series in the ArrayExpress database, (2)
+    Extracting 556 perturbation experiments from series' raw data, (3)
+    Performing QC metrics and discarding failures, (4) Computing z-scores per
+    experiment, (5) Using a multiple linear regression to fit genes responsive
+    to all pathways simultaneously obtaining the z-coefficients matrix, (6)
+    Assigning pathway scores using the coefficients matrix and basal expression
+    data. See methods section for details. Image credit Supplementary Note 1.
+    C. Structure of the perturbation-response model. For the multiple linear
+    regression, we set the coefficients or perturbed pathways to 1 if a pathway
+    was perturbed, 0 otherwise. In addition, EGFR perturbation also had MAPK
+    and PI3K coefficients set, and TNFa had NFkB set.
+
 Recall of perturbations ([figure](figure/2_recall.svg))
 -------------------------------------------------------
 
+<img src=https://drive.google.com/uc?id=0B3ZCahnIbtHtTW9XS3IyWjlETTg width=80%
+
+A. T-SNE plots for separation of perturbation experiments with different
+pathway perturbations in different colors. Fold changes of genes in individual
+perturbation experiments (10% FDR) do not cluster by pathway (left). Using a
+consensus signature of genes whose z-score is most consistently deregulated for
+each pathway instead, we can observe distinct clusters of perturbed pathways
+(right). Details Supplementary Note 2.
+B. Associations between perturbed pathways and the scores obtained by the model
+of pathway-responsive genes (PRGs). Along the diagonal each pathway is strongly
+(p&lt;10<sup>-10</sup>) associated with its own perturbation. Significant off-diagonal
+elements are sparse and only occur (p&lt;10<sup>-5</sup>) where there is biologically known
+cross-activation.
+C. Heatmap of relative pathway scores in each perturbation experiment. 523
+experiments in columns, annotated with the perturbation effect (green for
+activation, orange for inhibition) and pathway perturbed (same order as
+b). Pathway scores in rows cluster between EGFR/MAPK and to a
+lesser extent PI3K, and TNFa/NFkB. Color indicates activation or
+inhibition strength.
+D. ROC curves for different methods ranking perturbation experiments by
+their pathway score. PRGs show better performance for all pathways
+except JAK-STAT and NFkB, where other methods are equal. Gene Ontology
+and Reactome scores obtained by Gene Set Variation Analysis (GSVA).
+Pathifier using Reactome gene sets.
+E. Correlation of pathway scores in basal gene expression of cell lines
+in the GDSC panel. Positive correlation in blue, negative in red.
+Circle size and shade correspond to correlation strength. Pathways that
+showed cross-activation in point b are more highly correlated in basal
+expression as well. 
+F. Stability of basal pathway scores when bootstrapping input
+experiments. The variance of pathway scores in cell lines given
+bootstraps more than five times as high compared to the variance of
+bootstraps given cell lines for all pathways except two (Trail and
+VEGF), where it is roughly twice as high.
 
 Functional impact of driver mutations ([figure](figure/3_response_expression.svg))
 ----------------------------------------------------------------------------------
+
+<img src=https://drive.google.com/uc?id=0B3ZCahnIbtHtd2VQU1k2OUY0Qm8 width=80%>
+
+A. Volcano plot of pan-cancer associations between driver mutations and copy
+number aberrations with differences in pathway score. Pathway scores calculated
+from basal gene expression in the TCGA for primary tumors. Size of points
+corresponds to occurrence of aberration. Type of aberration is indicated by
+superscript “mut” if mutated and “amp”/”del” if
+amplified or deleted, with colors as indicated. Effect sizes on the horizontal
+axis larger than zero indicate pathway activation, smaller than zero inferred
+inhibition. P-values on the vertical axis FDR-adjusted with a significance
+threshold of 5%. Associations shown without correcting for different cancer
+types. Associations with a black outer ring are also significant if corrected.
+B. Comparison of pathway scores (vertical axes) across different methods
+(horizontal axes) for TP53 and KRAS mutations, EGFR amplifications and VHL
+mutations. Wald statistic shown as shades of green for downregulated and red
+for upregulated pathways. P-value labels shown as indicated. White squares
+where a pathway was not available for a method.
 
 [analyses/tcga_pathway_per_mutation](analyses/tcga_pathway_per_mutation)
 
 Explaining drug sensitivity ([figure](figure/4_drug_response.svg))
 ------------------------------------------------------------------
 
+<img src=https://drive.google.com/uc?id=0B3ZCahnIbtHtQ2ttWHh0c2g0cW8 width=80%>
+
 [analyses/drug_assocs](analyses/drug_assocs)
+
+A. Volcano plot of pan-cancer associations between PRG pathway scores and drug
+response (log10 IC50). Pathway scores computed using basal gene expression in
+GDSC cell lines. Associations corrected for cancer type. Size of points
+corresponds to number of cell lines screened with a particular drug. Effect
+size corresponds to 10-fold change in IC50 per standard deviation of the
+pathway score. Values smaller than zero indicate sensitivity markers (green)
+and greater than zero resistance markers (red). P-values FDR-corrected.
+B. Pathway context of the strongest associations between EGFR/MAPK pathways
+and their inhibitors.
+C. Comparison of the associations obtained by different pathway methods.
+Number of associations on the vertical, FDR on the horizontal axis. PRGs
+yield more and stronger associations than all other pathway methods.
+Mutation associations are only stronger for TP53/Nutlin-3a and drugs that
+were specifically designed to bind to a mutated protein. PARADIGM not shown
+because no associations < 10% FDR.
+D. Comparison of stratification by mutations and pathway scores. MAPK
+pathway (BRAF, NRAS, or KRAS) mutations and Trametinib on top left panel,
+AZ628 bottom left, BRAF mutations and Dabrafenib top right, and p53
+pathway/TP53 mutations/Nutlin-3a bottom right. For each of the four cases,
+the leftmost violin plot shows the distribution of IC50s across all cell
+lines, followed by a stratification in wild-type (green) and mutant cell
+lines (blue box). The three rightmost violin plots show stratification of
+all the cell lines by the top, the two middle, and the bottom quartile of
+inferred pathway score (indicated by shade of color). The two remaining
+violin plots in the middle show mutated (BRAF, KRAS, or NRAS; blue color)
+or wild-type (TP53; green color) cell lines stratified by the top- and
+bottom quartiles of MAPK or p53 pathways scores (Mann-Whitney U test
+statistics as indicated).
 
 Effect on patient survival ([figure](figure/5_patient_survival.svg))
 --------------------------------------------------------------------
 
 [analyses/tcga_survival](analyses/tcga_survival)
 
-<img src=https://drive.google.com/uc?id=0B3ZCahnIbtHtWUdFNUQ4bHFPc0E  width=60%>
-![2_recall](https://drive.google.com/uc?id=0B3ZCahnIbtHtTW9XS3IyWjlETTg = 400x)
-![3_response_expression](https://drive.google.com/uc?id=0B3ZCahnIbtHtd2VQU1k2OUY0Qm8)
-![4_drug_response](https://drive.google.com/uc?id=0B3ZCahnIbtHtQ2ttWHh0c2g0cW8)
-![5_patient_survival](https://drive.google.com/uc?id=0B3ZCahnIbtHtMHdXUEJWdzZRVGM)
+<img src=https://drive.google.com/uc?id=0B3ZCahnIbtHtMHdXUEJWdzZRVGM width=80%>
+
+A. Pan-cancer associations between pathway scores and patient survival.
+Pathways on the horizontal, different methods on the vertical axis.
+Associations of survival increase (green) and decrease . Significance labels as
+indicated. Shades correspond to effect size, p-values as indicated.
+B. Volcano plot of cancers-specific associations between patient survival and
+inferred pathway score using PRGs. Effect size on the horizontal axis. Below
+zero indicates increased survival (green), above decreased survival (red).
+FDR-adjusted p-values on the vertical axis. Size of the dots corresponds to
+number of patients in each cohort.
+D. Kaplan-Meier curves of individual associations for kidney (KIRC), low-grade
+glioma (LGG) and adrenocortical carcinoma (ACC). Pathway scores are split in
+top- and bottom quartiles and center half. Lines show the fraction of patients
+(vertical axis) that are alive at a given time (horizontal axis) within one
+year. P-values for discretized scores.
