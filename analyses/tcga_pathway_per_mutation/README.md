@@ -1,23 +1,21 @@
-Pathway-response genes per mutation
-===================================
+Associations with known driver mutations and CNAs
+-------------------------------------------------
 
-#### Rationale
-
-Many mutations that occur at a certain frequency in a given cancer type are not
-appearing at the same frequency in others. 
-
-#### Goal
-
-Here we aim to figure out which mutations give rise to the expression of which
-pathway-response genes.
-
-#### Approach
-
-We compare the pathway scores of primary or recurrent tumors that have a
-mutation in a given gene with those that have the wild-type version. We only
-use information whether a mutation is present or absent, not what it is
-exactly. With driver and cna analyses, we exclude all genes that are mutated
-but have no predicted functional impact from the analysis.
+For comparing the impact of mutations across different pathway methods, we used
+TCGA cohorts where tissue-matched controls were available, leaving 6549 samples
+across 13 cancer types. For mutated genes, we considered all genes that had a
+change of coding sequence (SNP, small indels in MAF files) as mutated and all
+others as not mutated. For copy number alterations (CNAs), we used the
+thresholded GISTIC 33 scores, where we considered homozygous deletions (-2) and
+strong amplifications (2) as altered, no change (0) as basal and discarded
+intermediate values (-1, 1) from our analysis. We focussed our analysis of the
+mutations and copy number alterations on the subset of 464 driver genes that
+were also used in the GDSC. We used the sets of mutations and CNAs to compute
+the linear associations between samples for all different methods we looked at.
+We did not regress out the cancer type in order to keep associations where
+mutations/CNAs are highly correlated with it, but highlighted all associations
+that passed the significance threshold of FDR<5% (for each pathway method
+individually) after such a correction.
 
 #### Files
 
