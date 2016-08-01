@@ -138,8 +138,8 @@ Effect on patient survival ([figure](figure/5_patient_survival.svg))
 
 [analyses/tcga_survival](analyses/tcga_survival)
 
-![1_overview](https://drive.google.com/uc?id=0B3ZCahnIbtHtWUdFNUQ4bHFPc0E)
-![2_recall](https://drive.google.com/uc?id=0B3ZCahnIbtHtTW9XS3IyWjlETTg)
+![1_overview](https://drive.google.com/uc?id=0B3ZCahnIbtHtWUdFNUQ4bHFPc0E | width=80)
+![2_recall](https://drive.google.com/uc?id=0B3ZCahnIbtHtTW9XS3IyWjlETTg = 400x)
 ![3_response_expression](https://drive.google.com/uc?id=0B3ZCahnIbtHtd2VQU1k2OUY0Qm8)
 ![4_drug_response](https://drive.google.com/uc?id=0B3ZCahnIbtHtQ2ttWHh0c2g0cW8)
 ![5_patient_survival](https://drive.google.com/uc?id=0B3ZCahnIbtHtMHdXUEJWdzZRVGM)
