@@ -144,7 +144,7 @@ and PI3K coefficients set, and TNFa had NFkB set.
 Recall of perturbations ([analyses/speed_raw](analyses/speed_raw))
 -------------------------------------------------------
 
-<img src=https://drive.google.com/uc?id=0B3ZCahnIbtHtTW9XS3IyWjlETTg width=80%>
+<img src=https://drive.google.com/uc?id=0B3ZCahnIbtHtTW9XS3IyWjlETTg width=90%>
 
 **A.** T-SNE plots for separation of perturbation experiments with different
 pathway perturbations in different colors. Fold changes of genes in individual
@@ -182,7 +182,7 @@ VEGF), where it is roughly twice as high.
 Functional impact of driver mutations ([analyses/tcga_pathway_per_mutation](analyses/tcga_pathway_per_mutation))
 ----------------------------------------------------------------------------------
 
-<img src=https://drive.google.com/uc?id=0B3ZCahnIbtHtd2VQU1k2OUY0Qm8 width=80%>
+<img src=https://drive.google.com/uc?id=0B3ZCahnIbtHtd2VQU1k2OUY0Qm8 width=90%>
 
 **A.** Volcano plot of pan-cancer associations between driver mutations and copy
 number aberrations with differences in pathway score. Pathway scores calculated
@@ -203,7 +203,7 @@ where a pathway was not available for a method.
 Explaining drug sensitivity ([analyses/drug_assocs](analyses/drug_assocs))
 ------------------------------------------------------------------
 
-<img src=https://drive.google.com/uc?id=0B3ZCahnIbtHtQ2ttWHh0c2g0cW8 width=80%>
+<img src=https://drive.google.com/uc?id=0B3ZCahnIbtHtQ2ttWHh0c2g0cW8 width=90%>
 
 **A.** Volcano plot of pan-cancer associations between PRG pathway scores and drug
 response (log10 IC50). Pathway scores computed using basal gene expression in
