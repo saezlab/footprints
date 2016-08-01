@@ -67,8 +67,9 @@ Z-scores from gene expression data
 Scripts to download and transform gene expression data, and to generate
 z-scores for the perturbation experiments are in the [data](data) directory.
 
-We normalized and QC'd each series as whole, then assembled the relevant
-expression data and computed z-scores for each perturbation experiment.
+We normalized and QC'd each series as whole (`normalize_data.r`), then
+assembled the relevant expression data (`expr.r`) and computed z-scores for
+each perturbation experiment (`zscores.r`).
 
 Building the model
 ------------------
@@ -104,25 +105,34 @@ For the [pathway scores derived from perturbations](scores/speed), we used the
 fold changes (PRGs, Gene Ontology, Reactome) or the basal samples and perturbed
 samples as control and perturbed, respectively (SPIA, Pathifier).
 
-#### On primary tumors of TCGA (The Cancer Gnome Atlas)
+#### On primary tumors of TCGA (The Cancer Genome Atlas)
 
-TCGA data from [firehose.org](http://firebrowse.org/)
+We took TCGA data from [firehose.org](http://firebrowse.org/) and computed all
+pathway scores for primary tumors (`01A` in barcode) where a tissue-matched
+normal (`11A`) was available (required for SPIA and Pathifier).
 
 #### On cell lines of the GDSC (Genomics of Drug Sensitivity in Cancer)
 
-GDSC data from [http://www.cancerrxgene.org/gdsc1000](cancerrxgene.org/gdsc1000)
+We took the GDSC data from
+[cancerrxgene.org/gdsc1000](http://www.cancerrxgene.org/gdsc1000)
+([article](http://www.sciencedirect.com/science/article/pii/S0092867416307462)),
+computing pathway scores for each cell line (for SPIA and Pathifier compared to
+all other cell lines of the same TCGA label).
 
-Functional impact of driver mutations
--------------------------------------
+Recall of perturbations ([figure](figure/2_recall.svg))
+-------------------------------------------------------
+
+Functional impact of driver mutations ([figure](figure/3_response_expression.svg))
+----------------------------------------------------------------------------------
 
 [analyses/tcga_pathway_per_mutation](analyses/tcga_pathway_per_mutation)
 
-Explaining drug sensitivity
----------------------------
+Explaining drug sensitivity ([figure](figure/4_drug_response.svg))
+------------------------------------------------------------------
 
 [analyses/drug_assocs](analyses/drug_assocs)
 
-Effect on patient survival
---------------------------
+Effect on patient survival ([figure](figure/5_patient_survival.svg))
+--------------------------------------------------------------------
 
 [analyses/tcga_survival](analyses/tcga_survival)
