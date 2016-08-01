@@ -41,9 +41,25 @@ Perturbation experiments
 The 11 pathways comprised of 208 submissions to
 [ArrayExpress](https://www.ebi.ac.uk/arrayexpress/) with a total of 580
 experiments are available in the [index](index) directory in
-[YAML](https://en.wikipedia.org/wiki/YAML) format.
+[YAML](https://en.wikipedia.org/wiki/YAML) format. We consider the following
+pathways:
 
-Search terms are supplied in files with name `query.txt`.
+ * EGFR
+ * Hypoxia
+ * JAK-STAT
+ * MAPK
+ * NFkB
+ * p53/DDR (DNA damage response)
+ * PI3K
+ * TGFb
+ * Trail
+ * VEGF (and PDGF)
+
+Search terms are supplied in files with name `query.txt`. Files and experiments
+we excluded (because of QC failure or we were not sure if the perturbation
+corresponds to the phenotype we want to observe) are indicated using the
+`.excluded` suffix or a commented entry in the file. Reason for exclusion is
+mentioned in the files.
 
 Z-scores from gene expression data
 ----------------------------------
@@ -51,16 +67,42 @@ Z-scores from gene expression data
 Scripts to download and transform gene expression data, and to generate
 z-scores for the perturbation experiments are in the [data](data) directory.
 
+We normalized and QC'd each series as whole, then assembled the relevant
+expression data and computed z-scores for each perturbation experiment.
+
 Building the model
 ------------------
 
 The models we built are available in the [model](model) directory. The one we
 used in the publication is called `speed_matrix`.
 
+For this, we fit a linear model on the z-scores with a binary matrix indicating
+pathway perturbations (incl. perturbations of multiple pathways) as the
+independent variable. We select the 100 most significant genes and use their
+z-scores as coefficients in the model.
+
 Computing pathway scores
 ------------------------
 
+#### Different pathway methods considered
+
+We computed [pathway scores](scores) for the PRGs, and the [corresponding
+pathways](config/pathway_mapping.yaml) for Gene Ontology and Reactome genesets
+(using GSVA), Signaling Pathway Impact Analysis (SPIA;
+[article](http://bioinformatics.oxfordjournals.org/content/25/1/75.short)
+and [R package](http://bioconductor.org/packages/release/bioc/html/SPIA.html)),
+Pathifier ([article](http://www.pnas.org/content/110/16/6388.short),
+[R package](http://bioconductor.org/packages/release/bioc/html/pathifier.html)),
+and PARADIGM
+([article](http://bioinformatics.oxfordjournals.org/content/26/12/i237.short),
+[tool](https://github.com/sbenz/Paradigm) using the [TCGA signaling
+network](https://tcga-data.nci.nih.gov/docs/publications/coadread_2012/)).
+
 #### On the perturbation experiments
+
+For the [pathway scores derived from perturbations](scores/speed), we used the
+fold changes (PRGs, Gene Ontology, Reactome) or the basal samples and perturbed
+samples as control and perturbed, respectively (SPIA, Pathifier).
 
 #### On primary tumors of TCGA (The Cancer Gnome Atlas)
 
