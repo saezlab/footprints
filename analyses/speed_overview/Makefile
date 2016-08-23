@@ -13,3 +13,6 @@ bars.pdf: plot_bars.r numbers.txt
 
 model_significance.pdf: model_significance.r
 	Rscript $< $@
+
+treemap.pdf: treemap.r
+	Rscript $< $@
