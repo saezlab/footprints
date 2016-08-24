@@ -62,7 +62,7 @@
 
 \Sexpr{knit_child('mut_volcanos.Rnw')}
 
-\Sexpr{knit_child('cna_volcanos.Rnw')}
+%\Sexpr{knit_child('cna_volcanos.Rnw')}
 
 \Sexpr{knit_child('drug_volcanos.Rnw')}
 
