@@ -42,7 +42,7 @@ tab[na_mask] = "n.s."
 \begin{table}[H]
 \centering
 \caption{FDR-adjusted p-values for mutation/copy number associations with
-    pathway scores obtained by PRGs. Associations using TCGA data corrected for
+    pathway scores obtained by PROGENy. Associations using TCGA data corrected for
         cancer type. Mutated genes included in table if any method has $FDR<10^{-5}$, copy
         number alterations for related genes (e.g. ERBB2\_amp for EGFR).
 }

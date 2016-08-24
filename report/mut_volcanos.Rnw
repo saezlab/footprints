@@ -28,7 +28,7 @@ plt$symmetrise_scale(p)
 @
 \caption{Volcano plot for pan-cancer associations between pathway scores and
     mutated driver genes. Effect size is standard deviations of pathway scores.
-P-values FDR-corrected. Associations corrected for cancer type. PRGs provide
+P-values FDR-corrected. Associations corrected for cancer type. PROGENy provides
 stronger associations and are more in line with
 literature knowledge of signaling pathways.}
 \label{fig:mut-volcano-pancan}
