@@ -3196,10 +3196,10 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="269.73359"
-     inkscape:cy="868.04186"
+     inkscape:cx="263.12866"
+     inkscape:cy="821.93638"
      inkscape:document-units="px"
-     inkscape:current-layer="g55764"
+     inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1173"
@@ -18743,12 +18743,14 @@
         <text
            id="text13952"
            style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-           transform="matrix(1,0,0,-1,116.94,192.09)">
+           transform="scale(1,-1)"
+           x="91.590439"
+           y="-192.09">
           <tspan
              id="tspan13954"
              sodipodi:role="line"
-             y="0"
-             x="0 8.0039997 16.667999 26.004">PRGs</tspan>
+             x="91.590439"
+             y="-192.09">PROGENy</tspan>
         </text>
       </g>
       <g
@@ -20716,7 +20718,9 @@
          style="font-size:10px">Weeks</tspan></text>
     <g
        id="g55764"
-       transform="matrix(0.82039096,0,0,0.82039096,-512.67976,-78.634734)">
+       transform="matrix(0.82039096,0,0,0.82039096,-512.67976,-78.634734)"
+       inkscape:export-xdpi="599.9931"
+       inkscape:export-ydpi="599.9931">
       <g
          transform="translate(-2.0203049,-8.0610234e-6)"
          id="g54377"

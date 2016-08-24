@@ -1171,9 +1171,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="493.60496"
-     inkscape:cy="813.09996"
+     inkscape:zoom="1.979899"
+     inkscape:cx="327.53719"
+     inkscape:cy="841.8162"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -1191,7 +1191,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -47054,10 +47054,10 @@
              style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
              id="text21240">
             <tspan
-               x="0 8.0039997 16.667999 26.004"
+               x="0 8.0039997"
                y="0"
                sodipodi:role="line"
-               id="tspan21242">PRGs</tspan>
+               id="tspan21242">PROGENy</tspan>
           </text>
         </g>
         <g
