@@ -10,7 +10,7 @@ resp = c("speed_matrix", "mutation") %>%
     bind_rows() %>%
     mutate(method = config$id2short(method))
 
-# how many drugs have lower FDR for mutations and PRGs
+# how many drugs have lower FDR for mutations and PROGENy
 tab = resp %>%
     group_by(drug) %>%
     top_n(1, -adj.p) %>%

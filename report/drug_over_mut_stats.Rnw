@@ -12,8 +12,8 @@ mapk_mut = c("NRAS", "KRAS", "BRAF")
 strats = list(
     `MAPK + Trametinib` = util$cmp_mut_path("MAPK", mapk_mut, "Trametinib", "mut"),
     `MAPK + AZ628` = util$cmp_mut_path("MAPK", mapk_mut, "AZ628", "mut"),
-    `BRAF + Dabrafenib` = util$cmp_mut_path("MAPK", "BRAF", "Dabrafenib", "mut"),
-    `p53 + Nutlin-3a` = util$cmp_mut_path("p53", "TP53", "Nutlin-3a", "wt")
+    `BRAF + Dabrafenib` = util$cmp_mut_path("MAPK", "BRAF", "Dabrafenib", "mut")
+#    `p53 + Nutlin-3a` = util$cmp_mut_path("p53", "TP53", "Nutlin-3a", "wt")
 )
 @
 
@@ -26,7 +26,7 @@ strats = list(
         mutational status (blank). (2) Whether the pathway score is in the top
         (active) or bottom quartile (inactive), or neither (blank) of the
         subset defined by mutations.}
-\small{
+{\tiny
 <<strat_table, echo=FALSE, warning=FALSE>>=
 path_lookup = setNames(c("active", "inactive", "average"), c("+", "-", "0"))
 tab = df$add_name_col(strats, "treatment", bind=TRUE) %>%
@@ -56,14 +56,14 @@ arrange(tab, Treatment, Mutation, Pathway) %>%
         indicated by wt (wild-type), mut (mutated), or blank (any). Inferred
         pathway activity is indicated by $+$ (top quartile) $-$ (bottom
         quartile) or blank (any). Distance reported as a fold change of medians.}
-\small{
+{\tiny
 <<strat_table_test, echo=FALSE>>=
 b$lnapply(strats, util$contrast_stats) %>%
     df$add_name_col("treatment", bind=TRUE) %>%
     transmute(Treatment = treatment,
               Reference = ref,
               Comparison = sample,
-              `p-value` = p.value,
+              `p-value` = format(p.value, digits=3),
               `FC (medians)` = median_folds) %>%
     kable(digits=50, booktabs=TRUE)
 @

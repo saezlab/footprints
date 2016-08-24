@@ -28,9 +28,13 @@
 
 \Sexpr{knit_child('note_signatures.Rnw')}
 
-%\Sexpr{knit_child('suppl_notes.Rnw')}
-
 \section{Supplementary tables}
+
+\begin{table}[H]
+\centering
+\caption{Coefficients matrix of the fitted PROGENy model, provided as a
+    separate file. HGNC gene names in rows, pathways in columns.}
+\end{table}
 
 \Sexpr{knit_child('pathway_mapping.Rnw')}
 
@@ -39,12 +43,6 @@
 \Sexpr{knit_child('mut_cna_table.Rnw')}
 
 \Sexpr{knit_child('drug_over_mut_stats.Rnw')}
-
-\begin{table}[H]
-\centering
-\caption{Coefficients matrix of the fitted PRG model, provided as a
-    separate file. HGNC gene names in rows, pathways in columns.}
-\end{table}
 
 \section{Supplementary figures}
 
@@ -62,7 +60,7 @@
 
 \Sexpr{knit_child('mut_volcanos.Rnw')}
 
-\Sexpr{knit_child('cna_volcanos.Rnw')}
+%\Sexpr{knit_child('cna_volcanos.Rnw')}
 
 \Sexpr{knit_child('drug_volcanos.Rnw')}
 
