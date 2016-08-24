@@ -26,7 +26,7 @@ p = assocs %>%
         config$facet_theme
 plt$symmetrise_scale(p)
 @
-\caption{Pan-cancer volcano plots for associations between pathway scores and drug
+\caption{Volcano plots for associations between pathway scores and drug
     response (IC50). Effect size arbitrary units, p-values FDR-corrected.
         Pathway-response genes are the only method to recover highly
         significant oncogene addiction associations, the rest of methods show
