@@ -26,7 +26,7 @@ strats = list(
         mutational status (blank). (2) Whether the pathway score is in the top
         (active) or bottom quartile (inactive), or neither (blank) of the
         subset defined by mutations.}
-{\tiny
+{\small
 <<strat_table, echo=FALSE, warning=FALSE>>=
 path_lookup = setNames(c("active", "inactive", "average"), c("+", "-", "0"))
 tab = df$add_name_col(strats, "treatment", bind=TRUE) %>%
@@ -56,7 +56,7 @@ arrange(tab, Treatment, Mutation, Pathway) %>%
         indicated by wt (wild-type), mut (mutated), or blank (any). Inferred
         pathway activity is indicated by $+$ (top quartile) $-$ (bottom
         quartile) or blank (any). Distance reported as a fold change of medians.}
-{\tiny
+{\small
 <<strat_table_test, echo=FALSE>>=
 b$lnapply(strats, util$contrast_stats) %>%
     df$add_name_col("treatment", bind=TRUE) %>%
