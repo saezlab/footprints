@@ -8,8 +8,8 @@ df = import('data_frame')
 st = import('stats')
 tcga = import('data/tcga')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_linear.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "tissue_act.pdf"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/tcga/speed_matrix.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "correlation.RData"
 
 # create simple data.frame with barcode, type, and study; same for scores
 scores = io$load(INFILE)
@@ -66,4 +66,4 @@ cor = lapply(iter, tissue2cor) %>%
 
 cor = cor[seq(1, nrow(cor), 2),]
 
-save(cor, file="correlation.RData")
+save(cor, file=OUTFILE)
