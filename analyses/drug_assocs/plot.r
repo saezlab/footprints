@@ -42,11 +42,11 @@ plot_matrix = function(assocs) {
 plot_tissue = function(assocs, name) {
     assocs %>%
         mutate(label = paste(tissue, drug, scores, sep=":")) %>%
-        plt$color$p_effect(pvalue="adj.p",
-                           effect="estimate",
-                           dir=-1,
-                           thresh=0.1) %>%
-        plt$volcano(p=0.1) + ggtitle(name)
+        plt$color$p_effect(pvalue = "adj.p",
+                           effect = "estimate",
+                           dir = -1,
+                           thresh = 0.2) %>%
+        plt$volcano(p = 0.2, label_top = 50) + ggtitle(name)
 }
 
 if (is.null(module_name())) {
@@ -59,11 +59,10 @@ if (is.null(module_name())) {
     # save pdf w/ pan-cancer & tissue specific
     pdf(OUTFILE, paper="a4r", width=11, height=8)
 
-    print(plot_pancan(data$assocs.pan))
-
-    print(plot_tissue(filter(data$assocs.tissue, subset=="clinical"), "clinical"))
-    print(plot_tissue(filter(data$assocs.tissue, subset=="noexp"), "no experimental"))
-    print(plot_tissue(filter(data$assocs.tissue, subset=="sensi"), "sensitive"))
+    print(plot_pancan(data$pan))
+    print(plot_tissue(data$tissue$clinical, "clinical (min stage 2)"))
+    print(plot_tissue(data$tissue$noexp, "no experimental (min stage 1, top 10 tissues)"))
+    print(plot_tissue(data$tissue$sensi, "sensitive (5 lines measured, top 10 tissues)"))
 
     dev.off()
 }
