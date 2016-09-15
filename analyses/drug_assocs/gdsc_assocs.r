@@ -36,7 +36,7 @@ pan = st$lm(drug ~ tissues + MSI + scores, data=data, min_pts=50,
 #' @param resp_sub  A character string of which `drug` to subset
 #' @param data      A list with: tissue, MSI, scores
 #' @return          A data.frame with the association results
-tissue_assocs = function(resp_sub, data) {
+tissue_assocs = function(resp_sub="all", data=get("data", envir=parent.env(environment()))) {
     st = import('stats')
     data$drug = data[[resp_sub]]
     gc() # something is not properly cleaned up here
@@ -59,7 +59,7 @@ tissue_assocs = function(resp_sub, data) {
 #' sensi @GO: long vectors not supported w/ send_common_data
 #'
 #' @return  A list of data frames for subsets clinical, noexp and sensi
-tissue = c('clinical', 'noexp', 'sensi') %>%
+tissue = c('all', 'clinical', 'noexp', 'sensi') %>%
     b$lnapply(function(subs) tissue_assocs(subs, data=data))
-    
+
 save(pan, tissue, file=OUTFILE)

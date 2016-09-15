@@ -4,6 +4,12 @@ io = import('io')
 plt = import('plot')
 
 #' File loading helper for association objects
+#'
+#' This is used in the reports
+#'
+#' @param fid   The method/file ID (e.g. gsva_go or speed_matrix)
+#' @param type  Whether to use 11 pathways or all sets
+#' @return      A data.frame with association results
 load_fun = function(fid, type="mapped") {
     io$load(module_file(paste0("assocs_", type), paste0(fid, ".RData")))
 }
@@ -60,9 +66,8 @@ if (is.null(module_name())) {
     pdf(OUTFILE, paper="a4r", width=11, height=8)
 
     print(plot_pancan(data$pan))
-    print(plot_tissue(data$tissue$clinical, "clinical (min stage 2)"))
-    print(plot_tissue(data$tissue$noexp, "no experimental (min stage 1, top 10 tissues)"))
-    print(plot_tissue(data$tissue$sensi, "sensitive (5 lines measured, top 10 tissues)"))
+    for (subs in names(data$tissue))
+        print(plot_tissue(data$tissue[[subs]], subs))
 
     dev.off()
 }
