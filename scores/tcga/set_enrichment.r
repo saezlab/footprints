@@ -20,8 +20,9 @@ if (grepl("mapped", OUTFILE)) {
 }
 
 # load gene expression data, make sure same genes and drop duplicates
-expr = lapply(tcga$tissues(), tcga$rna_seq) %>%
-    ar$stack(along=2)
+tissues = import('../../config')$tcga$tissues
+expr = tcga$rna_seq(tissues)
+
 genelist = io$load(INFILE) %>%
     gsea$filter_genesets(rownames(expr), MIN_GENES, MAX_GENES)
 
