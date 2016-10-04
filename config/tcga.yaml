@@ -27,6 +27,7 @@ tissues:
  - PRAD
 # - READ exclude: all in COADREAD
  - SARC
+ - STAD
 # - STES exclude: not in code tables at https://tcga-data.nci.nih.gov/datareports/codeTablesReport.htm
  - TGCT
  - THCA
@@ -40,7 +41,7 @@ tissues_with_normals:
  - BLCA
  - BRCA
  - CESC
-# - COAD all in COADREAD
+ - COAD # all in COADREAD, but only those have normals
 # - COADREAD no normals
  - ESCA
  - HNSC
@@ -52,6 +53,7 @@ tissues_with_normals:
 # - PCPG # 3 normals total
  - PRAD
 # - SARC # 2 normals total
+ - STAD
  - THCA
 # - THYM # 2 normals total
  - UCEC # 11 normals
