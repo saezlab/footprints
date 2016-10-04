@@ -4,8 +4,8 @@ tissues:
  - BRCA
  - CESC
  - CHOL
- - COADREAD # includes all COAD and additional READ
-# - COAD
+# - COADREAD # includes all COAD and additional READ
+ - COAD # all in COADREAD, but barcode mapping will return COAD or READ
  - DLBC
  - ESCA
 # - GBMLGG exclude: merge between GBM and LGG
@@ -25,7 +25,7 @@ tissues:
  - PAAD
  - PCPG
  - PRAD
-# - READ exclude: all in COADREAD
+ - READ # all in COADREAD
  - SARC
  - STAD
 # - STES exclude: not in code tables at https://tcga-data.nci.nih.gov/datareports/codeTablesReport.htm
