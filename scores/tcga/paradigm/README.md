@@ -7,7 +7,15 @@ tool.
 The workflow is defined by make, so just process by typing:
 
 ```bash
-make
+make -j500 # processing a sample takes a long time, so run 500 in parallel
+```
+
+This will create the directories `expr` and `path` (explained below).
+
+To remove all generated files type:
+
+```bash
+make clean
 ```
 
 ### Splitting TCGA gene expression in separate text files

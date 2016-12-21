@@ -9,6 +9,9 @@ PATHS = $(SAMPLES:expr/%=path/%)
 
 all: paths
 
+clean:
+	rm -rf expr path proteins.txt
+
 expr: $(SAMPLE_DIRS)
 
 # see: http://stackoverflow.com/questions/554742/reevaluate-makefile-variables
