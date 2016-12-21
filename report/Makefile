@@ -11,6 +11,8 @@ SUPP = $(filter S_%, $(RNWs))
 
 all: Figures.pdf Supplementary.pdf
 
+clean: 
+	rm -f {Figures,Supplementary}.{tex,aux,bbl,bcf,blg,fdb_latexmk,fls,log,out,run.xml,lof,lot,toc,nlo}
 
 Figures.pdf: Figures.tex config.tex $(FIGS)
 	$(LATEXMK) Figures
