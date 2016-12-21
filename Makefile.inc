@@ -45,7 +45,7 @@ grid = $(foreach x,$(1),$(foreach y,$(2),$(x)_$(y)))
 bsub_email = bsub -K -M $(1) -R "rusage[mem=$(1)]"
 bsub_log = $(call bsub_email,$(1)) -oo $(addsuffix .log, $(basename $@))
 bsub_nolog = $(call bsub_email,$(1)) -oo /dev/null
-bsub = bsub_nolog
+bsub = $(call bsub_nolog,$(1))
 
 # Filter strings by a substring they contain
 contains = $(foreach v,$(2),$(if $(findstring $(1),$(v)),$(v),))
