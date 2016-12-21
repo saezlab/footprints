@@ -18,6 +18,7 @@ gene expression signatures and thus be able to compare the relative scores
 across pathways and samples at the same time.
 
 Pathway and Gene Ontology scores
+--------------------------------
 
 We matched our defined set of pathways to the publicly available pathway
 databases Reactome 16 and KEGG 31, and Gene Ontology (GO) 17 categories
