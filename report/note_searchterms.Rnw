@@ -1,18 +1,70 @@
 <<index, include=FALSE>>=
 library(dplyr)
+library(knitcitations)
+options("citation_format" = "pandoc") # this should support latex citations
 io = import('io')
 index = io$load('../data/zscores.RData')$index %>%
     unstack(accession ~ pathway)
+
+# convert PubMed ID to Latex citation
+pmid = function(...) {
+    args = list(...)
+    paste(args, collapse=", ")
+}
+
+# convert ArrayExpress accession to citation
+ae2pmid = function(args) {
+    args = unique(args)
+    ae_api = "https://www.ebi.ac.uk/arrayexpress/xml/v3/experiments/"
+    accessions = paste(args, collapse=",")
+    bib = XML::xmlParse(httr::content(httr::GET(paste0(ae_api, accessions))))
+
+    one_accession = function(acc) {
+        q = sprintf("//experiment[accession='%s']/bibliography/doi/text()", acc)
+        doi = unique(unlist(lapply(XML::xpathSApply(bib, q), XML::xmlToList)))
+        knitcitations::citep(doi)
+    }
+
+    lapply(args, function(x) { #TODO: maybe simplify this w/ numerical citations
+        cite = one_accession(x)
+        if (grepl("[A-Za-z]_[0-9]+", cite)) {
+            cite = sub("\\[", "\\\\citep{", cite)
+            cite = sub("\\]", "}", cite)
+            cite = gsub("@", "", cite)
+            paste(c(x, cite), collapse=" ")
+        } else
+            x
+    }) %>% paste(collapse=", ")
+}
 @
 
 \subsection{Database search terms for perturbations}
 
-List of all the search terms and ArrayExpress accession numbers for all pathways.
+Below, we list experimental evidence that our chosen pathway modulators indeed
+have the effect we assume in our model (PubMed IDs). We further provide our
+search term and all the ArrayExpress accessions we used to build our model.
 
 \begin{itemize}
 
 \item EGFR
 \begin{itemize}
+\item Experimental evidence\\
+%    EGF -- \Sexpr{pmid(...)}\\ %TODO: add citations for everything
+    TGF$\alpha$ --
+    Epiregulin --
+    Heregulin --
+    Neuregulin --
+    Epigen --
+    Beta-cellulin --
+    Amphiregulin --
+    Iressa --
+    Gefinitib --
+    Cetuximab --
+    Erlotinib --
+    Lapatinib --
+    AG1478 --
+    Trastuzumab --
+    Herceptin --
 \item Search term\\
     (egf* OR "growth factor" OR TGF$\alpha$ OR epiregulin OR heregulin OR
     neuregulin OR epigen OR betacellulin OR amphiregulin OR iressa OR
@@ -20,7 +72,7 @@ List of all the search terms and ArrayExpress accession numbers for all pathways
     trastuzumab OR herceptin) organism:sapiens samplecount:[4 TO 10000]
     raw:true exptype:"Transcription profiling"
 \item Accessions\\
-    \Sexpr{paste(index$EGFR, collapse=", ")}
+    \Sexpr{ae2pmid(index$EGFR)}
 \end{itemize}
 
 \item Hypoxia
@@ -29,7 +81,7 @@ List of all the search terms and ArrayExpress accession numbers for all pathways
     (hypoxia* OR HIF1 OR HIF-1) organism:sapiens samplecount:[4 TO
     10000] raw:true exptype:"Transcription profiling"
 \item Accessions\\
-    \Sexpr{paste(index$Hypoxia, collapse=", ")}
+    \Sexpr{ae2pmid(index$Hypoxia)}
 \end{itemize}
 
 \item JAK-STAT
@@ -40,7 +92,7 @@ List of all the search terms and ArrayExpress accession numbers for all pathways
     organism:sapiens samplecount:[4 TO 10000] raw:true exptype:"Transcription
     profiling"
 \item Accessions\\
-    \Sexpr{paste(index$`JAK-STAT`, collapse=", ")}
+    \Sexpr{ae2pmid(index$`JAK-STAT`)}
 \end{itemize}
 
 \item MAPK
@@ -51,7 +103,7 @@ List of all the search terms and ArrayExpress accession numbers for all pathways
     organism:sapiens samplecount:[4 TO 10000] raw:true exptype:"Transcription
     profiling"
 \item Accessions\\
-    \Sexpr{paste(index$MAPK, collapse=", ")}
+    \Sexpr{ae2pmid(index$MAPK)}
 \end{itemize}
 
 \item NFkB
@@ -62,7 +114,7 @@ List of all the search terms and ArrayExpress accession numbers for all pathways
     organism:sapiens samplecount:[4 TO 10000] raw:true exptype:"Transcription
     profiling"
 \item Accessions\\
-    \Sexpr{paste(index$NFkB, collapse=", ")}
+%    \Sexpr{ae2pmid(index$NFkB)}
 \end{itemize}
 
 \item p53
@@ -73,7 +125,7 @@ List of all the search terms and ArrayExpress accession numbers for all pathways
     sa:docetaxel OR sa:gamma) organism:sapiens samplecount:[4 TO 10000]
     raw:true exptype:"Transcription profiling"
 \item Accessions\\
-    \Sexpr{paste(index$p53, collapse=", ")}
+    \Sexpr{ae2pmid(index$p53)}
 \end{itemize}
 
 \item PI3K
@@ -84,7 +136,7 @@ List of all the search terms and ArrayExpress accession numbers for all pathways
     OR RP6530 OR GDC*941 OR INK1117 ) organism:sapiens samplecount:[4 TO
     10000] raw:true exptype:"Transcription profiling"
 \item Accessions\\
-    \Sexpr{paste(index$PI3K, collapse=", ")}
+    \Sexpr{ae2pmid(index$PI3K)}
 \end{itemize}
 
 \item TGFb
@@ -99,7 +151,7 @@ List of all the search terms and ArrayExpress accession numbers for all pathways
     OR "SD 208" OR "SD208" OR "SD-208") organism:sapiens samplecount:[4 TO
     10000] raw:true exptype:"Transcription profiling"
 \item Accessions\\
-    \Sexpr{paste(index$TGFb, collapse=", ")}
+    \Sexpr{ae2pmid(index$TGFb)}
 \end{itemize}
 
 \item TNFa
@@ -108,7 +160,7 @@ List of all the search terms and ArrayExpress accession numbers for all pathways
     (tnf* OR "necrosis factor") organism:sapiens samplecount:[4 TO
     10000] raw:true exptype:"Transcription profiling"
 \item Accessions\\
-    \Sexpr{paste(index$TNFa, collapse=", ")}
+    \Sexpr{ae2pmid(index$TNFa)}
 \end{itemize}
 
 \item Trail
@@ -121,7 +173,7 @@ List of all the search terms and ArrayExpress accession numbers for all pathways
     organism:sapiens samplecount:[4 TO 10000] raw:true
     exptype:"Transcription profiling"
 \item Accessions
-    \Sexpr{paste(index$Trail, collapse=", ")}
+    \Sexpr{ae2pmid(index$Trail)}
 \end{itemize}
 
 \item VEGF
@@ -132,7 +184,11 @@ List of all the search terms and ArrayExpress accession numbers for all pathways
     PDGF* OR PGF OR FIGF OR Withaferin) organism:sapiens samplecount:[4 TO
     10000] raw:true exptype:"Transcription profiling"
 \item Accessions\\
-    \Sexpr{paste(index$VEGF, collapse=", ")}
+    \Sexpr{ae2pmid(index$VEGF)}
 \end{itemize}
 
 \end{itemize}
+
+<<bib, include=FALSE>>=
+knitcitations::write.bibtex(file="references.bib", append=TRUE)
+@

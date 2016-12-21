@@ -66,4 +66,6 @@
 
 \Sexpr{knit_child('survival_tissue_volcanos.Rnw')}
 
+\printbibliography[heading=bibintoc]
+
 \end{document}
