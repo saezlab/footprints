@@ -1,11 +1,11 @@
-%\usepackage{classicthesis}
 %\usepackage{polyglossia}
-\usepackage[super,comma]{natbib}
-\usepackage[natbib=true,style=unsrt]{biblatex}
+\usepackage[unicode=true,hidelinks]{hyperref}
+%\usepackage[super,comma]{natbib} % doesn't display refs anymore then
+\usepackage[style=numeric,sorting=none]{biblatex}
 %\usepackage{booktabs}
 %\usepackage{relsize}
 %\usepackage{setspace}
-%\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[font=small,labelfont=bf]{caption}
 \usepackage{nag}
 \usepackage{graphicx}
 \usepackage{float}
@@ -13,10 +13,8 @@
 \usepackage{caption}
 %\usepackage{subcaption} % caption of subfigures
 \usepackage[caption=false]{subfig} % subfloat
-%\usepackage{appendix}
 \usepackage{booktabs}
 %\usepackage{longtable}
-%\usepackage[unicode=true]{hyperref}
 
 %\setdefaultlanguage{english}
 %\setmainfont[Mapping=tex-text, Numbers=OldStyle]{TeX Gyre Pagella}
@@ -29,3 +27,6 @@
 % large value. Also: double-spaced lines correspond to a value of ~1.3,
 % depending on the font, NOT to 2.0
 %\setstretch{1.1}
+
+% do not print square brackets in bibliography
+\DeclareFieldFormat{labelnumberwidth}{\mkbibbold{#1\adddot}}

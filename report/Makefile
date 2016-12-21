@@ -1,4 +1,4 @@
-LATEXMK = latexmk -xelatex #-c # no pdf created with -c
+LATEXMK = latexmk -f -xelatex #-c # no pdf created with -c
 RNWs = $(sort $(wildcard *.Rnw))
 
 FIGS = $(filter-out S_%, $(RNWs))

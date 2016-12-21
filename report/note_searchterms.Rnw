@@ -28,7 +28,7 @@ ae2pmid = function(args) {
     lapply(args, function(x) { #TODO: maybe simplify this w/ numerical citations
         cite = one_accession(x)
         if (grepl("[A-Za-z]_[0-9]+", cite)) {
-            cite = sub("\\[", "\\\\citep{", cite)
+            cite = sub("\\[", "\\\\supercite{", cite)
             cite = sub("\\]", "}", cite)
             cite = gsub("@", "", cite)
             paste(c(x, cite), collapse=" ")
