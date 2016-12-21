@@ -7,7 +7,7 @@ tool.
 The workflow is defined by make, so just process by typing:
 
 ```bash
-make -j
+make -j500
 ```
 
 This will create the directories `expr` and `path` (explained below). File
@@ -29,6 +29,9 @@ discards genes that are not in the PARADIGM network (`proteins.txt`,
 derived from `SuperPathway.txt`), and
 writes all remaining expression values in the directory
 `expr/<tissue>/<barcode>.txt`
+
+Expression values are converted into ranks as suggested by the [PARADIGM
+documentation](https://sysbio.soe.ucsc.edu/paradigm/ParadigmDocumentation.pdf).
 
 This way, we can process each sample separately using PARADIGM because
 otherwise the tools runs for too long.
