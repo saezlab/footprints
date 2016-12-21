@@ -7,10 +7,14 @@ tool.
 The workflow is defined by make, so just process by typing:
 
 ```bash
-make -j500 # processing a sample takes a long time, so run 500 in parallel
+make -j
 ```
 
-This will create the directories `expr` and `path` (explained below).
+This will create the directories `expr` and `path` (explained below). File
+system usage should be moderate, because preprocessing only parallelises
+tissues and the file sizes for the samples are small. However, do adjust this
+if the file system can not handle it (like `-j30`). Pathway scores will only be
+computed once all expression data has been processed.
 
 To remove all generated files type:
 

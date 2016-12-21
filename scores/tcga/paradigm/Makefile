@@ -25,7 +25,7 @@ proteins.txt:
 # http://www.gnu.org/savannah-checkouts/gnu/make/manual/html_node/Prerequisite-Types.html
 $(SAMPLE_DIRS): %/.dirstamp: preprocess_expr.r proteins.txt
 	mkdir -p $*
-	Rscript preprocess_expr.r $*
+	$(call bsub_log,20480) Rscript preprocess_expr.r $*
 	touch $*/.dirstamp
 
 $(PATHS): path/%.txt: expr/%.txt config.txt SuperPathway.txt
