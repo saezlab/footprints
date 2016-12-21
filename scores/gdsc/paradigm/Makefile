@@ -7,7 +7,10 @@ PATHS = $(SAMPLES:expr/%=path/%)
 
 all: paths
 
-expr: expr/.dirstamp
+clean:
+	rm -rf expr path proteins.txt
+
+expr: $(SAMPLE_DIRS)
 
 # see: http://stackoverflow.com/questions/554742/reevaluate-makefile-variables
 paths: expr
