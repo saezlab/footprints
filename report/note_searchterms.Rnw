@@ -11,6 +11,9 @@ index = io$load('../data/zscores.RData')$index %>%
 # convert PubMed ID to Latex citation
 pmid2doi = function(pmids) {
     one_item = function(pmid) {
+        if (!grepl("^[0-9]+$", pmid))
+            return(pmid)
+
 #        q = sprintf("https://www.ncbi.nlm.nih.gov/pmc/utils/idconv/v1.0/?ids=%s", pmid)
 #        xml = XML::xmlParse(httr::content(httr::GET(q)))
 #        doi_geo = unname(XML::xpathSApply(xml, "//record/@doi"))
@@ -21,11 +24,11 @@ pmid2doi = function(pmids) {
     sapply(pmids, one_item)
 }
 
-cite_pmids = function(...) {
-    list(...) %>%
+cite = function(...) {
+    unique(unlist(list(...))) %>%
         pmid2doi() %>%
         knitcitations::citep() %>%
-        clean_citations() %>%
+        clean_citations()
 }
 
 # convert ArrayExpress accession to citation
@@ -80,22 +83,20 @@ search term and all the ArrayExpress accessions we used to build our model.
 \item EGFR
 \begin{itemize}
 \item Experimental evidence\\
-%    EGF -- \Sexpr{pmid(...)}\\ %TODO: add citations for everything
-    TGF$\alpha$ --
-    Epiregulin --
-    Heregulin --
-    Neuregulin --
-    Epigen --
-    Beta-cellulin --
-    Amphiregulin --
-    Iressa --
-    Gefinitib --
-    Cetuximab --
-    Erlotinib --
-    Lapatinib --
-    AG1478 --
-    Trastuzumab --
-    Herceptin --
+    EGF\Sexpr{cite(16616281)},
+    TGF$\alpha$\Sexpr{cite(16616281)},
+    Epiregulin\Sexpr{cite(16616281)},
+    Heregulin\Sexpr{cite(16616281)},
+    Neuregulin\Sexpr{cite(16616281)},
+    Epigen\Sexpr{cite(24374012)},
+    Beta-cellulin\Sexpr{cite(16616281)},
+    Cetuximab\Sexpr{cite("10.2174/092986706779026174")},
+    Amphiregulin\Sexpr{cite("10.2174/092986706779026174")},
+    Gefinitib (Iressa)\Sexpr{cite("10.2174/092986706779026174",17189395)},
+    Erlotinib (Tarceva)\Sexpr{cite("10.2174/092986706779026174",17189395)},
+    Lapatinib\Sexpr{cite(17189395)},
+    AG1478\Sexpr{cite("10.1016/S0378-4347(00)00606-X")},
+    Trastuzumab (Herceptin)\Sexpr{cite("10.2174/092986706779026174")}
 \item Search term\\
     (egf* OR "growth factor" OR TGF$\alpha$ OR epiregulin OR heregulin OR
     neuregulin OR epigen OR betacellulin OR amphiregulin OR iressa OR
@@ -221,5 +222,5 @@ search term and all the ArrayExpress accessions we used to build our model.
 \end{itemize}
 
 <<bib, include=FALSE>>=
-#knitcitations::write.bibtex(file="references.bib", append=TRUE)
+knitcitations::write.bibtex(file="references.bib", append=TRUE)
 @
