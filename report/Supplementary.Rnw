@@ -24,7 +24,7 @@
 
 \Sexpr{knit_child('note_images.Rnw')}
 
-\Sexpr{knit_child('note_searchterms.Rnw')}
+%\Sexpr{knit_child('note_searchterms.Rnw')} %TODO: re-enable (lots of HTTP queries)
 
 \Sexpr{knit_child('note_signatures.Rnw')}
 

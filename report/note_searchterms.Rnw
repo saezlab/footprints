@@ -33,8 +33,6 @@ cite = function(...) {
 
 # convert ArrayExpress accession to citation
 ae2pmid = function(args) {
-    return(paste(unique(args), collapse=", ")) #TODO: remove this for final run
-
     args = unique(args)
     ae_api = "https://www.ebi.ac.uk/arrayexpress/xml/v3/experiments/"
     accessions = paste(args, collapse=",")
