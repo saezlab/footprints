@@ -28,6 +28,7 @@ ae2pmid = function(args) {
     lapply(args, function(x) { #TODO: maybe simplify this w/ numerical citations
         cite = one_accession(x)
         if (grepl("[A-Za-z]_[0-9]+", cite)) {
+            cite = gsub("; ", ",", cite)
             cite = sub("\\[", "\\\\supercite{", cite)
             cite = sub("\\]", "}", cite)
             cite = gsub("@", "", cite)
@@ -172,7 +173,7 @@ search term and all the ArrayExpress accessions we used to build our model.
     ABT-199 OR obatoclax OR GX15-070 OR casp8 OR caspase)
     organism:sapiens samplecount:[4 TO 10000] raw:true
     exptype:"Transcription profiling"
-\item Accessions
+\item Accessions\\
     \Sexpr{ae2pmid(index$Trail)}
 \end{itemize}
 
