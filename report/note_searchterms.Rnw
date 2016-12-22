@@ -213,6 +213,8 @@ search term and all the ArrayExpress accessions we used to build our model.
 \item TGFb
 \begin{itemize}
 \item Experimental evidence and secondary literature\\
+    TGF$\beta$ ligand\Sexpr{cite("10.1242/jcs.00229", "10.1016/j.tibs.2004.03.008")},
+    BMP ligands (BMP2, BMP4, BMP6)\Sexpr{cite("10.1038/cr.2008.302")},
 \item Search term\\
     (tgf OR "tgf-*" OR "bmp*" OR "SMAD*" "transforming growth factor"
     OR "A 83-01" OR "A-83-01" OR "A83-01" OR "D 4476" OR "D4476" OR
