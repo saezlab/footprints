@@ -1,4 +1,5 @@
 <<index, include=FALSE>>=
+b = import('base')
 library(dplyr)
 library(knitcitations)
 options("citation_format" = "pandoc") # this should support latex citations
@@ -20,9 +21,19 @@ ae2pmid = function(args) {
     bib = XML::xmlParse(httr::content(httr::GET(paste0(ae_api, accessions))))
 
     one_accession = function(acc) {
+        q = sprintf("//experiment[accession='%s']/secondaryaccession/text()", acc)
+        gse = XML::xmlToList(XML::xpathSApply(bib, q)[[1]])
+        q = sprintf("https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=%s", gse)
+        html = paste(readLines(q), collapse="\n")
+        pmid = b$grep("pubmed/([0-9]+)", html) # only gets the first, but ok
+        q = sprintf("https://www.ncbi.nlm.nih.gov/pmc/utils/idconv/v1.0/?ids=%s", pmid)
+        xml = XML::xmlParse(httr::content(httr::GET(q)))
+        doi_geo = unname(XML::xpathSApply(xml, "//record/@doi"))
+
         q = sprintf("//experiment[accession='%s']/bibliography/doi/text()", acc)
-        doi = unique(unlist(lapply(XML::xpathSApply(bib, q), XML::xmlToList)))
-        knitcitations::citep(doi)
+        doi_ae = unique(unlist(lapply(XML::xpathSApply(bib, q), XML::xmlToList)))
+
+        knitcitations::citep(unique(c(doi_geo, doi_ae)))
     }
 
     lapply(args, function(x) { #TODO: maybe simplify this w/ numerical citations
