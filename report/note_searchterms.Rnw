@@ -259,5 +259,5 @@ search term and all the ArrayExpress accessions we used to build our model.
 \end{itemize}
 
 <<bib, include=FALSE>>=
-knitcitations::write.bibtex(file="references.bib", append=TRUE)
+knitcitations::write.bibtex(file="references.bib") #, append=TRUE)
 @
