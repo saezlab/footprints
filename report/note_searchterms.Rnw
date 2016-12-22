@@ -155,9 +155,14 @@ search term and all the ArrayExpress accessions we used to build our model.
 \item NFkB
 \begin{itemize}
 \item Experimental evidence and secondary literature\\
+    TNF$\alpha$ pathway activation\Sexpr{cite("10.1016/j.vetimm.2006.12.008")},
+    Lipopolysaccharide (LPS)\Sexpr{cite("10.1182/blood-2005-02-0759")},
+    Parthenidolide\Sexpr{cite("10.1165/rcmb.2006-0323OC")},
+    Zymosan\Sexpr{cite("10.1081/IPH-200067943")},
+    BAY 11-7082\Sexpr{cite("10.1016/j.leukres.2005.05.004")}
 \item Search term\\
-    (LPS OR sa:lps OR tlr OR sa:lipopolysaccharide OR pam3c* OR zymosan
-    OR parthenolide OR sa:11-7082 OR CAY10512 OR sa:*salicyl*)
+    (LPS OR sa:lps OR sa:lipopolysaccharide OR pam3c* OR zymosan
+    OR parthenolide OR sa:11-7082 OR sa:*salicyl*)
     organism:sapiens samplecount:[4 TO 10000] raw:true exptype:"Transcription
     profiling"
 \item Accessions\\
@@ -167,6 +172,14 @@ search term and all the ArrayExpress accessions we used to build our model.
 \item p53
 \begin{itemize}
 \item Experimental evidence and secondary literature\\
+    DNA double strand breaks\Sexpr{cite("10.1128/MCB.14.3.1815")},
+    Ionizing radiation\Sexpr{cite("10.1016/0092-8674(94)90379-4")},
+    Nutlin-3a (MDM2 inhibition)\Sexpr{cite("10.2174/138161211795222603", "10.1126/science.1092472")},
+    RITA (MDM2 inhibition)\Sexpr{cite("10.1038/nm1146")},
+    Doxorubicin\Sexpr{cite("10.1126/science.1092472")},
+    Cisplatin\Sexpr{cite("10.1074/jbc.M707568200", "10.1158/1078-0432.CCR-07-2238")},
+    Carboplatin\Sexpr{cite("10.1158/1078-0432.CCR-07-2238")},
+    Oxaliplatin\Sexpr{cite("10.1158/1078-0432.CCR-07-2238")}
 \item Search term\\
     (sa:*p53 OR sa:mdm2 OR sa:nutlin* OR sa:*radiation OR sa:*radiated
     OR sa:"dna damage" OR sa:ddr OR sa:*rubicin OR sa:*platin OR
