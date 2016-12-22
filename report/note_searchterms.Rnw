@@ -192,6 +192,15 @@ search term and all the ArrayExpress accessions we used to build our model.
 \item PI3K
 \begin{itemize}
 \item Experimental evidence and secondary literature\\
+    PIK3CA H1047R\Sexpr{cite("10.1158/0008-5472.CAN-12-1726")},
+    Ras G12V/Y40C\Sexpr{cite("10.1016/j.molcel.2009.02.030")},
+    PTEN\Sexpr{cite("10.1016/j.ctrv.2003.07.007")},
+    BKM120\Sexpr{cite("10.1038/nrclinonc.2013.10")},
+    LY294002\Sexpr{cite("10.1042/BJ20061489", "10.1038/onc.2008.245")},
+    GSK1059615\Sexpr{cite("10.1038/nrclinonc.2013.10")},
+    PI-103\Sexpr{cite("10.1038/onc.2008.245")},
+    GDC941\Sexpr{cite("10.1038/nrclinonc.2013.10")},
+    BEZ235\Sexpr{cite("10.1038/nrclinonc.2013.10")},
 \item Search term\\
     (SF1126 OR LY294002 OR TGR*1202 OR SAR2454* OR GSK1059615 OR
     80*6946 OR Perifosine OR Idelalisib OR PI3K OR PIK3* OR PTEN OR BEZ235
