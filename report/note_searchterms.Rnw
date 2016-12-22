@@ -16,6 +16,8 @@ pmid = function(...) {
 
 # convert ArrayExpress accession to citation
 ae2pmid = function(args) {
+    return(paste(args, collapse=", ")) #TODO: remove this for final run
+
     args = unique(args)
     ae_api = "https://www.ebi.ac.uk/arrayexpress/xml/v3/experiments/"
     accessions = paste(args, collapse=",")
@@ -40,7 +42,7 @@ ae2pmid = function(args) {
         knitcitations::citep(unique(c(doi_geo, doi_ae)))
     }
 
-    lapply(args, function(x) { #TODO: maybe simplify this w/ numerical citations
+    lapply(args, function(x) { # can maybe simplify this w/ numerical citations
         cite = one_accession(x) %catch% ""
         if (grepl("[A-Za-z]_[0-9]+", cite)) {
             cite = gsub("; ", ",", cite)
