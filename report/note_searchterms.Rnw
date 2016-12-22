@@ -121,6 +121,14 @@ search term and all the ArrayExpress accessions we used to build our model.
 \item JAK-STAT
 \begin{itemize}
 \item Experimental evidence\\
+    Interferon$\beta/\gamma$\Sexpr{cite("10.1126/science.8197455")},
+    IL-2\Sexpr{cite("10.1074/jbc.R700016200")},
+    IL-3\Sexpr{cite("10.1074/jbc.R700016200")},
+    IL-6\Sexpr{cite("10.1042/bj3340297", "10.1074/jbc.R700016200")},
+    IL-10\Sexpr{cite("10.1074/jbc.R700016200")},
+    IL-13\Sexpr{cite("10.1074/jbc.R700016200")},
+    Prolaktin\Sexpr{cite("10.1126/science.8197455")},
+    EPO\Sexpr{cite("10.1074/jbc.R700016200")}
 \item Search term\\
     (ifn* OR interferon OR JAK OR STAT OR prolaktin OR EPO OR IL-2
     OR IL2 OR IL-3 OR IL3 OR IL-6 OR IL6 OR IL-10 OR IL10 OR IL-13 OR IL13)
