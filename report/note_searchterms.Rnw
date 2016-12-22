@@ -95,7 +95,7 @@ search term and all the ArrayExpress accessions we used to build our model.
     Gefinitib (Iressa)\Sexpr{cite("10.2174/092986706779026174",17189395)},
     Erlotinib (Tarceva)\Sexpr{cite("10.2174/092986706779026174",17189395)},
     Lapatinib\Sexpr{cite(17189395)},
-    AG1478\Sexpr{cite("10.1016/S0378-4347(00)00606-X")},
+    Tyrphostin AG1478\Sexpr{cite("10.1016/S0378-4347(00)00606-X")},
     Trastuzumab (Herceptin)\Sexpr{cite("10.2174/092986706779026174")}
 \item Search term\\
     (egf* OR "growth factor" OR TGF$\alpha$ OR epiregulin OR heregulin OR
@@ -109,6 +109,8 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item Hypoxia
 \begin{itemize}
+\item Experimental evidence\\
+    HIF-1\Sexpr{cite("10.1016/S0959-437X(98)80016-6")}
 \item Search term\\
     (hypoxia* OR HIF1 OR HIF-1) organism:sapiens samplecount:[4 TO
     10000] raw:true exptype:"Transcription profiling"
@@ -118,6 +120,7 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item JAK-STAT
 \begin{itemize}
+\item Experimental evidence\\
 \item Search term\\
     (ifn* OR interferon OR JAK OR STAT OR prolaktin OR EPO OR IL-2
     OR IL2 OR IL-3 OR IL3 OR IL-6 OR IL6 OR IL-10 OR IL10 OR IL-13 OR IL13)
@@ -129,6 +132,17 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item MAPK
 \begin{itemize}
+\item Experimental evidence and secondary literature\\
+    BRAF\Sexpr{cite("10.2174/092986712799320510")},
+    RAF\Sexpr{cite("10.2174/092986712799320510")},
+    MEK\Sexpr{cite("10.2174/092986712799320510", "10.1016/S0165-6147(00)01865-4")},
+    ERK\Sexpr{cite("10.2174/092986712799320510", "10.1016/S0165-6147(00)01865-4")},
+    PD-0325901\Sexpr{cite("10.1186/1756-8722-6-27")},
+    CI-1040\Sexpr{cite("10.1186/1756-8722-6-27")},
+    PLX4720\Sexpr{cite(18287029)},
+    AZD6244\Sexpr{cite("10.1186/1756-8722-6-27")},
+    GSK1120212 (Trametinib)\Sexpr{cite("10.1186/1756-8722-6-27")},
+    U0126\Sexpr{cite("10.1016/S0165-6147(00)01865-4")}
 \item Search term\\
     (b-raf OR braf OR raf* OR mek* OR erk* OR PD*0325901 OR CI*1040 OR
     PLX* OR U0126 OR AZD6244 OR GSK1120212 OR *metinib OR PD*325901)
@@ -140,6 +154,7 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item NFkB
 \begin{itemize}
+\item Experimental evidence and secondary literature\\
 \item Search term\\
     (LPS OR sa:lps OR tlr OR sa:lipopolysaccharide OR pam3c* OR zymosan
     OR parthenolide OR sa:11-7082 OR CAY10512 OR sa:*salicyl*)
@@ -151,6 +166,7 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item p53
 \begin{itemize}
+\item Experimental evidence and secondary literature\\
 \item Search term\\
     (sa:*p53 OR sa:mdm2 OR sa:nutlin* OR sa:*radiation OR sa:*radiated
     OR sa:"dna damage" OR sa:ddr OR sa:*rubicin OR sa:*platin OR
@@ -162,6 +178,7 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item PI3K
 \begin{itemize}
+\item Experimental evidence and secondary literature\\
 \item Search term\\
     (SF1126 OR LY294002 OR TGR*1202 OR SAR2454* OR GSK1059615 OR
     80*6946 OR Perifosine OR Idelalisib OR PI3K OR PIK3* OR PTEN OR BEZ235
@@ -173,6 +190,7 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item TGFb
 \begin{itemize}
+\item Experimental evidence and secondary literature\\
 \item Search term\\
     (tgf OR "tgf-*" OR "bmp*" OR "SMAD*" "transforming growth factor"
     OR "A 83-01" OR "A-83-01" OR "A83-01" OR "D 4476" OR "D4476" OR
@@ -188,6 +206,8 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item TNFa
 \begin{itemize}
+\item Experimental evidence and secondary literature\\
+    TNF$\alpha$\Sexpr{cite("10.1126/science.1071924", "10.1038/nri1184")}
 \item Search term\\
     (tnf* OR "necrosis factor") organism:sapiens samplecount:[4 TO
     10000] raw:true exptype:"Transcription profiling"
@@ -197,10 +217,17 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item Trail
 \begin{itemize}
+\item Experimental evidence and secondary literature\\
+    Recombinant Trail\Sexpr{cite("doi: 10.1242/jcs.01610")},
+    FasL\Sexpr{cite("doi: 10.1242/jcs.01610")},
+    Caspase 8\Sexpr{cite("doi: 10.1242/jcs.01610")},
+    ABT-737\Sexpr{cite("10.1038/nrd2658")},
+    ABT-199\Sexpr{cite("10.1038/nm.3048")},
+    GX15-070 (Obatoclax)\Sexpr{cite("10.1038/nrd2658")}
 \item Search term\\
     (rtrail OR trail* OR fas OR fasl) organism:sapiens samplecount:[4
     TO 10000] raw:true exptype:"Transcription profiling" array:(A-AFFY-33 OR
-    A-AFFY-44 OR A-AFFY-37 OR A-AFFY-141) OR (Genasense OR ABT-737 OR
+    A-AFFY-44 OR A-AFFY-37 OR A-AFFY-141) OR (ABT-737 OR
     ABT-199 OR obatoclax OR GX15-070 OR casp8 OR caspase)
     organism:sapiens samplecount:[4 TO 10000] raw:true
     exptype:"Transcription profiling"
@@ -210,10 +237,20 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item VEGF
 \begin{itemize}
+\item Experimental evidence and secondary literature\\
+    VEGF\Sexpr{cite("10.1634/theoncologist.5-suppl_1-3 ")},
+    PGF/PDGF\Sexpr{cite("10.1016/j.cytogfr.2004.03.007")},
+    FGF\Sexpr{cite("10.1083/jcb.109.1.1", "10.1016/S0165-6147(00)01676-X")},
+    Sunitinib (Sutent)\Sexpr{cite("10.1038/nrd3073")},
+    Pazopanib (Votrient)\Sexpr{cite("10.1038/nrd3073")},
+    Everolimus (Afinitor)\Sexpr{cite("10.1038/nrd2924")},
+    Bevacizumab (Avastin)\Sexpr{cite("10.1038/nrd3073")},
+    Sorafenib (Nexavar)\Sexpr{cite("10.1038/nrd3073")},
+    Withaferin\Sexpr{cite("10.1186/2193-9616-1-11")},
 \item Search term\\
-    (VEGF* OR sunitinib OR nexavar OR sutent OR pazopanib OR everolimus
-    OR afinitor OR votrient OR Bevacizumab OR sorafenib OR itraconazole OR
-    PDGF* OR PGF OR FIGF OR Withaferin) organism:sapiens samplecount:[4 TO
+    (VEGF* OR sunitinib OR nexavar OR sutent OR pazopanib OR
+    OR afinitor OR votrient OR Bevacizumab OR sorafenib OR
+    PDGF* OR PGF OR FGF OR Withaferin) organism:sapiens samplecount:[4 TO
     10000] raw:true exptype:"Transcription profiling"
 \item Accessions\\
     \Sexpr{ae2pmid(index$VEGF)}
