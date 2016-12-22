@@ -37,7 +37,7 @@ ae2pmid = function(args) {
     }
 
     lapply(args, function(x) { #TODO: maybe simplify this w/ numerical citations
-        cite = one_accession(x)
+        cite = one_accession(x) %catch% ""
         if (grepl("[A-Za-z]_[0-9]+", cite)) {
             cite = gsub("; ", ",", cite)
             cite = sub("\\[", "\\\\supercite{", cite)
@@ -126,7 +126,7 @@ search term and all the ArrayExpress accessions we used to build our model.
     organism:sapiens samplecount:[4 TO 10000] raw:true exptype:"Transcription
     profiling"
 \item Accessions\\
-%    \Sexpr{ae2pmid(index$NFkB)}
+    \Sexpr{ae2pmid(index$NFkB)}
 \end{itemize}
 
 \item p53
