@@ -9,14 +9,28 @@ index = io$load('../data/zscores.RData')$index %>%
     unstack(accession ~ pathway)
 
 # convert PubMed ID to Latex citation
-pmid = function(...) {
-    args = list(...)
-    paste(args, collapse=", ")
+pmid2doi = function(pmids) {
+    one_item = function(pmid) {
+#        q = sprintf("https://www.ncbi.nlm.nih.gov/pmc/utils/idconv/v1.0/?ids=%s", pmid)
+#        xml = XML::xmlParse(httr::content(httr::GET(q)))
+#        doi_geo = unname(XML::xpathSApply(xml, "//record/@doi"))
+        q = sprintf("https://www.ncbi.nlm.nih.gov/pubmed/%s", pmid)
+        html = paste(suppressWarnings(readLines(q)), collapse="\n") # last line not complete
+        b$grep("dx.doi.org/([^\"]+)", html)
+    }
+    sapply(pmids, one_item)
+}
+
+cite_pmids = function(...) {
+    list(...) %>%
+        pmid2doi() %>%
+        knitcitations::citep() %>%
+        clean_citations() %>%
 }
 
 # convert ArrayExpress accession to citation
 ae2pmid = function(args) {
-    return(paste(args, collapse=", ")) #TODO: remove this for final run
+    return(paste(unique(args), collapse=", ")) #TODO: remove this for final run
 
     args = unique(args)
     ae_api = "https://www.ebi.ac.uk/arrayexpress/xml/v3/experiments/"
@@ -29,12 +43,7 @@ ae2pmid = function(args) {
         q = sprintf("https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=%s", gse)
         html = paste(readLines(q), collapse="\n")
         pmid = b$grep("pubmed/([0-9]+)", html) # only gets the first, but ok
-#        q = sprintf("https://www.ncbi.nlm.nih.gov/pmc/utils/idconv/v1.0/?ids=%s", pmid)
-#        xml = XML::xmlParse(httr::content(httr::GET(q)))
-#        doi_geo = unname(XML::xpathSApply(xml, "//record/@doi"))
-        q = sprintf("https://www.ncbi.nlm.nih.gov/pubmed/%s", pmid)
-        html = paste(readLines(q), collapse="\n")
-        doi_geo = b$grep("dx.doi.org/([^\"]+)", html)
+        doi_geo = pmid2doi(pmid)
 
         q = sprintf("//experiment[accession='%s']/bibliography/doi/text()", acc)
         doi_ae = unique(unlist(lapply(XML::xpathSApply(bib, q), XML::xmlToList)))
@@ -44,15 +53,19 @@ ae2pmid = function(args) {
 
     lapply(args, function(x) { # can maybe simplify this w/ numerical citations
         cite = one_accession(x) %catch% ""
-        if (grepl("[A-Za-z]_[0-9]+", cite)) {
-            cite = gsub("; ", ",", cite)
-            cite = sub("\\[", "\\\\supercite{", cite)
-            cite = sub("\\]", "}", cite)
-            cite = gsub("@", "", cite)
-            paste(c(x, cite), collapse=" ")
-        } else
+        if (grepl("[A-Za-z]_[0-9]+", cite))
+            paste(c(x, clean_citations(cite)), collapse=" ")
+        else
             x
     }) %>% paste(collapse=", ")
+}
+
+clean_citations = function(cite) {
+    cite = gsub("; ", ",", cite)
+    cite = sub("\\[", "\\\\supercite{", cite)
+    cite = sub("\\]", "}", cite)
+    cite = gsub("@", "", cite)
+    cite
 }
 @
 
@@ -208,5 +221,5 @@ search term and all the ArrayExpress accessions we used to build our model.
 \end{itemize}
 
 <<bib, include=FALSE>>=
-knitcitations::write.bibtex(file="references.bib", append=TRUE)
+#knitcitations::write.bibtex(file="references.bib", append=TRUE)
 @
