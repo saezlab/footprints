@@ -1,9 +1,10 @@
 <<index, include=FALSE>>=
-b = import('base')
 library(dplyr)
 library(knitcitations)
 options("citation_format" = "pandoc") # this should support latex citations
+b = import('base')
 io = import('io')
+
 index = io$load('../data/zscores.RData')$index %>%
     unstack(accession ~ pathway)
 
@@ -26,9 +27,12 @@ ae2pmid = function(args) {
         q = sprintf("https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=%s", gse)
         html = paste(readLines(q), collapse="\n")
         pmid = b$grep("pubmed/([0-9]+)", html) # only gets the first, but ok
-        q = sprintf("https://www.ncbi.nlm.nih.gov/pmc/utils/idconv/v1.0/?ids=%s", pmid)
-        xml = XML::xmlParse(httr::content(httr::GET(q)))
-        doi_geo = unname(XML::xpathSApply(xml, "//record/@doi"))
+#        q = sprintf("https://www.ncbi.nlm.nih.gov/pmc/utils/idconv/v1.0/?ids=%s", pmid)
+#        xml = XML::xmlParse(httr::content(httr::GET(q)))
+#        doi_geo = unname(XML::xpathSApply(xml, "//record/@doi"))
+        q = sprintf("https://www.ncbi.nlm.nih.gov/pubmed/%s", pmid)
+        html = paste(readLines(q), collapse="\n")
+        doi_geo = b$grep("dx.doi.org/([^\"]+)", html)
 
         q = sprintf("//experiment[accession='%s']/bibliography/doi/text()", acc)
         doi_ae = unique(unlist(lapply(XML::xpathSApply(bib, q), XML::xmlToList)))
