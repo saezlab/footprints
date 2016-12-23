@@ -28,12 +28,15 @@ print-%: ; @echo $* = $($*)
 define EXT_DEP
 
 $1/$2: .FORCE
-	make -C $(1) $(2)
+	$(MAKE) -C $(1) $(2)
 
 endef
 
-ext_dep = $(foreach tt,$(2),$(eval $(call EXT_DEP,$(1),$(tt))))
-
+ifdef NODEPS
+    ext_dep = $(NOOP)
+else
+    ext_dep = $(foreach tt,$(2),$(eval $(call EXT_DEP,$(1),$(tt))))
+endif
 
 # Tokenizer for the target variable: split by '.', '/' and '_'
 tw = $(word $(1), $(subst /, ,$(subst ., ,$(subst _, ,$@))))
