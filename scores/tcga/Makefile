@@ -25,16 +25,16 @@ pathways_mapped/speed_%.RData: speed.r ../../model/model_%.RData ../../config/tc
 	Rscript $< $(word 2,$^) $@
 
 pathways_mapped/gsea_%.RData: set_enrichment.r ../../util/genesets/mapped/%.RData ../../config/tcga.yaml
-	$(call bsub_log,20480) Rscript $< $(word 2,$^) $@
+	$(call bsub_log,30720) Rscript $< $(word 2,$^) $@
 
 pathways_mapped/gsva_%.RData: gsva.r ../../util/genesets/mapped/%.RData ../../config/tcga.yaml
-	$(call bsub_log,20480) Rscript $< $(word 2,$^) $@
+	$(call bsub_log,30720) Rscript $< $(word 2,$^) $@
 
 pathways_mapped/spia.RData: spia.r ../../config/tcga.yaml
-	$(call bsub_log,20480) Rscript $< $@ TRUE
+	$(call bsub_log,30720) Rscript $< $@ TRUE
 
 pathways_mapped/pathifier.RData: pathifier.r ../../util/genesets/mapped/reactome.RData ../../config/tcga.yaml
-	$(call bsub_log,20480) Rscript $< $(word 2,$^) $@
+	$(call bsub_log,30720) Rscript $< $(word 2,$^) $@
 
 pathways_mapped/paradigm.RData: paradigm.r ../../config/tcga.yaml
 	Rscript $< $@
@@ -47,10 +47,10 @@ pathways_all/gsva_%.RData: gsva.r ../../util/genesets/all/%.RData ../../config/t
 	$(call bsub_log,40960) Rscript $< $(word 2,$^) $@
 
 pathways_all/spia.RData: spia.r ../../config/tcga.yaml
-	$(call bsub_log,40960) Rscript $< $@ FALSE
+	$(call bsub_log,61140) Rscript $< $@ FALSE
 
 pathways_all/pathifier.RData: pathifier.r ../../util/genesets/all/reactome.RData ../../config/tcga.yaml
-	$(call bsub_log,40960) Rscript $< $(word 2,$^) $@
+	$(call bsub_log,61140) Rscript $< $(word 2,$^) $@
 
 #paradigm.RData: paradigm.r
 #	Rscript $^ $@

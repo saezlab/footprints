@@ -12,7 +12,7 @@ TISSUES = import('../../config')$tcga$tissues_with_normals
 if (grepl("mapped", OUTFILE)) {
     MIN_GENES = 1
     MAX_GENES = Inf
-    job_size = 1
+    job_size = 5
 } else {
     MIN_GENES = 5
     MAX_GENES = 500
@@ -64,7 +64,7 @@ for (i in seq_along(genesets))
 
 # run pathifier in jobs
 result = hpc$Q(tissue2scores, tissue=TISSUES, genesets=genesets,
-               const = list(expr=expr), expand_grid=TRUE,
+               const = list(expr=expr), expand_grid=TRUE, n_jobs=200,
                memory=10240, job_size=job_size, fail_on_error=FALSE)
 
 result[sapply(result, class) == "try-error"] = NULL

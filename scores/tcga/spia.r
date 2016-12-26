@@ -10,8 +10,8 @@ FILTER = as.logical(commandArgs(TRUE)[2]) #%or% TRUE
 TISSUES = import('../../config')$tcga$tissues_with_normals
 
 # handle COAD and READ separately
-if ("COADREAD" %in% tissues)
-    tissues = c(setdiff(tissues, "COADREAD"), "COAD", "READ")
+if ("COADREAD" %in% TISSUES)
+    TISSUES = c(setdiff(TISSUES, "COADREAD"), "COAD", "READ")
 
 if (FILTER) {
     pathids = spia$speed2kegg
@@ -45,9 +45,10 @@ expr = tcga$rna_seq(TISSUES) %>%
     spia$map_entrez()
 
 # run spia in jobs and save
+hpc_args = list(memory=10240, job_size=1000, n_jobs=200, fail_on_error=FALSE)
+
 result = b$expand_grid(sample = colnames(expr), pathids = pathids) %>%
-    df$call(sample2scores, expr = expr,
-            hpc_args = list(memory=10240, job_size=1000, fail_on_error=FALSE))
+    df$call(sample2scores, expr = expr, hpc_args=hpc_args)
 
 result = ar$construct(result ~ sample + pathids, result)
 
