@@ -41,7 +41,7 @@ expr = tcga$rna_seq(TISSUES) %>%
     spia$map_entrez()
 
 # run spia in jobs and save
-hpc_args = list(memory=10240, job_size=1000, n_jobs=200, fail_on_error=FALSE)
+hpc_args = list(memory=10240, job_size=1000, n_jobs=300, fail_on_error=FALSE)
 
 result = b$expand_grid(sample = colnames(expr), pathids = pathids) %>%
     df$call(sample2scores, expr = expr, hpc_args=hpc_args)

@@ -59,7 +59,7 @@ genesets = io$load(INFILE) %>%
     gsea$filter_genesets(rownames(expr), MIN_GENES, MAX_GENES)
 
 # run pathifier in jobs
-hpc_args = list(memory=10240, job_size=job_size, n_jobs=200, fail_on_error=FALSE)
+hpc_args = list(memory=10240, job_size=job_size, n_jobs=300, fail_on_error=FALSE)
 
 result = b$expand_grid(tissue=TISSUES, genesets=genesets) %>%
     df$call(tissue2scores, expr = expr, result_only=TRUE, hpc_args=hpc_args)
