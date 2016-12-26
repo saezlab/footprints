@@ -9,10 +9,6 @@ OUTFILE = commandArgs(TRUE)[1] %or% "pathways_mapped/spia.RData"
 FILTER = as.logical(commandArgs(TRUE)[2]) #%or% TRUE
 TISSUES = import('../../config')$tcga$tissues_with_normals
 
-# handle COAD and READ separately
-if ("COADREAD" %in% TISSUES)
-    TISSUES = c(setdiff(TISSUES, "COADREAD"), "COAD", "READ")
-
 if (FILTER) {
     pathids = spia$speed2kegg
 } else {
