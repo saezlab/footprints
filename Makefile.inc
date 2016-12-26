@@ -32,7 +32,7 @@ $1/$2: .FORCE
 
 endef
 
-ifdef NODEPS
+ifeq (n,$(findstring n,$(firstword -$(MAKEFLAGS))))
     ext_dep = $(NOOP)
 else
     ext_dep = $(foreach tt,$(2),$(eval $(call EXT_DEP,$(1),$(tt))))
