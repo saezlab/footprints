@@ -31,7 +31,7 @@ pathways_mapped/gsva_%.RData: gsva.r ../../util/genesets/mapped/%.RData ../../co
 	$(call bsub_log,30720) Rscript $< $(word 2,$^) $@
 
 pathways_mapped/spia.RData: spia.r ../../config/tcga.yaml
-	$(call bsub_log,30720) Rscript $< $@ TRUE
+	$(call bsub_log,40960) Rscript $< $@ TRUE
 
 pathways_mapped/pathifier.RData: pathifier.r ../../util/genesets/mapped/reactome.RData ../../config/tcga.yaml
 	$(call bsub_log,30720) Rscript $< $(word 2,$^) $@
