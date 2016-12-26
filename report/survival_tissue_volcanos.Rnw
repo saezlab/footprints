@@ -27,6 +27,6 @@ plt$symmetrise_scale(p)
         associations with KIRC and LGG.  Pathway-response genes only method to
         separate associations into classical oncogenic and tumor suppressor
         pathways, calling into question the meaning of associations obtained by
-        other methods.}
+        mapping gene expression on pathway components.}
 \label{fig:surv-volcano-tissue}
 \end{figure}

@@ -2,14 +2,33 @@
 library(dplyr)
 library(knitcitations)
 options("citation_format" = "pandoc") # this should support latex citations
+b = import('base')
 io = import('io')
+
 index = io$load('../data/zscores.RData')$index %>%
     unstack(accession ~ pathway)
 
 # convert PubMed ID to Latex citation
-pmid = function(...) {
-    args = list(...)
-    paste(args, collapse=", ")
+pmid2doi = function(pmids) {
+    one_item = function(pmid) {
+        if (!grepl("^[0-9]+$", pmid))
+            return(pmid)
+
+#        q = sprintf("https://www.ncbi.nlm.nih.gov/pmc/utils/idconv/v1.0/?ids=%s", pmid)
+#        xml = XML::xmlParse(httr::content(httr::GET(q)))
+#        doi_geo = unname(XML::xpathSApply(xml, "//record/@doi"))
+        q = sprintf("https://www.ncbi.nlm.nih.gov/pubmed/%s", pmid)
+        html = paste(suppressWarnings(readLines(q)), collapse="\n") # last line not complete
+        b$grep("dx.doi.org/([^\"]+)", html)
+    }
+    sapply(pmids, one_item)
+}
+
+cite = function(...) {
+    unique(unlist(list(...))) %>%
+        pmid2doi() %>%
+        knitcitations::citep() %>%
+        clean_citations()
 }
 
 # convert ArrayExpress accession to citation
@@ -20,22 +39,34 @@ ae2pmid = function(args) {
     bib = XML::xmlParse(httr::content(httr::GET(paste0(ae_api, accessions))))
 
     one_accession = function(acc) {
+        q = sprintf("//experiment[accession='%s']/secondaryaccession/text()", acc)
+        gse = XML::xmlToList(XML::xpathSApply(bib, q)[[1]])
+        q = sprintf("https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=%s", gse)
+        html = paste(readLines(q), collapse="\n")
+        pmid = b$grep("pubmed/([0-9]+)", html) # only gets the first, but ok
+        doi_geo = pmid2doi(pmid)
+
         q = sprintf("//experiment[accession='%s']/bibliography/doi/text()", acc)
-        doi = unique(unlist(lapply(XML::xpathSApply(bib, q), XML::xmlToList)))
-        knitcitations::citep(doi)
+        doi_ae = unique(unlist(lapply(XML::xpathSApply(bib, q), XML::xmlToList)))
+
+        knitcitations::citep(unique(c(doi_geo, doi_ae)))
     }
 
-    lapply(args, function(x) { #TODO: maybe simplify this w/ numerical citations
-        cite = one_accession(x)
-        if (grepl("[A-Za-z]_[0-9]+", cite)) {
-            cite = gsub("; ", ",", cite)
-            cite = sub("\\[", "\\\\supercite{", cite)
-            cite = sub("\\]", "}", cite)
-            cite = gsub("@", "", cite)
-            paste(c(x, cite), collapse=" ")
-        } else
+    lapply(args, function(x) { # can maybe simplify this w/ numerical citations
+        cite = one_accession(x) %catch% ""
+        if (grepl("[A-Za-z]_[0-9]+", cite))
+            paste(c(x, clean_citations(cite)), collapse=" ")
+        else
             x
     }) %>% paste(collapse=", ")
+}
+
+clean_citations = function(cite) {
+    cite = gsub("; ", ",", cite)
+    cite = sub("\\[", "\\\\supercite{", cite)
+    cite = sub("\\]", "}", cite)
+    cite = gsub("@", "", cite)
+    cite
 }
 @
 
@@ -50,22 +81,20 @@ search term and all the ArrayExpress accessions we used to build our model.
 \item EGFR
 \begin{itemize}
 \item Experimental evidence\\
-%    EGF -- \Sexpr{pmid(...)}\\ %TODO: add citations for everything
-    TGF$\alpha$ --
-    Epiregulin --
-    Heregulin --
-    Neuregulin --
-    Epigen --
-    Beta-cellulin --
-    Amphiregulin --
-    Iressa --
-    Gefinitib --
-    Cetuximab --
-    Erlotinib --
-    Lapatinib --
-    AG1478 --
-    Trastuzumab --
-    Herceptin --
+    EGF\Sexpr{cite(16616281)},
+    TGF$\alpha$\Sexpr{cite(16616281)},
+    Epiregulin\Sexpr{cite(16616281)},
+    Heregulin\Sexpr{cite(16616281)},
+    Neuregulin\Sexpr{cite(16616281)},
+    Epigen\Sexpr{cite(24374012)},
+    Beta-cellulin\Sexpr{cite(16616281)},
+    Cetuximab\Sexpr{cite("10.2174/092986706779026174")},
+    Amphiregulin\Sexpr{cite("10.2174/092986706779026174")},
+    Gefinitib (Iressa)\Sexpr{cite("10.2174/092986706779026174",17189395)},
+    Erlotinib (Tarceva)\Sexpr{cite("10.2174/092986706779026174",17189395)},
+    Lapatinib\Sexpr{cite(17189395)},
+    Tyrphostin AG1478\Sexpr{cite("10.1016/S0378-4347(00)00606-X")},
+    Trastuzumab (Herceptin)\Sexpr{cite("10.2174/092986706779026174")}
 \item Search term\\
     (egf* OR "growth factor" OR TGF$\alpha$ OR epiregulin OR heregulin OR
     neuregulin OR epigen OR betacellulin OR amphiregulin OR iressa OR
@@ -78,6 +107,8 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item Hypoxia
 \begin{itemize}
+\item Experimental evidence\\
+    HIF-1\Sexpr{cite("10.1016/S0959-437X(98)80016-6")}
 \item Search term\\
     (hypoxia* OR HIF1 OR HIF-1) organism:sapiens samplecount:[4 TO
     10000] raw:true exptype:"Transcription profiling"
@@ -87,6 +118,15 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item JAK-STAT
 \begin{itemize}
+\item Experimental evidence\\
+    Interferon$\beta/\gamma$\Sexpr{cite("10.1126/science.8197455")},
+    IL-2\Sexpr{cite("10.1074/jbc.R700016200")},
+    IL-3\Sexpr{cite("10.1074/jbc.R700016200")},
+    IL-6\Sexpr{cite("10.1042/bj3340297", "10.1074/jbc.R700016200")},
+    IL-10\Sexpr{cite("10.1074/jbc.R700016200")},
+    IL-13\Sexpr{cite("10.1074/jbc.R700016200")},
+    Prolaktin\Sexpr{cite("10.1126/science.8197455")},
+    EPO\Sexpr{cite("10.1074/jbc.R700016200")}
 \item Search term\\
     (ifn* OR interferon OR JAK OR STAT OR prolaktin OR EPO OR IL-2
     OR IL2 OR IL-3 OR IL3 OR IL-6 OR IL6 OR IL-10 OR IL10 OR IL-13 OR IL13)
@@ -98,6 +138,17 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item MAPK
 \begin{itemize}
+\item Experimental evidence and secondary literature\\
+    BRAF\Sexpr{cite("10.2174/092986712799320510")},
+    RAF\Sexpr{cite("10.2174/092986712799320510")},
+    MEK\Sexpr{cite("10.2174/092986712799320510", "10.1016/S0165-6147(00)01865-4")},
+    ERK\Sexpr{cite("10.2174/092986712799320510", "10.1016/S0165-6147(00)01865-4")},
+    PD-0325901\Sexpr{cite("10.1186/1756-8722-6-27")},
+    CI-1040\Sexpr{cite("10.1186/1756-8722-6-27")},
+    PLX4720\Sexpr{cite(18287029)},
+    AZD6244\Sexpr{cite("10.1186/1756-8722-6-27")},
+    GSK1120212 (Trametinib)\Sexpr{cite("10.1186/1756-8722-6-27")},
+    U0126\Sexpr{cite("10.1016/S0165-6147(00)01865-4")}
 \item Search term\\
     (b-raf OR braf OR raf* OR mek* OR erk* OR PD*0325901 OR CI*1040 OR
     PLX* OR U0126 OR AZD6244 OR GSK1120212 OR *metinib OR PD*325901)
@@ -109,17 +160,32 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item NFkB
 \begin{itemize}
+\item Experimental evidence and secondary literature\\
+    TNF$\alpha$ pathway activation\Sexpr{cite("10.1016/j.vetimm.2006.12.008")},
+    Lipopolysaccharide (LPS)\Sexpr{cite("10.1182/blood-2005-02-0759")},
+    Parthenidolide\Sexpr{cite("10.1165/rcmb.2006-0323OC")},
+    Zymosan\Sexpr{cite("10.1081/IPH-200067943")},
+    BAY 11-7082\Sexpr{cite("10.1016/j.leukres.2005.05.004")}
 \item Search term\\
-    (LPS OR sa:lps OR tlr OR sa:lipopolysaccharide OR pam3c* OR zymosan
-    OR parthenolide OR sa:11-7082 OR CAY10512 OR sa:*salicyl*)
+    (LPS OR sa:lps OR sa:lipopolysaccharide OR pam3c* OR zymosan
+    OR parthenolide OR sa:11-7082 OR sa:*salicyl*)
     organism:sapiens samplecount:[4 TO 10000] raw:true exptype:"Transcription
     profiling"
 \item Accessions\\
-%    \Sexpr{ae2pmid(index$NFkB)}
+    \Sexpr{ae2pmid(index$NFkB)}
 \end{itemize}
 
 \item p53
 \begin{itemize}
+\item Experimental evidence and secondary literature\\
+    DNA double strand breaks\Sexpr{cite("10.1128/MCB.14.3.1815")},
+    Ionizing radiation\Sexpr{cite("10.1016/0092-8674(94)90379-4")},
+    Nutlin-3a (MDM2 inhibition)\Sexpr{cite("10.2174/138161211795222603", "10.1126/science.1092472")},
+    RITA (MDM2 inhibition)\Sexpr{cite("10.1038/nm1146")},
+    Doxorubicin\Sexpr{cite("10.1126/science.1092472")},
+    Cisplatin\Sexpr{cite("10.1074/jbc.M707568200", "10.1158/1078-0432.CCR-07-2238")},
+    Carboplatin\Sexpr{cite("10.1158/1078-0432.CCR-07-2238")},
+    Oxaliplatin\Sexpr{cite("10.1158/1078-0432.CCR-07-2238")}
 \item Search term\\
     (sa:*p53 OR sa:mdm2 OR sa:nutlin* OR sa:*radiation OR sa:*radiated
     OR sa:"dna damage" OR sa:ddr OR sa:*rubicin OR sa:*platin OR
@@ -131,6 +197,16 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item PI3K
 \begin{itemize}
+\item Experimental evidence and secondary literature\\
+    PIK3CA H1047R\Sexpr{cite("10.1158/0008-5472.CAN-12-1726")},
+    Ras G12V/Y40C\Sexpr{cite("10.1016/j.molcel.2009.02.030")},
+    PTEN\Sexpr{cite("10.1016/j.ctrv.2003.07.007")},
+    BKM120\Sexpr{cite("10.1038/nrclinonc.2013.10")},
+    LY294002\Sexpr{cite("10.1042/BJ20061489", "10.1038/onc.2008.245")},
+    GSK1059615\Sexpr{cite("10.1038/nrclinonc.2013.10")},
+    PI-103\Sexpr{cite("10.1038/onc.2008.245")},
+    GDC941\Sexpr{cite("10.1038/nrclinonc.2013.10")},
+    BEZ235\Sexpr{cite("10.1038/nrclinonc.2013.10")},
 \item Search term\\
     (SF1126 OR LY294002 OR TGR*1202 OR SAR2454* OR GSK1059615 OR
     80*6946 OR Perifosine OR Idelalisib OR PI3K OR PIK3* OR PTEN OR BEZ235
@@ -142,6 +218,9 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item TGFb
 \begin{itemize}
+\item Experimental evidence and secondary literature\\
+    TGF$\beta$ ligand\Sexpr{cite("10.1242/jcs.00229", "10.1016/j.tibs.2004.03.008")},
+    BMP ligands (BMP2, BMP4, BMP6)\Sexpr{cite("10.1038/cr.2008.302")},
 \item Search term\\
     (tgf OR "tgf-*" OR "bmp*" OR "SMAD*" "transforming growth factor"
     OR "A 83-01" OR "A-83-01" OR "A83-01" OR "D 4476" OR "D4476" OR
@@ -157,6 +236,8 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item TNFa
 \begin{itemize}
+\item Experimental evidence and secondary literature\\
+    TNF$\alpha$\Sexpr{cite("10.1126/science.1071924", "10.1038/nri1184")}
 \item Search term\\
     (tnf* OR "necrosis factor") organism:sapiens samplecount:[4 TO
     10000] raw:true exptype:"Transcription profiling"
@@ -166,10 +247,17 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item Trail
 \begin{itemize}
+\item Experimental evidence and secondary literature\\
+    Recombinant Trail\Sexpr{cite("doi: 10.1242/jcs.01610")},
+    FasL\Sexpr{cite("doi: 10.1242/jcs.01610")},
+    Caspase 8\Sexpr{cite("doi: 10.1242/jcs.01610")},
+    ABT-737\Sexpr{cite("10.1038/nrd2658")},
+    ABT-199\Sexpr{cite("10.1038/nm.3048")},
+    GX15-070 (Obatoclax)\Sexpr{cite("10.1038/nrd2658")}
 \item Search term\\
     (rtrail OR trail* OR fas OR fasl) organism:sapiens samplecount:[4
     TO 10000] raw:true exptype:"Transcription profiling" array:(A-AFFY-33 OR
-    A-AFFY-44 OR A-AFFY-37 OR A-AFFY-141) OR (Genasense OR ABT-737 OR
+    A-AFFY-44 OR A-AFFY-37 OR A-AFFY-141) OR (ABT-737 OR
     ABT-199 OR obatoclax OR GX15-070 OR casp8 OR caspase)
     organism:sapiens samplecount:[4 TO 10000] raw:true
     exptype:"Transcription profiling"
@@ -179,10 +267,20 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item VEGF
 \begin{itemize}
+\item Experimental evidence and secondary literature\\
+    VEGF\Sexpr{cite("10.1634/theoncologist.5-suppl_1-3 ")},
+    PGF/PDGF\Sexpr{cite("10.1016/j.cytogfr.2004.03.007")},
+    FGF\Sexpr{cite("10.1083/jcb.109.1.1", "10.1016/S0165-6147(00)01676-X")},
+    Sunitinib (Sutent)\Sexpr{cite("10.1038/nrd3073")},
+    Pazopanib (Votrient)\Sexpr{cite("10.1038/nrd3073")},
+    Everolimus (Afinitor)\Sexpr{cite("10.1038/nrd2924")},
+    Bevacizumab (Avastin)\Sexpr{cite("10.1038/nrd3073")},
+    Sorafenib (Nexavar)\Sexpr{cite("10.1038/nrd3073")},
+    Withaferin\Sexpr{cite("10.1186/2193-9616-1-11")},
 \item Search term\\
-    (VEGF* OR sunitinib OR nexavar OR sutent OR pazopanib OR everolimus
-    OR afinitor OR votrient OR Bevacizumab OR sorafenib OR itraconazole OR
-    PDGF* OR PGF OR FIGF OR Withaferin) organism:sapiens samplecount:[4 TO
+    (VEGF* OR sunitinib OR nexavar OR sutent OR pazopanib OR
+    OR afinitor OR votrient OR Bevacizumab OR sorafenib OR
+    PDGF* OR PGF OR FGF OR Withaferin) organism:sapiens samplecount:[4 TO
     10000] raw:true exptype:"Transcription profiling"
 \item Accessions\\
     \Sexpr{ae2pmid(index$VEGF)}
@@ -191,5 +289,5 @@ search term and all the ArrayExpress accessions we used to build our model.
 \end{itemize}
 
 <<bib, include=FALSE>>=
-knitcitations::write.bibtex(file="references.bib", append=TRUE)
+knitcitations::write.bibtex(file="references.bib") #, append=TRUE)
 @
