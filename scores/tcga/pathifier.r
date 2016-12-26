@@ -1,6 +1,7 @@
-import('base/operators')
+b = import('base')
 io = import('io')
 ar = import('array')
+df = import('data_frame')
 tcga = import('data/tcga')
 gsea = import('../../util/gsea')
 hpc = import('hpc')
@@ -53,19 +54,15 @@ tissue2scores = function(tissue, genesets, expr) {
 }
 
 # load pathway gene sets
-expr = lapply(TISSUES, tcga$rna_seq) %>%
-    ar$stack(along=2)
+expr = tcga$rna_seq(TISSUES)
 genesets = io$load(INFILE) %>%
     gsea$filter_genesets(rownames(expr), MIN_GENES, MAX_GENES)
 
-# make compatible to call with one set in above function
-for (i in seq_along(genesets))
-    genesets[[i]] = setNames(list(genesets[[i]]), names(genesets)[i])
-
 # run pathifier in jobs
-result = hpc$Q(tissue2scores, tissue=TISSUES, genesets=genesets,
-               const = list(expr=expr), expand_grid=TRUE, n_jobs=200,
-               memory=10240, job_size=job_size, fail_on_error=FALSE)
+hpc_args = list(memory=10240, job_size=job_size, n_jobs=200, fail_on_error=FALSE)
+
+result = b$expand_grid(tissue=TISSUES, genesets=genesets) %>%
+    df$call(tissue2scores, expr = expr, result_only=TRUE, hpc_args=hpc_args)
 
 result[sapply(result, class) == "try-error"] = NULL
 result = ar$stack(result, along=2)
