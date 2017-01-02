@@ -5,8 +5,8 @@ ar = import('array')
 st = import('stats')
 ccle = import('data/ccle')
 
-INFILE = commandArgs(TRUE)[1] %or% "../../scores/ccle/speed_matrix.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "speed_matrix.RData"
+INFILE = commandArgs(TRUE)[1] %or% "../../scores/ccle/pathways_mapped/speed_matrix.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "assocs_mapped/speed_matrix.RData"
 
 # load required data
 scores = io$load(INFILE)
