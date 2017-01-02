@@ -1,4 +1,4 @@
-all: gatza.RData go.RData biocarta.RData reactome.RData
+all: gatza.RData go.RData biocarta.RData reactome.RData speed1.RData
 
 gatza.RData: gatza2014.r ../ng.3073-S2.csv
 	Rscript $^ $@
@@ -10,4 +10,7 @@ biocarta.RData: biocarta.r ../Enrichr/src/main/resources/BioCarta.gmt
 	Rscript $^ $@
 
 reactome.RData: reactome.r ../ReactomePathways.gmt
+	Rscript $^ $@
+
+speed1.RData: speed1.r ../speed1_web.txt
 	Rscript $^ $@
