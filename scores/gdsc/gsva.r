@@ -6,7 +6,7 @@ gsea = import('../../util/gsea')
 hpc = import('hpc')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/mapped/go.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "pathways_mapped/gsea_go.RData"
+OUTFILE = commandArgs(TRUE)[2] %or% "pathways_mapped/gsva_go.RData"
 
 # only filter when we didn't select manually
 if (grepl("mapped", OUTFILE)) {

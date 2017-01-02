@@ -5,6 +5,8 @@ analysis_set:
     - spia
     - pathifier
     - paradigm
+    - speed1
+    - gatza
 
 ids:
     - speed_matrix
