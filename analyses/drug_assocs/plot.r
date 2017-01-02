@@ -45,7 +45,7 @@ plot_matrix = function(assocs) {
 #' @param assocs  data.frame of associations
 #' @param name    title of the plot
 #' @return        ggplot2 volcano object
-plot_tissue = function(assocs, name) {
+plot_tissue = function(assocs, name="tissue-specific") {
     assocs %>%
         mutate(label = paste(tissue, drug, scores, sep=":")) %>%
         plt$color$p_effect(pvalue = "adj.p",
@@ -66,8 +66,12 @@ if (is.null(module_name())) {
     pdf(OUTFILE, paper="a4r", width=11, height=8)
 
     print(plot_pancan(data$pan))
-    for (subs in names(data$tissue))
-        print(plot_tissue(data$tissue[[subs]], subs))
+    if (is.data.frame(data$tissues)) {
+        print(plot_tissue(data$tissue))
+    } else {
+        for (subs in names(data$tissues))
+            print(plot_tissue(data$tissue[[subs]], subs))
+    }
 
     dev.off()
 }
