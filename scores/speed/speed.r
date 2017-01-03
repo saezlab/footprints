@@ -30,7 +30,6 @@ scores = mapply(expr2scores, index=index, expr=expr,
     ar$map(along=1, scale)
 
 filter_index = function(x) x[! names(x) %in% c('control', 'perturbed', 'exclusion')]
-index = lapply(index, filter_index) %>%
-    bind_rows()
+index = do.call(bind_rows, lapply(index, filter_index))
 
 save(scores, index, file=OUTFILE)
