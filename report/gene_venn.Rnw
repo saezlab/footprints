@@ -1,5 +1,5 @@
 <<setup_genesets, include=FALSE>>=
-venn = import('../analyses/speed_overview/geneset_overlap')
+venn = import('../analyses/signature_overview/geneset_overlap')
 @
 
 \begin{figure}[H]

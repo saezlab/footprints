@@ -14,7 +14,7 @@ config = import('../config')
 load_fun = function(dir, id) {
     fn = function(dir, id)
         paste0(id, ".RData") %>%
-        module_file("../analyses/tcga_pathway_per_mutation/", dir, .) %>%
+        module_file("../analyses/tcga_mutation/", dir, .) %>%
             io$load()
 
     b$lnapply(id, function(id) fn(dir, id)) %>%

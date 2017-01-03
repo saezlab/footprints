@@ -1,6 +1,6 @@
 <<setup_roc_auc, include=FALSE>>=
 library(dplyr)
-roc = import('../analyses/speed_raw/roc')
+roc = import('../analyses/perturbation_recall/roc')
 config = import('../config')
 @
 

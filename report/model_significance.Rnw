@@ -4,7 +4,7 @@
         log). Genes (horizonal axis) are ordered by significance. Dashed line
 at 5\% FDR, dotted line at $10^{-10}$]{ \scalebox{.55}{
 <<sig_sign, echo=FALSE>>=
-import('../analyses/speed_overview/model_significance')$plot_pval()
+import('../analyses/signature_overview/gene_significance')$plot_pval()
 @
 }
 }
@@ -16,7 +16,7 @@ few z-scores are high enough to overshadow the rest of the signature,
     indicating that the model is numerically stable.]{
 \scalebox{.55}{
 <<sig_zscore, echo=FALSE>>=
-import('../analyses/speed_overview/model_significance')$plot_zscore()
+import('../analyses/signature_overview/gene_significance')$plot_zscore()
 @
 }
 }

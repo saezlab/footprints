@@ -14,7 +14,7 @@ genes_cna = c("TP53_del", "TP53_amp", "MYC_amp", "RAD21_amp", "NDRG1_amp", "PABP
 p53 = io$load('../scores/tcga/pathways_mapped/speed_matrix.RData')[,'p53',drop=FALSE]
 
 # load mutation status for the genes
-path = '../analyses/tcga_pathway_per_mutation'
+path = '../analyses/tcga_mutation'
 mut = io$load(file.path(path, 'mut_driver_matrix.RData'))[,genes_mut,drop=FALSE]
 cna = io$load(file.path(path, 'cna_driver_matrix.RData'))[,genes_cna,drop=FALSE]
 data = ar$stack(list(mut, cna), along=2)
