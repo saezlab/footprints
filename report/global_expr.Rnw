@@ -1,7 +1,7 @@
 \begin{figure}[H]
 <<global_structure, echo=FALSE, fig.width=9>>=
 config = import('../config')
-import('../analyses/speed_raw/plot')$do_plot() + config$facet_theme
+import('../analyses/signature_similarity/compare_fc_to_model')$do_plot() + config$facet_theme
 @
 \caption{Clustering of individual signatures (left) and consensus model (right)}
 \label{fig:clust}

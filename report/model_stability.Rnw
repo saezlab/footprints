@@ -3,7 +3,7 @@
 \scalebox{.7}{
 <<stability, echo=FALSE, fig.width=5, fig.height=4.5>>=
 library(dplyr)
-stab = import('../analyses/speed_bootstrap/stability_plot')
+stab = import('../analyses/signature_stability/bootrap_plot')
 stab$file2df('gdsc_matrix.RData') %>%
     mutate(pathway = config$pathways(pathway, rev=TRUE)) %>%
     stab$do_plot()

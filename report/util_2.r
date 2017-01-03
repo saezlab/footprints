@@ -14,7 +14,7 @@ config = import('../config')
 load_fun = function(dir, id) {
     fn = function(dir, id) {
         fname = paste0(id, ".RData")
-        fpath = file.path("../analyses/tcga_pathway_per_mutation", dir, fname)
+        fpath = file.path("../analyses/tcga_mutation", dir, fname)
         io$load(module_file(fpath)) %catch% stop("File not found: ", fpath)
     }
 

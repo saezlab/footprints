@@ -1,7 +1,7 @@
 <<setup_dataset_size, include=FALSE>>=
 library(dplyr)
 config = import('../config')
-bars = import('../analyses/speed_overview/plot_bars')
+bars = import('../analyses/signature_overview/plot_bars')
 @
 
 \begin{figure}[H]

@@ -1,6 +1,6 @@
 \begin{figure}[H]
 <<sig_overlap, echo=FALSE, fig.width=4.5, fig.heigth=4.5>>=
-import('../analyses/speed_overview/signature_overlap')$overlap()
+import('../analyses/signature_overview/signature_overlap')$overlap()
 @
 \caption{Overlap of signature genes for different pathways. For the 100 genes
     we selected for each individual pathway, this shows how many of those
