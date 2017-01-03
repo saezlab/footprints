@@ -30,7 +30,6 @@ scores = hpc$Q(doGSEA, index=index, expr=expr, const = list(sigs=genelist),
     ar$stack(along=1)
 
 filter_index = function(x) x[! names(x) %in% c('control', 'perturbed', 'exclusion')]
-index = lapply(index, filter_index) %>%
-    bind_rows()
+index = do.call(bind_rows, lapply(index, filter_index))
 
 save(scores, index, file=OUTFILE)
