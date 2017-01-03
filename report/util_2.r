@@ -12,10 +12,11 @@ config = import('../config')
 #' @param id   Identifier of the method
 #' @return     data.frame with the association results
 load_fun = function(dir, id) {
-    fn = function(dir, id)
-        paste0(id, ".RData") %>%
-        module_file("../analyses/tcga_pathway_per_mutation/", dir, .) %>%
-            io$load()
+    fn = function(dir, id) {
+        fname = paste0(id, ".RData")
+        fpath = file.path("../analyses/tcga_pathway_per_mutation", dir, fname)
+        io$load(module_file(fpath)) %catch% stop("File not found: ", fpath)
+    }
 
     b$lnapply(id, function(id) fn(dir, id)) %>%
         df$add_name_col("method", bind=TRUE)
