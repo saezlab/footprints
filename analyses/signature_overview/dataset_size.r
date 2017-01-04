@@ -35,4 +35,4 @@ gatza = list(
 )
 
 df = cbind(measure=names(speed1), speed1, speed2, speed_matrix, gatza)
-io$write_table(df, file="numbers.txt", sep="\t")
+io$write_table(df, file="dataset_size.txt", sep="\t")

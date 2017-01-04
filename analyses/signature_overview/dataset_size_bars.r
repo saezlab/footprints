@@ -3,7 +3,7 @@ library(reshape2)
 io = import('io')
 
 create_df = function() {
-    nums = read.table(module_file("numbers.txt"), header=TRUE)
+    nums = read.table(module_file("dataset_size.txt"), header=TRUE)
     levels = nums$measure
     nums$speed2 = NULL
     nums = melt(nums, id="measure")
@@ -22,7 +22,7 @@ do_plot = function(nums) {
 }
 
 if (is.null(module_name())) {
-    pdf("bars.pdf")
+    pdf("dataset_size_bars.pdf")
 
     print(do_plot(create_df()))
 
