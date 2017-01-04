@@ -103,8 +103,10 @@ tissue = function(scores, meta=clinical) {
 #' @return    A matrix with primary tumor (01A) samples as rows and genes and columns
 #'            This is mapped to TCGA patient IDs
 load_scores = function(id, file=NULL) {
-    if (is.null(file))
-        file = module_file(io$file_path("../../scores/tcga/pathways_mapped", id, ext=".RData"))
+    if (is.null(file)) {
+        fname = io$file_path("../../scores/tcga/pathways_mapped", id, ext=".RData")
+        file = module_file(fname, mustWork=TRUE)
+    }
     tcga$map_id(io$load(file), along=1, id_type="patient", subset="primary")
 }
 
@@ -116,8 +118,10 @@ load_scores = function(id, file=NULL) {
 #' @return    A matrix with primary tumor (01A) samples as rows and genes and columns
 #'            This is mapped to TCGA patient IDs
 load_assocs = function(id, file=NULL) {
-    if (is.null(file))
-        file = module_file(io$file_path("assocs_cont_mapped", id, ext=".RData"))
+    if (is.null(file)) {
+        fname = io$file_path("assocs_cont_mapped", id, ext=".RData")
+        file = module_file(fname, mustWork=TRUE)
+    }
     io$load(file)
 }
 
