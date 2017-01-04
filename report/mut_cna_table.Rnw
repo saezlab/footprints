@@ -9,7 +9,7 @@ config = import('../config')
 
 mut = util$mut_cov %>%
 	group_by(m) %>%
-    filter(any(adj.p < 1e-5)) %>%
+    filter(any(adj.p < 1e-6)) %>%
     ungroup()
 
 use_amp = c("EGFR_amp", "KRAS_amp", "ERBB2_amp", "BRAF_amp",
@@ -43,12 +43,18 @@ tab[na_mask] = "n.s."
 \centering
 \caption{FDR-adjusted p-values for mutation/copy number associations with
     pathway scores obtained by PROGENy. Associations using TCGA data corrected for
-        cancer type. Mutated genes included in table if any method has $FDR<10^{-5}$, copy
+        cancer type. Mutated genes included in table if any method has FDR $<10^{-6}$, copy
         number alterations for related genes (e.g. ERBB2\_amp for EGFR).
 }
 {\tiny
 <<mut_cna_table, echo=FALSE>>=
-kable(tab, booktabs=TRUE)
+kable(tab[1:85,], booktabs=TRUE)
 @
 }
 \end{table}
+
+{\tiny
+<<mut_cna_table2, echo=FALSE>>=
+kable(tab[86:nrow(tab),], booktabs=TRUE)
+@
+}
