@@ -16,7 +16,7 @@ assocs = b$lnapply(config$methods$analysis_set, util$vp$load_fun)
 \begin{figure}[H]
 <<drug_volcano_pancan, echo=FALSE, fig.width=6.5, fig.height=8.5>>=
 p = assocs %>%
-    b$lnapply(function(x) x$assocs.pan) %>%
+    b$lnapply(function(x) x$pan) %>%
     df$add_name_col(col="method", bind=TRUE) %>%
     mutate(label = paste(drug, scores, sep=":"),
            method = config$id2short(method)) %>%
