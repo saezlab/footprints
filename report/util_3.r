@@ -20,7 +20,7 @@ ar$intersect(tissues, Ys, scores, mut, along=1)
 load_fun = function(fname) {
     io$file_path('../analyses/drug_assocs/assocs_mapped', fname, ext=".RData") %>%
         io$load() %$%
-        assocs.pan %>%
+        pan %>%
         filter(adj.p < 0.1) %>%
         arrange(adj.p) %>%
         mutate(num = 1:nrow(.),

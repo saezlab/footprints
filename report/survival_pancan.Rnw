@@ -15,7 +15,8 @@ p = assocs %>%
     b$lnapply(function(x) x$pan_cov) %>%
     df$add_name_col(col="method", bind=TRUE) %>%
     mutate(label = scores,
-           method = config$id2short(method)) %>%
+           method = config$id2short(method),
+           adj.p = adj.p + .Machine$double.eps) %>%
     plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.05, dir=-1) %>%
     plt$volcano(base.size=5e-3, text.size=2, p=0.05, label_top=Inf, repel=TRUE) +
         facet_wrap(~method, ncol=2, scales="free_x") +
