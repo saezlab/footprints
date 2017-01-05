@@ -2,8 +2,6 @@ b = import('base')
 io = import('io')
 ar = import('array')
 gdsc = import('data/gdsc')
-#gsea = import('../../util/gsea')
-hpc = import('hpc')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/mapped/go.RData"
 EXPR = commandArgs(TRUE)[2] %or% "../../data/expr.RData"
@@ -39,7 +37,7 @@ gsva = function(index, expr, sigs, ...) {
     rowMeans(re[,index$perturbed,drop=FALSE]) - rowMeans(re[,index$control,drop=FALSE])
 }
 
-scores = hpc$Q(gsva, index=index, expr=expr, const = list(sigs=genesets),
+scores = clustermq::Q(gsva, index=index, expr=expr, const = list(sigs=genesets),
         memory = 1024, n_jobs = 20) %>%
     setNames(names(index)) %>%
     ar$stack(along=1)
