@@ -2,8 +2,6 @@ b = import('base')
 io = import('io')
 ar = import('array')
 tcga = import('data/tcga')
-gsea = import('../../util/gsea')
-hpc = import('hpc')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/mapped/go.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "pathways_mapped/gsva_go.RData"
@@ -30,13 +28,13 @@ genesets = io$load(INFILE)
 #' @param sigs    The list of signatures
 #' @return        Result for GSVA(expr[,sample], sigs[set])
 gsva = function(expr, sigs, ...) {
-    GSVA::gsva(expr, gset.idx.list=sigs, parallel.sz=1, ...)$es.obs
+    GSVA::gsva(expr=expr, gset.idx.list=sigs, parallel.sz=1, ...)$es.obs
 }
 
 # perform GSEA for each sample and signature
-result = hpc$Q(gsva, expr=expr,
-               const = list(sigs=genesets, min.sz=MIN_GENES, max.sz=MAX_GENES),
-               memory = 10240, job_size = 1) %>%
+result = clustermq::Q(gsva, expr=expr,
+        const = list(sigs=genesets, min.sz=MIN_GENES, max.sz=MAX_GENES),
+        memory = 10240, job_size = 1) %>%
     ar$stack(along=2) %>% t()
 
 save(result, file=OUTFILE)
