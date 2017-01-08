@@ -11,7 +11,7 @@ include ../../Makefile.inc
 $(call ext_dep,../tcga_mutation,cna_driver_matrix.RData)
 
 
-all: mapped $(DRIVER_PLOTS) $(CNA_PLOTS)
+all: mapped #$(DRIVER_PLOTS) $(CNA_PLOTS)
 
 mapped: $(call contains,_mapped,$(DRIVER_PLOTS) $(SNP_PLOTS) $(CNA_PLOTS))
 
