@@ -15,9 +15,9 @@ $(call ext_dep,../../util/genesets/mapped,$(notdir $(SETS_MAPPED)))
 $(call ext_dep,../../util/genesets/all,$(notdir $(SETS_ALL)))
 
 
-all: mapped $(SPEED_SCORES) $(SET_SCORES_ALL) $(GSVA_SCORES_ALL) pathways_all/pathifier.RData pathways_all/spia.RData pathways_mapped/paradigm.RData
+all: mapped $(SET_SCORES_ALL) $(GSVA_SCORES_ALL) pathways_all/pathifier.RData pathways_all/spia.RData pathways_mapped/paradigm.RData
 
-mapped: $(SET_SCORES_MAPPED) $(GSVA_SCORES_MAPPED) pathways_mapped/pathifier.RData pathways_mapped/spia.RData pathways_mapped/paradigm.RData
+mapped: $(SPEED_SCORES) $(SET_SCORES_MAPPED) $(GSVA_SCORES_MAPPED) pathways_mapped/pathifier.RData pathways_mapped/spia.RData pathways_mapped/paradigm.RData
 
 
 # mapped pathways
