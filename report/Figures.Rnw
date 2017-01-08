@@ -14,6 +14,7 @@
 \Sexpr{knit_child('global_expr.Rnw')}
 
 \Sexpr{knit_child('mut_cna_methods.Rnw')}
+\Sexpr{knit_child('mut_cna_methods_noBRCA.Rnw')}
 
 \Sexpr{knit_child('drug_assoc_steps.Rnw')}
 
