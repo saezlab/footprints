@@ -58,6 +58,10 @@ expr = tcga$rna_seq(TISSUES)
 genesets = io$load(INFILE) %>%
     gsea$filter_genesets(rownames(expr), MIN_GENES, MAX_GENES)
 
+# make compatible to call with one set in above function
+for (i in seq_along(genesets))
+    genesets[[i]] = setNames(list(genesets[[i]]), names(genesets)[i])
+
 # run pathifier in jobs
 hpc_args = list(memory=10240, job_size=job_size, n_jobs=300, fail_on_error=FALSE)
 

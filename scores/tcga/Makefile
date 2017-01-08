@@ -34,7 +34,7 @@ pathways_mapped/spia.RData: spia.r ../../config/tcga.yaml
 	$(call bsub_log,40960) Rscript $< $@ TRUE
 
 pathways_mapped/pathifier.RData: pathifier.r ../../util/genesets/mapped/reactome.RData ../../config/tcga.yaml
-	$(call bsub_log,30720) Rscript $< $(word 2,$^) $@
+	$(call bsub_log,40960) Rscript $< $(word 2,$^) $@
 
 pathways_mapped/paradigm.RData: paradigm.r ../../config/tcga.yaml
 	Rscript $< $@
