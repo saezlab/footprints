@@ -15,7 +15,7 @@ scores = io$load(file=INFILE)
 clinical = util$clinical
 
 # make sure we have pathway scores and clinical on the same subset
-ar$intersect(scores, clinical$barcode, along=1)
+tcga$intersect(scores, clinical$barcode, along=1)
 nnas = colSums(!is.na(scores))
 if (any(nnas < 10)) {
     warning("Dropping with less than 10 values: ",
