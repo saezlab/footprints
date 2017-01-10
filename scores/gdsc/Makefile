@@ -29,7 +29,7 @@ pathways_mapped/gsva_%.RData: gsva.r ../../util/genesets/mapped/%.RData
 	$(call bsub_log,4096) Rscript $^ $@
 
 pathways_mapped/spia.RData: spia.r
-	$(call bsub_log,4096) Rscript $^ $@ TRUE
+	$(call bsub_log,8192) Rscript $^ $@ TRUE
 
 pathways_mapped/pathifier.RData: pathifier.r ../../util/genesets/mapped/reactome.RData
 	$(call bsub_log,4096) Rscript $^ $@
