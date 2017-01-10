@@ -1,0 +1,16 @@
+# mapping of pathways to CMap compounds
+EGFR:
+    - cpd1
+    - cpd2
+
+Hypoxia:
+    - ...
+
+JAK-STAT
+MAPK
+NFkB
+p53
+TGFb
+TNFa
+Trail
+VEGF
