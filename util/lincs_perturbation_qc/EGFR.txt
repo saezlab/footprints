@@ -13,4 +13,4 @@
 824	EGF	trt_lig	+
 175	EGF	trt_sh	-
 174	ERK inhibitor 11e	trt_cp	-
-390 HRG trt_lig +
+390	HRG	trt_lig	+
