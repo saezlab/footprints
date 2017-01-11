@@ -4,8 +4,9 @@ io = import('io')
 df = import('data_frame')
 lincs = import('data/lincs')
 
-INFILES = commandArgs(TRUE)[-1] %or% list.files(".", "\\.txt")
-OUTFILE = commandArgs(TRUE)[1] %or% "index.RData"
+args = commandArgs(TRUE)
+INFILES = args[-length(args)] %or% list.files(".", "\\.txt")
+OUTFILE = rev(args)[1] %or% "index.RData"
 
 # index should have
 #  - control experiments (DMSO treatment)
@@ -31,8 +32,8 @@ pathways = lapply(INFILES, function(fname) {
     select(pathway, pert_desc, pert_type, sign)
 
 type_lookup = c(
-    ctl_vehicle = "control",
-    ctl_vector = "control",
+    ctl_vehicle = "activity",
+    ctl_vector = "expression",
     trt_cp = "activity",
     trt_lig = "activity",
     trt_oe = "expression",
