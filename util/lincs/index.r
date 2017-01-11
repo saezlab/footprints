@@ -14,6 +14,9 @@ OUTFILE = commandArgs(TRUE)[1] %or% "index.RData"
 #  - both signs for both
 #  - same number of experiments for all (more for control)
 
+control = data.frame(pert_desc="DMSO", pathway="control",
+        sign="0", pert_type=c("ctl_vector","ctl_vehicle"))
+
 # read .txt files
 pathways = lapply(INFILES, function(fname) {
         message(fname)
@@ -23,12 +26,13 @@ pathways = lapply(INFILES, function(fname) {
         re
     }) %>%
     bind_rows() %>%
-    bind_rows(data.frame(pert_desc="DMSO", pathway="control", sign="0")) %>%
+    bind_rows(control) %>%
     filter(sign %in% c("+","-","0")) %>%
     select(pathway, pert_desc, pert_type, sign)
 
 type_lookup = c(
     ctl_vehicle = "control",
+    ctl_vector = "control",
     trt_cp = "activity",
     trt_lig = "activity",
     trt_oe = "expression",
