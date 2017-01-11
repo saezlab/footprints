@@ -38,9 +38,9 @@ index = lincs$get_index() %>%
     df$subset(pathways, add_cols=TRUE) %>%
     mutate(pert_type = type_lookup[pert_type]) %>%
     filter(!is.na(pert_type)) %>%
-    group_by(pathway, sign, pert_type) %>%
-    do(sample_n(., 100, replace=TRUE)) %>% #FIXME: no replace, but let s<n be?
-    ungroup()
+#    group_by(pathway, sign, pert_type) %>%
+#    do(sample_n(., 100, replace=TRUE)) %>% #FIXME: no replace, but let s<n be?
+#    ungroup()
 
 # save index object
 save(index, file="index.RData")
