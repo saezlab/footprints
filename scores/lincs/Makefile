@@ -17,16 +17,16 @@ mapped: $(SPEED_SCORES) $(GSVA_SCORES) pathifier.RData spia.RData
 
 # use each model to create scores object
 speed_%.RData: speed.r ../../model/model_%.RData
-	$(call bsub_log,4096) Rscript $^ $@
+	$(call bsub_log,40960) Rscript $^ $@
 
 gsea_%.RData: set_enrichment.r ../../util/genesets/mapped/%.RData ../../util/lincs/index.RData
-	$(call bsub_log,4096) Rscript $^ $@
+	$(call bsub_log,40960) Rscript $^ $@
 
 gsva_%.RData: gsva.r ../../util/genesets/mapped/%.RData ../../util/lincs/index.RData
-	$(call bsub_log,4096) Rscript $^ $@
+	$(call bsub_log,40960) Rscript $^ $@
 
 pathifier.RData: pathifier.r ../../util/genesets/mapped/reactome.RData  ../../util/lincs/index.RData
-	$(call bsub_log,4096) Rscript $^ $@
+	$(call bsub_log,40960) Rscript $^ $@
 
 spia.RData: spia.r ../../util/lincs/index.RData
-	$(call bsub_log,4096) Rscript $^ $@
+	$(call bsub_log,40960) Rscript $^ $@
