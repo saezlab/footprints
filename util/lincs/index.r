@@ -25,7 +25,7 @@ pathways = lapply(INFILES, function(fname) {
     bind_rows() %>%
     bind_rows(data.frame(pert_desc="DMSO", pathway="control", sign="0")) %>%
     filter(sign %in% c("+","-","0")) %>%
-    select(pathway, pert_desc, sign)
+    select(pathway, pert_desc, pert_type, sign)
 
 type_lookup = c(
     ctl_vehicle = "control",
@@ -43,9 +43,7 @@ index = lincs$get_index() %>%
     mutate(pert_type = type_lookup[pert_type]) %>%
     filter(!is.na(pert_type), pert_time >= 4, pert_time <= 24)
 
-#    group_by(pathway, sign, pert_type) %>%
-#    do(sample_n(., 100, replace=TRUE)) %>% #FIXME: no replace, but let s<n be?
-#    ungroup()
+stopifnot(sum(duplicated(index$distil_id)) == 0)
 
 # save index object
 save(index, file="index.RData")
