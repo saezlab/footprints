@@ -22,6 +22,7 @@ row2scores = function(i) {
 
     expr_ctl = expr[ctl,,drop=FALSE]
     expr_ptb = expr[ptb,,drop=FALSE]
+
     if (sign == "+")
         colMeans(expr_ptb) - colMeans(expr_ctl)
     else

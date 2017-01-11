@@ -38,7 +38,7 @@ expr = lincs$get_z(exps$distil_id, rid=lincs$projected, map_genes="hgnc_symbol")
 gsva_fun = function(set, sets, expr)
     GSVA::gsva(expr=expr, gset.idx.list=sets[set], parallel.sz=1)$es.obs
 gsva = clustermq::Q(gsva_fun, set=names(sets), const=list(sets=sets, expr=expr),
-                    memory=10240, job_size=1) %>% ar$stack(along=2)
+                    memory=10240, job_size=1) %>% ar$stack(along=2) %>% t()
 
 index = exps %>%
     select(pathway, cell_id, pert_id, pert_dose, pert_time, sign) %>%
