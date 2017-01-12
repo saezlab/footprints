@@ -9,7 +9,11 @@ GENESETS = commandArgs(TRUE)[1] %or% "../../util/genesets/mapped/reactome.RData"
 INDEX = commandArgs(TRUE)[2] %or% "../../util/lincs/index.RData"
 OUTFILE = commandArgs(TRUE)[3] %or% "speed_linear.RData"
 
-row2scores = function(i) {
+row2scores = function(i, index, exps, sets) {
+    df = import('data_frame')
+    lincs = import('data/lincs')
+    pathifier = import_package('pathifier')
+
     row = index[i,]
     sign = row$sign
     ptb = df$subset(exps, row)$distil_id
@@ -20,18 +24,14 @@ row2scores = function(i) {
     row$sign = "0"
     ctl = df$subset(exps, row)$distil_id
 
-
-### PATHIFIER
-    data = exp[,c(rec$control, rec$perturbed)]
-    colnames(data) = c(rep("control", length(rec$control)),
-                       rep("perturbed", length(rec$perturbed)))
+    expr = lincs$expr(cid=c(ctl,ptb), rid=lincs$projected, map_genes="hgnc_symbol")
 
     result = pathifier$quantify_pathways_deregulation(
-        data = data,
-        allgenes = rownames(data),
-        syms = genesets,
-        pathwaynames = names(genesets),
-        normals = colnames(data) == "control",
+        data = expr,
+        allgenes = rownames(expr),
+        syms = sets,
+        pathwaynames = names(sets),
+        normals = c(rep(TRUE,length(ctl)), rep(FALSE,length(ptb))),
 # default values
 #        attempts = 100, # maybe set this higher and see if fewer NAs
 #        min_exp = 4,
@@ -46,10 +46,7 @@ row2scores = function(i) {
 
     expr_ctl = expr[ctl,,drop=FALSE]
     expr_ptb = expr[ptb,,drop=FALSE]
-    if (sign == "+")
-        colMeans(expr_ptb) - colMeans(expr_ctl)
-    else
-        colMeans(expr_ctl) - colMeans(expr_ptb)
+    colMeans(expr_ptb) - colMeans(expr_ctl)
 }
 
 # load model vectors and experiment index
@@ -61,7 +58,9 @@ index = exps %>%
     filter(pathway != "control") %>%
     distinct()
 
-scores = pbapply::pblapply(seq_len(nrow(index)), row2scores) %>%
+scores = clustermq::Q(row2scores, i=seq_len(nrow(index)),
+                      const=list(index=index, exps=exps, sets=sets),
+                      memory=10240, n_jobs=50) %>%
     setNames(seq_len(nrow(index))) %>%
     ar$stack(along=1) %>%
     ar$map(along=1, scale)

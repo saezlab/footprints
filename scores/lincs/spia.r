@@ -21,14 +21,13 @@ row2scores = function(i, index, exps) {
     row$sign = "0"
     ctl = df$subset(exps, row)$distil_id
 
-    expr = lincs$get_z(c(ctl,ptb), rid=lincs$projected, map_genes="entrezgene")
+    expr = lincs$expr(c(ctl,ptb), rid=lincs$projected, map_genes="entrezgene")
 
     result = spia$spia(samples = expr[,ptb],
                        control = expr[,ctl],
                        pathids=spia$speed2kegg)
 
-    names(result) = spia$kegg2speed[names(result)]
-    result * as.numeric(paste0(sign, "1"))
+    setNames(result, spia$kegg2speed[names(result)])
 }
 
 # load model vectors and experiment index

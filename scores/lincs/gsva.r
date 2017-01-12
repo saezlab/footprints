@@ -22,11 +22,7 @@ row2scores = function(i) {
 
     gsva_ctl = gsva[ctl,,drop=FALSE]
     gsva_ptb = gsva[ptb,,drop=FALSE]
-
-    if (sign == "+")
-        colMeans(gsva_ptb) - colMeans(gsva_ctl)
-    else
-        colMeans(gsva_ctl) - colMeans(gsva_ptb)
+    colMeans(gsva_ptb) - colMeans(gsva_ctl)
 }
 
 # load model vectors and experiment index

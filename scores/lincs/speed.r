@@ -22,17 +22,13 @@ row2scores = function(i) {
 
     expr_ctl = expr[ctl,,drop=FALSE]
     expr_ptb = expr[ptb,,drop=FALSE]
-
-    if (sign == "+")
-        colMeans(expr_ptb) - colMeans(expr_ctl)
-    else
-        colMeans(expr_ctl) - colMeans(expr_ptb)
+    colMeans(expr_ptb) - colMeans(expr_ctl)
 }
 
 # load model vectors and experiment index
 vecs = io$load(INFILE)$model
 exps = io$load(INDEX)
-expr = lincs$get_z(exps$distil_id, rid=lincs$projected, map_genes="hgnc_symbol")
+expr = lincs$expr(exps$distil_id, rid=lincs$projected, map_genes="hgnc_symbol")
 
 # get scores of experiments
 ar$intersect(expr, vecs, along=1)
