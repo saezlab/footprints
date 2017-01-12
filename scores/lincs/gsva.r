@@ -28,7 +28,7 @@ row2scores = function(i) {
 # load model vectors and experiment index
 sets = io$load(GENESETS)
 exps = io$load(INDEX)
-expr = lincs$get_z(exps$distil_id, rid=lincs$projected, map_genes="hgnc_symbol")
+expr = lincs$expr(exps$distil_id, rid=lincs$projected, map_genes="hgnc_symbol")
 
 # calculate scores for all samples
 gsva_fun = function(set, sets, expr)

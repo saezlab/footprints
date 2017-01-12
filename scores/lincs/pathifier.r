@@ -7,7 +7,7 @@ lincs = import('data/lincs')
 
 GENESETS = commandArgs(TRUE)[1] %or% "../../util/genesets/mapped/reactome.RData"
 INDEX = commandArgs(TRUE)[2] %or% "../../util/lincs/index.RData"
-OUTFILE = commandArgs(TRUE)[3] %or% "speed_linear.RData"
+OUTFILE = commandArgs(TRUE)[3] %or% "pathifier.RData"
 
 row2scores = function(i, index, exps, sets) {
     df = import('data_frame')
@@ -23,6 +23,8 @@ row2scores = function(i, index, exps, sets) {
     row$pert_dose = NULL
     row$sign = "0"
     ctl = df$subset(exps, row)$distil_id
+    if (length(ctl) > 100)
+        ctl = sample(ctl, 100, replace=FALSE)
 
     expr = lincs$expr(cid=c(ctl,ptb), rid=lincs$projected, map_genes="hgnc_symbol")
 
