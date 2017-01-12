@@ -27,28 +27,23 @@ row2scores = function(i, index, exps, sets) {
         ctl = sample(ctl, 100, replace=FALSE)
 
     expr = lincs$expr(cid=c(ctl,ptb), rid=lincs$projected, map_genes="hgnc_symbol")
+    colnames(expr) = c(rep("ctl", length(ctl)), rep("ptb", length(ptb)))
 
     result = pathifier$quantify_pathways_deregulation(
         data = expr,
         allgenes = rownames(expr),
         syms = sets,
         pathwaynames = names(sets),
-        normals = c(rep(TRUE,length(ctl)), rep(FALSE,length(ptb))),
+        normals = colnames(expr) == "ctl",
 # default values
 #        attempts = 100, # maybe set this higher and see if fewer NAs
-#        min_exp = 4,
+        min_exp = -Inf,
 #        min_std = 0.4
     )
 
     do.call(cbind, lapply(result$scores, c)) %>%
-        ar$map(along=1, subsets=colnames(data), mean) %>%
-        ar$map(along=1, function(x) x['perturbed']-x['control'])
-### PATHIFIER END
-
-
-    expr_ctl = expr[ctl,,drop=FALSE]
-    expr_ptb = expr[ptb,,drop=FALSE]
-    colMeans(expr_ptb) - colMeans(expr_ctl)
+        ar$map(along=1, subsets=colnames(expr), mean) %>%
+        ar$map(along=1, function(x) x['ptb']-x['ctl'])
 }
 
 # load model vectors and experiment index
