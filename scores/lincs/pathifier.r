@@ -58,15 +58,10 @@ index = exps %>%
 
 scores = clustermq::Q(row2scores, i=seq_len(nrow(index)),
                       const=list(index=index, exps=exps, sets=sets),
-                      memory=10240, n_jobs=50) %>%
-    setNames(seq_len(nrow(index))) %>%
-    ar$stack(along=1) %>%
-    ar$map(along=1, scale)
+                      memory=10240, n_jobs=50, fail_on_error=FALSE)
 
-#errors = sapply(result, function(r) class(r) == "try-error")
-#if (any(errors)) {
-#    print(result[errors])
-#    result[errors] = NA
-#}
+scores[sapply(scores, function(r) class(r) == "try-error")] = NA
+scores = ar$stack(scores, along=1) %>%
+    ar$map(along=1, scale)
 
 save(scores, index, file=OUTFILE)
