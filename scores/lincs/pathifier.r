@@ -10,6 +10,7 @@ INDEX = commandArgs(TRUE)[2] %or% "../../util/lincs/index.RData"
 OUTFILE = commandArgs(TRUE)[3] %or% "pathifier.RData"
 
 row2scores = function(i, index, exps, sets) {
+    library(dplyr)
     df = import('data_frame')
     lincs = import('data/lincs')
     pathifier = import_package('pathifier')
