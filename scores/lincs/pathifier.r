@@ -26,7 +26,7 @@ row2scores = function(i, index, exps, sets) {
     if (length(ctl) > 100)
         ctl = sample(ctl, 100, replace=FALSE)
 
-    expr = lincs$expr(cid=c(ctl,ptb), rid=lincs$projected, map_genes="hgnc_symbol")
+    expr = lincs$get_z(cid=c(ctl,ptb), rid=lincs$projected, map_genes="hgnc_symbol")
     colnames(expr) = c(rep("ctl", length(ctl)), rep("ptb", length(ptb)))
 
     result = pathifier$quantify_pathways_deregulation(

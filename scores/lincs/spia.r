@@ -23,7 +23,7 @@ row2scores = function(i, index, exps) {
     if (length(ctl) > 100)
         ctl = sample(ctl, 100, replace=FALSE)
 
-    expr = lincs$expr(c(ctl,ptb), rid=lincs$projected, map_genes="entrezgene")
+    expr = lincs$get_z(c(ctl,ptb), rid=lincs$projected, map_genes="entrezgene")
 
     result = spia$spia(samples = expr[,ptb],
                        control = expr[,ctl],

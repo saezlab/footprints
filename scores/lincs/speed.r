@@ -28,7 +28,7 @@ row2scores = function(i) {
 # load model vectors and experiment index
 vecs = io$load(INFILE)$model
 exps = io$load(INDEX)
-expr = lincs$expr(exps$distil_id, rid=lincs$projected, map_genes="hgnc_symbol")
+expr = lincs$get_z(exps$distil_id, rid=lincs$projected, map_genes="hgnc_symbol")
 
 # get scores of experiments
 ar$intersect(expr, vecs, along=1)
