@@ -26,9 +26,9 @@ row2scores = function(i, index, exps, sets) {
     expr = lincs$get_z(cid=c(ctl,ptb), rid=lincs$projected, map_genes="hgnc_symbol")
     gsva = GSVA::gsva(expr=expr, gset.idx.list=sets, parallel.sz=1)$es.obs
 
-    gsva_ctl = gsva[ctl,,drop=FALSE]
-    gsva_ptb = gsva[ptb,,drop=FALSE]
-    colMeans(gsva_ptb) - colMeans(gsva_ctl)
+    gsva_ctl = gsva[,ctl,drop=FALSE]
+    gsva_ptb = gsva[,ptb,drop=FALSE]
+    rowMeans(gsva_ptb) - rowMeans(gsva_ctl)
 }
 
 # load model vectors and experiment index
