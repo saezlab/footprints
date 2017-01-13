@@ -48,6 +48,14 @@ index = lincs$get_index() %>%
     mutate(pert_type = type_lookup[pert_type]) %>%
     filter(!is.na(pert_type), pert_time >= 4, pert_time <= 24)
 
+# throw out everything that doesn't have 3 controls
+index = index %>%
+    group_by(cell_id, pert_time, pert_type) %>%
+    mutate(keep = sum(sign == 0) >= 3) %>%
+    ungroup() %>%
+    filter(keep) %>%
+    select(-keep)
+
 stopifnot(sum(duplicated(index$distil_id)) == 0)
 
 # save index object
