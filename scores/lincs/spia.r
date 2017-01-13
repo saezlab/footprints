@@ -29,7 +29,10 @@ row2scores = function(i, index, exps) {
                        control = expr[,ctl],
                        pathids=spia$speed2kegg)
 
-    setNames(result, spia$kegg2speed[names(result)])
+    if (is.numeric(result))
+        setNames(result, spia$kegg2speed[names(result)])
+    else
+        stop(result)
 }
 
 # load model vectors and experiment index
