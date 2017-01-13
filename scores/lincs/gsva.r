@@ -2,14 +2,15 @@ library(dplyr)
 b = import('base')
 io = import('io')
 ar = import('array')
-df = import('data_frame')
-lincs = import('data/lincs')
 
 GENESETS = commandArgs(TRUE)[1] %or% "../../util/genesets/mapped/go.RData"
 INDEX = commandArgs(TRUE)[2] %or% "../../util/lincs/index.RData"
 OUTFILE = commandArgs(TRUE)[3] %or% "gsva_go.RData"
 
 row2scores = function(i, index, exps, sets) {
+    df = import('data_frame')
+    lincs = import('data/lincs')
+
     row = index[i,]
     sign = row$sign
     ptb = df$subset(exps, row)$distil_id
