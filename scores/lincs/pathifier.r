@@ -11,6 +11,7 @@ OUTFILE = commandArgs(TRUE)[3] %or% "pathifier.RData"
 
 row2scores = function(i, index, exps, sets) {
     library(dplyr)
+    ar = import('array')
     df = import('data_frame')
     lincs = import('data/lincs')
     pathifier = import_package('pathifier')
@@ -61,7 +62,6 @@ scores = clustermq::Q(row2scores, i=seq_len(nrow(index)),
                       memory=10240, n_jobs=50, fail_on_error=FALSE)
 
 scores[sapply(scores, function(r) class(r) == "try-error")] = NA
-scores = ar$stack(scores, along=1) %>%
-    ar$map(along=1, scale)
+scores = ar$stack(scores, along=1)
 
 save(scores, index, file=OUTFILE)

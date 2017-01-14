@@ -29,10 +29,10 @@ row2scores = function(i, index, exps) {
                        control = expr[,ctl],
                        pathids=spia$speed2kegg)
 
-    if (is.numeric(result))
-        setNames(result, spia$kegg2speed[names(result)])
+    if (length(result) == 0)
+        stop("empty result")
     else
-        stop(result)
+        setNames(result, spia$kegg2speed[names(result)])
 }
 
 # load model vectors and experiment index
@@ -48,7 +48,7 @@ scores = clustermq::Q(row2scores, i=seq_len(nrow(index)),
                       memory=10240, n_jobs=50, fail_on_error=FALSE)
 
 scores[sapply(scores, function(r) class(r) == "try-error")] = NA
-scores = ar$stack(scores, along=1) %>%
-    ar$map(along=1, scale)
+scores = setNames(scores, 1:length(scores)) %>%
+    ar$stack(along=1)
 
 save(scores, index, file=OUTFILE)
