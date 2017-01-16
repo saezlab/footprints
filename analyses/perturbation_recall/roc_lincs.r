@@ -46,7 +46,7 @@ roc = config$methods$analysis_set %>%
     na.omit()
 
 if (is.null(module_name())) {
-    pdf("roc.pdf", paper="a4r", width=11, height=8)
+    pdf("roc_lincs.pdf", paper="a4r", width=11, height=8)
 
     print(do_plot(roc))
 
