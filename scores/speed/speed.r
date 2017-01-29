@@ -24,6 +24,7 @@ expr = io$load(EXPR)
 #' @return       Pathway scores for the current experiment
 expr2scores = function(id, expr, zdata, zdata2model) {
     stopifnot(zdata$index$id == names(expr$records))
+    ar = import('array')
     index = expr$records[[id]]
     expr = expr$expr[[id]]
 
@@ -37,7 +38,7 @@ expr2scores = function(id, expr, zdata, zdata2model) {
     mat = t(expr) %*% vecs
     ctl = mat[index$control,,drop=FALSE]
     ptb = mat[index$perturbed,,drop=FALSE]
-    colMeans(ptb) - colMeans(ctl) # better than scale, but enough?
+    colMeans(ptb) - colMeans(ctl) # better w/o scale, but enough?
 }
 
 scores = clustermq::Q(expr2scores, id=zdata$index$id, job_size=1,
