@@ -43,10 +43,11 @@ expr2scores = function(id, expr, zdata, zdata2model) {
 
 scores = clustermq::Q(expr2scores, id=zdata$index$id, job_size=1,
           const = list(expr=expr, zdata=zdata, zdata2model=zdata2model)) %>%
+    setNames(zdata$index$id) %>%
     ar$stack(along=1) %>%
     ar$map(along=1, scale) # do we want to sale this?
 
-filter_index = function(x) x[! names(x) %in% c('control', 'perturbed', 'exclusion')]
-index = do.call(bind_rows, lapply(zdata$index, filter_index))
+index = dplyr::select(zdata$index, -exclusion)
+stopifnot(zdata$index$id == rownames(scores))
 
 save(scores, index, file=OUTFILE)
