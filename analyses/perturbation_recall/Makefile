@@ -7,8 +7,8 @@ plot: $(HEATMAPS) roc.pdf roc_lincs.pdf
 heatmap_%.pdf: ../../scores/speed/%.RData heatmap.r
 	Rscript heatmap.r $< $@
 
-roc.pdf: roc.r $(SCORES)
+roc.pdf: roc.r $(SCORES) ../../scores/speed/speed_matrix.RData
 	Rscript $< $@
 
-roc_lincs.pdf: roc_lincs.r $(LINCS)
+roc_lincs.pdf: roc_lincs.r $(LINCS) ../../scores/lincs/speed_matrix.RData
 	Rscript $< $@
