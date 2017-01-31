@@ -11,7 +11,7 @@ dataset_size.txt: dataset_size.r
 dataset_size_bars.pdf: dataset_size_bars.r dataset_size.txt
 	Rscript $< $@
 
-gene_significance.pdf: model_significance.r
+gene_significance.pdf: gene_significance.r
 	Rscript $< $@
 
 treemap.pdf: treemap.r

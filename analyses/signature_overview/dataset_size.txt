@@ -1,5 +1,5 @@
-measure	speed1	speed2	speed_matrix	gatza
-Pathways	11	19	11  18
-Datasets	69	202	217	1
-Experiments	215	653	568	18
-Arrays	572	1940	2687	287
+measure	gsva_speed2016	speed_matrix	gsva_gatza
+Pathways	11	11	18
+Datasets	69	217	1
+Experiments	215	568	18
+Arrays	572	2687	287
