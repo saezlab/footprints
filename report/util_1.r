@@ -67,17 +67,16 @@ perturb_score_plots = function(fid, title=NULL) {
 }
 
 cor_plots = function(fid) {
-    gdsc = io$file_path("../scores/gdsc/pathways_mapped", fid, ext=".RData") %>% io$load()
-    tcga_all = io$file_path("../scores/tcga/pathways_mapped", fid, ext=".RData") %>% io$load()
+    gdsc = io$file_path("../scores/gdsc/pathways_mapped", fid, ext=".RData") %>%
+        io$load()
 
-	index = tcga$barcode2index(rownames(tcga_all)) %>%
-		filter(grepl("Primary|Normal", Sample.Definition), Vial == "A") %>%
-		mutate(type = ifelse(grepl("Normal", Sample.Definition), "normal", "tumor"))
+    tcga = io$file_path("../scores/tcga/pathways_mapped", fid, ext=".RData") %>%
+        io$load() %>%
+        tcga$filter(primary=TRUE, cancer=TRUE) %>%
+        na.omit()
 
-        par(mfrow=c(1, 2))
-#        corrplot(cor(tcga_all[index$type == "normal",]), title="normal")
-#        corrplot(cor(tcga_all[index$type == "tumor",]), title="tumor")
-        corrplot(cor(tcga_all), title="tcga")
-        corrplot(cor(gdsc), title="cell line")
-        par(mfrow=c(1, 1))
+    par(mfrow=c(1, 2))
+    corrplot(cor(tcga), title="TCGA primary tumors")
+    corrplot(cor(gdsc), title="GDSC cell lines")
+    par(mfrow=c(1, 1))
 }
