@@ -4,7 +4,7 @@ library(magrittr)
 library(tidyr)
 ar = import('array')
 df = import('data_frame')
-util = import('./util_2')
+util = import('./util_2_noBRCA')
 config = import('../config')
 
 mut = util$mut_cov %>%
@@ -21,11 +21,12 @@ cna = util$cna_cov %>%
     filter(m %in% use_amp) %>%
     ungroup()
 
+# at least one pathway per method must have FDR<0.01
 tab = bind_rows(mut, cna) %>%
     transmute(Method = config$id2short(method),
               Pathway = scores,
               Subset = m,
-              FDR = ifelse(adj.p < 0.1, adj.p, NA)) %>%
+              FDR = ifelse(adj.p < 0.01, adj.p, NA)) %>%
     group_by(Method, Subset) %>%
     filter(!all(is.na(FDR))) %>%
     ungroup() %>%
@@ -48,13 +49,7 @@ tab[na_mask] = "n.s."
 }
 {\tiny
 <<mut_cna_table, echo=FALSE>>=
-kable(tab[1:85,], booktabs=TRUE)
+kable(tab, booktabs=TRUE)
 @
 }
 \end{table}
-
-{\tiny
-<<mut_cna_table2, echo=FALSE>>=
-kable(tab[86:nrow(tab),], booktabs=TRUE)
-@
-}
