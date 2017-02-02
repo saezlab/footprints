@@ -1,8 +1,8 @@
 include ../../Makefile.inc
 
-all: heatmap.pdf
+all: heatmap.pdf volcano.pdf
 
-heatmap.pdf: heatmap.r assocs.RData
+%.pdf: %.r assocs.RData
 	Rscript $^ $@
 
 assocs.RData: assocs.r ../../scores/tcga/pathways_mapped/speed_matrix.RData
