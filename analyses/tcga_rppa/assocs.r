@@ -17,7 +17,8 @@ tissues = tcga$barcode2study(rownames(scores))
 pan = st$lm(scores ~ tissues + rppa) %>%
     filter(term == "rppa") %>%
     select(-term) %>%
-    mutate(subset = "pan")
+    mutate(adj.p = p.adjust(p.value, method="fdr"),
+           subset = "pan")
 
 tissue = st$lm(scores ~ rppa, subsets=tissues, hpc_args=list(n_jobs=10)) %>%
     filter(term == "rppa") %>%
