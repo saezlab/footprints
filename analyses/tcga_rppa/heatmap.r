@@ -24,7 +24,11 @@ for (subs in unique(assocs$subset)) {
 
     r3 = r2 %>%
         filter(rppa %in% keep$rppa) %>%
-        plt$matrix(estimate ~ scores + rppa, color="estimate") + ggtitle(subs)
+        mutate(label = ifelse(adj.p < 0.01, ".", "")) %>%
+        mutate(label = ifelse(adj.p < 0.001, "*", label)) %>%
+        plt$matrix(estimate ~ scores + rppa, color="estimate",
+                   label="label", reverse_colors=TRUE) +
+            ggtitle(sprintf("%s (FDR .<0.01, *<1e-3)", subs))
 
     print(r3) %catch% NULL
 }
