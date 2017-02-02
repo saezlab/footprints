@@ -194,7 +194,7 @@ filter_genesets = function(genesets, valid, min=5, max=500, warn=TRUE) {
 	genesets = lapply(genesets, function(x) intersect(x, valid))
 
 	num_overlap = sapply(genesets, length)
-	discard = num_overlap < MIN_GENES | num_overlap > MAX_GENES
+	discard = num_overlap < min | num_overlap > max
 
 	if (any(discard) && warn) {
 		warning("Discarding ", sum(discard), " (of ", length(discard), ") sets: ",
