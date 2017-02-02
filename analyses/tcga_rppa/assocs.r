@@ -16,7 +16,8 @@ tissues = tcga$barcode2study(rownames(scores))
 # calculate associations across and within tissues
 pan = st$lm(scores ~ tissues + rppa) %>%
     filter(term == "rppa") %>%
-    select(-term)
+    select(-term) %>%
+    mutate(subset = "pan")
 
 tissue = st$lm(scores ~ rppa, subsets=tissues, hpc_args=list(n_jobs=10)) %>%
     filter(term == "rppa") %>%
@@ -25,4 +26,6 @@ tissue = st$lm(scores ~ rppa, subsets=tissues, hpc_args=list(n_jobs=10)) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
     ungroup()
 
-save(pan, tissue, file=OUTFILE)
+assocs = dplyr::bind_rows(pan, tissue)
+
+save(assocs, file=OUTFILE)
