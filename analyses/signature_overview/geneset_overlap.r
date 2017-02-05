@@ -47,14 +47,14 @@ set2overlap = function(sets, fun=function(x,y) nrow(intersect(x,y))) {
                   overlap = purrr::map2_int(data, data.1, fun))
 }
 
-geneset_overlap_matrix = function(sets, formula=value ~ Var1 + Var2) {
+geneset_overlap_matrix = function(sets) {
     overlaps = sets %>%
         group_by(pathway) %>%
         do(set = set2overlap(.)) %>%
         ungroup() %>%
         tidyr::unnest()
 
-    plt$matrix(overlaps, formula, palette="Blues") +
+    plt$matrix(overlaps, overlap ~ method1 + method2, palette="Blues") +
         geom_text(aes(label=all.vars(formula)[1])) +
         coord_fixed() +
         theme(legend.position = "none") +
@@ -68,5 +68,5 @@ if (is.null(module_name())) {
     on.exit(dev.off)
 
     sets = get_genesets()
-    set_overlap_matrix(sets)
+    geneset_overlap_matrix(sets)
 }
