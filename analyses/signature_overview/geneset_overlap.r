@@ -1,4 +1,5 @@
 library(dplyr)
+library(magrittr)
 b = import('base')
 io = import('io')
 ar = import('array')
@@ -18,8 +19,11 @@ get_genesets = function() { #FIXME: JAK.STAT
         group_by(pathway) %>%
         top_n(100, -p.value) %>%
         ungroup() %>%
-        unstack(gene ~ pathway) %>%
-        ar$split(along=2, drop=TRUE)
+        select(gene, pathway) %>%
+        group_by(pathway) %>% # unstack(gene ~ pathway) messes up JAK-STAT name
+        tidyr::nest() %$%
+        setNames(data, pathway) %>%
+        lapply(function(x) x$gene) # nest() returns tibble otherwise
 
     names(sets) = paste0("gsva_", names(sets))
     sets = c(speed_matrix=list(speed), sets)
