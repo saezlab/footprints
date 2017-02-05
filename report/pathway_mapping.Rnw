@@ -118,3 +118,23 @@ VEGF & platelet-derived growth factor receptor activity (abstract)\tabularnewlin
 \hline
 \end{tabular}
 \end{table}
+
+\begin{table}[H]
+\centering
+\caption{Pathway mapping for the signatures published and validated in Gatza et al. (2009)}
+\begin{tabular}{cc}
+\hline
+Pathway & Gatza (2009)\tabularnewline
+\hline
+EGFR & EGFR\tabularnewline
+Hypoxia & HYPOXIA\tabularnewline
+JAK-STAT & STAT1, STAT3, IFNA, IFNG\tabularnewline
+MAPK & PROLIFERATION, PROLIFERATION (PAM50)\tabularnewline
+p53 & P53, P53 MUT/P53 WT CORR\tabularnewline
+PI3K & PI3K, PIK3CA\tabularnewline
+TNFa & TNFA\tabularnewline
+TGFb & TGFB\tabularnewline
+VEGF & VEGF/HYPOXIA\tabularnewline
+\hline
+\end{tabular}
+\end{table}
