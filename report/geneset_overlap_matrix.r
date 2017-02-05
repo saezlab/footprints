@@ -1,10 +1,10 @@
 <<setup_genesets, include=FALSE>>=
-venn = import('../analyses/signature_overview/geneset_overlap')
+overlap = import('../analyses/signature_overview/geneset_overlap')
 @
 
 \begin{figure}[H]
 <<genesets, echo=FALSE, fig.width=19, fig.height=15>>=
-venn$venn()
+overlap$geneset_overlap_matrix()
 @
 \caption{Difference in gene sets between Perturbation-response genes and Gene
     Ontology/Reactome. Perturbation-response genes are different to pathway
