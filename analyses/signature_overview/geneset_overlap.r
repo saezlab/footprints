@@ -52,23 +52,32 @@ set2overlap = function(sets, fun=function(x,y) nrow(intersect(x,y))) {
 }
 
 geneset_overlap_matrix = function(sets) {
+    sorted = unique(sets$method)
+
     overlaps = sets %>%
         group_by(pathway) %>%
         do(set = set2overlap(.)) %>%
         ungroup() %>%
-        tidyr::unnest()
+        tidyr::unnest() %>%
+        mutate(method1 = factor(method1, levels=rev(sorted)),
+               method2 = factor(method2, levels=sorted)) %>%
+        filter(as.integer(method1) > length(sorted)-as.integer(method2))
 
     plt$matrix(overlaps, overlap ~ method1 + method2, palette="Blues") +
-        geom_text(aes(label=all.vars(formula)[1])) +
+        geom_text(aes(label=overlap), size=3) +
         coord_fixed() +
-        theme(legend.position = "none") +
+        theme(legend.position = "none",
+              text = element_text(size=10),
+              axis.text.x = element_text(size=8),
+              axis.text.y = element_text(size=8),
+              ) +
         facet_wrap(~pathway) + 
         xlab("") +
         ylab("")
 }
 
 if (is.null(module_name())) {
-    pdf("geneset_overlap.pdf", width=19, height=15)
+    pdf("geneset_overlap.pdf")
     on.exit(dev.off)
 
     sets = get_genesets()
