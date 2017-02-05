@@ -32,6 +32,7 @@ get_genesets = function() { #FIXME: JAK.STAT
     sets = lapply(seq_along(sets), function(i)
               data.frame(method = names(sets)[i], stack(sets[[i]]))) %>%
         bind_rows() %>%
+        suppressWarnings() %>% # character conversion
         select(method=method, pathway=ind, gene=values)
 }
 
