@@ -66,6 +66,12 @@
 
 \Sexpr{knit_child('survival_tissue_volcanos.Rnw')}
 
+\section{R packages used}
+
+<<session_info>>=
+sessionInfo()
+@
+
 \printbibliography[heading=bibintoc]
 
 \end{document}
