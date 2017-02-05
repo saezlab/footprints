@@ -70,8 +70,7 @@ geneset_overlap_matrix = function(sets) {
         theme(legend.position = "none",
               text = element_text(size=10),
               axis.text.x = element_text(size=8),
-              axis.text.y = element_text(size=8),
-              ) +
+              axis.text.y = element_text(size=8)) +
         facet_wrap(~pathway) + 
         xlab("") +
         ylab("")
