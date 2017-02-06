@@ -36,7 +36,7 @@ get_genesets = function() { #FIXME: JAK.STAT
         select(method=method, pathway=ind, gene=values)
 }
 
-set2overlap = function(sets, fun=function(x,y) nrow(intersect(x,y))) {
+set2overlap = function(sets, fun=function(x,y) nrow(dplyr::intersect(x,y))) {
     uniquify_colnames = function(df) {
         colnames(df) = make.names(colnames(df), unique=TRUE)
         df
