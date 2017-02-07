@@ -1,5 +1,5 @@
-library(dplyr)
-library(magrittr)
+import_package('dplyr', attach=TRUE)
+import_package('magrittr', attach=TRUE)
 b = import('base')
 io = import('io')
 config = import('../../config')
