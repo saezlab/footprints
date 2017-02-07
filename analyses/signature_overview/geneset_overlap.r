@@ -1,40 +1,7 @@
 library(dplyr)
 library(magrittr)
-b = import('base')
-io = import('io')
-ar = import('array')
 plt = import('plot')
-config = import('../../config')
-
-get_genesets = function() { #FIXME: JAK.STAT
-    # import all sets from methods listed in config
-    # missing: SPIA (KEGG gene sets, include?) and PARADIGM (no sets per se)
-    sets = c("go", "reactome", "speed2016", "gatza")
-
-    set_path = module_file('../../util/genesets/mapped')
-    sets = b$lnapply(sets, function(s)
-        io$load(file.path(set_path, paste0(s, ".RData"))))
-
-    speed = io$load(module_file('../../model/model_matrix.RData'))$assocs %>%
-        group_by(pathway) %>%
-        top_n(100, -p.value) %>%
-        ungroup() %>%
-        select(gene, pathway) %>%
-        group_by(pathway) %>% # unstack(gene ~ pathway) messes up JAK-STAT name
-        tidyr::nest() %$%
-        setNames(data, pathway) %>%
-        lapply(function(x) x$gene) # nest() returns tibble otherwise
-
-    names(sets) = paste0("gsva_", names(sets))
-    sets = c(speed_matrix=list(speed), sets)
-    names(sets) = config$id2short(names(sets))
-
-    sets = lapply(seq_along(sets), function(i)
-              data.frame(method = names(sets)[i], stack(sets[[i]]))) %>%
-        bind_rows() %>%
-        suppressWarnings() %>% # character conversion
-        select(method=method, pathway=ind, gene=values)
-}
+get_genesets = import('../../util/genesets')$get_genesets
 
 set2overlap = function(sets, fun=function(x,y) nrow(dplyr::intersect(x,y))) {
     uniquify_colnames = function(df) {

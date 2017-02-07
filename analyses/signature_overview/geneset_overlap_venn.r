@@ -18,22 +18,27 @@ venn = function() {
         ar$split(along=2, drop=TRUE)
 
     # do: Venn diagram for the overlap for all pathways
-    pathways = b$list$transpose(list('Gene Ontology'=go, Reactome=reactome, 'Perturbation-response'=speed))
+    pathways = b$list$transpose(list('Gene Ontology'=go, Reactome=reactome,
+                                     'Perturbation-response'=speed))
     pathways = pathways[gtools::mixedsort(names(pathways))]
 
     pdf("/dev/null")
 
     #par(mfrow=c(3,4))
     plots = lapply(seq_along(pathways), function(i)
-            grid.arrange(gTree(children = plt$vennDiagramFromList(pathways[[i]], categories=c("","",""))),
-                         top = textGrob(names(pathways)[i],
-                         gp = gpar(fontsize=30,font=8))))
+        grid.arrange(gTree(children = plt$vennDiagramFromList(
+                            pathways[[i]], categories=c("","",""))),
+                     top = textGrob(names(pathways)[i],
+                     gp = gpar(fontsize=30,font=8))))
 
     dev.off()
 
-    tg = grobTree(textGrob("Gene Ontology", y=0.65, vjust=0, gp = gpar(fontsize=25, face=3, col="blue")),
-                  textGrob("Reactome", y=0.5, vjust=0, gp = gpar(fontsize=25, face=2, col="red")),
-                  textGrob("Perturbation-response", y=0.35, vjust=0, gp = gpar(fontsize=25, face=3, col="green")),
+    tg = grobTree(textGrob("Gene Ontology", y=0.65, vjust=0,
+                           gp = gpar(fontsize=25, face=3, col="blue")),
+                  textGrob("Reactome", y=0.5, vjust=0,
+                           gp = gpar(fontsize=25, face=2, col="red")),
+                  textGrob("Perturbation-response", y=0.35, vjust=0,
+                           gp = gpar(fontsize=25, face=3, col="green")),
                   cl="titlegrob")
 
     plots = c(plots, list(tg))

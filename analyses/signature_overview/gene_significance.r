@@ -32,7 +32,9 @@ plot_zscore = function() {
 }
 
 if (is.null(module_name())) {
-    pdf("model_significance.pdf")
+    OUTFILE = commandArgs(TRUE)[1]
+
+    pdf(OUTFILE)
     print(plot_pval())
     print(plot_zscore())
     dev.off()
