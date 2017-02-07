@@ -32,7 +32,6 @@ genesets = io$load(INFILE)
 #' @return        Result for GSVA(expr[,sample], sigs[set])
 gsva = function(index, expr, sigs, ...) {
 	mean_func = function(x) mean(x[index$perturbed]) - mean(x[index$control])
-#	gsea$filter_genesets(rownames(expr), MIN_GENES, MAX_GENES)
     re = GSVA::gsva(expr=expr, gset.idx.list=sigs, parallel.sz=1, ...)$es.obs
     rowMeans(re[,index$perturbed,drop=FALSE]) - rowMeans(re[,index$control,drop=FALSE])
 }
