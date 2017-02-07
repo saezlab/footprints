@@ -2,7 +2,7 @@ library(dplyr)
 library(magrittr)
 b = import('base')
 io = import('io')
-config = import('../config')
+config = import('../../config')
 
 #' Returns gene sets of the different methods
 #'
