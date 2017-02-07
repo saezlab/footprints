@@ -32,7 +32,6 @@ zscore2model = function(zdata, hpc_args=NULL) {
 	pval = ar$construct(p.value ~ gene + pathway, data=mod)
 
     model = zfit
-    model[apply(pval, 2, function(p) !b$min_mask(p, 100))] = 0
     list(assocs=mod, model=model)
 }
 
