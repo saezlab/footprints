@@ -3,6 +3,7 @@ io = import('io')
 ar = import('array')
 tcga = import('data/tcga')
 gsea = import('../../util/gsea')
+genesets = import('../../util/genesets')
 hpc = import('hpc')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/mapped/go.RData"
@@ -24,7 +25,7 @@ tissues = import('../../config')$tcga$tissues
 expr = tcga$rna_seq(tissues)
 
 genelist = io$load(INFILE) %>%
-    gsea$filter_genesets(rownames(expr), MIN_GENES, MAX_GENES)
+    genesets$filter(rownames(expr), MIN_GENES, MAX_GENES)
 
 # perform GSEA for each sample and signature
 result = hpc$Q(gsea$runGSEA, sigs=genelist,

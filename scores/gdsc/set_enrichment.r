@@ -3,6 +3,7 @@ io = import('io')
 ar = import('array')
 gdsc = import('data/gdsc')
 gsea = import('../../util/gsea')
+genesets = import('../../util/genesets')
 hpc = import('hpc')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/mapped/go.RData"
@@ -22,7 +23,7 @@ if (grepl("mapped", OUTFILE)) {
 # load gene list and expression
 expr = gdsc$basal_expression()
 genelist = io$load(INFILE) %>%
-    gsea$filter_genesets(rownames(expr), MIN_GENES, MAX_GENES)
+    genesets$filter(rownames(expr), MIN_GENES, MAX_GENES)
 
 # perform GSEA for each sample and signature
 result = hpc$Q(gsea$runGSEA, sigs=genelist,

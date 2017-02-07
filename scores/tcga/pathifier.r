@@ -3,8 +3,7 @@ io = import('io')
 ar = import('array')
 df = import('data_frame')
 tcga = import('data/tcga')
-gsea = import('../../util/gsea')
-hpc = import('hpc')
+genesets = import('../../util/genesets')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/mapped/reactome.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "pathways_mapped/pathifier.RData"
@@ -56,7 +55,7 @@ tissue2scores = function(tissue, genesets, expr) {
 # load pathway gene sets
 expr = tcga$rna_seq(TISSUES)
 genesets = io$load(INFILE) %>%
-    gsea$filter_genesets(rownames(expr), MIN_GENES, MAX_GENES)
+    genesets$filter(rownames(expr), MIN_GENES, MAX_GENES)
 
 # make compatible to call with one set in above function
 for (i in seq_along(genesets))
