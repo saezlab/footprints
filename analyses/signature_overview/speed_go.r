@@ -1,18 +1,41 @@
 library(dplyr)
-library(magrittr)
+b = import('base')
+io = import('io')
+ar = import('array')
+st = import('stats')
 plt = import('plot')
-get_genesets = import('../../util/genesets')$get_genesets
+gsea = import('../../util/gsea')
+genesets = import('../../util/genesets')
 
-go_enrichment = function() {
-}
+#' Computes Gene Set Enrichment scores using piano
+#'
+#' @param col   Column index for 'mat'  
+#' @param set   Name of the gene set
+#' @param mat   Matrix of p-values, signed with the direction of change
+#' @param sets  A list of character vectors for all gene sets
+run_piano = function(col, set, mat, sets) {
+    re = piano::runGSA(geneLevelStats = abs(mat[,col]),
+                       direction = sign(mat[,col]),
+                       gsc = piano::loadGSC(stack(sets[set])))
 
-bar_plot = function() {
+    sapply(re[grepl("^p[^A]", names(re))], c)
 }
 
 if (is.null(module_name())) {
-    pdf("geneset_overlap.pdf")
-    on.exit(dev.off)
+    OUTFILE = commandArgs(TRUE)[1]
 
-    sets = get_genesets()
-    geneset_overlap_matrix(sets)
+    assocs = io$load('../../model/model_matrix.RData')$assocs
+    zfit = ar$construct(zscore ~ gene + pathway, data=assocs)
+    pval = ar$construct(p.value ~ gene + pathway, data=assocs) * sign(zfit)
+
+    go = genesets$get("go", mapped=FALSE, to_data_frame=FALSE)[["Gene Ontology"]]
+    go = genesets$filter(go, valid=rownames(zfit), min=5, max=200)
+
+    index = b$expand_grid(pathway = colnames(pval), set=names(go))
+    re = clustermq::Q(run_piano, col=index$pathway, set=index$set,
+                      const = list(mat=na.omit(pval), sets=go),
+                      n_jobs = 100)
+    index = cbind(index, ar$stack(re, along=1))
+
+    save(index, file="speed_go.RData")
 }
