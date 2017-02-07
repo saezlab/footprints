@@ -4,13 +4,16 @@
 #' @param valid     A vector of identifiers that can be used
 #' @param min       The minimum number of genes in a list to keep the list
 #' @param max       The maximum number of genes in a list to keep the list
-filter = function(genesets, valid, min=5, max=500, warn=TRUE) {
+filter = function(genesets, valid=NULL, min=5, max=500, warn=TRUE) {
     if (any(is.na(valid)))
         warning("NA found in valid set")
     if (any(valid == ""))
         warning("empty identifier found in valid set")
 
-    genesets = lapply(genesets, function(x) intersect(x, valid))
+    if (length(valid) > 0)
+        genesets = lapply(genesets, function(x) intersect(x, valid))
+    else
+        genesets = lapply(genesets, function(x) setdiff(na.omit(x), ""))
 
     num_overlap = sapply(genesets, length)
     discard = num_overlap < min | num_overlap > max
