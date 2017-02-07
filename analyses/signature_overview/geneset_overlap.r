@@ -44,7 +44,9 @@ geneset_overlap_matrix = function(sets) {
 }
 
 if (is.null(module_name())) {
-    pdf("geneset_overlap.pdf")
+    OUTFILE = commandArgs(TRUE)[1]
+
+    pdf(OUTFILE)
     on.exit(dev.off)
 
     sets = get_genesets()
