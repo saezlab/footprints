@@ -11,5 +11,8 @@ dataset_size_bars.pdf: dataset_size_bars.r dataset_size.txt
 speed_go_piano.RData: speed_go_piano.r
 	$(call bsub_log,10240) Rscript $< $@
 
-speed_go_plot.pdf: speed_go_plot.r speed_go_piano.RData
+speed_go_hypergeom.RData: speed_go_hypergeom.r
+	Rscript $< $@
+
+speed_go_plot.pdf: speed_go_plot.r speed_go_hypergeom.RData
 	Rscript $< $@

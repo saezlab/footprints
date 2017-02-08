@@ -19,4 +19,5 @@ go = genesets$get("go", mapped=FALSE, to_data_frame=FALSE)[["Gene Ontology"]]
 go = genesets$filter(go, valid=rownames(zfit), min=5, max=200)
 
 result = st$hypergeometric_test(rownames(zfit), go, speed)
+result[result == 0] = .Machine$double.eps
 save(result, file=OUTFILE)
