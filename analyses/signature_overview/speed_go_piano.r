@@ -22,7 +22,7 @@ run_piano = function(col, set, mat, sets) {
 }
 
 if (is.null(module_name())) {
-    OUTFILE = commandArgs(TRUE)[1]
+    OUTFILE = commandArgs(TRUE)[1] %or% "speed_go_piano.RData"
 
     assocs = io$load('../../model/model_matrix.RData')$assocs
     zfit = ar$construct(zscore ~ gene + pathway, data=assocs)
@@ -33,9 +33,9 @@ if (is.null(module_name())) {
 
     index = b$expand_grid(pathway = colnames(pval), set=names(go))
     re = clustermq::Q(run_piano, col=index$pathway, set=index$set,
-                      const = list(mat=na.omit(pval), sets=go),
-                      n_jobs = 100)
+                      const = list(mat=na.omit(pval), sets=go, nPerm=1e7),
+                      n_jobs = 1000)
     index = cbind(index, ar$stack(re, along=1))
 
-    save(index, file="speed_go.RData")
+    save(index, file=OUTFILE)
 }
