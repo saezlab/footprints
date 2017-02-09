@@ -19,7 +19,7 @@ plot_piano = function(index) {
 #'
 #' @param mat  A matrix of p-values
 plot_hypergeom = function() {
-    mat = io$load(module_file("speed_go_hypergeom.RData"))
+    mat = io$load(module_file("speed_go_hypergeom.RData", mustWork=TRUE))
 
     df = reshape2::melt(mat) %>%
         select(set=Var1, pathway=Var2, p.value=value) %>%
