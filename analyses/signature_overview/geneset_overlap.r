@@ -1,7 +1,7 @@
 library(dplyr)
 library(magrittr)
 plt = import('plot')
-get_genesets = import('../../util/genesets')$get_genesets
+get_genesets = import('../../util/genesets')$get
 
 set2overlap = function(sets, fun=function(x,y) nrow(dplyr::intersect(x,y))) {
     uniquify_colnames = function(df) {
