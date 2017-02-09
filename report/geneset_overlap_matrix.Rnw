@@ -1,10 +1,10 @@
 <<setup_genesets, include=FALSE>>=
 overlap = import('../analyses/signature_overview/geneset_overlap')
+sets = overlap$get_genesets()
 @
 
 \begin{figure}[H]
-<<genesets, echo=FALSE>>=
-sets = overlap$get_genesets()
+<<genesets, echo=FALSE, warnings=FALSE>>=
 overlap$geneset_overlap_matrix(sets)
 @
 \caption{Difference in gene sets between PROGENy genes and Gene Ontology,
