@@ -1,0 +1,13 @@
+<<sig_go_setup, include=FALSE>>=
+plt = import('../analyses/signature_overview/speed_go_plot')
+@
+
+\begin{figure}[H]
+<<sig_go, echo=FALSE, fig.width=12, fig.height=15>>=
+plt$plot_hypergeom() +
+    theme(strip.text = element_text(size=16),
+          axis.title = element_text(size=14))
+@
+\caption{this still needs a caption}
+\label{fig:sig-go}
+\end{figure}

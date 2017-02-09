@@ -54,6 +54,8 @@
 
 \Sexpr{knit_child('geneset_overlap_matrix.Rnw')}
 
+\Sexpr{knit_child('signature_go.Rnw')}
+
 \Sexpr{knit_child('perturb_compare.Rnw')}
 
 \Sexpr{knit_child('basal_correlation.Rnw')}
