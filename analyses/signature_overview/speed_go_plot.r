@@ -18,7 +18,9 @@ plot_piano = function(index) {
 #' Plot enrichment for hypergeometric test
 #'
 #' @param mat  A matrix of p-values
-plot_hypergeom = function(mat) {
+plot_hypergeom = function() {
+    mat = io$load(module_file("speed_go_hypergeom.RData"))
+
     df = reshape2::melt(mat) %>%
         select(set=Var1, pathway=Var2, p.value=value) %>%
         mutate(adj.p = p.adjust(p.value, method="fdr"),
@@ -48,9 +50,7 @@ if (is.null(module_name())) {
     INFILE = commandArgs(TRUE)[1] %or% "speed_go_hypergeom.RData"
     OUTFILE = commandArgs(TRUE)[2] %or% "speed_go_plot.pdf"
 
-    mat = io$load(INFILE)
-
     pdf(file=OUTFILE)
     on.exit(dev.off)
-    plot_hypergeom(mat)
+    plot_hypergeom()
 }
