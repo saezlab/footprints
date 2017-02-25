@@ -8,4 +8,6 @@ Accessions:
   [pEGFR/pERK](http://www.nature.com/ng/journal/v39/n4/fig_tab/ng1987_F1.html)
 * [E-GEOD-6784](https://www.ebi.ac.uk/arrayexpress/experiments/E-GEOD-6784/):
   MCF-10A cells with EGF, 0-480 minutes +
-  [p](http://www.nature.com/ng/journal/v39/n4/extref/ng1987-S6.pdf)
+  [TFs](http://www.nature.com/ng/journal/v39/n4/extref/ng1987-S6.pdf)
+
+Here, we work with HeLa (E-GEOD-6783) because no phospho provided for MFC10A.
