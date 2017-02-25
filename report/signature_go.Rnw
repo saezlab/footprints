@@ -11,7 +11,7 @@ plt$plot_hypergeom() +
 \caption{Results of a hypergeometric test for enrichment in the overlap between
 the gene set derived in PROGENy and Gene Ontology categories between 5 and 200
 genes in size. Each panel corresponds to one pathway, length of the bars to the
-negative log10 of the FDR. Top 5 categories are shown for each pathway.
+negative log10 of the FDR. Top 10 categories are shown for each pathway.
 Dotted vertical line represents 10\% FDR.}
 \label{fig:sig-go}
 \end{figure}
