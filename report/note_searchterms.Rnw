@@ -80,7 +80,7 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item EGFR
 \begin{itemize}
-\item Experimental evidence\\
+\item Experimental evidence and secondary literature\\
     EGF\Sexpr{cite(16616281)},
     TGF$\alpha$\Sexpr{cite(16616281)},
     Epiregulin\Sexpr{cite(16616281)},
@@ -107,7 +107,7 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item Hypoxia
 \begin{itemize}
-\item Experimental evidence\\
+\item Experimental evidence and secondary literature\\
     HIF-1\Sexpr{cite("10.1016/S0959-437X(98)80016-6")}
 \item Search term\\
     (hypoxia* OR HIF1 OR HIF-1) organism:sapiens samplecount:[4 TO
@@ -118,7 +118,7 @@ search term and all the ArrayExpress accessions we used to build our model.
 
 \item JAK-STAT
 \begin{itemize}
-\item Experimental evidence\\
+\item Experimental evidence and secondary literature\\
     Interferon$\beta/\gamma$\Sexpr{cite("10.1126/science.8197455")},
     IL-2\Sexpr{cite("10.1074/jbc.R700016200")},
     IL-3\Sexpr{cite("10.1074/jbc.R700016200")},
