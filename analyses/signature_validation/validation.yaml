@@ -1,0 +1,162 @@
+EGFR:
+    paper:
+        doi:
+    expr:
+        accession: E-GEOD-6783
+        platform: A-AFFY-33
+        description: 
+        control: [ ]
+        perturbed: [ ]
+    activity:
+        description: 
+        control: [ ]
+        perturbed: [ ]
+
+Hypoxia:
+    paper:
+        doi: 
+    expr:
+        accession: E-GEOD-12792
+        platform: A-AFFY-33
+        description: HeLa/LnCAP
+        control: [ GSE12792GSM320836 GSE12792GSM320853 GSE12792GSM320854 ]
+        perturbed: [ GSE12792GSM320855 GSE12792GSM320856 GSE12792GSM320857 ]
+    activity:
+        description: 
+        control: [ 0.1 0.2 0.3 ]
+        perturbed: [ 1.1 1.2 1.3 ]
+
+JAK-STAT:
+    paper:
+        doi: 
+        description: Sez-4 cell line activated with IL-2
+    expr:
+        accession: E-GEOD-8687
+        platform: A-AFFY-33
+        description:
+        control: [ GSE8687GSM215361 GSE8687GSM215362 GSE8687GSM215363 ]
+        perturbed: [GSE8687GSM215364 GSE8687GSM215365 GSE8687GSM215366 ]
+    activity:
+        description: JAK1 pY1022/1023, STAT5 pY694
+        control: [ 0.1 0.2 0.3 ]
+        perturbed: [ 1.1 1.2 1.3 ]
+
+MAPK:
+    paper:
+        doi: 
+        description:
+    expr:
+        accession: E-GEOD-12792
+        platform: A-AFFY-33
+        description:
+        control: [ ]
+        perturbed: [ ]
+    activity:
+        description: 
+        control: [ 0.1 0.2 0.3 ]
+        perturbed: [ 1.1 1.2 1.3 ]
+
+NFkB:
+    paper:
+        doi: 
+        description:
+    expr:
+        accession: E-GEOD-12792
+        platform: A-AFFY-33
+        description:
+        control: [ ]
+        perturbed: [ ]
+    activity:
+        description: 
+        control: [ 0.1 0.2 0.3 ]
+        perturbed: [ 1.1 1.2 1.3 ]
+
+p53:
+    paper:
+        doi:
+        description:
+    expr:
+        accession: E-GEOD-12792
+        platform: A-AFFY-33
+        description:
+        control: [ ]
+        perturbed: [ ]
+    activity:
+        description: 
+        control: [ 0.1 0.2 0.3 ]
+        perturbed: [ 1.1 1.2 1.3 ]
+
+PI3K:
+    paper:
+        doi: 
+        description:
+    expr:
+        accession: E-GEOD-12792
+        platform: A-AFFY-33
+        description:
+        control: [ ]
+        perturbed: [ ]
+    activity:
+        description: 
+        control: [ 0.1 0.2 0.3 ]
+        perturbed: [ 1.1 1.2 1.3 ]
+
+TGFb:
+    paper:
+        doi: 
+        description:
+    expr:
+        accession: E-GEOD-12792
+        platform: A-AFFY-33
+        description:
+        control: [ ]
+        perturbed: [ ]
+    activity:
+        description: 
+        control: [ 0.1 0.2 0.3 ]
+        perturbed: [ 1.1 1.2 1.3 ]
+       
+TNFa:
+    paper:
+        doi: 
+        description:
+    expr:
+        accession: E-GEOD-12792
+        platform: A-AFFY-33
+        description:
+        control: [ ]
+        perturbed: [ ]
+    activity:
+        description: 
+        control: [ 0.1 0.2 0.3 ]
+        perturbed: [ 1.1 1.2 1.3 ]
+
+Trail:
+    paper:
+        doi: 
+        description:
+    expr:
+        accession: E-GEOD-12792
+        platform: A-AFFY-33
+        description:
+        control: [ ]
+        perturbed: [ ]
+    activity:
+        description: 
+        control: [ 0.1 0.2 0.3 ]
+        perturbed: [ 1.1 1.2 1.3 ]
+
+VEGF:
+    paper:
+        doi: 
+        description:
+    expr:
+        accession: E-GEOD-12792
+        platform: A-AFFY-33
+        description:
+        control: [ ]
+        perturbed: [ ]
+    activity:
+        description: 
+        control: [ 0.1 0.2 0.3 ]
+        perturbed: [ 1.1 1.2 1.3 ]
