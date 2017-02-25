@@ -1,10 +1,10 @@
 EGFR:
     paper:
         doi:
+        description: 
     expr:
         accession: E-GEOD-6783
         platform: A-AFFY-33
-        description: 
         control: [ ]
         perturbed: [ ]
     activity:
@@ -14,30 +14,29 @@ EGFR:
 
 Hypoxia:
     paper:
-        doi: 
+        doi: 10.1074/jbc.M804578200
+        description: HeLa/LnCAP 0.5% O2
     expr:
         accession: E-GEOD-12792
         platform: A-AFFY-33
-        description: HeLa/LnCAP
         control: [ GSE12792GSM320836 GSE12792GSM320853 GSE12792GSM320854 ]
         perturbed: [ GSE12792GSM320855 GSE12792GSM320856 GSE12792GSM320857 ]
     activity:
-        description: 
+        description: WB HIF1a / Actin
         control: [ 0.1 0.2 0.3 ]
         perturbed: [ 1.1 1.2 1.3 ]
 
 JAK-STAT:
     paper:
-        doi: 
-        description: Sez-4 cell line activated with IL-2
+        doi: 10.1158/0008-5472.CAN-07-2403
+        description: Sez-4 IL-2
     expr:
         accession: E-GEOD-8687
         platform: A-AFFY-33
-        description:
         control: [ GSE8687GSM215361 GSE8687GSM215362 GSE8687GSM215363 ]
         perturbed: [GSE8687GSM215364 GSE8687GSM215365 GSE8687GSM215366 ]
     activity:
-        description: JAK1 pY1022/1023, STAT5 pY694
+        description: WB (JAK1 pY1022/23, STAT5 pY694) / Actin
         control: [ 0.1 0.2 0.3 ]
         perturbed: [ 1.1 1.2 1.3 ]
 
@@ -46,9 +45,8 @@ MAPK:
         doi: 
         description:
     expr:
-        accession: E-GEOD-12792
-        platform: A-AFFY-33
-        description:
+        accession: E-GEOD-
+        platform: A-AFFY-
         control: [ ]
         perturbed: [ ]
     activity:
@@ -61,9 +59,8 @@ NFkB:
         doi: 
         description:
     expr:
-        accession: E-GEOD-12792
-        platform: A-AFFY-33
-        description:
+        accession: E-GEOD-
+        platform: A-AFFY-
         control: [ ]
         perturbed: [ ]
     activity:
@@ -73,31 +70,29 @@ NFkB:
 
 p53:
     paper:
-        doi:
-        description:
-    expr:
-        accession: E-GEOD-12792
-        platform: A-AFFY-33
-        description:
-        control: [ ]
-        perturbed: [ ]
-    activity:
-        description: 
+        doi: 10.1093/carcin/bgs318
+        description: HepG2 0.5 mM AICAR
+    expr: # only control shRNA
+        accession: E-GEOD-30137
+        platform: A-AFFY-141
+        control: [ "GSM746054 1" "GSM746055 1" ]
+        perturbed: [ "GSM746062 1" "GSM746063 1" ]
+    activity: # sh control + sh p53
+        description: WB p53 pS15/total
         control: [ 0.1 0.2 0.3 ]
         perturbed: [ 1.1 1.2 1.3 ]
 
 PI3K:
     paper:
-        doi: 
-        description:
-    expr:
-        accession: E-GEOD-12792
-        platform: A-AFFY-33
-        description:
-        control: [ ]
-        perturbed: [ ]
-    activity:
-        description: 
+        doi: 10.1158/1078-0432.CCR-09-2828
+        description: 1 uM GDC-0941 T47D 6h
+    expr: # T47D only
+        accession: E-GEOD-20719
+        platform: A-AFFY-44
+        control: [ "GSM520228 1" "GSM520229 1" "GSM520230 1" ]
+        perturbed: [ "GSM520225 1" "GSM520226 1" "GSM520227 1" ]
+    activity: # 7 sensitive cell lines
+        description: WB Akt pS473/total
         control: [ 0.1 0.2 0.3 ]
         perturbed: [ 1.1 1.2 1.3 ]
 
@@ -106,9 +101,8 @@ TGFb:
         doi: 
         description:
     expr:
-        accession: E-GEOD-12792
-        platform: A-AFFY-33
-        description:
+        accession: E-GEOD-
+        platform: A-AFFY-
         control: [ ]
         perturbed: [ ]
     activity:
@@ -121,9 +115,8 @@ TNFa:
         doi: 
         description:
     expr:
-        accession: E-GEOD-12792
-        platform: A-AFFY-33
-        description:
+        accession: E-GEOD-
+        platform: A-AFFY-
         control: [ ]
         perturbed: [ ]
     activity:
@@ -136,9 +129,8 @@ Trail:
         doi: 
         description:
     expr:
-        accession: E-GEOD-12792
-        platform: A-AFFY-33
-        description:
+        accession: E-GEOD-
+        platform: A-AFFY-
         control: [ ]
         perturbed: [ ]
     activity:
@@ -151,9 +143,8 @@ VEGF:
         doi: 
         description:
     expr:
-        accession: E-GEOD-12792
-        platform: A-AFFY-33
-        description:
+        accession: E-GEOD-
+        platform: A-AFFY-
         control: [ ]
         perturbed: [ ]
     activity:
