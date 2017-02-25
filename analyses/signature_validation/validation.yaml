@@ -32,7 +32,7 @@ JAK-STAT:
         description: Sez-4 IL-2
     expr:
         accession: E-GEOD-8687
-        platform: A-AFFY-33
+        platform: A-AFFY-44
         control: [ GSE8687GSM215361 GSE8687GSM215362 GSE8687GSM215363 ]
         perturbed: [GSE8687GSM215364 GSE8687GSM215365 GSE8687GSM215366 ]
     activity:
