@@ -91,17 +91,17 @@ p53:
 PI3K:
     paper:
         doi: 10.1158/1078-0432.CCR-09-2828
-        description: 1 uM GDC-0941 T47D 6h
-    expr: # T47D only
+        description: 1 uM GDC-0941 6h
+    expr:
         accession: E-GEOD-20719
         platform: A-AFFY-44
-        description:
+        description: T47D
         control: [ "GSM520228 1", "GSM520229 1", "GSM520230 1" ]
         perturbed: [ "GSM520225 1", "GSM520226 1", "GSM520227 1" ]
-    activity: # 7 sensitive cell lines
-        description: WB Akt pS473/total
-        control: [ 0.1, 0.2, 0.3 ]
-        perturbed: [ 1.1, 1.2, 1.3 ]
+    activity: # Fig. 4a
+        description: 7 cell lines WB Akt pS473
+        control: [ 2694, 4883, 6372, 1214, 240, 6111, 5397 ]
+        perturbed: [ 749, 1365, 552, 265, 82, 99, 898 ]
 
 TGFb:
     paper:
