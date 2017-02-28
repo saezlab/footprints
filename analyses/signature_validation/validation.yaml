@@ -65,6 +65,7 @@ MAPK:
 #    expr:
 #        accession: E-GEOD-
 #        platform: A-AFFY-
+#        description:
 #        control: [ ]
 #        perturbed: [ ]
 #    activity:
@@ -75,16 +76,17 @@ MAPK:
 p53:
     paper:
         doi: 10.1093/carcin/bgs318
-        description: HepG2 0.5 mM AICAR
+        description: HepG2 0.5 mM AICAR 24h vs DMSO (+/- sh-p53)
     expr: # only control shRNA
         accession: E-GEOD-30137
         platform: A-AFFY-141
+        description:
         control: [ "GSM746054 1", "GSM746055 1" ]
         perturbed: [ "GSM746062 1", "GSM746063 1" ]
-    activity: # sh control + sh p53
-        description: WB p53 pS15/total
-        control: [ 0.1, 0.2, 0.3 ]
-        perturbed: [ 1.1, 1.2, 1.3 ]
+    activity: # Fig. 4: sh control + sh p53
+        description: WB p53 pS15
+        control: [ 224, 110 ]
+        perturbed: [ 7095, 24782 ]
 
 PI3K:
     paper:
@@ -93,6 +95,7 @@ PI3K:
     expr: # T47D only
         accession: E-GEOD-20719
         platform: A-AFFY-44
+        description:
         control: [ "GSM520228 1", "GSM520229 1", "GSM520230 1" ]
         perturbed: [ "GSM520225 1", "GSM520226 1", "GSM520227 1" ]
     activity: # 7 sensitive cell lines
@@ -107,6 +110,7 @@ TGFb:
     expr: # ptb: 2x BMP2, 2x BMP6
         accession: E-GEOD-20671
         platform: A-AFFY-141
+        description:
         control: [ "GSM518514 1", "GSM518515 1" ]
         perturbed: [ "GSM518516 1", "GSM518517 1", "GSM518522 1", "GSM518523 1" ]
     activity:
@@ -121,6 +125,7 @@ TGFb:
 #    expr:
 #        accession: E-GEOD-
 #        platform: A-AFFY-
+#        description:
 #        control: [ ]
 #        perturbed: [ ]
 #    activity:
@@ -135,6 +140,7 @@ Trail:
     expr:
         accession: E-GEOD-36149
         platform: A-AFFY-44
+        description:
         control: [ "GSM881823 1", "GSM881826 1", "GSM881829 1", "GSM881832 1" ]
         perturbed: [ "GSM881825 1", "GSM881828 1", "GSM881831 1", "GSM881834 1" ]
     activity:
@@ -149,6 +155,7 @@ VEGF:
     expr:
         accession: E-GEOD-18913
         platform: A-AFFY-44
+        description:
         control: [ "GSM468603 1", "GSM468604 1" ]
         perturbed: [ "GSM468615 1", "GSM468616 1", "GSM468623 1" ]
     activity:
