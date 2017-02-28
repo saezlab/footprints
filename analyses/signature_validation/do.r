@@ -62,6 +62,6 @@ p = ggplot(idf, aes(x=method, y=value, fill=type)) +
     ylab("A.U.")
 
 if (is.null(module_name())) {
-    pdf("plot.pdf")
+    pdf("plot.pdf", paper="a4r", width=26, height=20)
     print(p)
 }
