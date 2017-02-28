@@ -144,21 +144,21 @@ Trail:
         control: [ "GSM881823 1", "GSM881826 1", "GSM881829 1", "GSM881832 1" ]
         perturbed: [ "GSM881825 1", "GSM881828 1", "GSM881831 1", "GSM881834 1" ]
     activity:
-        description: cleaved PARP 72h
+        description: WB cleaved PARP 72h
         control: [ 6, 0, 0, 0 ]
         perturbed: [ 240, 1271 ]
 
 VEGF:
     paper:
         doi: 10.1182/blood-2009-07-233478
-        description: HUVEC 50ng/ml VEGF 4h
+        description: HUVEC 50ng/ml VEGF
     expr:
         accession: E-GEOD-18913
         platform: A-AFFY-44
-        description:
+        description: 4h
         control: [ "GSM468603 1", "GSM468604 1" ]
         perturbed: [ "GSM468615 1", "GSM468616 1", "GSM468623 1" ]
     activity:
-        description: WB Egr-1/3 / Nucleoporin
-        control: [ 0.1, 0.2, 0.3 ]
-        perturbed: [ 1.1, 1.2, 1.3 ]
+        description: WB Egr-1/3 1-h2
+        control: [ 989, 4176 ]
+        perturbed: [ 13031, 8081, 17816, 23982 ]
