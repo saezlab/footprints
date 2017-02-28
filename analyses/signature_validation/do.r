@@ -1,3 +1,4 @@
+library(ggplot2)
 library(dplyr)
 io = import('io')
 ar = import('array')
@@ -37,13 +38,14 @@ pathway_scores = function(path) {
 
 idf = lapply(names(index), pathway_scores) %>%
     dplyr::bind_rows() %>%
-    group_by(pathway, method) %>% #TODO: scale by control
+    group_by(pathway, method) %>%
     mutate(value = (value - median(value[type == "control"])) /
            sd(value[type == "control"])) %>%
     ungroup()
 
-# plot
-#p = ...
+p = ggplot(idf, aes(x=type, y=value, fill=method)) +
+    geom_box() +
+    facet_wrap(~pathway)
 
 if (is.null(module_name())) {
     print(p)
