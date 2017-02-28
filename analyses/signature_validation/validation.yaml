@@ -140,13 +140,13 @@ Trail:
     expr:
         accession: E-GEOD-36149
         platform: A-AFFY-44
-        description:
+        description: 6h
         control: [ "GSM881823 1", "GSM881826 1", "GSM881829 1", "GSM881832 1" ]
         perturbed: [ "GSM881825 1", "GSM881828 1", "GSM881831 1", "GSM881834 1" ]
     activity:
-        description: Surviving fraction vs. control
-        control: [ 0.1, 0.2, 0.3 ]
-        perturbed: [ 1.1, 1.2, 1.3 ]
+        description: cleaved PARP 72h
+        control: [ 6, 0, 0, 0 ]
+        perturbed: [ 240, 1271 ]
 
 VEGF:
     paper:
