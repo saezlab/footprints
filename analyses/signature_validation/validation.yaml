@@ -39,7 +39,7 @@ JAK-STAT:
         control: [ GSE8687GSM215361, GSE8687GSM215362, GSE8687GSM215363 ]
         perturbed: [GSE8687GSM215364, GSE8687GSM215365, GSE8687GSM215366 ]
     activity:
-        description: WB JAK1 pY1022/23, STAT3 pY705, STAT5 pY694
+        description: WB pJAK1, pSTAT3/5 # JAK1 pY1022/23, STAT3 pY705, STAT5 pY694
         control: [ 200, 0, 1075 ]
         perturbed: [ 22501, 3704, 28517 ]
 
