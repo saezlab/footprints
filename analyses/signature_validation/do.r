@@ -53,6 +53,11 @@ idf = lapply(names(index), pathway_scores) %>%
     mutate(value = scale(value, center=FALSE)) %>%
     ungroup()
 
+idf$method = factor(idf$method)
+pidx = grepl("PROGENy", levels(idf$method))
+idf$method = forcats::fct_relevel(idf$method,
+    levels(idf$method)[c(which(!pidx), which(pidx))])
+
 p = ggplot(idf, aes(x=method, y=value, fill=type)) +
     geom_boxplot(outlier.shape=NA) +
     geom_point(shape=21, size=3, alpha=0.8, position=position_dodge(0.75)) +
