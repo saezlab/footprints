@@ -5,12 +5,12 @@ EGFR:
     expr: # 90'
         accession: E-GEOD-6462
         platform: A-AFFY-37
-        control: [ GSE6462GSM148516 GSE6462GSM148517 ]
-        perturbed: [ GSE6462GSM148544 GSE6462GSM148572 ]
+        control: [ GSE6462GSM148516, GSE6462GSM148517 ]
+        perturbed: [ GSE6462GSM148544, GSE6462GSM148572 ]
     activity: # 5-10'
         description: WB pEGFR/EGFR
-        control: [ 0.1 0.2 0.3 ]
-        perturbed: [ 1.1 1.2 1.3 ]
+        control: [ 0.1, 0.2, 0.3 ]
+        perturbed: [ 1.1, 1.2, 1.3 ]
 
 Hypoxia:
     paper:
@@ -19,12 +19,12 @@ Hypoxia:
     expr:
         accession: E-GEOD-12792
         platform: A-AFFY-33
-        control: [ GSE12792GSM320836 GSE12792GSM320853 GSE12792GSM320854 ]
-        perturbed: [ GSE12792GSM320855 GSE12792GSM320856 GSE12792GSM320857 ]
+        control: [ GSE12792GSM320836, GSE12792GSM320853, GSE12792GSM320854 ]
+        perturbed: [ GSE12792GSM320855, GSE12792GSM320856, GSE12792GSM320857 ]
     activity:
         description: WB HIF1a / Actin
-        control: [ 0.1 0.2 0.3 ]
-        perturbed: [ 1.1 1.2 1.3 ]
+        control: [ 0.1, 0.2, 0.3 ]
+        perturbed: [ 1.1, 1.2, 1.3 ]
 
 JAK-STAT:
     paper:
@@ -33,12 +33,12 @@ JAK-STAT:
     expr:
         accession: E-GEOD-8687
         platform: A-AFFY-44
-        control: [ GSE8687GSM215361 GSE8687GSM215362 GSE8687GSM215363 ]
-        perturbed: [GSE8687GSM215364 GSE8687GSM215365 GSE8687GSM215366 ]
+        control: [ GSE8687GSM215361, GSE8687GSM215362, GSE8687GSM215363 ]
+        perturbed: [GSE8687GSM215364, GSE8687GSM215365, GSE8687GSM215366 ]
     activity:
         description: WB (JAK1 pY1022/23, STAT5 pY694) / Actin
-        control: [ 0.1 0.2 0.3 ]
-        perturbed: [ 1.1 1.2 1.3 ]
+        control: [ 0.1, 0.2, 0.3 ]
+        perturbed: [ 1.1, 1.2, 1.3 ]
 
 MAPK:
     paper:
@@ -51,8 +51,8 @@ MAPK:
         perturbed: [ "GSM455565 1", "GSM455571 1", "GSM455577 1" ]
     activity: # Fig. 6
         description: WB pERK/ERK
-        control: [ 0.1 0.2 0.3 ]
-        perturbed: [ 1.1 1.2 1.3 ]
+        control: [ 0.1, 0.2, 0.3 ]
+        perturbed: [ 1.1, 1.2, 1.3 ]
 
 #NFkB:
 #    paper:
@@ -65,8 +65,8 @@ MAPK:
 #        perturbed: [ ]
 #    activity:
 #        description: 
-#        control: [ 0.1 0.2 0.3 ]
-#        perturbed: [ 1.1 1.2 1.3 ]
+#        control: [ 0.1, 0.2, 0.3 ]
+#        perturbed: [ 1.1, 1.2, 1.3 ]
 
 p53:
     paper:
@@ -79,8 +79,8 @@ p53:
         perturbed: [ "GSM746062 1", "GSM746063 1" ]
     activity: # sh control + sh p53
         description: WB p53 pS15/total
-        control: [ 0.1 0.2 0.3 ]
-        perturbed: [ 1.1 1.2 1.3 ]
+        control: [ 0.1, 0.2, 0.3 ]
+        perturbed: [ 1.1, 1.2, 1.3 ]
 
 PI3K:
     paper:
@@ -93,8 +93,8 @@ PI3K:
         perturbed: [ "GSM520225 1", "GSM520226 1", "GSM520227 1" ]
     activity: # 7 sensitive cell lines
         description: WB Akt pS473/total
-        control: [ 0.1 0.2 0.3 ]
-        perturbed: [ 1.1 1.2 1.3 ]
+        control: [ 0.1, 0.2, 0.3 ]
+        perturbed: [ 1.1, 1.2, 1.3 ]
 
 TGFb:
     paper:
@@ -107,8 +107,8 @@ TGFb:
         perturbed: [ "GSM518516 1", "GSM518517 1", "GSM518522 1", "GSM518523 1" ]
     activity:
         description: WB pSMAD/SMAD 15-240'
-        control: [ 0.1 0.2 0.3 ]
-        perturbed: [ 1.1 1.2 1.3 ]
+        control: [ 0.1, 0.2, 0.3 ]
+        perturbed: [ 1.1, 1.2, 1.3 ]
        
 #TNFa:
 #    paper:
@@ -121,8 +121,8 @@ TGFb:
 #        perturbed: [ ]
 #    activity:
 #        description: 
-#        control: [ 0.1 0.2 0.3 ]
-#        perturbed: [ 1.1 1.2 1.3 ]
+#        control: [ 0.1, 0.2, 0.3 ]
+#        perturbed: [ 1.1, 1.2, 1.3 ]
 
 Trail:
     paper:
@@ -135,8 +135,8 @@ Trail:
         perturbed: [ "GSM881825 1", "GSM881828 1", "GSM881831 1", "GSM881834 1" ]
     activity:
         description: Surviving fraction vs. control
-        control: [ 0.1 0.2 0.3 ]
-        perturbed: [ 1.1 1.2 1.3 ]
+        control: [ 0.1, 0.2, 0.3 ]
+        perturbed: [ 1.1, 1.2, 1.3 ]
 
 VEGF:
     paper:
@@ -149,5 +149,5 @@ VEGF:
         perturbed: [ "GSM468615 1", "GSM468616 1", "GSM468623 1" ]
     activity:
         description: WB Egr-1/3 / Nucleoporin
-        control: [ 0.1 0.2 0.3 ]
-        perturbed: [ 1.1 1.2 1.3 ]
+        control: [ 0.1, 0.2, 0.3 ]
+        perturbed: [ 1.1, 1.2, 1.3 ]
