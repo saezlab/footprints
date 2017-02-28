@@ -43,3 +43,8 @@ idf = lapply(names(index), pathway_scores) %>%
     ungroup()
 
 # plot
+#p = ...
+
+if (is.null(module_name())) {
+    print(p)
+}
