@@ -31,16 +31,17 @@ Hypoxia:
 JAK-STAT:
     paper:
         doi: 10.1158/0008-5472.CAN-07-2403
-        description: Sez-4 IL-2
+        description: Sez-4 16h 200U IL-2
     expr:
         accession: E-GEOD-8687
         platform: A-AFFY-44
+        description:
         control: [ GSE8687GSM215361, GSE8687GSM215362, GSE8687GSM215363 ]
         perturbed: [GSE8687GSM215364, GSE8687GSM215365, GSE8687GSM215366 ]
     activity:
-        description: WB (JAK1 pY1022/23, STAT5 pY694) / Actin
-        control: [ 0.1, 0.2, 0.3 ]
-        perturbed: [ 1.1, 1.2, 1.3 ]
+        description: WB JAK1 pY1022/23, STAT3 pY705, STAT5 pY694
+        control: [ 200, 0, 1075 ]
+        perturbed: [ 22501, 3704, 28517 ]
 
 MAPK:
     paper:
