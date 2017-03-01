@@ -58,20 +58,20 @@ MAPK:
         control: [ 7070, 6695, 8164 ]
         perturbed: [ 1216, 389, 2128 ]
 
-#NFkB:
-#    paper:
-#        doi: 
-#        description:
-#    expr:
-#        accession: E-GEOD-
-#        platform: A-AFFY-
-#        description:
-#        control: [ ]
-#        perturbed: [ ]
-#    activity:
-#        description: 
-#        control: [ 0.1, 0.2, 0.3 ]
-#        perturbed: [ 1.1, 1.2, 1.3 ]
+NFkB:
+    paper:
+        doi: 10.1371/journal.pone.0014412
+        description: 10 ng/ml TNFa
+    expr: # 2x TNF, 2x TNF+FGF
+        accession: E-GEOD-22807
+        platform: A-AFFY-141
+        description: DU145
+        control: [ "GSM563798 1", "GSM563799 1" ]
+        perturbed: [ "GSM563802 1", "GSM563803 1", "GSM563804 1", "GSM563805 1" ]
+    activity: # Fig. 4C
+        description: GST-IKb assay DU145/HEK293
+        control: [ 9, 2550 ]
+        perturbed: [ 15720, 8017, 6950, 14052, 8544, 9095, 13481, 24810, 10545 ]
 
 p53:
     paper:
@@ -121,17 +121,17 @@ TGFb:
 TNFa:
     paper:
         doi: 10.1371/journal.pone.0014412
-        description: DU145 + TNFa (&FGF)
+        description: 10 ng/ml TNFa
     expr: # 2x TNF, 2x TNF+FGF
         accession: E-GEOD-22807
         platform: A-AFFY-141
-        description:
+        description: DU145
         control: [ "GSM563798 1", "GSM563799 1" ]
         perturbed: [ "GSM563802 1", "GSM563803 1", "GSM563804 1", "GSM563805 1" ]
     activity: # Fig. 4C
-        description: GST-IKb assay
-        control: [ 9 ]
-        perturbed: [ 24810, 10545 ]
+        description: GST-IKb assay DU145/HEK293
+        control: [ 9, 2550 ]
+        perturbed: [ 15720, 8017, 6950, 14052, 8544, 9095, 13481, 24810, 10545 ]
 
 Trail:
     paper:
