@@ -24,7 +24,7 @@ Hypoxia:
         control: [ GSE12792GSM320836, GSE12792GSM320853, GSE12792GSM320854 ]
         perturbed: [ GSE12792GSM320855, GSE12792GSM320856, GSE12792GSM320857 ]
     activity: # Fig 2B
-        description: HeLa WB HIF1a 16h
+        description: HeLa WB HIF1a 1h
         control: [ 888, 1630, 228, 3231 ] # normoxia: no siRNA/control/HIF1a; hyp siHIF1a
         perturbed: [ 25484, 22938 ] # hypoxia: no siRNA, control si
 
@@ -46,7 +46,7 @@ JAK-STAT:
 MAPK:
     paper:
         doi: 10.1371/journal.pgen.1001231
-        description: HCT116, HT29, SW480 + 48h U0126 vs DMSO
+        description: HCT116, HT29, SW480 + 48h U0126
     expr:
         accession: E-GEOD-18232
         platform: A-AFFY-33
@@ -61,22 +61,22 @@ MAPK:
 NFkB:
     paper:
         doi: 10.1371/journal.pone.0014412
-        description: 10 ng/ml TNFa
+        description: 10 ng/ml TNFa DU145
     expr: # 2x TNF, 2x TNF+FGF
         accession: E-GEOD-22807
         platform: A-AFFY-141
-        description: DU145
+        description:
         control: [ "GSM563798 1", "GSM563799 1" ]
         perturbed: [ "GSM563802 1", "GSM563803 1", "GSM563804 1", "GSM563805 1" ]
     activity: # Fig. 4C
-        description: GST-IKb assay DU145/HEK293
+        description: GST-IKb incl. HEK293
         control: [ 9, 2550 ]
         perturbed: [ 15720, 8017, 6950, 14052, 8544, 9095, 13481, 24810, 10545 ]
 
 p53:
     paper:
         doi: 10.1093/carcin/bgs318
-        description: HepG2 0.5 mM AICAR 24h vs DMSO (+/- sh-p53)
+        description: HepG2 0.5 mM AICAR 24h vs DMSO # +/- sh-p53
     expr: # only control shRNA
         accession: E-GEOD-30137
         platform: A-AFFY-141
@@ -99,7 +99,7 @@ PI3K:
         control: [ "GSM520228 1", "GSM520229 1", "GSM520230 1" ]
         perturbed: [ "GSM520225 1", "GSM520226 1", "GSM520227 1" ]
     activity: # Fig. 4a
-        description: 7 cell lines WB Akt pS473
+        description: 7 lines WB Akt pS473
         control: [ 2694, 4883, 6372, 1214, 240, 6111, 5397 ]
         perturbed: [ 749, 1365, 552, 265, 82, 99, 898 ]
 
@@ -121,7 +121,7 @@ TGFb:
 TNFa:
     paper:
         doi: 10.1371/journal.pone.0014412
-        description: 10 ng/ml TNFa
+        description: 10 ng/ml TNFa DU145
     expr: # 2x TNF, 2x TNF+FGF
         accession: E-GEOD-22807
         platform: A-AFFY-141
@@ -129,7 +129,7 @@ TNFa:
         control: [ "GSM563798 1", "GSM563799 1" ]
         perturbed: [ "GSM563802 1", "GSM563803 1", "GSM563804 1", "GSM563805 1" ]
     activity: # Fig. 4C
-        description: GST-IKb assay DU145/HEK293
+        description: GST-IKb incl. HEK293
         control: [ 9, 2550 ]
         perturbed: [ 15720, 8017, 6950, 14052, 8544, 9095, 13481, 24810, 10545 ]
 

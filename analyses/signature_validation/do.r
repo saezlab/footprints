@@ -39,15 +39,15 @@ pathway_scores = function(path) {
     df = reshape2::melt(re) %>%
         transmute(pathway = paste(path, idx$paper$description, sep="\n"),
                   method = L1,
-                  type = L2,
+                  Type = L2,
                   value = value)
 }
 
 idf = lapply(names(index), pathway_scores) %>%
     dplyr::bind_rows() %>%
     group_by(pathway, method) %>%
-    mutate(value = (value - median(value[type == "control"])) /
-           sd(value[type == "control"])) %>%
+    mutate(value = (value - median(value[Type == "control"])) /
+           sd(value[Type == "control"])) %>%
     ungroup() %>%
     group_by(pathway, method) %>%
     mutate(value = scale(value, center=FALSE)) %>%
@@ -58,11 +58,14 @@ pidx = grepl("PROGENy", levels(idf$method))
 idf$method = forcats::fct_relevel(idf$method,
     levels(idf$method)[c(which(!pidx), which(pidx))])
 
-p = ggplot(idf, aes(x=method, y=value, fill=type)) +
+p = ggplot(idf, aes(x=method, y=value, fill=Type)) +
     geom_boxplot(outlier.shape=NA) +
     geom_point(shape=21, size=3, alpha=0.8, position=position_dodge(0.75)) +
     facet_wrap(~pathway, scales="free") +
     theme_minimal() +
+    theme(legend.position = c(0.92, 0.1),
+          legend.justification = c(1, 0),
+          legend.text = element_text(size=12)) +
     xlab("") +
     ylab("A.U.")
 
