@@ -118,20 +118,20 @@ TGFb:
         control: [ 810, 1996 ]
         perturbed: [ 11433, 12317, 11181, 8940, 10505, 5558, 9405, 10805, 9746, 8824 ]
        
-#TNFa:
-#    paper:
-#        doi: 
-#        description:
-#    expr:
-#        accession: E-GEOD-
-#        platform: A-AFFY-
-#        description:
-#        control: [ ]
-#        perturbed: [ ]
-#    activity:
-#        description: 
-#        control: [ 0.1, 0.2, 0.3 ]
-#        perturbed: [ 1.1, 1.2, 1.3 ]
+TNFa:
+    paper:
+        doi: 10.1371/journal.pone.0014412
+        description: DU145 + TNFa (&FGF)
+    expr: # 2x TNF, 2x TNF+FGF
+        accession: E-GEOD-22807
+        platform: A-AFFY-141
+        description:
+        control: [ "GSM563798 1", "GSM563799 1" ]
+        perturbed: [ "GSM563802 1", "GSM563803 1", "GSM563804 1", "GSM563805 1" ]
+    activity: # Fig. 4C
+        description: GST-IKb assay
+        control: [ 9 ]
+        perturbed: [ 24810, 10545 ]
 
 Trail:
     paper:
