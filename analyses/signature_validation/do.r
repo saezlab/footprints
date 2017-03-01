@@ -3,9 +3,9 @@ library(dplyr)
 io = import('io')
 ar = import('array')
 
-model = io$load('../../model/model_matrix.RData')$model
-expr = io$load('expr.RData')
-index = io$read_yaml('validation.yaml')
+model = io$load(module_file('../../model/model_matrix.RData'))$model
+expr = io$load(module_file('expr.RData'))
+index = io$read_yaml(module_file('validation.yaml'))
 
 # update index to include scores instead of expr index
 pathway_scores = function(path) {
