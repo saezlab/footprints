@@ -4,7 +4,7 @@ do = import('../analyses/signature_validation/do')
 
 \begin{figure}[H]
 <<sig_val, echo=FALSE, fig.width=12, fig.height=12>>=
-print(do$p + theme(strip.text.x = element_text(size = 10)))
+print(do$p + theme(strip.text.x = element_text(size = 11)))
 @
 \caption{asdasdasd}
 \label{fig:sig-val}
