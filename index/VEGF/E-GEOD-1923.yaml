@@ -7,7 +7,6 @@ cells     : U87 clone
 treatment : PDGF-A dominant negative
 effect    : inhibiting
 hours     : 24
-exclusion : test-set
 
 control   :
     - GSE1923GSM34580
@@ -33,7 +32,6 @@ cells     : PDGF-A dominant negative U87 clone
 treatment : PDGF-A
 effect    : activating
 hours     : 24
-exclusion : test-set
 
 control   :
     - GSE1923GSM34586

@@ -7,7 +7,6 @@ cells     : HCT116, HT-29, SW480 colon cancer cells
 treatment : PD98059 MEK-1 inhibitor
 effect    : inhibiting
 hours     : 48
-exclusion : test-set
 
 control   :
     - GSM455560 1
@@ -27,7 +26,6 @@ cells     : HCT116, HT-29, SW480 colon cancer cells
 treatment : U0126 MEK-1 inhibitor
 effect    : inhibiting
 hours     : 48
-exclusion : test-set
 
 control   :
     - GSM455560 1

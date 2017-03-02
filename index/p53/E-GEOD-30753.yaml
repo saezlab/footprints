@@ -7,7 +7,6 @@ cells     : immortalized B5/589 human mammary epithelial cells, inducible p53
 treatment : 3 ng doxicyclin
 effect    : activating
 hours     : 24
-exclusion : test-set
 
 control   :
     - GSM763011 1
@@ -29,7 +28,6 @@ cells     : immortalized B5/589 human mammary epithelial cells, inducible p53
 treatment : 5 ng doxicyclin
 effect    : activating
 hours     : 24
-exclusion : test-set
 
 control   :
     - GSM763011 1

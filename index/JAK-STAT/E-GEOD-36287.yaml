@@ -7,7 +7,6 @@ cells     : primary human keratinocytes
 treatment : IFN-gamma
 effect    : activating
 hours     : 24
-exclusion : test-set
 
 control   :
     - GSM886421 1
@@ -33,7 +32,6 @@ cells     : primary human keratinocytes
 treatment : IL-13
 effect    : activating
 hours     : 24
-exclusion : test-set
 
 control   :
     - GSM886421 1

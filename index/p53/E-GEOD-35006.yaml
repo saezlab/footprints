@@ -7,7 +7,6 @@ cells     : IPH-926
 treatment : heat-stable vs. labile condition
 effect    : activating
 hours     : 24
-exclusion : test-set
 
 control   :
     - GSM860189 1
@@ -27,7 +26,6 @@ cells     : BT-474
 treatment : heat-stable vs. labile condition
 effect    : activating
 hours     : 24
-exclusion : test-set
 
 control   :
     - GSM860201 1

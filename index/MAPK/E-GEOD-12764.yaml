@@ -7,7 +7,6 @@ cells     : MCF10A cells
 treatment : MEK1 over-expression
 effect    : activating
 hours     : 24
-exclusion : test-set
 
 control   :
     - GSE12764GSM320243

@@ -7,7 +7,6 @@ cells     : HCT116 cell line
 treatment : homozygous deletion of PTEN
 effect    : activating
 hours     : 24 # estimate
-exclusion : test-set
 
 control   :
     - GSE6263GSM144202

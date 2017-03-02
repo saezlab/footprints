@@ -7,7 +7,6 @@ cells     : HCMV-infected monocytes
 treatment : anti-EGFR antibody
 effect    : inhibiting
 hours     : 24 # or 4?- descripton mentions both
-exclusion : test-set
 
 control   :
     - GSM448940 1
@@ -29,7 +28,6 @@ cells     : HCMV-infected monocytes
 treatment : AG1478
 effect    : inhibiting
 hours     : 24 # or 4?- descripton mentions both
-exclusion : test-set
 
 control   :
     - GSM448940 1

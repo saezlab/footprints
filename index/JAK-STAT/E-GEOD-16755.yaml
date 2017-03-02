@@ -7,7 +7,6 @@ cells     : human monocyte-derived macrophages
 treatment : IFN alpha
 effect    : activating
 hours     : 4
-exclusion : test-set
 
 control   :
     - GSE16755GSM419987

@@ -7,7 +7,6 @@ cells     : HepG2 cells were pretreated with PD98059 for 1 hour
 treatment : MEK inhibitor, PD98059
 effect    : inhibiting
 hours     : 8
-exclusion : test-set
 
 control   :
     - GSM1421099 1
@@ -29,7 +28,6 @@ cells     : HepG2 cells were pretreated with PD98059 for 1 hour (no Histdine)
 treatment : MEK inhibitor, PD98059
 effect    : inhibiting
 hours     : 8
-exclusion : test-set
 
 control   :
     - GSM1421103 1

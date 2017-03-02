@@ -7,7 +7,6 @@ cells     : Human Mammalian Epithelial Cells (HMEC)
 treatment : 2% oxygen
 effect    : activating
 hours     : 24
-exclusion : test-set
 
 control   :
     - GSE9649GSM243730

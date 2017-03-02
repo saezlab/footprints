@@ -7,7 +7,6 @@ cells     : T4-2 breast epithelial cells
 treatment : 1 ug/ml TRAIL
 effect    : activating
 hours     : 4
-exclusion : test-set
 
 control   :
     - GSE8346GSM206809
@@ -29,7 +28,6 @@ cells     : T4-2 breast epithelial cells expressing N-CoR2
 treatment : 1 ug/ml TRAIL
 effect    : activating
 hours     : 4
-exclusion : test-set
 
 control   :
     - GSE8346GSM206830

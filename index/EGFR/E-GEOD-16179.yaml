@@ -7,7 +7,6 @@ cells     : BT474
 treatment : 1 uM lapatinib
 effect    : inhibiting
 hours     : 24
-exclusion : test-set
 
 control   :
     - GSM799168 1

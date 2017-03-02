@@ -7,7 +7,6 @@ cells     : normal human esophageal epithelial cells
 treatment : 1% Oxygen
 effect    : activating
 hours     : 24
-exclusion : test-set
 
 control   :
     - GSE17353GSM433796
@@ -27,7 +26,6 @@ cells     : normal human esophageal epithelial cells
 treatment : 0.2% Oxygen
 effect    : activating
 hours     : 24
-exclusion : test-set
 
 control   :
     - GSE17353GSM433796

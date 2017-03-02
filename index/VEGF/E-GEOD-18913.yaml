@@ -7,7 +7,6 @@ cells     : umbilical vein endothelial cells (HUVEC)
 treatment : VEGF
 effect    : activating
 hours     : 1
-exclusion : test-set
 
 control   :
     - GSM468603 1
@@ -28,7 +27,6 @@ cells     : umbilical vein endothelial cells (HUVEC)
 treatment : VEGF
 effect    : activating
 hours     : 4
-exclusion : test-set
 
 control   :
     - GSM468603 1

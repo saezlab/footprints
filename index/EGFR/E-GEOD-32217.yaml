@@ -7,7 +7,6 @@ cells     : neonatal foreskin primary keratinocytes (NHEKs) at 50% confluency
 treatment : EGF
 effect    : activating
 hours     : 48
-exclusion : test-set
 
 control   :
     - GSM798302 1
@@ -29,7 +28,6 @@ cells     : neonatal foreskin primary keratinocytes (NHEKs) at 100% confluency
 treatment : EGF
 effect    : activating
 hours     : 48
-exclusion : test-set
 
 control   :
     - GSM798310 1
