@@ -5,7 +5,7 @@ platform  : A-AFFY-141
 pathway   : TGFb
 cells     : SUM159 3D cultures
 treatment : TGFBR3KD knockdown
-effect    : inactivating
+effect    : inhibiting
 hours     : 24 # guess
 
 control   :
