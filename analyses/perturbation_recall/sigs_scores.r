@@ -1,6 +1,5 @@
 io = import('io')
 ar = import('array')
-roc = import('./roc')
 expr2scores = import('../../scores/speed/speed')$expr2scores
 
 #' Model with single zscore, not consensus
@@ -36,5 +35,5 @@ if (is.null(module_name())) {
     stopifnot(zdata$index$id == rownames(scores))
 
     # "pathways" are in cols
-    save(scores, index, file="roc_sigs.RData")
+    save(scores, index, file="sigs_scores.RData")
 }
