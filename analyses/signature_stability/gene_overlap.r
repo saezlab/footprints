@@ -15,7 +15,7 @@ nums = io$load('./resample_matrix.RData') %>%
 
 p = ggplot(nums, aes(x=n)) +
     geom_histogram(binwidth=1) +
-    facet_wrap(~pathway, scales="free_x")
+    facet_wrap(~pathway, scales="free")
 
 if (is.null(module_name())) {
     pdf("gene_overlap.pdf", paper="a4r")
