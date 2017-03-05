@@ -3,16 +3,6 @@ b = import('base')
 io = import('io')
 ar = import('array')
 
-MODEL = commandArgs(TRUE)[1] %or% "../../model/model_matrix.r"
-EXPR = commandArgs(TRUE)[2] %or% "../../data/expr.RData"
-ZSCORES = commandArgs(TRUE)[3] %or% "../../data/zscores.RData"
-OUTFILE = commandArgs(TRUE)[4] %or% "speed_matrix.RData"
-
-# load zscores, model building function, and expression for each experiment
-zdata = io$load(ZSCORES)
-zdata2model = import_(sub("\\.r$", "", MODEL))$zscore2model
-expr = io$load(EXPR)
-
 #' Calculates the scores on each experiment excluding it in the signature
 #'
 #' @param id     A character ID of the current experiment to work on
@@ -41,13 +31,25 @@ expr2scores = function(id, expr, zdata, zdata2model) {
     colMeans(ptb) - colMeans(ctl) # better w/o scale, but enough?
 }
 
-scores = clustermq::Q(expr2scores, id=zdata$index$id, job_size=1,
-          const = list(expr=expr, zdata=zdata, zdata2model=zdata2model)) %>%
-    setNames(zdata$index$id) %>%
-    ar$stack(along=1) %>%
-    ar$map(along=1, scale) # do we want to sale this?
+if (is.null(module_name())) {
+    MODEL = commandArgs(TRUE)[1] %or% "../../model/model_matrix.r"
+    EXPR = commandArgs(TRUE)[2] %or% "../../data/expr.RData"
+    ZSCORES = commandArgs(TRUE)[3] %or% "../../data/zscores.RData"
+    OUTFILE = commandArgs(TRUE)[4] %or% "speed_matrix.RData"
 
-index = dplyr::select(zdata$index, -exclusion)
-stopifnot(zdata$index$id == rownames(scores))
+    # load zscores, model building function, and expression for each experiment
+    zdata = io$load(ZSCORES)
+    zdata2model = import_(sub("\\.r$", "", MODEL))$zscore2model
+    expr = io$load(EXPR)
 
-save(scores, index, file=OUTFILE)
+    scores = clustermq::Q(expr2scores, id=zdata$index$id, job_size=1,
+              const = list(expr=expr, zdata=zdata, zdata2model=zdata2model)) %>%
+        setNames(zdata$index$id) %>%
+        ar$stack(along=1) %>%
+        ar$map(along=1, scale) # do we want to sale this?
+
+    index = dplyr::select(zdata$index, -exclusion)
+    stopifnot(zdata$index$id == rownames(scores))
+
+    save(scores, index, file=OUTFILE)
+}
