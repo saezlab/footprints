@@ -14,7 +14,7 @@ nums = io$load('./resample_matrix.RData') %>%
     filter(n != 0)
 
 p = ggplot(nums, aes(x=n)) +
-    geom_histogram(binwidth=1) +
+    geom_histogram(binwidth=5) +
     facet_wrap(~pathway, scales="free")
 
 if (is.null(module_name())) {
