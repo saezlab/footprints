@@ -24,19 +24,24 @@ methods2roc = function(fids) {
 
 #' Convert a scores matrix to TPR/FPR
 #'
-#' @param mat  Scores matrix [experiments x pathways]
-scores2roc = function(mat) {
-	index = mat$index # bit duplication from report/util_1 (4 lines w/ 2 above)
+#' @param scores  Scores object (scores: [experiments x pathways], index: df)
+#' @param lookup  Lookup table for signature>pathway (default: colnames)
+scores2roc = function(scores, lookup=setNames(colnames(scores$scores), colnames(scores$scores))) {
+	index = scores$index # bit duplication from report/util_1 (4 lines w/ 2 above)
     sign = ifelse(index$effect == "activating", 1, -1)
-	scores = mat$scores * sign # not sure if col+row-scale here, but we look per-pathway
+	mat = scores$scores * sign # not sure if col+row-scale here, but we look per-pathway
 
-    df = data.frame(pathway=index$pathway, scores, check.names=FALSE) %>%
-        melt(id="pathway") %>%
-        mutate(perturbed = as.integer(variable==pathway)) %>%
-        select(-variable) %>%
+    df = data.frame(perturbed = index$pathway,
+                    mat,
+                    check.names = FALSE) %>%
+        tidyr::gather(signature, score, -perturbed) %>%
+        mutate(inferred = lookup[signature],
+               matched = as.integer(perturbed == inferred)) %>%
         na.omit() %>%
-        group_by(pathway) %>%
-        do(st$roc(., "value", "perturbed")) %>%
+#        group_by(signature, inferred) %>%
+#        group_by(perturbed) %>% #  current results
+        group_by(signature) %>%
+        do(st$roc(., "score", "matched")) %>%
         ungroup()
 }
 
@@ -48,7 +53,7 @@ roc2plot = function(roc, width=1) {
         geom_line(aes(x=x, y=y), data=random_line, color="grey", linetype="dashed", size=width) +
         geom_step(size=width) +
         coord_fixed() +
-        facet_wrap(~pathway) +
+        facet_wrap(~signature) +
         theme(axis.text.x = element_text(angle = 45, hjust = 1))
 }
 
@@ -56,15 +61,15 @@ roc2plot = function(roc, width=1) {
 roc2auc = function(roc) {
     auc = roc %>%
         mutate(method = config$id2short(method)) %>%
-        group_by(method, pathway) %>%
-        arrange(value) %>%
-        summarize(auc = st$roc_auc(value, perturbed==1)) %>%
+        group_by(method, signature) %>%
+        arrange(score) %>%
+        summarize(auc = st$roc_auc(score, matched==1)) %>%
         tidyr::spread(method, auc)
 }
 
 if (is.null(module_name())) {
     roc = methods2roc(setdiff(config$methods$analysis_set, "paradigm"))
-    auc = roc2auc(roc)
+#    auc = roc2auc(roc)
 
     pdf("roc.pdf", paper="a4r", width=11, height=8)
 
