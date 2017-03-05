@@ -2,6 +2,9 @@
 library(dplyr)
 roc = import('../analyses/perturbation_recall/roc')
 config = import('../config')
+
+auc = roc$methods2roc(setdiff(config$methods$analysis_set, "paradigm")) %>%
+	roc$roc2auc()
 @
 
 \begin{table}[H]
@@ -10,6 +13,6 @@ config = import('../config')
     scores derived by different pathway methods, known pathway perturbations
         are True Positives. }
 <<roc_auc, echo=FALSE>>=
-kable(roc$auc, digits=2, booktabs=TRUE)
+kable(auc, digits=2, booktabs=TRUE)
 @
 \end{table}

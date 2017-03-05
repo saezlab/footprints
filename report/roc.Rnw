@@ -2,11 +2,13 @@
 library(dplyr)
 roc = import('../analyses/perturbation_recall/roc')
 config = import('../config')
+
+myroc = roc$methods2roc(setdiff(config$methods$analysis_set, "paradigm"))
 @
 
 \begin{figure}[H]
 <<roc_curves, echo=FALSE>>=
-roc$roc %>%
+myroc %>%
     mutate(method = config$id2short(method)) %>%
     roc$do_plot(width=1.05) +
         config$facet_theme +
