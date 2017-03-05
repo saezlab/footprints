@@ -31,4 +31,22 @@ control   :
 perturbed :
     - GSM746064 1
     - GSM746065 1
+
+---
+id        : p53.E-GEOD-30137.3
+accession : E-GEOD-30137
+platform  : A-AFFY-141
+pathway   : p53
+cells     : HepG2 cells (sh control)
+treatment : 0.5 mM AICAR
+effect    : inhibiting
+hours     : 24
+exclusion : validation
+
+control   :
+    - GSM746062 1
+    - GSM746063 1
+perturbed :
+    - GSM746064 1
+    - GSM746065 1
 ...

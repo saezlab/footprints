@@ -7,6 +7,7 @@ cells     : Sez-4 cell line
 treatment : IL-2
 effect    : activating
 hours     : 16
+exclusion : validation
 
 control   :
     - GSE8687GSM215361

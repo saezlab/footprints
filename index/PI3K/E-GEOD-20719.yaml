@@ -7,6 +7,7 @@ cells     : T47D breast cancer cells
 treatment : 1 mM GDC-0941
 effect    : inhibiting
 hours     : 6
+exclusion : validation
 
 control   :
     - GSM520228 1
