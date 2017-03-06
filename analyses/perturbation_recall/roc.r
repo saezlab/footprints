@@ -8,39 +8,45 @@ df = import('data_frame')
 st = import('stats')
 config = import('../../config')
 
-#' Return a data.frame with precision-recall curves
+#' Creates a data.frame for a scores object
 #'
-#' @param fid  Method ID descriptor ('speed_matrix', 'gsea_go', etc.)
-methods2roc = function(fids) {
-	data = lapply(fids, function(fid)
-        io$load(module_file("../../scores/speed",
-                paste0(fid, ".RData"), mustWork = TRUE)))
+#' @param sobj  A file name or scores object
+scores2df = function(sobj) {
+    if (is.character(sobj))
+        sobj = io$load(sobj)
 
-    lapply(data, scores2roc) %>%
-        setNames(fids) %>%
-        df$add_name_col(col="method", bind=TRUE) %>%
-        na.omit()
+    sign = ifelse(sobj$index$effect == "activating", 1, -1)
+    scores = sobj$scores * sign
+#    scores = ar$map(scores, along=2, function(x) scale(x,center=F))
+
+    df = data.frame(perturbed = sobj$index$pathway,
+                    scores,
+                    check.names = FALSE) %>%
+        tidyr::gather(signature, score, -perturbed)
 }
 
-#' Convert a scores matrix to TPR/FPR
-#'
-#' @param scores  Scores object (scores: [experiments x pathways], index: df)
-#' @param lookup  Lookup table for signature>pathway (default: colnames)
-scores2roc = function(scores, lookup=setNames(colnames(scores$scores), colnames(scores$scores))) {
-	index = scores$index # bit duplication from report/util_1 (4 lines w/ 2 above)
-    sign = ifelse(index$effect == "activating", 1, -1)
-	mat = scores$scores * sign # not sure if col+row-scale here, but we look per-pathway
+#' Returns the analysis set and their relative paths
+analysis_set2roc = function() {
+    fids = setdiff(config$methods$analysis_set, "paradigm")
 
-    df = data.frame(perturbed = index$pathway,
-                    mat,
-                    check.names = FALSE) %>%
-        tidyr::gather(signature, score, -perturbed) %>%
-        mutate(inferred = lookup[signature],
-               matched = as.integer(perturbed == inferred)) %>%
+    # data.frame with columns:
+    #   perturbed : which pathway was perturbed in the experiment
+    #   signature : which signature was used to quantify
+    #   score     : the score assigned by the signature
+    #   method    : which method the signature comes from
+    scoredf = paste0(fids, ".RData") %>%
+        module_file("../../scores/speed", ., mustWork = TRUE) %>%
+        setNames(fids) %>%
+        lapply(scores2df) %>%
+        df$add_name_col(col="method", bind=TRUE)
+
+    # group_by:
+    #   perturbed : are scores higher for pathway sig than others?
+    #   signature : does sig assign higher score for pathway that is perturbed?
+    roc = scoredf %>%
         na.omit() %>%
-#        group_by(signature, inferred) %>%
-#        group_by(perturbed) %>% #  current results
-        group_by(signature) %>%
+        mutate(matched = perturbed == signature) %>%
+        group_by(perturbed, method) %>%
         do(st$roc(., "score", "matched")) %>%
         ungroup()
 }
@@ -53,7 +59,7 @@ roc2plot = function(roc, width=1) {
         geom_line(aes(x=x, y=y), data=random_line, color="grey", linetype="dashed", size=width) +
         geom_step(size=width) +
         coord_fixed() +
-        facet_wrap(~signature) +
+        facet_wrap(~perturbed) +
         theme(axis.text.x = element_text(angle = 45, hjust = 1))
 }
 
@@ -61,14 +67,14 @@ roc2plot = function(roc, width=1) {
 roc2auc = function(roc) {
     auc = roc %>%
         mutate(method = config$id2short(method)) %>%
-        group_by(method, signature) %>%
+        group_by(method, perturbed) %>%
         arrange(score) %>%
         summarize(auc = st$roc_auc(score, matched==1)) %>%
         tidyr::spread(method, auc)
 }
 
 if (is.null(module_name())) {
-    roc = methods2roc(setdiff(config$methods$analysis_set, "paradigm"))
+    roc = analysis_set2roc()
 #    auc = roc2auc(roc)
 
     pdf("roc.pdf", paper="a4r", width=11, height=8)
