@@ -1,7 +1,3 @@
-library(dplyr)
-io = import('io')
-ar = import('array')
-
 #' Calculates the scores on each experiment excluding it in the signature
 #'
 #' This combines scores/speed/speed.r:expr2scores and model/model_matrix:zdata2scores
@@ -14,28 +10,50 @@ ar = import('array')
 #' @param zscore2model  The model building function (takes: zdata, hpc_args)
 #' @return       Pathway scores for the current experiment
 expr2scores = function(id, expr, zdata) {
+    library(dplyr)
+    library(magrittr)
     stopifnot(zdata$index$id == names(expr$records))
     b = import('base')
     ar = import('array')
     index = expr$records[[id]]
-    expr = expr$expr[[id]]
 
-    # build the model without the current experiment
-    zdata$index = zdata$index[zdata$index$id!=id,]
-    zdata$zscores = zdata$zscores[,colnames(zdata$zscores) != id]
+    # subset control and perturbed matrices
+    emat = expr$expr[[id]][,c(index$control, index$perturbed)]
+    ctl = emat[,index$control]
+    ptb = emat[,index$perturbed]
 
-    vecs = t(t(zdata$zscores) * zdata$index$sign)
-    vecs[apply(vecs, 2, function(p) !b$min_mask(abs(p), 100))] = 0
+    # get top100 DE genes
+    type = c(rep("ctl", ncol(ctl)), rep("ptb", ncol(ptb)))
+    design = model.matrix(~ 0 + type)
+    mod = limma::lmFit(emat, design)
+    contrast = limma::makeContrasts("typeptb-typectl", levels=design)
+    mod = limma::contrasts.fit(mod, contrast)
+    mod = limma::eBayes(mod)
+    top100 = as.data.frame(mod$p.value) %>%
+        mutate(gene = rownames(.)) %>%
+        arrange(`typeptb-typectl`) %>%
+        head(100) %$%
+        gene
 
-    # calculate the scores for the current experiment
-    ar$intersect(vecs, expr, along=1)
-    mat = t(expr) %*% vecs
-    ctl = mat[index$control,,drop=FALSE]
-    ptb = mat[index$perturbed,,drop=FALSE]
-    colMeans(ptb) - colMeans(ctl) # better w/o scale, but enough?
+    # get z vector for the top genes
+    vec = zdata$zscores[,id,drop=FALSE][top100,,drop=FALSE]
+    if (index$effect != "activating")
+        vec = -vec
+
+    # quantify signature in all other experiments
+    others = expr$expr[,colnames(expr$expr) != id]
+    ar$intersect(vec, emat, along=1)
+    scores = t(emat) %*% vec
+#    ctlmean = mean()
+#    ptbmean = mean(t(ptb) %*% vec)
+#    ptbmean - ctlmean
 }
 
 if (is.null(module_name())) {
+    library(dplyr)
+    io = import('io')
+    ar = import('array')
+
     # zs$zscores : z-scores genes x experiments
     # zs$index   : index df w/ id=experiment, other metadata
     zdata = io$load('../../data/zscores.RData')
