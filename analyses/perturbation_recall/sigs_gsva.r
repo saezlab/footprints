@@ -1,3 +1,4 @@
+library(dplyr)
 io = import('io')
 ar = import('array')
 gsva = import('../../scores/speed/gsva')$gsva
@@ -42,6 +43,10 @@ if (is.null(module_name())) {
         setNames(names(expr$records)) %>%
         ar$stack(along=1)
 
+    index = lapply(expr$records, function(x) x[! names(x) %in% c('control', 'perturbed')])
+    index = bind_rows(index) %>%
+        select(-exclusion)
+
     # "pathways" are in cols
-    save(scores, file="sigs_gsva.RData")
+    save(index, scores, file="sigs_gsva.RData")
 }
