@@ -1,9 +1,8 @@
 <<setup_roc_auc, include=FALSE>>=
 library(dplyr)
 roc = import('../analyses/perturbation_recall/roc')
-config = import('../config')
 
-auc = roc$methods2roc(setdiff(config$methods$analysis_set, "paradigm")) %>%
+auc = roc$analysis_set2roc() %>%
 	roc$roc2auc()
 @
 

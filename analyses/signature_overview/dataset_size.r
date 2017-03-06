@@ -6,7 +6,7 @@ records = io$load('../../data/expr.RData')$records
 index = io$load('../../data/zscores.RData')$index # the ones we actually use (pass qc, etc)
 gatza2009 = io$read_table('../../util/genesets/ng.3073-S2_info.txt', header=TRUE)
 
-gsva_speed2016 = list(
+gsea_speed2016 = list(
     Pathways = 11,
     Datasets = 69,
     Experiments = 215,
@@ -34,5 +34,5 @@ gsva_gatza = list(
     Arrays = 287 # by summing up numbers in supp fig. 4
 )
 
-df = cbind(measure=names(gsva_speed2016), gsva_speed2016, speed_matrix, gsva_gatza)
+df = cbind(measure=names(gsea_speed2016), gsea_speed2016, speed_matrix, gsva_gatza)
 io$write_table(df, file="dataset_size.txt", sep="\t")

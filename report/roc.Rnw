@@ -3,7 +3,7 @@ library(dplyr)
 roc = import('../analyses/perturbation_recall/roc')
 config = import('../config')
 
-myroc = roc$methods2roc(setdiff(config$methods$analysis_set, "paradigm"))
+myroc = roc$analysis_set2roc()
 @
 
 \begin{figure}[H]

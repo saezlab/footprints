@@ -38,7 +38,7 @@ plot_hypergeom = function() {
         geom_hline(yintercept=-log10(0.1), linetype="dotted") +
         coord_flip() +
         geom_text(aes(y=0, label=paste(" ", set)), hjust=0) +
-        facet_wrap(~ pathway, scales="free") +
+        facet_wrap(~ pathway, scales="free", ncol=2) +
         theme_minimal() +
         theme(axis.ticks.y = element_blank(),
               axis.text.y = element_blank()) +
