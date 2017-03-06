@@ -5,7 +5,7 @@ analysis_set:
     - spia
     - pathifier
     - paradigm
-    - gsva_speed2016
+    - gsea_speed2016
     - gsva_gatza
 
 ids:
@@ -17,7 +17,7 @@ ids:
     - paradigm
     - mutation
     - gsva_speed1
-    - gsva_speed2016
+    - gsea_speed2016
     - gsva_gatza
 
 names:
