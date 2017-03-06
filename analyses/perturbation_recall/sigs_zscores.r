@@ -35,5 +35,5 @@ if (is.null(module_name())) {
     stopifnot(zdata$index$id == rownames(scores))
 
     # "pathways" are in cols
-    save(scores, index, file="sigs_scores.RData")
+    save(scores, index, file="sigs_zscores.RData")
 }
