@@ -13,8 +13,8 @@ roc.pdf: roc.r $(SCORES) ../../scores/speed/speed_matrix.RData
 roc_lincs.pdf: roc_lincs.r $(LINCS) ../../scores/lincs/speed_matrix.RData
 	Rscript $< $@
 
-sigs_scores.RData: sigs_scores.r ../../scores/speed/speed.r
+sigs_%.RData: sigs_%.r ../../scores/speed/speed.r
 	Rscript $< $@
 
-sigs_roc.pdf: sigs_roc.r roc.r sigs_scores.RData
+sigs_roc.pdf: sigs_roc.r roc.r sigs_zscores.RData
 	Rscript $< sigs_scores.RData $@
