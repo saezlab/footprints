@@ -1,28 +1,6 @@
 b = import('base')
 io = import('io')
 ar = import('array')
-gdsc = import('data/gdsc')
-
-INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/mapped/go.RData"
-EXPR = commandArgs(TRUE)[2] %or% "../../data/expr.RData"
-OUTFILE = commandArgs(TRUE)[3] %or% "pathways_mapped/gsea_go.RData"
-
-# only filter when we didn't select manually
-if (grepl("mapped", OUTFILE)) {
-    MIN_GENES = 1
-    MAX_GENES = Inf
-    job_size = 1
-} else {
-    MIN_GENES = 5
-    MAX_GENES = 500
-    job_size = 20
-}
-
-# load required data
-speed = io$load(EXPR)
-index = speed$records
-expr = speed$expr
-genesets = io$load(INFILE)
 
 #' Function to calculate GSVA score for a single signature
 #'
@@ -36,12 +14,35 @@ gsva = function(index, expr, sigs, ...) {
     rowMeans(re[,index$perturbed,drop=FALSE]) - rowMeans(re[,index$control,drop=FALSE])
 }
 
-scores = clustermq::Q(gsva, index=index, expr=expr, const = list(sigs=genesets),
-        memory = 1024, n_jobs = 20) %>%
-    setNames(names(index)) %>%
-    ar$stack(along=1)
+if (is.null(module_name())) {
+    INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/mapped/go.RData"
+    EXPR = commandArgs(TRUE)[2] %or% "../../data/expr.RData"
+    OUTFILE = commandArgs(TRUE)[3] %or% "pathways_mapped/gsea_go.RData"
 
-filter_index = function(x) x[! names(x) %in% c('control', 'perturbed', 'exclusion')]
-index = do.call(bind_rows, lapply(index, filter_index))
+    # only filter when we didn't select manually
+    if (grepl("mapped", OUTFILE)) {
+        MIN_GENES = 1
+        MAX_GENES = Inf
+        job_size = 1
+    } else {
+        MIN_GENES = 5
+        MAX_GENES = 500
+        job_size = 20
+    }
 
-save(scores, index, file=OUTFILE)
+    # load required data
+    speed = io$load(EXPR)
+    index = speed$records
+    expr = speed$expr
+    genesets = io$load(INFILE)
+
+    scores = clustermq::Q(gsva, index=index, expr=expr, const = list(sigs=genesets),
+            memory = 1024, n_jobs = 20) %>%
+        setNames(names(index)) %>%
+        ar$stack(along=1)
+
+    filter_index = function(x) x[! names(x) %in% c('control', 'perturbed', 'exclusion')]
+    index = do.call(bind_rows, lapply(index, filter_index))
+
+    save(scores, index, file=OUTFILE)
+}
