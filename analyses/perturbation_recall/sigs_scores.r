@@ -1,19 +1,38 @@
+library(dplyr)
 io = import('io')
 ar = import('array')
-expr2scores = import('../../scores/speed/speed')$expr2scores
 
-#' Model with single zscore, not consensus
+#' Calculates the scores on each experiment excluding it in the signature
 #'
-#' @param zdata  A list with the zscore matrix and index object
-#' @return       The coefficients matrix [gene x experiment]
-zdata2model = function(zdata) {
+#' This combines scores/speed/speed.r:expr2scores and model/model_matrix:zdata2scores
+#'
+#' @param id     A character ID of the current experiment to work on
+#' @param expr   List of all input experiments, fields 'records' [list w/ id, etc.]
+#'               and 'expr' [genes x arrays]
+#' @param zdata  A list with fields 'index' providing experiment info
+#'               [data.frame] and 'zscores' [genes x experiments]
+#' @param zscore2model  The model building function (takes: zdata, hpc_args)
+#' @return       Pathway scores for the current experiment
+expr2scores = function(id, expr, zdata) {
+    stopifnot(zdata$index$id == names(expr$records))
     b = import('base')
+    ar = import('array')
+    index = expr$records[[id]]
+    expr = expr$expr[[id]]
 
-    index = zdata$index
-    zscores = t(t(zdata$zscores) * index$sign)
-    zscores[apply(zscores, 2, function(p) !b$min_mask(abs(p), 100))] = 0
+    # build the model without the current experiment
+    zdata$index = zdata$index[zdata$index$id!=id,]
+    zdata$zscores = zdata$zscores[,colnames(zdata$zscores) != id]
 
-    list(model = zscores)
+    vecs = t(t(zdata$zscores) * zdata$index$sign)
+    vecs[apply(vecs, 2, function(p) !b$min_mask(abs(p), 100))] = 0
+
+    # calculate the scores for the current experiment
+    ar$intersect(vecs, expr, along=1)
+    mat = t(expr) %*% vecs
+    ctl = mat[index$control,,drop=FALSE]
+    ptb = mat[index$perturbed,,drop=FALSE]
+    colMeans(ptb) - colMeans(ctl) # better w/o scale, but enough?
 }
 
 if (is.null(module_name())) {
@@ -26,7 +45,7 @@ if (is.null(module_name())) {
     expr = io$load('../../data/expr.RData')
 
     scores = clustermq::Q(expr2scores, id=zdata$index$id, job_size=50,
-              const = list(expr=expr, zdata=zdata, zdata2model=zdata2model)) %>%
+              const = list(expr=expr, zdata=zdata)) %>%
         setNames(zdata$index$id) %>%
         ar$stack(along=1) %>%
         ar$map(along=1, scale) # do we want to sale this?
