@@ -34,6 +34,7 @@ get = function(sets = c("go", "reactome", "speed2016", "gatza"),
         lapply(function(x) x$gene) # nest() returns tibble otherwise
 
     names(sets) = paste0("gsva_", names(sets))
+    names(sets) = sub("gsva_speed2016", "gsea_speed2016", names(sets)) #TODO:
     sets = c(speed_matrix=list(speed), sets)
     names(sets) = config$id2short(names(sets))
 
