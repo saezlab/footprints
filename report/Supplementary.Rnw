@@ -52,8 +52,6 @@
 
 \Sexpr{knit_child('signature_overlap.Rnw')}
 
-\Sexpr{knit_child('geneset_overlap_matrix.Rnw')}
-
 \Sexpr{knit_child('signature_go.Rnw')}
 
 \Sexpr{knit_child('signature_validation.Rnw')}
