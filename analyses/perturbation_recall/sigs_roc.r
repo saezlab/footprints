@@ -27,8 +27,7 @@ random_line = data.frame(x=c(0,1), y=c(0,1), method=roc$signature[1])
 ggplot(roc, aes(x=FPR, y=TPR, color=method)) +
     geom_line(aes(x=x, y=y), data=random_line, color="grey", linetype="dashed", size=width) +
     stat_summary(aes(fill=method), geom="ribbon", alpha=0.2,
-                 fun.ymin = min,
-                 fun.ymax = max) +
+                 fun.ymin = min, fun.ymax = max, size=width) +
 #    geom_step(size=width, stat="summary", fun.y=median) +
     coord_fixed() +
     facet_wrap(~inferred) +
