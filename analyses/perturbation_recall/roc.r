@@ -47,7 +47,7 @@ analysis_set2roc = function() {
         na.omit() %>%
         mutate(inferred = signature, # same when mapped
                matched = perturbed == inferred) %>%
-        group_by(perturbed, method) %>%
+        group_by(inferred, method) %>%
         do(st$roc(., "score", "matched")) %>%
         ungroup()
 }
@@ -60,7 +60,7 @@ roc2plot = function(roc, width=1) {
         geom_line(aes(x=x, y=y), data=random_line, color="grey", linetype="dashed", size=width) +
         geom_step(size=width) +
         coord_fixed() +
-        facet_wrap(~perturbed) +
+        facet_wrap(~inferred) +
         theme(axis.text.x = element_text(angle = 45, hjust = 1))
 }
 
@@ -68,7 +68,7 @@ roc2plot = function(roc, width=1) {
 roc2auc = function(roc) {
     auc = roc %>%
         mutate(method = config$id2short(method)) %>%
-        group_by(method, perturbed) %>%
+        group_by(method, inferred) %>%
         arrange(score) %>%
         summarize(auc = st$roc_auc(score, matched==1)) %>%
         tidyr::spread(method, auc)
