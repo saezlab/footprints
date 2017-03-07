@@ -36,6 +36,8 @@
     separate file. HGNC gene names in rows, pathways in columns.}
 \end{table}
 
+\captionsetup[subfloat]{position=top}
+
 \Sexpr{knit_child('pathway_mapping.Rnw')}
 
 \Sexpr{knit_child('roc_auc.Rnw')}
@@ -45,6 +47,8 @@
 \Sexpr{knit_child('drug_over_mut_stats.Rnw')}
 
 \section{Supplementary figures}
+
+\captionsetup[subfloat]{position=bottom}
 
 \Sexpr{knit_child('dataset_size.Rnw')}
 

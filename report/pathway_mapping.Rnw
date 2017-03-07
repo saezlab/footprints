@@ -9,11 +9,12 @@
 %@
 %\end{table}
 
-
 \begin{table}[H]
+\caption{Pathway mapping for different methods}
 \centering
-\caption{Pathway mapping for Gene Ontology. GO categories (ID and name) shown
-    for the 11 pathways we investigate.}
+
+\subfloat[Pathway mapping for Gene Ontology. GO categories (ID and name) shown
+    for the 11 pathways we investigate.]{
 \begin{tabular}{ccc}
 \hline
 \multirow{2}{*}{Pathway} & \multicolumn{2}{c}{Gene Ontology}\tabularnewline
@@ -33,14 +34,12 @@ Trail & GO:0036462 & TRAIL-activated apoptotic signaling pathway\tabularnewline
 VEGF & GO:0038084 & vascular endothelial growth factor signaling pathway\tabularnewline
 \hline
 \end{tabular}
-\end{table}
+}
 
-\begin{table}[H]
-\centering
-\caption{Pathway mapping for Reactome and Pathifier. Listed are reactome
+\subfloat[Pathway mapping for Reactome and Pathifier. Listed are reactome
     pathway names that were used either for GSVA pathway scores or Pathifier
         scores using the respective R packages. If more than one pathway is
-        listed all of them were used in the gene set.}
+        listed all of them were used in the gene set.]{
 \begin{tabular}{cc}
 \hline
 Pathway & Name\tabularnewline
@@ -65,12 +64,10 @@ Trail & TRAIL signaling\tabularnewline
 VEGF & Signaling by VEGF\tabularnewline
 \hline
 \end{tabular}
-\end{table}
+}
 
-\begin{table}[H]
-\centering
-\caption{Pathway mapping for SPIA. KEGG pathway IDs and names that SPIA relies
-on are listed (this is part of the SPIA R package).}
+\subfloat[Pathway mapping for SPIA. KEGG pathway IDs and names that SPIA relies
+on are listed (this is part of the SPIA R package).]{
 \begin{tabular}{ccc}
 \hline
 \multirow{2}{*}{Pathway} & \multicolumn{2}{c}{SPIA}\tabularnewline
@@ -90,16 +87,19 @@ Trail & 04210 & Apoptosis\tabularnewline
 VEGF & 04370 & VEGF signaling pathway\tabularnewline
 \hline
 \end{tabular}
-\end{table}
+}
 
-\begin{table}[H]
-\centering
-\caption{Pathway mapping for PARADIGM. This method is different as it performs
+\phantomcaption
+\end{table}
+\begin{table}[!htbp]
+\ContinuedFloat
+
+\subfloat[Pathway mapping for PARADIGM. This method is different as it performs
 inference on a signaling network instead of providing pathways itself. We used
 the network the TCGA is using in their
 analyses\footnote{https://tcga-data.nci.nih.gov/docs/publications/coadread_2012/}.
 This network has activity nodes for pathways and important processes that we
-used here, as listed.}
+used here, as listed.]{
 \begin{tabular}{cc}
 \hline
 Pathway & PARADIGM\tabularnewline
@@ -117,11 +117,9 @@ Trail & induction of apoptosis (abstract)\tabularnewline
 VEGF & platelet-derived growth factor receptor activity (abstract)\tabularnewline
 \hline
 \end{tabular}
-\end{table}
+}
 
-\begin{table}[H]
-\centering
-\caption{Pathway mapping for the signatures published and validated in Gatza et al. (2009)}
+\subfloat[Pathway mapping for the signatures published and validated in Gatza et al. (2009)]{
 \begin{tabular}{cc}
 \hline
 Pathway & Gatza (2009)\tabularnewline
@@ -137,4 +135,6 @@ TGFb & TGFB\tabularnewline
 VEGF & VEGF/HYPOXIA\tabularnewline
 \hline
 \end{tabular}
+}
+
 \end{table}
