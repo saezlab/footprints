@@ -1,15 +1,40 @@
-\begin{figure}[H]
-<<sig_overlap, echo=FALSE, fig.width=4.5, fig.heigth=4.5>>=
-import('../analyses/signature_overview/signature_overlap')$overlap()
+<<setup_genesets, include=FALSE>>=
+so = import('../analyses/signature_overview/signature_overlap')
+gso = import('../analyses/signature_overview/geneset_overlap')
+sets = gso$get_genesets()
 @
-\caption{Overlap of signature genes for different pathways. For the 100 genes
+
+\begin{figure}[!htbp]
+
+\subfloat[Overlap of signature genes for different pathways. For the 100 genes
     we selected for each individual pathway, this shows how many of those
-        signature genes are present in another pathway as well. The overlap is
-        generally minimal, with the highest numbers between TNFa and NFkB (18)
-        and EGFR and MAPK (9). As both of these pathway pairs have one
-        component that is directly upstream of the other, this is to be
-        exptected. This also shows that the response genes are specific to
-        their perturbation and not a common phenotype like stress response
-        because of any perturbation.}
-\label{fig:sig-overlap}
+    signature genes are present in another pathway as well. The overlap is
+    generally minimal, with the highest numbers between TNFa and NFkB (18)
+    and EGFR and MAPK (9). As both of these pathway pairs have one
+    component that is directly upstream of the other, this is to be
+    exptected. This also shows that the response genes are specific to
+    their perturbation and not a common phenotype like stress response
+    because of any perturbation.]{
+<<sig_overlap, echo=FALSE, fig.width=4.5, fig.heigth=4.5>>=
+so$overlap()
+@
+}
+
+\phantomcaption
+\end{figure}
+\begin{figure}[!htbp]
+\ContinuedFloat
+
+\subfloat[Difference in gene sets between PROGENy genes and Gene Ontology,
+Reactome (incl. Pathifier), SPEED (2016) and Gatza (2009). PROGENy genes are
+different to pathway members and gene annotations, with between 0 and 4 genes
+in common. Overlap with other signatures is higher, but still a minor fraction
+of the total number of signature genes.]{
+<<genesets, echo=FALSE, warnings=FALSE>>=
+gso$geneset_overlap_matrix(sets)
+@
+}
+
+\caption{Overlap between different gene sets}
+\label{fig:genesets}
 \end{figure}

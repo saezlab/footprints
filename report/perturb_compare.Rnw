@@ -50,13 +50,14 @@ util$perturb_score_plots('gsva_gatza')
 @
 }
 
+\phantomcaption
 \end{figure}
 \begin{figure}[!htbp]
 \ContinuedFloat
 
 \subfloat[SPEED (Iorio et al., 2016)]{
 <<perturb_speed2016, echo=FALSE, fig.width=6.5, fig.height=2.5>>=
-util$perturb_score_plots('gsva_speed2016')
+util$perturb_score_plots('gsea_speed2016')
 @
 }
 
