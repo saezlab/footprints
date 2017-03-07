@@ -43,6 +43,9 @@ if (is.null(module_name())) {
         setNames(names(expr$records)) %>%
         ar$stack(along=1)
 
+    stopifnot(all(rownames(scores) == colnames(scores)))
+    diag(scores) = NA
+
     index = lapply(expr$records, function(x) x[! names(x) %in% c('control', 'perturbed')])
     index = bind_rows(index) %>%
         select(-exclusion)
