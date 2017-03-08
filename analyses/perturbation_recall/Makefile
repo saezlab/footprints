@@ -7,7 +7,7 @@ plot: $(HEATMAPS) roc_speed.pdf roc_lincs.pdf
 heatmap_%.pdf: ../../scores/speed/%.RData heatmap.r
 	Rscript heatmap.r $< $@
 
-roc_speed.pdf: roc_speed.r roc_util.r $(SCORES) ../../scores/speed/speed_matrix.RData
+roc_speed.pdf: roc_speed.r roc_util.r sigs_gsva.RData sigs_zscores.RData $(SCORES) ../../scores/speed/speed_matrix.RData
 	Rscript $< $@
 
 roc_lincs.pdf: roc_lincs.r $(LINCS) ../../scores/lincs/speed_matrix.RData

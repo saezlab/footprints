@@ -24,7 +24,7 @@ exp2sig = function(expr, index) {
     contrast = limma::makeContrasts("typeptb-typectl", levels=design)
     mod = limma::contrasts.fit(mod, contrast)
     mod = limma::eBayes(mod)
-    top100 = as.data.frame(mod$p.value) %>%
+    top100 = as.data.frame(-mod$t) %>%
         mutate(gene = rownames(.)) %>%
         arrange(`typeptb-typectl`) %>%
         head(100) %$%
