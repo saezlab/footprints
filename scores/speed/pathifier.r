@@ -56,7 +56,8 @@ if (any(errors)) {
     print(result[errors])
     result[errors] = NA
 }
-scores = ar$stack(result, along=1)
+scores = ar$stack(result, along=1) %>%
+    ar$map(along=2, scale) # otherwise all pathways high, artefact for act<>inh
 
 filter_index = function(x) x[! names(x) %in% c('control', 'perturbed', 'exclusion')]
 index = do.call(bind_rows, lapply(index, filter_index))
