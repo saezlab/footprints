@@ -26,7 +26,7 @@ scores2df = function(sobj) {
 }
 
 #' Returns the analysis set and their relative paths
-analysis_set2roc = function() {
+analysis_set = function() {
     fids = setdiff(config$methods$analysis_set, "paradigm")
 
     # data.frame with columns:
@@ -38,18 +38,8 @@ analysis_set2roc = function() {
         module_file("../../scores/speed", ., mustWork = TRUE) %>%
         setNames(fids) %>%
         lapply(scores2df) %>%
-        df$add_name_col(col="method", bind=TRUE)
-
-    # group_by:
-    #   perturbed : are scores higher for pathway sig than others?
-    #   signature : does sig assign higher score for pathway that is perturbed?
-    roc = scoredf %>%
-        na.omit() %>%
-        mutate(inferred = signature, # same when mapped
-               matched = perturbed == inferred) %>%
-        group_by(inferred, method) %>%
-        do(st$roc(., "score", "matched")) %>%
-        ungroup()
+        df$add_name_col(col="method", bind=TRUE) %>%
+        mutate(inferred = signature)
 }
 
 #' Create a ROC curve plot from a roc object
@@ -72,15 +62,4 @@ roc2auc = function(roc) {
         arrange(score) %>%
         summarize(auc = st$roc_auc(score, matched==1)) %>%
         tidyr::spread(method, auc)
-}
-
-if (is.null(module_name())) {
-    roc = analysis_set2roc()
-#    auc = roc2auc(roc)
-
-    pdf("roc.pdf", paper="a4r", width=11, height=8)
-
-    print(roc2plot(roc))
-
-    dev.off()
 }
