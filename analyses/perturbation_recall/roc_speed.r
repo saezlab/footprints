@@ -4,12 +4,12 @@ st = import('stats')
 roc = import('./roc_util')
 
 roc_df = function() {
-    zdf = io$load('sigs_zscores.RData') %>%
+    zdf = io$load(module_file('sigs_zscores.RData')) %>%
         roc$scores2df() %>%
         mutate(inferred = sub("\\..*$", "", signature),
                method = "zscore")
 
-    gsvadf = io$load('sigs_gsva.RData') %>%
+    gsvadf = io$load(module_file('sigs_gsva.RData')) %>%
         roc$scores2df() %>%
         mutate(inferred = sub("\\..*$", "", signature),
                method = "gsva")
