@@ -1,5 +1,6 @@
 library(ggplot2)
 library(dplyr)
+b = import('base')
 io = import('io')
 ar = import('array')
 
@@ -36,10 +37,10 @@ pathway_scores = function(path) {
     )
 
     re2pval = function(e) {
-        p = t.test(e$control, e$perturbed)$p.value
+        p = t.test(e$control, e$perturbed)$p.value / 2 # we know direction
         sprintf("p %.2g", p)
     }
-    ps = lapply(re, re2pval)
+    ps = lapply(re, function(r) re2pval(r) %catch% "")
     names(re) = paste(names(re), ps, sep="\n")
 
     df = reshape2::melt(re) %>%
