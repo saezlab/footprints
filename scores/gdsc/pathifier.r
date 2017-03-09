@@ -4,7 +4,7 @@ io = import('io')
 ar = import('array')
 gdsc = import('data/gdsc')
 hpc = import('hpc')
-genesets = import('../../util/genesets')
+gs = import('../../util/genesets')
 
 INFILE = commandArgs(TRUE)[1] %or% "../../util/genesets/mapped/reactome.RData"
 OUTFILE = commandArgs(TRUE)[2] %or% "pathways_mapped/pathifier.RData"
@@ -50,7 +50,7 @@ ar$intersect(tissues, expr, along=1)
 expr = t(expr)
 
 genesets = io$load(INFILE) %>%
-    genesets$filter_genesets(rownames(expr), MIN_GENES, MAX_GENES)
+    gs$filter(rownames(expr), MIN_GENES, MAX_GENES)
 
 # make compatible to call with one set in above function
 for (i in seq_along(genesets))
