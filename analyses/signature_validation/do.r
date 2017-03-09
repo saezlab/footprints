@@ -20,14 +20,13 @@ pathway_scores = function(path) {
     ar$intersect(mod, exp, along=1)
     scores = t(exp) %*% mod
 
-    re = list()
-
-    if (!is.null(idx$expr$description))
-        key = paste("PROGENy", idx$expr$description, sep=": ")
+    if (is.null(idx$expr$description))
+        idx$expr$description = "PROGENy"
     else
-        key = "PROGENy"
+        idx$expr$description = paste("PROGENy", idx$expr$description, sep=": ")
 
-    re[[key]] = list(
+    re = list()
+    re[[idx$expr$description]] = list(
         control = scores[idx$expr$control, path],
         perturbed = scores[idx$expr$perturbed, path]
     )
@@ -35,6 +34,13 @@ pathway_scores = function(path) {
         control = idx$activity$control,
         perturbed = idx$activity$perturbed
     )
+
+    re2pval = function(e) {
+        p = t.test(e$control, e$perturbed)$p.value
+        sprintf("p %.2g", p)
+    }
+    ps = lapply(re, re2pval)
+    names(re) = paste(names(re), ps, sep="\n")
 
     df = reshape2::melt(re) %>%
         transmute(pathway = paste(path, idx$paper$description, sep="\n"),
