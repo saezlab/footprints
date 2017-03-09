@@ -18,6 +18,11 @@ subset_expr = function(rec) {
     expr_id = paste(rec$accession, rec$platform, sep=".")
     e = expr[[expr_id]]
 
+    if (!is.null(rec$exclusion)) {
+        warning("Discarding record (exclusion flag set): ", rec$id)
+        return(NULL)
+    }
+
     if (is.null(e)) {
         warning("Discarding record (no expression available): ", rec$id)
         return(NULL)
