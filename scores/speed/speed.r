@@ -46,7 +46,8 @@ if (is.null(module_name())) {
               const = list(expr=expr, zdata=zdata, zdata2model=zdata2model)) %>%
         setNames(zdata$index$id) %>%
         ar$stack(along=1) %>%
-        ar$map(along=1, scale) # do we want to sale this?
+        ar$map(along=1, scale) %>% # scale each pathway across all experiments
+        ar$map(along=2, scale) # scale each experiment across all pathways
 
     index = dplyr::select(zdata$index, -exclusion)
     stopifnot(zdata$index$id == rownames(scores))

@@ -46,7 +46,9 @@ if (any(errors)) {
     print(result[errors])
     result[errors] = NA
 }
-scores = ar$stack(result, along=1)
+scores = ar$stack(result, along=1) %>%
+    ar$map(along=1, scale) %>% # normalize different magnitude of pathways
+    ar$map(along=2, scale) # normalize total activation per experiment
 
 filter_index = function(x) x[! names(x) %in% c('control', 'perturbed', 'exclusion')]
 index = lapply(speed$records[rownames(scores)], filter_index) %>%

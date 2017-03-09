@@ -26,7 +26,9 @@ doGSEA = function(index, expr, sigs) {
 scores = clustermq::Q(doGSEA, index=index, expr=expr, const = list(sigs=genelist),
         memory = 1024, n_jobs = 50) %>%
     setNames(names(index)) %>%
-    ar$stack(along=1)
+    ar$stack(along=1) %>%
+    ar$map(along=1, scale) #%>% # normalize different magnitude of pathways
+#    ar$map(along=2, scale) # normalize total activation per experiment
 
 filter_index = function(x) x[! names(x) %in% c('control', 'perturbed', 'exclusion')]
 index = do.call(bind_rows, lapply(index, filter_index))

@@ -18,8 +18,10 @@ zscore2model = function(zdata, hpc_args=NULL) {
 
     # fit model to pathway perturbations
     pathway = t(ar$mask(index$pathway)) + 0
-    pathway["EGFR",] = pathway["EGFR",] + pathway["MAPK",] + pathway["PI3K",]
-    pathway["TNFa",] = pathway["TNFa",] + pathway["NFkB",]
+#    pathway["EGFR",] = pathway["EGFR",] + pathway["MAPK",] + pathway["PI3K",]
+#    pathway["TNFa",] = pathway["TNFa",] + pathway["NFkB",]
+    pathway["MAPK",] = pathway["MAPK",] + pathway["EGFR",]
+    pathway["NFkB",] = pathway["NFkB",] + pathway["TNFa",]
 
     mod = st$lm(zscores ~ 0 + pathway, data=index, min_pts=30, atomic="pathway",
                 hpc_args=hpc_args) %>%
