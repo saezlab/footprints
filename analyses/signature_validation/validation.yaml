@@ -1,17 +1,17 @@
 EGFR:
     paper:
-        doi: 10.1074/jbc.M608653200
-        description: 10 nM HRG/EGF MCF7 vs DMSO
+        doi: 10.1038/sdata.2014.9
+        description: 100ng/ml EGF NHBE
     expr:
-        accession: E-GEOD-6462
-        platform: A-AFFY-37
-        description: 45-90'
-        control: [ GSE6462GSM148516, GSE6462GSM148517 ]
-        perturbed: [ GSE6462GSM148543, GSE6462GSM148544, GSE6462GSM148571, GSE6462GSM148572 ]
-    activity: # Fig. 1, top row, right panel (pixels from control)
-        description: WB pEGFR 1-5'
-        control: [ 0, 3 ] # EGF, HRG 0'
-        perturbed: [ 22, 44, 46, 104, 90, 86 ] # 3x EGF, 3x HRG (1,2,5' each)
+        accession: E-MTAB-2091
+        platform: A-AFFY-44
+        description: 6h
+        control: [ BATCH1_RNA.H.A.B11, BATCH1_RNA.H.A.C11, BATCH1_RNA.H.B.B11, BATCH1_RNA.H.B.C11, BATCH2_RNA.H.A.B11, BATCH2_RNA.H.A.C11, BATCH2_RNA.H.B.B11, BATCH2_RNA.H.B.C11, BATCH3_RNA.H.A.B11, BATCH3_RNA.H.A.C11, BATCH3_RNA.H.B.B11, BATCH3_RNA.H.B.C11 ]
+        perturbed: [ BATCH3_RNA.H.A.E2, BATCH3_RNA.H.A.E5, BATCH3_RNA.H.A.E8 ]
+    activity: # supp. table 2
+        description: xMAP pEGFR 20'
+        control: [ 1460, 1395, 953, 1155, 1473, 1541 ]
+        perturbed: [ 3409 ]
 
 Hypoxia:
     paper:
@@ -136,17 +136,17 @@ TNFa:
 Trail:
     paper:
         doi: 10.1182/blood-2012-04-425033
-        description: SEM-K2/RS4:11 3x EC50 Obatoclax
+        description: SEM-K2 EC50 Obatoclax
     expr:
         accession: E-GEOD-36149
         platform: A-AFFY-44
         description: 6h
-        control: [ "GSM881823 1", "GSM881826 1", "GSM881829 1", "GSM881832 1" ]
-        perturbed: [ "GSM881825 1", "GSM881828 1", "GSM881831 1", "GSM881834 1" ]
-    activity:
+        control: [ "GSM881826 1", "GSM881832 1" ]
+        perturbed: [ "GSM881827 1", "GSM881833 1" ]
+    activity: # Fig. 4
         description: WB cleaved PARP 72h
-        control: [ 6, 0, 0, 0 ]
-        perturbed: [ 240, 1271 ]
+        control: [ 159, 127, 143 ] # no treatment, t=0,48,72h
+        perturbed: [ 655 ]
 
 VEGF:
     paper:

@@ -1,10 +1,10 @@
 ---
-id        : TNFa.E-MTAB-2091.1
+id        : VEGF.E-MTAB-2091.1
 accession : E-MTAB-2091
 platform  : A-AFFY-44
-pathway   : TNFa
+pathway   : VEGF
 cells     : NHBE
-treatment : 100 ng/ml TNFa
+treatment : 50 ng/ml PDGFB
 effect    : activating
 hours     : 6 # 12 h for "selected subset" ref CMap
 
@@ -22,7 +22,7 @@ control   :
     - BATCH3_RNA.H.B.B11
     - BATCH3_RNA.H.B.C11
 perturbed :
-    - BATCH1_RNA.H.B.C3
-    - BATCH1_RNA.H.B.C5
-    - BATCH1_RNA.H.B.C7
+    - BATCH3_RNA.H.C.F10
+    - BATCH3_RNA.H.C.F5
+    - BATCH3_RNA.H.C.F8
 ...

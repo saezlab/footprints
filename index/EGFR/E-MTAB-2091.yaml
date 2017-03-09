@@ -1,0 +1,113 @@
+---
+id        : EGFR.E-MTAB-2091.1
+accession : E-MTAB-2091
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : NHBE
+treatment : 100 ng/ml EGF
+effect    : activating
+hours     : 6 # 12 h for "selected subset" ref CMap
+exclusion : validation
+
+control   :
+    - BATCH1_RNA.H.A.B11
+    - BATCH1_RNA.H.A.C11
+    - BATCH1_RNA.H.B.B11
+    - BATCH1_RNA.H.B.C11
+    - BATCH2_RNA.H.A.B11
+    - BATCH2_RNA.H.A.C11
+    - BATCH2_RNA.H.B.B11
+    - BATCH2_RNA.H.B.C11
+    - BATCH3_RNA.H.A.B11
+    - BATCH3_RNA.H.A.C11
+    - BATCH3_RNA.H.B.B11
+    - BATCH3_RNA.H.B.C11
+perturbed :
+    - BATCH3_RNA.H.A.E2
+    - BATCH3_RNA.H.A.E5
+    - BATCH3_RNA.H.A.E8
+
+---
+id        : EGFR.E-MTAB-2091.2
+accession : E-MTAB-2091
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : NHBE
+treatment : 100 ng/ml FGF8
+effect    : activating
+hours     : 6 # 12 h for "selected subset" ref CMap
+
+control   :
+    - BATCH1_RNA.H.A.B11
+    - BATCH1_RNA.H.A.C11
+    - BATCH1_RNA.H.B.B11
+    - BATCH1_RNA.H.B.C11
+    - BATCH2_RNA.H.A.B11
+    - BATCH2_RNA.H.A.C11
+    - BATCH2_RNA.H.B.B11
+    - BATCH2_RNA.H.B.C11
+    - BATCH3_RNA.H.A.B11
+    - BATCH3_RNA.H.A.C11
+    - BATCH3_RNA.H.B.B11
+    - BATCH3_RNA.H.B.C11
+perturbed :
+    - BATCH3_RNA.H.B.E2
+    - BATCH3_RNA.H.B.E4
+    - BATCH3_RNA.H.B.E8
+
+---
+id        : EGFR.E-MTAB-2091.3
+accession : E-MTAB-2091
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : NHBE
+treatment : 50 ng/ml HBEGF
+effect    : activating
+hours     : 6 # 12 h for "selected subset" ref CMap
+
+control   :
+    - BATCH1_RNA.H.A.B11
+    - BATCH1_RNA.H.A.C11
+    - BATCH1_RNA.H.B.B11
+    - BATCH1_RNA.H.B.C11
+    - BATCH2_RNA.H.A.B11
+    - BATCH2_RNA.H.A.C11
+    - BATCH2_RNA.H.B.B11
+    - BATCH2_RNA.H.B.C11
+    - BATCH3_RNA.H.A.B11
+    - BATCH3_RNA.H.A.C11
+    - BATCH3_RNA.H.B.B11
+    - BATCH3_RNA.H.B.C11
+perturbed :
+    - BATCH1_RNA.H.C.G3
+    - BATCH1_RNA.H.C.G6
+    - BATCH1_RNA.H.C.G9
+
+---
+id        : EGFR.E-MTAB-2091.4
+accession : E-MTAB-2091
+platform  : A-AFFY-44
+pathway   : EGFR
+cells     : NHBE
+treatment : 200 ng/ml TGF alpha
+effect    : activating
+hours     : 6 # 12 h for "selected subset" ref CMap
+
+control   :
+    - BATCH1_RNA.H.A.B11
+    - BATCH1_RNA.H.A.C11
+    - BATCH1_RNA.H.B.B11
+    - BATCH1_RNA.H.B.C11
+    - BATCH2_RNA.H.A.B11
+    - BATCH2_RNA.H.A.C11
+    - BATCH2_RNA.H.B.B11
+    - BATCH2_RNA.H.B.C11
+    - BATCH3_RNA.H.A.B11
+    - BATCH3_RNA.H.A.C11
+    - BATCH3_RNA.H.B.B11
+    - BATCH3_RNA.H.B.C11
+perturbed :
+    - BATCH4_RS_RNA.H.S2.B1_Safe
+    - BATCH4_RS_RNA.H.S42.B6_Normal
+    - BATCH4_RS_RNA.H.S42.B6_Safe
+...

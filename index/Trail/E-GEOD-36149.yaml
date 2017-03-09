@@ -7,6 +7,7 @@ cells     : SEM-K2 acute lymphoblastic leukemia cell line
 treatment : 72h EC50 obatoclax
 effect    : activating
 hours     : 6
+exclusion : validation
 
 control   :
     - GSM881826 1
