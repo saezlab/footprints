@@ -1,3 +1,4 @@
+library(dplyr)
 b = import('base')
 io = import('io')
 ar = import('array')
