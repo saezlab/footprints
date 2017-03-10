@@ -49,7 +49,6 @@ if (is.null(module_name())) {
         ar$map(along=1, scale) %>% # scale each pathway across all experiments
         ar$map(along=2, scale) # scale each experiment across all pathways
 
-    index = dplyr::select(zdata$index, -exclusion)
     stopifnot(zdata$index$id == rownames(scores))
 
     save(scores, index, file=OUTFILE)
