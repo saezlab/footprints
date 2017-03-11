@@ -14,16 +14,16 @@ zscore2model = function(zdata, hpc_args=NULL) {
     st = import('stats')
 
     index = zdata$index
-    zscores = t(zdata$zscores) * index$sign
+    zscores = t(zdata$zscores)
 
-    # fit model to pathway perturbations
-    pathway = t(ar$mask(index$pathway)) + 0
-#    pathway["EGFR",] = pathway["EGFR",] + pathway["MAPK",] + pathway["PI3K",]
-#    pathway["TNFa",] = pathway["TNFa",] + pathway["NFkB",]
-    pathway["MAPK",] = pathway["MAPK",] + pathway["EGFR",]
-    pathway["NFkB",] = pathway["NFkB",] + pathway["TNFa",]
+    # create indicator matrix which pathway is activated/inhibited
+    pathway = index$sign * (ar$mask(index$pathway) + 0)
+    pathway[,"MAPK"] = pathway[,"MAPK"] + pathway[,"EGFR"]
+    pathway[,"NFkB"] = pathway[,"NFkB"] + pathway[,"TNFa"]
+    # add EGFR>PI3K link here?
 
-    mod = st$lm(zscores ~ 0 + pathway, data=index, min_pts=30, atomic="pathway",
+    # use intercept here?
+    mod = st$lm(zscores ~ pathway, data=index, min_pts=30, atomic="pathway",
                 hpc_args=hpc_args) %>%
         transmute(gene = zscores,
                   pathway = sub("^pathway", "", term),

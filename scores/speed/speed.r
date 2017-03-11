@@ -10,9 +10,10 @@ ar = import('array')
 #'               and 'expr' [genes x arrays]
 #' @param zdata  A list with fields 'index' providing experiment info
 #'               [data.frame] and 'zscores' [genes x experiments]
-#' @param zscore2model  The model building function (takes: zdata, hpc_args)
+#' @param zdata2model  The model building function (takes: zdata, hpc_args)
+#' @param hpc_args      Passed to zdata2model
 #' @return       Pathway scores for the current experiment
-expr2scores = function(id, expr, zdata, zdata2model) {
+expr2scores = function(id, expr, zdata, zdata2model, hpc_args=NULL) {
     stopifnot(zdata$index$id == names(expr$records))
     ar = import('array')
     index = expr$records[[id]]
@@ -21,7 +22,7 @@ expr2scores = function(id, expr, zdata, zdata2model) {
     # build the model without the current experiment
     zdata$index = zdata$index[zdata$index$id!=id,]
     zdata$zscores = zdata$zscores[,colnames(zdata$zscores) != id]
-    vecs = zdata2model(zdata)$model
+    vecs = zdata2model(zdata, hpc_args=hpc_args)$model
 
     # calculate the scores for the current experiment
     ar$intersect(vecs, expr, along=1)
@@ -39,11 +40,13 @@ if (is.null(module_name())) {
 
     # load zscores, model building function, and expression for each experiment
     zdata = io$load(ZSCORES)
+    index = zdata$index
     zdata2model = import_(sub("\\.r$", "", MODEL))$zscore2model
     expr = io$load(EXPR)
 
-    scores = clustermq::Q(expr2scores, id=zdata$index$id, job_size=1,
-              const = list(expr=expr, zdata=zdata, zdata2model=zdata2model)) %>%
+    scores = clustermq::Q(expr2scores, id=index$id, job_size=1,
+              const = list(expr=expr, zdata=zdata,
+                           zdata2model=zdata2model)) %>%
         setNames(zdata$index$id) %>%
         ar$stack(along=1) %>%
         ar$map(along=1, scale) %>% # scale each pathway across all experiments
