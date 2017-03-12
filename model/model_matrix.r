@@ -22,8 +22,11 @@ zscore2model = function(zdata, hpc_args=NULL) {
     pathway[,"NFkB"] = pathway[,"NFkB"] + pathway[,"TNFa"]
     # add EGFR>PI3K link here?
 
+    # if using intercept
+    pathway = cbind('(Intercept)'=1, pathway)
+
     # use intercept here?
-    mod = st$lm(zscores ~ pathway, data=index, min_pts=30, atomic="pathway",
+    mod = st$lm(zscores ~ 0 + pathway, data=index, min_pts=30, atomic="pathway",
                 hpc_args=hpc_args) %>%
         transmute(gene = zscores,
                   pathway = sub("^pathway", "", term),
