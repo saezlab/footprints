@@ -28,18 +28,13 @@ zscore2model = function(zdata, hpc_args=NULL) {
     #FIXME: st$lm doesn't treat 1 + pathway correctly
     pathway = cbind('(Intercept)'=1, pathway)
 
-    my_lm = function(z, pathway) {
-        mylm = import('ebits/stats/export_indexed/lm')$lm
-        mylm(z ~ 0 + pathway, data=list(z=z, pathway=pathway))
-    }
-
     # this avoids st$lm bugs; but: how to iter 2 vars? (tidyr::crossing?)
-    mod = clustermq::Q(my_lm,
-            z = zscores,
-            const = list(pathway=pathway),
-            n_jobs=20) %>%
+    mod = clustermq::Q(function(z, pathway) broom::tidy(lm(z ~ 0 + pathway)),
+                       z = zscores,
+                       const = list(pathway=pathway),
+                       n_jobs=20, fail_on_error=FALSE) %>%
         setNames(colnames(zscores)) %>%
-        b$omit$null() %>%
+        b$omit$error() %>%
         df$add_name_col(col="gene", bind=TRUE) %>%
         transmute(gene = gene,
                   pathway = sub("^pathway", "", term),
