@@ -6,7 +6,7 @@ expr2scores = import('../../scores/speed/speed')$expr2scores
 #'
 #' @param zdata  A list with the zscore matrix and index object
 #' @return       The coefficients matrix [gene x experiment]
-zdata2model = function(zdata) {
+zdata2model = function(zdata, hpc_args=NULL) {
     b = import('base')
 
     index = zdata$index
@@ -31,8 +31,8 @@ if (is.null(module_name())) {
         ar$stack(along=1) %>%
         ar$map(along=1, scale) # each sig should assign same total score
 
-    index = dplyr::select(zdata$index, -exclusion)
-    stopifnot(zdata$index$id == rownames(scores))
+    index = zdata$index
+    stopifnot(index$id == rownames(scores))
 
     # "pathways" are in cols
     save(scores, index, file="sigs_zscores.RData")

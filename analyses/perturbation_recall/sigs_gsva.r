@@ -47,8 +47,7 @@ if (is.null(module_name())) {
     diag(scores) = NA
 
     index = lapply(expr$records, function(x) x[! names(x) %in% c('control', 'perturbed')])
-    index = bind_rows(index) %>%
-        select(-exclusion)
+    index = do.call(bind_rows, index)
 
     # "pathways" are in cols
     save(index, scores, file="sigs_gsva.RData")
