@@ -23,16 +23,16 @@ zscore2model = function(zdata, hpc_args=NULL) {
     pathway[,"NFkB"] = pathway[,"NFkB"] + pathway[,"TNFa"]
     # add EGFR>PI3K link here?
 
-    # if using intercept
+    # if using intercept (does this make a difference?)
 #    pathway = cbind('(Intercept)'=1, pathway)
 
-    mod = st$lm(zscores ~ 0 + pathway, min_pts=30,
+    mod = st$lm(zscores ~ 0 + pathway, min_pts=30, atomic="pathway",
                 hpc_args=hpc_args) %>%
         transmute(gene = zscores,
-                  pathway = pathway,
+                  pathway = sub("^pathway", "", term),
                   zscore = estimate,
                   p.value = p.value) %>%
-        filter(pathway != "(Intercept)") %>%
+#        filter(pathway != "(Intercept)") %>%
         mutate(adj.p = p.adjust(p.value, method="fdr"))
 
     zfit = ar$construct(zscore ~ gene + pathway, data=mod, fill=0)
@@ -51,7 +51,7 @@ if (is.null(module_name())) {
 
     # load speed data, index; filter for train set only
     zdata = io$load(ZDATA)
-    result = zscore2model(zdata, hpc_args=list(n_jobs=100, memory=2048))
+    result = zscore2model(zdata, hpc_args=list(n_jobs=20, memory=2048))
 
     # save resulting object
     save(result, file=OUTFILE)
