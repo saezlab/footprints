@@ -19,7 +19,7 @@ pmid2doi = function(pmids) {
 #        doi_geo = unname(XML::xpathSApply(xml, "//record/@doi"))
         q = sprintf("https://www.ncbi.nlm.nih.gov/pubmed/%s", pmid)
         html = paste(suppressWarnings(readLines(q)), collapse="\n") # last line not complete
-        b$grep("dx.doi.org/([^\"]+)", html)
+        b$grep("doi.org/([^\"]+)", html)
     }
     sapply(pmids, one_item)
 }
