@@ -10,6 +10,7 @@ index = io$read_yaml(module_file('validation.yaml'))
 
 # update index to include scores instead of expr index
 pathway_scores = function(path) {
+    message(path)
     idx = index[[path]]
 
     # calculate pathway scores
