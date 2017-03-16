@@ -1,0 +1,30 @@
+<<setup_ccle, include=FALSE>>=
+library(dplyr)
+df = import('data_frame')
+gdsc = import('data/gdsc')
+util = import('./util_3')
+config = import('../config')
+
+gdsc_assocs = util$load_fun('speed_matrix') %>%
+    filter(adj.p < 0.05) %>%
+    select(drug, scores) %>%
+    distinct()
+
+ccle_assocs = util$load_fun('speed_matrix_ccle') %>%
+    df$subset(gdsc_assocs) %>%
+    arrange(adj.p) %>%
+    transmute(Drug = drug,
+              Pathway = scores,
+              `Effect size` = estimate,
+              FDR = sprintf("%.2g", adj.p))
+@
+
+\begin{table}[H]
+\centering
+\caption{Validation of significant GDSC associations in the CCLE with
+    overlapping drugs (PD-0325901, AZD6244, and 17-AAG). Effect size is 10-fold
+    drug response per pathway score standard deviation.}
+<<ccle_table, echo=FALSE>>=
+kable(ccle_assocs, digits=2, booktabs=TRUE)
+@
+\end{table}
