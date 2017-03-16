@@ -30,7 +30,6 @@ config = import('../config')
 \centering
 \caption{}
 <<surv_bootstrap, echo=FALSE>>=
-#kable(surv, digits=2, booktabs=TRUE)
-still need to do this
+kable(data.frame(x="still need to do this"), digits=2, booktabs=TRUE)
 @
 \end{table}

@@ -1,15 +1,22 @@
 <<global_structure_setup, include=FALSE>>=
 library(dplyr)
+io = import('io')
 config = import('../config')
-tsne = import('../analyses/signature_similarity/compare_fc_to_model')
+tsne = io$load(module_file("../analyses/signature_similarity/tsne_fc_sig.RData"))
 bars = import('../analyses/signature_overview/dataset_size_bars')
 @
 
 \begin{figure}[H]
 <<global_structure, echo=FALSE, fig.width=9>>=
-tsne$do_plot() + config$facet_theme
+ggplot(tsne, aes(x=x, y=y, color=pathway)) +
+	geom_point() +
+	xlab("A.U.") +
+	ylab("A.U.") +
+	coord_fixed() +
+	theme(axis.text.x = element_blank(),
+		  axis.text.y = element_blank())
 @
-\caption{Clustering of individual signatures (left) and consensus model (right)}
+\caption{Gene expression changes do not cluster by pathway perturbed for the differentially expressed genes at 10\% FDR}
 \label{fig:clust}
 \end{figure}
 
