@@ -2,6 +2,7 @@ EGFR:
     paper:
         doi: 10.1038/sdata.2014.9
         description: 100ng/ml EGF NHBE
+        source: Table S1
     expr:
         accession: E-MTAB-2091
         platform: A-AFFY-44

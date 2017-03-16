@@ -46,7 +46,7 @@ pathway_scores = function(path) {
 
     df = reshape2::melt(re) %>%
         transmute(pathway = paste(path, idx$paper$description,
-                            paste(idx$paper$doi, idx$paper$description), sep="\n"),
+                            paste(idx$paper$doi, idx$paper[['source']]), sep="\n"),
                   method = L1,
                   Type = L2,
                   value = value)
