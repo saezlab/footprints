@@ -17,13 +17,14 @@ Hypoxia:
     paper:
         doi: 10.1074/jbc.M804578200
         description: 1% O2 vs normoxia
+        source: Fig. 2B
     expr:
         accession: E-GEOD-12792
         platform: A-AFFY-33
         description: RPTEC 24h
         control: [ GSE12792GSM320836, GSE12792GSM320853, GSE12792GSM320854 ]
         perturbed: [ GSE12792GSM320855, GSE12792GSM320856, GSE12792GSM320857 ]
-    activity: # Fig 2B
+    activity:
         description: HeLa WB HIF1a 1h
         control: [ 888, 1630, 228, 3231 ] # normoxia: no siRNA/control/HIF1a; hyp siHIF1a
         perturbed: [ 25484, 22938 ] # hypoxia: no siRNA, control si
@@ -32,6 +33,7 @@ JAK-STAT:
     paper:
         doi: 10.1158/0008-5472.CAN-07-2403
         description: Sez-4 16h 200U IL-2 vs DMSO
+        source: Fig. 1A
     expr:
         accession: E-GEOD-8687
         platform: A-AFFY-44
@@ -47,13 +49,14 @@ MAPK:
     paper:
         doi: 10.1371/journal.pgen.1001231
         description: HCT116, HT29, SW480 + 48h U0126
+        source: Fig. 6
     expr:
         accession: E-GEOD-18232
         platform: A-AFFY-33
         description:
         control: [ "GSM455560 1", "GSM455566 1", "GSM455572 1" ]
         perturbed: [ "GSM455565 1", "GSM455571 1", "GSM455577 1" ]
-    activity: # Fig. 6
+    activity:
         description: WB pERK
         control: [ 7070, 6695, 8164 ]
         perturbed: [ 1216, 389, 2128 ]
@@ -62,13 +65,14 @@ NFkB:
     paper:
         doi: 10.1371/journal.pone.0014412
         description: 10 ng/ml TNFa DU145
+        source: Fig. 4C
     expr: # 2x TNF, 2x TNF+FGF
         accession: E-GEOD-22807
         platform: A-AFFY-141
         description:
         control: [ "GSM563798 1", "GSM563799 1" ]
         perturbed: [ "GSM563802 1", "GSM563803 1", "GSM563804 1", "GSM563805 1" ]
-    activity: # Fig. 4C
+    activity:
         description: GST-IKb incl. HEK293
         control: [ 9, 2550 ]
         perturbed: [ 15720, 8017, 6950, 14052, 8544, 9095, 13481, 24810, 10545 ]
@@ -77,13 +81,14 @@ p53:
     paper:
         doi: 10.1093/carcin/bgs318
         description: HepG2 0.5 mM AICAR 24h vs DMSO # +/- sh-p53
+        source: Fig. 4
     expr: # only control shRNA
         accession: E-GEOD-30137
         platform: A-AFFY-141
         description:
         control: [ "GSM746054 1", "GSM746055 1" ]
         perturbed: [ "GSM746062 1", "GSM746063 1" ]
-    activity: # Fig. 4: sh control + sh p53
+    activity: # sh control + sh p53
         description: WB p53 pS15
         control: [ 224, 110 ]
         perturbed: [ 7095, 24782 ]
@@ -92,13 +97,14 @@ PI3K:
     paper:
         doi: 10.1158/1078-0432.CCR-09-2828
         description: 1 uM GDC-0941 6h
+        source: Fig. 4A
     expr:
         accession: E-GEOD-20719
         platform: A-AFFY-44
         description: T47D
         control: [ "GSM520228 1", "GSM520229 1", "GSM520230 1" ]
         perturbed: [ "GSM520225 1", "GSM520226 1", "GSM520227 1" ]
-    activity: # Fig. 4a
+    activity:
         description: 7 lines WB Akt pS473
         control: [ 2694, 4883, 6372, 1214, 240, 6111, 5397 ]
         perturbed: [ 749, 1365, 552, 265, 82, 99, 898 ]
@@ -107,13 +113,14 @@ TGFb:
     paper:
         doi: 10.1074/jbc.M110.130286
         description: BMP2/6 Hep3B
+        source: Fig. 1
     expr: # ptb: 2x BMP2, 2x BMP6
         accession: E-GEOD-20671
         platform: A-AFFY-141
         description: 4h
         control: [ "GSM518514 1", "GSM518515 1" ]
         perturbed: [ "GSM518516 1", "GSM518517 1", "GSM518522 1", "GSM518523 1" ]
-    activity: # Fig. 1
+    activity:
         description: WB pSMAD5 15-240'
         control: [ 810, 1996 ]
         perturbed: [ 11433, 12317, 11181, 8940, 10505, 5558, 9405, 10805, 9746, 8824 ]
@@ -122,13 +129,14 @@ TNFa:
     paper:
         doi: 10.1371/journal.pone.0014412
         description: 10 ng/ml TNFa DU145
+        source : Fig. 4C
     expr: # 2x TNF, 2x TNF+FGF
         accession: E-GEOD-22807
         platform: A-AFFY-141
         description: DU145
         control: [ "GSM563798 1", "GSM563799 1" ]
         perturbed: [ "GSM563802 1", "GSM563803 1", "GSM563804 1", "GSM563805 1" ]
-    activity: # Fig. 4C
+    activity:
         description: GST-IKb incl. HEK293
         control: [ 9, 2550 ]
         perturbed: [ 15720, 8017, 6950, 14052, 8544, 9095, 13481, 24810, 10545 ]
@@ -137,13 +145,14 @@ Trail:
     paper:
         doi: 10.1182/blood-2012-04-425033
         description: SEM-K2 EC50 Obatoclax
+        source: Fig. 4
     expr:
         accession: E-GEOD-36149
         platform: A-AFFY-44
         description: 6h
         control: [ "GSM881826 1", "GSM881832 1" ]
         perturbed: [ "GSM881827 1", "GSM881833 1" ]
-    activity: # Fig. 4
+    activity:
         description: WB cleaved PARP 72h
         control: [ 159, 127, 143 ] # no treatment, t=0,48,72h
         perturbed: [ 655 ]
@@ -152,6 +161,7 @@ VEGF:
     paper:
         doi: 10.1182/blood-2009-07-233478
         description: HUVEC 50ng/ml VEGF
+        source: Fig. 1
     expr:
         accession: E-GEOD-18913
         platform: A-AFFY-44
@@ -159,6 +169,6 @@ VEGF:
         control: [ "GSM468603 1", "GSM468604 1" ]
         perturbed: [ "GSM468615 1", "GSM468616 1", "GSM468623 1" ]
     activity:
-        description: WB Egr-1/3 1-h2
+        description: WB Egr-1/3 1-2h
         control: [ 989, 4176 ]
         perturbed: [ 13031, 8081, 17816, 23982 ]
