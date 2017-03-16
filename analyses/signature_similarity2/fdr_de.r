@@ -29,7 +29,10 @@ exp2sig = function(expr, index) {
         filter(adj.p < 0.1) %$%
         gene
 
-	mod$coefficients[fdr,]
+    if (index$effect == "activating")
+        mod$coefficients[fdr,]
+    else
+        - mod$coefficients[fdr,]
 }
 
 EXPR = commandArgs(TRUE)[1] %or% "../../data/expr.RData"
