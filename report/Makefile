@@ -9,7 +9,7 @@ SUPP = $(filter S_%, $(RNWs))
 #.INTERMEDIATE:
 
 
-all: Figures.pdf Supplementary.pdf
+all: Figures.pdf Supplementary.pdf PROGENy_model.xlsx
 
 clean: 
 	rm -f {Figures,Supplementary}.{tex,aux,bbl,bcf,blg,fdb_latexmk,fls,log,out,run.xml,lof,lot,toc,nlo}
@@ -21,6 +21,8 @@ Figures.pdf: Figures.tex config.tex $(FIGS)
 Supplementary.pdf: Supplementary.tex config.tex $(SUPP)
 	$(LATEXMK) Supplementary
 
+PROGENy_model.xlsx: excel_model.r ../model/model_matrix.RData
+	Rscript $^
 
 %.tex: %.Rnw
 	R -e 'library(knitr);knit("$<")'
