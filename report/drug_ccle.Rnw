@@ -7,16 +7,26 @@ config = import('../config')
 
 gdsc_assocs = util$load_fun('speed_matrix') %>%
     filter(adj.p < 0.05) %>%
-    select(drug, scores) %>%
-    distinct()
+    mutate(data = "GDSC")
 
 ccle_assocs = util$load_fun('speed_matrix_ccle') %>%
-    df$subset(gdsc_assocs) %>%
-    arrange(adj.p) %>%
-    transmute(Drug = drug,
+    mutate(data = "CCLE")
+
+common = inner_join(gdsc_assocs[c('drug', 'scores')],
+                    ccle_assocs[c('drug', 'scores')]) %>%
+    distinct()
+
+gdsc_assocs = df$subset(gdsc_assocs, common)
+ccle_assocs = df$subset(ccle_assocs, common)
+
+assocs = bind_rows(gdsc_assocs, ccle_assocs) %>%
+    arrange(data, adj.p) %>%
+    transmute(Dataset = data,
+              Drug = drug,
               Pathway = scores,
               `Effect size` = estimate,
-              FDR = sprintf("%.2g", adj.p))
+              FDR = sprintf("%.2g", adj.p)) %>%
+    distinct() # <- why?
 @
 
 \begin{table}[H]
@@ -25,6 +35,6 @@ ccle_assocs = util$load_fun('speed_matrix_ccle') %>%
     overlapping drugs (PD-0325901, AZD6244, and 17-AAG). Effect size is 10-fold
     drug response per pathway score standard deviation.}
 <<ccle_table, echo=FALSE>>=
-kable(ccle_assocs, digits=2, booktabs=TRUE)
+kable(assocs, digits=2, booktabs=TRUE)
 @
 \end{table}
