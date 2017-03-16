@@ -48,6 +48,8 @@
 
 \Sexpr{knit_child('drug_ccle.Rnw')}
 
+\Sexpr{knit_child('survival_bootstrap.Rnw')}
+
 \section{Supplementary figures}
 
 \captionsetup[subfloat]{position=bottom}

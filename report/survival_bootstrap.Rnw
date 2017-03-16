@@ -1,0 +1,36 @@
+<<setup_surv_bs, include=FALSE>>=
+library(dplyr)
+b = import('base')
+io = import('io')
+ar = import('array')
+df = import('data_frame')
+st = import('stats')
+plt = import('plot')
+tcga = import('data/tcga')
+surv = import('../analyses/tcga_survival/util')
+config = import('../config')
+
+#scores = b$lnapply(config$methods$analysis_set, surv$load_scores)
+#
+#assocs.pan = scores %>%
+#    sapply(surv$pancan, simplify=FALSE, USE.NAMES=FALSE) %>%
+#    df$add_name_col("method") %>%
+#    bind_rows()
+#
+#assocs.tissue = surv$tissue(scores$speed_matrix)
+#
+#clinical = surv$clinical
+#scores = scores$speed_matrix
+#ar$intersect(scores, clinical$barcode, along=1)
+#scores = ar$map(scores, along=1, subsets=clinical$study, surv$discretize_quartiles)
+#discrete_assocs = surv$tissue(scores)
+@
+
+\begin{table}[H]
+\centering
+\caption{}
+<<surv_bootstrap, echo=FALSE>>=
+#kable(surv, digits=2, booktabs=TRUE)
+still need to do this
+@
+\end{table}
