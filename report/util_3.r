@@ -88,13 +88,15 @@ wilcox = function(mydf, c1, c2) {
     medians = mydf %>%
         group_by(subset) %>%
         summarize(median = median(resp)) %$%
-        median
+        setNames(median, subset)
 
     list(
         ref = c1,
         sample = c2,
         p.value = wilcox.test(resp ~ subset, data=mydf)$p.value,
-        median_folds = round(10^(abs(medians[2] - medians[1]))),
+        # c1-c2 because more sensitive = more negative numbers
+        median_folds = sign(medians[c1] - medians[c2]) *
+                       round(10^(abs(medians[c2] - medians[c1]))),
         n = nrow(mydf)
     )
 }
@@ -119,9 +121,10 @@ contrast_stats = function(mydf) {
     pathway = as.character(na.omit(unique(b$grep("^([a-zA-Z0-9]+)\\+", mydf$subset))))
     as.data.frame(bind_rows(
         wilcox(mydf, paste0(gene, "_wt"), paste0(gene, "_mut")),
-        wilcox(mydf, paste0(pathway, "+"), paste0(pathway, "-")),
-        wilcox(mydf, paste0(pathway, "+_wt"), paste0(pathway, "-_wt")),
-        wilcox(mydf, paste0(pathway, "+_mut"), paste0(pathway, "-_mut"))
+        wilcox(mydf, paste0(pathway, "-"), paste0(pathway, "+")),
+        wilcox(mydf, paste0(pathway, "-_wt"), paste0(pathway, "+_wt")),
+        wilcox(mydf, paste0(pathway, "-_mut"), paste0(pathway, "+_mut")),
+        wilcox(mydf, paste0(pathway, "-_mut"), paste0(pathway, "+_wt"))
     ))
 }
 

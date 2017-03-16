@@ -55,7 +55,8 @@ arrange(tab, Treatment, Mutation, Pathway) %>%
         mutational status with p-value as indicated. Difference in mutations
         indicated by wt (wild-type), mut (mutated), or blank (any). Inferred
         pathway activity is indicated by $+$ (top quartile) $-$ (bottom
-        quartile) or blank (any). Distance reported as a fold change of medians.}
+        quartile) or blank (any). Distance reported as a fold change of medians
+        where positive numbers mean more, negative numbers less sensitive.}
 {\small
 <<strat_table_test, echo=FALSE>>=
 b$lnapply(strats, util$contrast_stats) %>%
