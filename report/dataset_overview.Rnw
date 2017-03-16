@@ -1,8 +1,17 @@
-<<setup_dataset_size, include=FALSE>>=
+<<global_structure_setup, include=FALSE>>=
 library(dplyr)
 config = import('../config')
+tsne = import('../analyses/signature_similarity/compare_fc_to_model')
 bars = import('../analyses/signature_overview/dataset_size_bars')
 @
+
+\begin{figure}[H]
+<<global_structure, echo=FALSE, fig.width=9>>=
+tsne$do_plot() + config$facet_theme
+@
+\caption{Clustering of individual signatures (left) and consensus model (right)}
+\label{fig:clust}
+\end{figure}
 
 \begin{figure}[H]
 \scalebox{.7}{

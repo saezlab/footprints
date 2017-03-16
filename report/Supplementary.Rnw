@@ -46,11 +46,13 @@
 
 \Sexpr{knit_child('drug_over_mut_stats.Rnw')}
 
+\Sexpr{knit_child('drug_ccle.Rnw')}
+
 \section{Supplementary figures}
 
 \captionsetup[subfloat]{position=bottom}
 
-\Sexpr{knit_child('dataset_size.Rnw')}
+\Sexpr{knit_child('dataset_overview.Rnw')}
 
 \Sexpr{knit_child('model_significance.Rnw')}
 
