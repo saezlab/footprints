@@ -1,0 +1,33 @@
+<<setup3, include=FALSE>>=
+library(dplyr)
+plt = import('plot')
+util = import('./util_3')
+
+assocs = util$vp$load_fun('speed_matrix')$pan
+@
+
+\begin{figure}[H]
+<<drug_volcano_pancan, echo=FALSE, fig.width=6.5, fig.height=8.5>>=
+assocs %>%
+    mutate(label = paste(drug, scores, sep=":")) %>%
+    plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.05, dir=-1) %>%
+    plt$volcano(base.size=0.3, text.size=2, p=0.05, ceil=1e-15, label_top=20)
+@
+\caption{Volcano plots for associations between PROGENy pathway scores and drug
+    response (IC50). Effect size standard deviation in the GDSC panel,
+    p-values FDR-corrected.}
+\label{fig:drug-volcano-pancan-sp}
+\end{figure}
+
+
+%\begin{figure}[H]
+%<<drug_volcano_tissue, echo=FALSE, fig.width=6.5, fig.height=8.5>>=
+%assocs %>%
+%    filter(subset == "clinical") %>%
+%    mutate(label = paste(drug, scores, tissue, sep=":")) %>%
+%    plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.1, dir=-1) %>%
+%    plt$volcano(base.size=1, text.size=2, p=0.1, label_top=60, repel=TRUE)
+%@
+%\caption{Cancer-specific volcano plots, legend as in previous figure.}
+%\label{fig:drug-volcano-tissue}
+%\end{figure}

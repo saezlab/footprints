@@ -26,3 +26,36 @@ plt$symmetrise_scale(p)
 \caption{}
 \label{fig::urv-volcano-pancan}
 \end{figure}
+
+\begin{figure}[H]
+<<surv_mat_pancan, echo=FALSE, fig.width=5.5, fig.height=3.5, warning=FALSE>>=
+assocs %>%
+    b$lnapply(function(x) x$pan_cov) %>%
+    df$add_name_col(col="method", bind=TRUE) %>%
+    mutate(pathway = scores,
+           method = config$id2short(method, rev=TRUE),
+           adj.p = adj.p + .Machine$double.eps,
+           label = ifelse(adj.p < 1e-2, ".", ""),
+           label = ifelse(adj.p < 1e-8, "*", label),
+           statistic = ifelse(adj.p < 0.2, statistic, NA)) %>%
+    plt$matrix(statistic ~ method + pathway, symmetric=TRUE, reverse_colors=TRUE) +
+        coord_fixed() +
+        xlab("") +
+        ylab("")
+@
+\caption{}
+\label{fig::surv-mat-pancan}
+\end{figure}
+
+\begin{figure}[H]
+<<surv_volcano_tissue, echo=FALSE, fig.width=8, fig.height=6, message=FALSE>>=
+assocs$speed_matrix$tissue %>%
+    mutate(label = paste(subset, scores, sep=": "),
+           adj.p = adj.p + .Machine$double.eps) %>%
+    plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.05, dir=-1) %>%
+    plt$volcano(base.size=0.2, text.size=2, p=0.05, label_top=70) +
+    xlim(c(-3,3))
+@
+\caption{}
+\label{fig::surv-volcano-subs}
+\end{figure}

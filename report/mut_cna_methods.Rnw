@@ -7,7 +7,7 @@ util = import('./util_2')
 plot_grid(
     util$mutation_method_plot("TP53", util$mut_cov, 0.2, 1e-5, 1e-15, 10),
     util$mutation_method_plot("KRAS", util$mut_cov, 0.2, 0.05, 1e-3, 10),
-    util$mutation_method_plot("EGFR_amp", util$cna_cov, 0.2, 1e-3, 1e-7, 10),
+    util$mutation_method_plot("EGFR_amp", util$cna_cov, 0.2, 1e-3, 1e-8, 10),
     util$mutation_method_plot("VHL", util$mut_nocov, 0.2, 1e-5, 1e-20, 10),
     labels = c("TP53", "KRAS", "EGFR_amp", "VHL")
 ) +
