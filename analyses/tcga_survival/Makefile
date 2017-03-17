@@ -7,7 +7,7 @@ CONT_PLOTS = $(CONT_ASSOCS:assocs_%.RData=plot_%.pdf)
 DISCR_PLOTS = $(DISCR_ASSOCS:assocs_%.RData=plot_%.pdf) plot_discr_all/mutation.RData
 
 include ../../Makefile.inc
-$(call ext_dep,../../scores/tcga,$(notdir $(CONT) $(DISCR)))
+#$(call ext_dep,../../scores/tcga,$(notdir $(CONT) $(DISCR)))
 
 MAPPED = $(call contains,_mapped,$(DISCR_PLOTS) $(CONT_PLOTS))
 

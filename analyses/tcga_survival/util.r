@@ -30,8 +30,11 @@ clinical = tcga$clinical() %>%
                                      patient.days_to_last_followup),
               barcode = toupper(patient.bcr_patient_barcode),
               sex = as.factor(patient.gender)) %>%
+    filter(surv_days > 0) %>% # autopsy?
     mutate(surv_months = surv_days/30.4) %>%
-    filter(surv_days > 0) %>% # what is this?
+#    mutate(surv_months = surv_days/30.4, # predict for one year only, check if alive then
+#           surv_months = ifelse(surv_months > 12, 12, surv_months),
+#           alive = ifelse(surv_months >= 12, 1, alive)) %>%
     distinct() %>%
     group_by(barcode) %>%
     filter(age_days == max(age_days)) %>%
