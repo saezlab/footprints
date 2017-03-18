@@ -1,5 +1,0 @@
-measure	gsea_speed2016	speed_matrix	gsva_gatza
-Pathways	11	11	18
-Datasets	69	217	1
-Experiments	215	568	18
-Arrays	572	2687	287
