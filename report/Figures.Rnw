@@ -11,6 +11,10 @@
 
 \tableofcontents
 
+\Sexpr{knit_child('numbers.Rnw')}
+
+\Sexpr{knit_child('roc.Rnw')}
+
 \Sexpr{knit_child('mut_cna_volcano.Rnw')}
 \Sexpr{knit_child('mut_cna_methods.Rnw')}
 \Sexpr{knit_child('mut_cna_methods_noBRCA.Rnw')}

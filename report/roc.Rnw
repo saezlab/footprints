@@ -4,10 +4,10 @@ util = import('../analyses/perturbation_recall/roc_util')
 roc = import('../analyses/perturbation_recall/roc_speed')
 config = import('../config')
 
-rdf = roc$roc_df() #%>%
-#    mutate(method = config$id2short(method))
+rdf = roc$roc_df() %>%
+    mutate(method = config$id2short(method))
 
-p = roc$plot_roc(rdf)
+p = roc$plot_roc(rdf, area=config$id2short(c('zscore','gsva')))
 @
 
 \begin{figure}[H]

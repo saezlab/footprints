@@ -27,18 +27,18 @@ roc_df = function() {
         ungroup()
 }
 
-plot_roc = function(roc) {
+plot_roc = function(roc, area=c('zscore','gsva')) {
     width=1
     random_line = data.frame(x=c(0,1), y=c(0,1), method=roc$signature[1])
 
     ggplot(roc, aes(x=FPR, y=TPR, color=method)) +
         geom_line(aes(x=x, y=y), data=random_line, color="grey", linetype="dashed", size=width) +
-        stat_summary(data=filter(roc, method %in% c('zscore', 'gsva')),
+        stat_summary(data=filter(roc, method %in% area),
                      aes(fill=method), geom="ribbon", alpha=0.2,
                      fun.ymin = min, fun.ymax = max, color=NA) +
     #    geom_step(size=width, stat="summary", fun.y=median) +
     #    geom_step(size=0.1, alpha=0.1) +
-        geom_step(data=filter(roc, ! method %in% c('zscore', 'gsva')), size=width) +
+        geom_step(data=filter(roc, ! method %in% area), size=width) +
         coord_fixed() +
         facet_wrap(~inferred) +
         theme(axis.text.x = element_text(angle = 45, hjust = 1))
