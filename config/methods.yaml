@@ -19,6 +19,8 @@ ids:
     - gsva_speed1
     - gsea_speed2016
     - gsva_gatza
+    - gsva
+    - zscore
 
 names:
     - Perturbation-response genes
@@ -31,6 +33,8 @@ names:
     - SPEED (Parikh et al. 2010)
     - SPEED (Iorio et al. 2016)
     - Gatza et al. (2009)
+    - Signatures (top 100 genes GSVA)
+    - Signatures (top 100 genes Z-score)
 
 short:
     - PROGENy
@@ -43,3 +47,5 @@ short:
     - SPEED (2010)
     - SPEED (2016)
     - Gatza (2009)
+    - GSVA
+    - Z-score
