@@ -3,6 +3,7 @@ library(dplyr)
 library(magrittr)
 io = import('io')
 ar = import('array')
+config = import('../config')
 
 # AE: submissions, experiments, arrays (before/after QC)
 curated = c(0,0,0,0)
@@ -22,8 +23,23 @@ gdsc = data.frame(
 )
 
 # TCGA: cohorts, patients; numbers with matched normals
+tcga = import('data/tcga')
+samples = module_file('../analyses/tcga_mutation/cna_driver_matrix.RData') %>%
+    io$load() %>%
+    rownames() %>%
+    tcga$barcode2index() %>%
+    tcga$filter(primary=TRUE, cancer=TRUE)
+tcga = data.frame(
+    subset = c("primary", "primary with normals"),
+    cohorts = c(length(config$tcga$tissues),
+                length(config$tcga$tissues_with_normals)),
+    samples = c(nrow(filter(samples, Study.Abbreviation %in% config$tcga$tissues)),
+                nrow(filter(samples, Study.Abbreviation %in%
+                            config$tcga$tissues_with_normals)))
+)
+# + the sample nums
 
-# highlighted mutation assocs
+# highlighted mutation assocs (this is in supp table as well)
 
 # num of sig drug assocs vs mut; either sig;
 # improvement over mut is shown in figure (but could add here as well)
@@ -37,5 +53,6 @@ gdsc = data.frame(
 <<numbers, echo=FALSE>>=
 kable(model, digits=2, booktabs=TRUE)
 kable(gdsc, digits=2, booktabs=TRUE)
+kable(tcga, digits=2, booktabs=TRUE)
 @
 \end{table}
