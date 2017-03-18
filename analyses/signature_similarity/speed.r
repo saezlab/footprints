@@ -7,6 +7,6 @@ INFILE = commandArgs(TRUE)[1] %or% '../../scores/speed/speed_matrix.RData'
 OUTFILE = commandArgs(TRUE)[2] %or% "/dev/null"
 
 data = io$load(INFILE)
-scores = data$scores
+scores = t(data$scores)
 
 save(scores, file=OUTFILE)
