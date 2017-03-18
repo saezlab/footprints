@@ -28,6 +28,7 @@ ggplot(tsne, aes(x=x, y=y, color=pathway)) +
 <<dataset_size, echo=FALSE>>=
 bars$create_df() %>%
     mutate(variable = config$id2short(variable)) %>%
+    na.omit() %>%
     bars$do_plot()
 @
 }
