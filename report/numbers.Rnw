@@ -1,0 +1,43 @@
+<<setup_numbers, include=FALSE>>=
+library(dplyr)
+io = import('io')
+ar = import('array')
+
+# AE: submissions, experiments, arrays (before/after QC)
+curated = 
+mod_index = io$load(module_file('../data/zscores.RData'))$index
+model = data.frame(
+    curated = 
+    exps = 
+    validation = 
+    # submissions, experiments, arrays
+)
+
+# GDSC: drugs, cell lines
+gdsc = import('data/gdsc')
+gdsc_tissues = gdsc$tissues(minN=3, TCGA=TRUE)
+MSI = (gdsc$MASTER_LIST['MMR'] == "MSI-H")[,1]
+dresp = gdsc$drug_response()
+ar$intersect(gdsc_tissues, dresp, MSI)
+gdsc = data.frame(
+    n_drugs = ncol(dresp),
+    n_clines = nrow(dresp)
+)
+
+# TCGA: cohorts, patients; numbers with matched normals
+
+# highlighted mutation assocs
+
+# num of sig drug assocs vs mut; either sig;
+# improvement over mut is shown in figure (but could add here as well)
+
+# surv assocs?
+@
+
+\begin{table}[H]
+\centering
+\caption{Numbers}
+<<roc_auc, echo=FALSE>>=
+kable(nums, digits=2, booktabs=TRUE)
+@
+\end{table}
