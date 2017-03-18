@@ -1,7 +1,15 @@
-all: tsne_fullmat.RData tsne_top100.RData
+SUBS = fdr_de.RData top100_de.RData top100_z.RData speed_matrix.RData
 
-tsne_fullmat.RData: tsne_speed.r ../../scores/speed/speed_fullmat.RData
+all: tsne_df.RData
+
+fdr_de.RData top100_de.RData: %.RData: %.r ../../data/expr.RData
 	Rscript $^ $@
 
-tsne_top100.RData: tsne_speed.r ../../scores/speed/speed_matrix.RData
+top100_z.RData: %.RData: %.r ../../data/zscores.RData
+	Rscript $^ $@
+
+speed_matrix.RData: %.RData: speed.r ../../scores/speed/%.RData
+	Rscript $^ $@
+
+tsne_df.RData: tsne_df.r $(SUBS)
 	Rscript $^ $@
