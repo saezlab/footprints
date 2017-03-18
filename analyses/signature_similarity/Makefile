@@ -12,4 +12,4 @@ speed_matrix.RData: %.RData: speed.r ../../scores/speed/%.RData
 	Rscript $^ $@
 
 tsne_df.RData: tsne_df.r $(SUBS)
-	Rscript $^ $@
+	Rscript $< $@ $(SUBS)
