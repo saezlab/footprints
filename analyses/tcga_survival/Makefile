@@ -37,3 +37,6 @@ plot_discr_all/mutation.pdf: plot.r assocs_discr_all/mutation.RData
 $(CONT_PLOTS) $(DISCR_PLOTS): plot_%.pdf: plot.r assocs_%.RData
 	@mkdir -p $(dir $@)
 	Rscript $^ $@
+
+bootstrap_highlight.RData: bootstrap_highlight.r ../../scores/tcga/pathways_mapped/speed_matrix.RData
+	Rscript $^ $@
