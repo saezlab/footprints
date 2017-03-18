@@ -2,7 +2,7 @@
 
 cd $(dirname $0)
 
-rsync -auvr --include='*.pdf' --include '[zd]scores.RData' --include 'data/expr.RData' \
+rsync -auvr --include='*.pdf' --include 'dataset_size.txt' --include '[zd]scores.RData' --include 'data/expr.RData' \
     --exclude 'data/*' --include '*.RData' --include='*/' --exclude='*' \
     yoda:/hps/nobackup/saezrodriguez/mike/speed2/* .
 
