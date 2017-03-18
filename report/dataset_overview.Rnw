@@ -2,7 +2,7 @@
 library(dplyr)
 io = import('io')
 config = import('../config')
-tsne = io$load(module_file("../analyses/signature_similarity2/tsne_df.RData"))
+tsne = io$load(module_file("../analyses/signature_similarity/tsne_df.RData"))
 bars = import('../analyses/signature_overview/dataset_size_bars')
 @
 
