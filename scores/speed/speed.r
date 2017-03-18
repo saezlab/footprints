@@ -47,11 +47,11 @@ if (is.null(module_name())) {
     scores = clustermq::Q(expr2scores, id=index$id, job_size=10, memory=20480,
               const = list(expr=expr, zdata=zdata,
                            zdata2model=zdata2model,
-                           hpc_args = list(n_jobs=10))) %>%
+                           hpc_args = list(n_jobs=10, memory=10240))) %>%
         setNames(zdata$index$id) %>%
         ar$stack(along=1) %>%
-        ar$map(along=1, scale) %>% # scale each pathway across all experiments
-        ar$map(along=2, scale) # scale each experiment across all pathways
+        ar$map(along=1, scale) #%>% # scale each pathway across all experiments
+#        ar$map(along=2, scale) # scale each experiment across all pathways
 
     stopifnot(zdata$index$id == rownames(scores))
 
