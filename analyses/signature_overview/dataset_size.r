@@ -13,6 +13,8 @@ all_records = module_file('../../index') %>%
     unlist(recursive=FALSE) %>%
     b$omit$null() %>%
     setNames(., lapply(., function(x) x$id))
+val_records = module_file('../signature_validation/validation.yaml') %>%
+    io$read_yaml()
 
 gsea_speed2016 = list(
     Pathways = 11,
@@ -38,6 +40,16 @@ curated = lapply(list(
         unique()
 ), length)
 
+validation = lapply(list(
+    Pathways = unique(names(val_records)),
+    Datasets = unique(lapply(val_records, function(x) x$expr$accession)),
+    Experiments = unique(lapply(val_records, function(x) x$expr$accession)),
+    Arrays = val_records %>%
+        lapply(function(x) c(x$expr$control, x$expr$perturbed)) %>%
+        unlist() %>%
+        unique()
+), length)
+
 speed_matrix = lapply(list(
     Pathways = unique(index$pathway),
     Datasets = unique(index$accession),
@@ -58,7 +70,8 @@ gsva_gatza = list(
 df = cbind(measure=names(gsea_speed2016),
            gsea_speed2016,
            gsva_gatza,
+           curated,
            speed_matrix,
-           curated)
+           validation)
 
 io$write_table(df, file="dataset_size.txt", sep="\t")
