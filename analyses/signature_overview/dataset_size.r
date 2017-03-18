@@ -8,7 +8,7 @@ records = io$load('../../data/expr.RData')$records
 index = io$load('../../data/zscores.RData')$index # the ones we actually use (pass qc, etc)
 gatza2009 = io$read_table('../../util/genesets/ng.3073-S2_info.txt', header=TRUE)
 all_records = module_file('../../index') %>%
-    list.files("\\.yaml$", recursive=TRUE, full.names=TRUE) %>%
+    list.files("[0-9]+\\.yaml$", recursive=TRUE, full.names=TRUE) %>%
     lapply(function(y) io$read_yaml(y, drop=FALSE)) %>%
     unlist(recursive=FALSE) %>%
     b$omit$null() %>%
