@@ -19,9 +19,9 @@ zscore2model = function(zdata, hpc_args=NULL) {
 
     # create indicator matrix which pathway is activated/inhibited
     pathway = index$sign * (ar$mask(index$pathway) + 0)
-#    pathway[,"MAPK"] = pathway[,"MAPK"] + pathway[,"EGFR"]
-#    pathway[,"PI3K"] = pathway[,"PI3K"] + pathway[,"EGFR"]
-#    pathway[,"NFkB"] = pathway[,"NFkB"] + pathway[,"TNFa"]
+    pathway[,"MAPK"] = pathway[,"MAPK"] + pathway[,"EGFR"]
+    pathway[,"PI3K"] = pathway[,"PI3K"] + pathway[,"EGFR"]
+    pathway[,"NFkB"] = pathway[,"NFkB"] + pathway[,"TNFa"]
     # add EGFR>PI3K link here?
 
     # if using intercept (does this make a difference?)
