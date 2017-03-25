@@ -1,35 +1,23 @@
 <<setup_surv_bs, include=FALSE>>=
 library(dplyr)
-b = import('base')
 io = import('io')
-ar = import('array')
-df = import('data_frame')
-st = import('stats')
-plt = import('plot')
-tcga = import('data/tcga')
-surv = import('../analyses/tcga_survival/util')
-config = import('../config')
 
-#scores = b$lnapply(config$methods$analysis_set, surv$load_scores)
-#
-#assocs.pan = scores %>%
-#    sapply(surv$pancan, simplify=FALSE, USE.NAMES=FALSE) %>%
-#    df$add_name_col("method") %>%
-#    bind_rows()
-#
-#assocs.tissue = surv$tissue(scores$speed_matrix)
-#
-#clinical = surv$clinical
-#scores = scores$speed_matrix
-#ar$intersect(scores, clinical$barcode, along=1)
-#scores = ar$map(scores, along=1, subsets=clinical$study, surv$discretize_quartiles)
-#discrete_assocs = surv$tissue(scores)
+bs = module_file('../analyses/tcga_survival/bootstrap_highlight.RData') %>%
+    io$load() %>%
+    mutate(Pathway = scores,
+           Cohort = subset) %>%
+    group_by(Cohort, Pathway) %>%
+    summarize(`Median p-value` = sprintf("%.2g", median(p.value)),
+              `# of significance (5% FDR)` = sum(adj.p < 0.05))
 @
 
 \begin{table}[H]
 \centering
-\caption{}
+\caption{Stability of the highlighted survival associations across 100
+    bootstraps (resampling patients within each cohort with replacement). The
+    associations are significant for 93 or more bootstraps and the median
+    p-value is highliy significant.}
 <<surv_bootstrap, echo=FALSE>>=
-kable(data.frame(x="still need to do this"), digits=2, booktabs=TRUE)
+kable(bs, digits=2, booktabs=TRUE)
 @
 \end{table}
