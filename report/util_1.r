@@ -53,6 +53,10 @@ perturb_score_plots = function(fid, title=NULL) {
 	rownames(annot) = annot$id
 	annot$id = NULL
 
+    # scale manually bc slightly different to "column"
+#    scores = ar$map(scores, along=2, function(x) scale(x,center=FALSE))
+    scores = ar$map(scores, along=2, scale)
+
 	p2 = pheatmap::pheatmap(scores,
                             annotation = annot,
 #                            scale = "column",

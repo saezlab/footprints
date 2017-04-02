@@ -17,7 +17,8 @@ scores2df = function(sobj) {
 
     sign = ifelse(sobj$index$effect == "activating", 1, -1)
     scores = sobj$scores * sign
-#    scores = ar$map(scores, along=2, function(x) scale(x,center=F))
+#    scores = ar$map(scores, along=2, function(x) scale(x,center=FALSE))
+    scores = ar$map(scores, along=2, scale)
 
     df = data.frame(perturbed = sobj$index$pathway,
                     scores,

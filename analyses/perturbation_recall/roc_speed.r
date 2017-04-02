@@ -16,16 +16,12 @@ roc_df = function() {
 
     asetdf = roc$analysis_set()
 
-    # compare relative activation patterns
-    # because stimulations are different strength
-    scoredf = dplyr::bind_rows(zdf, gsvadf, asetdf) %>%
-        na.omit() %>%
-        group_by(method, signature) %>%
-        mutate(score = scale(score)) %>%
-        ungroup()
+    # no scaling here because scores2df/analysis_set() take care of it
+    scoredf = dplyr::bind_rows(zdf, gsvadf, asetdf)
 
     # per signature, how well do we infer perturbed pathway?
     roc = scoredf %>%
+        na.omit() %>%
         mutate(matched = perturbed == inferred) %>%
         group_by(method, inferred, signature) %>%
         do(st$roc(., "score", "matched")) %>%
