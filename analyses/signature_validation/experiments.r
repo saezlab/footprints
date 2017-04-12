@@ -40,6 +40,21 @@ est = ar$melt(est) %>%
     transmute(ptb = Var1, pathway=Var2, estimate = value_df)
 df = merge(pval, est, by=c('ptb','pathway'))
 
+pdf("experiments.pdf")
+
 df %>%
-    mutate(label = ifelse(p.value < 0.05, "*", "")) %>%
-    plt$matrix(estimate ~ ptb + pathway, label=label)
+    mutate(label = ifelse(p.value < 0.05 & abs(estimate) > 0.5, "*", "")) %>%
+    plt$matrix(estimate ~ ptb + pathway, label=label, reverse_color=TRUE) +
+        coord_fixed() +
+        xlab("Pathway") +
+        ylab("Perturbation")
+
+df %>%
+    filter(grepl("4h", ptb)) %>%
+    mutate(label = ifelse(p.value < 0.05 & abs(estimate) > 0.5, "*", "")) %>%
+    plt$matrix(estimate ~ ptb + pathway, label=label, reverse_color=TRUE) +
+        coord_fixed() +
+        xlab("Pathway") +
+        ylab("Perturbation")
+
+dev.off()
