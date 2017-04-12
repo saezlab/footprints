@@ -53,7 +53,8 @@ df %>%
                symmetric=TRUE, reverse_color=TRUE) +
         coord_fixed() +
         xlab("Pathway") +
-        ylab("Perturbation")
+        ylab("Perturbation") +
+        labs(fill = "pathway sd")
 
 df %>%
     filter(grepl("4h", ptb)) %>%
@@ -62,6 +63,7 @@ df %>%
                symmetric=TRUE, reverse_color=TRUE) +
         coord_fixed() +
         xlab("Pathway") +
-        ylab("Perturbation")
+        ylab("Perturbation") +
+        labs(fill = "pathway sd")
 
 dev.off()
