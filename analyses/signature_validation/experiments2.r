@@ -54,7 +54,7 @@ df %>%
         coord_fixed() +
         xlab("Pathway") +
         ylab("Perturbation") +
-        labs(fill = "pathway sd\nover mean")
+        labs(fill = "pathway sd\nover control")
 
 df %>%
     filter(grepl("4h", ptb)) %>%
@@ -64,6 +64,6 @@ df %>%
         coord_fixed() +
         xlab("Pathway") +
         ylab("Perturbation") +
-        labs(fill = "pathway sd\nover mean")
+        labs(fill = "pathway sd\nover control")
 
 dev.off()
