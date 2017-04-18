@@ -18,7 +18,10 @@ ggplot(tsne, aes(x=x, y=y, color=pathway)) +
     config$facet_theme +
     coord_fixed()
 @
-\caption{Gene expression changes cluster only for a subset of pathways for the
-    top 100 differentially expressed genes or at 10\% FDR.}
+\caption{Gene expression changes cluster only for a subset of pathways.
+    Shown are t-SNE plots for differentially expressed genes at 10\% FDR
+    (left) or the top 100 differentially expressed genes overall (right).
+    Separate clusters can be observed for Hypoxia and JAK-STAT, and to a
+    lesser extent TNFa/NFkB. Other pathways perturbations are mixed.}
 \label{fig:clust}
 \end{figure}
