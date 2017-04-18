@@ -1,27 +1,8 @@
 <<global_structure_setup, include=FALSE>>=
 library(dplyr)
-io = import('io')
 config = import('../config')
-tsne = io$load(module_file("../analyses/signature_similarity/tsne_df.RData"))
 bars = import('../analyses/signature_overview/dataset_size_bars')
 @
-
-\begin{figure}[H]
-<<global_structure, echo=FALSE, fig.height=5>>=
-ggplot(tsne, aes(x=x, y=y, color=pathway)) +
-	geom_point() +
-	xlab("A.U.") +
-	ylab("A.U.") +
-	theme(axis.text.x = element_blank(),
-		  axis.text.y = element_blank()) +
-    facet_wrap(~method) +
-    config$facet_theme
-@
-\caption{Gene expression changes cluster only for a subset of pathways for the
-    top 100 differentially expressed genes or at 10\% FDR, and not at all for
-    the top 100 z-scores.}
-\label{fig:clust}
-\end{figure}
 
 \begin{figure}[H]
 \scalebox{.7}{
