@@ -1,12 +1,13 @@
-<<global_structure_setup, include=FALSE>>=
+<<clust_setup, include=FALSE>>=
 library(dplyr)
 io = import('io')
 config = import('../config')
-tsne = io$load(module_file("../analyses/signature_similarity/tsne_df.RData"))
+tsne = io$load(module_file("../analyses/signature_similarity/tsne_df.RData")) %>%
+    filter(method %in% c('10% FDR', 'Top 100 DE'))
 @
 
 \begin{figure}[H]
-<<global_structure, echo=FALSE, fig.height=5>>=
+<<clust, echo=FALSE>>=
 ggplot(tsne, aes(x=x, y=y, color=pathway)) +
 	geom_point() +
 	xlab("A.U.") +
@@ -14,10 +15,10 @@ ggplot(tsne, aes(x=x, y=y, color=pathway)) +
 	theme(axis.text.x = element_blank(),
 		  axis.text.y = element_blank()) +
     facet_wrap(~method) +
-    config$facet_theme
+    config$facet_theme +
+    coord_fixed()
 @
 \caption{Gene expression changes cluster only for a subset of pathways for the
-    top 100 differentially expressed genes or at 10\% FDR, and not at all for
-    the top 100 z-scores.}
+    top 100 differentially expressed genes or at 10\% FDR.}
 \label{fig:clust}
 \end{figure}
