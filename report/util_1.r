@@ -59,7 +59,7 @@ perturb_score_plots = function(fid, title=NULL) {
 
 	p2 = pheatmap::pheatmap(scores,
                             annotation = annot,
-#                            scale = "column",
+                            scale = "column",
                             cluster_cols = FALSE,
                             show_colnames = FALSE,
                             annotation_legend = FALSE,

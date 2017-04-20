@@ -18,12 +18,11 @@ within = list(cna = filter(util$cna_cov, method == "speed_matrix"),
 list(cna = filter(util$cna_cov, method == "speed_matrix"),
      mut = filter(util$mut_cov, method == "speed_matrix")) %>%
     df$add_name_col("type", bind=TRUE) %>%
-    mutate(circle = df$contains(., within)) %>% #,
-#           adj.p = max(adj.p * size, 1)) %>% # scale p-val by size
+    mutate(circle = df$contains(., within)) %>%
     plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.05, dir=-1) %>%
     mutate(color = ifelse(type=="cna" & adj.p < 0.05 & estimate > 0, "#44045745", color),
            color = ifelse(type=="cna" & adj.p < 0.05 & estimate < 0, "#c8e01e78", color)) %>%
-    plt$volcano(base.size=0.1, text.size=2, p=0.05, label_top=Inf)
+    plt$volcano(base.size=0.1, text.size=2, p=0.05, label_top=Inf, ceil=1e-21)
 @
 \caption{Associatons for drivers/copy number alterations}
 \label{fig:mut-heatmaps}

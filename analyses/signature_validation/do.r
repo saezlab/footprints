@@ -78,13 +78,7 @@ p = ggplot(idf, aes(x=method, y=value, fill=Type)) +
     xlab("") +
     ylab("A.U.")
 
-plot_noclip = function(p) {
-    p = ggplot_gtable(ggplot_build(p))
-    p$layout$clip[p$layout$name == "panel"] = "off"
-    grid::grid.draw(p)
-}
-
 if (is.null(module_name())) {
     pdf("plot.pdf", paper="a4r", width=26, height=20)
-    plot_noclip(p)
+    print(p)
 }

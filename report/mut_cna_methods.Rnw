@@ -4,11 +4,16 @@ util = import('./util_2')
 
 \begin{figure}[H]
 <<method_compare, echo=FALSE, fig.width=8.0, fig.height=8.5>>=
+p53 = util$mut_cov %>%
+    mutate(statistic = ifelse(
+        scores == "p53" & m == "TP53" & method == "gsva_gatza",
+        NA, statistic))
+
 plot_grid(
-    util$mutation_method_plot("TP53", util$mut_cov, 0.2, 1e-5, 1e-15, 10),
-    util$mutation_method_plot("KRAS", util$mut_cov, 0.2, 0.05, 1e-3, 10),
-    util$mutation_method_plot("EGFR_amp", util$cna_cov, 0.2, 1e-3, 1e-8, 10),
-    util$mutation_method_plot("VHL", util$mut_nocov, 0.2, 1e-5, 1e-20, 10),
+    util$mutation_method_plot("TP53", p53, 0.2, 1e-5, 1e-15, 10),
+    util$mutation_method_plot("KRAS", util$mut_cov, 0.2, 0.05, 1e-5, 10),
+    util$mutation_method_plot("EGFR_amp", util$cna_cov, 0.2, 1e-3, 1e-9, 10),
+    util$mutation_method_plot("VHL", util$mut_nocov, 0.2, 1e-10, 1e-50, 10),
     labels = c("TP53", "KRAS", "EGFR_amp", "VHL")
 ) +
     theme(axis.text = element_text(size=7),

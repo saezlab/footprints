@@ -26,8 +26,6 @@
 
 %\Sexpr{knit_child('note_searchterms.Rnw')} %TODO: re-enable (lots of HTTP queries)
 
-\Sexpr{knit_child('note_signatures.Rnw')}
-
 \section{Supplementary tables}
 
 \begin{table}[H]
@@ -54,6 +52,8 @@
 
 \captionsetup[subfloat]{position=bottom}
 
+\Sexpr{knit_child('perturb_cluster.Rnw')}
+
 \Sexpr{knit_child('dataset_overview.Rnw')}
 
 \Sexpr{knit_child('model_significance.Rnw')}
@@ -62,9 +62,9 @@
 
 \Sexpr{knit_child('signature_go.Rnw')}
 
-\Sexpr{knit_child('signature_validation.Rnw')}
-
 \Sexpr{knit_child('perturb_compare.Rnw')}
+
+\Sexpr{knit_child('signature_validation.Rnw')}
 
 \Sexpr{knit_child('basal_correlation.Rnw')}
 

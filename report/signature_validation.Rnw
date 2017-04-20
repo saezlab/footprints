@@ -4,10 +4,10 @@ do = import('../analyses/signature_validation/do')
 
 \begin{figure}[H]
 <<sig_val, echo=FALSE, fig.width=12, fig.height=12>>=
-do$plot_noclip(do$p + theme(strip.text.x = element_text(size = 11)))
+do$p + theme(strip.text.x = element_text(size = 10))
 @
 \caption{Relative pathway activation patterns for activity measurement vs.
-inference by PROGENy. Data sources are experiments where PTMs (mostly Western
+inference by PROGENy. Data sources (publication DOI in panel title) are experiments where PTMs (mostly Western
 Blots of pathway drivers) and gene expression were measured in at least
 duplicate and that were not previously included in model building. Each panel
 shows a pathway with activity measurement on the left and inferred pathway

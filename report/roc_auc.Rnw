@@ -4,6 +4,8 @@ st = import('stats')
 roc = import('../analyses/perturbation_recall/roc_util')
 
 auc = roc$analysis_set() %>%
+    #FIXME: is GSVA is not suitable for comparison, what is?
+    filter(! grepl("gs[ev]a", method)) %>%
     na.omit() %>%
     mutate(matched = perturbed==inferred) %>%
     group_by(method, inferred, signature) %>%

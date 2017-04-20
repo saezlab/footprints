@@ -1,0 +1,27 @@
+<<clust_setup, include=FALSE>>=
+library(dplyr)
+io = import('io')
+config = import('../config')
+tsne = io$load(module_file("../analyses/signature_similarity/tsne_df.RData")) %>%
+    filter(method %in% c('10% FDR', 'Top 100 DE'))
+@
+
+\begin{figure}[H]
+<<clust, echo=FALSE>>=
+ggplot(tsne, aes(x=x, y=y, color=pathway)) +
+	geom_point() +
+	xlab("A.U.") +
+	ylab("A.U.") +
+	theme(axis.text.x = element_blank(),
+		  axis.text.y = element_blank()) +
+    facet_wrap(~method) +
+    config$facet_theme +
+    coord_fixed()
+@
+\caption{Gene expression changes cluster only for a subset of pathways.
+    Shown are t-SNE plots for fold changes of differentially expressed genes at 10\% FDR
+    (left) or the top 100 differentially expressed genes overall (right).
+    Separate clusters can be observed for Hypoxia and JAK-STAT, and to a
+    lesser extent TNFa/NFkB. Other pathways perturbations are mixed.}
+\label{fig:clust}
+\end{figure}

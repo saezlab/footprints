@@ -4,12 +4,12 @@ library(magrittr)
 library(tidyr)
 ar = import('array')
 df = import('data_frame')
-util = import('./util_2_noBRCA')
+util = import('./util_2')
 config = import('../config')
 
 mut = util$mut_cov %>%
 	group_by(m) %>%
-    filter(any(adj.p < 1e-6)) %>%
+    filter(any(adj.p < 1e-7)) %>%
     ungroup()
 
 use_amp = c("EGFR_amp", "KRAS_amp", "ERBB2_amp", "BRAF_amp",
@@ -26,7 +26,7 @@ tab = bind_rows(mut, cna) %>%
     transmute(Method = config$id2short(method),
               Pathway = scores,
               Subset = m,
-              FDR = ifelse(adj.p < 0.01, adj.p, NA)) %>%
+              FDR = ifelse(adj.p < 0.001, adj.p, NA)) %>%
     group_by(Method, Subset) %>%
     filter(!all(is.na(FDR))) %>%
     ungroup() %>%
@@ -44,7 +44,7 @@ tab[na_mask] = "n.s."
 \centering
 \caption{FDR-adjusted p-values for mutation/copy number associations with
     pathway scores obtained by PROGENy. Associations using TCGA data corrected for
-        cancer type. Mutated genes included in table if any method has FDR $<10^{-6}$, copy
+        cancer type. Mutated genes included in table if any method has FDR $<10^{-7}$, copy
         number alterations for related genes (e.g. ERBB2\_amp for EGFR).
 }
 {\tiny
