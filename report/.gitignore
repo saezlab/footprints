@@ -8,5 +8,6 @@
 *.bcf
 *.blg
 *.out
+*.xdv
 *.run.xml
 references.bib
