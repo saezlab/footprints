@@ -12,6 +12,7 @@ resp = c("speed_matrix", "mutation") %>%
 
 # how many drugs have lower FDR for mutations and PROGENy
 tab = resp %>%
+    filter(adj.p < 0.1) %>%
     group_by(drug) %>%
     top_n(1, -adj.p) %>%
     select(drug, method)
@@ -30,7 +31,7 @@ do_test = function(col) {
         broom::tidy() %>%
         mutate(type = col)
 }
-tt = setdiff(colnames(targets), "method")
+tt = setdiff(colnames(targets), c("method", "chromatin_other"))
 result = bind_rows(lapply(tt, do_test)) %>%
     filter(estimate != Inf) %>%
     mutate(adj.p = p.adjust(p.value, method="fdr"))
