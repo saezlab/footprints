@@ -80,5 +80,5 @@ p = ggplot(idf, aes(x=method, y=value, fill=Type)) +
 
 if (is.null(module_name())) {
     pdf("plot.pdf", paper="a4r", width=26, height=20)
-    plot_noclip(p)
+    print(p)
 }

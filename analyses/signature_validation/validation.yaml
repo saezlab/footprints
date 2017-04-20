@@ -34,7 +34,7 @@ JAK-STAT:
     paper:
         doi: 10.1158/0008-5472.CAN-07-2403
         description: Sez-4 16h 200U IL-2 vs DMSO
-        source: Fig. 1A
+        source: Fig.1A
     expr:
         accession: E-GEOD-8687
         platform: A-AFFY-44
@@ -98,7 +98,7 @@ PI3K:
     paper:
         doi: 10.1158/1078-0432.CCR-09-2828
         description: 1 uM GDC-0941 6h
-        source: Fig. 4A
+        source: Fig.4A
     expr:
         accession: E-GEOD-20719
         platform: A-AFFY-44
