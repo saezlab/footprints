@@ -31,7 +31,7 @@ names:
     - PARADIGM
     - Mutations
     - SPEED (Parikh et al. 2010)
-    - SPEED (Iorio et al. 2016)
+    - SPEED derivative (Iorio et al. 2016)
     - Gatza et al. (2009)
     - Signatures (top 100 genes GSVA)
     - Signatures (top 100 genes Z-score)
@@ -45,7 +45,7 @@ short:
     - PARADIGM
     - Mutations
     - SPEED (2010)
-    - SPEED (2016)
+    - Iorio (2016)
     - Gatza (2009)
     - GSVA
     - Z-score
