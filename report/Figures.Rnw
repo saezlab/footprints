@@ -12,6 +12,7 @@
 \tableofcontents
 
 \Sexpr{knit_child('numbers.Rnw')}
+\Sexpr{knit_child('drug_targets.Rnw')}
 
 \Sexpr{knit_child('roc.Rnw')}
 

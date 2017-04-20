@@ -5,6 +5,8 @@ roc = import('../analyses/perturbation_recall/roc_speed')
 config = import('../config')
 
 rdf = roc$roc_df() %>%
+    #FIXME: is GSVA is not suitable for comparison, what is?
+    filter(! grepl("gs[ev]a", method)) %>%
     mutate(method = config$id2short(method))
 
 p = roc$plot_roc(rdf, area=config$id2short(c('zscore','gsva')))

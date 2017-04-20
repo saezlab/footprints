@@ -26,8 +26,6 @@
 
 %\Sexpr{knit_child('note_searchterms.Rnw')} %TODO: re-enable (lots of HTTP queries)
 
-\Sexpr{knit_child('note_signatures.Rnw')}
-
 \section{Supplementary tables}
 
 \begin{table}[H]
