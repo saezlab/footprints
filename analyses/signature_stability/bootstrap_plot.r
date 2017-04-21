@@ -40,6 +40,6 @@ if (is.null(module_name())) {
     OUTFILE = commandArgs(TRUE)[2] %or% 'stability_matrix.pdf'
 
     pdf(OUTFILE)
-    do_plot(file2df(INFILE))
+    print(do_plot(file2df(INFILE)))
     dev.off()
 }
