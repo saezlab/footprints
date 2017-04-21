@@ -1,4 +1,4 @@
-all: expr.RData plot.pdf
+all: expr.RData plot.pdf hek_expr.pdf hek_phospho.pdf
 
 expr.RData: expr.r validation.yaml
 	Rscript expr.r
