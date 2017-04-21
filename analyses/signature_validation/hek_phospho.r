@@ -26,24 +26,20 @@ edf3 = edf %>%
               label = sprintf("*\np %.2g", p.value)) %>%
     ungroup()
 
-pdf("hek_phospho.pdf")
-
-edf2 %>%
+p_separate = edf2 %>%
     mutate(label = ifelse(p.value < 0.05, "*", "")) %>%
     plt$matrix(value ~ treatment + measure, label=label,
                symmetric=TRUE, reverse_color=TRUE) +
     coord_fixed() +
-    facet_wrap(~time, ncol=1) +
-    ggtitle("* p < 0.05")
+    facet_wrap(~time, ncol=1)
 
-edf3 %>%
+p_combined = edf3 %>%
     mutate(label = ifelse(p.value < 0.05 & abs(value) > 0.3, "*", "")) %>%
     plt$matrix(value ~ treatment + measure, label=label,
                symmetric=TRUE, reverse_color=TRUE) +
-    coord_fixed() +
-    ggtitle("* p < 0.05 and min 30% max response")
+    coord_fixed()
 
-ggplot(edf, aes(x=treatment, y=value, fill=measure)) +
+p_box =  ggplot(edf, aes(x=treatment, y=value, fill=measure)) +
     geom_hline(yintercept=0, linetype="dashed", size=1) +
     geom_boxplot() +
 #    geom_point(aes(shape=time), size=3) +
@@ -52,4 +48,13 @@ ggplot(edf, aes(x=treatment, y=value, fill=measure)) +
     ylab("log FC over BSA") +
     facet_wrap(~time, ncol=1)
 
-dev.off()
+
+if (is.null(module_name())) {
+    pdf("hek_phospho.pdf")
+
+    print(p_separate + ggtitle("* p < 0.05"))
+    print(p_combined + ggtitle("* p < 0.05 and min 30% max response"))
+    print(p_box)
+   
+    dev.off()
+}
