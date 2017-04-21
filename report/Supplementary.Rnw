@@ -8,6 +8,9 @@
 \author{Michael Schubert
     \and Bertram Klinger
     \and Martina Kl{\"u}nemann
+    \and Anja Sieber
+    \and Florian Uhlitz
+    \and Sascha Sauer
     \and Mathew J Garnett
     \and Nils Bl{\"u}thgen
     \and Julio Saez-Rodriguez}
@@ -47,6 +50,12 @@
 \Sexpr{knit_child('drug_ccle.Rnw')}
 
 \Sexpr{knit_child('survival_bootstrap.Rnw')}
+
+\begin{table}[H]
+\centering
+\caption{log2 fold changes of phosphoproteomic measurements over BSA,
+    provided as a separate file.}
+\end{table}
 
 \section{Supplementary figures}
 
