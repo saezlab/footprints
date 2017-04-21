@@ -26,7 +26,7 @@ so$overlap()
 \ContinuedFloat
 
 \subfloat[Difference in gene sets between PROGENy genes and Gene Ontology,
-Reactome (incl. Pathifier), SPEED (2016) and Gatza (2009). PROGENy genes are
+Reactome (incl. Pathifier), SPEED-derived Iorio (2016) and Gatza (2009). PROGENy genes are
 different to pathway members and gene annotations, with between 0 and 4 genes
 in common. Overlap with other signatures is higher, but still a minor fraction
 of the total number of signature genes.]{

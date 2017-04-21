@@ -7,13 +7,17 @@ bars = import('../analyses/signature_overview/dataset_size_bars')
 \begin{figure}[H]
 \scalebox{.7}{
 <<dataset_size, echo=FALSE>>=
-bars$create_df() %>%
+bdf = bars$create_df() %>%
     mutate(variable = config$id2short(variable)) %>%
-    na.omit() %>%
-    bars$do_plot()
+    na.omit()
+
+# refer to data set here, not method
+levels(bdf$variable) = sub("Iorio \\(2016\\)", "SPEED (2009)", levels(bdf$variable))
+
+bars$do_plot(bdf)
 @
 }
-\caption{Comparison of dataset size between SPEED, Gatza (2009), and PROGENy.
+\caption{Comparison of dataset size between SPEED (data source for Iorio 2016), Gatza (2009), and PROGENy.
     Gatza et al. derived 18 pathway signatures using only the MCF-10A cell line
         (thus also 18 experiments), and a total of 287 arrays. In 2014, they
         included additional signatures from other sources to a total of 53, but

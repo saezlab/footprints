@@ -80,7 +80,7 @@ cor_plots = function(fid) {
         na.omit()
 
     par(mfrow=c(1, 2))
-    corrplot(cor(tcga), title="TCGA primary tumors")
-    corrplot(cor(gdsc), title="GDSC cell lines")
+    corrplot(cor(tcga), title="TCGA primary tumors", mar=c(0,0,1,0))
+    corrplot(cor(gdsc), title="GDSC cell lines", mar=c(0,0,1,0))
     par(mfrow=c(1, 1))
 }
