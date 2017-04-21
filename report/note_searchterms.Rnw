@@ -25,9 +25,10 @@ pmid2doi = function(pmids) {
 }
 
 cite = function(...) {
-    unique(unlist(list(...))) %>%
-        pmid2doi() %>%
-        knitcitations::citep() %>%
+    dois = unique(unlist(list(...))) %>%
+        pmid2doi()
+    message(paste(dois, collapse=", "))
+    knitcitations::citep(dois) %>%
         clean_citations()
 }
 
