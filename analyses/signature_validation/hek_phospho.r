@@ -26,7 +26,7 @@ edf3 = edf %>%
               label = sprintf("*\np %.2g", p.value)) %>%
     ungroup()
 
-pdf("phospho2.pdf")
+pdf("hek_phospho.pdf")
 
 edf2 %>%
     mutate(label = ifelse(p.value < 0.05, "*", "")) %>%
