@@ -76,7 +76,7 @@ cor_plots = function(fid) {
 
     tcga = io$file_path("../scores/tcga/pathways_mapped", fid, ext=".RData") %>%
         io$load() %>%
-        tcga$filter(primary=TRUE, cancer=TRUE) %>%
+        tcga$filter(primary=TRUE, cancer=TRUE, along=1) %>%
         na.omit()
 
     par(mfrow=c(1, 2))
