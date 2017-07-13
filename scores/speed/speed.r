@@ -12,8 +12,9 @@ ar = import('array')
 #'               [data.frame] and 'zscores' [genes x experiments]
 #' @param zdata2model  The model building function (takes: zdata, hpc_args)
 #' @param hpc_args      Passed to zdata2model
+#' @param ...    Arguments passed to zdata2model
 #' @return       Pathway scores for the current experiment
-expr2scores = function(id, expr, zdata, zdata2model, hpc_args=NULL) {
+expr2scores = function(id, expr, zdata, zdata2model, hpc_args=NULL, ...) {
     stopifnot(zdata$index$id == names(expr$records))
     ar = import('array')
     index = expr$records[[id]]
@@ -22,7 +23,7 @@ expr2scores = function(id, expr, zdata, zdata2model, hpc_args=NULL) {
     # build the model without the current experiment
     zdata$index = zdata$index[zdata$index$id!=id,]
     zdata$zscores = zdata$zscores[,colnames(zdata$zscores) != id]
-    vecs = zdata2model(zdata, hpc_args=hpc_args)$model
+    vecs = zdata2model(zdata, hpc_args=hpc_args, ...)$model
 
     # calculate the scores for the current experiment
     ar$intersect(vecs, expr, along=1)
