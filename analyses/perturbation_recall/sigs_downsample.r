@@ -33,7 +33,6 @@ expr2scores = function(expr, vecs) {
 #' @return          The coefficients matrix [gene x experiment]
 downsample_models = function(expr, zdata, frac=0.5, hpc_args=NULL) {
     zdata2model = import('../../model/model_matrix')$zscore2model
-    library(dplyr)
     b = import('base')
 
     zdata$index = zdata$index %>%
@@ -42,11 +41,27 @@ downsample_models = function(expr, zdata, frac=0.5, hpc_args=NULL) {
         ungroup()
 
     zdata$zscores = zdata$zscores[,zdata$index$id]
-    model = zdata2model(zdata, hpc_args=hpc_args)$model
+    model = zdata2model(zdata, hpc_args=hpc_args)
+}
+
+#' Build model with resampled z data, but score all
+#'
+#' @param expr      List of expression matrice to score
+#' @param zdata     A list with the zscore matrix and index object
+#' @param frac      Fraction of experiments to sample (stratified by pathway)
+#' @param hpc_args  Use HPC infrastructure
+#' @return          The scores [experiment x pathway]
+build_and_score = function(zdata, expr, frac) {
+    import('./sigs_downsample', attach=TRUE)
+    model = downsample_models(expr, zdata, frac)$model
+    scores = expr2scores(expr, model)
 }
 
 if (is.null(module_name())) {
+    b = import('base')
     io = import('io')
+
+    OUTFILE = commandArgs(TRUE)[1] %or% "sigs_downsample.RData"
 
     # zs$zscores : z-scores genes x experiments
     # zs$index   : index df w/ id=experiment, other metadata
@@ -58,17 +73,13 @@ if (is.null(module_name())) {
 
     frac = c(rep(0.5, 10), rep(0.25, 10))
 
-#    models = clustermq::Q(downsample_models, frac=frac, job_size=1,
-#              const = list(zdata = zdata,
-#                           hpc_args = list(n_jobs=20)))]
-    models = lapply(frac, downsample_models, zdata=zdata,
-                    hpc_args = list(n_jobs=100))
-
-#    scores = list(0.5 = lapply(scores[1:10], ),
-#                  0.25 = scores[11:20])
+    scores = clustermq::Q(build_and_score, frac=frac,
+                          const = list(expr=expr, zdata=zdata),
+                          job_size = 1) %>%
+        setNames(frac)
 
     index = zdata$index
 
     # "pathways" are in cols
-    save(scores, index, file="sigs_zscores.RData")
+    save(scores, index, file=OUTFILE)
 }

@@ -21,3 +21,6 @@ sigs_gsva.RData: sigs_gsva.r ../../data/expr.RData ../../scores/speed/gsva.r
 
 sigs_zscores.RData: sigs_zscores.r ../../data/expr.RData ../../data/zscores.RData ../../scores/speed/speed.r
 	Rscript $< $@
+
+sigs_downsample.RData: sigs_downsample.r ../../data/expr.RData ../../data/zscores.RData ../../scores/speed/speed.r
+	Rscript $< $@
