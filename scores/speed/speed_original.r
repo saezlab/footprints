@@ -80,7 +80,7 @@ test_exp = function(query_set, bg_sets, n_total) {
 if (is.null(module_name())) {
     EXPR = commandArgs(TRUE)[2] %or% "../../data/expr.RData"
     ZSCORES = commandArgs(TRUE)[2] %or% "../../data/zscores.RData"
-    OUTFILE = commandArgs(TRUE)[3] %or% "speed_matrix.RData"
+    OUTFILE = commandArgs(TRUE)[3] %or% "speed_original.RData"
 
     # load zscores, model building function, and expression for each experiment
     zdata = io$load(ZSCORES)
@@ -99,6 +99,7 @@ if (is.null(module_name())) {
     scores = lapply(query_sets, test_exp, bg_sets=bg_sets, n_total=nrow(zdata$zscores)) %>%
         simplify2array() %>%
         t()
+    scores = -log10(scores)
 
     index = index[match(rownames(scores), index$id),]
     save(scores, index, file=OUTFILE)

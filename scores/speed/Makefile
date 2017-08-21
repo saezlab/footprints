@@ -12,7 +12,7 @@ $(call ext_dep,../../util/genesets/mapped,$(notdir $(SETS)))
 
 all: mapped
 
-mapped: $(SPEED_SCORES) $(SET_SCORES) $(GSVA_SCORES) pathifier.RData spia.RData
+mapped: $(SPEED_SCORES) $(SET_SCORES) $(GSVA_SCORES) pathifier.RData spia.RData speed_original.RData
 
 
 # use each model to create scores object
@@ -30,3 +30,6 @@ pathifier.RData: pathifier.r ../../util/genesets/mapped/reactome.RData  ../../da
 
 spia.RData: spia.r ../../data/expr.RData
 	$(call bsub_log,4096) Rscript $^ $@
+
+speed_original.RData: speed_original.r ../../data/expr.RData ../../data/zscores.RData
+	Rscript $^ $@
