@@ -1,4 +1,4 @@
-all: gatza.RData go.RData biocarta.RData reactome.RData speed1.RData speed2016.RData
+all: gatza.RData go.RData biocarta.RData reactome.RData speed1.RData speed2016.RData speed_matrix.RData
 
 gatza.RData: gatza2014.r ../ng.3073-S2.csv
 	Rscript $^ $@
@@ -16,4 +16,7 @@ speed1.RData: speed1.r ../speed1_web.txt
 	Rscript $^ $@
 
 speed2016.RData: speed1.r ../speed1_iorio2016.txt
+	Rscript $^ $@
+
+speed_%.RData: speed.r ../../../model/model_%.RData
 	Rscript $^ $@
