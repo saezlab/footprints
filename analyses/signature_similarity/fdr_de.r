@@ -3,7 +3,7 @@ io = import('io')
 ar = import('array')
 
 # similar to ../perturbation_recall/sigs_gsva.r
-exp2sig = function(expr, index) {
+exp2sig = function(expr, index, fdr=0.1) {
     message(index$id)
     library(dplyr)
     library(magrittr)
@@ -26,7 +26,7 @@ exp2sig = function(expr, index) {
     mod = limma::eBayes(mod)
     fdr = data.frame(gene = rownames(mod$p.value), p.value = mod$p.value[,1]) %>%
         mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
-        filter(adj.p < 0.1) %$%
+        filter(adj.p < fdr) %$%
         gene
 
     if (index$effect == "activating")
@@ -35,12 +35,14 @@ exp2sig = function(expr, index) {
         - mod$coefficients[fdr,]
 }
 
-EXPR = commandArgs(TRUE)[1] %or% "../../data/expr.RData"
-OUTFILE = commandArgs(TRUE)[2] %or% "fdr_de.RData"
+if (is.null(module_name())) {
+    EXPR = commandArgs(TRUE)[1] %or% "../../data/expr.RData"
+    OUTFILE = commandArgs(TRUE)[2] %or% "fdr_de.RData"
 
-expr = io$load(EXPR)
-sigs = mapply(exp2sig, expr$expr, expr$records, SIMPLIFY=FALSE)
+    expr = io$load(EXPR)
+    sigs = mapply(exp2sig, expr$expr, expr$records, SIMPLIFY=FALSE)
 
-mat = ar$stack(sigs, along=2, fill=0)
+    mat = ar$stack(sigs, along=2, fill=0)
 
-save(mat, file=OUTFILE)
+    save(mat, file=OUTFILE)
+}
