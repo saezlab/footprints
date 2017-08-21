@@ -55,10 +55,11 @@ construct_background = function(expr, zdata, z=0.01, e=0.5, o=0.2) {
         unique() %>%
         group_by(pathway) %>%
         summarize(n_total=n()) %>%
-        right_join(bg_df, by="pathway") %>%
-        mutate(overlap = n/n_total)
+        right_join(bg_df, by="pathway")
 
+    # LOOCV?
     sets = bg_df %>%
+        mutate(overlap = n/n_total) %>%
         select(pathway, gene, overlap) %>%
         unique() %>%
         filter(overlap >= o) %>%
@@ -66,7 +67,14 @@ construct_background = function(expr, zdata, z=0.01, e=0.5, o=0.2) {
         unstack()
 }
 
-test_exp = function(query_set, bg_df) {
+test_exp = function(query_set, bg_sets, n_total) {
+    result = b$lnapply(bg_sets, function(s) {
+        vals = c(length(query_set),
+                 length(intersect(query_set, s)),
+                 n_total,
+                 length(s))
+        fisher.test(matrix(vals, ncol=2))$p.value
+    }) %>% simplify2array()
 }
 
 if (is.null(module_name())) {
@@ -88,6 +96,10 @@ if (is.null(module_name())) {
     # construct a background index
     bg_sets = construct_background(expr, zdata)
 
+    scores = lapply(query_sets, test_exp, bg_sets=bg_sets, n_total=nrow(zdata$zscores)) %>%
+        simplify2array() %>%
+        t()
 
-#    save(scores, index, file=OUTFILE)
+    index = index[match(rownames(scores), index$id),]
+    save(scores, index, file=OUTFILE)
 }
