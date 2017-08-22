@@ -14,11 +14,13 @@ roc_df = function() {
         mutate(inferred = sub("\\..*$", "", signature),
                method = "gsva")
 
-    fids = c("speed_matrix", "speed_original", "gsva_speed_matrix")
+#    fids = c("speed_matrix", "speed_original", "gsva_speed_matrix", "gsva_speed1")
+    fids = c("speed_matrix", "speed_original")
     asetdf = roc$analysis_set(fids)
 
     # no scaling here because scores2df/analysis_set() take care of it
-    scoredf = dplyr::bind_rows(zdf, gsvadf, asetdf)
+#    scoredf = dplyr::bind_rows(zdf, gsvadf, asetdf)
+    scoredf = dplyr::bind_rows(zdf, asetdf)
 
     # per signature, how well do we infer perturbed pathway?
     roc = scoredf %>%
