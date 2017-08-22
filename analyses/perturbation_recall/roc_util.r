@@ -10,13 +10,18 @@ config = import('../../config')
 
 #' Creates a data.frame for a scores object
 #'
-#' @param sobj  A file name or scores object
-scores2df = function(sobj) {
+#' @param sobj    A file name or scores object
+#' @param signed  Whether to account for inhibition as negative activation
+scores2df = function(sobj, signed=TRUE) {
     if (is.character(sobj))
         sobj = io$load(sobj)
 
-    sign = ifelse(sobj$index$effect == "activating", 1, -1)
-    scores = sobj$scores * sign
+    if (signed) {
+        sign = ifelse(sobj$index$effect == "activating", 1, -1)
+        scores = sobj$scores * sign
+    } else
+        scores = sobj$scores
+
 #    scores = ar$map(scores, along=2, function(x) scale(x,center=FALSE))
     scores = ar$map(scores, along=2, scale)
 
