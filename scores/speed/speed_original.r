@@ -33,14 +33,11 @@ exp2background = function(idx, exp, zscores, z=0.01, e=0.5) {
 #'               and 'expr' [genes x arrays]
 #' @param zdata  A list with fields 'index' providing experiment info
 #'               [data.frame] and 'zscores' [genes x experiments]
-#' @param z      Absolute z-score in order to be included
-#' @param e      Absolute expression in order to be included
-#' @param o      Overlap to be in bg set
 #' @return       Character vector of background HGNC symbols per pathway
-construct_background = function(expr, zdata, z=0.01, e=0.5, o=0.2) {
+construct_background = function(expr, zdata) {
     bg_sets = mapply(function(...) exp2background(...) %catch% NULL,
                      idx=expr$records, exp=expr$expr,
-                     MoreArgs=list(zscores=zdata$zscores, z=z, e=e))
+                     MoreArgs=list(zscores=zdata$zscores))
 
     bg_df = stack(bg_sets) %>%
         transmute(id = ind,
@@ -49,15 +46,26 @@ construct_background = function(expr, zdata, z=0.01, e=0.5, o=0.2) {
         group_by(gene, pathway) %>%
         mutate(n=n()) %>%
         ungroup()
+}
 
-    bg_df = bg_df %>%
+#' SPEED FET for query set and background (excluding query set)
+#'
+#' @param cur_id   Experiment ID of form <pathway>.<arrayexpress>.<num>
+#' @param bg_sets  Background set data.frame from cosntruct_background()
+#' @param n_total  Number of genes measured in total
+#' @param o        Overlap to be in bg set
+#' @return         Named (pathways) numeric vector of p-values
+test_exp = function(cur_id, query_set, bg_sets, n_total, o=0.2) {
+    message(cur_id)
+
+    bg_df = bg_sets %>%
+        filter(id != cur_id) %>%
         select(pathway, id) %>%
         unique() %>%
         group_by(pathway) %>%
         summarize(n_total=n()) %>%
-        right_join(bg_df, by="pathway")
+        right_join(bg_sets, by="pathway")
 
-    # LOOCV?
     sets = bg_df %>%
         mutate(overlap = n/n_total) %>%
         select(pathway, gene, overlap) %>%
@@ -65,10 +73,8 @@ construct_background = function(expr, zdata, z=0.01, e=0.5, o=0.2) {
         filter(overlap >= o) %>%
         select(gene, pathway) %>%
         unstack()
-}
 
-test_exp = function(query_set, bg_sets, n_total) {
-    result = b$lnapply(bg_sets, function(s) {
+    result = b$lnapply(sets, function(s) {
         vals = c(length(query_set),
                  length(intersect(query_set, s)),
                  n_total,
@@ -86,7 +92,7 @@ if (is.null(module_name())) {
     zdata = io$load(ZSCORES)
     index = zdata$index
     expr = io$load(EXPR)
-    stopifnot(colnames(zscores) == names(expr$expr))
+    stopifnot(colnames(zdata$zscores) == names(expr$expr))
 
     # get the query sets for each experiment
     query_sets = mapply(fdr_genes$exp2sig, expr=expr$expr, index=expr$records) %>%
@@ -96,8 +102,8 @@ if (is.null(module_name())) {
     # construct a background index
     bg_sets = construct_background(expr, zdata)
 
-    scores = lapply(query_sets, test_exp, bg_sets=bg_sets, n_total=nrow(zdata$zscores)) %>%
-        simplify2array() %>%
+    scores = mapply(test_exp, names(query_sets), query_sets,
+            MoreArgs=list(bg_sets=bg_sets, n_total=nrow(zdata$zscores))) %>%
         t()
     scores = -log10(scores)
 
