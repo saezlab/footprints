@@ -14,7 +14,8 @@ roc_df = function() {
         mutate(inferred = sub("\\..*$", "", signature),
                method = "gsva")
 
-    asetdf = roc$analysis_set()
+    fids = c("speed_matrix", "speed_original", "gsva_speed_matrix")
+    asetdf = roc$analysis_set(fids)
 
     # no scaling here because scores2df/analysis_set() take care of it
     scoredf = dplyr::bind_rows(zdf, gsvadf, asetdf)

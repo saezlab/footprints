@@ -32,8 +32,13 @@ scores2df = function(sobj, signed=TRUE) {
 }
 
 #' Returns the analysis set and their relative paths
-analysis_set = function() {
-    fids = setdiff(config$methods$analysis_set, "paradigm")
+#'
+#' @param fids    Character vector of method IDs to use
+#'                default: analysis set in config
+#' @param return  A combined data frame of methods and recall
+analysis_set = function(fids=NULL) {
+    if (is.null(fids))
+        fids = setdiff(config$methods$analysis_set, "paradigm")
 
     # data.frame with columns:
     #   perturbed : which pathway was perturbed in the experiment
