@@ -11,15 +11,17 @@ speed1 = list(
     "VEGF" = "VEGF"
 )
 
-INFILE = commandArgs(TRUE)[1] %or% "../speed1_web.txt"
-OUTFILE = commandArgs(TRUE)[2] %or% "speed1.RData"
+if (is.null(module_file())) {
+    INFILE = commandArgs(TRUE)[1] %or% "../speed1_web.txt"
+    OUTFILE = commandArgs(TRUE)[2] %or% "speed1.RData"
 
-lists = io$read_table(INFILE, header=TRUE) %>%
-    unstack(Gene_Name ~ Pathway)
- 
-# if mapping to SPEED pathways
-pathways = sapply(names(speed1), function(path) {
-    unique(unlist(lists[speed1[[path]]]))
-})
+    lists = io$read_table(INFILE, header=TRUE) %>%
+        unstack(Gene_Name ~ Pathway)
+     
+    # if mapping to SPEED pathways
+    pathways = sapply(names(speed1), function(path) {
+        unique(unlist(lists[speed1[[path]]]))
+    })
 
-save(pathways, file=OUTFILE)
+    save(pathways, file=OUTFILE)
+}
