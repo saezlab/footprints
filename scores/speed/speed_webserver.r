@@ -31,7 +31,7 @@ query_geneset = function(query) {
 }
 
 if (is.null(module_name())) {
-    EXPR = commandArgs(TRUE)[2] %or% "../../data/expr.RData"
+    EXPR = commandArgs(TRUE)[1] %or% "../../data/expr.RData"
     ZSCORES = commandArgs(TRUE)[2] %or% "../../data/zscores.RData"
     OUTFILE = commandArgs(TRUE)[3] %or% "speed_webserver.RData"
 

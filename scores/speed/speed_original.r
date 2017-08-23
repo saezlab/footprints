@@ -84,7 +84,7 @@ test_exp = function(cur_id, query_set, bg_sets, n_total, o=0.2) {
 }
 
 if (is.null(module_name())) {
-    EXPR = commandArgs(TRUE)[2] %or% "../../data/expr.RData"
+    EXPR = commandArgs(TRUE)[1] %or% "../../data/expr.RData"
     ZSCORES = commandArgs(TRUE)[2] %or% "../../data/zscores.RData"
     OUTFILE = commandArgs(TRUE)[3] %or% "speed_original.RData"
 
