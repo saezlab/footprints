@@ -23,7 +23,7 @@ summarize_experiments = function(recs, exps, field) {
 #' @param ctl   A matrix of mean control expression per experiment
 #' @param ptb   A matrix of mean perturbed expression per experiment
 #' @return      Named (HGNC symbols) character vector of median fold changes
-epsa_pathway = function(ctl, ptb, index) {
+epsa_vectors = function(ctl, ptb, index) {
     one_pathway = function(path) {
         message(path)
         cc = ctl[[path]]
@@ -55,11 +55,20 @@ epsa_pathway = function(ctl, ptb, index) {
 #' Score perturbation experiments according to EPSA
 #'
 #' @param sigs  Named (pathways) list of numeric vector (HGNC/median FC)
+#' @param ctl   A matrix of mean control expression per experiment
+#' @param ptb   A matrix of mean perturbed expression per experiment
+#' @return      A score matrix of experiments x pathways
 score_experiments = function(sigs, ctl, ptb) {
-    mean_fc = ptb - ctl[rownames(ptb),colnames(ptb)]
+    fc = (ptb - ctl[rownames(ptb),colnames(ptb)])
 
-    scores = sapply(sigs, function(s) cor(s, mean_fcs[names(s)])) %>%
-        setNames(names(sigs))
+    cor_fun = function(s, f) {
+        sig = sigs[[s]]
+        cmp = na.omit(data.frame(sig, fc[,f][names(sig)]))
+        cor(cmp[,1], cmp[,2], method="spearman")
+    }
+    epsa = b$expand_grid(sig_idx=names(sigs), fc_idx=colnames(fc)) %>%
+        mutate(epsa = purrr::map2_dbl(sig_idx, fc_idx, cor_fun)) %>%
+        narray::construct(epsa ~ fc_idx + sig_idx)
 }
 
 if (is.null(module_name())) {
@@ -77,8 +86,9 @@ if (is.null(module_name())) {
 
     ctl = summarize_experiments(expr$records, expr$expr, "control")
     ptb = summarize_experiments(expr$records, expr$expr, "perturbed")
-    signatures = epsa_pathway(ctl, ptb, index)
+    signatures = epsa_vectors(ctl, ptb, index)
 
+    scores = score_experiments(signatures, ctl, ptb)
     index = index[match(rownames(scores), index$id),]
     save(scores, index, file=OUTFILE)
 }

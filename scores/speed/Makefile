@@ -33,3 +33,6 @@ spia.RData: spia.r ../../data/expr.RData
 
 speed_webserver.RData speed_original.RData: speed_%.RData: speed_%.r ../../data/expr.RData ../../data/zscores.RData
 	Rscript $^ $@
+
+epsa.RData: epsa.r ../../data/expr.RData
+	Rscript $^ $@
