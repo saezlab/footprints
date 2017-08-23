@@ -26,6 +26,7 @@ exp2sig = function(expr, index, fdr=0.1) {
     mod = limma::eBayes(mod)
     fdr = data.frame(gene = rownames(mod$p.value), p.value = mod$p.value[,1]) %>%
         mutate(adj.p = p.adjust(p.value, method="fdr")) %>%
+        arrange(adj.p, p.value) %>%
         filter(adj.p < fdr) %$%
         gene
 
