@@ -1,22 +1,22 @@
 library(dplyr)
 io = import('io')
 st = import('stats')
-roc = import('./roc_util')
+util = import('./roc_util')
 
 roc_df = function() {
     zdf = io$load(module_file('sigs_zscores.RData')) %>%
-        roc$scores2df() %>%
+        util$scores2df() %>%
         mutate(inferred = sub("\\..*$", "", signature),
                method = "zscore")
 
     gsvadf = io$load(module_file('sigs_gsva.RData')) %>%
-        roc$scores2df() %>%
+        util$scores2df() %>%
         mutate(inferred = sub("\\..*$", "", signature),
                method = "gsva")
 
 #    fids = c("speed_matrix", "speed_original", "gsva_speed_matrix", "gsva_speed1")
     fids = c("speed_matrix", "speed_original", "speed_webserver", "epsa")
-    asetdf = roc$analysis_set(fids)
+    asetdf = util$analysis_set(fids)
 
     # no scaling here because scores2df/analysis_set() take care of it
 #    scoredf = dplyr::bind_rows(zdf, gsvadf, asetdf)
@@ -51,8 +51,11 @@ plot_roc = function(roc, area=c('zscore','gsva')) {
 if (is.null(module_name())) {
     roc = roc_df()
     p = plot_roc(roc)
+    auc = util$roc2auc(roc)
 
     pdf("roc_speed.pdf", paper="a4r", width=11, height=8)
     print(p)
+    grid::grid.newpage()
+    gridExtra::grid.table(auc)#, show.rownames=FALSE)
     dev.off()
 }

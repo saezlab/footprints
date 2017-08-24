@@ -21,6 +21,9 @@ ids:
     - gsva_gatza
     - gsva
     - zscore
+    - speed_original
+    - speed_webserver
+    - epsa
 
 names:
     - Perturbation-response genes
@@ -35,6 +38,9 @@ names:
     - Gatza et al. (2009)
     - Signatures (top 100 genes GSVA)
     - Signatures (top 100 genes Z-score)
+    - SPEED (using our experiments)
+    - SPEED (using web server)
+    - EPSA (using our experiments)
 
 short:
     - PROGENy
@@ -49,3 +55,6 @@ short:
     - Gatza (2009)
     - GSVA
     - Z-score
+    - SPEED (our data)
+    - SPEED (web)
+    - EPSA (our data)
