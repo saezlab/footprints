@@ -48,7 +48,7 @@ if (is.null(module_name())) {
 
     scores = lapply(query_sets, query_geneset) %>% simplify2array() %>% t()
     scores = -log10(scores)
-    scores[is.na(scores)] = 0
+#    scores[is.na(scores)] = 0
 
     index = index[match(rownames(scores), index$id),]
     save(scores, index, file=OUTFILE)
