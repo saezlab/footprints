@@ -39,3 +39,6 @@ epsa.RData: epsa.r ../../data/expr.RData
 
 speed_matrix_%.RData: speed_downsample.r ../../model/model_matrix.r ../../data/expr.RData ../../data/zscores.RData
 	Rscript $^ $@ $*
+
+ks_%.RData: ks_stat.r ../../util/genesets/mapped/%.RData ../../data/expr.RData
+	Rscript $^ $@
