@@ -152,7 +152,7 @@ ks = function(index, expr, sigs, ...) {
     score = function(sig) {
         matched = sort(na.omit(match(sig, names(diff_expr))))
         re = ks.test.2(matched, (1:length(diff_expr))[-matched])
-		re$ES
+        -re$ES # seems to be implemented the wrong way
     }
     result = sapply(sigs, score)
 }
@@ -182,7 +182,6 @@ if (is.null(module_name())) {
     scores = mapply(ks, index=index, expr=expr,
                     MoreArgs = list(sigs=genesets)) %>%
         t()
-#    scores[is.infinite(scores)] = 20 # all positive
 
     filter_index = function(x) x[! names(x) %in% c('control', 'perturbed', 'exclusion')]
     index = do.call(bind_rows, lapply(index, filter_index))

@@ -15,7 +15,7 @@ roc_df = function() {
                method = "gsva")
 
 #    fids = c("speed_matrix", "speed_original", "gsva_speed_matrix", "gsva_speed1")
-    fids = c("speed_matrix", "gsva_speed_matrix", "speed_original", "speed_webserver", "epsa")
+    fids = c("speed_matrix", "ks_speed_matrix", "speed_original", "speed_webserver", "epsa")
     asetdf = util$analysis_set(fids)
 
     # no scaling here because scores2df/analysis_set() take care of it
@@ -51,7 +51,8 @@ plot_roc = function(roc, area=c('zscore','gsva')) {
 if (is.null(module_name())) {
     roc = roc_df()
     p = plot_roc(roc)
-    auc = util$roc2auc(roc)
+    auc = util$roc2auc(roc) %>%
+        mutate_at(setdiff(names(.), "inferred"), funs(sprintf("%.3f", .)))
 
     pdf("roc_speed.pdf", paper="a4r", width=11, height=8)
     print(p)
