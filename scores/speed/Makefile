@@ -12,7 +12,7 @@ $(call ext_dep,../../util/genesets/mapped,$(notdir $(SETS)))
 
 all: mapped
 
-mapped: $(SPEED_SCORES) $(SET_SCORES) $(GSVA_SCORES) pathifier.RData spia.RData speed_original.RData speed_webserver.RData
+mapped: $(SPEED_SCORES) $(SET_SCORES) $(GSVA_SCORES) pathifier.RData spia.RData speed_original.RData speed_webserver.RData speed_matrix_20.RData speed_matrix_50.RData
 
 
 # use each model to create scores object
@@ -36,3 +36,6 @@ speed_webserver.RData speed_original.RData: speed_%.RData: speed_%.r ../../data/
 
 epsa.RData: epsa.r ../../data/expr.RData
 	Rscript $^ $@
+
+speed_matrix_%.RData: speed_downsample.r ../../model/model_matrix.r ../../data/expr.RData ../../data/zscores.RData
+	Rscript $^ $@ $*

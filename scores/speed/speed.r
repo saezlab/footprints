@@ -15,14 +15,16 @@ ar = import('array')
 #' @param ...    Arguments passed to zdata2model
 #' @return       Pathway scores for the current experiment
 expr2scores = function(id, expr, zdata, zdata2model, hpc_args=NULL, ...) {
-    stopifnot(zdata$index$id == names(expr$records))
     ar = import('array')
     index = expr$records[[id]]
     expr = expr$expr[[id]]
 
     # build the model without the current experiment
-    zdata$index = zdata$index[zdata$index$id!=id,]
-    zdata$zscores = zdata$zscores[,colnames(zdata$zscores) != id]
+#    exclude = id # only exclude current experiment
+    exclude = grep(sub("\\.[0-9]+$", "", id),
+                   zdata$index$id, value=TRUE, fixed=TRUE) # exclude whole series
+    zdata$index = zdata$index[! zdata$index$id %in% exclude,]
+    zdata$zscores = zdata$zscores[,! colnames(zdata$zscores) %in% exclude]
     vecs = zdata2model(zdata, hpc_args=hpc_args, ...)$model
 
     # calculate the scores for the current experiment

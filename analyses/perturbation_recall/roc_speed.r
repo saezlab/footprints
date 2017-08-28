@@ -15,7 +15,7 @@ roc_df = function() {
                method = "gsva")
 
 #    fids = c("speed_matrix", "speed_original", "gsva_speed_matrix", "gsva_speed1")
-    fids = c("speed_matrix", "speed_original", "speed_webserver", "epsa")
+    fids = c("speed_matrix", "gsva_speed_matrix", "speed_original", "speed_webserver", "epsa")
     asetdf = util$analysis_set(fids)
 
     # no scaling here because scores2df/analysis_set() take care of it
