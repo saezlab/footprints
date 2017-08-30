@@ -47,7 +47,7 @@ if (is.null(module_name())) {
     zdata2model = import_(sub("\\.r$", "", MODEL))$zscore2model
     expr = io$load(EXPR)
 
-    scores = clustermq::Q(expr2scores, id=index$id, job_size=1, memory=10240,
+    scores = clustermq::Q(expr2scores, id=index$id, job_size=1, memory=3072,
               const = list(expr = expr,
                            zdata = zdata,
                            zdata2model = zdata2model)) %>% #,

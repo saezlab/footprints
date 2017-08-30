@@ -12,7 +12,7 @@ $(call ext_dep,../../util/genesets/mapped,$(notdir $(SETS)))
 
 all: mapped
 
-mapped: $(SPEED_SCORES) $(SET_SCORES) $(GSVA_SCORES) pathifier.RData spia.RData speed_original.RData speed_webserver.RData speed_matrix_20.RData speed_matrix_50.RData
+mapped: $(SPEED_SCORES) $(SET_SCORES) $(GSVA_SCORES) pathifier.RData spia.RData speed_original.RData speed_webserver.RData
 
 
 # use each model to create scores object
