@@ -10,7 +10,7 @@ downsampled_auc = function(n_sigs, expr, zdata, zdata2model) {
         id
 
     # build model
-    zdata$zscores = zdata$zscores[1:10,keep] #TODO:
+    zdata$zscores = zdata$zscores[,keep]
     zdata$index = zdata$index[match(keep, zdata$index$id),]
     stopifnot(zdata$index$id == colnames(zdata$zscores))
     model = zdata2model(zdata, hpc_args=list(n_jobs=0))$model
@@ -64,13 +64,13 @@ if (is.null(module_name())) {
         group_by(pathway) %>%
         summarize(n=n())
 
-    n_sigs = 3:max(max_sigs$n)
-    aucs = clustermq::Q(downsampled_auc, n_sigs=n_sigs, n_jobs=10,#job_size=1,
+    n_sigs = rep(3:max(max_sigs$n), 3)
+    aucs = clustermq::Q(downsampled_auc, n_sigs=n_sigs, job_size=1,
                         const = list(expr=expr, zdata=zdata, zdata2model=zdata2model))
 
     aucs = data_frame(n_sigs=n_sigs, auc=aucs) %>%
         tidyr::unnest() %>%
-        dplyr::left_join(max_sigs, by="pathway") %>%
+        left_join(max_sigs, by="pathway") %>%
         filter(n_sigs <= n) %>%
         select(-n)
 
