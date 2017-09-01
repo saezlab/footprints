@@ -59,8 +59,8 @@ test_exp = function(cur_id, query_set, bg_sets, n_total, o=0.2) {
     message(cur_id)
 
     bg_df = bg_sets %>%
-#        filter(id != cur_id) %>% # exclude only current experiment
-        filter(!grepl(sub("\\.[0-9]+$", "", cur_id), id, fixed=TRUE)) %>% # exclude whole series
+        filter(id != cur_id) %>% # exclude only current experiment
+#        filter(!grepl(sub("\\.[0-9]+$", "", cur_id), id, fixed=TRUE)) %>% # exclude whole series
         select(pathway, id) %>%
         unique() %>%
         group_by(pathway) %>%

@@ -20,9 +20,9 @@ expr2scores = function(id, expr, zdata, zdata2model, hpc_args=NULL, ...) {
     expr = expr$expr[[id]]
 
     # build the model without the current experiment
-#    exclude = id # only exclude current experiment
-    exclude = grep(sub("\\.[0-9]+$", "", id),
-                   zdata$index$id, value=TRUE, fixed=TRUE) # exclude whole series
+    exclude = id # only exclude current experiment
+#    exclude = grep(sub("\\.[0-9]+$", "", id),
+#                   zdata$index$id, value=TRUE, fixed=TRUE) # exclude whole series
     zdata$index = zdata$index[! zdata$index$id %in% exclude,]
     zdata$zscores = zdata$zscores[,! colnames(zdata$zscores) %in% exclude]
     vecs = zdata2model(zdata, hpc_args=hpc_args, ...)$model
