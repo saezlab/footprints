@@ -9,12 +9,12 @@ do_plot = function(aucdf) {
         facet_wrap(~ pathway, scales="free")
 }
 
-if (is.null(module_file())) {
+if (is.null(module_name())) {
     INFILE = commandArgs(TRUE)[1] %or% "speed_downsample_auc.RData"
-    OUTFILE = commandArgs(TRUE)[1] %or% "speed_downsample_plot.pdf"
+    OUTFILE = commandArgs(TRUE)[2] %or% "speed_downsample_plot.pdf"
 
     aucdf = io$load(INFILE)
     pdf(OUTFILE)
-    do_plot(aucdf)
+    print(do_plot(aucdf))
     dev.off()
 }
