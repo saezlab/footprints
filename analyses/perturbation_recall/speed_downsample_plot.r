@@ -9,7 +9,7 @@ aucdf = function(fname="speed_downsample_auc.RData") {
 do_plot = function(aucdf) {
     ggplot(aucdf, aes(x=n_sigs, y=auc)) +
         geom_point() +
-        stat_smooth() +
+        stat_smooth(method="loess") +
         facet_wrap(~ pathway, scales="free")
 }
 
