@@ -1,4 +1,4 @@
-downsampled_auc = function(n_sigs, expr, zdata, zdata2model, hpc_args=list()) {
+downsampled_auc = function(n_sigs, expr, zdata, zdata2model, hpc_args=list(n_jobs=0)) {
     library(dplyr)
     b = import('base')
     index = zdata$index
