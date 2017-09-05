@@ -2,21 +2,37 @@
 library(dplyr)
 util = import('../analyses/perturbation_recall/roc_util')
 roc = import('../analyses/perturbation_recall/roc_speed')
+dsp = import('../analyses/perturbation_recall/speed_downsample_plot')
 config = import('../config')
 
 rdf = roc$roc_df() %>%
     mutate(method = config$id2short(method))
 
 p = roc$plot_roc(rdf, area=config$id2short(c('zscore','gsva')))
+auc = dsp$do_plot(dsp$aucdf())
 @
 
 \begin{figure}[H]
+\subfloat[ROC curves for different pathway methods]{ \scalebox{.55}{
 <<roc_curves, echo=FALSE>>=
 p +
     config$facet_theme +
     xlab("False positive rate (FPR)") +
     ylab("True positive rate (FPR)")
 @
-\caption{ROC curves for different pathway methods}
+}
+}
+
+\subfloat[ROC AUC as a function of number of signatures in model]{ \scalebox{.55}{
+<<aucs, echo=FALSE>>=
+auc +
+    config$facet_theme +
+    xlab("Number of signatures included in model building") +
+    ylab("ROC AUC")
+@
+}
+}
+
+\caption{common caption}
 \label{fig:roc}
 \end{figure}

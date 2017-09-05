@@ -61,8 +61,6 @@
 
 \captionsetup[subfloat]{position=bottom}
 
-\Sexpr{knit_child('perturb_cluster.Rnw')}
-
 \Sexpr{knit_child('dataset_overview.Rnw')}
 
 \Sexpr{knit_child('model_significance.Rnw')}
@@ -72,6 +70,8 @@
 \Sexpr{knit_child('signature_go.Rnw')}
 
 \Sexpr{knit_child('perturb_compare.Rnw')}
+
+\Sexpr{knit_child('roc.Rnw')}
 
 \Sexpr{knit_child('signature_validation.Rnw')}
 
