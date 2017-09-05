@@ -22,7 +22,7 @@ sigs_gsva.RData: sigs_gsva.r ../../data/expr.RData ../../scores/speed/gsva.r
 sigs_zscores.RData: sigs_zscores.r ../../data/expr.RData ../../data/zscores.RData ../../scores/speed/speed.r
 	Rscript $< $@
 
-speed_downsample_auc.RData: speed_downsample.r ../../model/model_matrix.r ../../data/expr.RData ../../data/zscores.RData
+speed_downsample_auc.RData: speed_downsample_auc.r ../../model/model_matrix.r ../../data/expr.RData ../../data/zscores.RData
 	Rscript $^ $@
 
 speed_downsample_plot.pdf: speed_downsample_plot.r speed_downsample_auc.RData

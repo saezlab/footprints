@@ -26,7 +26,7 @@ zscore2model = function(zdata, hpc_args=NULL) {
     # if using intercept
 #    pathway = cbind('(Intercept)'=1, pathway)
 
-    mod = st$lm(zscores ~ 0 + pathway, min_pts=30,
+    mod = st$lm(zscores ~ 0 + pathway, #min_pts=30,
                 hpc_args=hpc_args) %>%
         transmute(gene = zscores,
                   pathway = pathway,

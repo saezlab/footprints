@@ -1,19 +1,18 @@
-downsampled_auc = function(n_sigs, expr, zdata, zdata2model) {
+downsampled_auc = function(n_sigs, expr, zdata, zdata2model, hpc_args=list()) {
     library(dplyr)
-    library(magrittr)
+    b = import('base')
     index = zdata$index
 
     keep = zdata$index %>%
         group_by(pathway) %>%
-        mutate(ni = sample(1:n(), size=n())) %>%
-        filter(ni <= n_sigs) %$%
-        id
+        sample_n(size=n_sigs, replace=TRUE) %>%
+        pull(id)
 
     # build model
     zdata$zscores = zdata$zscores[,keep]
     zdata$index = zdata$index[match(keep, zdata$index$id),]
     stopifnot(zdata$index$id == colnames(zdata$zscores))
-    model = zdata2model(zdata, hpc_args=list(n_jobs=0))$model
+    model = zdata2model(zdata, hpc_args=hpc_args)$model
 
     # score experiments
     score_one = function(vecs, expr, index) {
@@ -64,7 +63,7 @@ if (is.null(module_name())) {
         group_by(pathway) %>%
         summarize(n=n())
 
-    n_sigs = rep(3:max(max_sigs$n), 3)
+    n_sigs = rep(1:max(max_sigs$n), 10)
     aucs = clustermq::Q(downsampled_auc, n_sigs=n_sigs, job_size=1,
                         const = list(expr=expr, zdata=zdata, zdata2model=zdata2model))
 
