@@ -1,15 +1,11 @@
 <<setup_roc_auc, include=FALSE>>=
 library(dplyr)
 st = import('stats')
-roc = import('../analyses/perturbation_recall/roc_util')
+roc = import('../analyses/perturbation_recall/roc_speed')
+util = import('../analyses/perturbation_recall/roc_util')
 
-auc = roc$analysis_set() %>%
-    na.omit() %>%
-    mutate(matched = perturbed==inferred) %>%
-    group_by(method, inferred, signature) %>%
-    do(st$roc(., "score", "matched")) %>%
-    ungroup() %>%
-    roc$roc2auc()
+auc = roc$roc_df() %>%
+    util$roc2auc()
 @
 
 \begin{table}[H]

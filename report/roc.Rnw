@@ -13,7 +13,14 @@ auc = dsp$do_plot(dsp$aucdf())
 @
 
 \begin{figure}[H]
-\subfloat[ROC curves for different pathway methods]{ \scalebox{.55}{
+\subfloat[Comparison between PROGENy (linear model of z-scores), SPEED
+    (Fisher's Exact Test for z-scores, where web refers to the web tool at
+    http://speed.sys-bio.net and our data to using an FET on our curated
+    experiments), and EPSA (Spearman correlation between significant median
+    fold changes of the model and the fold changes of each perturbation
+    experiment). Additionally, GSEA (KS-test) using the PROGENy gene list and
+    the highest z-scores of individual experiments (red shade) are shown.]{
+\scalebox{.55}{
 <<roc_curves, echo=FALSE>>=
 p +
     config$facet_theme +
@@ -23,7 +30,10 @@ p +
 }
 }
 
-\subfloat[ROC AUC as a function of number of signatures in model]{ \scalebox{.55}{
+\subfloat[AUC with different number of signatures. The PROGENy model is build
+    limiting each pathway to $n$ signatures. The obtained AUC first increases
+    quickly with few signatures and then levels off (except JAK-STAT where we
+    see a constant response within 0.01 units)]{\scalebox{.55}{
 <<aucs, echo=FALSE>>=
 auc +
     config$facet_theme +
@@ -33,6 +43,9 @@ auc +
 }
 }
 
-\caption{common caption}
+\caption{ROC curves for different ways to compute consensus models (a) and
+    smaller sets of signatures (b). For each signature, we test if perturbed
+    pathways are ordered before non-perturbed pathways (negative fold changes
+    taken for inhibitions)}
 \label{fig:roc}
 \end{figure}

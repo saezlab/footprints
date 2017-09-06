@@ -42,7 +42,7 @@ names:
     - SPEED (using our experiments)
     - SPEED (using web server)
     - EPSA (using our experiments)
-    - GSEA (using our experiments)
+    - GSEA (using our gene list)
 
 short:
     - PROGENy
@@ -60,4 +60,4 @@ short:
     - SPEED (our data)
     - SPEED (web)
     - EPSA (our data)
-    - GSEA (our data)
+    - GSEA (our genes)
