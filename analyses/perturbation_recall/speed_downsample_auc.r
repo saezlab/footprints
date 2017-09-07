@@ -64,7 +64,7 @@ if (is.null(module_name())) {
         summarize(n=n())
 
     n_sigs = rep(1:max(max_sigs$n), 10)
-    aucs = clustermq::Q(downsampled_auc, n_sigs=n_sigs, job_size=1,
+    aucs = clustermq::Q(downsampled_auc, n_sigs=n_sigs, job_size=1, memory=8192,
                         const = list(expr=expr, zdata=zdata, zdata2model=zdata2model))
 
     aucs = data_frame(n_sigs=n_sigs, auc=aucs) %>%
