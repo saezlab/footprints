@@ -32,11 +32,14 @@ cite = function(...) {
         clean_citations()
 }
 
-citep_retry = function(x) {
-    result = structure(NA, class="try-error")
-    while(class(result) == "try-error")
+citep_retry = function(x, tries=10) {
+    for (i in seq_len(tries)) {
         result = try(knitcitations::citep(x))
-    result
+        if (class(result) != "try-error")
+            return(result)
+    }
+    warning("query retries exceeded", immediate.=TRUE)
+    ""
 }
 
 # convert ArrayExpress accession to citation
@@ -57,11 +60,11 @@ ae2pmid = function(args) {
         q = sprintf("//experiment[accession='%s']/bibliography/doi/text()", acc)
         doi_ae = unique(unlist(lapply(XML::xpathSApply(bib, q), XML::xmlToList)))
 
-        knitcitations::citep(unique(c(doi_geo, doi_ae)))
+        citep_retry(unique(c(doi_geo, doi_ae)))
     }
 
     lapply(args, function(x) { # can maybe simplify this w/ numerical citations
-        cite = one_accession(x) %catch% ""
+        cite = one_accession(x) %catch% "" # xmlAttrs on NULL
         if (grepl("[A-Za-z]_[0-9]+", cite))
             paste(c(x, clean_citations(cite)), collapse=" ")
         else
