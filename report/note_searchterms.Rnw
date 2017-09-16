@@ -57,11 +57,11 @@ ae2pmid = function(args) {
         q = sprintf("//experiment[accession='%s']/bibliography/doi/text()", acc)
         doi_ae = unique(unlist(lapply(XML::xpathSApply(bib, q), XML::xmlToList)))
 
-        citep_retry(unique(c(doi_geo, doi_ae)))
+        knitcitations::citep(unique(c(doi_geo, doi_ae)))
     }
 
     lapply(args, function(x) { # can maybe simplify this w/ numerical citations
-        cite = one_accession(x)
+        cite = one_accession(x) %catch% ""
         if (grepl("[A-Za-z]_[0-9]+", cite))
             paste(c(x, clean_citations(cite)), collapse=" ")
         else
