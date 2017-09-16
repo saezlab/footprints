@@ -32,8 +32,8 @@ p +
 
 \subfloat[AUC with different number of signatures. The PROGENy model is build
     limiting each pathway to $n$ signatures. The obtained AUC first increases
-    quickly with few signatures and then levels off (except JAK-STAT where we
-    see a constant response within 0.01 units)]{\scalebox{.55}{
+    quickly with few signatures and then levels off between 10 and 40
+    signatures.]{\scalebox{.55}{
 <<aucs, echo=FALSE>>=
 auc +
     config$facet_theme +
