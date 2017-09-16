@@ -28,8 +28,15 @@ cite = function(...) {
     dois = unique(unlist(list(...))) %>%
         pmid2doi()
     message(paste(dois, collapse=", "))
-    knitcitations::citep(dois) %>%
+    citep_retry(dois) %>%
         clean_citations()
+}
+
+citep_retry = function(x) {
+    result = structure(NA, class="try-error")
+    while(class(result) == "try-error")
+        result = try(knitcitations::citep(x))
+    result
 }
 
 # convert ArrayExpress accession to citation
@@ -50,11 +57,11 @@ ae2pmid = function(args) {
         q = sprintf("//experiment[accession='%s']/bibliography/doi/text()", acc)
         doi_ae = unique(unlist(lapply(XML::xpathSApply(bib, q), XML::xmlToList)))
 
-        knitcitations::citep(unique(c(doi_geo, doi_ae)))
+        citep_retry(unique(c(doi_geo, doi_ae)))
     }
 
     lapply(args, function(x) { # can maybe simplify this w/ numerical citations
-        cite = one_accession(x) %catch% ""
+        cite = one_accession(x)
         if (grepl("[A-Za-z]_[0-9]+", cite))
             paste(c(x, clean_citations(cite)), collapse=" ")
         else
