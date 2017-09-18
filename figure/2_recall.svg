@@ -15,7 +15,7 @@
    viewBox="0 0 593.73924 420.55854"
    id="svg100515"
    version="1.1"
-   inkscape:version="0.92.1 r"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06"
    sodipodi:docname="2_recall.svg"
    inkscape:export-filename="/home/mschu/Work/speed2/figure/2_recall.png"
    inkscape:export-xdpi="600"
@@ -2686,14 +2686,14 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="-143.84725"
-     inkscape:cy="27.803416"
+     inkscape:zoom="1.4"
+     inkscape:cx="262.80932"
+     inkscape:cy="166.32389"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1053"
+     inkscape:window-height="1173"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
@@ -2710,7 +2710,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -4620,7 +4620,7 @@
          style="stroke-width:1"
          id="tspan92586-4-9"
          y="37.453613"
-         x="250.16592">c</tspan>
+         x="250.16592">b</tspan>
     </text>
     <g
        id="g9770"
@@ -9288,7 +9288,7 @@
          style="stroke-width:1"
          id="tspan92586-4-91"
          y="208.42683"
-         x="8.1216993">b</tspan>
+         x="8.1216993">d</tspan>
     </text>
     <text
        id="text92584-1-9"
@@ -9301,7 +9301,7 @@
          style="stroke-width:1"
          id="tspan92586-4-6"
          y="208.42683"
-         x="236.90767">d</tspan>
+         x="236.90767">c</tspan>
     </text>
     <g
        id="g61264"
