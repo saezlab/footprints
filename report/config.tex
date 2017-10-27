@@ -10,7 +10,8 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{grffile} % allow dots and spaces in file names
-\usepackage{caption}
+\usepackage[figurename=Supplementary Figure,
+  tablename=Supplementary Table]{caption}
 %\usepackage{subcaption} % caption of subfigures
 \usepackage[caption=false]{subfig} % subfloat
 \usepackage{booktabs}
@@ -30,3 +31,10 @@
 
 % do not print square brackets in bibliography
 \DeclareFieldFormat{labelnumberwidth}{#1\adddot}
+
+% Nature Communications-specifc formatting
+\renewcommand{\refname}{Supplementary References}
+\usepackage{titlesec}
+\titleformat{\subsection}{\normalfont\bfseries}{Supplementary Note~\thesubsection:}{1em}{}
+\usepackage{chngcntr} % http://ctan.org/pkg/chngcntr
+\counterwithout{subsection}{section}

@@ -13,7 +13,8 @@ duplicate and that were not previously included in model building. Each panel
 shows a pathway with activity measurement on the left and inferred pathway
 score on the right. The Y-axis is scaled to a normal distribution and  should
 be used only to compare basal vs. perturbed experiments of the same kind.
-Difference quantified using a one-tailed t-test.
+Difference quantified using a one-tailed t-test. Hinges represent quartiles,
+whiskers 1.5*IQR.
 }
 \label{fig:sig-val}
 \end{figure}

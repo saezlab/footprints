@@ -24,5 +24,8 @@ Supplementary.pdf: Supplementary.tex config.tex $(SUPP)
 PROGENy_model.xlsx: excel_model.r ../model/model_matrix.RData
 	Rscript $^
 
+%.pdf: %.tex config.tex
+	$(LATEXMK) $*
+
 %.tex: %.Rnw
 	R -e 'library(knitr);knit("$<")'

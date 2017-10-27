@@ -3,33 +3,37 @@
 
 \input{config}
 
-\title{Supplementary Material for "Perturbation-response genes reveal signaling
-    footprints in cancer gene expression"}
-\author{Michael Schubert
-    \and Bertram Klinger
-    \and Martina Kl{\"u}nemann
-    \and Anja Sieber
-    \and Florian Uhlitz
-    \and Sascha Sauer
-    \and Mathew J Garnett
-    \and Nils Bl{\"u}thgen
-    \and Julio Saez-Rodriguez}
+%\title{Supplementary Material for "Perturbation-response genes reveal signaling
+%    footprints in cancer gene expression"}
+%\author{Michael Schubert
+%    \and Bertram Klinger
+%    \and Martina Kl{\"u}nemann
+%    \and Anja Sieber
+%    \and Florian Uhlitz
+%    \and Sascha Sauer
+%    \and Mathew J Garnett
+%    \and Nils Bl{\"u}thgen
+%    \and Julio Saez-Rodriguez}
 
 \begin{document}
 
-\maketitle
+%\maketitle
+%\tableofcontents
+%\newpage
 
-\tableofcontents
-
-\newpage
-
-\section{Supplementary notes}
+\section*{Supplementary notes}
 
 \Sexpr{knit_child('note_images.Rnw')}
 
-%\Sexpr{knit_child('note_searchterms.Rnw')} %TODO: re-enable (lots of HTTP queries)
+\Sexpr{knit_child('note_searchterms.Rnw')} %TODO: re-enable (lots of HTTP queries)
 
-\section{Supplementary tables}
+\subsection{R packages used}
+
+<<session_info>>=
+sessionInfo()
+@
+
+\section*{Supplementary tables}
 
 \begin{table}[H]
 \centering
@@ -57,7 +61,7 @@
     provided as a separate file.}
 \end{table}
 
-\section{Supplementary figures}
+\section*{Supplementary figures}
 
 \captionsetup[subfloat]{position=bottom}
 
@@ -84,12 +88,6 @@
 \Sexpr{knit_child('drug_volcanos.Rnw')}
 
 \Sexpr{knit_child('survival_tissue_volcanos.Rnw')}
-
-\section{R packages used}
-
-<<session_info>>=
-sessionInfo()
-@
 
 \printbibliography[heading=bibintoc]
 
