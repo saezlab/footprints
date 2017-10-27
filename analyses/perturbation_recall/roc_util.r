@@ -49,7 +49,7 @@ analysis_set = function(fids=NULL) {
         module_file("../../scores/speed", ., mustWork = TRUE) %>%
         setNames(fids) %>%
         lapply(scores2df) %>%
-        df$add_name_col(col="method", bind=TRUE) %>%
+        df$bind_rows(col_name="method") %>%
         mutate(inferred = signature)
 }
 

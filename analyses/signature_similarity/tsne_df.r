@@ -19,7 +19,7 @@ file2tsne = function(fname) {
 }
 
 tsne = b$lnapply(fnames, file2tsne) %>%
-    df$add_name_col("method", bind=TRUE) %>%
+    df$bind_rows(name_col="method") %>%
     mutate(method = file2name[method])
 
 save(tsne, file=OUTFILE)

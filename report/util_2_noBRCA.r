@@ -19,7 +19,7 @@ load_fun = function(dir, id) {
     }
 
     b$lnapply(id, function(id) fn(dir, id)) %>%
-        df$add_name_col("method", bind=TRUE)
+        df$bind_rows(name_col="method")
 }
 
 mut_assocs = load_fun("assocs_driver_mapped", config$methods$analysis_set)
