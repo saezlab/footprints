@@ -35,11 +35,11 @@ sessionInfo()
 
 \section*{Supplementary tables}
 
-\begin{table}[H]
-\centering
-\caption{Coefficients matrix of the fitted PROGENy model, provided as a
-    separate file. HGNC gene names in rows, pathways in columns.}
-\end{table}
+%\begin{table}[H]
+%\centering
+%\caption{Coefficients matrix of the fitted PROGENy model, provided as a
+%    separate file. HGNC gene names in rows, pathways in columns.}
+%\end{table}
 
 \captionsetup[subfloat]{position=top}
 
