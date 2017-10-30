@@ -27,11 +27,11 @@
 
 \Sexpr{knit_child('note_searchterms.Rnw')} %TODO: re-enable (lots of HTTP queries)
 
-\subsection{R packages used}
-
-<<session_info>>=
-sessionInfo()
-@
+%\subsection{R packages used}
+%
+%<<session_info>>=
+%sessionInfo()
+%@
 
 \section*{Supplementary tables}
 
