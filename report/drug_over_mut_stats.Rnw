@@ -60,7 +60,7 @@ arrange(tab, Treatment, Mutation, Pathway) %>%
 {\small
 <<strat_table_test, echo=FALSE>>=
 b$lnapply(strats, util$contrast_stats) %>%
-    df$bind_rows(name_col="treatment", bind=TRUE) %>%
+    df$bind_rows(name_col="treatment") %>%
     transmute(Treatment = treatment,
               Reference = ref,
               Comparison = sample,

@@ -39,7 +39,7 @@ plt$symmetrise_scale(p)
 %<<drug_volcano_tissue, echo=FALSE, fig.width=6.5, fig.height=8.5>>=
 %p = assocs %>%
 %    b$lnapply(function(x) x$assocs.tissue) %>%
-%    df$bind_rows(name_col="method", bind=TRUE) %>%
+%    df$bind_rows(name_col="method") %>%
 %    filter(subset == "clinical") %>%
 %    mutate(label = paste(drug, scores, tissue, sep=":"),
 %           method = config$id2short(method)) %>%
