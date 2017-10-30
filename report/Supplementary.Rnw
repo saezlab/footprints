@@ -43,9 +43,9 @@
 
 \captionsetup[subfloat]{position=top}
 
-\Sexpr{knit_child('pathway_mapping.Rnw')}
-
 \Sexpr{knit_child('roc_auc.Rnw')}
+
+\Sexpr{knit_child('pathway_mapping.Rnw')}
 
 \Sexpr{knit_child('mut_cna_table.Rnw')}
 
@@ -55,11 +55,11 @@
 
 \Sexpr{knit_child('survival_bootstrap.Rnw')}
 
-\begin{table}[H]
-\centering
-\caption{log2 fold changes of phosphoproteomic measurements over BSA,
-    provided as a separate file.}
-\end{table}
+%\begin{table}[H]
+%\centering
+%\caption{log2 fold changes of phosphoproteomic measurements over BSA,
+%    provided as a separate file.}
+%\end{table}
 
 \section*{Supplementary figures}
 
