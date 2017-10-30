@@ -14,7 +14,7 @@ scores = b$lnapply(config$methods$analysis_set, surv$load_scores)
 
 assocs.pan = scores %>%
     sapply(surv$pancan, simplify=FALSE, USE.NAMES=FALSE) %>%
-    df$add_name_col("method") %>%
+    df$bind_rows(name_col="method") %>%
     bind_rows()
 
 assocs.tissue = surv$tissue(scores$speed_matrix)

@@ -11,13 +11,13 @@ util = import('./util_2')
 <<mut_cna_volcao, echo=FALSE, fig.width=5, fig.height=8>>=
 within = list(cna = filter(util$cna_cov, method == "speed_matrix"),
               mut = filter(util$mut_cov, method == "speed_matrix")) %>%
-    df$add_name_col("type", bind=TRUE) %>%
+    df$bind_rows(name_col="type") %>%
     filter(adj.p < 0.05) %>%
     select(scores, m)
 
 list(cna = filter(util$cna_cov, method == "speed_matrix"),
      mut = filter(util$mut_cov, method == "speed_matrix")) %>%
-    df$add_name_col("type", bind=TRUE) %>%
+    df$bind_rows(name_col="type") %>%
     mutate(circle = df$contains(., within)) %>%
     plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.05, dir=-1) %>%
     mutate(color = ifelse(type=="cna" & adj.p < 0.05 & estimate > 0, "#44045745", color),

@@ -13,7 +13,7 @@ assocs = b$lnapply(config$methods$analysis_set, util$load_assocs)
 <<surv_volcano_pancan, echo=FALSE, fig.width=8, fig.height=12>>=
 p = assocs %>%
     b$lnapply(function(x) x$pan_cov) %>%
-    df$add_name_col(col="method", bind=TRUE) %>%
+    df$bind_rows(name_col="method") %>%
     mutate(label = scores,
            method = config$id2short(method),
            adj.p = adj.p + .Machine$double.eps) %>%
@@ -31,7 +31,7 @@ plt$symmetrise_scale(p)
 <<surv_mat_pancan, echo=FALSE, fig.width=5.5, fig.height=3.5, warning=FALSE>>=
 assocs %>%
     b$lnapply(function(x) x$pan_cov) %>%
-    df$add_name_col(col="method", bind=TRUE) %>%
+    df$bind_rows(name_col="method") %>%
     mutate(pathway = scores,
            method = config$id2short(method, rev=TRUE),
            adj.p = adj.p + .Machine$double.eps,

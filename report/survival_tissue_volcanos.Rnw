@@ -13,7 +13,7 @@ assocs = b$lnapply(config$methods$analysis_set, util$load_assocs)
 <<surv_volcano_tissue, echo=FALSE, fig.width=6.5, fig.height=8.5>>=
 p = assocs %>%
     b$lnapply(function(x) x$tissue) %>%
-    df$add_name_col(col="method", bind=TRUE) %>%
+    df$bind_rows(name_col="method") %>%
     mutate(label = paste(scores, subset, sep=":"),
            method = config$id2short(method)) %>%
     plt$color$p_effect(pvalue="adj.p", effect="estimate", thresh=0.1, dir=-1) %>%

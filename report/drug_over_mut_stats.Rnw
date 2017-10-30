@@ -29,7 +29,7 @@ strats = list(
 {\small
 <<strat_table, echo=FALSE, warning=FALSE>>=
 path_lookup = setNames(c("active", "inactive", "average"), c("+", "-", "0"))
-tab = df$add_name_col(strats, "treatment", bind=TRUE) %>%
+tab = df$bind_rows(strats, name_col="treatment") %>%
     group_by(treatment, subset) %>%
     summarize(n = n_distinct(cosmic),
               median = median(resp, na.rm=TRUE)) %>%
@@ -60,7 +60,7 @@ arrange(tab, Treatment, Mutation, Pathway) %>%
 {\small
 <<strat_table_test, echo=FALSE>>=
 b$lnapply(strats, util$contrast_stats) %>%
-    df$add_name_col("treatment", bind=TRUE) %>%
+    df$bind_rows(name_col="treatment", bind=TRUE) %>%
     transmute(Treatment = treatment,
               Reference = ref,
               Comparison = sample,
