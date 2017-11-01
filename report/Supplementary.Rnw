@@ -89,6 +89,6 @@
 
 \Sexpr{knit_child('survival_tissue_volcanos.Rnw')}
 
-\printbibliography[heading=bibintoc]
+\printbibliography[heading=bibintoc,title={Supplementary References}]
 
 \end{document}
