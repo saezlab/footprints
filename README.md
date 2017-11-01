@@ -1,5 +1,5 @@
-Signaling footprints via pathway-responsive genes (PRGs)
-========================================================
+Analysis code for: "Perturbation-response genes reveal signaling footprints in cancer gene expression"
+======================================================================================================
 
 Numerous pathway methods have been developed to quantify the signaling state of
 a cell from gene expression data, usually from the abundance of transcripts of
