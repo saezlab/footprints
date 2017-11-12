@@ -11,11 +11,11 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="203.22163mm"
-   height="146.29993mm"
-   viewBox="0 0 720.07665 518.38556"
+   height="132.23145mm"
+   viewBox="0 0 720.07665 468.53661"
    id="svg2"
    version="1.1"
-   inkscape:version="0.92.1 r"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06"
    sodipodi:docname="3_response_expression.svg">
   <defs
      id="defs4">
@@ -9059,13 +9059,13 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="0.70000002"
-     inkscape:cx="91.082238"
-     inkscape:cy="181.33308"
+     inkscape:cx="97.510809"
+     inkscape:cy="181.33307"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1053"
+     inkscape:window-height="1173"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
@@ -9091,7 +9091,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-0.95295238,40.05815)">
+     transform="translate(-0.95295236,-9.7907991)">
     <g
        id="g4165"
        transform="matrix(0.42739639,0,0,-0.42739639,9.7382633,680.62564)" />

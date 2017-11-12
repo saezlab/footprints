@@ -11,11 +11,11 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="168.10547mm"
-   height="161.90205mm"
-   viewBox="0 0 595.64929 573.66869"
+   height="147.71915mm"
+   viewBox="0 0 595.64929 523.4143"
    id="svg15161"
    version="1.1"
-   inkscape:version="0.92.1 r"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06"
    sodipodi:docname="5_patient_survival.svg">
   <defs
      id="defs15163">
@@ -4092,13 +4092,13 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="-139.58938"
-     inkscape:cy="237.07156"
+     inkscape:cx="38.267763"
+     inkscape:cy="237.07154"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1053"
+     inkscape:window-height="1173"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
@@ -4124,7 +4124,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-4.473271,40.058186)">
+     transform="translate(-4.473271,-10.196161)">
     <flowRoot
        xml:space="preserve"
        id="flowRoot7372"
